@@ -1,0 +1,59 @@
+# //  Questa Sim-64
+# //  Version 10.7c linux_x86_64 Aug 17 2018
+# //
+# //  Copyright 1991-2018 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# vsim -t 10ps work.FDGENTEST -voptargs="+acc" 
+# Start time: 10:57:03 on Mar 06,2023
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error: (vopt-13130) Failed to find design unit FDGENTEST.
+#         Searched libraries:
+#             work
+# Optimization failed
+# Error loading design
+# End time: 10:57:04 on Mar 06,2023, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 0
+     vsim -t 10ps work.FDGENTEST -voptargs="+acc" 
+# vsim -t 10ps work.FDGENTEST -voptargs=""+acc"" 
+# Start time: 10:58:33 on Mar 06,2023
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading work.constants
+# Loading work.FDGENTEST#1
+# Loading work.tbfd(test)#1
+# Loading work.cfg_fd_pippo#1
+# Loading work.fd(pippo)#1
+# Loading work.cfg_fd_pluto#1
+# Loading work.fd(pluto)#1
+
+add wave *
+run
+run 
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+run
+# End time: 11:02:23 on Mar 06,2023, Elapsed time: 0:03:50
+# Errors: 0, Warnings: 0

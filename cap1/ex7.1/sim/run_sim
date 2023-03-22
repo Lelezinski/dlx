@@ -1,0 +1,1 @@
+vsim -t 10ps TBALU.TEST -voptargs=+acc

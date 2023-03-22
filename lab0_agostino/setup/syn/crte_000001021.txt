@@ -1,0 +1,334 @@
+CRTE_SNAPSHOT_START
+
+SECTION_CRTE_VERSION
+3.0
+
+SECTION_PID
+1021
+
+SECTION_POLLING_INTERVAL
+5
+
+SECTION_DATE_TIME
+Thu Mar 16 17:54:23 CET 2023 (1678985663)
+
+SECTION_OS_VERSION
+osname: Linux
+hostname: localhost.localdomain
+arch: x86_64
+release_version: 3.10.0-957.5.1.el7.x86_64
+
+SECTION_IPC_INFO
+
+------ Message Queues --------
+key        msqid      owner      perms      used-bytes   messages    
+
+------ Shared Memory Segments --------
+key        shmid      owner      perms      bytes      nattch     status      
+0x00000000 0          zabbix     600        576        6          dest         
+0x00000000 32769      zabbix     600        949056     6          dest         
+0x00000000 1467416578 ms23.46    600        2097152    2          dest         
+0x00000000 1148715011 ms23.47    600        524288     2          dest         
+0x00000000 1465319428 ms23.46    600        393216     2          dest         
+0x00000000 1467514885 ms23.46    600        67108864   2          dest         
+0x00000000 1488125958 ms23.38    600        393216     2          dest         
+0x00000000 1488158727 ms23.38    600        393216     2          dest         
+0x00000000 1466990600 ms23.46    600        524288     2          dest         
+0x00000000 1488257033 ms23.38    600        524288     2        SECTION_ULIMIT
+core file size          (blocks, -c) 0
+data seg size           (kbytes, -d) unlimited
+scheduling priority             (-e) 0
+file size               (blocks, -f) unlimited
+pending signals                 (-i) 257581
+max locked memory       (kbytes, -l) 64
+max memory size         (kbytes, -m) unlimited
+open files                      (-n) 4096
+pipe size            (512 bytes, -p) 8
+POSIX message queues     (bytes, -q) 819200
+real-time priority              (-r) 0
+stack size              (kbytes, -s) unlimited
+cpu time               (seconds, -t) unlimited
+max user processes              (-u) 4096
+virtual memory          (kbytes, -v) unlimited
+file locks                      (-x) unlimited
+
+SECTION_SYSCONF
+_SC_THREAD_SAFE_FUNCTIONS= 200809
+_SC_CLK_TCK= 100
+_SC_OPEN_MAX= 4096
+_SC_PAGE_SIZE= 4096
+_SC_ARG_MAX= 4611686018427387903
+_SC_CHILD_MAX= 4096
+_SC_LINE_MAX= 2048
+
+SECTION_FULL_COMMAND
+/eda/synopsys/2021-22/RHELx86/SYN_2021.06-SP4/linux64/syn/bin/common_shell_exec -shell design_vision -r /eda/synopsys/2021-22/RHELx86/SYN_2021.06-SP4
+
+SECTION_CPUINFO
+total_core: 12
+
+model_name:  Intel Core i7 9xx (Nehalem Class Core i7)
+flags:  fpu de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx lm constant_tsc nopl eagerfpu pni ssse3 cx16 sse4_1 sse4_2 x2apic popcnt hypervisor lahf_lm
+cpu_family: 6
+core_frequency_mhz: 1994
+core_per_socket: 0
+stepping: 3
+cache_size_kb: 4096
+ht: 0
+
+model_name:  Intel Core i7 9xx (Nehalem Class Core i7)
+flags:  fpu de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx lm constant_tsc nopl eagerfpu pni ssse3 cx16 sse4_1 sse4_2 x2apic popcnt hypervisor lahf_lm
+cpu_family: 6
+core_frequency_mhz: 1994
+core_per_socket: 0
+stepping: 3
+cache_size_kb: 4096
+ht: 0
+
+model_name:  Intel Core i7 9xx (Nehalem Class Core i7)
+flags:  fpu de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx lm constant_tsc nopl eagerfpu pni ssse3 cx16 sse4_1 sse4_2 x2apic popcnt hypervisor lahf_lm
+cpu_family: 6
+core_frequency_mhz: 1994
+core_per_socket: 0
+stepping: 3
+cache_size_kb: 4096
+ht: 0
+
+model_name:  Intel Core i7 9xx (Nehalem Class Core i7)
+flags:  fpu de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx lm constant_tsc nopl eagerfpu pni ssse3 cx16 sse4_1 sse4_2 x2apic popcnt hypervisor lahf_lm
+cpu_family: 6
+core_frequency_mhz: 1994
+core_per_socket: 0
+stepping: 3
+cache_size_kb: 4096
+ht: 0
+
+model_name:  Intel Core i7 9xx (Nehalem Class Core i7)
+flags:  fpu de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx lm constant_tsc nopl eagerfpu pni ssse3 cx16 sse4_1 sse4_2 x2apic popcnt hypervisor lahf_lm
+cpu_family: 6
+core_frequency_mhz: 1994
+core_per_socket: 0
+stepping: 3
+cache_size_kb: 4096
+ht: 0
+
+model_name:  Intel Core i7 9xx (Nehalem Class Core i7)
+flags:  fpu de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx lm constant_tsc nopl eagerfpu pni ssse3 cx16 sse4_1 sse4_2 x2apic popcnt hypervisor lahf_lm
+cpu_family: 6
+core_frequency_mhz: 1994
+core_per_socket: 0
+stepping: 3
+cache_size_kb: 4096
+ht: 0
+
+model_name:  Intel Core i7 9xx (Nehalem Class Core i7)
+flags:  fpu de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx lm constant_tsc nopl eagerfpu pni ssse3 cx16 sse4_1 sse4_2 x2apic popcnt hypervisor lahf_lm
+cpu_family: 6
+core_frequency_mhz: 1994
+core_per_socket: 0
+stepping: 3
+cache_size_kb: 4096
+ht: 0
+
+model_name:  Intel Core i7 9xx (Nehalem Class Core i7)
+flags:  fpu de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx lm constant_tsc nopl eagerfpu pni ssse3 cx16 sse4_1 sse4_2 x2apic popcnt hypervisor lahf_lm
+cpu_family: 6
+core_frequency_mhz: 1994
+core_per_socket: 0
+stepping: 3
+cache_size_kb: 4096
+ht: 0
+
+model_name:  Intel Core i7 9xx (Nehalem Class Core i7)
+flags:  fpu de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx lm constant_tsc nopl eagerfpu pni ssse3 cx16 sse4_1 sse4_2 x2apic popcnt hypervisor lahf_lm
+cpu_family: 6
+core_frequency_mhz: 1994
+core_per_socket: 0
+stepping: 3
+cache_size_kb: 4096
+ht: 0
+
+model_name:  Intel Core i7 9xx (Nehalem Class Core i7)
+flags:  fpu de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx lm constant_tsc nopl eagerfpu pni ssse3 cx16 sse4_1 sse4_2 x2apic popcnt hypervisor lahf_lm
+cpu_family: 6
+core_frequency_mhz: 1994
+core_per_socket: 0
+stepping: 3
+cache_size_kb: 4096
+ht: 0
+
+model_name:  Intel Core i7 9xx (Nehalem Class Core i7)
+flags:  fpu de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx lm constant_tsc nopl eagerfpu pni ssse3 cx16 sse4_1 sse4_2 x2apic popcnt hypervisor lahf_lm
+cpu_family: 6
+core_frequency_mhz: 1994
+core_per_socket: 0
+stepping: 3
+cache_size_kb: 4096
+ht: 0
+
+model_name:  Intel Core i7 9xx (Nehalem Class Core i7)
+flags:  fpu de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx lm constant_tsc nopl eagerfpu pni ssse3 cx16 sse4_1 sse4_2 x2apic popcnt hypervisor lahf_lm
+cpu_family: 6
+core_frequency_mhz: 1994
+core_per_socket: 0
+stepping: 3
+cache_size_kb: 4096
+ht: 0
+
+SECTION_OS_RELEASE_VERSION
+CentOS Linux release 7.6.1810 (Core) 
+
+
+SECTION_SYS/VM
+/proc/sys/vm/admin_reserve_kbytes:8192
+/proc/sys/vm/block_dump:0
+/proc/sys/vm/dirty_background_bytes:0
+/proc/sys/vm/dirty_background_ratio:10
+/proc/sys/vm/dirty_bytes:0
+/proc/sys/vm/dirty_expire_centisecs:3000
+/proc/sys/vm/dirty_ratio:30
+/proc/sys/vm/dirty_writeback_centisecs:500
+/proc/sys/vm/drop_caches:0
+/proc/sys/vm/extfrag_threshold:500
+/proc/sys/vm/hugepages_treat_as_movable:0
+/proc/sys/vm/hugetlb_shm_group:0
+/proc/sys/vm/laptop_mode:0
+/proc/sys/vm/legacy_va_layout:0
+/proc/sys/vm/lowmem_reserve_ratio:256	256	32
+/proc/sys/vm/max_map_count:65530
+/proc/sys/vm/memory_failure_early_kill:0
+/proc/sys/vm/memory_failure_recovery:1
+/proc/sys/vm/min_free_kbytes:67584
+/proc/sys/vm/min_slab_ratio:5
+/proc/sys/vm/min_unmapped_ratio:1
+/proc/sys/vm/mmap_min_addr:4096
+/proc/sys/vm/nr_hugepages:0
+/proc/sys/vm/nr_hugepages_mempolicy:0
+/proc/sys/vm/nr_overcommit_hugepages:0
+/proc/sys/vm/nr_pdflush_threads:0
+/proc/sys/vm/numa_zonelist_order:default
+/proc/sys/vm/oom_dump_tasks:1
+/proc/sys/vm/oom_kill_allocating_task:0
+/proc/sys/vm/overcommit_kbytes:0
+/proc/sys/vm/overcommit_memory:0
+/proc/sys/vm/overcommit_ratio:50
+/proc/sys/vm/page-cluster:3
+/proc/sys/vm/panic_on_oom:0
+/proc/sys/vm/percpu_pagelist_fraction:0
+/proc/sys/vm/stat_interval:1
+/proc/sys/vm/swappiness:30
+/proc/sys/vm/user_reserve_kbytes:131072
+/proc/sys/vm/vfs_cache_pressure:100
+/proc/sys/vm/zone_reclaim_mode:0
+
+
+SECTION_SWAP
+swap_partition: /dev/dm-1
+size_gb: 3
+
+CRTE_SNAPSHOT_END
+
+CRTE_PERIODIC_START 1 1678985663491
+
+SECTION_MPSTAT
+total_core: 12
+
+CPU     %user   %kernel %wait   %idle   
+all   12.979023 1.336679 0.035814 85.648483
+0     10.619702 1.195868 0.023802 88.160629
+1     5.818078 1.773407 0.117876 92.290634
+2     11.430283 1.450262 0.043336 87.076118
+3     16.584747 1.404589 0.029603 81.981056
+4     15.440789 1.448079 0.045147 83.065987
+5     12.817825 1.423229 0.035754 85.723190
+6     15.959551 1.334717 0.027355 82.678375
+7     15.700978 1.272098 0.024779 83.002144
+8     18.021282 1.152414 0.015442 80.810860
+9     5.303656 1.353332 0.022971 93.320045
+10     13.683099 1.149668 0.022533 85.144707
+11     14.346907 1.084311 0.021428 84.547356
+SECTION_LOADAVG
+4.21 4.46 4.48 6/2477 5040
+
+SECTION_PID_STATUS
+name: common_shell_ex
+state: 1
+vmsize: 2311812
+vmrss: 390416
+vmdata: 1422896
+vmstk: 220
+vmexe: 300264
+vmlib: 318224
+threads: 3
+
+SECTION_PROCESS_CPU_UTIL
+pid: 1021
+cpu_total_time: 2085471142
+cpu_used_time: 14477
+cpu_p: 
+
+SECTION_SYSTEM_CPU_UTIL
+sys_cpu_p: 
+
+SECTION_MEMINFO
+memtotal: 65975116
+memfree: 23282040
+cached: 29657760
+swapcached: 0
+active: 18099536
+swaptotal: 4063228
+swapfree: 4063228
+
+SECTION_SMAPS
+shared_kb: 4900
+private_kb: 385524
+
+SECTION_DF
+Filesystem  Size  Used Avail Use%
+filesystem        45G  29G  16G    64
+
+Filesystem    Inodes   IUsed   IFree   IUse%
+filesystem          47804416  608373 47196043   4294966699
+
+SECTION_CWD
+Filesystem  Size  Used Avail Use%
+filesystem        45G  29G  16G    64
+
+Filesystem    Inodes   IUsed   IFree   IUse%
+filesystem          47804416  608373 47196043   4294966699
+
+SECTION_SWAP_RATE
+blk_read: 4920
+blk_wrtn: 0
+swap_in_rate: 
+swap_out_rate: 
+swap_in_rate: 
+swap_out_rate: 
+
+SECTION_FD_SIZE
+files: 14
+total_size: 1724369
+
+SECTION_NET_INTERFACE
+total_eth_avbl: 1
+
+name net_rx_err net_rx_drp net_tx_err net_tx_drp 
+  eth0:         0        0        0        0
+
+SECTION_NFSSTAT
+readlink: 0
+write: 5
+getattr: 44
+retrans: 0
+raw_data: 
+net 0 0 0 0
+rpc 7333333 0 7333376
+proc3 22 0 3278280 1026372 235553 1669913 12543 33262 375603 205336 11909 2827 0 207962 11909 1 21 3492 240208 9484 4 2 8640
+
+
+SECTION_THREAD_CPU_UTIL
+1021 : 1021 (common_shell_ex) R 6393 1021 6393 34819 6393 8192 198579 109000 0 0 7855 3646 894 92 20 0 3 0 174073085 2367295488 97604 18446744073709551615 4194304 311661885 140737488346352 140737488332288 46912570283773 0 2147221247 69210112 1268412159 0 0 0 17 8 0 0 7 0 0 396207024 410685551 1633804288 140737488347345 140737488347495 140737488347495 140737488351144 0
+1675 : 1675 (QXcbEventReader) S 6393 1021 6393 34819 6393 1073750080 103 109000 0 0 10 10 894 92 20 0 3 0 174073801 2367295488 97604 18446744073709551615 4194304 311661885 140737488346352 46912947892768 46912644612621 0 8192 69210112 1268412159 18446744072600515589 0 0 -1 5 0 0 0 0 0 396207024 410685551 1633804288 140737488347345 140737488347495 140737488347495 140737488351144 0
+1861 : 1861 (Thread (pooled)) S 6393 1021 6393 34819 6393 1073750080 5 109000 0 0 0 0 894 92 20 0 3 0 174074105 2367295488 97604 18446744073709551615 4194304 311661885 140737488346352 46912994451888 46912570272101 0 8192 69210112 1268412159 18446744072599162742 0 0 -1 10 0 0 0 0 0 396207024 410685551 1633804288 140737488347345 140737488347495 140737488347495 140737488351144 0
+
+CRTE_PERIODIC_END 1 1678985663491

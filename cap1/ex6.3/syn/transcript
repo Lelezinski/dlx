@@ -1,0 +1,80 @@
+# //  Questa Sim-64
+# //  Version 2020.4 linux_x86_64 Oct 13 2020
+# //
+# //  Copyright 1991-2020 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+vcom -reportprogress 300 -work work /home/ms23.52/MS/cap1/ex6.3/syn/acc.vhd
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 17:46:30 on Mar 21,2023
+# vcom -reportprogress 300 -work work /home/ms23.52/MS/cap1/ex6.3/syn/acc.vhd 
+# ** Error (suppressible): (vcom-19) Failed to access library 'work' at "work".
+# No such file or directory. (errno = ENOENT)
+# End time: 17:46:30 on Mar 21,2023, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+vlib work
+vcom -reportprogress 300 -work work /home/ms23.52/MS/cap1/ex6.3/syn/acc.vhd
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 17:49:14 on Mar 21,2023
+# vcom -reportprogress 300 -work work /home/ms23.52/MS/cap1/ex6.3/syn/acc.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# ** Error: (vcom-11) Could not find work.constants.
+# ** Error (suppressible): /home/ms23.52/MS/cap1/ex6.3/syn/acc.vhd(5): (vcom-1195) Cannot find expanded name "work.constants".
+# ** Error: /home/ms23.52/MS/cap1/ex6.3/syn/acc.vhd(5): Unknown expanded name.
+# ** Note: /home/ms23.52/MS/cap1/ex6.3/syn/acc.vhd(9): VHDL Compiler exiting
+# End time: 17:49:15 on Mar 21,2023, Elapsed time: 0:00:01
+# Errors: 3, Warnings: 0
+vlib work
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+vcom -reportprogress 300 -work work /home/ms23.52/MS/cap1/ex6.3/syn/acc.vhd
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 17:49:24 on Mar 21,2023
+# vcom -reportprogress 300 -work work /home/ms23.52/MS/cap1/ex6.3/syn/acc.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# ** Error: (vcom-11) Could not find work.constants.
+# ** Error (suppressible): /home/ms23.52/MS/cap1/ex6.3/syn/acc.vhd(5): (vcom-1195) Cannot find expanded name "work.constants".
+# ** Error: /home/ms23.52/MS/cap1/ex6.3/syn/acc.vhd(5): Unknown expanded name.
+# ** Note: /home/ms23.52/MS/cap1/ex6.3/syn/acc.vhd(9): VHDL Compiler exiting
+# End time: 17:49:24 on Mar 21,2023, Elapsed time: 0:00:00
+# Errors: 3, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms23.52/MS/cap1/ex6.3/syn/constants.vhd
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 17:50:10 on Mar 21,2023
+# vcom -reportprogress 300 -work work /home/ms23.52/MS/cap1/ex6.3/syn/constants.vhd 
+# -- Loading package STANDARD
+# -- Compiling package CONSTANTS
+# End time: 17:50:10 on Mar 21,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vcom -reportprogress 300 -work work /home/ms23.52/MS/cap1/ex6.3/syn/acc.vhd
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 18:00:09 on Mar 21,2023
+# vcom -reportprogress 300 -work work /home/ms23.52/MS/cap1/ex6.3/syn/acc.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package CONSTANTS
+# -- Compiling entity ACC
+# -- Compiling architecture BEHAVIORAL of ACC
+# -- Compiling architecture STRUCTURAL of ACC
+# -- Loading entity ACC
+# ** Error: /home/ms23.52/MS/cap1/ex6.3/syn/acc.vhd(123): near "Generic": syntax error
+# ** Error: /home/ms23.52/MS/cap1/ex6.3/syn/acc.vhd(127): near "Generic": syntax error
+# ** Note: /home/ms23.52/MS/cap1/ex6.3/syn/acc.vhd(138): VHDL Compiler exiting
+# End time: 18:00:09 on Mar 21,2023, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0

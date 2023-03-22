@@ -1,0 +1,1 @@
+vsim -t 10ps TB_ACC.TEST -voptargs=+acc

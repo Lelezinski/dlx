@@ -1,0 +1,76 @@
+m255
+K4
+z2
+!s11e vcom 2020.4 2020.10, Oct 13 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/ms23.52/MS/cap1/ex6.3/syn
+Eacc
+Z1 w1679417120
+Z2 DPx4 work 9 constants 0 22 I<Z^^B`iTUTR]O6nORg]F1
+Z3 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z5 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 1
+R0
+Z6 8/home/ms23.52/MS/cap1/ex6.3/syn/acc.vhd
+Z7 F/home/ms23.52/MS/cap1/ex6.3/syn/acc.vhd
+l0
+L9 1
+VOV]zB`Eek2HDM2KGeIN_E1
+!s100 Oc5[B_a8Xg1`aZ?`3LAzb1
+Z8 OL;C;2020.4;71
+32
+Z9 !s110 1679418009
+!i10b 1
+Z10 !s108 1679418009.000000
+Z11 !s90 -reportprogress|300|-work|work|/home/ms23.52/MS/cap1/ex6.3/syn/acc.vhd|
+!s107 /home/ms23.52/MS/cap1/ex6.3/syn/acc.vhd|
+!i113 0
+Z12 o-work work
+Z13 tExplicit 1 CvgOpt 0
+Abehavioral
+R2
+R3
+R4
+R5
+DEx4 work 3 acc 0 22 OV]zB`Eek2HDM2KGeIN_E1
+!i122 1
+l31
+L25 39
+V3BbPf<NTEEdFdmeUH:E:g0
+!s100 fLk6HKHGJ>7iSGCLEM@H82
+R8
+32
+R9
+!i10b 1
+R10
+R11
+Z14 !s107 /home/ms23.52/MS/cap1/ex6.3/syn/acc.vhd|
+!i113 0
+R12
+R13
+Pconstants
+!i122 0
+w1678400019
+R0
+8/home/ms23.52/MS/cap1/ex6.3/syn/constants.vhd
+F/home/ms23.52/MS/cap1/ex6.3/syn/constants.vhd
+l0
+L1 1
+VI<Z^^B`iTUTR]O6nORg]F1
+!s100 SANSeP;fEjEDU6Kj@nPgf1
+R8
+32
+!s110 1679417410
+!i10b 1
+!s108 1679417410.000000
+!s90 -reportprogress|300|-work|work|/home/ms23.52/MS/cap1/ex6.3/syn/constants.vhd|
+!s107 /home/ms23.52/MS/cap1/ex6.3/syn/constants.vhd|
+!i113 0
+R12
+R13

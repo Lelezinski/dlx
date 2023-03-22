@@ -1,0 +1,654 @@
+# //  Questa Sim-64
+# //  Version 2020.4 linux_x86_64 Oct 13 2020
+# //
+# //  Copyright 1991-2020 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+# vsim -t 10ps TB_ACC.TEST -voptargs="+acc" 
+# Start time: 22:44:42 on Mar 20,2023
+# ** Error (suppressible): (vsim-19) Failed to access library 'TB_ACC' at "TB_ACC".
+# No such file or directory. (errno = ENOENT)
+# Error loading design
+# End time: 22:44:43 on Mar 20,2023, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 0
+vsim -t 10ps TB_ACC.TEST -voptargs="+acc"
+# vsim -t 10ps TB_ACC.TEST -voptargs=""+acc"" 
+# Start time: 22:46:14 on Mar 20,2023
+# ** Error (suppressible): (vsim-19) Failed to access library 'TB_ACC' at "TB_ACC".
+# No such file or directory. (errno = ENOENT)
+# Error loading design
+# End time: 22:46:15 on Mar 20,2023, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 0
+vsim -voptargs=+acc work.tb_acc(test)
+# vsim -voptargs="+acc" work.tb_acc(test) 
+# Start time: 22:46:52 on Mar 20,2023
+# ** Note: (vsim-8009) Loading existing optimized design _opt
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.constants
+# Loading work.tb_acc(test)#1
+# Loading ieee.numeric_std(body)
+# Loading work.acc(structural)#1
+# Loading work.mux21_generic(structural)#1
+# Loading work.iv(behavioral)#1
+# Loading work.nd2(behavioral)#1
+# Loading work.rca(behavioral)#1
+# Loading work.fd(pluto)#1
+run 50 ns
+vsim -voptargs=+acc work.cfg_testacc
+# End time: 22:47:36 on Mar 20,2023, Elapsed time: 0:00:44
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" work.cfg_testacc 
+# Start time: 22:47:36 on Mar 20,2023
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.constants
+# Loading ieee.numeric_std(body)
+# Loading work.cfg_testacc#1
+# Loading work.tb_acc(test)#1
+# Loading work.cfg_acc_behavioral#1
+# Loading work.acc(behavioral)#1
+add wave }
+# ** UI-Msg: (vish-4014) No objects found matching '}'.
+add wave *
+run 50 ns
+# Causality operation skipped due to absence of debug database file
+run 50 ns
+run 50 ns
+vsim -voptargs=+acc work.cfg_testacc
+# End time: 22:51:27 on Mar 20,2023, Elapsed time: 0:03:51
+# Errors: 0, Warnings: 0
+# vsim -voptargs="+acc" work.cfg_testacc 
+# Start time: 22:51:27 on Mar 20,2023
+# ** Note: (vsim-8009) Loading existing optimized design _opt2
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.constants
+# Loading ieee.numeric_std(body)
+# Loading work.cfg_testacc#1
+# Loading work.tb_acc(test)#1
+# Loading work.cfg_acc_behavioral#1
+# Loading work.acc(behavioral)#1
+run 50 ns
+wave add *
+# No help for wave addcursor available.
+add wave *
+restart 
+# ** Note: (vsim-8009) Loading existing optimized design _opt2
+run 50 ns
+run 20 ns
+./compile
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:53:23 on Mar 20,2023
+# vcom constants.vhd 
+# -- Loading package STANDARD
+# -- Compiling package CONSTANTS
+# End time: 22:53:23 on Mar 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:53:23 on Mar 20,2023
+# vcom nd2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package CONSTANTS
+# -- Compiling entity ND2
+# -- Compiling architecture BEHAVIORAL of ND2
+# -- Compiling configuration CFG_ND2_BEHAVIORAL
+# -- Loading entity ND2
+# -- Loading architecture BEHAVIORAL of ND2
+# End time: 22:53:23 on Mar 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:53:23 on Mar 20,2023
+# vcom iv.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package CONSTANTS
+# -- Compiling entity IV
+# -- Compiling architecture BEHAVIORAL of IV
+# -- Compiling configuration CFG_IV_BEHAVIORAL
+# -- Loading entity IV
+# -- Loading architecture BEHAVIORAL of IV
+# End time: 22:53:23 on Mar 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:53:23 on Mar 20,2023
+# vcom mux21_generic.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package CONSTANTS
+# -- Compiling entity MUX21_GENERIC
+# -- Compiling architecture BEHAVIORAL of MUX21_GENERIC
+# -- Compiling architecture STRUCTURAL of MUX21_GENERIC
+# -- Loading entity MUX21_GENERIC
+# -- Compiling configuration CFG_MUX21_GEN_BEHAVIORAL
+# -- Loading entity MUX21_GENERIC
+# -- Loading architecture BEHAVIORAL of MUX21_GENERIC
+# -- Compiling configuration CFG_MUX21_GEN_STRUCTURAL
+# -- Loading entity MUX21_GENERIC
+# -- Loading architecture STRUCTURAL of MUX21_GENERIC
+# -- Loading entity IV
+# -- Loading entity ND2
+# -- Loading configuration cfg_iv_behavioral
+# -- Loading configuration cfg_nd2_behavioral
+# ** Warning: mux21_generic.vhd(70): (vcom-1263) Component configuration "all : ND2" applies to no component instantiation statements.
+# End time: 22:53:24 on Mar 20,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:53:24 on Mar 20,2023
+# vcom fa.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity FA
+# -- Compiling architecture BEHAVIORAL of FA
+# -- Compiling configuration CFG_FA_BEHAVIORAL
+# -- Loading entity FA
+# -- Loading architecture BEHAVIORAL of FA
+# End time: 22:53:24 on Mar 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:53:24 on Mar 20,2023
+# vcom rca.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity RCA
+# -- Compiling architecture STRUCTURAL of RCA
+# -- Compiling architecture BEHAVIORAL of RCA
+# -- Loading entity RCA
+# -- Compiling configuration CFG_RCA_STRUCTURAL
+# -- Loading entity RCA
+# -- Loading architecture STRUCTURAL of RCA
+# -- Loading entity FA
+# -- Loading configuration cfg_fa_behavioral
+# -- Compiling configuration CFG_RCA_BEHAVIORAL
+# -- Loading entity RCA
+# -- Loading architecture BEHAVIORAL of RCA
+# End time: 22:53:24 on Mar 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:53:24 on Mar 20,2023
+# vcom fd.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package CONSTANTS
+# -- Compiling entity FD
+# -- Compiling architecture PIPPO of FD
+# -- Compiling architecture PLUTO of FD
+# -- Loading entity FD
+# -- Compiling configuration CFG_FD_PIPPO
+# -- Loading entity FD
+# -- Loading architecture PIPPO of FD
+# -- Compiling configuration CFG_FD_PLUTO
+# -- Loading entity FD
+# -- Loading architecture PLUTO of FD
+# End time: 22:53:24 on Mar 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:53:24 on Mar 20,2023
+# vcom acc.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package CONSTANTS
+# -- Compiling entity ACC
+# -- Compiling architecture BEHAVIORAL of ACC
+# -- Compiling architecture STRUCTURAL of ACC
+# -- Loading entity ACC
+# -- Compiling configuration CFG_ACC_BEHAVIORAL
+# -- Loading entity ACC
+# -- Loading architecture BEHAVIORAL of ACC
+# -- Compiling configuration CFG_ACC_STRUCTURAL
+# -- Loading entity ACC
+# -- Loading architecture STRUCTURAL of ACC
+# -- Loading entity MUX21_GENERIC
+# -- Loading entity RCA
+# -- Loading entity FD
+# -- Loading entity IV
+# -- Loading configuration cfg_mux21_gen_structural
+# -- Loading configuration cfg_rca_structural
+# -- Loading configuration cfg_fd_pluto
+# -- Loading configuration cfg_iv_behavioral
+# End time: 22:53:24 on Mar 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:53:24 on Mar 20,2023
+# vcom tb_acc.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package CONSTANTS
+# -- Compiling entity tb_acc
+# -- Compiling architecture TEST of tb_acc
+# -- Compiling configuration CFG_TESTACC
+# -- Loading entity tb_acc
+# -- Loading architecture TEST of tb_acc
+# -- Loading package NUMERIC_STD
+# -- Loading entity ACC
+# -- Loading configuration cfg_acc_behavioral
+# End time: 22:53:25 on Mar 20,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.constants
+# Loading ieee.numeric_std(body)
+# Loading work.cfg_testacc#1
+# Loading work.tb_acc(test)#1
+# Loading work.cfg_acc_behavioral#1
+# Loading work.acc(behavioral)#1
+run 50 ns
+run 10 ns
+run 50 ns
+restart
+# ** Note: (vsim-8009) Loading existing optimized design _opt2
+delete wave *
+add wave *
+run 50 ns 
+run 50 ns
+./compile
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:59:13 on Mar 20,2023
+# vcom constants.vhd 
+# -- Loading package STANDARD
+# -- Compiling package CONSTANTS
+# End time: 22:59:13 on Mar 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:59:13 on Mar 20,2023
+# vcom nd2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package CONSTANTS
+# -- Compiling entity ND2
+# -- Compiling architecture BEHAVIORAL of ND2
+# -- Compiling configuration CFG_ND2_BEHAVIORAL
+# -- Loading entity ND2
+# -- Loading architecture BEHAVIORAL of ND2
+# End time: 22:59:13 on Mar 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:59:13 on Mar 20,2023
+# vcom iv.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package CONSTANTS
+# -- Compiling entity IV
+# -- Compiling architecture BEHAVIORAL of IV
+# -- Compiling configuration CFG_IV_BEHAVIORAL
+# -- Loading entity IV
+# -- Loading architecture BEHAVIORAL of IV
+# End time: 22:59:13 on Mar 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:59:13 on Mar 20,2023
+# vcom mux21_generic.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package CONSTANTS
+# -- Compiling entity MUX21_GENERIC
+# -- Compiling architecture BEHAVIORAL of MUX21_GENERIC
+# -- Compiling architecture STRUCTURAL of MUX21_GENERIC
+# -- Loading entity MUX21_GENERIC
+# -- Compiling configuration CFG_MUX21_GEN_BEHAVIORAL
+# -- Loading entity MUX21_GENERIC
+# -- Loading architecture BEHAVIORAL of MUX21_GENERIC
+# -- Compiling configuration CFG_MUX21_GEN_STRUCTURAL
+# -- Loading entity MUX21_GENERIC
+# -- Loading architecture STRUCTURAL of MUX21_GENERIC
+# -- Loading entity IV
+# -- Loading entity ND2
+# -- Loading configuration cfg_iv_behavioral
+# -- Loading configuration cfg_nd2_behavioral
+# ** Warning: mux21_generic.vhd(70): (vcom-1263) Component configuration "all : ND2" applies to no component instantiation statements.
+# End time: 22:59:14 on Mar 20,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:59:14 on Mar 20,2023
+# vcom fa.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity FA
+# -- Compiling architecture BEHAVIORAL of FA
+# -- Compiling configuration CFG_FA_BEHAVIORAL
+# -- Loading entity FA
+# -- Loading architecture BEHAVIORAL of FA
+# End time: 22:59:14 on Mar 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:59:14 on Mar 20,2023
+# vcom rca.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity RCA
+# -- Compiling architecture STRUCTURAL of RCA
+# -- Compiling architecture BEHAVIORAL of RCA
+# -- Loading entity RCA
+# -- Compiling configuration CFG_RCA_STRUCTURAL
+# -- Loading entity RCA
+# -- Loading architecture STRUCTURAL of RCA
+# -- Loading entity FA
+# -- Loading configuration cfg_fa_behavioral
+# -- Compiling configuration CFG_RCA_BEHAVIORAL
+# -- Loading entity RCA
+# -- Loading architecture BEHAVIORAL of RCA
+# End time: 22:59:14 on Mar 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:59:14 on Mar 20,2023
+# vcom fd.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package CONSTANTS
+# -- Compiling entity FD
+# -- Compiling architecture PIPPO of FD
+# -- Compiling architecture PLUTO of FD
+# -- Loading entity FD
+# -- Compiling configuration CFG_FD_PIPPO
+# -- Loading entity FD
+# -- Loading architecture PIPPO of FD
+# -- Compiling configuration CFG_FD_PLUTO
+# -- Loading entity FD
+# -- Loading architecture PLUTO of FD
+# End time: 22:59:14 on Mar 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:59:14 on Mar 20,2023
+# vcom acc.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package CONSTANTS
+# -- Compiling entity ACC
+# -- Compiling architecture BEHAVIORAL of ACC
+# -- Compiling architecture STRUCTURAL of ACC
+# -- Loading entity ACC
+# -- Compiling configuration CFG_ACC_BEHAVIORAL
+# -- Loading entity ACC
+# -- Loading architecture BEHAVIORAL of ACC
+# -- Compiling configuration CFG_ACC_STRUCTURAL
+# -- Loading entity ACC
+# -- Loading architecture STRUCTURAL of ACC
+# -- Loading entity MUX21_GENERIC
+# -- Loading entity RCA
+# -- Loading entity FD
+# -- Loading entity IV
+# -- Loading configuration cfg_mux21_gen_structural
+# -- Loading configuration cfg_rca_structural
+# -- Loading configuration cfg_fd_pluto
+# -- Loading configuration cfg_iv_behavioral
+# End time: 22:59:14 on Mar 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 22:59:14 on Mar 20,2023
+# vcom tb_acc.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package CONSTANTS
+# -- Compiling entity tb_acc
+# -- Compiling architecture TEST of tb_acc
+# -- Compiling configuration CFG_TESTACC
+# -- Loading entity tb_acc
+# -- Loading architecture TEST of tb_acc
+# -- Loading package NUMERIC_STD
+# -- Loading entity ACC
+# -- Loading configuration cfg_acc_structural
+# End time: 22:59:15 on Mar 20,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+restart
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.constants
+# Loading ieee.numeric_std(body)
+# Loading work.cfg_testacc#1
+# Loading work.tb_acc(test)#1
+# Loading work.cfg_acc_structural#1
+# Loading work.acc(structural)#1
+# Loading work.cfg_mux21_gen_structural#1
+# Loading work.mux21_generic(structural)#1
+# Loading work.cfg_iv_behavioral#1
+# Loading work.iv(behavioral)#1
+# Loading work.nd2(behavioral)#1
+# Loading work.cfg_rca_structural#1
+# Loading work.rca(structural)#1
+# Loading work.cfg_fa_behavioral#1
+# Loading work.fa(behavioral)#1
+# Loading work.cfg_fd_pluto#1
+# Loading work.fd(pluto)#1
+add wave *
+run 100 ns
+./compile
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:00:38 on Mar 20,2023
+# vcom constants.vhd 
+# -- Loading package STANDARD
+# -- Compiling package CONSTANTS
+# End time: 23:00:38 on Mar 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:00:38 on Mar 20,2023
+# vcom nd2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package CONSTANTS
+# -- Compiling entity ND2
+# -- Compiling architecture BEHAVIORAL of ND2
+# -- Compiling configuration CFG_ND2_BEHAVIORAL
+# -- Loading entity ND2
+# -- Loading architecture BEHAVIORAL of ND2
+# End time: 23:00:39 on Mar 20,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:00:39 on Mar 20,2023
+# vcom iv.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package CONSTANTS
+# -- Compiling entity IV
+# -- Compiling architecture BEHAVIORAL of IV
+# -- Compiling configuration CFG_IV_BEHAVIORAL
+# -- Loading entity IV
+# -- Loading architecture BEHAVIORAL of IV
+# End time: 23:00:39 on Mar 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:00:39 on Mar 20,2023
+# vcom mux21_generic.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package CONSTANTS
+# -- Compiling entity MUX21_GENERIC
+# -- Compiling architecture BEHAVIORAL of MUX21_GENERIC
+# -- Compiling architecture STRUCTURAL of MUX21_GENERIC
+# -- Loading entity MUX21_GENERIC
+# -- Compiling configuration CFG_MUX21_GEN_BEHAVIORAL
+# -- Loading entity MUX21_GENERIC
+# -- Loading architecture BEHAVIORAL of MUX21_GENERIC
+# -- Compiling configuration CFG_MUX21_GEN_STRUCTURAL
+# -- Loading entity MUX21_GENERIC
+# -- Loading architecture STRUCTURAL of MUX21_GENERIC
+# -- Loading entity IV
+# -- Loading entity ND2
+# -- Loading configuration cfg_iv_behavioral
+# -- Loading configuration cfg_nd2_behavioral
+# ** Warning: mux21_generic.vhd(70): (vcom-1263) Component configuration "all : ND2" applies to no component instantiation statements.
+# End time: 23:00:39 on Mar 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:00:39 on Mar 20,2023
+# vcom fa.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling entity FA
+# -- Compiling architecture BEHAVIORAL of FA
+# -- Compiling configuration CFG_FA_BEHAVIORAL
+# -- Loading entity FA
+# -- Loading architecture BEHAVIORAL of FA
+# End time: 23:00:39 on Mar 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:00:39 on Mar 20,2023
+# vcom rca.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity RCA
+# -- Compiling architecture STRUCTURAL of RCA
+# -- Compiling architecture BEHAVIORAL of RCA
+# -- Loading entity RCA
+# -- Compiling configuration CFG_RCA_STRUCTURAL
+# -- Loading entity RCA
+# -- Loading architecture STRUCTURAL of RCA
+# -- Loading entity FA
+# -- Loading configuration cfg_fa_behavioral
+# -- Compiling configuration CFG_RCA_BEHAVIORAL
+# -- Loading entity RCA
+# -- Loading architecture BEHAVIORAL of RCA
+# End time: 23:00:39 on Mar 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:00:39 on Mar 20,2023
+# vcom fd.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package CONSTANTS
+# -- Compiling entity FD
+# -- Compiling architecture PIPPO of FD
+# -- Compiling architecture PLUTO of FD
+# -- Loading entity FD
+# -- Compiling configuration CFG_FD_PIPPO
+# -- Loading entity FD
+# -- Loading architecture PIPPO of FD
+# -- Compiling configuration CFG_FD_PLUTO
+# -- Loading entity FD
+# -- Loading architecture PLUTO of FD
+# End time: 23:00:40 on Mar 20,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:00:40 on Mar 20,2023
+# vcom acc.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package CONSTANTS
+# -- Compiling entity ACC
+# -- Compiling architecture BEHAVIORAL of ACC
+# -- Compiling architecture STRUCTURAL of ACC
+# -- Loading entity ACC
+# -- Compiling configuration CFG_ACC_BEHAVIORAL
+# -- Loading entity ACC
+# -- Loading architecture BEHAVIORAL of ACC
+# -- Compiling configuration CFG_ACC_STRUCTURAL
+# -- Loading entity ACC
+# -- Loading architecture STRUCTURAL of ACC
+# -- Loading entity MUX21_GENERIC
+# -- Loading entity RCA
+# -- Loading entity FD
+# -- Loading entity IV
+# -- Loading configuration cfg_mux21_gen_structural
+# -- Loading configuration cfg_rca_structural
+# -- Loading configuration cfg_fd_pluto
+# -- Loading configuration cfg_iv_behavioral
+# End time: 23:00:40 on Mar 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# QuestaSim-64 vcom 2020.4 Compiler 2020.10 Oct 13 2020
+# Start time: 23:00:40 on Mar 20,2023
+# vcom tb_acc.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package std_logic_arith
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package CONSTANTS
+# -- Compiling entity tb_acc
+# -- Compiling architecture TEST of tb_acc
+# -- Compiling configuration CFG_TESTACC
+# -- Loading entity tb_acc
+# -- Loading architecture TEST of tb_acc
+# -- Loading package NUMERIC_STD
+# -- Loading entity ACC
+# -- Loading configuration cfg_acc_structural
+# End time: 23:00:40 on Mar 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+delete wave *
+restart
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.constants
+# Loading ieee.numeric_std(body)
+# Loading work.cfg_testacc#1
+# Loading work.tb_acc(test)#1
+# Loading work.cfg_acc_structural#1
+# Loading work.acc(structural)#1
+# Loading work.cfg_mux21_gen_structural#1
+# Loading work.mux21_generic(structural)#1
+# Loading work.cfg_iv_behavioral#1
+# Loading work.iv(behavioral)#1
+# Loading work.nd2(behavioral)#1
+# Loading work.cfg_rca_structural#1
+# Loading work.rca(structural)#1
+# Loading work.cfg_fa_behavioral#1
+# Loading work.fa(behavioral)#1
+# Loading work.cfg_fd_pluto#1
+# Loading work.fd(pluto)#1
+add wave *
+run 100 ns
+# End time: 23:03:08 on Mar 20,2023, Elapsed time: 0:11:41
+# Errors: 0, Warnings: 0

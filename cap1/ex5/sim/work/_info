@@ -1,0 +1,349 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/ms23.52/MS/cap1/ex5/sim
+T_opt
+!s110 1678210253
+VoAez?5D=b[1_9lP[N=2Sz1
+Z1 04 7 0 work rcatest 1
+=1-5254009c17d7-640774cd-9c5ea-11a2
+o-quiet -auto_acc_if_foreign -work work
+Z2 tCvgOpt 0
+n@_opt
+Z3 OL;O;10.7c;67
+R0
+T_opt1
+!s110 1678211512
+VG@:`zI2Y2DSFO_AYaaaYN3
+R1
+=1-5254009c17d7-640779b8-3bb6b-1830
+Z4 o-quiet -auto_acc_if_foreign -work work +acc
+R2
+n@_opt1
+R3
+R0
+T_opt2
+!s110 1678352377
+VZK4ie9B;`OFeJ@BWVW0Gk1
+R1
+=1-5254009c17d7-64099ff9-3e388-2cce
+R4
+R2
+n@_opt2
+OL;O;2020.4;71
+Ccfg_fa_behavioral
+eFA
+Z5 aBEHAVIORAL
+DAx4 work 2 fa 10 behavioral 22 l9VY[HBGCaEz?neT;FB;H3
+Z6 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z7 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+Z8 DEx4 work 2 fa 0 22 olkG2i7eJWm@MH>a<IfBQ2
+Z9 w1678099408
+R0
+Z10 8/home/ms23.52/MS/cap1/ex5/sim/fa.vhd
+Z11 F/home/ms23.52/MS/cap1/ex5/sim/fa.vhd
+l0
+L24
+VaO4WOjE`aHQ<=hm3j=>i:0
+!s100 ;fLgj2F5I1BR>Vc^?i^<S3
+Z12 OL;C;10.7c;67
+32
+Z13 !s110 1678211454
+!i10b 0
+Z14 !s108 1678211454.000000
+Z15 !s90 -reportprogress|300|-work|work|/home/ms23.52/MS/cap1/ex5/sim/fa.vhd|
+Z16 !s107 /home/ms23.52/MS/cap1/ex5/sim/fa.vhd|
+!i113 0
+Z17 o-work work
+Z18 tExplicit 1 CvgOpt 0
+Ccfg_rca_behavioral
+eRCA
+R5
+DAx4 work 3 rca 10 behavioral 22 _RZ6nK^Bk?QYF_z5>Y5]Z0
+Z19 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+R6
+R7
+Z20 DEx4 work 3 rca 0 22 MmBcE_;GV87`U5BO[B8?d1
+Z21 w1678209648
+R0
+Z22 8/home/ms23.52/MS/cap1/ex5/sim/rca.vhd
+Z23 F/home/ms23.52/MS/cap1/ex5/sim/rca.vhd
+l0
+L69
+V=zH=U>GDgc`i:WljHbW^32
+!s100 ZP0=N_Y_BSCMmFgR;3Oc<1
+R12
+32
+Z24 !s110 1678211457
+!i10b 0
+Z25 !s108 1678211457.000000
+Z26 !s90 -reportprogress|300|-work|work|/home/ms23.52/MS/cap1/ex5/sim/rca.vhd|
+Z27 !s107 /home/ms23.52/MS/cap1/ex5/sim/rca.vhd|
+!i113 0
+R17
+R18
+Ccfg_rca_structural
+eRCA
+aSTRUCTURAL
+R8
+DCx4 work 17 cfg_fa_behavioral 0 22 aO4WOjE`aHQ<=hm3j=>i:0
+DAx4 work 3 rca 10 structural 22 INGcNaG47aVNLoSR8OzCg1
+R19
+R6
+R7
+R20
+R21
+R0
+R22
+R23
+l0
+L59
+VUR>gkX62ELH^=8eEnAHCm3
+!s100 S@WL<Bh<UQ9<mH6Wl@l3c3
+R12
+32
+R24
+!i10b 0
+R25
+R26
+R27
+!i113 0
+R17
+R18
+Pconstants
+w1678211432
+R0
+8/home/ms23.52/MS/cap1/ex5/sim/constants.vhd
+F/home/ms23.52/MS/cap1/ex5/sim/constants.vhd
+l0
+L1
+Vdc0;k2O^ojU<]IEQD3foN3
+!s100 bGEDD8<:M9I3^ABfD^FSG0
+R12
+32
+!s110 1678211445
+!i10b 1
+!s108 1678211444.000000
+!s90 -reportprogress|300|-work|work|/home/ms23.52/MS/cap1/ex5/sim/constants.vhd|
+!s107 /home/ms23.52/MS/cap1/ex5/sim/constants.vhd|
+!i113 0
+R17
+R18
+Efa
+R9
+R6
+R7
+R0
+R10
+R11
+l0
+L4
+VolkG2i7eJWm@MH>a<IfBQ2
+!s100 R@78Q9B;RU?BKW[d:f7WA2
+R12
+32
+R13
+!i10b 1
+R14
+R15
+R16
+!i113 0
+R17
+R18
+Abehavioral
+R6
+R7
+R8
+l16
+L14
+Vl9VY[HBGCaEz?neT;FB;H3
+!s100 DMi>BZZVj6i=_GX:XX[z53
+R12
+32
+R13
+!i10b 1
+R14
+R15
+R16
+!i113 0
+R17
+R18
+Elfsr16
+R9
+Z28 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+R6
+R7
+R0
+Z29 8/home/ms23.52/MS/cap1/ex5/sim/lfsr.vhd
+Z30 F/home/ms23.52/MS/cap1/ex5/sim/lfsr.vhd
+l0
+L6
+V?NiPZdG9n;2@objYfbGWA3
+!s100 L[m8V_6C>;0ScP9MX`Wi11
+R12
+32
+Z31 !s110 1678211455
+!i10b 1
+Z32 !s108 1678211455.000000
+Z33 !s90 -reportprogress|300|-work|work|/home/ms23.52/MS/cap1/ex5/sim/lfsr.vhd|
+Z34 !s107 /home/ms23.52/MS/cap1/ex5/sim/lfsr.vhd|
+!i113 0
+R17
+R18
+Artl
+R28
+R6
+R7
+Z35 DEx4 work 6 lfsr16 0 22 ?NiPZdG9n;2@objYfbGWA3
+l19
+L17
+VnZbPa@87ffdiXdl0QYic^3
+!s100 Zd7^eezldY<`n>c8T4VN10
+R12
+32
+R31
+!i10b 1
+R32
+R33
+R34
+!i113 0
+R17
+R18
+Erca
+R21
+R19
+R6
+R7
+R0
+R22
+R23
+l0
+L5
+VMmBcE_;GV87`U5BO[B8?d1
+!s100 IeddHF?384WzZUE`f:;`41
+R12
+32
+R24
+!i10b 1
+R25
+R26
+R27
+!i113 0
+R17
+R18
+Abehavioral
+R19
+R6
+R7
+R20
+l47
+L45
+V_RZ6nK^Bk?QYF_z5>Y5]Z0
+!s100 7J=_1>LLmDb@hEhIY<M4O1
+R12
+32
+R24
+!i10b 1
+R25
+R26
+R27
+!i113 0
+R17
+R18
+Astructural
+R19
+R6
+R7
+R20
+l30
+L15
+VINGcNaG47aVNLoSR8OzCg1
+!s100 9X]JVdnWR;DQeG]bIcz823
+R12
+32
+R24
+!i10b 1
+R25
+R26
+R27
+!i113 0
+R17
+R18
+Crcatest
+eTBRCA
+aTEST
+R28
+R35
+R20
+DCx4 work 18 cfg_rca_behavioral 0 22 =zH=U>GDgc`i:WljHbW^32
+DCx4 work 18 cfg_rca_structural 0 22 UR>gkX62ELH^=8eEnAHCm3
+DAx4 work 5 tbrca 4 test 22 63ICA98DhI4`C:fAh2zc72
+R19
+R6
+R7
+Z36 DEx4 work 5 tbrca 0 22 3zf:07_POX7^TBefK6?G^2
+R9
+R0
+Z37 8/home/ms23.52/MS/cap1/ex5/sim/tb_rca.vhd
+Z38 F/home/ms23.52/MS/cap1/ex5/sim/tb_rca.vhd
+l0
+L91
+V=E3ekThY``BJNA<9bF[bg1
+!s100 KD8oG9:dC<:P_5k6fXiJc0
+R12
+32
+Z39 !s110 1678211459
+!i10b 0
+Z40 !s108 1678211459.000000
+Z41 !s90 -reportprogress|300|-work|work|/home/ms23.52/MS/cap1/ex5/sim/tb_rca.vhd|
+Z42 !s107 /home/ms23.52/MS/cap1/ex5/sim/tb_rca.vhd|
+!i113 0
+R17
+R18
+Etbrca
+R9
+R19
+R6
+R7
+R0
+R37
+R38
+l0
+L5
+V3zf:07_POX7^TBefK6?G^2
+!s100 k`F>;=UC4<144]>o2nHzn3
+R12
+32
+R39
+!i10b 1
+R40
+R41
+R42
+!i113 0
+R17
+R18
+Atest
+R19
+R6
+R7
+R36
+l36
+L8
+V63ICA98DhI4`C:fAh2zc72
+!s100 8YTgj7GMXQE1HN@S[7ShO2
+R12
+32
+R39
+!i10b 1
+R40
+R41
+R42
+!i113 0
+R17
+R18
