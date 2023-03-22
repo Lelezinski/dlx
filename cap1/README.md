@@ -1,8 +1,8 @@
 # CAP1 Laboratory Session
 
 ## TODO
-- [-] prova
-- [ ] provas
+- [x] ALU
+- [ ] Script...
 
 ## Commenti...
 Commenti finali per consegna..
