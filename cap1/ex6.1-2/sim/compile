@@ -7,3 +7,4 @@ vcom rca.vhd
 vcom fd.vhd
 vcom acc.vhd
 vcom tb_acc.vhd
+echo "done"
