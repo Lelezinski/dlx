@@ -1,5 +1,0 @@
-# setmentor
-source /software/scripts/init_synopsys_64.11
-
-mkdir work
-cp /home/repository/ms/setup/.synopsys_dc.setup ./work/
