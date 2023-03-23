@@ -1,9 +1,0 @@
-# ALU Synthesis: additional comments
-
-The ALU synthetized was the (B) version which additionally included the Barrel Shifter. The source code can be found inside “alu.vhd”, while the synthetized VHDL netlist in “alu_netlisth.vhdl”.
-
-From the two generated reports – “area_report” and “timing_report” inside the “report” folder – several details could be underlined. Starting from the AREA report, the high number of nets and cells (990 and 680) synthetized confirms that the design is not optimized, this is true since the described architecture found inside the VHD source is strictly behavioral. This also leads to a high fan-in/fan-out between internal components of the ALU, finally resulting in an higher than necessary power consumption. 
-
-Additionally, the TIMING report shows the critical path inside this design at typical operating conditions, which in this case is the path from OUTALU_reg latch to the OUTALU output port.
-
-Finally, not much could be added about this single design since no other alternative to compare against was provided to us.

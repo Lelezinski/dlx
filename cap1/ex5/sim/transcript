@@ -12,53 +12,20 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# vsim -t 10ps work.RCATEST -voptargs="+acc" 
-# Start time: 10:00:37 on Mar 09,2023
-# ** Note: (vsim-8009) Loading existing optimized design _opt2
+vsim work.tbrca(test) -t 10ps -voptargs=+acc
+# vsim work.tbrca(test) -t 10ps -voptargs="+acc" 
+# Start time: 19:37:38 on Mar 23,2023
+# ** Note: (vsim-3812) Design is being optimized...
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
 # Loading ieee.numeric_std(body)
-# Loading ieee.std_logic_arith(body)
-# Loading work.RCATEST#1
 # Loading work.tbrca(test)#1
-# Loading work.cfg_rca_structural#1
-# Loading work.rca(structural)#1
-# Loading work.cfg_fa_behavioral#1
-# Loading work.fa(behavioral)#1
-# Loading work.cfg_rca_structural#2
-# Loading work.rca(structural)#2
-# Loading work.cfg_fa_behavioral#2
-# Loading work.fa(behavioral)#2
-# Loading work.cfg_rca_behavioral#1
 # Loading work.rca(behavioral)#1
+# Loading work.rca(behavioral)#2
+# Loading ieee.std_logic_arith(body)
 # Loading work.lfsr16(rtl)#1
 add wave *
-run 50 ns
-# Causality operation skipped due to absence of debug database file
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
-# End time: 11:07:10 on Mar 09,2023, Elapsed time: 1:06:33
+run 40 ns
+# End time: 19:50:06 on Mar 23,2023, Elapsed time: 0:12:28
 # Errors: 0, Warnings: 0

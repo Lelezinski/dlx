@@ -50,7 +50,7 @@ begin
   process(A, B)
     variable tmp: unsigned(NBIT downto 0);
   begin
-    tmp := unsigned('0' & A) + unsigned('0' & B);
+    tmp := unsigned('0' & A) + unsigned('0' & B) + ('0'&Ci);
     -- S   <= std_logic_vector(tmp(NBIT-1 downto 0)) after DRCAS;
     S   <= std_logic_vector(tmp(NBIT-1 downto 0));
     -- Co  <= std_logic(tmp(NBIT)) after DRCAC;

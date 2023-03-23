@@ -49,7 +49,7 @@ begin
   process(A, B)
     variable tmp: unsigned(6 downto 0);
   begin
-    tmp := unsigned('0' & A) + unsigned('0' & B);
+    tmp := unsigned('0' & A) + unsigned('0' & B) + ('0'&Ci); -- 
     S   <= std_logic_vector(tmp(5 downto 0)) after DRCAS;
     Co  <= std_logic(tmp(6)) after DRCAC;
   end process;
