@@ -1,6 +1,6 @@
 #@ # 
 #@ # Running dc_shell Version S-2021.06-SP4 for linux64 -- Nov 23, 2021
-#@ # Date:   Wed Mar 22 12:42:40 2023
+#@ # Date:   Thu Mar 23 13:47:56 2023
 #@ # Run by: ms23.52@localhost.localdomain
 #@ 
 
@@ -8086,12 +8086,4 @@ source /home/ms23.52/MS/cap1/ex7.2/syn/.synopsys_dc.setup
 #@ 
 #@ # -- End source /home/ms23.52/MS/cap1/ex7.2/syn/.synopsys_dc.setup
 
-    analyze -library WORK -format vhdl {constants.vhd alu_type.vhd alu.vhd};    elaborate ALU -architecture BEHAVIOR -library WORK;    compile -exact_map;    sh mkdir -p reports;    report_area > reports/area_report;    report_timing > reports/timing_report;
-ls
-ls
-rm report_area.txt report_timing.txt
-sh rm report_area.txt report_timing.txt
-ls
-cd reports
-ls
-cd ..
+    analyze -library WORK -format vhdl {constants.vhd alu_type.vhd alu.vhd};    elaborate ALU -architecture BEHAVIOR -library WORK;    compile -exact_map;    write -hierarchy -format vhdl -output /home/ms23.52/MS/cap1/ex7.2/syn/reports/alu_netlist.vhdl;    sh mkdir -p reports;    report_area > reports/area_report;    report_timing > reports/timing_report;    exit

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+entity_name="MUX21_GENERIC"
+arch_name="BEHAVIORAL"
+file_list="constants.vhd iv.vhd nd2.vhd mux21_generic.vhd"
+basedir="/home/ms23.52/MS/cap"
+
+design_vision -no_gui -x "\
+    analyze -library WORK -format vhdl {$file_list};\
+    elaborate $entity_name -architecture $arch_name -library WORK;\
+    compile -exact_map;\
+    write -hierarchy -format vhdl -output $(pwd)/mux21_netlist.vhdl;\ 
+    exit"

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+entity_name="FD"
+beh="PIPPO"
+file_list="constants.vhd  fd.vhd"
+
+design_vision -no_gui -x "\
+    analyze -library WORK -format vhdl {$file_list};\
+    elaborate $entity_name -architecture $beh -library WORK;\
+    compile -exact_map;\
+    write -hierarchy -format vhdl -output $(pwd)/fd_netlist.vhdl;\ 
+    exit"

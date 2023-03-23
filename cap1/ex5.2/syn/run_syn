@@ -1,0 +1,22 @@
+#!/bin/bash
+
+entity_name="RCA"
+beh="BEHAVIORAL"
+stru="STRUCTURAL"
+file_list="constants.vhd  fa.vhd  lfsr.vhd  rca.vhd"
+basedir="/home/ms23.52/MS/cap"
+
+design_vision -no_gui -x "\
+    analyze -library WORK -format vhdl {$file_list};\
+    elaborate $entity_name -architecture $beh -library WORK;\
+    compile -exact_map;\
+    write -hierarchy -format vhdl -output $(pwd)/beh_rca_netlist.vhdl;\ 
+    sh mkdir -p reports;\
+    report_timing > $(pwd)/reports/beh_timing_report;\
+    report_area > $(pwd)/reports/beh_area_report;\
+    elaborate $entity_name -architecture $stru -library WORK;\
+    compile -exact_map;\
+    report_timing > $(pwd)/reports/struct_timing_report;\
+    report_area > $(pwd)/reports/struct_area_report;\
+    write -hierarchy -format vhdl -output $(pwd)/struct_rca_netlist.vhdl;\ 
+    exit"

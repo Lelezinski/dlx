@@ -6,7 +6,7 @@ Report : timing
         -max_paths 1
 Design : ALU
 Version: S-2021.06-SP4
-Date   : Wed Mar 22 12:42:56 2023
+Date   : Thu Mar 23 13:48:11 2023
 ****************************************
 
 Operating Conditions: typical   Library: NangateOpenCellLibrary
