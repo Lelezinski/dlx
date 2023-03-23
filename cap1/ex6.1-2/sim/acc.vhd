@@ -1,161 +1,161 @@
 -------------------------------------------------------------------------------
-library IEEE;
-use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.NUMERIC_STD.ALL;
-use WORK.constants.all;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
+USE IEEE.NUMERIC_STD.ALL;
+USE WORK.constants.ALL;
 
 -------------------------------------------------------------------------------
 
-entity ACC is
-    generic (
-        NBIT      : integer := numBit);
-    port (
-        A           : in  std_logic_vector(NBIT - 1 downto 0);
-        B           : in  std_logic_vector(NBIT - 1 downto 0);
-        CLK         : in  std_logic;
-        RST_n       : in  std_logic;
-        ACCUMULATE  : in  std_logic;
-        ACC_EN_n    : in  std_logic;
-        Y           : out std_logic_vector(NBIT - 1 downto 0));
-end ACC;
+ENTITY ACC IS
+	GENERIC (
+		NBIT : INTEGER := numBit);
+	PORT (
+		A : IN STD_LOGIC_VECTOR(NBIT - 1 DOWNTO 0);
+		B : IN STD_LOGIC_VECTOR(NBIT - 1 DOWNTO 0);
+		CLK : IN STD_LOGIC;
+		RST_n : IN STD_LOGIC;
+		ACCUMULATE : IN STD_LOGIC;
+		ACC_EN_n : IN STD_LOGIC;
+		Y : OUT STD_LOGIC_VECTOR(NBIT - 1 DOWNTO 0));
+END ACC;
 
 -------------------------------------------------------------------------------
 -- Behavioral Architecture
 
-architecture BEHAVIORAL of ACC is
+ARCHITECTURE BEHAVIORAL OF ACC IS
 
-    signal REG: std_logic_vector(NBIT - 1 downto 0);
-    signal OUT_MUX: std_logic_vector(NBIT - 1 downto 0);
-    signal OUT_ADD: std_logic_vector(NBIT - 1 downto 0);
+	SIGNAL REG : STD_LOGIC_VECTOR(NBIT - 1 DOWNTO 0);
+	SIGNAL OUT_MUX : STD_LOGIC_VECTOR(NBIT - 1 DOWNTO 0);
+	SIGNAL OUT_ADD : STD_LOGIC_VECTOR(NBIT - 1 DOWNTO 0);
 
-begin
-    MUX_PROCESS: process(B, REG, ACCUMULATE)
-    begin
-        if (ACCUMULATE = '1') then
-            OUT_MUX <= REG;
-        else
-            OUT_MUX <= B;
-        end if;
-    end process;
+BEGIN
+	MUX_PROCESS : PROCESS (B, REG, ACCUMULATE)
+	BEGIN
+		IF (ACCUMULATE = '1') THEN
+			OUT_MUX <= REG;
+		ELSE
+			OUT_MUX <= B;
+		END IF;
+	END PROCESS;
 
-    ADD_PROCESS: process(A, OUT_MUX)
-    begin
-        OUT_ADD <= std_logic_vector(unsigned(A) + unsigned(OUT_MUX));
-    end process;
+	ADD_PROCESS : PROCESS (A, OUT_MUX)
+	BEGIN
+		OUT_ADD <= STD_LOGIC_VECTOR(unsigned(A) + unsigned(OUT_MUX));
+	END PROCESS;
 
-    REG_PROCESS: process(CLK, RST_n)
-    begin
-        if (RST_n = '0') then
-            -- Async reset
-            REG <= (OTHERS => '0');
-        elsif (rising_edge(CLK)) then
-            if (ACC_EN_n = '0') then
-                REG <= OUT_ADD;
-            else
-                REG <= REG;
-            end if;
-        end if;
-    end process;
+	REG_PROCESS : PROCESS (CLK, RST_n)
+	BEGIN
+		IF (RST_n = '0') THEN
+			-- Async reset
+			REG <= (OTHERS => '0');
+		ELSIF (rising_edge(CLK)) THEN
+			IF (ACC_EN_n = '0') THEN
+				REG <= OUT_ADD;
+			ELSE
+				REG <= REG;
+			END IF;
+		END IF;
+	END PROCESS;
 
-    -- Output
-    Y <= REG;
+	-- Output
+	Y <= REG;
 
-end BEHAVIORAL;
+END BEHAVIORAL;
 
 -------------------------------------------------------------------------------
 -- Structural Architecture
 
-architecture STRUCTURAL of ACC is
+ARCHITECTURE STRUCTURAL OF ACC IS
 
-    signal FEED_BACK: std_logic_vector(NBIT - 1 downto 0);
-    signal OUT_MUX: std_logic_vector(NBIT - 1 downto 0);
-	signal OUT_ADD: std_logic_vector(NBIT - 1 downto 0);
-	signal RST: std_logic;
+	SIGNAL FEED_BACK : STD_LOGIC_VECTOR(NBIT - 1 DOWNTO 0);
+	SIGNAL OUT_MUX : STD_LOGIC_VECTOR(NBIT - 1 DOWNTO 0);
+	SIGNAL OUT_ADD : STD_LOGIC_VECTOR(NBIT - 1 DOWNTO 0);
+	SIGNAL RST : STD_LOGIC;
 
-    -- Second Input MUX
-    component MUX21_GENERIC
-	Generic (
-		NBIT: 	integer:= numBit;
-		DELAY_MUX: Time:= tp_mux);
-	Port (
-		A:	In	std_logic_vector(NBIT-1 downto 0);
-		B:	In	std_logic_vector(NBIT-1 downto 0);
-		SEL: 	In	std_logic;
-		Y:	Out	std_logic_vector(NBIT-1 downto 0));
-    end component;
+	-- Second Input MUX
+	COMPONENT MUX21_GENERIC
+		GENERIC (
+			NBIT : INTEGER := numBit;
+			DELAY_MUX : TIME := tp_mux);
+		PORT (
+			A : IN STD_LOGIC_VECTOR(NBIT - 1 DOWNTO 0);
+			B : IN STD_LOGIC_VECTOR(NBIT - 1 DOWNTO 0);
+			SEL : IN STD_LOGIC;
+			Y : OUT STD_LOGIC_VECTOR(NBIT - 1 DOWNTO 0));
+	END COMPONENT;
 
-    -- Ripple Carry Adder
-    component RCA
-	Generic (
-		NBIT  : integer := numBit;
-		DRCAS : Time := 0 ns;
-		DRCAC : Time := 0 ns);
-	Port (
-		A:	In	std_logic_vector(NBIT-1 downto 0);
-		B:	In	std_logic_vector(NBIT-1 downto 0);
-		Ci:	In	std_logic;
-		S:	Out	std_logic_vector(NBIT-1 downto 0);
-		Co:	Out	std_logic);
-    end component;
+	-- Ripple Carry Adder
+	COMPONENT RCA
+		GENERIC (
+			NBIT : INTEGER := numBit;
+			DRCAS : TIME := 0 ns;
+			DRCAC : TIME := 0 ns);
+		PORT (
+			A : IN STD_LOGIC_VECTOR(NBIT - 1 DOWNTO 0);
+			B : IN STD_LOGIC_VECTOR(NBIT - 1 DOWNTO 0);
+			Ci : IN STD_LOGIC;
+			S : OUT STD_LOGIC_VECTOR(NBIT - 1 DOWNTO 0);
+			Co : OUT STD_LOGIC);
+	END COMPONENT;
 
-    -- Register Flip-Flop
-    component FD
-    Generic (
-        NBIT: integer := numBit);
-    Port (
-        D:	In	std_logic_vector(NBIT - 1 downto 0);
-        CK:	In	std_logic;
-        RESET:	In	std_logic;
-        Q:	Out	std_logic_vector(NBIT - 1 downto 0));
-    end component;
+	-- Register Flip-Flop
+	COMPONENT FD
+		GENERIC (
+			NBIT : INTEGER := numBit);
+		PORT (
+			D : IN STD_LOGIC_VECTOR(NBIT - 1 DOWNTO 0);
+			CK : IN STD_LOGIC;
+			RESET : IN STD_LOGIC;
+			Q : OUT STD_LOGIC_VECTOR(NBIT - 1 DOWNTO 0));
+	END COMPONENT;
 
-    -- Inverter (needed to match the active low reset)
-    component IV
-	Port (
-		A:	In	std_logic;
-		Y:	Out	std_logic);
-    end component;
+	-- Inverter (needed to match the active low reset)
+	COMPONENT IV
+		PORT (
+			A : IN STD_LOGIC;
+			Y : OUT STD_LOGIC);
+	END COMPONENT;
 
-begin
+BEGIN
 
-    UMUX : MUX21_GENERIC
-    Port Map (B, FEED_BACK, ACCUMULATE, OUT_MUX);
+	UMUX : MUX21_GENERIC
+	PORT MAP(B, FEED_BACK, ACCUMULATE, OUT_MUX);
 
 	URCA : RCA
-    Port Map (A, OUT_MUX, '0', OUT_ADD, open);
+	PORT MAP(A, OUT_MUX, '0', OUT_ADD, OPEN);
 
 	UFD : FD
-    Port Map (OUT_ADD, CLK, RST, FEED_BACK);
+	PORT MAP(OUT_ADD, CLK, RST, FEED_BACK);
 
 	UIV : IV
-    Port Map (RST_n, RST);
+	PORT MAP(RST_n, RST);
 
-    -- Output
-    Y <= FEED_BACK;
+	-- Output
+	Y <= FEED_BACK;
 
-end STRUCTURAL;
+END STRUCTURAL;
 
 -------------------------------------------------------------------------------
 -- Configs
 
-configuration CFG_ACC_BEHAVIORAL of ACC is
-	for BEHAVIORAL
-	end for;
-end CFG_ACC_BEHAVIORAL;
+CONFIGURATION CFG_ACC_BEHAVIORAL OF ACC IS
+	FOR BEHAVIORAL
+	END FOR;
+END CFG_ACC_BEHAVIORAL;
 
-configuration CFG_ACC_STRUCTURAL of ACC is
-	for STRUCTURAL
-		for all : MUX21_GENERIC
-			use configuration WORK.CFG_MUX21_GEN_STRUCTURAL;
-		end for;
-		for all : RCA
-			use configuration WORK.CFG_RCA_STRUCTURAL;
-		end for;
-		for all : FD
-			use configuration WORK.CFG_FD_PLUTO;
-		end for;
-		for all : IV
-			use configuration WORK.CFG_IV_BEHAVIORAL;
-		end for;
-	end for;
-end CFG_ACC_STRUCTURAL;
+CONFIGURATION CFG_ACC_STRUCTURAL OF ACC IS
+	FOR STRUCTURAL
+		FOR ALL : MUX21_GENERIC
+		USE CONFIGURATION WORK.CFG_MUX21_GEN_STRUCTURAL;
+	END FOR;
+	FOR ALL : RCA
+		USE CONFIGURATION WORK.CFG_RCA_STRUCTURAL;
+	END FOR;
+	FOR ALL : FD
+		USE CONFIGURATION WORK.CFG_FD_PLUTO;
+	END FOR;
+	FOR ALL : IV
+		USE CONFIGURATION WORK.CFG_IV_BEHAVIORAL;
+	END FOR;
+END FOR;
+END CFG_ACC_STRUCTURAL;

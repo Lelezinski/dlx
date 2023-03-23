@@ -1,4 +1,0 @@
-vcom fa.vhd
-vcom lfsr.vhd
-vcom rca.vhd
-vcom tb_rca.vhd
