@@ -9,4 +9,5 @@ package CONSTANTS is
    constant numBit : integer := 4;	
    constant TP_MUX : time := 0.5 ns; 	
    constant CARRY_SELECT_NBIT : 4;
+   constant SUM_GENERATOR_NBLOCK : 4;
 end CONSTANTS;

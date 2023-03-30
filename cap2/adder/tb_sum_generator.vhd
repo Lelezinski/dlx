@@ -22,7 +22,7 @@ architecture TEST of TBSUM_GENERATOR is
 
 begin
 	
-	
+	-- [...]
 
 end TEST;
 
