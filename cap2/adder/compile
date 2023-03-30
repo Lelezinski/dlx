@@ -1,0 +1,9 @@
+vcom constants.vhd
+vcom iv.vhd
+vcom nd2.vhd
+vcom mux21_generic.vhd
+vcom fa.vhd
+vcom rca.vhd
+vcom carry_select.vhd
+vcom sum_generator.vhd
+vcom tb_sum_generator.vhd
