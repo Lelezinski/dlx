@@ -1,1 +1,1 @@
-vsim -t 10ps work.tbsum_generator(test) -voptargs=+acc
+vsim -c -t 10ps work.tbsum_generator\(test\) -voptargs=+acc

@@ -4,6 +4,7 @@
 
 - **lab0**
 - **cap1**
+- **cap2**
 
 ## Group Info
 

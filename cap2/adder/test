@@ -1,0 +1,6 @@
+#!/bin/bash
+
+setmentor
+vsim -c -t 10ps work.tbsum_generator\(test\) -voptargs=+acc
+#add wave *
+#run 100 ns
