@@ -1,24 +1,58 @@
-library ieee; 
-use ieee.std_logic_1164.all;
-use ieee.std_logic_unsigned.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.std_logic_unsigned.ALL;
+USE work.constants.ALL;
 
-entity TB_CARRY_GENERATOR is 
-end TB_CARRY_GENERATOR; 
+ENTITY TB_CARRY_GENERATOR IS
+END TB_CARRY_GENERATOR;
 
-architecture TEST of TB_CARRY_GENERATOR is
+ARCHITECTURE TEST OF TB_CARRY_GENERATOR IS
+	COMPONENT CARRY_GENERATOR IS
+		-- Generics changed to NBIT_PER_BLOCK and NBLOCKS to match the other TBs. 
+		GENERIC (
+			NBIT_PER_BLOCK : INTEGER := CARRY_SELECT_NBIT;
+			NBLOCKS : INTEGER := SUM_GENERATOR_NBLOCK);
+		PORT (
+			A : IN STD_LOGIC_VECTOR(NBIT_PER_BLOCK * NBLOCKS - 1 DOWNTO 0);
+			B : IN STD_LOGIC_VECTOR(NBIT_PER_BLOCK * NBLOCKS - 1 DOWNTO 0);
+			Cin : IN STD_LOGIC;
+			Co : OUT STD_LOGIC_VECTOR(NBLOCKS - 1 DOWNTO 0));
+	END COMPONENT;
 
+	SIGNAL A_s, B_s, Co_s : STD_LOGIC_VECTOR(CARRY_SELECT_NBIT * SUM_GENERATOR_NBLOCK - 1 DOWNTO 0);
+	SIGNAL Cin_s : STD_LOGIC;
 
-	component CARRY_GENERATOR is
-		generic (
-			NBIT :		integer := 32;
-			NBIT_PER_BLOCK: integer := 4);
-		port (
-			A :		in	std_logic_vector(NBIT-1 downto 0);
-			B :		in	std_logic_vector(NBIT-1 downto 0);
-			Cin :	in	std_logic;
-			Co :	out	std_logic_vector((NBIT/NBIT_PER_BLOCK)-1 downto 0));
-	end component;
+BEGIN
 
-begin
+	dut : CARRY_GENERATOR
+	GENERIC MAP(CARRY_SELECT_NBIT, SUM_GENERATOR_NBLOCK)
+	PORT MAP(A_s, B_s, Cin_s, Co_s);
 
-end TEST;
+	testVector : PROCESS
+	BEGIN
+		A_s <= "0010101010101010";
+		B_s <= "0101011101010101";
+		Ci_s <= '0';
+
+		WAIT FOR 20 NS;
+
+		A_s <= "0000000000000010";
+		B_s <= "0101011101010101";
+		Ci_s <= '0';
+
+		WAIT FOR 20 NS;
+
+		A_s <= "0000111111111111";
+		B_s <= "0000000000000001";
+		Ci_s <= '1';
+
+		WAIT FOR 20 NS;
+
+		A_s <= "0000000000000000";
+		B_s <= "0000000000000001";
+		Ci_s <= '1';
+
+		WAIT;
+	END PROCESS;
+
+END TEST;

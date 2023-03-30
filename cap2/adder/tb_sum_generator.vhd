@@ -7,7 +7,7 @@ end TBSUM_GENERATOR;
 architecture TEST of TBSUM_GENERATOR is
 
 
-   -- todo: use constants
+   -- TODO: use constants
 	component SUM_GENERATOR is
 		generic (
 			NBIT_PER_BLOCK: integer := 4;

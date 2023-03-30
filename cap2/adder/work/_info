@@ -45,7 +45,7 @@ Z6 DPx4 work 9 constants 0 22 9W40Y:SH?mLD@<MgPS2cP1
 Z7 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
 Z8 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z9 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-!i122 179
+!i122 200
 R0
 Z10 8carry_select.vhd
 Z11 Fcarry_select.vhd
@@ -55,9 +55,9 @@ VfmzI_BJ4XLWF@Na<7SlP62
 !s100 hYZO1GDOAYS0HZ3bd7j561
 Z12 OL;C;2020.4;71
 32
-Z13 !s110 1680191912
+Z13 !s110 1680197014
 !i10b 1
-Z14 !s108 1680191912.000000
+Z14 !s108 1680197014.000000
 Z15 !s90 carry_select.vhd|
 Z16 !s107 carry_select.vhd|
 !i113 0
@@ -68,7 +68,7 @@ R7
 R8
 R9
 DEx4 work 12 carry_select 0 22 fmzI_BJ4XLWF@Na<7SlP62
-!i122 179
+!i122 200
 l43
 L15 41
 VZioEG;ZUJKSj:lYdPO>500
@@ -89,7 +89,7 @@ DAx4 work 2 fa 10 behavioral 22 EnaD@4]9_f9Ee]86?6z?=2
 R8
 R9
 Z19 DEx4 work 2 fa 0 22 6n[i]h6Lf94JmiUHjKPK92
-!i122 177
+!i122 198
 Z20 w1679994549
 R0
 Z21 8fa.vhd
@@ -115,7 +115,7 @@ R6
 R8
 R9
 Z25 DEx4 work 2 iv 0 22 RR<HHMEQ1TOI4jQa@8Z1I0
-!i122 174
+!i122 195
 Z26 w1680168311
 R0
 Z27 8iv.vhd
@@ -126,9 +126,9 @@ Va@]Q25RZ94Y5FkTe@2UXX3
 !s100 J^D:lcUfc_6VD4AD?iJiU2
 R12
 32
-Z30 !s110 1680191911
+Z30 !s110 1680197013
 !i10b 0
-Z31 !s108 1680191911.000000
+Z31 !s108 1680197013.000000
 Z32 !s90 iv.vhd|
 Z33 !s107 iv.vhd|
 !i113 0
@@ -141,7 +141,7 @@ R6
 R8
 R9
 Z35 DEx4 work 13 mux21_generic 0 22 ;]IDM5G@]4G``mG3;LLKd2
-!i122 176
+!i122 197
 Z36 w1680168312
 R0
 Z37 8mux21_generic.vhd
@@ -171,7 +171,7 @@ R6
 R8
 R9
 R35
-!i122 176
+!i122 197
 R36
 R0
 R37
@@ -197,7 +197,7 @@ R6
 R8
 R9
 R43
-!i122 175
+!i122 196
 Z44 w1680168328
 R0
 Z45 8nd2.vhd
@@ -223,7 +223,7 @@ R7
 R8
 R9
 Z49 DEx4 work 3 rca 0 22 <@kPJWQ>K[Q^Inj0Td7`o2
-!i122 178
+!i122 199
 Z50 w1679994573
 R0
 Z51 8rca.vhd
@@ -251,7 +251,7 @@ R7
 R8
 R9
 R49
-!i122 178
+!i122 199
 R50
 R0
 R51
@@ -270,7 +270,7 @@ R54
 !i113 0
 R17
 Pconstants
-!i122 173
+!i122 194
 w1680172429
 R0
 8constants.vhd
@@ -292,7 +292,7 @@ Efa
 R20
 R8
 R9
-!i122 177
+!i122 198
 R0
 R21
 R22
@@ -313,7 +313,7 @@ Abehavioral
 R8
 R9
 R19
-!i122 177
+!i122 198
 l16
 L14 9
 VEnaD@4]9_f9Ee]86?6z?=2
@@ -327,12 +327,55 @@ R23
 R24
 !i113 0
 R17
+Eg_block
+Z55 w1680195549
+R6
+R7
+R8
+R9
+!i122 204
+R0
+Z56 8g_block.vhd
+Z57 Fg_block.vhd
+l0
+L6 1
+VkZBn_:bF]N12z_FLCmjHQ2
+!s100 ^;;U18TO@eY=0==efzoGK2
+R12
+32
+Z58 !s110 1680197015
+!i10b 1
+Z59 !s108 1680197015.000000
+Z60 !s90 g_block.vhd|
+Z61 !s107 g_block.vhd|
+!i113 0
+R17
+Abehavioral
+R6
+R7
+R8
+R9
+DEx4 work 7 g_block 0 22 kZBn_:bF]N12z_FLCmjHQ2
+!i122 204
+l19
+Z62 L18 6
+Vgfd^04VSkY`6KI>bKGG5X0
+!s100 ;TGD?]306_6hdRd`h@8Q?3
+R12
+32
+R58
+!i10b 1
+R59
+R60
+R61
+!i113 0
+R17
 Eiv
 R26
 R6
 R8
 R9
-!i122 174
+!i122 195
 R0
 R27
 R28
@@ -354,7 +397,7 @@ R6
 R8
 R9
 R25
-!i122 174
+!i122 195
 l13
 L11 7
 VfHKem;X8`BcW24Z>Gc8Bi0
@@ -373,7 +416,7 @@ R36
 R6
 R8
 R9
-!i122 176
+!i122 197
 R0
 R37
 R38
@@ -395,7 +438,7 @@ R6
 R8
 R9
 R35
-!i122 176
+!i122 197
 l41
 L22 36
 VKDOQ1R2a[e^CJiEHe4lUR2
@@ -414,7 +457,7 @@ R6
 R8
 R9
 R35
-!i122 176
+!i122 197
 l17
 L15 6
 V;3BmM2nYWP3RBQA`4EmY?3
@@ -433,7 +476,7 @@ R44
 R6
 R8
 R9
-!i122 175
+!i122 196
 R0
 R45
 R46
@@ -455,7 +498,7 @@ R6
 R8
 R9
 R43
-!i122 175
+!i122 196
 l14
 L12 5
 VR]W>[4l`J[ZPocR?b<9d33
@@ -469,27 +512,27 @@ R47
 R48
 !i113 0
 R17
-Epg_network
-Z55 w1680191909
+Epg_block
+Z63 w1680195635
 R6
 R7
 R8
 R9
-!i122 182
+!i122 205
 R0
-Z56 8pg_network.vhd
-Z57 Fpg_network.vhd
+Z64 8pg_block.vhd
+Z65 Fpg_block.vhd
 l0
 L6 1
-V6]bBU:53Ob76_Gb?8O[Ha3
-!s100 z4HYXYeZa9iPR<V_l[IKU0
+VBM:FfMI=?e:C@M`XH9f`X3
+!s100 91d5Sk6:z@biWGhgCkeoF3
 R12
 32
-Z58 !s110 1680191913
+R58
 !i10b 1
-Z59 !s108 1680191913.000000
-Z60 !s90 pg_network.vhd|
-Z61 !s107 pg_network.vhd|
+R59
+Z66 !s90 pg_block.vhd|
+Z67 !s107 pg_block.vhd|
 !i113 0
 R17
 Abehavioral
@@ -497,19 +540,62 @@ R6
 R7
 R8
 R9
-Z62 DEx4 work 10 pg_network 0 22 6]bBU:53Ob76_Gb?8O[Ha3
-!i122 182
-l18
-Z63 L17 7
-Z64 VSD_n2URUVkzZ1<73hY7jK2
-Z65 !s100 >QAhF_5T3QmmH2OC4S9`I3
+DEx4 work 8 pg_block 0 22 BM:FfMI=?e:C@M`XH9f`X3
+!i122 205
+l19
+R62
+VN9Wn>1Vj:IJCo81PMS74k2
+!s100 [BfLlk<jfJA8JWmIId`;C1
 R12
 32
 R58
 !i10b 1
 R59
-R60
-R61
+R66
+R67
+!i113 0
+R17
+Epg_network
+Z68 w1680197153
+R6
+R7
+R8
+R9
+!i122 207
+R0
+Z69 8pg_network.vhd
+Z70 Fpg_network.vhd
+l0
+L6 1
+VkZMWf^:^DPMkOhQI5f5Y03
+!s100 nUb_2R<Y@@d8g:j[:VkT:0
+R12
+32
+Z71 !s110 1680197617
+!i10b 1
+Z72 !s108 1680197616.000000
+Z73 !s90 pg_network.vhd|
+Z74 !s107 pg_network.vhd|
+!i113 0
+R17
+Abehavioral
+R6
+R7
+R8
+R9
+Z75 DEx4 work 10 pg_network 0 22 kZMWf^:^DPMkOhQI5f5Y03
+!i122 207
+l21
+Z76 L20 7
+Z77 ViHC`9F=PM7JNPJS:=X;491
+Z78 !s100 0JM4z=mY];CB^kWef7FJG1
+R12
+32
+R71
+!i10b 1
+R72
+R73
+R74
 !i113 0
 R17
 Erca
@@ -517,7 +603,7 @@ R50
 R7
 R8
 R9
-!i122 178
+!i122 199
 R0
 R51
 R52
@@ -539,7 +625,7 @@ R7
 R8
 R9
 R49
-!i122 178
+!i122 199
 l48
 L46 13
 V8>lUO5e?4F7o<G4E1PELR2
@@ -558,7 +644,7 @@ R7
 R8
 R9
 R49
-!i122 178
+!i122 199
 l31
 L16 28
 Vd[5X8GQiP^UUBi45SGHMT3
@@ -573,15 +659,15 @@ R54
 !i113 0
 R17
 Esum_generator
-Z66 w1680169944
+Z79 w1680169944
 R6
 R7
 R8
 R9
-!i122 180
+!i122 201
 R0
-Z67 8sum_generator.vhd
-Z68 Fsum_generator.vhd
+Z80 8sum_generator.vhd
+Z81 Fsum_generator.vhd
 l0
 L6 1
 V>?cibA>4b44nbL5Y3ZF:K0
@@ -591,8 +677,8 @@ R12
 R13
 !i10b 1
 R14
-Z69 !s90 sum_generator.vhd|
-Z70 !s107 sum_generator.vhd|
+Z82 !s90 sum_generator.vhd|
+Z83 !s107 sum_generator.vhd|
 !i113 0
 R17
 Astructural
@@ -600,8 +686,8 @@ R6
 R7
 R8
 R9
-Z71 DEx4 work 13 sum_generator 0 22 >?cibA>4b44nbL5Y3ZF:K0
-!i122 180
+Z84 DEx4 work 13 sum_generator 0 22 >?cibA>4b44nbL5Y3ZF:K0
+!i122 201
 l34
 L18 28
 VU?8h111<;zh2g:zAQZ`J42
@@ -611,8 +697,8 @@ R12
 R13
 !i10b 1
 R14
-R69
-R70
+R82
+R83
 !i113 0
 R17
 Csum_generatortest
@@ -620,18 +706,18 @@ eTBSUM_GENERATOR
 aTEST
 R6
 R7
-R71
+R84
 DAx4 work 15 tbsum_generator 4 test 22 4g6V<ecg^Ez7^I08^_Q6S0
-Z72 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
-Z73 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z85 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z86 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
 R8
 R9
-Z74 DEx4 work 15 tbsum_generator 0 22 Ed76k6;JVDXXVm1XdJa6<1
-!i122 181
-Z75 w1680170301
+Z87 DEx4 work 15 tbsum_generator 0 22 Ed76k6;JVDXXVm1XdJa6<1
+!i122 202
+Z88 w1680196495
 R0
-Z76 8tb_sum_generator.vhd
-Z77 Ftb_sum_generator.vhd
+Z89 8tb_sum_generator.vhd
+Z90 Ftb_sum_generator.vhd
 l0
 L54 1
 V:<3MFJ`1<I2CQH2734C:B0
@@ -641,20 +727,44 @@ R12
 R58
 !i10b 1
 R14
-Z78 !s90 tb_sum_generator.vhd|
-Z79 !s107 tb_sum_generator.vhd|
+Z91 !s90 tb_sum_generator.vhd|
+Z92 !s107 tb_sum_generator.vhd|
+!i113 0
+R17
+Etb_carry_generator
+w1680196797
+R6
+R85
+R86
+R8
+R9
+!i122 206
+R0
+8tb_carry_generator.vhd
+Ftb_carry_generator.vhd
+l0
+L6 1
+VA0D01jbP2GOlzl4YCI^l]1
+!s100 ^kdi[i4z?M4OneBIF3ZTi1
+R12
+32
+!s110 1680197016
+!i10b 1
+R59
+!s90 tb_carry_generator.vhd|
+!s107 tb_carry_generator.vhd|
 !i113 0
 R17
 Etbsum_generator
-R75
-R72
-R73
+R88
+R85
+R86
 R8
 R9
-!i122 181
+!i122 202
 R0
-R76
-R77
+R89
+R90
 l0
 L4 1
 VEd76k6;JVDXXVm1XdJa6<1
@@ -664,17 +774,17 @@ R12
 R58
 !i10b 1
 R14
-R78
-R79
+R91
+R92
 !i113 0
 R17
 Atest
-R72
-R73
+R85
+R86
 R8
 R9
-R74
-!i122 181
+R87
+!i122 202
 l25
 L7 46
 V4g6V<ecg^Ez7^I08^_Q6S0
@@ -684,7 +794,7 @@ R12
 R58
 !i10b 1
 R14
-R78
-R79
+R91
+R92
 !i113 0
 R17
