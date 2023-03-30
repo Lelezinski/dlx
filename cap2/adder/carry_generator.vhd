@@ -33,16 +33,28 @@ ARCHITECTURE STRUCTURAL OF CARRY_GENERATOR IS
 
 	-- G Block: General GENERATE
 	COMPONENT G_BLOCK IS
-		-- TODO: WRITE
+		PORT (
+			G_left : IN STD_LOGIC;
+			P_left : IN STD_LOGIC;
+			G_right : IN STD_LOGIC;
+
+			G_out : OUT STD_LOGIC);
 	END COMPONENT;
 
 	-- PG Block: General PROPAGATE and General GENERATE
 	COMPONENT PG_BLOCK IS
-		-- TODO: WRITE
+		PORT (
+			G_left : IN STD_LOGIC;
+			P_left : IN STD_LOGIC;
+			G_right : IN STD_LOGIC;
+			P_right : IN STD_LOGIC;
+
+			P_out : OUT STD_LOGIC;
+			G_out : OUT STD_LOGIC);
 	END COMPONENT;	
 
 	-- Arrays
-		-- TODO: WRITE
+		-- TODO: WRITE arrays
 
 BEGIN
 -- Components Istantiation
@@ -50,6 +62,6 @@ BEGIN
 	GENERIC MAP(CARRY_SELECT_NBIT, SUM_GENERATOR_NBLOCK)
 	PORT MAP(A, B, Cin, , ); -- TODO: FIX
 
-	-- TODO: WRITE
+	-- TODO: WRITE generate...
 
 END STRUCTURAL;
