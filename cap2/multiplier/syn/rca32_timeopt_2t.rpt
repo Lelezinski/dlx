@@ -1,0 +1,204 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : BOOTHMUL
+Version: S-2021.06-SP4
+Date   : Mon Apr 17 18:30:33 2023
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: B[0] (input port)
+  Endpoint: P[31] (output port)
+  Path Group: default
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  BOOTHMUL           5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  input external delay                     0.00       0.00 f
+  B[0] (in)                                0.00       0.00 f
+  eb_0/b[1] (BE_BLOCK_0)                   0.00       0.00 f
+  eb_0/U6/ZN (OAI21_X1)                    0.04       0.04 r
+  eb_0/U4/ZN (OAI22_X1)                    0.04       0.08 f
+  eb_0/sel[1] (BE_BLOCK_0)                 0.00       0.08 f
+  mux_0/sel[1] (MUX_5TO1_NBIT32_0)         0.00       0.08 f
+  mux_0/U23/ZN (INV_X1)                    0.03       0.11 r
+  mux_0/U31/ZN (INV_X1)                    0.03       0.14 f
+  mux_0/U32/ZN (AND2_X1)                   0.04       0.18 f
+  mux_0/U25/ZN (AND2_X1)                   0.04       0.22 f
+  mux_0/U15/ZN (NOR3_X1)                   0.06       0.28 r
+  mux_0/U24/ZN (NAND2_X1)                  0.04       0.31 f
+  mux_0/O[4] (MUX_5TO1_NBIT32_0)           0.00       0.31 f
+  sum_1/A[4] (RCA_NBIT32_0)                0.00       0.31 f
+  sum_1/FAI_5/A (FA_220)                   0.00       0.31 f
+  sum_1/FAI_5/U4/Z (XOR2_X1)               0.08       0.39 f
+  sum_1/FAI_5/U2/ZN (AOI22_X1)             0.06       0.45 r
+  sum_1/FAI_5/U5/ZN (INV_X1)               0.03       0.48 f
+  sum_1/FAI_5/Co (FA_220)                  0.00       0.48 f
+  sum_1/FAI_6/Ci (FA_219)                  0.00       0.48 f
+  sum_1/FAI_6/U2/ZN (AOI21_X1)             0.04       0.52 r
+  sum_1/FAI_6/U3/ZN (INV_X1)               0.03       0.55 f
+  sum_1/FAI_6/Co (FA_219)                  0.00       0.55 f
+  sum_1/FAI_7/Ci (FA_218)                  0.00       0.55 f
+  sum_1/FAI_7/U6/ZN (XNOR2_X1)             0.06       0.61 f
+  sum_1/FAI_7/S (FA_218)                   0.00       0.61 f
+  sum_1/S[6] (RCA_NBIT32_0)                0.00       0.61 f
+  sum_2/B[6] (RCA_NBIT32_6)                0.00       0.61 f
+  sum_2/FAI_7/B (FA_186)                   0.00       0.61 f
+  sum_2/FAI_7/U4/Z (XOR2_X1)               0.07       0.68 f
+  sum_2/FAI_7/U1/ZN (AOI22_X1)             0.06       0.74 r
+  sum_2/FAI_7/U6/ZN (INV_X1)               0.03       0.77 f
+  sum_2/FAI_7/Co (FA_186)                  0.00       0.77 f
+  sum_2/FAI_8/Ci (FA_185)                  0.00       0.77 f
+  sum_2/FAI_8/U9/ZN (AOI22_X1)             0.06       0.82 r
+  sum_2/FAI_8/U10/ZN (INV_X1)              0.03       0.85 f
+  sum_2/FAI_8/Co (FA_185)                  0.00       0.85 f
+  sum_2/FAI_9/Ci (FA_184)                  0.00       0.85 f
+  sum_2/FAI_9/U2/ZN (INV_X1)               0.03       0.88 r
+  sum_2/FAI_9/U1/ZN (AOI21_X1)             0.03       0.91 f
+  sum_2/FAI_9/Co (FA_184)                  0.00       0.91 f
+  sum_2/FAI_10/Ci (FA_183)                 0.00       0.91 f
+  sum_2/FAI_10/U3/Z (XOR2_X1)              0.07       0.98 f
+  sum_2/FAI_10/S (FA_183)                  0.00       0.98 f
+  sum_2/S[9] (RCA_NBIT32_6)                0.00       0.98 f
+  sum_3/B[9] (RCA_NBIT32_5)                0.00       0.98 f
+  sum_3/FAI_10/B (FA_151)                  0.00       0.98 f
+  sum_3/FAI_10/U2/ZN (XNOR2_X1)            0.06       1.04 f
+  sum_3/FAI_10/U6/ZN (AOI22_X1)            0.06       1.11 r
+  sum_3/FAI_10/U5/ZN (INV_X1)              0.03       1.14 f
+  sum_3/FAI_10/Co (FA_151)                 0.00       1.14 f
+  sum_3/FAI_11/Ci (FA_150)                 0.00       1.14 f
+  sum_3/FAI_11/U5/ZN (AOI22_X1)            0.06       1.19 r
+  sum_3/FAI_11/U6/ZN (INV_X1)              0.03       1.22 f
+  sum_3/FAI_11/Co (FA_150)                 0.00       1.22 f
+  sum_3/FAI_12/Ci (FA_149)                 0.00       1.22 f
+  sum_3/FAI_12/U5/ZN (AOI22_X1)            0.06       1.28 r
+  sum_3/FAI_12/U6/ZN (INV_X1)              0.03       1.30 f
+  sum_3/FAI_12/Co (FA_149)                 0.00       1.30 f
+  sum_3/FAI_13/Ci (FA_148)                 0.00       1.30 f
+  sum_3/FAI_13/U4/ZN (NAND2_X1)            0.03       1.33 r
+  sum_3/FAI_13/U5/ZN (NAND2_X1)            0.03       1.36 f
+  sum_3/FAI_13/Co (FA_148)                 0.00       1.36 f
+  sum_3/FAI_14/Ci (FA_147)                 0.00       1.36 f
+  sum_3/FAI_14/U2/ZN (AOI22_X1)            0.06       1.42 r
+  sum_3/FAI_14/U4/ZN (INV_X1)              0.03       1.45 f
+  sum_3/FAI_14/Co (FA_147)                 0.00       1.45 f
+  sum_3/FAI_15/Ci (FA_146)                 0.00       1.45 f
+  sum_3/FAI_15/U5/ZN (INV_X1)              0.03       1.48 r
+  sum_3/FAI_15/U3/ZN (OAI22_X1)            0.04       1.51 f
+  sum_3/FAI_15/Co (FA_146)                 0.00       1.51 f
+  sum_3/FAI_16/Ci (FA_145)                 0.00       1.51 f
+  sum_3/FAI_16/U5/ZN (AOI22_X1)            0.06       1.57 r
+  sum_3/FAI_16/U6/ZN (INV_X1)              0.03       1.60 f
+  sum_3/FAI_16/Co (FA_145)                 0.00       1.60 f
+  sum_3/FAI_17/Ci (FA_144)                 0.00       1.60 f
+  sum_3/FAI_17/U4/ZN (AOI22_X1)            0.06       1.66 r
+  sum_3/FAI_17/U5/ZN (INV_X1)              0.03       1.68 f
+  sum_3/FAI_17/Co (FA_144)                 0.00       1.68 f
+  sum_3/FAI_18/Ci (FA_143)                 0.00       1.68 f
+  sum_3/FAI_18/U4/ZN (INV_X1)              0.03       1.71 r
+  sum_3/FAI_18/U1/ZN (OAI22_X1)            0.04       1.75 f
+  sum_3/FAI_18/Co (FA_143)                 0.00       1.75 f
+  sum_3/FAI_19/Ci (FA_142)                 0.00       1.75 f
+  sum_3/FAI_19/U5/ZN (AOI22_X1)            0.06       1.81 r
+  sum_3/FAI_19/U6/ZN (INV_X1)              0.03       1.83 f
+  sum_3/FAI_19/Co (FA_142)                 0.00       1.83 f
+  sum_3/FAI_20/Ci (FA_141)                 0.00       1.83 f
+  sum_3/FAI_20/U5/ZN (INV_X1)              0.03       1.86 r
+  sum_3/FAI_20/U1/ZN (OAI22_X1)            0.04       1.90 f
+  sum_3/FAI_20/Co (FA_141)                 0.00       1.90 f
+  sum_3/FAI_21/Ci (FA_140)                 0.00       1.90 f
+  sum_3/FAI_21/U3/Z (XOR2_X1)              0.07       1.97 f
+  sum_3/FAI_21/S (FA_140)                  0.00       1.97 f
+  sum_3/S[20] (RCA_NBIT32_5)               0.00       1.97 f
+  sum_4/B[20] (RCA_NBIT32_4)               0.00       1.97 f
+  sum_4/FAI_21/B (FA_108)                  0.00       1.97 f
+  sum_4/FAI_21/U6/ZN (XNOR2_X1)            0.07       2.04 f
+  sum_4/FAI_21/U2/ZN (AOI22_X1)            0.06       2.10 r
+  sum_4/FAI_21/U4/ZN (INV_X1)              0.03       2.13 f
+  sum_4/FAI_21/Co (FA_108)                 0.00       2.13 f
+  sum_4/FAI_22/Ci (FA_107)                 0.00       2.13 f
+  sum_4/FAI_22/U5/ZN (INV_X1)              0.03       2.16 r
+  sum_4/FAI_22/U2/ZN (OAI22_X1)            0.04       2.19 f
+  sum_4/FAI_22/Co (FA_107)                 0.00       2.19 f
+  sum_4/FAI_23/Ci (FA_106)                 0.00       2.19 f
+  sum_4/FAI_23/U5/ZN (AOI22_X1)            0.06       2.25 r
+  sum_4/FAI_23/U6/ZN (INV_X1)              0.03       2.28 f
+  sum_4/FAI_23/Co (FA_106)                 0.00       2.28 f
+  sum_4/FAI_24/Ci (FA_105)                 0.00       2.28 f
+  sum_4/FAI_24/U2/ZN (AOI22_X1)            0.06       2.34 r
+  sum_4/FAI_24/U4/ZN (INV_X1)              0.03       2.37 f
+  sum_4/FAI_24/Co (FA_105)                 0.00       2.37 f
+  sum_4/FAI_25/Ci (FA_104)                 0.00       2.37 f
+  sum_4/FAI_25/U3/Z (XOR2_X1)              0.07       2.44 f
+  sum_4/FAI_25/S (FA_104)                  0.00       2.44 f
+  sum_4/S[24] (RCA_NBIT32_4)               0.00       2.44 f
+  sum_5/B[24] (RCA_NBIT32_3)               0.00       2.44 f
+  sum_5/FAI_25/B (FA_72)                   0.00       2.44 f
+  sum_5/FAI_25/U6/ZN (XNOR2_X1)            0.06       2.50 f
+  sum_5/FAI_25/U2/ZN (AOI22_X1)            0.06       2.56 r
+  sum_5/FAI_25/U4/ZN (INV_X1)              0.03       2.59 f
+  sum_5/FAI_25/Co (FA_72)                  0.00       2.59 f
+  sum_5/FAI_26/Ci (FA_71)                  0.00       2.59 f
+  sum_5/FAI_26/U2/ZN (AOI22_X1)            0.06       2.65 r
+  sum_5/FAI_26/U6/ZN (INV_X1)              0.03       2.68 f
+  sum_5/FAI_26/Co (FA_71)                  0.00       2.68 f
+  sum_5/FAI_27/Ci (FA_70)                  0.00       2.68 f
+  sum_5/FAI_27/U5/ZN (AOI22_X1)            0.06       2.73 r
+  sum_5/FAI_27/U4/ZN (INV_X1)              0.03       2.76 f
+  sum_5/FAI_27/Co (FA_70)                  0.00       2.76 f
+  sum_5/FAI_28/Ci (FA_69)                  0.00       2.76 f
+  sum_5/FAI_28/U5/ZN (AOI22_X1)            0.06       2.82 r
+  sum_5/FAI_28/U6/ZN (INV_X1)              0.03       2.85 f
+  sum_5/FAI_28/Co (FA_69)                  0.00       2.85 f
+  sum_5/FAI_29/Ci (FA_68)                  0.00       2.85 f
+  sum_5/FAI_29/U3/Z (XOR2_X1)              0.07       2.92 f
+  sum_5/FAI_29/S (FA_68)                   0.00       2.92 f
+  sum_5/S[28] (RCA_NBIT32_3)               0.00       2.92 f
+  sum_6/B[28] (RCA_NBIT32_2)               0.00       2.92 f
+  sum_6/FAI_29/B (FA_36)                   0.00       2.92 f
+  sum_6/FAI_29/U7/ZN (XNOR2_X1)            0.06       2.98 f
+  sum_6/FAI_29/U3/Z (XOR2_X1)              0.08       3.06 f
+  sum_6/FAI_29/S (FA_36)                   0.00       3.06 f
+  sum_6/S[28] (RCA_NBIT32_2)               0.00       3.06 f
+  sum_7/B[28] (RCA_NBIT32_1)               0.00       3.06 f
+  sum_7/FAI_29/B (FA_4)                    0.00       3.06 f
+  sum_7/FAI_29/U4/ZN (XNOR2_X1)            0.06       3.12 f
+  sum_7/FAI_29/U5/ZN (AOI22_X1)            0.06       3.18 r
+  sum_7/FAI_29/U6/ZN (INV_X1)              0.03       3.21 f
+  sum_7/FAI_29/Co (FA_4)                   0.00       3.21 f
+  sum_7/FAI_30/Ci (FA_3)                   0.00       3.21 f
+  sum_7/FAI_30/U4/ZN (AOI22_X1)            0.06       3.26 r
+  sum_7/FAI_30/U5/ZN (INV_X1)              0.02       3.29 f
+  sum_7/FAI_30/Co (FA_3)                   0.00       3.29 f
+  sum_7/FAI_31/Ci (FA_2)                   0.00       3.29 f
+  sum_7/FAI_31/U5/ZN (NOR2_X1)             0.04       3.32 r
+  sum_7/FAI_31/U6/ZN (NOR2_X1)             0.03       3.35 f
+  sum_7/FAI_31/Co (FA_2)                   0.00       3.35 f
+  sum_7/FAI_32/Ci (FA_1)                   0.00       3.35 f
+  sum_7/FAI_32/U3/ZN (XNOR2_X1)            0.05       3.40 f
+  sum_7/FAI_32/S (FA_1)                    0.00       3.40 f
+  sum_7/S[31] (RCA_NBIT32_1)               0.00       3.40 f
+  P[31] (out)                              0.00       3.41 f
+  data arrival time                                   3.41
+
+  max_delay                                3.27       3.27
+  output external delay                    0.00       3.27
+  data required time                                  3.27
+  -----------------------------------------------------------
+  data required time                                  3.27
+  data arrival time                                  -3.41
+  -----------------------------------------------------------
+  slack (VIOLATED)                                   -0.14
+
+
+1

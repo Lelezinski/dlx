@@ -20,10 +20,10 @@ n@_opt
 Z3 OL;O;2020.4;71
 R0
 T_opt1
-!s110 1681455341
-V?F2RgQM]cP0L]?NkadBo?3
+!s110 1681732546
+VWXF=bAIcB]d2gYN@@35]J0
 R1
-=2-5254009c17d7-6438f8ec-82ebe-28bc
+=1-5254009c17d7-643d33c2-2e566-338c
 o-quiet -auto_acc_if_foreign -work work +acc
 R2
 n@_opt1
@@ -35,7 +35,7 @@ Z6 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
 Z7 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
 Z8 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z9 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-!i122 1
+!i122 55
 R0
 Z10 8be_block.vhd
 Z11 Fbe_block.vhd
@@ -45,11 +45,11 @@ ViW6WP@PCZO6gm54O13_Ei3
 !s100 O:kBWC7H>O0enO]QlejFX2
 Z12 OL;C;2020.4;71
 32
-Z13 !s110 1681455331
+Z13 !s110 1681732539
 !i10b 1
-Z14 !s108 1681455331.000000
-Z15 !s90 constants.vhd|be_block.vhd|b_mux.vhd|fa.vhd|rca.vhd|boothmul.vhd|tb_multiplier.vhd|
-Z16 !s107 tb_multiplier.vhd|boothmul.vhd|rca.vhd|fa.vhd|b_mux.vhd|be_block.vhd|constants.vhd|
+Z14 !s108 1681732539.000000
+Z15 !s90 be_block.vhd|
+Z16 !s107 be_block.vhd|
 !i113 0
 Z17 tExplicit 1 CvgOpt 0
 Abehavioral
@@ -59,7 +59,7 @@ R7
 R8
 R9
 DEx4 work 8 be_block 0 22 iW6WP@PCZO6gm54O13_Ei3
-!i122 1
+!i122 55
 l15
 L13 11
 VQ14_549N85]agD1_Nk12S0
@@ -74,12 +74,12 @@ R16
 !i113 0
 R17
 Eboothmul
-Z18 w1681245139
+Z18 w1681731110
 R5
 Z19 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
 R8
 R9
-!i122 1
+!i122 56
 R0
 Z20 8boothmul.vhd
 Z21 Fboothmul.vhd
@@ -92,8 +92,8 @@ R12
 R13
 !i10b 1
 R14
-R15
-R16
+Z22 !s90 boothmul.vhd|
+Z23 !s107 boothmul.vhd|
 !i113 0
 R17
 Amixed
@@ -102,32 +102,32 @@ R19
 R8
 R9
 DEx4 work 8 boothmul 0 22 lPM:]Aa]k3>Pk7i_;3C]B3
-!i122 1
-l73
-L17 152
-VX_WWUgYFMk:D=OI^2m7Se1
-!s100 E:>1W8^Ko1?>00d7G]HnJ3
+!i122 56
+l70
+L17 140
+VC0zSiGlGoKhmei??4N]=:2
+!s100 WcDbE22Vi<Be^Q]Wk`0e<3
 R12
 32
 R13
 !i10b 1
 R14
-R15
-R16
+R22
+R23
 !i113 0
 R17
 Ccfg_fa_behavioral
 eFA
-Z22 aBEHAVIORAL
+Z24 aBEHAVIORAL
 DAx4 work 2 fa 10 behavioral 22 EnaD@4]9_f9Ee]86?6z?=2
 R8
 R9
-Z23 DEx4 work 2 fa 0 22 6n[i]h6Lf94JmiUHjKPK92
-!i122 1
-Z24 w1681228559
+Z25 DEx4 work 2 fa 0 22 6n[i]h6Lf94JmiUHjKPK92
+!i122 52
+Z26 w1681228559
 R0
-Z25 8fa.vhd
-Z26 Ffa.vhd
+Z27 8fa.vhd
+Z28 Ffa.vhd
 l0
 L24 1
 VRC<IR6?^JKRmbh;K>De9A0
@@ -136,24 +136,24 @@ R12
 32
 R13
 !i10b 0
-R14
-R15
-R16
+Z29 !s108 1681732538.000000
+Z30 !s90 fa.vhd|
+Z31 !s107 fa.vhd|
 !i113 0
 R17
 Ccfg_rca_behavioral
 eRCA
-R22
+R24
 DAx4 work 3 rca 10 behavioral 22 8>lUO5e?4F7o<G4E1PELR2
 R19
 R8
 R9
-Z27 DEx4 work 3 rca 0 22 <@kPJWQ>K[Q^Inj0Td7`o2
-!i122 1
-Z28 w1681228420
+Z32 DEx4 work 3 rca 0 22 <@kPJWQ>K[Q^Inj0Td7`o2
+!i122 53
+Z33 w1681228420
 R0
-Z29 8rca.vhd
-Z30 Frca.vhd
+Z34 8rca.vhd
+Z35 Frca.vhd
 l0
 L70 1
 VGYU^h4@K>3PI5_:8UTLk31
@@ -163,25 +163,25 @@ R12
 R13
 !i10b 0
 R14
-R15
-R16
+Z36 !s90 rca.vhd|
+Z37 !s107 rca.vhd|
 !i113 0
 R17
 Ccfg_rca_structural
 eRCA
 aSTRUCTURAL
-R23
+R25
 DCx4 work 17 cfg_fa_behavioral 0 22 RC<IR6?^JKRmbh;K>De9A0
 DAx4 work 3 rca 10 structural 22 d[5X8GQiP^UUBi45SGHMT3
 R19
 R8
 R9
-R27
-!i122 1
-R28
+R32
+!i122 53
+R33
 R0
-R29
-R30
+R34
+R35
 l0
 L60 1
 VWnURfh@54eX@Jz3?WU9k42
@@ -191,12 +191,12 @@ R12
 R13
 !i10b 0
 R14
-R15
-R16
+R36
+R37
 !i113 0
 R17
 Pconstants
-!i122 1
+!i122 51
 w1681455292
 R0
 8constants.vhd
@@ -207,21 +207,21 @@ VR<0>S7``dDPG15H4DKEWV2
 !s100 05^C:RAXInjUDcIil8oPd0
 R12
 32
-R13
+!s110 1681732538
 !i10b 1
-R14
-R15
-R16
+R29
+!s90 constants.vhd|
+!s107 constants.vhd|
 !i113 0
 R17
 Efa
-R24
+R26
 R8
 R9
-!i122 1
+!i122 52
 R0
-R25
-R26
+R27
+R28
 l0
 L4 1
 V6n[i]h6Lf94JmiUHjKPK92
@@ -230,16 +230,16 @@ R12
 32
 R13
 !i10b 1
-R14
-R15
-R16
+R29
+R30
+R31
 !i113 0
 R17
 Abehavioral
 R8
 R9
-R23
-!i122 1
+R25
+!i122 52
 l16
 L14 9
 VEnaD@4]9_f9Ee]86?6z?=2
@@ -248,67 +248,67 @@ R12
 32
 R13
 !i10b 1
-R14
-R15
-R16
+R29
+R30
+R31
 !i113 0
 R17
 Emultiplier_tb
-Z31 w1681242296
+Z38 w1681732522
 R5
 R6
-R7
+Z39 DPx4 ieee 16 std_logic_signed 0 22 C<aanc0R`<LWPSe[JYRP^3
 R8
 R9
-!i122 1
+!i122 57
 R0
-Z32 8tb_multiplier.vhd
-Z33 Ftb_multiplier.vhd
+Z40 8tb_multiplier.vhd
+Z41 Ftb_multiplier.vhd
 l0
 L6 1
-VBT9dMCzOZ2zdLM?J7]T6E3
-!s100 L34=7bmVAc;3NEW50>QaO0
+VjI>6Q`FZ2nLa[I?OZdG^H3
+!s100 J<?G^oc9Az1X8Ikd5?]3Y1
 R12
 32
-R13
+Z42 !s110 1681732540
 !i10b 1
 R14
-R15
-R16
+Z43 !s90 tb_multiplier.vhd|
+Z44 !s107 tb_multiplier.vhd|
 !i113 0
 R17
 Atest
 R5
 R6
-R7
+R39
 R8
 R9
-DEx4 work 13 multiplier_tb 0 22 BT9dMCzOZ2zdLM?J7]T6E3
-!i122 1
+DEx4 work 13 multiplier_tb 0 22 jI>6Q`FZ2nLa[I?OZdG^H3
+!i122 57
 l31
-L9 48
-VeAfB]U6n]9[=i`DT>jP5o3
-!s100 :K56f3MB=;ZOI=L>101fh3
+L9 50
+VHA`KWC4;Z>@kM4PjNizbD3
+!s100 YgK?Pl>FAH`1o5OT^hIe<3
 R12
 32
-R13
+R42
 !i10b 1
 R14
-R15
-R16
+R43
+R44
 !i113 0
 R17
 Emux_5to1
-Z34 w1681244068
+Z45 w1681244068
 R5
 R6
 R7
 R8
 R9
-!i122 1
+!i122 54
 R0
-Z35 8b_mux.vhd
-Z36 Fb_mux.vhd
+Z46 8b_mux.vhd
+Z47 Fb_mux.vhd
 l0
 L6 1
 V[]o[cR^:mC@M>e:2?nDRS1
@@ -318,8 +318,8 @@ R12
 R13
 !i10b 1
 R14
-R15
-R16
+Z48 !s90 b_mux.vhd|
+Z49 !s107 b_mux.vhd|
 !i113 0
 R17
 Abehavioral
@@ -329,7 +329,7 @@ R7
 R8
 R9
 DEx4 work 8 mux_5to1 0 22 []o[cR^:mC@M>e:2?nDRS1
-!i122 1
+!i122 54
 l23
 L21 17
 VCSe_MDooZ@M7nOOUImDcY1
@@ -339,19 +339,19 @@ R12
 R13
 !i10b 1
 R14
-R15
-R16
+R48
+R49
 !i113 0
 R17
 Erca
-R28
+R33
 R19
 R8
 R9
-!i122 1
+!i122 53
 R0
-R29
-R30
+R34
+R35
 l0
 L5 1
 V<@kPJWQ>K[Q^Inj0Td7`o2
@@ -361,16 +361,16 @@ R12
 R13
 !i10b 1
 R14
-R15
-R16
+R36
+R37
 !i113 0
 R17
 Abehavioral
 R19
 R8
 R9
-R27
-!i122 1
+R32
+!i122 53
 l48
 L46 13
 V8>lUO5e?4F7o<G4E1PELR2
@@ -380,16 +380,16 @@ R12
 R13
 !i10b 1
 R14
-R15
-R16
+R36
+R37
 !i113 0
 R17
 Astructural
 R19
 R8
 R9
-R27
-!i122 1
+R32
+!i122 53
 l31
 L16 28
 Vd[5X8GQiP^UUBi45SGHMT3
@@ -399,7 +399,7 @@ R12
 R13
 !i10b 1
 R14
-R15
-R16
+R36
+R37
 !i113 0
 R17
