@@ -1,20 +1,20 @@
-LIBRARY ieee;
-USE ieee.std_logic_1164.ALL;
-USE ieee.numeric_std.ALL;
-USE work.constants.ALL;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use work.constants.all;
 
-ENTITY G_BLOCK IS
-	PORT (
-		G_left : IN STD_LOGIC;
-		P_left : IN STD_LOGIC;
-        G_right : IN STD_LOGIC;
+entity G_BLOCK is
+	port (
+		G_left  : in std_logic;
+		P_left  : in std_logic;
+        G_right : in std_logic;
 
-		G_out : OUT STD_LOGIC);
-END G_BLOCK;
+		G_out : out std_logic);
+end G_BLOCK;
 
-ARCHITECTURE BEHAVIORAL OF G_BLOCK IS
-BEGIN
+architecture BEHAVIORAL of G_BLOCK is
+begin
 
     G_out <= G_left OR (P_left AND G_right);
 
-END BEHAVIORAL;
+end BEHAVIORAL;

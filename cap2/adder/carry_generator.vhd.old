@@ -1,0 +1,122 @@
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.numeric_std.ALL;
+USE ieee.math_real.ALL;
+USE work.constants.ALL;
+
+ENTITY CARRY_GENERATOR IS
+	-- Generics changed to NBIT_PER_BLOCK and NBLOCKS to match the other TBs. 
+	GENERIC (
+		NBIT_PER_BLOCK : INTEGER := CARRY_SELECT_NBIT;
+		NBLOCKS : INTEGER := SUM_GENERATOR_NBLOCK);
+	PORT (
+		A : IN STD_LOGIC_VECTOR(NBIT_PER_BLOCK * NBLOCKS - 1 DOWNTO 0);
+		B : IN STD_LOGIC_VECTOR(NBIT_PER_BLOCK * NBLOCKS - 1 DOWNTO 0);
+		Cin : IN STD_LOGIC;
+		Co : OUT STD_LOGIC_VECTOR(NBLOCKS - 1 DOWNTO 0));
+END CARRY_GENERATOR;
+
+ARCHITECTURE STRUCTURAL OF CARRY_GENERATOR IS
+-- Structural description of the Carry Generator Block
+
+	-- Top PG Network
+	COMPONENT PG_NETWORK IS
+		GENERIC (
+			NBIT_PER_BLOCK : INTEGER := CARRY_SELECT_NBIT;
+			NBLOCKS : INTEGER := SUM_GENERATOR_NBLOCK);
+		PORT (
+			A : IN STD_LOGIC_VECTOR(NBIT_PER_BLOCK * NBLOCKS - 1 DOWNTO 0);
+			B : IN STD_LOGIC_VECTOR(NBIT_PER_BLOCK * NBLOCKS - 1 DOWNTO 0);
+			Cin : IN STD_LOGIC;
+			g : OUT STD_LOGIC_VECTOR(NBIT_PER_BLOCK * NBLOCKS DOWNTO 0);
+			p : OUT STD_LOGIC_VECTOR(NBIT_PER_BLOCK * NBLOCKS DOWNTO 0));
+	END COMPONENT;
+
+	-- G Block: General GENERATE
+	COMPONENT G_BLOCK IS
+		PORT (
+			G_left : IN STD_LOGIC;
+			P_left : IN STD_LOGIC;
+			G_right : IN STD_LOGIC;
+
+			G_out : OUT STD_LOGIC);
+	END COMPONENT;
+
+	-- PG Block: General PROPAGATE and General GENERATE
+	COMPONENT PG_BLOCK IS
+		PORT (
+			G_left : IN STD_LOGIC;
+			P_left : IN STD_LOGIC;
+			G_right : IN STD_LOGIC;
+			P_right : IN STD_LOGIC;
+
+			P_out : OUT STD_LOGIC;
+			G_out : OUT STD_LOGIC);
+	END COMPONENT;	
+
+  -- Carry output signals
+  -- co_signals(0) corresponds to C4 in the diagram
+  TYPE co_signals IS ARRAY (NBLOCKS-1 DOWNTO 0) OF STD_LOGIC_VECTOR(NBLOCKS-1 DOWNTO 0); 
+  TYPE g_left_signals IS ARRAY (NBLOCKS-1 DOWNTO 0) OF STD_LOGIC_VECTOR(NBLOCKS-1 DOWNTO 0); 
+
+  
+  -- level: between log2(NBIT) and 1 (level 1 takes inputs from the pg net)
+  -- index: between NBLOCKS-1 and 1
+  FUNCTION g_block_thing(level: integer, index: integer) RETURN NULL IS 
+  BEGIN
+    -- this condition ends the recursion
+    IF level > 1 THEN 
+      RETURN;
+    END IF;
+
+    G_BLOCK
+    PORT MAP (
+			G_left => 
+			P_left  => 
+
+      -- trick to obtain the previous index divisible by 4
+      G_right => co_signals(index - ceil((index + 1) % (2**(level-1) / NBIT_PER_BLOCK))),
+			G_out   => co_signals(index-1),
+    );
+
+    g_block_thing(level-1, index-1);
+
+    generate_block_pg(level-1, index-1);
+  END FUNCTION g_block_thing;
+
+	-- Arrays
+		-- TODO: WRITE arrays
+
+BEGIN
+-- Components Istantiation
+	pgn: PG_NETWORK
+	GENERIC MAP(CARRY_SELECT_NBIT, SUM_GENERATOR_NBLOCK)
+	PORT MAP(A, B, Cin, , ); -- TODO: FIX
+
+  -- ROW 1
+  row1: for i in 0 to NBIT/2-1 generate
+    g0: if i = 0 generate
+      G_BLOCK
+        port map (
+          G_left => pgn
+          P_left  => 
+
+          -- trick to obtain the previous index divisible by 4
+          G_right => co_signals(index - ceil((index + 1) % (2**(level-1) / NBIT_PER_BLOCK))),
+          G_out   => co_signals(index-1) )
+    end generate g0; 
+  end generate row1;
+
+---- TODO: WRITE generate...
+--  GENERATE i IN SUM_GENERATOR_NBLOCK*CARRY_SELECT_NBIT DOWNTO 0 LOOP
+--    G_BLOCK
+--    PORT MAP (
+--      G_left => 
+--        P_left =>
+--        G_right =>
+--        G_out => 
+--             )
+--  END LOOP;
+
+  
+END STRUCTURAL;

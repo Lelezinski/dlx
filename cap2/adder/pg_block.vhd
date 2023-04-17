@@ -7,7 +7,7 @@ ENTITY PG_BLOCK IS
 	PORT (
 		G_left : IN STD_LOGIC;
 		P_left : IN STD_LOGIC;
-        G_right : IN STD_LOGIC;
+    G_right : IN STD_LOGIC;
 		P_right : IN STD_LOGIC;
 
 		P_out : OUT STD_LOGIC;

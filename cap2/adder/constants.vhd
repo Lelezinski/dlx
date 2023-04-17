@@ -6,8 +6,8 @@ package CONSTANTS is
    constant NRDELAY : time := 0 ns; -- 0.2 ns;
    constant DRCAS : time := 0 ns; -- 1
    constant DRCAC : time := 0 ns; -- 2
-   constant numBit : integer := 4;
+   constant numBit : integer := 32 ;
    constant TP_MUX : time := 0 ns;
-   constant CARRY_SELECT_NBIT : integer := 4;
-   constant SUM_GENERATOR_NBLOCK : integer := 4;
+   constant CARRY_SELECT_NBIT : integer := 4; -- how many bits generate a carry
+   constant SUM_GENERATOR_NBLOCKS : integer := 8; -- numBit / CARRY_SELECT_NBIT
 end CONSTANTS;

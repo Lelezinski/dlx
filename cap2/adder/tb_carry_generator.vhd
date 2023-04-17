@@ -1,55 +1,56 @@
-LIBRARY ieee;
-USE ieee.std_logic_1164.ALL;
-USE ieee.std_logic_unsigned.ALL;
-USE work.constants.ALL;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+use work.constants.all;
 
-ENTITY TB_CARRY_GENERATOR IS
+entity TB_CARRY_GENERATOR is
 END TB_CARRY_GENERATOR;
 
 ARCHITECTURE TEST OF TB_CARRY_GENERATOR IS
-	COMPONENT CARRY_GENERATOR IS
-		-- Generics changed to NBIT_PER_BLOCK and NBLOCKS to match the other TBs. 
-		GENERIC (
-			NBIT_PER_BLOCK : INTEGER := CARRY_SELECT_NBIT;
-			NBLOCKS : INTEGER := SUM_GENERATOR_NBLOCK);
-		PORT (
-			A : IN STD_LOGIC_VECTOR(NBIT_PER_BLOCK * NBLOCKS - 1 DOWNTO 0);
-			B : IN STD_LOGIC_VECTOR(NBIT_PER_BLOCK * NBLOCKS - 1 DOWNTO 0);
-			Cin : IN STD_LOGIC;
-			Co : OUT STD_LOGIC_VECTOR(NBLOCKS - 1 DOWNTO 0));
-	END COMPONENT;
 
-	SIGNAL A_s, B_s, Co_s : STD_LOGIC_VECTOR(CARRY_SELECT_NBIT * SUM_GENERATOR_NBLOCK - 1 DOWNTO 0);
-	SIGNAL Cin_s : STD_LOGIC;
+    component CARRY_GENERATOR is
+        generic (
+            NBIT :          integer := numBit; -- numBit
+            NBIT_PER_BLOCK: integer := CARRY_SELECT_NBIT); -- CARRY_SELECT_NBIT
+        port (
+            A :     in  std_logic_vector(NBIT-1 downto 0);
+            B :     in  std_logic_vector(NBIT-1 downto 0);
+            Cin :   in  std_logic;
+            Co :    out std_logic_vector((NBIT/NBIT_PER_BLOCK)-1 downto 0));
+    end component;
+
+	signal A_s, B_s: std_logic_vector(numBit - 1 DOWNTO 0);
+    signal Co_s: std_logic_vector((numBit/CARRY_SELECT_NBIT) - 1 DOWNTO 0);
+	signal Ci_s : std_logic;
 
 BEGIN
 
 	dut : CARRY_GENERATOR
-	GENERIC MAP(CARRY_SELECT_NBIT, SUM_GENERATOR_NBLOCK)
-	PORT MAP(A_s, B_s, Cin_s, Co_s);
+	GENERIC MAP(numBit, CARRY_SELECT_NBIT)
+	PORT MAP(A => A_s, B => B_s, Cin => Ci_s, Co => Co_s);
 
 	testVector : PROCESS
 	BEGIN
-		A_s <= "0010101010101010";
-		B_s <= "0101011101010101";
+		A_s <= "10101010101010101010101010101010";
+		B_s <= "01010101010101010101010101010101";
 		Ci_s <= '0';
 
 		WAIT FOR 20 NS;
 
-		A_s <= "0000000000000010";
-		B_s <= "0101011101010101";
+		A_s <= "00000000000000000000000000000010";
+		B_s <= "01010111010101010101011101010101";
 		Ci_s <= '0';
 
 		WAIT FOR 20 NS;
 
-		A_s <= "0000111111111111";
-		B_s <= "0000000000000001";
+		A_s <= "00001111111111110000111111111111";
+		B_s <= "00000000000000010000000000000001";
 		Ci_s <= '1';
 
 		WAIT FOR 20 NS;
 
-		A_s <= "0000000000000000";
-		B_s <= "0000000000000001";
+		A_s <= "00000000000000000000000000000000";
+		B_s <= "00000000000000010000000000000001";
 		Ci_s <= '1';
 
 		WAIT;

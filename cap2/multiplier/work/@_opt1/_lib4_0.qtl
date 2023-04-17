@@ -1,0 +1,648 @@
+MODEL_TECH/..}
+R13
+Bbody
+DPx4 work 12 vital_memory 0 22 kaZ<]i`[HA8G2D_^LjE>g0
+R112
+R113
+R21
+R20
+31
+R114
+!i10b 1
+R3
+!i122 23
+8vhdl_src/vital2000/memory_b_2000.vhd
+Fvhdl_src/vital2000/memory_b_2000.vhd
+l0
+L239 1
+VkaNX_m[=oB^B^InB7`L4L1
+!s100 kaNX_m[=oB^B^InB7`L4L1
+R8
+R116
+!s90 -debuglib|-suppress|12110|-93|-work|ieee|-novital|-dirpath|$MODEL_TECH/..|vhdl_src/vital2000/memory_b_2000.vhd|
+!s107 vhdl_src/vital2000/memory_b_2000.vhd|
+!i113 1
+R117
+R13
+Pvital_primitives
+R113
+R21
+R20
+31
+b1
+!s110 1602644351
+!i10b 1
+R3
+b1
+!i122 21
+R115
+R5
+8vhdl_src/vital2000/prmtvs_p_2000.vhd
+Fvhdl_src/vital2000/prmtvs_p_2000.vhd
+l0
+L50 1
+VG>kiXP8Q9dRClKfK1Zn7j1
+!s100 G>kiXP8Q9dRClKfK1Zn7j1
+R8
+b1
+Z118 !s108 1602644350.000000
+!s90 -debuglib|-suppress|12110|-93|-work|ieee|-novital|-dirpath|$MODEL_TECH/..|vhdl_src/vital2000/prmtvs_p_2000.vhd|
+!s107 vhdl_src/vital2000/prmtvs_p_2000.vhd|
+!i113 1
+R117
+R13
+Bbody
+DPx4 work 16 vital_primitives 0 22 G>kiXP8Q9dRClKfK1Zn7j1
+R113
+R21
+R20
+31
+R114
+!i10b 1
+R3
+!i122 22
+8vhdl_src/vital2000/prmtvs_b_2000.vhd
+Fvhdl_src/vital2000/prmtvs_b_2000.vhd
+l0
+L33 1
+VL8@OL8nfVkLF;7TL8_DPa1
+!s100 L8@OL8nfVkLF;7TL8_DPa1
+R8
+!s108 1602644351.000000
+!s90 -debuglib|-suppress|12110|-93|-work|ieee|-novital|-dirpath|$MODEL_TECH/..|vhdl_src/vital2000/prmtvs_b_2000.vhd|
+!s107 vhdl_src/vital2000/prmtvs_b_2000.vhd|
+!i113 1
+R117
+R13
+Pvital_timing
+R21
+R20
+31
+b1
+Z119 !s110 1602644350
+!i10b 1
+R3
+b1
+!i122 20
+R115
+R5
+8vhdl_src/vital2000/timing_p_2000.vhd
+Fvhdl_src/vital2000/timing_p_2000.vhd
+l0
+R103
+VJ>EBealN09f8GzldA[z2>3
+!s100 J>EBealN09f8GzldA[z2>3
+R8
+b1
+R100
+!s90 -debuglib|-suppress|12110|-93|-work|ieee|-novital|-dirpath|$MODEL_TECH/..|vhdl_src/vital2000/timing_p_2000.vhd|
+!s107 vhdl_src/vital2000/timing_p_2000.vhd|
+!i113 1
+R117
+R13
+Bbody
+DPx4 work 12 vital_timing 0 22 J>EBealN09f8GzldA[z2>3
+R21
+R20
+31
+R119
+!i10b 1
+R3
+!i122 21
+8vhdl_src/vital2000/timing_b_2000.vhd
+Fvhdl_src/vital2000/timing_b_2000.vhd
+l0
+R22
+VKEim8d[eJ5dE^:mEG0P3S0
+!s100 KEim8d[eJ5dE^:mEG0P3S0
+R8
+R118
+!s90 -debuglib|-suppress|12110|-93|-work|ieee|-novital|-dirpath|$MODEL_TECH/..|vhdl_src/vital2000/timing_b_2000.vhd|
+!s107 vhdl_src/vital2000/timing_b_2000.vhd|
+!i113 1
+R117
+R13
+m255
+K4
+z2
+!s8c locked
+!s11e vcom 2020.4 2020.10, Oct 13 2020
+!s95 MTI
+cModel Technology Builtin Library
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+d/bata/rhino/buildsites/2020.p/builds/linux/modeltech
+Penv
+32
+b1
+Z0 !s110 1602644280
+!i10b 1
+Z1 OL;C;2020.4;71
+b1
+!i122 1
+Z2 w1602644128
+Z3 d$MODEL_TECH/..
+Z4 8vhdl_src/std/env.vhd
+Z5 Fvhdl_src/std/env.vhd
+l0
+L1 1
+Vd?`1ck@NdeD@H3RZG7FgZ2
+!s100 d?`1ck@NdeD@H3RZG7FgZ2
+Z6 OE;C;2020.4;71
+b1
+Z7 !s108 1602644280.000000
+Z8 !s90 -debuglib|-suppress|12110|-work|std|-dirpath|$MODEL_TECH/..|vhdl_src/std/env.vhd|
+Z9 !s107 vhdl_src/std/env.vhd|
+!i113 1
+Z10 o-suppress 12110 -debuglib -work std -dirpath {$MODEL_TECH/..}
+Z11 tExplicit 1 CvgOpt 0
+Bbody
+DPx4 work 3 env 0 22 d?`1ck@NdeD@H3RZG7FgZ2
+32
+R0
+!i10b 1
+R1
+!i122 1
+l0
+L15 1
+VGO=IeNa]6JLe2BRN4G<kA2
+!s100 GO=IeNa]6JLe2BRN4G<kA2
+R6
+R7
+R8
+R9
+!i113 1
+R10
+R11
+Pstandard
+33
+R0
+!i10b 1
+R1
+!i122 0
+R2
+R3
+8vhdl_src/std/standard.vhd
+Fvhdl_src/std/standard.vhd
+l0
+L8 1
+VofRa6alAEoSE^5WcJ^O]C2
+!s100 ofRa6alAEoSE^5WcJ^O]C2
+R6
+!s108 1602644279.000000
+!s90 -debuglib|-suppress|12110|-s|-2008|-work|std|-dirpath|$MODEL_TECH/..|vhdl_src/std/standard.vhd|
+!s107 vhdl_src/std/standard.vhd|
+!i113 1
+o-suppress 12110 -debuglib -s -2008 -work std -dirpath {$MODEL_TECH/..}
+R11
+Ptextio
+33
+b1
+R0
+!i10b 1
+R1
+b1
+!i122 2
+Z12 w1578762055
+R3
+Z13 8vhdl_src/std/textio.vhd
+Z14 Fvhdl_src/std/textio.vhd
+l0
+L1 1
+VzE1`LPoLg^DX3Oz^4Fj1K3
+!s100 zE1`LPoLg^DX3Oz^4Fj1K3
+R6
+b1
+R7
+Z15 !s90 -debuglib|-suppress|12110|-2008|-work|std|-dirpath|$MODEL_TECH/..|vhdl_src/std/textio.vhd|
+Z16 !s107 vhdl_src/std/textio.vhd|
+!i113 1
+Z17 o-suppress 12110 -debuglib -2008 -work std -dirpath {$MODEL_TECH/..}
+R11
+Bbody
+DPx4 work 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+33
+R0
+!i10b 1
+R1
+!i122 2
+l0
+L186 1
+VOBFf4Pj<FG4ZXfzD:k]VN1
+!s100 OBFf4Pj<FG4ZXfzD:k]VN1
+R6
+R7
+R15
+R16
+!i113 1
+R17
+R11
+m255
+K4
+z2
+!s11e vcom 2020.4 2020.10, Oct 13 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/ms23.52/MS/cap2/multiplier
+T_opt
+!s110 1681244759
+V>Ma^3NC]HIU51^L<N8FOI1
+Z1 04 13 4 work multiplier_tb test 1
+=1-5254009c17d7-6435c257-1311-1f69
+o-quiet -auto_acc_if_foreign -work work
+Z2 tCvgOpt 0
+n@_opt
+Z3 OL;O;2020.4;71
+R0
+T_opt1
+!s110 1681455341
+V?F2RgQM]cP0L]?NkadBo?3
+R1
+=2-5254009c17d7-6438f8ec-82ebe-28bc
+o-quiet -auto_acc_if_foreign -work work +acc
+R2
+n@_opt1
+R3
+Ebe_block
+Z4 w1681237096
+Z5 DPx4 work 9 constants 0 22 R<0>S7``dDPG15H4DKEWV2
+Z6 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z7 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z8 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z9 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 1
+R0
+Z10 8be_block.vhd
+Z11 Fbe_block.vhd
+l0
+L6 1
+ViW6WP@PCZO6gm54O13_Ei3
+!s100 O:kBWC7H>O0enO]QlejFX2
+Z12 OL;C;2020.4;71
+32
+Z13 !s110 1681455331
+!i10b 1
+Z14 !s108 1681455331.000000
+Z15 !s90 constants.vhd|be_block.vhd|b_mux.vhd|fa.vhd|rca.vhd|boothmul.vhd|tb_multiplier.vhd|
+Z16 !s107 tb_multiplier.vhd|boothmul.vhd|rca.vhd|fa.vhd|b_mux.vhd|be_block.vhd|constants.vhd|
+!i113 0
+Z17 tExplicit 1 CvgOpt 0
+Abehavioral
+R5
+R6
+R7
+R8
+R9
+DEx4 work 8 be_block 0 22 iW6WP@PCZO6gm54O13_Ei3
+!i122 1
+l15
+L13 11
+VQ14_549N85]agD1_Nk12S0
+!s100 P@DG2ZoaK?6aV^<W;l^Lb3
+R12
+32
+R13
+!i10b 1
+R14
+R15
+R16
+!i113 0
+R17
+Eboothmul
+Z18 w1681245139
+R5
+Z19 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+R8
+R9
+!i122 1
+R0
+Z20 8boothmul.vhd
+Z21 Fboothmul.vhd
+l0
+L6 1
+VlPM:]Aa]k3>Pk7i_;3C]B3
+!s100 l>I_Y5o:KRM9bAaKc3<Om0
+R12
+32
+R13
+!i10b 1
+R14
+R15
+R16
+!i113 0
+R17
+Amixed
+R5
+R19
+R8
+R9
+DEx4 work 8 boothmul 0 22 lPM:]Aa]k3>Pk7i_;3C]B3
+!i122 1
+l73
+L17 152
+VX_WWUgYFMk:D=OI^2m7Se1
+!s100 E:>1W8^Ko1?>00d7G]HnJ3
+R12
+32
+R13
+!i10b 1
+R14
+R15
+R16
+!i113 0
+R17
+Ccfg_fa_behavioral
+eFA
+Z22 aBEHAVIORAL
+DAx4 work 2 fa 10 behavioral 22 EnaD@4]9_f9Ee]86?6z?=2
+R8
+R9
+Z23 DEx4 work 2 fa 0 22 6n[i]h6Lf94JmiUHjKPK92
+!i122 1
+Z24 w1681228559
+R0
+Z25 8fa.vhd
+Z26 Ffa.vhd
+l0
+L24 1
+VRC<IR6?^JKRmbh;K>De9A0
+!s100 ;fLgj2F5I1BR>Vc^?i^<S3
+R12
+32
+R13
+!i10b 0
+R14
+R15
+R16
+!i113 0
+R17
+Ccfg_rca_behavioral
+eRCA
+R22
+DAx4 work 3 rca 10 behavioral 22 8>lUO5e?4F7o<G4E1PELR2
+R19
+R8
+R9
+Z27 DEx4 work 3 rca 0 22 <@kPJWQ>K[Q^Inj0Td7`o2
+!i122 1
+Z28 w1681228420
+R0
+Z29 8rca.vhd
+Z30 Frca.vhd
+l0
+L70 1
+VGYU^h4@K>3PI5_:8UTLk31
+!s100 9J^1?UPjKQXToIGOhHN_l1
+R12
+32
+R13
+!i10b 0
+R14
+R15
+R16
+!i113 0
+R17
+Ccfg_rca_structural
+eRCA
+aSTRUCTURAL
+R23
+DCx4 work 17 cfg_fa_behavioral 0 22 RC<IR6?^JKRmbh;K>De9A0
+DAx4 work 3 rca 10 structural 22 d[5X8GQiP^UUBi45SGHMT3
+R19
+R8
+R9
+R27
+!i122 1
+R28
+R0
+R29
+R30
+l0
+L60 1
+VWnURfh@54eX@Jz3?WU9k42
+!s100 `A5J_F]HH_UbfX<G45^c03
+R12
+32
+R13
+!i10b 0
+R14
+R15
+R16
+!i113 0
+R17
+Pconstants
+!i122 1
+w1681455292
+R0
+8constants.vhd
+Fconstants.vhd
+l0
+L1 1
+VR<0>S7``dDPG15H4DKEWV2
+!s100 05^C:RAXInjUDcIil8oPd0
+R12
+32
+R13
+!i10b 1
+R14
+R15
+R16
+!i113 0
+R17
+Efa
+R24
+R8
+R9
+!i122 1
+R0
+R25
+R26
+l0
+L4 1
+V6n[i]h6Lf94JmiUHjKPK92
+!s100 R@78Q9B;RU?BKW[d:f7WA2
+R12
+32
+R13
+!i10b 1
+R14
+R15
+R16
+!i113 0
+R17
+Abehavioral
+R8
+R9
+R23
+!i122 1
+l16
+L14 9
+VEnaD@4]9_f9Ee]86?6z?=2
+!s100 DMi>BZZVj6i=_GX:XX[z53
+R12
+32
+R13
+!i10b 1
+R14
+R15
+R16
+!i113 0
+R17
+Emultiplier_tb
+Z31 w1681242296
+R5
+R6
+R7
+R8
+R9
+!i122 1
+R0
+Z32 8tb_multiplier.vhd
+Z33 Ftb_multiplier.vhd
+l0
+L6 1
+VBT9dMCzOZ2zdLM?J7]T6E3
+!s100 L34=7bmVAc;3NEW50>QaO0
+R12
+32
+R13
+!i10b 1
+R14
+R15
+R16
+!i113 0
+R17
+Atest
+R5
+R6
+R7
+R8
+R9
+DEx4 work 13 multiplier_tb 0 22 BT9dMCzOZ2zdLM?J7]T6E3
+!i122 1
+l31
+L9 48
+VeAfB]U6n]9[=i`DT>jP5o3
+!s100 :K56f3MB=;ZOI=L>101fh3
+R12
+32
+R13
+!i10b 1
+R14
+R15
+R16
+!i113 0
+R17
+Emux_5to1
+Z34 w1681244068
+R5
+R6
+R7
+R8
+R9
+!i122 1
+R0
+Z35 8b_mux.vhd
+Z36 Fb_mux.vhd
+l0
+L6 1
+V[]o[cR^:mC@M>e:2?nDRS1
+!s100 TAB;__T]Zc:BEh:33L;1@3
+R12
+32
+R13
+!i10b 1
+R14
+R15
+R16
+!i113 0
+R17
+Abehavioral
+R5
+R6
+R7
+R8
+R9
+DEx4 work 8 mux_5to1 0 22 []o[cR^:mC@M>e:2?nDRS1
+!i122 1
+l23
+L21 17
+VCSe_MDooZ@M7nOOUImDcY1
+!s100 fPWRA7cD`3GFUL[m2hFE;3
+R12
+32
+R13
+!i10b 1
+R14
+R15
+R16
+!i113 0
+R17
+Erca
+R28
+R19
+R8
+R9
+!i122 1
+R0
+R29
+R30
+l0
+L5 1
+V<@kPJWQ>K[Q^Inj0Td7`o2
+!s100 eB39W[_<CFWT5GW6Y5QDZ2
+R12
+32
+R13
+!i10b 1
+R14
+R15
+R16
+!i113 0
+R17
+Abehavioral
+R19
+R8
+R9
+R27
+!i122 1
+l48
+L46 13
+V8>lUO5e?4F7o<G4E1PELR2
+!s100 h=jhnR7R39Fm[Y48i1LeM1
+R12
+32
+R13
+!i10b 1
+R14
+R15
+R16
+!i113 0
+R17
+Astructural
+R19
+R8
+R9
+R27
+!i122 1
+l31
+L16 28
+Vd[5X8GQiP^UUBi45SGHMT3
+!s100 lTGCeS0HeOF8MZ;]SQD<B2
+R12
+32
+R13
+!i10b 1
+R14
+R15
+R16
+!i113 0
+R17
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                

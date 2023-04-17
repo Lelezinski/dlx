@@ -3,11 +3,11 @@
 # analyzing and checking vhdl netlist#
 # here the analyze command is used for each file from bottom to top #
 ##############################################################
-analyze -library WORK -format vhdl {constants.vhd}
-analyze -library WORK -format vhdl {fa.vhd}
+# analyze -library WORK -format vhdl {constants.vhd}
+# analyze -library WORK -format vhdl {rca.vhd}
 # fill these lines with your files ...
-analyze -library WORK -format vhdl {   }
-analyze -library WORK -format vhdl {   }
+# ck.vhd  b_mux.vhd  boothmul.vhd  constants.vhd  MUL_t.scr  tb_multiplier.vhd
+analyze -library WORK -format vhdl { constants.vhd rca.vha ba_block.vhd b_mux.vhd boothmul.vhd tb_multiplier.vhd }
 ##############################################################
 # elaborating the top entity -- here supposed BOOTHMUL#
 # choose the architecture you want
