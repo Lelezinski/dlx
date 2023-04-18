@@ -23,6 +23,6 @@ compile -map_effort high
 report_timing > rca_timeopt_2t.rpt
 report_area > rca_timeopt_2a.rpt
 # saving files
-write -hierarchy -format ddc -output BOOTHMUL-structural-topt.ddc
-write -hierarchy -format vhdl -output BOOTHMUL-structural-topt.vhdl
-write -hierarchy -format verilog -output BOOTHMUL-structural-topt.v
+write -hierarchy -format ddc -output BOOTHMUL-8-structural-topt.ddc
+write -hierarchy -format vhdl -output BOOTHMUL-8-structural-topt.vhdl
+write -hierarchy -format verilog -output BOOTHMUL-8-structural-topt.v

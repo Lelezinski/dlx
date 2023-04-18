@@ -7,14 +7,14 @@ Report : timing
         -max_paths 1
 Design : BOOTHMUL
 Version: S-2021.06-SP4
-Date   : Mon Apr 17 19:02:36 2023
+Date   : Tue Apr 18 18:47:53 2023
 ****************************************
 
 Operating Conditions: typical   Library: NangateOpenCellLibrary
 Wire Load Model Mode: top
 
   Startpoint: B[1] (input port)
-  Endpoint: P[7] (output port)
+  Endpoint: P[15] (output port)
   Path Group: default
   Path Type: max
 
@@ -26,50 +26,95 @@ Wire Load Model Mode: top
   -----------------------------------------------------------
   input external delay                     0.00       0.00 r
   B[1] (in)                                0.00       0.00 r
-  eb_1/b[0] (BE_BLOCK_1)                   0.00       0.00 r
-  eb_1/U3/ZN (OR2_X1)                      0.04       0.04 r
-  eb_1/U4/ZN (NAND2_X1)                    0.03       0.06 f
-  eb_1/U5/ZN (OAI22_X1)                    0.06       0.12 r
-  eb_1/sel[1] (BE_BLOCK_1)                 0.00       0.12 r
-  mux_1/sel[1] (MUX_5TO1_NBIT8_1)          0.00       0.12 r
-  mux_1/U13/Z (BUF_X1)                     0.05       0.16 r
-  mux_1/U15/ZN (NAND2_X1)                  0.03       0.19 f
-  mux_1/U7/Z (MUX2_X1)                     0.06       0.25 f
-  mux_1/U25/ZN (AND2_X1)                   0.04       0.29 f
-  mux_1/U52/ZN (NAND2_X1)                  0.03       0.32 r
-  mux_1/O[3] (MUX_5TO1_NBIT8_1)            0.00       0.32 r
-  sum_1/B[3] (RCA_NBIT8)                   0.00       0.32 r
-  sum_1/FAI_4/B (FA_5)                     0.00       0.32 r
-  sum_1/FAI_4/U3/ZN (XNOR2_X1)             0.06       0.39 r
-  sum_1/FAI_4/U5/ZN (OAI21_X1)             0.04       0.42 f
-  sum_1/FAI_4/Co (FA_5)                    0.00       0.42 f
-  sum_1/FAI_5/Ci (FA_4)                    0.00       0.42 f
-  sum_1/FAI_5/U1/ZN (AOI22_X1)             0.06       0.48 r
-  sum_1/FAI_5/U2/ZN (INV_X1)               0.02       0.50 f
-  sum_1/FAI_5/Co (FA_4)                    0.00       0.50 f
-  sum_1/FAI_6/Ci (FA_3)                    0.00       0.50 f
-  sum_1/FAI_6/U4/ZN (INV_X1)               0.03       0.53 r
-  sum_1/FAI_6/U6/ZN (OAI21_X1)             0.03       0.56 f
-  sum_1/FAI_6/Co (FA_3)                    0.00       0.56 f
-  sum_1/FAI_7/Ci (FA_2)                    0.00       0.56 f
-  sum_1/FAI_7/U5/ZN (INV_X1)               0.03       0.59 r
-  sum_1/FAI_7/U4/ZN (OAI21_X1)             0.03       0.62 f
-  sum_1/FAI_7/Co (FA_2)                    0.00       0.62 f
-  sum_1/FAI_8/Ci (FA_1)                    0.00       0.62 f
-  sum_1/FAI_8/U3/Z (XOR2_X1)               0.07       0.69 f
-  sum_1/FAI_8/S (FA_1)                     0.00       0.69 f
-  sum_1/S[7] (RCA_NBIT8)                   0.00       0.69 f
-  P[7] (out)                               0.00       0.69 f
-  data arrival time                                   0.69
+  eb_0/b[2] (BE_BLOCK_0)                   0.00       0.00 r
+  eb_0/U4/ZN (XNOR2_X1)                    0.04       0.04 f
+  eb_0/U3/ZN (AOI21_X2)                    0.06       0.11 r
+  eb_0/sel[1] (BE_BLOCK_0)                 0.00       0.11 r
+  mux_0/sel[1] (MUX_5TO1_NBIT16_0)         0.00       0.11 r
+  mux_0/U8/ZN (INV_X1)                     0.03       0.14 f
+  mux_0/U6/ZN (AOI22_X1)                   0.05       0.19 r
+  mux_0/U2/ZN (OAI211_X1)                  0.04       0.23 f
+  mux_0/O[2] (MUX_5TO1_NBIT16_0)           0.00       0.23 f
+  sum_1/A[2] (RCA_NBIT16_0)                0.00       0.23 f
+  sum_1/FAI_3/A (FA_46)                    0.00       0.23 f
+  sum_1/FAI_3/U3/ZN (INV_X1)               0.04       0.26 r
+  sum_1/FAI_3/U1/ZN (OAI22_X1)             0.04       0.30 f
+  sum_1/FAI_3/Co (FA_46)                   0.00       0.30 f
+  sum_1/FAI_4/Ci (FA_45)                   0.00       0.30 f
+  sum_1/FAI_4/U1/ZN (AOI21_X1)             0.06       0.36 r
+  sum_1/FAI_4/U2/ZN (NOR2_X1)              0.03       0.38 f
+  sum_1/FAI_4/Co (FA_45)                   0.00       0.38 f
+  sum_1/FAI_5/Ci (FA_44)                   0.00       0.38 f
+  sum_1/FAI_5/U4/ZN (INV_X1)               0.03       0.41 r
+  sum_1/FAI_5/U1/ZN (AOI21_X1)             0.03       0.44 f
+  sum_1/FAI_5/Co (FA_44)                   0.00       0.44 f
+  sum_1/FAI_6/Ci (FA_43)                   0.00       0.44 f
+  sum_1/FAI_6/U1/ZN (OAI22_X1)             0.05       0.49 r
+  sum_1/FAI_6/U2/ZN (INV_X1)               0.03       0.52 f
+  sum_1/FAI_6/Co (FA_43)                   0.00       0.52 f
+  sum_1/FAI_7/Ci (FA_42)                   0.00       0.52 f
+  sum_1/FAI_7/U1/ZN (OAI22_X1)             0.05       0.58 r
+  sum_1/FAI_7/U2/ZN (INV_X1)               0.03       0.60 f
+  sum_1/FAI_7/Co (FA_42)                   0.00       0.60 f
+  sum_1/FAI_8/Ci (FA_41)                   0.00       0.60 f
+  sum_1/FAI_8/U1/ZN (AOI21_X1)             0.04       0.65 r
+  sum_1/FAI_8/U2/ZN (INV_X1)               0.03       0.67 f
+  sum_1/FAI_8/Co (FA_41)                   0.00       0.67 f
+  sum_1/FAI_9/Ci (FA_40)                   0.00       0.67 f
+  sum_1/FAI_9/U1/ZN (AOI21_X1)             0.04       0.71 r
+  sum_1/FAI_9/U2/ZN (INV_X1)               0.03       0.74 f
+  sum_1/FAI_9/Co (FA_40)                   0.00       0.74 f
+  sum_1/FAI_10/Ci (FA_39)                  0.00       0.74 f
+  sum_1/FAI_10/U1/ZN (AOI21_X1)            0.04       0.78 r
+  sum_1/FAI_10/U2/ZN (INV_X1)              0.03       0.81 f
+  sum_1/FAI_10/Co (FA_39)                  0.00       0.81 f
+  sum_1/FAI_11/Ci (FA_38)                  0.00       0.81 f
+  sum_1/FAI_11/U1/ZN (OAI22_X1)            0.04       0.85 r
+  sum_1/FAI_11/U2/ZN (INV_X1)              0.03       0.88 f
+  sum_1/FAI_11/Co (FA_38)                  0.00       0.88 f
+  sum_1/FAI_12/Ci (FA_37)                  0.00       0.88 f
+  sum_1/FAI_12/U1/ZN (AOI21_X1)            0.04       0.92 r
+  sum_1/FAI_12/U2/ZN (INV_X1)              0.03       0.95 f
+  sum_1/FAI_12/Co (FA_37)                  0.00       0.95 f
+  sum_1/FAI_13/Ci (FA_36)                  0.00       0.95 f
+  sum_1/FAI_13/U2/ZN (OAI22_X1)            0.04       0.99 r
+  sum_1/FAI_13/U5/ZN (INV_X1)              0.03       1.02 f
+  sum_1/FAI_13/Co (FA_36)                  0.00       1.02 f
+  sum_1/FAI_14/Ci (FA_35)                  0.00       1.02 f
+  sum_1/FAI_14/U3/ZN (OAI22_X1)            0.04       1.06 r
+  sum_1/FAI_14/U4/ZN (INV_X1)              0.03       1.09 f
+  sum_1/FAI_14/Co (FA_35)                  0.00       1.09 f
+  sum_1/FAI_15/Ci (FA_34)                  0.00       1.09 f
+  sum_1/FAI_15/U4/ZN (OAI22_X1)            0.04       1.13 r
+  sum_1/FAI_15/U5/ZN (INV_X1)              0.03       1.16 f
+  sum_1/FAI_15/Co (FA_34)                  0.00       1.16 f
+  sum_1/FAI_16/Ci (FA_33)                  0.00       1.16 f
+  sum_1/FAI_16/U5/Z (XOR2_X1)              0.07       1.23 f
+  sum_1/FAI_16/S (FA_33)                   0.00       1.23 f
+  sum_1/S[15] (RCA_NBIT16_0)               0.00       1.23 f
+  sum_2/B[15] (RCA_NBIT16_2)               0.00       1.23 f
+  sum_2/FAI_16/B (FA_17)                   0.00       1.23 f
+  sum_2/FAI_16/U2/ZN (XNOR2_X1)            0.05       1.28 r
+  sum_2/FAI_16/U1/ZN (XNOR2_X1)            0.06       1.34 r
+  sum_2/FAI_16/S (FA_17)                   0.00       1.34 r
+  sum_2/S[15] (RCA_NBIT16_2)               0.00       1.34 r
+  sum_3/B[15] (RCA_NBIT16_1)               0.00       1.34 r
+  sum_3/FAI_16/B (FA_1)                    0.00       1.34 r
+  sum_3/FAI_16/U2/ZN (XNOR2_X1)            0.06       1.41 r
+  sum_3/FAI_16/U1/ZN (XNOR2_X1)            0.06       1.46 r
+  sum_3/FAI_16/S (FA_1)                    0.00       1.46 r
+  sum_3/S[15] (RCA_NBIT16_1)               0.00       1.46 r
+  P[15] (out)                              0.00       1.47 r
+  data arrival time                                   1.47
 
   max_delay                                0.70       0.70
   output external delay                    0.00       0.70
   data required time                                  0.70
   -----------------------------------------------------------
   data required time                                  0.70
-  data arrival time                                  -0.69
+  data arrival time                                  -1.47
   -----------------------------------------------------------
-  slack (MET)                                         0.01
+  slack (VIOLATED)                                   -0.77
 
 
 1

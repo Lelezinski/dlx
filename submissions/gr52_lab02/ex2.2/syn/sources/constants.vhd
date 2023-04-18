@@ -11,5 +11,5 @@ package CONSTANTS is
 
    -- NUMBIT
    constant numBit : integer := 8;
-   constant NUMBIT_MUL : integer := 8;
+   constant NUMBIT_MUL : integer := 32;
 end CONSTANTS;

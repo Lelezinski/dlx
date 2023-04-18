@@ -16,7 +16,7 @@ report_area > rca32_timeopt_1a.rpt
 # to each of th eoutput, that is a delay lower than the one found after
 # the first compilation step #
 # often this is the working clock period of your system #
-set_max_delay 3.27 -from [all_inputs] -to [all_outputs]
+set_max_delay 6.67 -from [all_inputs] -to [all_outputs]
 # optimize
 compile -map_effort high
 # save report

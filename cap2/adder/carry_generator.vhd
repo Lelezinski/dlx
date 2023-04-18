@@ -149,6 +149,13 @@ BEGIN
         end generate gen4;
     end generate row2;
 	
+        -- // numero del gruppo
+        -- n_gruppo = ceilf((float)(j)/(float)powf(2, i-3));
+        -- g_right_blocco_pg = (int)((float)(2*n_gruppo - 1) * powf(2, i-2));
+
+        -- // numero da 1 a 4 nel gruppo
+        -- n_gruppo = (int)((j-1) % (int)powf(2, i-3)) + 1;
+
 	-- ROWS 3 TO NSTAGE
 	constant k: integer:= NBIT/8;
 	rown: for i in 3 to NSTAGE generate
@@ -156,23 +163,33 @@ BEGIN
 			g3: if j <= 2**(i - 3) generate
 				g: G_BLOCK
 				port map (
-					G_left  => internal_g_outputs(i - 1, 2),
-					P_left  => internal_p_outputs(i - 1, 2),
+					G_left  => internal_g_outputs(2 + integer(ceil(log2(real(j)))), 2**(i-2) + 2*j),
+					P_left  => internal_p_outputs(2 + integer(ceil(log2(real(j)))), 2**(i-2) + 2*j),
 					G_right => internal_g_outputs(i - 1, 2**(i - 2))
 
-					G_out   => internal_g_outputs(i, 2) 
-				);				
+					G_out   => internal_g_outputs(i, 2**(i-2) + 2*j) 
+				);
 			end generate g3;
 			g4: if j > 2**(i-3) generate
 				p: PG_BLOCK
 				port map (
-					G_right => internal_g_outputs(1, i*2-1),
-					P_right => internal_p_outputs(1, i*2-1),
-					G_left  => internal_g_outputs(1, i*2),
-					P_left  => internal_p_outputs(1, i*2),
+					G_left => internal_g_outputs(
+                        2 + integer(ceil(log2(real((((j - 1) % 2**(i - 3)) + 1))))),
+                        ( 2 * (integer(ceil(j / 2**(i - 3)))) - 1) * 2**(i - 2) + 2 * (((j - 1) % 2**(i - 3)) + 1)
+                    ) ,
+					P_left => internal_p_outputs(
+                        2 + integer(ceil(log2(real((((j - 1) % 2**(i - 3)) + 1))))),
+                        ( 2 * (integer(ceil(j / 2**(i - 3)))) - 1) * 2**(i - 2) + 2 * (((j - 1) % 2**(i - 3)) + 1)
+                    ),
+					G_right  => internal_g_outputs(i - 1, ( 2 * (integer(ceil(j / 2**(i - 3)))) - 1) * 2**(i - 2)),
+					P_right  => internal_p_outputs(i - 1, ( 2 * (integer(ceil(j / 2**(i - 3)))) - 1) * 2**(i - 2)),
 
-					G_out   => internal_g_outputs(2, i*2),
-					P_out   => internal_p_outputs(2, i*2) 
+					G_out   => internal_g_outputs(i, 
+                        ( 2 * (integer(ceil(j / 2**(i - 3)))) - 1) * 2**(i - 2) + 2 * (((j - 1) % 2**(i - 3)) + 1)
+                    ),
+					P_out   => internal_p_outputs(i, 
+                        ( 2 * (integer(ceil(j / 2**(i - 3)))) - 1) * 2**(i - 2) + 2 * (((j - 1) % 2**(i - 3)) + 1)
+                    ) 
 				);
 			end generate g4;
 		end generate col;

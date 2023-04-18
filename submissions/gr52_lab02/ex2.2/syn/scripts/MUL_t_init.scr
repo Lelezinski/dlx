@@ -14,9 +14,9 @@ report_timing -nworst 10 > mul_worst_10.txt
 # save report
 report_timing > mul-timing-no-opt.txt
 report_area > mul-area-no-opt.txt
-# max delay is 0.88, so the desired max delay will be 0.70
-set_max_delay 0.70 -from [all_inputs] -to [all_outputs]
+# max delay is 1.97, so the desired max delay will be 1.58
+set_max_delay 1.58 -from [all_inputs] -to [all_outputs]
 # optimize
 compile -map_effort high
-report_timing > mul-timing-no-opt-constr.txt
+report_timing > mul-timing-opt-constr.txt
 

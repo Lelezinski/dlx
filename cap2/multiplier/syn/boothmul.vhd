@@ -5,7 +5,7 @@ use WORK.constants.all;
 
 entity BOOTHMUL is
   generic (
-    NBIT : integer := NUMBIT_MUL/2
+    NBIT : integer := NUMBIT_MUL
   );
   port (
     A : in std_logic_vector(NBIT - 1 downto 0);

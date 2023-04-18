@@ -8,31 +8,29 @@ What changes between the timing of the same path is the falling/rising edge
 
 ## Unconstrained Design
 
-Critical Path: from B[1] to P[7]
-Max Delay: 0.88
-Desired Max Delay: 80% of 0.88 -> 0.70
+Critical Path: from B[1] to P[15]
+Max Delay: 1.97
+Desired Max Delay: 80% of 1.97 -> 1.58
 
 ## Constrained Design
 
-Critical Path: from B[1] to P[7]
-Max Delay: 0.69
-Slack: 0.01
-
-When retrying with a Desired Max Delay value of 0.60, the resulting Max Delay was 0.63, then the synthetizer should not be capable to respect a Max Delay lower than 0.63.
+Critical Path: from B[1] to P[15]
+Max Delay: 1.58
+Slack: 0.00 (MET)
 
 
 # 32-BIT BOOTH MULTIPLIER
 
 ## Unconstrained Design
 
-Critical Path: from B[1] to P[32]
-Max Delay: 4.07
-Desired Max Delay: 80% of 4.07 -> 3.27
+Critical Path: from B[1] to P[63]
+Max Delay: 8.33
+Desired Max Delay: 80% of 8.33 -> 6.67
 
 ## Constrained Design
 
-Critical Path: from B[0] to P[31]
-Max Delay: 3.27
-Slack: -0.14 (Violated)
+Critical Path: from B[1] to P[63]
+Max Delay: 7.44
+Slack: -0.77 (Violated)
 
-The synthetizer was not able to respect the Desired Max Delay of 4.07.
+The synthetizer was not able to respect the Desired Max Delay of 7.44.
