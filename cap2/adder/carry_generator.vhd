@@ -27,8 +27,8 @@ architecture STRUCTURAL of CARRY_GENERATOR is
             A : in std_logic_vector(NBIT - 1 downto 0);
             B : in std_logic_vector(NBIT - 1 downto 0);
             Cin : in std_logic;
-            g : out std_logic_vector(NBIT downto 0);
-            p : out std_logic_vector(NBIT downto 0));
+            g : out std_logic_vector(NBIT downto 1);
+            p : out std_logic_vector(NBIT downto 1));
     end component;
 
     -- G Block: General GENERATE
@@ -57,7 +57,7 @@ architecture STRUCTURAL of CARRY_GENERATOR is
     -- column range is NBIT..1 like the diagram
     -- type pg_outputs_t is array (1 downto 0, (NBIT) downto 1) of std_logic;
     -- NON CONVINTO DELLO 0 come estremo destro
-    type pg_outputs_t is array (1 downto 0) of std_logic_vector(NBIT downto 0);
+    type pg_outputs_t is array (1 downto 0) of std_logic_vector(NBIT downto 1);
     signal pg_outputs: pg_outputs_t;
 
     -- NOTE: NBIT/CARRY_SELECT_NBIT-1 instead of 7 to make it more general
@@ -70,14 +70,15 @@ architecture STRUCTURAL of CARRY_GENERATOR is
     -- two 5x16 matrix (it makes easier indexing)
     -- 1 to 5 is the row index (top-down)
     -- 16 downto 1 is the column index (left-right). It could be generalized 
-    type internal_p_outputs_t is array (1 to log2(NBIT), NBIT/2 downto 1) of std_logic;
+    type internal_p_outputs_t is array (1 to integer(log2(real(NBIT))), NBIT/2 downto 1) of std_logic;
     signal internal_p_outputs: internal_p_outputs_t;
-    type internal_g_outputs_t is array (1 to log2(NBIT), NBIT/2 downto 1) of std_logic;
+    type internal_g_outputs_t is array (1 to integer(log2(real(NBIT))), NBIT/2 downto 1) of std_logic;
     signal internal_g_outputs: internal_g_outputs_t;
 
     -- type internal_g_outputs is array (1 to 5, NBIT downto 1) of std_logic;
 
 	constant NSTAGE: integer := integer(ceil(log2(real(NBIT))));
+	constant k: integer := NBIT/8;
 
 -- g_right is always the g_output of the previous G block
 -- g_left is 
@@ -104,6 +105,7 @@ BEGIN
 
                 G_out   => internal_g_outputs(1, 1) 
             );
+
         end generate gen1; 
 
         gen2: if i > 1 generate
@@ -132,7 +134,7 @@ BEGIN
                 G_out   => internal_g_outputs(2, 2) 
             );
 
-	    -- TODO g_outputs(0) <= internal_g_outputs(2, 2);
+	    g_outputs(0) <= internal_g_outputs(2, 2);
         end generate gen3; 
 
         gen4: if i > 1 generate
@@ -157,7 +159,6 @@ BEGIN
         -- n_gruppo = (int)((j-1) % (int)powf(2, i-3)) + 1;
 
 	-- ROWS 3 TO NSTAGE
-	constant k: integer:= NBIT/8;
 	rown: for i in 3 to NSTAGE generate
 		col: for j in 1 to k generate
 			g3: if j <= 2**(i - 3) generate
@@ -165,30 +166,36 @@ BEGIN
 				port map (
 					G_left  => internal_g_outputs(2 + integer(ceil(log2(real(j)))), 2**(i-2) + 2*j),
 					P_left  => internal_p_outputs(2 + integer(ceil(log2(real(j)))), 2**(i-2) + 2*j),
-					G_right => internal_g_outputs(i - 1, 2**(i - 2))
+					G_right => internal_g_outputs(i - 1, 2**(i - 2)),
 
 					G_out   => internal_g_outputs(i, 2**(i-2) + 2*j) 
 				);
+
+	        -- g_outputs(j) <= internal_g_outputs(i, 2**(i-2) + 2*j);
 			end generate g3;
+
 			g4: if j > 2**(i-3) generate
 				p: PG_BLOCK
 				port map (
 					G_left => internal_g_outputs(
-                        2 + integer(ceil(log2(real((((j - 1) % 2**(i - 3)) + 1))))),
-                        ( 2 * (integer(ceil(j / 2**(i - 3)))) - 1) * 2**(i - 2) + 2 * (((j - 1) % 2**(i - 3)) + 1)
+                        2 + integer(ceil(log2(real((((j - 1) mod 2**(i - 3)) + 1))))),
+                        (2 * (integer(ceil(real(j) / real(2**(i - 3))))) - 1) * 2**(i - 2) + 2 * (((j - 1) mod 2**(i - 3)) + 1)
                     ) ,
 					P_left => internal_p_outputs(
-                        2 + integer(ceil(log2(real((((j - 1) % 2**(i - 3)) + 1))))),
-                        ( 2 * (integer(ceil(j / 2**(i - 3)))) - 1) * 2**(i - 2) + 2 * (((j - 1) % 2**(i - 3)) + 1)
+                        2 + integer(ceil(log2(real((((j - 1) mod 2**(i - 3)) + 1))))),
+                        (2 * (integer(ceil(real(j) / real(2**(i - 3))))) - 1) * 2**(i - 2) + 2 * (((j - 1) mod 2**(i - 3)) + 1)
                     ),
-					G_right  => internal_g_outputs(i - 1, ( 2 * (integer(ceil(j / 2**(i - 3)))) - 1) * 2**(i - 2)),
-					P_right  => internal_p_outputs(i - 1, ( 2 * (integer(ceil(j / 2**(i - 3)))) - 1) * 2**(i - 2)),
+
+					G_right  => internal_g_outputs(i - 1,
+                        (2 * (integer(ceil(real(j) / real(2**(i - 3))))) - 1) * 2**(i - 2)),
+					P_right  => internal_p_outputs(i - 1, 
+                        (2 * (integer(ceil(real(j) / real(2**(i - 3))))) - 1) * 2**(i - 2)),
 
 					G_out   => internal_g_outputs(i, 
-                        ( 2 * (integer(ceil(j / 2**(i - 3)))) - 1) * 2**(i - 2) + 2 * (((j - 1) % 2**(i - 3)) + 1)
+                        (2 * (integer(ceil(real(j) / real(2**(i - 3))))) - 1) * 2**(i - 2) + 2 * (((j - 1) mod 2**(i - 3)) + 1)
                     ),
 					P_out   => internal_p_outputs(i, 
-                        ( 2 * (integer(ceil(j / 2**(i - 3)))) - 1) * 2**(i - 2) + 2 * (((j - 1) % 2**(i - 3)) + 1)
+                        (2 * (integer(ceil(real(j) / real(2**(i - 3))))) - 1) * 2**(i - 2) + 2 * (((j - 1) mod 2**(i - 3)) + 1)
                     ) 
 				);
 			end generate g4;
@@ -196,5 +203,6 @@ BEGIN
 	end generate rown;
 	
     -- map the output signals
-    Co <= g_outputs(7 downto 0);
+    -- Co <= g_outputs(7 downto 0);
+    Co <= internal_g_outputs(4,8)&internal_g_outputs(4,6)&internal_g_outputs(3,4)&internal_g_outputs(2,2);
 end STRUCTURAL;

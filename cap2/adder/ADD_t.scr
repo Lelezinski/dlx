@@ -4,7 +4,6 @@
 # here the analyze command is used for each file from bottom to top #
 ##############################################################
 analyze -library WORK -format vhdl {constants.vhd}
-analyze -library WORK -format vhdl {fa.vhd}
 # fill these lines with your files ...
 analyze -library WORK -format vhdl {   }
 analyze -library WORK -format vhdl {   }
