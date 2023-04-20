@@ -14,7 +14,7 @@ entity P4_ADDER is
         Cout : out std_logic);
 end entity P4_ADDER;
 
-architecture STRUCT of P4_ADDER is
+architecture STRUCTURAL of P4_ADDER is
 
     component CARRY_GENERATOR is
         -- Generics changed to NBIT_PER_BLOCK and NBLOCKS to match the other TBs. 
@@ -71,4 +71,4 @@ begin
 
     Cout <= cg_out(SUM_GENERATOR_NBLOCKS - 1);
 
-end architecture STRUCT;
+end architecture STRUCTURAL;

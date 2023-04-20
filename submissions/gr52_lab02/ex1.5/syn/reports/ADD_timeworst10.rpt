@@ -1,0 +1,497 @@
+Warning: Design 'P4_ADDER' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nworst 10
+        -max_paths 10
+Design : P4_ADDER
+Version: S-2021.06-SP4
+Date   : Thu Apr 20 19:01:13 2023
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: A[15] (input port)
+  Endpoint: Cout (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  P4_ADDER           5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  input external delay                                    0.00       0.00 f
+  A[15] (in)                                              0.00       0.00 f
+  carry_net/A[15] (CARRY_GENERATOR_NBIT32_NBIT_PER_BLOCK4)
+                                                          0.00       0.00 f
+  carry_net/pgn/A[15] (PG_NETWORK_NBIT_PER_BLOCK4_NBLOCKS8)
+                                                          0.00       0.00 f
+  carry_net/pgn/U26/Z (XOR2_X1)                           0.08       0.08 f
+  carry_net/pgn/p[16] (PG_NETWORK_NBIT_PER_BLOCK4_NBLOCKS8)
+                                                          0.00       0.08 f
+  carry_net/p1_8/P_left (PG_BLOCK_21)                     0.00       0.08 f
+  carry_net/p1_8/U3/ZN (AOI21_X1)                         0.05       0.12 r
+  carry_net/p1_8/U2/ZN (INV_X1)                           0.02       0.14 f
+  carry_net/p1_8/G_out (PG_BLOCK_21)                      0.00       0.14 f
+  carry_net/p2_4/G_left (PG_BLOCK_10)                     0.00       0.14 f
+  carry_net/p2_4/U3/ZN (AOI21_X1)                         0.05       0.20 r
+  carry_net/p2_4/U2/ZN (INV_X1)                           0.02       0.22 f
+  carry_net/p2_4/G_out (PG_BLOCK_10)                      0.00       0.22 f
+  carry_net/p_3_2/G_left (PG_BLOCK_5)                     0.00       0.22 f
+  carry_net/p_3_2/U3/ZN (AOI21_X1)                        0.05       0.27 r
+  carry_net/p_3_2/U2/ZN (INV_X1)                          0.02       0.29 f
+  carry_net/p_3_2/G_out (PG_BLOCK_5)                      0.00       0.29 f
+  carry_net/g_4_2/G_left (G_BLOCK_5)                      0.00       0.29 f
+  carry_net/g_4_2/U2/ZN (AOI21_X1)                        0.05       0.34 r
+  carry_net/g_4_2/U1/ZN (INV_X1)                          0.03       0.38 f
+  carry_net/g_4_2/G_out (G_BLOCK_5)                       0.00       0.38 f
+  carry_net/g_5_4/G_right (G_BLOCK_1)                     0.00       0.38 f
+  carry_net/g_5_4/U2/ZN (AOI21_X1)                        0.05       0.43 r
+  carry_net/g_5_4/U1/ZN (INV_X1)                          0.02       0.44 f
+  carry_net/g_5_4/G_out (G_BLOCK_1)                       0.00       0.44 f
+  carry_net/Co[7] (CARRY_GENERATOR_NBIT32_NBIT_PER_BLOCK4)
+                                                          0.00       0.44 f
+  Cout (out)                                              0.00       0.45 f
+  data arrival time                                                  0.45
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: A[7] (input port)
+  Endpoint: Cout (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  P4_ADDER           5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  input external delay                                    0.00       0.00 f
+  A[7] (in)                                               0.00       0.00 f
+  carry_net/A[7] (CARRY_GENERATOR_NBIT32_NBIT_PER_BLOCK4)
+                                                          0.00       0.00 f
+  carry_net/pgn/A[7] (PG_NETWORK_NBIT_PER_BLOCK4_NBLOCKS8)
+                                                          0.00       0.00 f
+  carry_net/pgn/U2/Z (XOR2_X1)                            0.08       0.08 f
+  carry_net/pgn/p[8] (PG_NETWORK_NBIT_PER_BLOCK4_NBLOCKS8)
+                                                          0.00       0.08 f
+  carry_net/p1_4/P_left (PG_BLOCK_25)                     0.00       0.08 f
+  carry_net/p1_4/U3/ZN (AOI21_X1)                         0.05       0.12 r
+  carry_net/p1_4/U2/ZN (INV_X1)                           0.02       0.14 f
+  carry_net/p1_4/G_out (PG_BLOCK_25)                      0.00       0.14 f
+  carry_net/p2_2/G_left (PG_BLOCK_12)                     0.00       0.14 f
+  carry_net/p2_2/U3/ZN (AOI21_X1)                         0.05       0.20 r
+  carry_net/p2_2/U2/ZN (INV_X1)                           0.02       0.22 f
+  carry_net/p2_2/G_out (PG_BLOCK_12)                      0.00       0.22 f
+  carry_net/g_3_1/G_left (G_BLOCK_7)                      0.00       0.22 f
+  carry_net/g_3_1/U2/ZN (AOI21_X1)                        0.05       0.27 r
+  carry_net/g_3_1/U1/ZN (INV_X1)                          0.03       0.30 f
+  carry_net/g_3_1/G_out (G_BLOCK_7)                       0.00       0.30 f
+  carry_net/g_4_2/G_right (G_BLOCK_5)                     0.00       0.30 f
+  carry_net/g_4_2/U2/ZN (AOI21_X1)                        0.05       0.34 r
+  carry_net/g_4_2/U1/ZN (INV_X1)                          0.03       0.38 f
+  carry_net/g_4_2/G_out (G_BLOCK_5)                       0.00       0.38 f
+  carry_net/g_5_4/G_right (G_BLOCK_1)                     0.00       0.38 f
+  carry_net/g_5_4/U2/ZN (AOI21_X1)                        0.05       0.42 r
+  carry_net/g_5_4/U1/ZN (INV_X1)                          0.02       0.44 f
+  carry_net/g_5_4/G_out (G_BLOCK_1)                       0.00       0.44 f
+  carry_net/Co[7] (CARRY_GENERATOR_NBIT32_NBIT_PER_BLOCK4)
+                                                          0.00       0.44 f
+  Cout (out)                                              0.00       0.44 f
+  data arrival time                                                  0.44
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: A[15] (input port)
+  Endpoint: Cout (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  P4_ADDER           5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  input external delay                                    0.00       0.00 f
+  A[15] (in)                                              0.00       0.00 f
+  carry_net/A[15] (CARRY_GENERATOR_NBIT32_NBIT_PER_BLOCK4)
+                                                          0.00       0.00 f
+  carry_net/pgn/A[15] (PG_NETWORK_NBIT_PER_BLOCK4_NBLOCKS8)
+                                                          0.00       0.00 f
+  carry_net/pgn/U26/Z (XOR2_X1)                           0.08       0.08 f
+  carry_net/pgn/p[16] (PG_NETWORK_NBIT_PER_BLOCK4_NBLOCKS8)
+                                                          0.00       0.08 f
+  carry_net/p1_8/P_left (PG_BLOCK_21)                     0.00       0.08 f
+  carry_net/p1_8/U3/ZN (AOI21_X1)                         0.05       0.12 r
+  carry_net/p1_8/U2/ZN (INV_X1)                           0.02       0.14 f
+  carry_net/p1_8/G_out (PG_BLOCK_21)                      0.00       0.14 f
+  carry_net/p2_4/G_left (PG_BLOCK_10)                     0.00       0.14 f
+  carry_net/p2_4/U3/ZN (AOI21_X1)                         0.05       0.20 r
+  carry_net/p2_4/U2/ZN (INV_X1)                           0.02       0.22 f
+  carry_net/p2_4/G_out (PG_BLOCK_10)                      0.00       0.22 f
+  carry_net/p_3_2/G_left (PG_BLOCK_5)                     0.00       0.22 f
+  carry_net/p_3_2/U3/ZN (AOI21_X1)                        0.05       0.26 r
+  carry_net/p_3_2/U2/ZN (INV_X1)                          0.02       0.29 f
+  carry_net/p_3_2/G_out (PG_BLOCK_5)                      0.00       0.29 f
+  carry_net/g_4_2/G_left (G_BLOCK_5)                      0.00       0.29 f
+  carry_net/g_4_2/U2/ZN (AOI21_X1)                        0.05       0.34 r
+  carry_net/g_4_2/U1/ZN (INV_X1)                          0.03       0.37 f
+  carry_net/g_4_2/G_out (G_BLOCK_5)                       0.00       0.37 f
+  carry_net/g_5_4/G_right (G_BLOCK_1)                     0.00       0.37 f
+  carry_net/g_5_4/U2/ZN (AOI21_X1)                        0.05       0.42 r
+  carry_net/g_5_4/U1/ZN (INV_X1)                          0.02       0.44 f
+  carry_net/g_5_4/G_out (G_BLOCK_1)                       0.00       0.44 f
+  carry_net/Co[7] (CARRY_GENERATOR_NBIT32_NBIT_PER_BLOCK4)
+                                                          0.00       0.44 f
+  Cout (out)                                              0.00       0.44 f
+  data arrival time                                                  0.44
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: A[15] (input port)
+  Endpoint: Cout (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  P4_ADDER           5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  input external delay                                    0.00       0.00 f
+  A[15] (in)                                              0.00       0.00 f
+  carry_net/A[15] (CARRY_GENERATOR_NBIT32_NBIT_PER_BLOCK4)
+                                                          0.00       0.00 f
+  carry_net/pgn/A[15] (PG_NETWORK_NBIT_PER_BLOCK4_NBLOCKS8)
+                                                          0.00       0.00 f
+  carry_net/pgn/U26/Z (XOR2_X1)                           0.08       0.08 f
+  carry_net/pgn/p[16] (PG_NETWORK_NBIT_PER_BLOCK4_NBLOCKS8)
+                                                          0.00       0.08 f
+  carry_net/p1_8/P_left (PG_BLOCK_21)                     0.00       0.08 f
+  carry_net/p1_8/U3/ZN (AOI21_X1)                         0.05       0.12 r
+  carry_net/p1_8/U2/ZN (INV_X1)                           0.02       0.14 f
+  carry_net/p1_8/G_out (PG_BLOCK_21)                      0.00       0.14 f
+  carry_net/p2_4/G_left (PG_BLOCK_10)                     0.00       0.14 f
+  carry_net/p2_4/U3/ZN (AOI21_X1)                         0.05       0.19 r
+  carry_net/p2_4/U2/ZN (INV_X1)                           0.02       0.21 f
+  carry_net/p2_4/G_out (PG_BLOCK_10)                      0.00       0.21 f
+  carry_net/p_3_2/G_left (PG_BLOCK_5)                     0.00       0.21 f
+  carry_net/p_3_2/U3/ZN (AOI21_X1)                        0.05       0.26 r
+  carry_net/p_3_2/U2/ZN (INV_X1)                          0.02       0.29 f
+  carry_net/p_3_2/G_out (PG_BLOCK_5)                      0.00       0.29 f
+  carry_net/g_4_2/G_left (G_BLOCK_5)                      0.00       0.29 f
+  carry_net/g_4_2/U2/ZN (AOI21_X1)                        0.05       0.34 r
+  carry_net/g_4_2/U1/ZN (INV_X1)                          0.03       0.37 f
+  carry_net/g_4_2/G_out (G_BLOCK_5)                       0.00       0.37 f
+  carry_net/g_5_4/G_right (G_BLOCK_1)                     0.00       0.37 f
+  carry_net/g_5_4/U2/ZN (AOI21_X1)                        0.05       0.42 r
+  carry_net/g_5_4/U1/ZN (INV_X1)                          0.02       0.44 f
+  carry_net/g_5_4/G_out (G_BLOCK_1)                       0.00       0.44 f
+  carry_net/Co[7] (CARRY_GENERATOR_NBIT32_NBIT_PER_BLOCK4)
+                                                          0.00       0.44 f
+  Cout (out)                                              0.00       0.44 f
+  data arrival time                                                  0.44
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: A[15] (input port)
+  Endpoint: Cout (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  P4_ADDER           5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  input external delay                                    0.00       0.00 f
+  A[15] (in)                                              0.00       0.00 f
+  carry_net/A[15] (CARRY_GENERATOR_NBIT32_NBIT_PER_BLOCK4)
+                                                          0.00       0.00 f
+  carry_net/pgn/A[15] (PG_NETWORK_NBIT_PER_BLOCK4_NBLOCKS8)
+                                                          0.00       0.00 f
+  carry_net/pgn/U26/Z (XOR2_X1)                           0.08       0.08 f
+  carry_net/pgn/p[16] (PG_NETWORK_NBIT_PER_BLOCK4_NBLOCKS8)
+                                                          0.00       0.08 f
+  carry_net/p1_8/P_left (PG_BLOCK_21)                     0.00       0.08 f
+  carry_net/p1_8/U3/ZN (AOI21_X1)                         0.05       0.12 r
+  carry_net/p1_8/U2/ZN (INV_X1)                           0.02       0.14 f
+  carry_net/p1_8/G_out (PG_BLOCK_21)                      0.00       0.14 f
+  carry_net/p2_4/G_left (PG_BLOCK_10)                     0.00       0.14 f
+  carry_net/p2_4/U3/ZN (AOI21_X1)                         0.05       0.20 r
+  carry_net/p2_4/U2/ZN (INV_X1)                           0.02       0.22 f
+  carry_net/p2_4/G_out (PG_BLOCK_10)                      0.00       0.22 f
+  carry_net/p_3_2/G_left (PG_BLOCK_5)                     0.00       0.22 f
+  carry_net/p_3_2/U3/ZN (AOI21_X1)                        0.05       0.27 r
+  carry_net/p_3_2/U2/ZN (INV_X1)                          0.02       0.29 f
+  carry_net/p_3_2/G_out (PG_BLOCK_5)                      0.00       0.29 f
+  carry_net/g_4_2/G_left (G_BLOCK_5)                      0.00       0.29 f
+  carry_net/g_4_2/U2/ZN (AOI21_X1)                        0.05       0.34 r
+  carry_net/g_4_2/U1/ZN (INV_X1)                          0.03       0.37 f
+  carry_net/g_4_2/G_out (G_BLOCK_5)                       0.00       0.37 f
+  carry_net/g_5_4/G_right (G_BLOCK_1)                     0.00       0.37 f
+  carry_net/g_5_4/U2/ZN (AOI21_X1)                        0.05       0.42 r
+  carry_net/g_5_4/U1/ZN (INV_X1)                          0.02       0.44 f
+  carry_net/g_5_4/G_out (G_BLOCK_1)                       0.00       0.44 f
+  carry_net/Co[7] (CARRY_GENERATOR_NBIT32_NBIT_PER_BLOCK4)
+                                                          0.00       0.44 f
+  Cout (out)                                              0.00       0.44 f
+  data arrival time                                                  0.44
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: B[15] (input port)
+  Endpoint: Cout (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  P4_ADDER           5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  input external delay                                    0.00       0.00 f
+  B[15] (in)                                              0.00       0.00 f
+  carry_net/B[15] (CARRY_GENERATOR_NBIT32_NBIT_PER_BLOCK4)
+                                                          0.00       0.00 f
+  carry_net/pgn/B[15] (PG_NETWORK_NBIT_PER_BLOCK4_NBLOCKS8)
+                                                          0.00       0.00 f
+  carry_net/pgn/U26/Z (XOR2_X1)                           0.07       0.07 f
+  carry_net/pgn/p[16] (PG_NETWORK_NBIT_PER_BLOCK4_NBLOCKS8)
+                                                          0.00       0.07 f
+  carry_net/p1_8/P_left (PG_BLOCK_21)                     0.00       0.07 f
+  carry_net/p1_8/U3/ZN (AOI21_X1)                         0.05       0.12 r
+  carry_net/p1_8/U2/ZN (INV_X1)                           0.02       0.14 f
+  carry_net/p1_8/G_out (PG_BLOCK_21)                      0.00       0.14 f
+  carry_net/p2_4/G_left (PG_BLOCK_10)                     0.00       0.14 f
+  carry_net/p2_4/U3/ZN (AOI21_X1)                         0.05       0.19 r
+  carry_net/p2_4/U2/ZN (INV_X1)                           0.02       0.21 f
+  carry_net/p2_4/G_out (PG_BLOCK_10)                      0.00       0.21 f
+  carry_net/p_3_2/G_left (PG_BLOCK_5)                     0.00       0.21 f
+  carry_net/p_3_2/U3/ZN (AOI21_X1)                        0.05       0.26 r
+  carry_net/p_3_2/U2/ZN (INV_X1)                          0.02       0.29 f
+  carry_net/p_3_2/G_out (PG_BLOCK_5)                      0.00       0.29 f
+  carry_net/g_4_2/G_left (G_BLOCK_5)                      0.00       0.29 f
+  carry_net/g_4_2/U2/ZN (AOI21_X1)                        0.05       0.34 r
+  carry_net/g_4_2/U1/ZN (INV_X1)                          0.03       0.37 f
+  carry_net/g_4_2/G_out (G_BLOCK_5)                       0.00       0.37 f
+  carry_net/g_5_4/G_right (G_BLOCK_1)                     0.00       0.37 f
+  carry_net/g_5_4/U2/ZN (AOI21_X1)                        0.05       0.42 r
+  carry_net/g_5_4/U1/ZN (INV_X1)                          0.02       0.44 f
+  carry_net/g_5_4/G_out (G_BLOCK_1)                       0.00       0.44 f
+  carry_net/Co[7] (CARRY_GENERATOR_NBIT32_NBIT_PER_BLOCK4)
+                                                          0.00       0.44 f
+  Cout (out)                                              0.00       0.44 f
+  data arrival time                                                  0.44
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: A[7] (input port)
+  Endpoint: Cout (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  P4_ADDER           5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  input external delay                                    0.00       0.00 f
+  A[7] (in)                                               0.00       0.00 f
+  carry_net/A[7] (CARRY_GENERATOR_NBIT32_NBIT_PER_BLOCK4)
+                                                          0.00       0.00 f
+  carry_net/pgn/A[7] (PG_NETWORK_NBIT_PER_BLOCK4_NBLOCKS8)
+                                                          0.00       0.00 f
+  carry_net/pgn/U2/Z (XOR2_X1)                            0.08       0.08 f
+  carry_net/pgn/p[8] (PG_NETWORK_NBIT_PER_BLOCK4_NBLOCKS8)
+                                                          0.00       0.08 f
+  carry_net/p1_4/P_left (PG_BLOCK_25)                     0.00       0.08 f
+  carry_net/p1_4/U3/ZN (AOI21_X1)                         0.05       0.12 r
+  carry_net/p1_4/U2/ZN (INV_X1)                           0.02       0.14 f
+  carry_net/p1_4/G_out (PG_BLOCK_25)                      0.00       0.14 f
+  carry_net/p2_2/G_left (PG_BLOCK_12)                     0.00       0.14 f
+  carry_net/p2_2/U3/ZN (AOI21_X1)                         0.05       0.19 r
+  carry_net/p2_2/U2/ZN (INV_X1)                           0.02       0.21 f
+  carry_net/p2_2/G_out (PG_BLOCK_12)                      0.00       0.21 f
+  carry_net/g_3_1/G_left (G_BLOCK_7)                      0.00       0.21 f
+  carry_net/g_3_1/U2/ZN (AOI21_X1)                        0.05       0.26 r
+  carry_net/g_3_1/U1/ZN (INV_X1)                          0.03       0.29 f
+  carry_net/g_3_1/G_out (G_BLOCK_7)                       0.00       0.29 f
+  carry_net/g_4_2/G_right (G_BLOCK_5)                     0.00       0.29 f
+  carry_net/g_4_2/U2/ZN (AOI21_X1)                        0.05       0.34 r
+  carry_net/g_4_2/U1/ZN (INV_X1)                          0.03       0.37 f
+  carry_net/g_4_2/G_out (G_BLOCK_5)                       0.00       0.37 f
+  carry_net/g_5_4/G_right (G_BLOCK_1)                     0.00       0.37 f
+  carry_net/g_5_4/U2/ZN (AOI21_X1)                        0.05       0.42 r
+  carry_net/g_5_4/U1/ZN (INV_X1)                          0.02       0.44 f
+  carry_net/g_5_4/G_out (G_BLOCK_1)                       0.00       0.44 f
+  carry_net/Co[7] (CARRY_GENERATOR_NBIT32_NBIT_PER_BLOCK4)
+                                                          0.00       0.44 f
+  Cout (out)                                              0.00       0.44 f
+  data arrival time                                                  0.44
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: A[7] (input port)
+  Endpoint: Cout (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  P4_ADDER           5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  input external delay                                    0.00       0.00 f
+  A[7] (in)                                               0.00       0.00 f
+  carry_net/A[7] (CARRY_GENERATOR_NBIT32_NBIT_PER_BLOCK4)
+                                                          0.00       0.00 f
+  carry_net/pgn/A[7] (PG_NETWORK_NBIT_PER_BLOCK4_NBLOCKS8)
+                                                          0.00       0.00 f
+  carry_net/pgn/U2/Z (XOR2_X1)                            0.08       0.08 f
+  carry_net/pgn/p[8] (PG_NETWORK_NBIT_PER_BLOCK4_NBLOCKS8)
+                                                          0.00       0.08 f
+  carry_net/p1_4/P_left (PG_BLOCK_25)                     0.00       0.08 f
+  carry_net/p1_4/U3/ZN (AOI21_X1)                         0.05       0.12 r
+  carry_net/p1_4/U2/ZN (INV_X1)                           0.02       0.14 f
+  carry_net/p1_4/G_out (PG_BLOCK_25)                      0.00       0.14 f
+  carry_net/p2_2/G_left (PG_BLOCK_12)                     0.00       0.14 f
+  carry_net/p2_2/U3/ZN (AOI21_X1)                         0.05       0.20 r
+  carry_net/p2_2/U2/ZN (INV_X1)                           0.02       0.22 f
+  carry_net/p2_2/G_out (PG_BLOCK_12)                      0.00       0.22 f
+  carry_net/g_3_1/G_left (G_BLOCK_7)                      0.00       0.22 f
+  carry_net/g_3_1/U2/ZN (AOI21_X1)                        0.05       0.26 r
+  carry_net/g_3_1/U1/ZN (INV_X1)                          0.03       0.29 f
+  carry_net/g_3_1/G_out (G_BLOCK_7)                       0.00       0.29 f
+  carry_net/g_4_2/G_right (G_BLOCK_5)                     0.00       0.29 f
+  carry_net/g_4_2/U2/ZN (AOI21_X1)                        0.05       0.34 r
+  carry_net/g_4_2/U1/ZN (INV_X1)                          0.03       0.37 f
+  carry_net/g_4_2/G_out (G_BLOCK_5)                       0.00       0.37 f
+  carry_net/g_5_4/G_right (G_BLOCK_1)                     0.00       0.37 f
+  carry_net/g_5_4/U2/ZN (AOI21_X1)                        0.05       0.42 r
+  carry_net/g_5_4/U1/ZN (INV_X1)                          0.02       0.44 f
+  carry_net/g_5_4/G_out (G_BLOCK_1)                       0.00       0.44 f
+  carry_net/Co[7] (CARRY_GENERATOR_NBIT32_NBIT_PER_BLOCK4)
+                                                          0.00       0.44 f
+  Cout (out)                                              0.00       0.44 f
+  data arrival time                                                  0.44
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: B[7] (input port)
+  Endpoint: Cout (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  P4_ADDER           5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  input external delay                                    0.00       0.00 f
+  B[7] (in)                                               0.00       0.00 f
+  carry_net/B[7] (CARRY_GENERATOR_NBIT32_NBIT_PER_BLOCK4)
+                                                          0.00       0.00 f
+  carry_net/pgn/B[7] (PG_NETWORK_NBIT_PER_BLOCK4_NBLOCKS8)
+                                                          0.00       0.00 f
+  carry_net/pgn/U2/Z (XOR2_X1)                            0.07       0.07 f
+  carry_net/pgn/p[8] (PG_NETWORK_NBIT_PER_BLOCK4_NBLOCKS8)
+                                                          0.00       0.07 f
+  carry_net/p1_4/P_left (PG_BLOCK_25)                     0.00       0.07 f
+  carry_net/p1_4/U3/ZN (AOI21_X1)                         0.05       0.12 r
+  carry_net/p1_4/U2/ZN (INV_X1)                           0.02       0.14 f
+  carry_net/p1_4/G_out (PG_BLOCK_25)                      0.00       0.14 f
+  carry_net/p2_2/G_left (PG_BLOCK_12)                     0.00       0.14 f
+  carry_net/p2_2/U3/ZN (AOI21_X1)                         0.05       0.19 r
+  carry_net/p2_2/U2/ZN (INV_X1)                           0.02       0.21 f
+  carry_net/p2_2/G_out (PG_BLOCK_12)                      0.00       0.21 f
+  carry_net/g_3_1/G_left (G_BLOCK_7)                      0.00       0.21 f
+  carry_net/g_3_1/U2/ZN (AOI21_X1)                        0.05       0.26 r
+  carry_net/g_3_1/U1/ZN (INV_X1)                          0.03       0.29 f
+  carry_net/g_3_1/G_out (G_BLOCK_7)                       0.00       0.29 f
+  carry_net/g_4_2/G_right (G_BLOCK_5)                     0.00       0.29 f
+  carry_net/g_4_2/U2/ZN (AOI21_X1)                        0.05       0.34 r
+  carry_net/g_4_2/U1/ZN (INV_X1)                          0.03       0.37 f
+  carry_net/g_4_2/G_out (G_BLOCK_5)                       0.00       0.37 f
+  carry_net/g_5_4/G_right (G_BLOCK_1)                     0.00       0.37 f
+  carry_net/g_5_4/U2/ZN (AOI21_X1)                        0.05       0.42 r
+  carry_net/g_5_4/U1/ZN (INV_X1)                          0.02       0.44 f
+  carry_net/g_5_4/G_out (G_BLOCK_1)                       0.00       0.44 f
+  carry_net/Co[7] (CARRY_GENERATOR_NBIT32_NBIT_PER_BLOCK4)
+                                                          0.00       0.44 f
+  Cout (out)                                              0.00       0.44 f
+  data arrival time                                                  0.44
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+  Startpoint: A[11] (input port)
+  Endpoint: Cout (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  P4_ADDER           5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  input external delay                                    0.00       0.00 f
+  A[11] (in)                                              0.00       0.00 f
+  carry_net/A[11] (CARRY_GENERATOR_NBIT32_NBIT_PER_BLOCK4)
+                                                          0.00       0.00 f
+  carry_net/pgn/A[11] (PG_NETWORK_NBIT_PER_BLOCK4_NBLOCKS8)
+                                                          0.00       0.00 f
+  carry_net/pgn/U30/Z (XOR2_X1)                           0.08       0.08 f
+  carry_net/pgn/p[12] (PG_NETWORK_NBIT_PER_BLOCK4_NBLOCKS8)
+                                                          0.00       0.08 f
+  carry_net/p1_6/P_left (PG_BLOCK_23)                     0.00       0.08 f
+  carry_net/p1_6/U3/ZN (AOI21_X1)                         0.05       0.12 r
+  carry_net/p1_6/U2/ZN (INV_X1)                           0.02       0.14 f
+  carry_net/p1_6/G_out (PG_BLOCK_23)                      0.00       0.14 f
+  carry_net/p2_3/G_left (PG_BLOCK_11)                     0.00       0.14 f
+  carry_net/p2_3/U3/ZN (AOI21_X1)                         0.05       0.20 r
+  carry_net/p2_3/U2/ZN (INV_X1)                           0.03       0.22 f
+  carry_net/p2_3/G_out (PG_BLOCK_11)                      0.00       0.22 f
+  carry_net/p_3_2/G_right (PG_BLOCK_5)                    0.00       0.22 f
+  carry_net/p_3_2/U3/ZN (AOI21_X1)                        0.04       0.26 r
+  carry_net/p_3_2/U2/ZN (INV_X1)                          0.02       0.28 f
+  carry_net/p_3_2/G_out (PG_BLOCK_5)                      0.00       0.28 f
+  carry_net/g_4_2/G_left (G_BLOCK_5)                      0.00       0.28 f
+  carry_net/g_4_2/U2/ZN (AOI21_X1)                        0.05       0.34 r
+  carry_net/g_4_2/U1/ZN (INV_X1)                          0.03       0.37 f
+  carry_net/g_4_2/G_out (G_BLOCK_5)                       0.00       0.37 f
+  carry_net/g_5_4/G_right (G_BLOCK_1)                     0.00       0.37 f
+  carry_net/g_5_4/U2/ZN (AOI21_X1)                        0.05       0.42 r
+  carry_net/g_5_4/U1/ZN (INV_X1)                          0.02       0.44 f
+  carry_net/g_5_4/G_out (G_BLOCK_1)                       0.00       0.44 f
+  carry_net/Co[7] (CARRY_GENERATOR_NBIT32_NBIT_PER_BLOCK4)
+                                                          0.00       0.44 f
+  Cout (out)                                              0.00       0.44 f
+  data arrival time                                                  0.44
+  --------------------------------------------------------------------------
+  (Path is unconstrained)
+
+
+1

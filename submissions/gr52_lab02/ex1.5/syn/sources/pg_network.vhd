@@ -18,7 +18,9 @@ end PG_NETWORK;
 architecture BEHAVIORAL of PG_NETWORK is
 begin
 
-    g(1) <= (A(0) AND B(0)) and (A(0) xor Cin) and (B(0) xor Cin); -- expanded carry generate formula from lecture notes
+    -- Using the expanded carry generate formula:
+    --  G1:0 = g1 + p1 * cin
+    g(1) <= (A(0) and B(0)) or ((A(0) xor B(0)) and Cin);
     g(NBIT_PER_BLOCK * NBLOCKS downto 2) <= A((NBIT_PER_BLOCK * NBLOCKS)-1 downto 1) AND B((NBIT_PER_BLOCK * NBLOCKS)-1 downto 1);
     p(NBIT_PER_BLOCK * NBLOCKS downto 1) <= (A XOR B);
 

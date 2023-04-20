@@ -40,28 +40,28 @@ begin
 
 	testVector : PROCESS
 	BEGIN
-
-		A_s     <= "1111111111111000";
-		B_s     <= "0000000000000010";
+        
+        -- case proposed in lab document, point 2.1.4
+		A_s     <= x"FFFF";
+		B_s     <= x"0001";
 		Cin_s   <= '0';
+		assert S_s = x"0000" AND Cout_s = '1' report "Unexpected value"; 
 
 		WAIT FOR 20 NS;
 
-		A_s <= "1000100010001010";
-		B_s <= "1000100010001101";
+        -- previous case but with carry in set to 1
+        A_s     <= x"FFFF";
+		B_s     <= x"0001";
+		Cin_s   <= '1';
+		assert S_s = x"0001" AND Cout_s = '1' report "Unexpected value"; 
+		
+		WAIT FOR 20 NS;
+
+        -- extreme case with both operands with their maximum value, plus carry in set to 1
+		A_s <= x"FFFF";
+		B_s <= x"FFFF";
 		Cin_s <= '1';
-
-		WAIT FOR 20 NS;
-
-		A_s <= "0000111111111111";
-		B_s <= "0000000000000001";
-		Cin_s <= '0';
-
-		WAIT FOR 20 NS;
-
-		A_s <= "0000000000000000";
-		B_s <= "0000000000000001";
-		Cin_s <= '0';
+		assert S_s = x"FFFF" AND Cout_s = '1' report "Unexpected value"; 
 
 		WAIT FOR 20 NS;
 

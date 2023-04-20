@@ -1,0 +1,82 @@
+Information: Building the design 'CARRY_SELECT' instantiated from design 'SUM_GENERATOR_NBIT_PER_BLOCK4_NBLOCKS8' with
+	the parameters "NBIT=4". (HDL-193)
+Warning:  ./carry_select.vhd:44: Physical types are not supported. Presto ignores it. (ELAB-918)
+Warning:  ./carry_select.vhd:44: Physical types are not supported. Presto ignores it. (ELAB-918)
+Warning:  ./carry_select.vhd:44: Physical types are not supported. Presto ignores it. (ELAB-918)
+Error:  ./carry_select.vhd:44: Physical types are not supported for synthesis. (ELAB-926)
+*** Presto compilation terminated with 1 errors. ***
+Warning: Unable to resolve reference 'CARRY_SELECT' in 'SUM_GENERATOR_NBIT_PER_BLOCK4_NBLOCKS8'. (LINK-5)
+Warning: Design 'P4_ADDER' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : P4_ADDER
+Version: S-2021.06-SP4
+Date   : Thu Apr 20 19:05:17 2023
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: B[31] (input port)
+  Endpoint: Cout (output port)
+  Path Group: default
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  P4_ADDER           5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  input external delay                                    0.00       0.00 r
+  B[31] (in)                                              0.00       0.00 r
+  carry_net/B[31] (CARRY_GENERATOR_NBIT32_NBIT_PER_BLOCK4)
+                                                          0.00       0.00 r
+  carry_net/pgn/B[31] (PG_NETWORK_NBIT_PER_BLOCK4_NBLOCKS8)
+                                                          0.00       0.00 r
+  carry_net/pgn/U17/ZN (INV_X1)                           0.02       0.02 f
+  carry_net/pgn/U15/ZN (NAND2_X1)                         0.02       0.05 r
+  carry_net/pgn/U16/ZN (NAND2_X1)                         0.03       0.07 f
+  carry_net/pgn/p[32] (PG_NETWORK_NBIT_PER_BLOCK4_NBLOCKS8)
+                                                          0.00       0.07 f
+  carry_net/p1_16/P_left (PG_BLOCK_13)                    0.00       0.07 f
+  carry_net/p1_16/U2/ZN (AOI21_X1)                        0.04       0.11 r
+  carry_net/p1_16/U4/ZN (INV_X1)                          0.02       0.14 f
+  carry_net/p1_16/G_out (PG_BLOCK_13)                     0.00       0.14 f
+  carry_net/p2_8/G_left (PG_BLOCK_6)                      0.00       0.14 f
+  carry_net/p2_8/U3/ZN (AOI21_X1)                         0.05       0.19 r
+  carry_net/p2_8/U2/ZN (INV_X1)                           0.02       0.21 f
+  carry_net/p2_8/G_out (PG_BLOCK_6)                       0.00       0.21 f
+  carry_net/p_3_4/G_left (PG_BLOCK_3)                     0.00       0.21 f
+  carry_net/p_3_4/U3/ZN (INV_X1)                          0.02       0.23 r
+  carry_net/p_3_4/U2/ZN (NAND2_X1)                        0.02       0.26 f
+  carry_net/p_3_4/G_out (PG_BLOCK_3)                      0.00       0.26 f
+  carry_net/p_4_4/G_left (PG_BLOCK_1)                     0.00       0.26 f
+  carry_net/p_4_4/U2/ZN (INV_X1)                          0.02       0.28 r
+  carry_net/p_4_4/U4/ZN (NAND2_X1)                        0.03       0.31 f
+  carry_net/p_4_4/G_out (PG_BLOCK_1)                      0.00       0.31 f
+  carry_net/g_5_4/G_left (G_BLOCK_1)                      0.00       0.31 f
+  carry_net/g_5_4/U3/ZN (NOR2_X1)                         0.04       0.35 r
+  carry_net/g_5_4/U1/ZN (NOR2_X1)                         0.02       0.37 f
+  carry_net/g_5_4/G_out (G_BLOCK_1)                       0.00       0.37 f
+  carry_net/Co[7] (CARRY_GENERATOR_NBIT32_NBIT_PER_BLOCK4)
+                                                          0.00       0.37 f
+  Cout (out)                                              0.00       0.38 f
+  data arrival time                                                  0.38
+
+  max_delay                                               0.36       0.36
+  output external delay                                   0.00       0.36
+  data required time                                                 0.36
+  --------------------------------------------------------------------------
+  data required time                                                 0.36
+  data arrival time                                                 -0.38
+  --------------------------------------------------------------------------
+  slack (VIOLATED)                                                  -0.02
+
+
+1
