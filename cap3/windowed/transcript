@@ -1,0 +1,902 @@
+# //  Questa Sim-64
+# //  Version 2020.4 linux_x86_64 Oct 13 2020
+# //
+# //  Copyright 1991-2020 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  QuestaSim and its associated documentation contain trade
+# //  secrets and commercial or financial information that are the property of
+# //  Mentor Graphics Corporation and are privileged, confidential,
+# //  and exempt from disclosure under the Freedom of Information Act,
+# //  5 U.S.C. Section 552. Furthermore, this information
+# //  is prohibited from disclosure under the Trade Secrets Act,
+# //  18 U.S.C. Section 1905.
+# //
+vsim work.windowed_register_file(behavioral) -t 10ps -voptargs=+acc
+# vsim work.windowed_register_file(behavioral) -t 10ps -voptargs="+acc" 
+# Start time: 18:47:03 on Apr 30,2023
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.windowed_register_file(behavioral)#1
+wave add *
+# No help for wave addcursor available.
+add wave *
+run 30 ns
+quit -sim
+# Load canceled
+# End time: 18:48:25 on Apr 30,2023, Elapsed time: 0:01:22
+# Errors: 0, Warnings: 0
+vsim -t 10ps -voptargs=+acc work.tbregisterfile(testa)
+# vsim -t 10ps -voptargs="+acc" work.tbregisterfile(testa) 
+# Start time: 18:48:54 on Apr 30,2023
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: tb_wrf.vhd(70): (vopt-1549) At instance RG the actual expression and the port 'ADD_WR' of component 'work.TBREGISTERFILE(TESTA).WINDOWED_REGISTER_FILE' have different sizes:  ([5,4]).
+#         Region: /TBREGISTERFILE/RG
+# ** Error (suppressible): tb_wrf.vhd(70): (vopt-1549) At instance RG the actual expression and the port 'ADD_WR' of entity 'work.WINDOWED_REGISTER_FILE' have different sizes:  ([5,4]).
+#         Region: /TBREGISTERFILE/RG
+# ** Warning: tb_wrf.vhd(70): (vopt-1549) At instance RG the actual expression and the port 'ADD_RD1' of component 'work.TBREGISTERFILE(TESTA).WINDOWED_REGISTER_FILE' have different sizes:  ([5,4]).
+#         Region: /TBREGISTERFILE/RG
+# ** Error (suppressible): tb_wrf.vhd(70): (vopt-1549) At instance RG the actual expression and the port 'ADD_RD1' of entity 'work.WINDOWED_REGISTER_FILE' have different sizes:  ([5,4]).
+#         Region: /TBREGISTERFILE/RG
+# ** Warning: tb_wrf.vhd(70): (vopt-1549) At instance RG the actual expression and the port 'ADD_RD2' of component 'work.TBREGISTERFILE(TESTA).WINDOWED_REGISTER_FILE' have different sizes:  ([5,4]).
+#         Region: /TBREGISTERFILE/RG
+# ** Error (suppressible): tb_wrf.vhd(70): (vopt-1549) At instance RG the actual expression and the port 'ADD_RD2' of entity 'work.WINDOWED_REGISTER_FILE' have different sizes:  ([5,4]).
+#         Region: /TBREGISTERFILE/RG
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=3, Warnings=3.
+# Error loading design
+# End time: 18:48:55 on Apr 30,2023, Elapsed time: 0:00:01
+# Errors: 3, Warnings: 3
+reload
+# invalid command name "reload"
+vsim -t 10ps -voptargs=+acc work.tbregisterfile(testa)
+# vsim -t 10ps -voptargs="+acc" work.tbregisterfile(testa) 
+# Start time: 18:51:20 on Apr 30,2023
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: tb_wrf.vhd(70): (vopt-1549) At instance RG the actual expression and the port 'ADD_WR' of component 'work.TBREGISTERFILE(TESTA).WINDOWED_REGISTER_FILE' have different sizes:  ([4,2]).
+#         Region: /TBREGISTERFILE/RG
+# ** Error (suppressible): tb_wrf.vhd(70): (vopt-1549) At instance RG the actual expression and the port 'ADD_WR' of entity 'work.WINDOWED_REGISTER_FILE' have different sizes:  ([4,2]).
+#         Region: /TBREGISTERFILE/RG
+# ** Warning: tb_wrf.vhd(70): (vopt-1549) At instance RG the actual expression and the port 'ADD_RD1' of component 'work.TBREGISTERFILE(TESTA).WINDOWED_REGISTER_FILE' have different sizes:  ([4,2]).
+#         Region: /TBREGISTERFILE/RG
+# ** Error (suppressible): tb_wrf.vhd(70): (vopt-1549) At instance RG the actual expression and the port 'ADD_RD1' of entity 'work.WINDOWED_REGISTER_FILE' have different sizes:  ([4,2]).
+#         Region: /TBREGISTERFILE/RG
+# ** Warning: tb_wrf.vhd(70): (vopt-1549) At instance RG the actual expression and the port 'ADD_RD2' of component 'work.TBREGISTERFILE(TESTA).WINDOWED_REGISTER_FILE' have different sizes:  ([4,2]).
+#         Region: /TBREGISTERFILE/RG
+# ** Error (suppressible): tb_wrf.vhd(70): (vopt-1549) At instance RG the actual expression and the port 'ADD_RD2' of entity 'work.WINDOWED_REGISTER_FILE' have different sizes:  ([4,2]).
+#         Region: /TBREGISTERFILE/RG
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=3, Warnings=3.
+# Error loading design
+# End time: 18:51:21 on Apr 30,2023, Elapsed time: 0:00:01
+# Errors: 3, Warnings: 3
+vsim -t 10ps -voptargs=+acc work.tbregisterfile(testa)
+# vsim -t 10ps -voptargs="+acc" work.tbregisterfile(testa) 
+# Start time: 18:52:29 on Apr 30,2023
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Warning: tb_wrf.vhd(70): (vopt-1549) At instance RG the actual expression and the port 'ADD_WR' of component 'work.TBREGISTERFILE(TESTA).WINDOWED_REGISTER_FILE' have different sizes:  ([4,2]).
+#         Region: /TBREGISTERFILE/RG
+# ** Error (suppressible): tb_wrf.vhd(70): (vopt-1549) At instance RG the actual expression and the port 'ADD_WR' of entity 'work.WINDOWED_REGISTER_FILE' have different sizes:  ([4,2]).
+#         Region: /TBREGISTERFILE/RG
+# ** Warning: tb_wrf.vhd(70): (vopt-1549) At instance RG the actual expression and the port 'ADD_RD1' of component 'work.TBREGISTERFILE(TESTA).WINDOWED_REGISTER_FILE' have different sizes:  ([4,2]).
+#         Region: /TBREGISTERFILE/RG
+# ** Error (suppressible): tb_wrf.vhd(70): (vopt-1549) At instance RG the actual expression and the port 'ADD_RD1' of entity 'work.WINDOWED_REGISTER_FILE' have different sizes:  ([4,2]).
+#         Region: /TBREGISTERFILE/RG
+# ** Warning: tb_wrf.vhd(70): (vopt-1549) At instance RG the actual expression and the port 'ADD_RD2' of component 'work.TBREGISTERFILE(TESTA).WINDOWED_REGISTER_FILE' have different sizes:  ([4,2]).
+#         Region: /TBREGISTERFILE/RG
+# ** Error (suppressible): tb_wrf.vhd(70): (vopt-1549) At instance RG the actual expression and the port 'ADD_RD2' of entity 'work.WINDOWED_REGISTER_FILE' have different sizes:  ([4,2]).
+#         Region: /TBREGISTERFILE/RG
+# Optimization failed
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=3, Warnings=3.
+# Error loading design
+# End time: 18:52:30 on Apr 30,2023, Elapsed time: 0:00:01
+# Errors: 3, Warnings: 3
+
+
+vsim -t 10ps -voptargs=+acc work.tbregisterfile(testa)
+# vsim -t 10ps -voptargs="+acc" work.tbregisterfile(testa) 
+# Start time: 19:01:00 on Apr 30,2023
+# ** Note: (vsim-3812) Design is being optimized...
+# ** Error (suppressible): tb_wrf.vhd(77): (vopt-1272) Length of expected is 2; length of actual is 3.
+# ** Error (suppressible): tb_wrf.vhd(77): (vopt-1272) Length of expected is 2; length of actual is 3.
+# ** Error (suppressible): tb_wrf.vhd(78): (vopt-1272) Length of expected is 2; length of actual is 3.
+# ** Error (suppressible): tb_wrf.vhd(78): (vopt-1272) Length of expected is 2; length of actual is 3.
+# ** Error (suppressible): tb_wrf.vhd(79): (vopt-1272) Length of expected is 2; length of actual is 3.
+# ** Error (suppressible): tb_wrf.vhd(79): (vopt-1272) Length of expected is 2; length of actual is 3.
+# ** Note: tb_wrf.vhd(89): Vopt Compiler exiting
+# ** Error: (vopt-2064) Compiler back-end code generation process terminated with code 2.
+# ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=7, Warnings=0.
+# Error loading design
+# End time: 19:01:02 on Apr 30,2023, Elapsed time: 0:00:02
+# Errors: 7, Warnings: 0
+# Load canceled
+vsim -t 10ps -voptargs=+acc work.tbregisterfile(testa)
+# vsim -t 10ps -voptargs="+acc" work.tbregisterfile(testa) 
+# Start time: 19:15:56 on Apr 30,2023
+# ** Note: (vsim-3812) Design is being optimized...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.tbregisterfile(testa)#1
+# Loading work.windowed_register_file(behavioral)#1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+wave add *
+# No help for wave addcursor available.
+add wave *
+run 30 ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 3 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 15 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 15 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 15500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 15500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 17 ns  Iteration: 0  Instance: /tbregisterfile/RG
+add wave -position insertpoint  \
+sim:/tbregisterfile/RG/CWP
+add wave -position insertpoint  \
+sim:/tbregisterfile/RG/SWP
+reload
+# invalid command name "reload"
+rest
+# ambiguous command name "rest": restart restartCmd restartDone restartError restartParse restore
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 3 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 15 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 15 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 15500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 15500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 17 ns  Iteration: 0  Instance: /tbregisterfile/RG
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.tbregisterfile(testa)#1
+# Loading work.windowed_register_file(behavioral)#1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 3 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 15 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 15 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 17 ns  Iteration: 0  Instance: /tbregisterfile/RG
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.tbregisterfile(testa)#1
+# Loading work.windowed_register_file(behavioral)#1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 3 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 15 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 15 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 15500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 15500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 17 ns  Iteration: 0  Instance: /tbregisterfile/RG
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 3 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 6500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 15 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 15 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 15500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 15500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 17 ns  Iteration: 0  Instance: /tbregisterfile/RG
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.tbregisterfile(testa)#1
+# Loading work.windowed_register_file(behavioral)#1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+add wave -position insertpoint  \
+sim:/tbregisterfile/RG/REGISTERS
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.tbregisterfile(testa)#1
+# Loading work.windowed_register_file(behavioral)#1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+# ** Fatal: (vsim-3421) Value 13 is out of range 0 to 9.
+#    Time: 15 ns  Iteration: 0  Process: /tbregisterfile/RG/write File: wrf.vhd Line: 79
+# Fatal error in Process write at wrf.vhd line 79
+# 
+# HDL call sequence:
+# Stopped at wrf.vhd 79 Process write
+# 
+run 30 ns
+# Cannot continue because of fatal error.
+# HDL call sequence:
+# Stopped at wrf.vhd 79 Process write
+# 
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.tbregisterfile(testa)#1
+# Loading work.windowed_register_file(behavioral)#1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+# ** Fatal: (vsim-3421) Value 13 is out of range 0 to 9.
+#    Time: 15 ns  Iteration: 0  Process: /tbregisterfile/RG/write File: wrf.vhd Line: 81
+# Fatal error in Process write at wrf.vhd line 81
+# 
+# HDL call sequence:
+# Stopped at wrf.vhd 81 Process write
+# 
+add wave -position insertpoint  \
+sim:/tbregisterfile/RG/REGS_NUMB
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+# ** Fatal: (vsim-3421) Value 13 is out of range 0 to 9.
+#    Time: 15 ns  Iteration: 0  Process: /tbregisterfile/RG/write File: wrf.vhd Line: 81
+# Fatal error in Process write at wrf.vhd line 81
+# 
+# HDL call sequence:
+# Stopped at wrf.vhd 81 Process write
+# 
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.tbregisterfile(testa)#1
+# Loading work.windowed_register_file(behavioral)#1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.tbregisterfile(testa)#1
+# Loading work.windowed_register_file(behavioral)#1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.tbregisterfile(testa)#1
+# Loading work.windowed_register_file(behavioral)#1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.tbregisterfile(testa)#1
+# Loading work.windowed_register_file(behavioral)#1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.tbregisterfile(testa)#1
+# Loading work.windowed_register_file(behavioral)#1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.tbregisterfile(testa)#1
+# Loading work.windowed_register_file(behavioral)#1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.tbregisterfile(testa)#1
+# Loading work.windowed_register_file(behavioral)#1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 3500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 5500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 6500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 7500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 10500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 15 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 15500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 16500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.tbregisterfile(testa)#1
+# Loading work.windowed_register_file(behavioral)#1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 3500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 5500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 6500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 7500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 8500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 9500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 10500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 15 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 15500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 16500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.tbregisterfile(testa)#1
+# Loading work.windowed_register_file(behavioral)#1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 3500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 5500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 6500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 7500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 8500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 9500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 10500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 15 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 15500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 16500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 3500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 5500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 6500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 7500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 8500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 9500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 10500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 15 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 15500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 16500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+step
+step -current
+step -current
+step -current
+step -over
+step -out
+step
+run -all
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 3500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 5500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 6500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 7500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 8500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 9500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 10500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# Break in Process write at wrf.vhd line 98
+step
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 15 ns  Iteration: 0  Instance: /tbregisterfile/RG
+run 30 ns
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 15500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 16500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+step
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.tbregisterfile(testa)#1
+# Loading work.windowed_register_file(behavioral)#1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 3500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 5500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 6500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 7500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 8500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 9500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 10500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 15 ns  Iteration: 0  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 15500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 16500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.tbregisterfile(testa)#1
+# Loading work.windowed_register_file(behavioral)#1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 3500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 5500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 6500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 7500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 8500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 9500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 10500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.tbregisterfile(testa)#1
+# Loading work.windowed_register_file(behavioral)#1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 3500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 5500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 6500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 7500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 8500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 9500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 10500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.tbregisterfile(testa)#1
+# Loading work.windowed_register_file(behavioral)#1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 3500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 5500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 6500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 7500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 8500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 9500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Warning: NUMERIC_STD.TO_UNSIGNED: vector truncated
+#    Time: 10500 ps  Iteration: 1  Instance: /tbregisterfile/RG
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-8009) Loading existing optimized design _opt1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.tbregisterfile(testa)#1
+# Loading work.windowed_register_file(behavioral)#1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# ** Fatal: (vsim-3421) Value 12 is out of range 0 to 9.
+#    Time: 0 ps  Iteration: 1  Process: /tbregisterfile/RG/read2 File: wrf.vhd Line: 85
+# Fatal error in Process read2 at wrf.vhd line 85
+# 
+# HDL call sequence:
+# Stopped at wrf.vhd 85 Process read2
+# 
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.tbregisterfile(testa)#1
+# Loading work.windowed_register_file(behavioral)#1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.math_real(body)
+# Loading work.constants
+# Loading work.tbregisterfile(testa)#1
+# Loading work.windowed_register_file(behavioral)#1
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/FILL has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /tbregisterfile/RG/SPILL has no driver.
+# This port will contribute value (U) to the signal network.
+run 30 ns
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 1  Instance: /tbregisterfile/RG
+# End time: 20:23:49 on Apr 30,2023, Elapsed time: 1:07:53
+# Errors: 0, Warnings: 3

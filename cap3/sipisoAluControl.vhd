@@ -161,4 +161,3 @@ begin
 	startC <= intO(4);
 
 end FSM_OPC;
- 
