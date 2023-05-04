@@ -1,5 +1,0 @@
-vcom costants.vhd && (echo -e "Success... \n") || exit 1
-vcom wrf.vhd && (echo -e "Success... \n") || exit 1
-vcom tb_wrf.vhd && (echo -e "Success... \n") || exit 1
-
-echo Done.
