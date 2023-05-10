@@ -27,7 +27,7 @@ analyze -library $lib_name -format vhdl $analyze_list
 elaborate $top_level_entity -architecture $architecture_name
 ##########################################
 # first compilation, without constraints
-echo [INFO] Compilation without contraints
+puts [INFO] Compilation without contraints
 compile 
 
 # create reports dir, if it does not exist
@@ -36,28 +36,28 @@ if {![file exists $reports_dir]} {
 }
 
 # reporting timing and power after the first synthesis without constraints #
-report_timing > "${reports_dir}/timing_uncontrained.txt"
-report_area >  "${reports_dir}/area_uncontrained.txt"
+report_timing > "${reports_dir}/timing_report.txt"
+# report_area >  "${reports_dir}/area_uncontrained.txt"
 
 # because rf is sequential, we need to create a clock in order to constrain
 # the synthesis process. The name parameters is the name of the pin that
 # corresponds to the clock of the entity.
-create_clock -name "CLK" -period 2 CLK
+# create_clock -name "CLK" -period 2 CLK
 
 # check if the clock signal has been created
-report_clock > "${reports_dir}/report_clock.txt"
+# report_clock > "${reports_dir}/report_clock.txt"
 
 # compile the constrained design
-echo [INFO] Compilation with a timing contraint
-compile
-report_timing > "${reports_dir}/timing_contrained.txt"
+# echo [INFO] Compilation with a timing contraint
+# compile
+# report_timing > "${reports_dir}/timing_contrained.txt"
 
 # forces a combinational max delay of max_paths_delay from each of the inputs
 # to each of the output, that is a delay lower than the one found after the
 # first compilation step. Often this is the working clock period of your
 # system 
-set_max_delay $max_paths_delay -from [all_inputs] -to [all_outputs]
-report_timing > "${reports_dir}/timing_and_paths_contrained.txt"
+# set_max_delay $max_paths_delay -from [all_inputs] -to [all_outputs]
+# report_timing > "${reports_dir}/timing_and_paths_contrained.txt"
 # optimize
 # TODO step 6 and 7
 
@@ -65,7 +65,8 @@ report_timing > "${reports_dir}/timing_and_paths_contrained.txt"
 # save report
 #report_timing > ADD_timeopt_2t.rpt
 #report_area > ADD_timeopt_2a.rpt
+
 # saving files
 #write -hierarchy -format ddc -output ADD-structural-topt.ddc
-#write -hierarchy -format vhdl -output ADD-structural-topt.vhdl
+write -hierarchy -format vhdl -output post-synthesis-netlist.vhdl
 #write -hierarchy -format verilog -output ADD-structural-topt.v

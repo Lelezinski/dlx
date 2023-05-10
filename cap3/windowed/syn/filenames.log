@@ -88,11 +88,10 @@
 /eda/synopsys/2021-22/RHELx86/SYN_2021.06-SP4/auxx/gui/common/histogram/DialogNetCapacitance.tcl
 /eda/synopsys/2021-22/RHELx86/SYN_2021.06-SP4/auxx/gui/common/schematic/DialogPathSchematicFanInOut.tcl
 /eda/synopsys/2021-22/RHELx86/SYN_2021.06-SP4/auxx/gui/common/schematic/DialogPathSchematicAddPaths.tcl
-/home/ms23.52/MS/cap3/sipisoalu/syn/sipisoAluControl.vhd
-/home/ms23.52/MS/cap3/sipisoalu/syn/sipisoalu.vhd
+/home/ms23.52/MS/cap3/windowed/syn/syn.tcl
+/home/ms23.52/MS/cap3/windowed/syn/constants.vhd
+/home/ms23.52/MS/cap3/windowed/syn/wrf.vhd
 /home/mariagrazia.graziano/do/libnangate/NangateOpenCellLibrary_typical_ecsm.db
 /eda/synopsys/2021-22/RHELx86/SYN_2021.06-SP4/libraries/syn/gtech.db
 /eda/synopsys/2021-22/RHELx86/SYN_2021.06-SP4/libraries/syn/standard.sldb
-/home/mariagrazia.graziano/do/libnangate/NangateOpenCellLibrary_typical_ecsm.db
-/home/mariagrazia.graziano/do/libnangate/NangateOpenCellLibrary_typical_ecsm.db
 /home/mariagrazia.graziano/do/libnangate/NangateOpenCellLibrary_typical_ecsm.db

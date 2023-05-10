@@ -33,16 +33,15 @@ entity WINDOWED_REGISTER_FILE is
         FILL : out std_logic;
         SPILL : out std_logic;
         -- Memory Bus
-        FROM_MEM : in std_logic_vector((WORD_LEN - 1) downto 0); -- TODO: forse DATAIN/DATAOUT bastano
-        TO_MEM : out std_logic_vector((WORD_LEN - 1) downto 0) -- TODO: forse DATAIN/DATAOUT bastano
-        -- MEM_ACK : in std_logic -- TODO: USARLO?
+        FROM_MEM : in std_logic_vector((WORD_LEN - 1) downto 0);
+        TO_MEM : out std_logic_vector((WORD_LEN - 1) downto 0)
     );
 end WINDOWED_REGISTER_FILE;
 
 architecture BEHAVIORAL of WINDOWED_REGISTER_FILE is
     -- Constants
     constant REGS_NUMB : integer := ((N * 2) * F + M);
-    constant MAX_CWP : integer := ((N * 2) * F); -- TODO: CHANGE TO (F) AND ( +1/-1, LSL log2(2N) ) EACH TIME
+    constant MAX_CWP : integer := ((N * 2) * F);
     constant MAX_SWP : integer := ((N * 2) * F);
     constant NBIT_REGS : integer := integer(ceil(log2(real(N * 2))));
 
@@ -51,9 +50,9 @@ architecture BEHAVIORAL of WINDOWED_REGISTER_FILE is
     type REG_ARRAY is array(REG_ADDR) of std_logic_vector((WORD_LEN - 1) downto 0);
     signal REGISTERS, NEXT_REGISTERS : REG_ARRAY;
     -- Internal Counters to keep track of call/return number
-    --  if they are zero, SPILL/FILL signals are risen
+    --  if they are 1/-1, SPILL/FILL signals are risen
     signal CANSAVE, NEXT_CANSAVE, CANRESTORE, NEXT_CANRESTORE : unsigned(integer(ceil(log2(real(F)))) - 1 downto 0);
-    signal CWP, NEXT_CWP : unsigned(integer(ceil(log2(real(MAX_CWP)))) - 1 downto 0); -- TODO: CHANGE TO (F) AND ( +1/-1, LSL log2(2N) ) EACH TIME
+    signal CWP, NEXT_CWP : unsigned(integer(ceil(log2(real(MAX_CWP)))) - 1 downto 0);
     signal SWP, NEXT_SWP : unsigned(integer(ceil(log2(real(MAX_SWP)))) - 1 downto 0);
     -- FSM
     type STATE_T is (NORMAL, SPILLING, FILLING);
@@ -90,6 +89,9 @@ begin
         -- Outputs
         SPILL <= '0';
         FILL <= '0';
+        OUT1 <= (others => 'Z');
+        OUT2 <= (others => 'Z');
+        TO_MEM <= (others => 'Z');
 
         -- Internal registers
         NEXT_CANRESTORE <= CANRESTORE;
@@ -107,9 +109,9 @@ begin
             when NORMAL =>
                 NEXT_STATE <= NORMAL;
 
-                if ENABLE = '1' then 
+                if ENABLE = '1' then
                     if CALL = '1' then
-                        if CANSAVE = 0 then
+                        if CANSAVE = 1 then
                             -- Spill to Memory
                             NEXT_SWP <= (SWP + 1);
                             NEXT_STATE <= SPILLING;
@@ -121,7 +123,7 @@ begin
                             NEXT_CANRESTORE <= CANRESTORE + 1;
                         end if;
                     elsif RET = '1' then
-                        if CANRESTORE = 0 then
+                        if CANRESTORE = (F - 1) then -- Same as CANRESTORE = -1
                             -- Fill from Memory
                             NEXT_SWP <= (SWP - 1);
                             NEXT_STATE <= FILLING;
@@ -155,7 +157,7 @@ begin
                         end if;
 
                         -- writing
-                        if  WR = '1' then
+                        if WR = '1' then
                             if unsigned(ADD_WR) < (3 * N) then
                                 -- I/O/L Area: simple CWP offset
                                 NEXT_REGISTERS(to_integer(unsigned(ADD_WR) + CWP)) <= DATAIN;
@@ -169,13 +171,13 @@ begin
 
             when SPILLING =>
                 SPILL <= '1';
-                TO_MEM <= REGISTERS(to_integer(SWP) - 1); -- To align SWP
+                TO_MEM <= REGISTERS(to_integer(SWP - 1)); -- To align SWP
 
                 if SWP((NBIT_REGS - 1) downto 0) = 0 then
                     -- Spilling Done, SWP is now +2N
                     NEXT_CWP <= ((CWP) + (2 * N));
                     NEXT_STATE <= NORMAL;
-                else 
+                else
                     NEXT_SWP <= (SWP + 1);
                     NEXT_STATE <= SPILLING;
                 end if;
@@ -188,7 +190,7 @@ begin
                     -- Filling Done, SWP is now -2N
                     NEXT_CWP <= ((CWP) - (2 * N));
                     NEXT_STATE <= NORMAL;
-                else 
+                else
                     NEXT_SWP <= (SWP - 1);
                     NEXT_STATE <= FILLING;
                 end if;

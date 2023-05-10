@@ -1,0 +1,56 @@
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : WINDOWED_REGISTER_FILE
+Version: S-2021.06-SP4
+Date   : Thu May  4 19:59:12 2023
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: CWP_reg[0] (rising edge-triggered flip-flop)
+  Endpoint: OUT1[5] (output port)
+  Path Group: (none)
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  WINDOWED_REGISTER_FILE
+                     5K_hvratio_1_1        NangateOpenCellLibrary
+
+  Point                                    Incr       Path
+  -----------------------------------------------------------
+  CWP_reg[0]/CK (DFF_X1)                   0.00       0.00 r
+  CWP_reg[0]/QN (DFF_X1)                   0.10       0.10 f
+  U2761/ZN (NOR2_X1)                       0.07       0.16 r
+  U2760/ZN (INV_X1)                        0.03       0.19 f
+  U2758/ZN (AOI21_X1)                      0.04       0.23 r
+  U2757/ZN (INV_X1)                        0.02       0.25 f
+  U2756/ZN (OAI21_X1)                      0.04       0.30 r
+  U2755/ZN (OAI21_X1)                      0.04       0.34 f
+  U2754/ZN (INV_X1)                        0.03       0.36 r
+  U2753/ZN (AOI21_X1)                      0.03       0.39 f
+  U2751/ZN (AND2_X1)                       0.05       0.44 f
+  U2750/ZN (OAI22_X1)                      0.06       0.50 r
+  U2749/Z (XOR2_X1)                        0.13       0.62 r
+  U2744/ZN (INV_X1)                        0.05       0.68 f
+  U2743/ZN (NOR3_X1)                       0.17       0.85 r
+  U2716/ZN (INV_X1)                        0.04       0.89 f
+  U1515/ZN (INV_X1)                        0.16       1.06 r
+  U2653/ZN (AOI221_X1)                     0.07       1.13 f
+  U2652/ZN (AOI21_X1)                      0.06       1.19 r
+  U2646/ZN (NOR4_X1)                       0.03       1.21 f
+  U2645/ZN (NAND2_X1)                      0.03       1.24 r
+  OUT1_tri[5]/Z (TBUF_X1)                  0.04       1.28 r
+  OUT1[5] (out)                            0.00       1.28 r
+  data arrival time                                   1.28
+  -----------------------------------------------------------
+  (Path is unconstrained)
+
+
+1

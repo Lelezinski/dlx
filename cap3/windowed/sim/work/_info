@@ -1,0 +1,178 @@
+m255
+K4
+z2
+!s11e vcom 2020.4 2020.10, Oct 13 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/ms23.52/MS/cap3/windowed/sim
+Ccfg_rf_beh
+eWINDOWED_REGISTER_FILE
+aBEHAVIORAL
+DAx4 work 22 windowed_register_file 10 behavioral 22 LSiSK=bQ1l27l^JElE^FE2
+Z1 DPx4 work 9 constants 0 22 IVlQk@zMhKfiVFEbnJjR:2
+Z2 DPx4 ieee 9 math_real 0 22 gNk<PdFJ<XNPcfef`f?Z81
+Z3 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z5 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+Z6 DEx4 work 22 windowed_register_file 0 22 ;=kV]<F=a[6WL>HBbfSN11
+!i122 13
+Z7 w1683221669
+R0
+Z8 8wrf.vhd
+Z9 Fwrf.vhd
+l0
+L204 1
+VAcTZLRY_[5ciKk`5^>o<j0
+!s100 R4>Tc;VcWMc_cAW`L`S:z1
+Z10 OL;C;2020.4;71
+32
+Z11 !s110 1683221679
+!i10b 0
+Z12 !s108 1683221678.000000
+Z13 !s90 wrf.vhd|
+Z14 !s107 wrf.vhd|
+!i113 0
+Z15 tExplicit 1 CvgOpt 0
+Ccfg_testrf
+eTBREGISTERFILE
+aTESTA
+R6
+DCx4 work 10 cfg_rf_beh 0 22 AcTZLRY_[5ciKk`5^>o<j0
+DAx4 work 14 tbregisterfile 5 testa 22 K0CEf2KZm]MZWd5jAI4;P1
+R1
+R2
+R3
+R4
+R5
+Z16 DEx4 work 14 tbregisterfile 0 22 XB[2N?f13IUK<VjSI2XR42
+!i122 14
+Z17 w1683220391
+R0
+Z18 8tb_wrf.vhd
+Z19 Ftb_wrf.vhd
+l0
+L152 1
+VH9P0]ZaUBKz;Tbh>Vf]`T3
+!s100 WaiUg4JP<FAj:Rk?LTjam1
+R10
+32
+Z20 !s110 1683221680
+!i10b 0
+Z21 !s108 1683221679.000000
+Z22 !s90 tb_wrf.vhd|
+Z23 !s107 tb_wrf.vhd|
+!i113 0
+R15
+Pconstants
+!i122 12
+w1683197577
+R0
+8constants.vhd
+Fconstants.vhd
+l0
+L1 1
+VIVlQk@zMhKfiVFEbnJjR:2
+!s100 DTN6UWXO:>o0`o1T6XiB?1
+R10
+32
+!s110 1683221678
+!i10b 1
+!s108 1683221676.000000
+!s90 constants.vhd|
+!s107 constants.vhd|
+!i113 0
+R15
+Etbregisterfile
+R17
+R1
+R2
+R3
+R4
+R5
+!i122 14
+R0
+R18
+R19
+l0
+L8 1
+VXB[2N?f13IUK<VjSI2XR42
+!s100 mJeO@CgFYD1m0TbSNUZKH2
+R10
+32
+R20
+!i10b 1
+R21
+R22
+R23
+!i113 0
+R15
+Atesta
+R1
+R2
+R3
+R4
+R5
+R16
+!i122 14
+l78
+Z24 L11 140
+Z25 VK0CEf2KZm]MZWd5jAI4;P1
+Z26 !s100 _CeTS^OGf55lOGT8R^3JD3
+R10
+32
+R20
+!i10b 1
+R21
+R22
+R23
+!i113 0
+R15
+Ewindowed_register_file
+R7
+R1
+R2
+R3
+R4
+R5
+!i122 13
+R0
+R8
+R9
+l0
+L7 1
+V;=kV]<F=a[6WL>HBbfSN11
+!s100 0HI9Yl=S81Y42AhVRS[2<0
+R10
+32
+R11
+!i10b 1
+R12
+R13
+R14
+!i113 0
+R15
+Abehavioral
+R1
+R2
+R3
+R4
+R5
+R6
+!i122 13
+l60
+L41 162
+VLSiSK=bQ1l27l^JElE^FE2
+!s100 H5=zzfD31]`91BO?lI<<G1
+R10
+32
+R11
+!i10b 1
+R12
+R13
+R14
+!i113 0
+R15
