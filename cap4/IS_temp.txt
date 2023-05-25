@@ -17,9 +17,9 @@ ORI      : 1011'11111'0001
 
 MOV      : 1011'11001'0001
 
-(STORE)
-REG1     : ? (SERVE UNO 0)
-REG2     : ? (SERVE UNO 0)
+(STORE) 
+REG1     : 0111'00001'0001 (*RB = B = 0) (RD = RA)
+REG2     : 1011'11001'0001 (*RA = A = 0) (RD = RB)
 MEM      : 1101'11001'0110
 
 (LOAD)

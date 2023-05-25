@@ -1,0 +1,5 @@
+vcom ../myTypes.vhd && (echo -e "Success... \n") || exit 1
+vcom CU_UP.vhd && (echo -e "Success... \n") || exit 1
+vcom ../CU_Test.vhd && (echo -e "Success... \n") || exit 1
+
+echo Done.

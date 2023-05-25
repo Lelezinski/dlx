@@ -11,6 +11,15 @@ end cu_test;
 architecture TEST of cu_test is
 
     component cu
+        generic (
+            MICROCODE_MEM_SIZE :     integer := 17;  -- Microcode Memory Size
+            FUNC_SIZE          :     integer := 11;  -- Func Field Size for R-Type Ops
+            OP_CODE_SIZE       :     integer := 6;  -- Op Code Size
+            -- ALU_OPC_SIZE       :     integer := 6;  -- ALU Op Code Word Size
+            CW_SIZE            :     integer := 13;  -- Control Word Size
+            FIRST_STAGE_SIGNALS_SIZE :   integer := 3;
+            SECOND_STAGE_SIGNALS_SIZE :   integer := 5;
+            THIRD_STAGE_SIGNALS_SIZE :   integer := 5);
         port (
             -- FIRST PIPE STAGE OUTPUTS
             EN1 : out std_logic; -- enables the register file and the pipeline registers
@@ -36,9 +45,10 @@ architecture TEST of cu_test is
         );
     end component;
 
-    constant CLK_PERIOD : time      := 1 ns;
-    signal Clock        : std_logic := '0';
-    signal Reset        : std_logic := '0';
+    constant clock_cycle : time := 2 ns;
+
+    signal Clock : std_logic := '0';
+    signal Reset : std_logic := '1';
 
     signal cu_opcode_i : std_logic_vector(C_OP_CODE_SIZE - 1 downto 0) := (others => '0');
     signal cu_func_i   : std_logic_vector(C_FUNC_SIZE - 1 downto 0)    := (others => '0');
@@ -49,6 +59,13 @@ begin
 
     -- instance of DLX
     dut : cu
+    generic map (
+        MICROCODE_MEM_SIZE => 15,
+        FUNC_SIZE          => C_FUNC_SIZE,
+        OP_CODE_SIZE       => C_OP_CODE_SIZE,
+        -- ALU_OPC_SIZE       :     integer := 6;  -- ALU Op Code Word Size
+        CW_SIZE            => C_CW_SIZE
+    )
     port map(
         -- OUTPUTS
         EN1  => EN1_i,
@@ -71,29 +88,31 @@ begin
         Rst    => Reset
     );
 
-    Clock <= not Clock after (CLK_PERIOD / 2);
-    Reset <= '0', '1' after CLK_PERIOD;
+    Clock <= not Clock after (clock_cycle / 2);
+    Reset <= '0', '1' after 6 ns;
 
     CONTROL : process
     begin
 
-        wait for CLK_PERIOD;
+        wait for 6 ns;
 
         ---- R-Type ----
-        -- decimal values of r-type func fields are between 0 and 4
-        r : for i in 0 to (C_NUM_OF_R_INSTRUCTION - 1) loop
+        -- decimal values of r-type func fields are between 0 and 3
+        lore: for i in 0 to 3 loop
             cu_opcode_i <= RTYPE;
             cu_func_i   <= std_logic_vector(to_unsigned(i, C_FUNC_SIZE));
-            wait for C_TB_STAGES * CLK_PERIOD;
-        end loop r;
+            -- the pipeline fetches a new instruction each clock cycle 
+            wait for clock_cycle ;
+        end loop lore;
+
 
         ---- I-Type ----
         -- decimal values of i-type opcode fields are between 1 and 14
-        i : for i in 1 to (C_NUM_OF_I_INSTRUCTION) loop
+        lpsum: for i in 1 to 14 loop
             cu_opcode_i <= std_logic_vector(to_unsigned(i, C_OP_CODE_SIZE));
             cu_func_i   <= (others => '0');
-            wait for C_TB_STAGES * CLK_PERIOD;
-        end loop i;
+            wait for clock_cycle ;
+        end loop lpsum;
 
         wait;
     end process;

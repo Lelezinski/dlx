@@ -1,0 +1,118 @@
+m255
+K4
+z2
+!s11e vcom 2020.4 2020.10, Oct 13 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/ms23.52/MS/cap4/ex4.2
+Ecu
+Z1 w1684425171
+Z2 DPx4 work 7 mytypes 0 22 D3ONo`AnM4_V]FNA895S[3
+Z3 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z4 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z5 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 1
+R0
+Z6 8CU_HW.vhd
+Z7 FCU_HW.vhd
+l0
+L6 1
+VCI:FWzRKXN]1<6UIR[2bP0
+!s100 U;W9iobSKgMR>JjVz2>i<2
+Z8 OL;C;2020.4;71
+32
+Z9 !s110 1684425179
+!i10b 1
+Z10 !s108 1684425179.000000
+Z11 !s90 CU_HW.vhd|
+Z12 !s107 CU_HW.vhd|
+!i113 0
+Z13 tExplicit 1 CvgOpt 0
+Acu_rtl
+R2
+R3
+R4
+R5
+DEx4 work 2 cu 0 22 CI:FWzRKXN]1<6UIR[2bP0
+!i122 1
+l74
+L40 108
+VWH;YQ[GKSbB:I3:8DNXj?3
+!s100 h`k@Qa]h8H6`_VGjfN?aC2
+R8
+32
+R9
+!i10b 1
+R10
+R11
+R12
+!i113 0
+R13
+Ecu_test
+Z14 w1684421409
+R2
+R3
+R4
+R5
+!i122 2
+R0
+Z15 8CU_Test.vhd
+Z16 FCU_Test.vhd
+l0
+L7 1
+V<7@BjL5[m^LT;B2Ll[m3l0
+!s100 EU<5d6ZZ[a]Q[1fJ]aoeT1
+R8
+32
+R9
+!i10b 1
+R10
+Z17 !s90 CU_Test.vhd|
+!s107 CU_Test.vhd|
+!i113 0
+R13
+Atest
+R2
+R3
+R4
+R5
+DEx4 work 7 cu_test 0 22 <7@BjL5[m^LT;B2Ll[m3l0
+!i122 2
+l57
+L10 110
+Vn>UE@_3[<3M>Q^mQXlEiB1
+!s100 @2JkT6>nE6XP9[gRJ9:Ud2
+R8
+32
+R9
+!i10b 1
+R10
+R17
+Z18 !s107 CU_Test.vhd|
+!i113 0
+R13
+Pmytypes
+R4
+R5
+!i122 0
+w1684255161
+R0
+8../myTypes.vhd
+F../myTypes.vhd
+l0
+L4 1
+VD3ONo`AnM4_V]FNA895S[3
+!s100 WLb[h?i:nTkUTM7<AK63M0
+R8
+32
+R9
+!i10b 1
+R10
+!s90 ../myTypes.vhd|
+!s107 ../myTypes.vhd|
+!i113 0
+R13
