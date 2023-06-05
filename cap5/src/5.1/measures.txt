@@ -1,0 +1,13 @@
+# HL/LH transactions
+HL            49ps
+LH            57ps
+
+# 10 - 90
+RNAND         89ps
+FNAND         74ps
+
+# Simulation measures
+RNAND         8.9303E-11
+FNAND         7.4319E-11
+NANDDELAYHL   4.8993E-11
+NANDDELAYLH   5.6490E-11

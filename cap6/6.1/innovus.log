@@ -1,0 +1,597 @@
+
+Cadence Innovus(TM) Implementation System.
+Copyright 2020 Cadence Design Systems, Inc. All rights reserved worldwide.
+
+Version:	v20.11-s130_1, built Wed Aug 5 15:53:11 PDT 2020
+Options:	
+Date:		Thu Jun  1 12:31:40 2023
+Host:		localhost.localdomain (x86_64 w/Linux 3.10.0-957.5.1.el7.x86_64) (1core*12cpus*Intel Core i7 9xx (Nehalem Class Core i7) 4096KB)
+OS:		CentOS Linux release 7.6.1810 (Core) 
+
+License:
+		invs	Innovus Implementation System	20.1	checkout succeeded
+		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+Change the soft stacksize limit to 0.2%RAM (128 mbytes). Set global soft_stack_size_limit to change the value.
+
+**INFO:  MMMC transition support version v31-84 
+
+<CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+<CMD> suppressMessage ENCEXT-2799
+<CMD> win
+<CMD> set init_verilog {Default.view sum.v}
+<CMD> init_design
+**WARN: (IMPSYT-10026):	No LEF physical data was provided but timing libraries were given, so only timing analysis can be run. Any commands that require physical data will fail. This mode is meant for doing Tempus vs Innovus comparisons using common scripts, and is not intended for normal usage.
+Use timer mode.
+*** End library_loading (cpu=0.00min, real=0.00min, mem=0.0M, fe_cpu=0.92min, fe_real=1.47min, fe_mem=813.6M) ***
+#% Begin Load netlist data ... (date=06/01 12:33:08, mem=626.4M)
+*** Begin netlist parsing (mem=813.6M) ***
+Created 0 new cells from 0 timing libraries.
+Reading netlist ...
+Backslashed names will retain backslash and a trailing blank character.
+**ERROR: (IMPVL-209):	In Verilog file 'Default.view', check line 1 near the text # for the issue: 'syntax error'.  Update the text accordingly.
+Type 'man IMPVL-209' for more detail.
+Verilog file 'Default.view' has errors!  See above.
+
+*** Memory Usage v#2 (Current mem = 813.574M, initial mem = 272.285M) ***
+#% End Load netlist data ... (date=06/01 12:33:08, total cpu=0:00:00.0, real=0:00:00.0, peak res=628.2M, current mem=628.2M)
+**ERROR: (IMPVL-902):	Failed to read netlist Default.view sum.v. See previous error messages for details.  Resolve the issues and reload the design.
+<CMD> set init_verilog {Default.view sum.v SUM.globals}
+<CMD> init_design
+*** End library_loading (cpu=0.00min, real=0.00min, mem=0.0M, fe_cpu=0.98min, fe_real=1.68min, fe_mem=816.0M) ***
+#% Begin Load netlist data ... (date=06/01 12:33:21, mem=628.8M)
+*** Begin netlist parsing (mem=816.0M) ***
+Created 0 new cells from 0 timing libraries.
+Reading netlist ...
+Backslashed names will retain backslash and a trailing blank character.
+**ERROR: (IMPVL-209):	In Verilog file 'Default.view', check line 1 near the text # for the issue: 'syntax error'.  Update the text accordingly.
+Type 'man IMPVL-209' for more detail.
+Verilog file 'Default.view' has errors!  See above.
+**ERROR: (IMPVL-209):	In Verilog file 'SUM.globals', check line 1 near the text # for the issue: 'syntax error'.  Update the text accordingly.
+Type 'man IMPVL-209' for more detail.
+Verilog file 'SUM.globals' has errors!  See above.
+
+*** Memory Usage v#2 (Current mem = 815.996M, initial mem = 272.285M) ***
+#% End Load netlist data ... (date=06/01 12:33:21, total cpu=0:00:00.1, real=0:00:00.0, peak res=629.4M, current mem=629.4M)
+**ERROR: (IMPVL-902):	Failed to read netlist Default.view sum.v SUM.globals. See previous error messages for details.  Resolve the issues and reload the design.
+<CMD> zoomBox -0.10000 -0.02500 0.24200 0.14000
+<CMD> zoomBox -0.41200 -0.10800 0.24900 0.21000
+<CMD> set defHierChar /
+Set Default Input Pin Transition as 0.1 ps.
+<CMD> set delaycal_input_transition_delay 0.1ps
+<CMD> set fpIsMaxIoHeight 0
+<CMD> set init_gnd_net gnd
+<CMD> set init_mmmc_file Default.view
+<CMD> set init_oa_search_lib {}
+<CMD> set init_pwr_net vdd
+<CMD> set init_verilog sum.v
+<CMD> set init_lef_file /eda/dk/nangate45/lef/NangateOpenCellLibrary.lef
+<CMD> init_design
+#% Begin Load MMMC data ... (date=06/01 12:35:52, mem=634.4M)
+**ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:35:54, mem=634.5M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+**ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> set defHierChar /
+Set Default Input Pin Transition as 0.1 ps.
+<CMD> set delaycal_input_transition_delay 0.1ps
+<CMD> set fpIsMaxIoHeight 0
+<CMD> set init_gnd_net gnd
+<CMD> set init_mmmc_file Default.view
+<CMD> set init_oa_search_lib {}
+<CMD> set init_pwr_net vdd
+<CMD> set init_verilog sum.v
+<CMD> set init_lef_file /eda/dk/nangate45/lef/NangateOpenCellLibrary.lef
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:36:30, mem=634.9M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+**ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:36:30, mem=634.9M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+**ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:36:31, mem=634.9M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+**ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:36:31, mem=634.9M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+**ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:36:32, mem=634.9M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+**ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:36:34, mem=634.7M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+**ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:36:52, mem=634.7M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+**ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:36:52, mem=634.7M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+**ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:36:53, mem=634.7M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+**ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:36:53, mem=634.7M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+**ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+**ERROR: (IMPSYT-6000):	No Object Selected.
+<CMD> gui_select -rect {-0.04500 0.07100 -0.14900 0.06600}
+<CMD> set defHierChar /
+Set Default Input Pin Transition as 0.1 ps.
+<CMD> set delaycal_input_transition_delay 0.1ps
+<CMD> set fpIsMaxIoHeight 0
+<CMD> set init_gnd_net gnd
+<CMD> set init_mmmc_file Default.view
+<CMD> set init_oa_search_lib {}
+<CMD> set init_pwr_net vdd
+<CMD> set init_verilog sum.v
+<CMD> set init_lef_file /eda/dk/nangate45/lef/NangateOpenCellLibrary.lef
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:38:26, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+**ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:38:27, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+**ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:38:27, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+**ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:38:28, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+**ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:38:28, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+**ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:38:36, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+**ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:38:36, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+**ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:38:36, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+**ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:38:37, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:38:38, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:38:42, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:38:42, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:38:42, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:38:43, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:38:44, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:38:44, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:38:45, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:38:49, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:39:01, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:39:01, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:39:02, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:39:02, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:39:02, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:39:03, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:39:03, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:39:03, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:39:03, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:39:33, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:39:34, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:39:34, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:39:35, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:39:38, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:39:39, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:39:39, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:39:40, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:39:40, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:39:40, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:39:41, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:39:42, mem=636.2M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> zoomBox -0.73300 -0.20600 0.34600 0.31300
+<CMD> zoomBox -0.88000 -0.25100 0.39000 0.36000
+<CMD> setDrawView fplan
+<CMD> setDrawView place
+<CMD> setDrawView ameba
+<CMD> setDrawView place
+<CMD> set defHierChar /
+Set Default Input Pin Transition as 0.1 ps.
+<CMD> set delaycal_input_transition_delay 0.1ps
+<CMD> set fpIsMaxIoHeight 0
+<CMD> set init_gnd_net gnd
+<CMD> set init_mmmc_file Default.view
+<CMD> set init_oa_search_lib {}
+<CMD> set init_pwr_net vdd
+<CMD> set init_verilog sum.v
+<CMD> set init_lef_file /eda/dk/nangate45/lef/NangateOpenCellLibrary.lef
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:41:19, mem=639.3M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:41:30, mem=639.3M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:41:31, mem=639.3M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> set defHierChar /
+Set Default Input Pin Transition as 0.1 ps.
+<CMD> set delaycal_input_transition_delay 0.1ps
+<CMD> set fpIsMaxIoHeight 0
+<CMD> set init_gnd_net gnd
+<CMD> set init_mmmc_file Default.view
+<CMD> set init_oa_search_lib {}
+<CMD> set init_pwr_net vdd
+<CMD> set init_verilog sum.v
+<CMD> set init_lef_file /eda/dk/nangate45/lef/NangateOpenCellLibrary.lef
+**ERROR: (IMPSYT-16095):	can't read "MycapTable": no such variable
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:43:51, mem=655.3M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:43:53, mem=655.3M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:43:54, mem=655.3M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:43:54, mem=655.3M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:43:54, mem=655.3M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:43:55, mem=655.3M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:43:55, mem=655.3M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:43:55, mem=655.3M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:43:56, mem=655.3M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:43:56, mem=655.3M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:43:57, mem=655.3M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:43:57, mem=655.4M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:43:58, mem=655.4M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:43:58, mem=655.4M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:44:06, mem=655.5M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:44:11, mem=655.5M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:44:15, mem=655.5M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:44:17, mem=655.5M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:44:31, mem=655.5M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:44:32, mem=655.5M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:44:32, mem=655.5M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:44:32, mem=655.5M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:44:32, mem=655.5M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:44:32, mem=655.5M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:44:33, mem=655.5M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:44:33, mem=655.5M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:44:33, mem=655.6M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:44:48, mem=655.6M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:44:49, mem=655.6M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:44:49, mem=655.6M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> gui_select -rect {0.23700 0.25300 -0.39100 0.00300}
+<CMD> gui_select -rect {-0.26900 0.12200 0.12300 0.09700}
+<CMD> set defHierChar /
+Set Default Input Pin Transition as 0.1 ps.
+<CMD> set delaycal_input_transition_delay 0.1ps
+<CMD> set fpIsMaxIoHeight 0
+<CMD> set init_gnd_net gnd
+<CMD> set init_mmmc_file Default.view
+<CMD> set init_oa_search_lib {}
+<CMD> set init_pwr_net vdd
+<CMD> set init_verilog sum.v
+<CMD> set init_lef_file /eda/dk/nangate45/lef/NangateOpenCellLibrary.lef
+<CMD> set defHierChar /
+Set Default Input Pin Transition as 0.1 ps.
+<CMD> set delaycal_input_transition_delay 0.1ps
+<CMD> set fpIsMaxIoHeight 0
+<CMD> set init_gnd_net gnd
+<CMD> set init_mmmc_file Default.view
+<CMD> set init_oa_search_lib {}
+<CMD> set init_pwr_net vdd
+<CMD> set init_verilog sum.v
+<CMD> set init_lef_file /eda/dk/nangate45/lef/NangateOpenCellLibrary.lef
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:49:21, mem=660.5M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+<CMD> init_design
+% Begin Load MMMC data ... (date=06/01 12:49:22, mem=660.5M)
+Extraction setup Started 
+Extraction setup Started 
+Extraction setup Started 
+
+--------------------------------------------------------------------------------
+Exiting Innovus on Thu Jun  1 12:49:28 2023
+  Total CPU time:     0:04:38
+  Total real time:    0:17:50
+  Peak memory (main): 685.89MB
+
+
+*** Memory Usage v#2 (Current mem = 844.629M, initial mem = 272.285M) ***
+*** Message Summary: 1 warning(s), 63 error(s)
+
+--- Ending "Innovus" (totcpu=0:04:38, real=0:17:48, mem=844.6M) ---

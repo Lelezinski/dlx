@@ -41,12 +41,12 @@ v_vdd vdd 0 DC alim
 *********************************************************
 * defining load variations
 .data vectorload
-load
-0.005f
-0.05f
-0.5f
-5.0f
-50.0f
+t_tran
+0.0048n
+0.1088n
+0.2608n
+0.5248n
+0.8000n
 .enddata
 
 **********************************************************
@@ -56,11 +56,13 @@ load
 .measure tran fnand TRIG v(out) VAL='alim*0.9' FALL=1
 +TARG v(out) VAL='alim*0.1' FALL=1
 
-*    Measuring delay
-.measure tran nanddelay TRIG V(inB) VAL='alim*0.5' RISE=1 
+*    Measuring rising delay
+.measure tran nanddelayHL TRIG V(inB) VAL='alim*0.5' RISE=1 
 + TARG V(out) VAL='alim*0.5' FALL=1
 
-** ADD THE instruction for the fall delay!!!
+*    Measuring falling delay
+.measure tran nanddelayLH TRIG V(inB) VAL='alim*0.5' FALL=1
++ TARG V(out) VAL='alim*0.5' RISE=1
 
 
 * Measuring peak current

@@ -1,0 +1,706 @@
+[06/01 12:31:40      0s] 
+[06/01 12:31:40      0s] Cadence Innovus(TM) Implementation System.
+[06/01 12:31:40      0s] Copyright 2020 Cadence Design Systems, Inc. All rights reserved worldwide.
+[06/01 12:31:40      0s] 
+[06/01 12:31:40      0s] Version:	v20.11-s130_1, built Wed Aug 5 15:53:11 PDT 2020
+[06/01 12:31:40      0s] Options:	
+[06/01 12:31:40      0s] Date:		Thu Jun  1 12:31:40 2023
+[06/01 12:31:40      0s] Host:		localhost.localdomain (x86_64 w/Linux 3.10.0-957.5.1.el7.x86_64) (1core*12cpus*Intel Core i7 9xx (Nehalem Class Core i7) 4096KB)
+[06/01 12:31:40      0s] OS:		CentOS Linux release 7.6.1810 (Core) 
+[06/01 12:31:40      0s] 
+[06/01 12:31:40      0s] License:
+[06/01 12:31:40      0s] 		invs	Innovus Implementation System	20.1	checkout succeeded
+[06/01 12:31:40      0s] 		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+[06/01 12:32:32     44s] @(#)CDS: Innovus v20.11-s130_1 (64bit) 08/05/2020 15:53 (Linux 2.6.32-431.11.2.el6.x86_64)
+[06/01 12:32:32     44s] @(#)CDS: NanoRoute 20.11-s130_1 NR200802-2257/20_11-UB (database version 18.20.512) {superthreading v2.9}
+[06/01 12:32:32     44s] @(#)CDS: AAE 20.11-s008 (64bit) 08/05/2020 (Linux 2.6.32-431.11.2.el6.x86_64)
+[06/01 12:32:32     44s] @(#)CDS: CTE 20.11-s059_1 () Aug  2 2020 05:46:30 ( )
+[06/01 12:32:32     44s] @(#)CDS: SYNTECH 20.11-s028_1 () Aug  1 2020 06:14:27 ( )
+[06/01 12:32:32     44s] @(#)CDS: CPE v20.11-s013
+[06/01 12:32:32     44s] @(#)CDS: IQuantus/TQuantus 19.1.3-s260 (64bit) Thu May 28 10:57:28 PDT 2020 (Linux 2.6.32-431.11.2.el6.x86_64)
+[06/01 12:32:32     44s] @(#)CDS: OA 22.60-s011 Tue Jun 16 12:27:00 2020
+[06/01 12:32:32     44s] @(#)CDS: SGN 20.10-d001 (01-Jun-2020) (64 bit executable, Qt5.9.0)
+[06/01 12:32:32     44s] @(#)CDS: RCDB 11.15.0
+[06/01 12:32:32     44s] @(#)CDS: STYLUS 20.10-p011_1 (06/03/2020 04:47 PDT)
+[06/01 12:32:32     44s] Create and set the environment variable TMPDIR to /tmp/innovus_temp_21996_localhost.localdomain_ms23.52_XpYDzS.
+
+[06/01 12:32:32     44s] Change the soft stacksize limit to 0.2%RAM (128 mbytes). Set global soft_stack_size_limit to change the value.
+[06/01 12:32:35     47s] 
+[06/01 12:32:35     47s] **INFO:  MMMC transition support version v31-84 
+[06/01 12:32:35     47s] 
+[06/01 12:32:35     47s] <CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+[06/01 12:32:35     47s] <CMD> suppressMessage ENCEXT-2799
+[06/01 12:32:35     47s] <CMD> win
+[06/01 12:33:08     55s] <CMD> set init_verilog {Default.view sum.v}
+[06/01 12:33:08     55s] <CMD> init_design
+[06/01 12:33:08     55s] **WARN: (IMPSYT-10026):	No LEF physical data was provided but timing libraries were given, so only timing analysis can be run. Any commands that require physical data will fail. This mode is meant for doing Tempus vs Innovus comparisons using common scripts, and is not intended for normal usage.
+[06/01 12:33:08     55s] Use timer mode.
+[06/01 12:33:08     55s] *** End library_loading (cpu=0.00min, real=0.00min, mem=0.0M, fe_cpu=0.92min, fe_real=1.47min, fe_mem=813.6M) ***
+[06/01 12:33:08     55s] #% Begin Load netlist data ... (date=06/01 12:33:08, mem=626.4M)
+[06/01 12:33:08     55s] *** Begin netlist parsing (mem=813.6M) ***
+[06/01 12:33:08     55s] Created 0 new cells from 0 timing libraries.
+[06/01 12:33:08     55s] Reading netlist ...
+[06/01 12:33:08     55s] Backslashed names will retain backslash and a trailing blank character.
+[06/01 12:33:08     55s] **ERROR: (IMPVL-209):	In Verilog file 'Default.view', check line 1 near the text # for the issue: 'syntax error'.  Update the text accordingly.
+Type 'man IMPVL-209' for more detail.
+[06/01 12:33:08     55s] Verilog file 'Default.view' has errors!  See above.
+[06/01 12:33:08     55s] 
+[06/01 12:33:08     55s] *** Memory Usage v#2 (Current mem = 813.574M, initial mem = 272.285M) ***
+[06/01 12:33:08     55s] #% End Load netlist data ... (date=06/01 12:33:08, total cpu=0:00:00.0, real=0:00:00.0, peak res=628.2M, current mem=628.2M)
+[06/01 12:33:08     55s] **ERROR: (IMPVL-902):	Failed to read netlist Default.view sum.v. See previous error messages for details.  Resolve the issues and reload the design.
+[06/01 12:33:21     58s] <CMD> set init_verilog {Default.view sum.v SUM.globals}
+[06/01 12:33:21     58s] <CMD> init_design
+[06/01 12:33:21     58s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:33:21     58s] *** End library_loading (cpu=0.00min, real=0.00min, mem=0.0M, fe_cpu=0.98min, fe_real=1.68min, fe_mem=816.0M) ***
+[06/01 12:33:21     58s] #% Begin Load netlist data ... (date=06/01 12:33:21, mem=628.8M)
+[06/01 12:33:21     58s] *** Begin netlist parsing (mem=816.0M) ***
+[06/01 12:33:21     58s] Created 0 new cells from 0 timing libraries.
+[06/01 12:33:21     58s] Reading netlist ...
+[06/01 12:33:21     58s] Backslashed names will retain backslash and a trailing blank character.
+[06/01 12:33:21     58s] **ERROR: (IMPVL-209):	In Verilog file 'Default.view', check line 1 near the text # for the issue: 'syntax error'.  Update the text accordingly.
+Type 'man IMPVL-209' for more detail.
+[06/01 12:33:21     58s] Verilog file 'Default.view' has errors!  See above.
+[06/01 12:33:21     59s] **ERROR: (IMPVL-209):	In Verilog file 'SUM.globals', check line 1 near the text # for the issue: 'syntax error'.  Update the text accordingly.
+Type 'man IMPVL-209' for more detail.
+[06/01 12:33:21     59s] Verilog file 'SUM.globals' has errors!  See above.
+[06/01 12:33:21     59s] 
+[06/01 12:33:21     59s] *** Memory Usage v#2 (Current mem = 815.996M, initial mem = 272.285M) ***
+[06/01 12:33:21     59s] #% End Load netlist data ... (date=06/01 12:33:21, total cpu=0:00:00.1, real=0:00:00.0, peak res=629.4M, current mem=629.4M)
+[06/01 12:33:21     59s] **ERROR: (IMPVL-902):	Failed to read netlist Default.view sum.v SUM.globals. See previous error messages for details.  Resolve the issues and reload the design.
+[06/01 12:34:14     70s] <CMD> zoomBox -0.10000 -0.02500 0.24200 0.14000
+[06/01 12:34:14     70s] <CMD> zoomBox -0.41200 -0.10800 0.24900 0.21000
+[06/01 12:35:49     91s] <CMD> set defHierChar /
+[06/01 12:35:49     91s] Set Default Input Pin Transition as 0.1 ps.
+[06/01 12:35:49     91s] <CMD> set delaycal_input_transition_delay 0.1ps
+[06/01 12:35:49     91s] <CMD> set fpIsMaxIoHeight 0
+[06/01 12:35:49     91s] <CMD> set init_gnd_net gnd
+[06/01 12:35:49     91s] <CMD> set init_mmmc_file Default.view
+[06/01 12:35:49     91s] <CMD> set init_oa_search_lib {}
+[06/01 12:35:49     91s] <CMD> set init_pwr_net vdd
+[06/01 12:35:49     91s] <CMD> set init_verilog sum.v
+[06/01 12:35:49     91s] <CMD> set init_lef_file /eda/dk/nangate45/lef/NangateOpenCellLibrary.lef
+[06/01 12:35:52     91s] <CMD> init_design
+[06/01 12:35:52     91s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:35:52     91s] #% Begin Load MMMC data ... (date=06/01 12:35:52, mem=634.4M)
+[06/01 12:35:52     91s] **ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+[06/01 12:35:54     92s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:35:54     92s] % Begin Load MMMC data ... (date=06/01 12:35:54, mem=634.5M)
+[06/01 12:35:54     92s] Extraction setup Started 
+[06/01 12:35:54     92s] Extraction setup Started 
+[06/01 12:35:54     92s] Extraction setup Started 
+[06/01 12:35:54     92s] **ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> set defHierChar /
+[06/01 12:36:18     97s] Set Default Input Pin Transition as 0.1 ps.
+[06/01 12:36:18     97s] <CMD> set delaycal_input_transition_delay 0.1ps
+[06/01 12:36:18     97s] <CMD> set fpIsMaxIoHeight 0
+[06/01 12:36:18     97s] <CMD> set init_gnd_net gnd
+[06/01 12:36:18     97s] <CMD> set init_mmmc_file Default.view
+[06/01 12:36:18     97s] <CMD> set init_oa_search_lib {}
+[06/01 12:36:18     97s] <CMD> set init_pwr_net vdd
+[06/01 12:36:18     97s] <CMD> set init_verilog sum.v
+[06/01 12:36:18     97s] <CMD> set init_lef_file /eda/dk/nangate45/lef/NangateOpenCellLibrary.lef
+[06/01 12:36:30    100s] <CMD> init_design
+[06/01 12:36:30    100s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:36:30    100s] % Begin Load MMMC data ... (date=06/01 12:36:30, mem=634.9M)
+[06/01 12:36:30    100s] Extraction setup Started 
+[06/01 12:36:30    100s] Extraction setup Started 
+[06/01 12:36:30    100s] Extraction setup Started 
+[06/01 12:36:30    100s] **ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+[06/01 12:36:30    100s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:36:30    100s] % Begin Load MMMC data ... (date=06/01 12:36:30, mem=634.9M)
+[06/01 12:36:30    100s] Extraction setup Started 
+[06/01 12:36:30    100s] Extraction setup Started 
+[06/01 12:36:30    100s] Extraction setup Started 
+[06/01 12:36:30    100s] **ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+[06/01 12:36:31    100s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:36:31    100s] % Begin Load MMMC data ... (date=06/01 12:36:31, mem=634.9M)
+[06/01 12:36:31    100s] Extraction setup Started 
+[06/01 12:36:31    100s] Extraction setup Started 
+[06/01 12:36:31    100s] Extraction setup Started 
+[06/01 12:36:31    100s] **ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+[06/01 12:36:31    100s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:36:31    100s] % Begin Load MMMC data ... (date=06/01 12:36:31, mem=634.9M)
+[06/01 12:36:31    100s] Extraction setup Started 
+[06/01 12:36:31    100s] Extraction setup Started 
+[06/01 12:36:31    100s] Extraction setup Started 
+[06/01 12:36:31    100s] **ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+[06/01 12:36:32    101s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:36:32    101s] % Begin Load MMMC data ... (date=06/01 12:36:32, mem=634.9M)
+[06/01 12:36:32    101s] Extraction setup Started 
+[06/01 12:36:32    101s] Extraction setup Started 
+[06/01 12:36:32    101s] Extraction setup Started 
+[06/01 12:36:32    101s] **ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+[06/01 12:36:34    101s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:36:34    101s] % Begin Load MMMC data ... (date=06/01 12:36:34, mem=634.7M)
+[06/01 12:36:34    101s] Extraction setup Started 
+[06/01 12:36:34    101s] Extraction setup Started 
+[06/01 12:36:34    101s] Extraction setup Started 
+[06/01 12:36:34    101s] **ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+[06/01 12:36:52    105s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:36:52    105s] % Begin Load MMMC data ... (date=06/01 12:36:52, mem=634.7M)
+[06/01 12:36:52    105s] Extraction setup Started 
+[06/01 12:36:52    105s] Extraction setup Started 
+[06/01 12:36:52    105s] Extraction setup Started 
+[06/01 12:36:52    105s] **ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+[06/01 12:36:52    105s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:36:52    105s] % Begin Load MMMC data ... (date=06/01 12:36:52, mem=634.7M)
+[06/01 12:36:52    105s] Extraction setup Started 
+[06/01 12:36:52    105s] Extraction setup Started 
+[06/01 12:36:52    105s] Extraction setup Started 
+[06/01 12:36:52    105s] **ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+[06/01 12:36:53    105s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:36:53    105s] % Begin Load MMMC data ... (date=06/01 12:36:53, mem=634.7M)
+[06/01 12:36:53    105s] Extraction setup Started 
+[06/01 12:36:53    105s] Extraction setup Started 
+[06/01 12:36:53    105s] Extraction setup Started 
+[06/01 12:36:53    105s] **ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+[06/01 12:36:53    105s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:36:53    105s] % Begin Load MMMC data ... (date=06/01 12:36:53, mem=634.7M)
+[06/01 12:36:53    105s] Extraction setup Started 
+[06/01 12:36:53    105s] Extraction setup Started 
+[06/01 12:36:53    105s] Extraction setup Started 
+[06/01 12:36:53    105s] **ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+**ERROR: (IMPSYT-6000):	No Object Selected.
+[06/01 12:37:32    114s] <CMD> gui_select -rect {-0.04500 0.07100 -0.14900 0.06600}
+[06/01 12:38:01    120s] <CMD> set defHierChar /
+[06/01 12:38:01    120s] Set Default Input Pin Transition as 0.1 ps.
+[06/01 12:38:01    120s] <CMD> set delaycal_input_transition_delay 0.1ps
+[06/01 12:38:01    120s] <CMD> set fpIsMaxIoHeight 0
+[06/01 12:38:01    120s] <CMD> set init_gnd_net gnd
+[06/01 12:38:01    120s] <CMD> set init_mmmc_file Default.view
+[06/01 12:38:01    120s] <CMD> set init_oa_search_lib {}
+[06/01 12:38:01    120s] <CMD> set init_pwr_net vdd
+[06/01 12:38:01    120s] <CMD> set init_verilog sum.v
+[06/01 12:38:01    120s] <CMD> set init_lef_file /eda/dk/nangate45/lef/NangateOpenCellLibrary.lef
+[06/01 12:38:26    125s] <CMD> init_design
+[06/01 12:38:26    125s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:38:26    125s] % Begin Load MMMC data ... (date=06/01 12:38:26, mem=636.2M)
+[06/01 12:38:26    125s] Extraction setup Started 
+[06/01 12:38:26    125s] Extraction setup Started 
+[06/01 12:38:26    125s] Extraction setup Started 
+[06/01 12:38:26    125s] **ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+[06/01 12:38:27    125s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:38:27    125s] % Begin Load MMMC data ... (date=06/01 12:38:27, mem=636.2M)
+[06/01 12:38:27    125s] Extraction setup Started 
+[06/01 12:38:27    125s] Extraction setup Started 
+[06/01 12:38:27    125s] Extraction setup Started 
+[06/01 12:38:27    125s] **ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+[06/01 12:38:27    125s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:38:27    125s] % Begin Load MMMC data ... (date=06/01 12:38:27, mem=636.2M)
+[06/01 12:38:27    125s] Extraction setup Started 
+[06/01 12:38:27    125s] Extraction setup Started 
+[06/01 12:38:27    125s] Extraction setup Started 
+[06/01 12:38:27    125s] **ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+[06/01 12:38:28    126s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:38:28    126s] % Begin Load MMMC data ... (date=06/01 12:38:28, mem=636.2M)
+[06/01 12:38:28    126s] Extraction setup Started 
+[06/01 12:38:28    126s] Extraction setup Started 
+[06/01 12:38:28    126s] Extraction setup Started 
+[06/01 12:38:28    126s] **ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+[06/01 12:38:28    126s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:38:28    126s] % Begin Load MMMC data ... (date=06/01 12:38:28, mem=636.2M)
+[06/01 12:38:28    126s] Extraction setup Started 
+[06/01 12:38:28    126s] Extraction setup Started 
+[06/01 12:38:28    126s] Extraction setup Started 
+[06/01 12:38:28    126s] **ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+[06/01 12:38:36    127s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:38:36    127s] % Begin Load MMMC data ... (date=06/01 12:38:36, mem=636.2M)
+[06/01 12:38:36    127s] Extraction setup Started 
+[06/01 12:38:36    128s] Extraction setup Started 
+[06/01 12:38:36    128s] Extraction setup Started 
+[06/01 12:38:36    128s] **ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+[06/01 12:38:36    128s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:38:36    128s] % Begin Load MMMC data ... (date=06/01 12:38:36, mem=636.2M)
+[06/01 12:38:36    128s] Extraction setup Started 
+[06/01 12:38:36    128s] Extraction setup Started 
+[06/01 12:38:36    128s] Extraction setup Started 
+[06/01 12:38:36    128s] **ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+[06/01 12:38:36    128s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:38:36    128s] % Begin Load MMMC data ... (date=06/01 12:38:36, mem=636.2M)
+[06/01 12:38:36    128s] Extraction setup Started 
+[06/01 12:38:36    128s] Extraction setup Started 
+[06/01 12:38:36    128s] Extraction setup Started 
+[06/01 12:38:36    128s] **ERROR: (TCLCMD-989):	cannot open SDC file 'SUM.sdc' for mode 'coherent-synthesis'
+<CMD> init_design
+[06/01 12:38:37    128s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:38:37    128s] % Begin Load MMMC data ... (date=06/01 12:38:37, mem=636.2M)
+[06/01 12:38:37    128s] Extraction setup Started 
+[06/01 12:38:37    128s] Extraction setup Started 
+[06/01 12:38:37    128s] Extraction setup Started 
+[06/01 12:38:38    128s] <CMD> init_design
+[06/01 12:38:38    128s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:38:38    128s] % Begin Load MMMC data ... (date=06/01 12:38:38, mem=636.2M)
+[06/01 12:38:38    128s] Extraction setup Started 
+[06/01 12:38:38    128s] Extraction setup Started 
+[06/01 12:38:38    128s] Extraction setup Started 
+[06/01 12:38:42    129s] <CMD> init_design
+[06/01 12:38:42    129s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:38:42    129s] % Begin Load MMMC data ... (date=06/01 12:38:42, mem=636.2M)
+[06/01 12:38:42    129s] Extraction setup Started 
+[06/01 12:38:42    129s] Extraction setup Started 
+[06/01 12:38:42    129s] Extraction setup Started 
+[06/01 12:38:42    129s] <CMD> init_design
+[06/01 12:38:42    129s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:38:42    129s] % Begin Load MMMC data ... (date=06/01 12:38:42, mem=636.2M)
+[06/01 12:38:42    129s] Extraction setup Started 
+[06/01 12:38:42    129s] Extraction setup Started 
+[06/01 12:38:42    129s] Extraction setup Started 
+[06/01 12:38:42    129s] <CMD> init_design
+[06/01 12:38:42    129s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:38:42    129s] % Begin Load MMMC data ... (date=06/01 12:38:42, mem=636.2M)
+[06/01 12:38:42    129s] Extraction setup Started 
+[06/01 12:38:42    129s] Extraction setup Started 
+[06/01 12:38:42    129s] Extraction setup Started 
+[06/01 12:38:43    129s] <CMD> init_design
+[06/01 12:38:43    129s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:38:43    130s] % Begin Load MMMC data ... (date=06/01 12:38:43, mem=636.2M)
+[06/01 12:38:43    130s] Extraction setup Started 
+[06/01 12:38:43    130s] Extraction setup Started 
+[06/01 12:38:43    130s] Extraction setup Started 
+[06/01 12:38:44    130s] <CMD> init_design
+[06/01 12:38:44    130s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:38:44    130s] % Begin Load MMMC data ... (date=06/01 12:38:44, mem=636.2M)
+[06/01 12:38:44    130s] Extraction setup Started 
+[06/01 12:38:44    130s] Extraction setup Started 
+[06/01 12:38:44    130s] Extraction setup Started 
+[06/01 12:38:44    130s] <CMD> init_design
+[06/01 12:38:44    130s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:38:44    130s] % Begin Load MMMC data ... (date=06/01 12:38:44, mem=636.2M)
+[06/01 12:38:44    130s] Extraction setup Started 
+[06/01 12:38:44    130s] Extraction setup Started 
+[06/01 12:38:44    130s] Extraction setup Started 
+[06/01 12:38:45    130s] <CMD> init_design
+[06/01 12:38:45    130s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:38:45    130s] % Begin Load MMMC data ... (date=06/01 12:38:45, mem=636.2M)
+[06/01 12:38:45    130s] Extraction setup Started 
+[06/01 12:38:45    130s] Extraction setup Started 
+[06/01 12:38:45    130s] Extraction setup Started 
+[06/01 12:38:49    131s] <CMD> init_design
+[06/01 12:38:49    131s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:38:49    131s] % Begin Load MMMC data ... (date=06/01 12:38:49, mem=636.2M)
+[06/01 12:38:49    131s] Extraction setup Started 
+[06/01 12:38:49    131s] Extraction setup Started 
+[06/01 12:38:49    131s] Extraction setup Started 
+[06/01 12:39:01    134s] <CMD> init_design
+[06/01 12:39:01    134s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:39:01    134s] % Begin Load MMMC data ... (date=06/01 12:39:01, mem=636.2M)
+[06/01 12:39:01    134s] Extraction setup Started 
+[06/01 12:39:01    134s] Extraction setup Started 
+[06/01 12:39:01    134s] Extraction setup Started 
+[06/01 12:39:01    134s] <CMD> init_design
+[06/01 12:39:01    134s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:39:01    134s] % Begin Load MMMC data ... (date=06/01 12:39:01, mem=636.2M)
+[06/01 12:39:01    134s] Extraction setup Started 
+[06/01 12:39:01    134s] Extraction setup Started 
+[06/01 12:39:01    134s] Extraction setup Started 
+[06/01 12:39:02    135s] <CMD> init_design
+[06/01 12:39:02    135s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:39:02    135s] % Begin Load MMMC data ... (date=06/01 12:39:02, mem=636.2M)
+[06/01 12:39:02    135s] Extraction setup Started 
+[06/01 12:39:02    135s] Extraction setup Started 
+[06/01 12:39:02    135s] Extraction setup Started 
+[06/01 12:39:02    135s] <CMD> init_design
+[06/01 12:39:02    135s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:39:02    135s] % Begin Load MMMC data ... (date=06/01 12:39:02, mem=636.2M)
+[06/01 12:39:02    135s] Extraction setup Started 
+[06/01 12:39:02    135s] Extraction setup Started 
+[06/01 12:39:02    135s] Extraction setup Started 
+[06/01 12:39:02    135s] <CMD> init_design
+[06/01 12:39:02    135s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:39:02    135s] % Begin Load MMMC data ... (date=06/01 12:39:02, mem=636.2M)
+[06/01 12:39:02    135s] Extraction setup Started 
+[06/01 12:39:02    135s] Extraction setup Started 
+[06/01 12:39:02    135s] Extraction setup Started 
+[06/01 12:39:03    135s] <CMD> init_design
+[06/01 12:39:03    135s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:39:03    135s] % Begin Load MMMC data ... (date=06/01 12:39:03, mem=636.2M)
+[06/01 12:39:03    135s] Extraction setup Started 
+[06/01 12:39:03    135s] Extraction setup Started 
+[06/01 12:39:03    135s] Extraction setup Started 
+[06/01 12:39:03    135s] <CMD> init_design
+[06/01 12:39:03    135s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:39:03    135s] % Begin Load MMMC data ... (date=06/01 12:39:03, mem=636.2M)
+[06/01 12:39:03    135s] Extraction setup Started 
+[06/01 12:39:03    135s] Extraction setup Started 
+[06/01 12:39:03    135s] Extraction setup Started 
+[06/01 12:39:03    135s] <CMD> init_design
+[06/01 12:39:03    135s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:39:03    135s] % Begin Load MMMC data ... (date=06/01 12:39:03, mem=636.2M)
+[06/01 12:39:03    135s] Extraction setup Started 
+[06/01 12:39:03    135s] Extraction setup Started 
+[06/01 12:39:03    135s] Extraction setup Started 
+[06/01 12:39:03    135s] <CMD> init_design
+[06/01 12:39:03    135s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:39:04    135s] % Begin Load MMMC data ... (date=06/01 12:39:03, mem=636.2M)
+[06/01 12:39:04    135s] Extraction setup Started 
+[06/01 12:39:04    135s] Extraction setup Started 
+[06/01 12:39:04    135s] Extraction setup Started 
+[06/01 12:39:33    142s] <CMD> init_design
+[06/01 12:39:33    142s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:39:33    142s] % Begin Load MMMC data ... (date=06/01 12:39:33, mem=636.2M)
+[06/01 12:39:33    142s] Extraction setup Started 
+[06/01 12:39:33    142s] Extraction setup Started 
+[06/01 12:39:33    142s] Extraction setup Started 
+[06/01 12:39:34    142s] <CMD> init_design
+[06/01 12:39:34    142s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:39:34    142s] % Begin Load MMMC data ... (date=06/01 12:39:34, mem=636.2M)
+[06/01 12:39:34    142s] Extraction setup Started 
+[06/01 12:39:34    142s] Extraction setup Started 
+[06/01 12:39:34    142s] Extraction setup Started 
+[06/01 12:39:34    142s] <CMD> init_design
+[06/01 12:39:34    142s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:39:34    142s] % Begin Load MMMC data ... (date=06/01 12:39:34, mem=636.2M)
+[06/01 12:39:34    142s] Extraction setup Started 
+[06/01 12:39:34    142s] Extraction setup Started 
+[06/01 12:39:34    142s] Extraction setup Started 
+[06/01 12:39:35    142s] <CMD> init_design
+[06/01 12:39:35    142s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:39:35    142s] % Begin Load MMMC data ... (date=06/01 12:39:35, mem=636.2M)
+[06/01 12:39:35    142s] Extraction setup Started 
+[06/01 12:39:35    142s] Extraction setup Started 
+[06/01 12:39:35    142s] Extraction setup Started 
+[06/01 12:39:38    143s] <CMD> init_design
+[06/01 12:39:38    143s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:39:38    143s] % Begin Load MMMC data ... (date=06/01 12:39:38, mem=636.2M)
+[06/01 12:39:38    143s] Extraction setup Started 
+[06/01 12:39:38    143s] Extraction setup Started 
+[06/01 12:39:38    143s] Extraction setup Started 
+[06/01 12:39:39    143s] <CMD> init_design
+[06/01 12:39:39    143s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:39:39    143s] % Begin Load MMMC data ... (date=06/01 12:39:39, mem=636.2M)
+[06/01 12:39:39    143s] Extraction setup Started 
+[06/01 12:39:39    143s] Extraction setup Started 
+[06/01 12:39:39    143s] Extraction setup Started 
+[06/01 12:39:39    143s] <CMD> init_design
+[06/01 12:39:39    143s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:39:39    143s] % Begin Load MMMC data ... (date=06/01 12:39:39, mem=636.2M)
+[06/01 12:39:39    143s] Extraction setup Started 
+[06/01 12:39:39    143s] Extraction setup Started 
+[06/01 12:39:39    143s] Extraction setup Started 
+[06/01 12:39:40    143s] <CMD> init_design
+[06/01 12:39:40    143s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:39:40    143s] % Begin Load MMMC data ... (date=06/01 12:39:40, mem=636.2M)
+[06/01 12:39:40    143s] Extraction setup Started 
+[06/01 12:39:40    143s] Extraction setup Started 
+[06/01 12:39:40    143s] Extraction setup Started 
+[06/01 12:39:40    144s] <CMD> init_design
+[06/01 12:39:40    144s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:39:40    144s] % Begin Load MMMC data ... (date=06/01 12:39:40, mem=636.2M)
+[06/01 12:39:40    144s] Extraction setup Started 
+[06/01 12:39:40    144s] Extraction setup Started 
+[06/01 12:39:40    144s] Extraction setup Started 
+[06/01 12:39:40    144s] <CMD> init_design
+[06/01 12:39:40    144s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:39:41    144s] % Begin Load MMMC data ... (date=06/01 12:39:40, mem=636.2M)
+[06/01 12:39:41    144s] Extraction setup Started 
+[06/01 12:39:41    144s] Extraction setup Started 
+[06/01 12:39:41    144s] Extraction setup Started 
+[06/01 12:39:41    144s] <CMD> init_design
+[06/01 12:39:41    144s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:39:41    144s] % Begin Load MMMC data ... (date=06/01 12:39:41, mem=636.2M)
+[06/01 12:39:41    144s] Extraction setup Started 
+[06/01 12:39:41    144s] Extraction setup Started 
+[06/01 12:39:41    144s] Extraction setup Started 
+[06/01 12:39:42    144s] <CMD> init_design
+[06/01 12:39:42    144s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:39:42    144s] % Begin Load MMMC data ... (date=06/01 12:39:42, mem=636.2M)
+[06/01 12:39:42    144s] Extraction setup Started 
+[06/01 12:39:42    144s] Extraction setup Started 
+[06/01 12:39:42    144s] Extraction setup Started 
+[06/01 12:39:46    145s] <CMD> zoomBox -0.73300 -0.20600 0.34600 0.31300
+[06/01 12:39:46    145s] <CMD> zoomBox -0.88000 -0.25100 0.39000 0.36000
+[06/01 12:40:39    158s] <CMD> setDrawView fplan
+[06/01 12:40:41    158s] <CMD> setDrawView place
+[06/01 12:40:42    159s] <CMD> setDrawView ameba
+[06/01 12:40:43    159s] <CMD> setDrawView place
+[06/01 12:41:01    163s] <CMD> set defHierChar /
+[06/01 12:41:01    163s] Set Default Input Pin Transition as 0.1 ps.
+[06/01 12:41:01    163s] <CMD> set delaycal_input_transition_delay 0.1ps
+[06/01 12:41:01    163s] <CMD> set fpIsMaxIoHeight 0
+[06/01 12:41:01    163s] <CMD> set init_gnd_net gnd
+[06/01 12:41:01    163s] <CMD> set init_mmmc_file Default.view
+[06/01 12:41:01    163s] <CMD> set init_oa_search_lib {}
+[06/01 12:41:01    163s] <CMD> set init_pwr_net vdd
+[06/01 12:41:01    163s] <CMD> set init_verilog sum.v
+[06/01 12:41:01    163s] <CMD> set init_lef_file /eda/dk/nangate45/lef/NangateOpenCellLibrary.lef
+[06/01 12:41:19    167s] <CMD> init_design
+[06/01 12:41:19    167s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:41:19    167s] % Begin Load MMMC data ... (date=06/01 12:41:19, mem=639.3M)
+[06/01 12:41:19    167s] Extraction setup Started 
+[06/01 12:41:19    167s] Extraction setup Started 
+[06/01 12:41:19    167s] Extraction setup Started 
+[06/01 12:41:30    170s] <CMD> init_design
+[06/01 12:41:30    170s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:41:30    170s] % Begin Load MMMC data ... (date=06/01 12:41:30, mem=639.3M)
+[06/01 12:41:30    170s] Extraction setup Started 
+[06/01 12:41:30    170s] Extraction setup Started 
+[06/01 12:41:30    170s] Extraction setup Started 
+[06/01 12:41:31    170s] <CMD> init_design
+[06/01 12:41:31    170s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:41:31    170s] % Begin Load MMMC data ... (date=06/01 12:41:31, mem=639.3M)
+[06/01 12:41:31    170s] Extraction setup Started 
+[06/01 12:41:31    170s] Extraction setup Started 
+[06/01 12:41:31    170s] Extraction setup Started 
+[06/01 12:42:40    186s] <CMD> set defHierChar /
+[06/01 12:42:40    186s] Set Default Input Pin Transition as 0.1 ps.
+[06/01 12:42:40    186s] <CMD> set delaycal_input_transition_delay 0.1ps
+[06/01 12:42:40    186s] <CMD> set fpIsMaxIoHeight 0
+[06/01 12:42:40    186s] <CMD> set init_gnd_net gnd
+[06/01 12:42:40    186s] <CMD> set init_mmmc_file Default.view
+[06/01 12:42:40    186s] <CMD> set init_oa_search_lib {}
+[06/01 12:42:40    186s] <CMD> set init_pwr_net vdd
+[06/01 12:42:40    186s] <CMD> set init_verilog sum.v
+[06/01 12:42:40    186s] <CMD> set init_lef_file /eda/dk/nangate45/lef/NangateOpenCellLibrary.lef
+[06/01 12:42:52    189s] **ERROR: (IMPSYT-16095):	can't read "MycapTable": no such variable
+[06/01 12:43:51    201s] <CMD> init_design
+[06/01 12:43:51    201s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:43:51    201s] % Begin Load MMMC data ... (date=06/01 12:43:51, mem=655.3M)
+[06/01 12:43:51    201s] Extraction setup Started 
+[06/01 12:43:51    201s] Extraction setup Started 
+[06/01 12:43:51    201s] Extraction setup Started 
+[06/01 12:43:53    202s] <CMD> init_design
+[06/01 12:43:53    202s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:43:53    202s] % Begin Load MMMC data ... (date=06/01 12:43:53, mem=655.3M)
+[06/01 12:43:53    202s] Extraction setup Started 
+[06/01 12:43:53    202s] Extraction setup Started 
+[06/01 12:43:53    202s] Extraction setup Started 
+[06/01 12:43:54    202s] <CMD> init_design
+[06/01 12:43:54    202s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:43:54    202s] % Begin Load MMMC data ... (date=06/01 12:43:54, mem=655.3M)
+[06/01 12:43:54    202s] Extraction setup Started 
+[06/01 12:43:54    202s] Extraction setup Started 
+[06/01 12:43:54    202s] Extraction setup Started 
+[06/01 12:43:54    202s] <CMD> init_design
+[06/01 12:43:54    202s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:43:54    202s] % Begin Load MMMC data ... (date=06/01 12:43:54, mem=655.3M)
+[06/01 12:43:54    202s] Extraction setup Started 
+[06/01 12:43:54    202s] Extraction setup Started 
+[06/01 12:43:54    202s] Extraction setup Started 
+[06/01 12:43:54    202s] <CMD> init_design
+[06/01 12:43:54    202s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:43:54    202s] % Begin Load MMMC data ... (date=06/01 12:43:54, mem=655.3M)
+[06/01 12:43:54    202s] Extraction setup Started 
+[06/01 12:43:54    202s] Extraction setup Started 
+[06/01 12:43:54    202s] Extraction setup Started 
+[06/01 12:43:55    202s] <CMD> init_design
+[06/01 12:43:55    202s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:43:55    203s] % Begin Load MMMC data ... (date=06/01 12:43:55, mem=655.3M)
+[06/01 12:43:55    203s] Extraction setup Started 
+[06/01 12:43:55    203s] Extraction setup Started 
+[06/01 12:43:55    203s] Extraction setup Started 
+[06/01 12:43:55    203s] <CMD> init_design
+[06/01 12:43:55    203s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:43:55    203s] % Begin Load MMMC data ... (date=06/01 12:43:55, mem=655.3M)
+[06/01 12:43:55    203s] Extraction setup Started 
+[06/01 12:43:55    203s] Extraction setup Started 
+[06/01 12:43:55    203s] Extraction setup Started 
+[06/01 12:43:55    203s] <CMD> init_design
+[06/01 12:43:55    203s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:43:56    203s] % Begin Load MMMC data ... (date=06/01 12:43:55, mem=655.3M)
+[06/01 12:43:56    203s] Extraction setup Started 
+[06/01 12:43:56    203s] Extraction setup Started 
+[06/01 12:43:56    203s] Extraction setup Started 
+[06/01 12:43:56    203s] <CMD> init_design
+[06/01 12:43:56    203s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:43:56    203s] % Begin Load MMMC data ... (date=06/01 12:43:56, mem=655.3M)
+[06/01 12:43:56    203s] Extraction setup Started 
+[06/01 12:43:56    203s] Extraction setup Started 
+[06/01 12:43:56    203s] Extraction setup Started 
+[06/01 12:43:56    203s] <CMD> init_design
+[06/01 12:43:56    203s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:43:56    203s] % Begin Load MMMC data ... (date=06/01 12:43:56, mem=655.3M)
+[06/01 12:43:56    203s] Extraction setup Started 
+[06/01 12:43:57    203s] Extraction setup Started 
+[06/01 12:43:57    203s] Extraction setup Started 
+[06/01 12:43:57    203s] <CMD> init_design
+[06/01 12:43:57    203s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:43:57    203s] % Begin Load MMMC data ... (date=06/01 12:43:57, mem=655.3M)
+[06/01 12:43:57    203s] Extraction setup Started 
+[06/01 12:43:57    203s] Extraction setup Started 
+[06/01 12:43:57    203s] Extraction setup Started 
+[06/01 12:43:57    203s] <CMD> init_design
+[06/01 12:43:57    203s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:43:57    203s] % Begin Load MMMC data ... (date=06/01 12:43:57, mem=655.4M)
+[06/01 12:43:57    203s] Extraction setup Started 
+[06/01 12:43:57    203s] Extraction setup Started 
+[06/01 12:43:57    203s] Extraction setup Started 
+[06/01 12:43:58    204s] <CMD> init_design
+[06/01 12:43:58    204s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:43:58    204s] % Begin Load MMMC data ... (date=06/01 12:43:58, mem=655.4M)
+[06/01 12:43:58    204s] Extraction setup Started 
+[06/01 12:43:58    204s] Extraction setup Started 
+[06/01 12:43:58    204s] Extraction setup Started 
+[06/01 12:43:58    204s] <CMD> init_design
+[06/01 12:43:58    204s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:43:58    204s] % Begin Load MMMC data ... (date=06/01 12:43:58, mem=655.4M)
+[06/01 12:43:58    204s] Extraction setup Started 
+[06/01 12:43:58    204s] Extraction setup Started 
+[06/01 12:43:58    204s] Extraction setup Started 
+[06/01 12:44:06    205s] <CMD> init_design
+[06/01 12:44:06    205s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:44:06    205s] % Begin Load MMMC data ... (date=06/01 12:44:06, mem=655.5M)
+[06/01 12:44:06    205s] Extraction setup Started 
+[06/01 12:44:06    205s] Extraction setup Started 
+[06/01 12:44:06    205s] Extraction setup Started 
+[06/01 12:44:11    206s] <CMD> init_design
+[06/01 12:44:11    206s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:44:11    206s] % Begin Load MMMC data ... (date=06/01 12:44:11, mem=655.5M)
+[06/01 12:44:11    206s] Extraction setup Started 
+[06/01 12:44:11    206s] Extraction setup Started 
+[06/01 12:44:11    206s] Extraction setup Started 
+[06/01 12:44:15    207s] <CMD> init_design
+[06/01 12:44:15    207s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:44:15    207s] % Begin Load MMMC data ... (date=06/01 12:44:15, mem=655.5M)
+[06/01 12:44:15    207s] Extraction setup Started 
+[06/01 12:44:15    207s] Extraction setup Started 
+[06/01 12:44:15    207s] Extraction setup Started 
+[06/01 12:44:17    208s] <CMD> init_design
+[06/01 12:44:17    208s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:44:17    208s] % Begin Load MMMC data ... (date=06/01 12:44:17, mem=655.5M)
+[06/01 12:44:17    208s] Extraction setup Started 
+[06/01 12:44:17    208s] Extraction setup Started 
+[06/01 12:44:17    208s] Extraction setup Started 
+[06/01 12:44:31    212s] <CMD> init_design
+[06/01 12:44:31    212s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:44:32    212s] % Begin Load MMMC data ... (date=06/01 12:44:31, mem=655.5M)
+[06/01 12:44:32    212s] Extraction setup Started 
+[06/01 12:44:32    212s] Extraction setup Started 
+[06/01 12:44:32    212s] Extraction setup Started 
+[06/01 12:44:32    212s] <CMD> init_design
+[06/01 12:44:32    212s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:44:32    212s] % Begin Load MMMC data ... (date=06/01 12:44:32, mem=655.5M)
+[06/01 12:44:32    212s] Extraction setup Started 
+[06/01 12:44:32    212s] Extraction setup Started 
+[06/01 12:44:32    212s] Extraction setup Started 
+[06/01 12:44:32    212s] <CMD> init_design
+[06/01 12:44:32    212s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:44:32    212s] % Begin Load MMMC data ... (date=06/01 12:44:32, mem=655.5M)
+[06/01 12:44:32    212s] Extraction setup Started 
+[06/01 12:44:32    212s] Extraction setup Started 
+[06/01 12:44:32    212s] Extraction setup Started 
+[06/01 12:44:32    212s] <CMD> init_design
+[06/01 12:44:32    212s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:44:32    212s] % Begin Load MMMC data ... (date=06/01 12:44:32, mem=655.5M)
+[06/01 12:44:32    212s] Extraction setup Started 
+[06/01 12:44:32    212s] Extraction setup Started 
+[06/01 12:44:32    212s] Extraction setup Started 
+[06/01 12:44:32    213s] <CMD> init_design
+[06/01 12:44:32    213s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:44:32    213s] % Begin Load MMMC data ... (date=06/01 12:44:32, mem=655.5M)
+[06/01 12:44:32    213s] Extraction setup Started 
+[06/01 12:44:32    213s] Extraction setup Started 
+[06/01 12:44:32    213s] Extraction setup Started 
+[06/01 12:44:32    213s] <CMD> init_design
+[06/01 12:44:32    213s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:44:32    213s] % Begin Load MMMC data ... (date=06/01 12:44:32, mem=655.5M)
+[06/01 12:44:32    213s] Extraction setup Started 
+[06/01 12:44:32    213s] Extraction setup Started 
+[06/01 12:44:32    213s] Extraction setup Started 
+[06/01 12:44:33    213s] <CMD> init_design
+[06/01 12:44:33    213s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:44:33    213s] % Begin Load MMMC data ... (date=06/01 12:44:33, mem=655.5M)
+[06/01 12:44:33    213s] Extraction setup Started 
+[06/01 12:44:33    213s] Extraction setup Started 
+[06/01 12:44:33    213s] Extraction setup Started 
+[06/01 12:44:33    213s] <CMD> init_design
+[06/01 12:44:33    213s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:44:33    213s] % Begin Load MMMC data ... (date=06/01 12:44:33, mem=655.5M)
+[06/01 12:44:33    213s] Extraction setup Started 
+[06/01 12:44:33    213s] Extraction setup Started 
+[06/01 12:44:33    213s] Extraction setup Started 
+[06/01 12:44:33    213s] <CMD> init_design
+[06/01 12:44:33    213s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:44:33    213s] % Begin Load MMMC data ... (date=06/01 12:44:33, mem=655.6M)
+[06/01 12:44:33    213s] Extraction setup Started 
+[06/01 12:44:33    213s] Extraction setup Started 
+[06/01 12:44:33    213s] Extraction setup Started 
+[06/01 12:44:48    216s] <CMD> init_design
+[06/01 12:44:48    216s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:44:48    216s] % Begin Load MMMC data ... (date=06/01 12:44:48, mem=655.6M)
+[06/01 12:44:48    216s] Extraction setup Started 
+[06/01 12:44:48    216s] Extraction setup Started 
+[06/01 12:44:49    216s] Extraction setup Started 
+[06/01 12:44:49    216s] <CMD> init_design
+[06/01 12:44:49    216s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:44:49    216s] % Begin Load MMMC data ... (date=06/01 12:44:49, mem=655.6M)
+[06/01 12:44:49    216s] Extraction setup Started 
+[06/01 12:44:49    216s] Extraction setup Started 
+[06/01 12:44:49    217s] Extraction setup Started 
+[06/01 12:44:49    217s] <CMD> init_design
+[06/01 12:44:49    217s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:44:49    217s] % Begin Load MMMC data ... (date=06/01 12:44:49, mem=655.6M)
+[06/01 12:44:49    217s] Extraction setup Started 
+[06/01 12:44:49    217s] Extraction setup Started 
+[06/01 12:44:49    217s] Extraction setup Started 
+[06/01 12:46:19    236s] <CMD> gui_select -rect {0.23700 0.25300 -0.39100 0.00300}
+[06/01 12:46:29    238s] <CMD> gui_select -rect {-0.26900 0.12200 0.12300 0.09700}
+[06/01 12:48:55    270s] <CMD> set defHierChar /
+[06/01 12:48:55    270s] Set Default Input Pin Transition as 0.1 ps.
+[06/01 12:48:55    270s] <CMD> set delaycal_input_transition_delay 0.1ps
+[06/01 12:48:55    270s] <CMD> set fpIsMaxIoHeight 0
+[06/01 12:48:55    270s] <CMD> set init_gnd_net gnd
+[06/01 12:48:55    270s] <CMD> set init_mmmc_file Default.view
+[06/01 12:48:55    270s] <CMD> set init_oa_search_lib {}
+[06/01 12:48:55    270s] <CMD> set init_pwr_net vdd
+[06/01 12:48:55    270s] <CMD> set init_verilog sum.v
+[06/01 12:48:55    270s] <CMD> set init_lef_file /eda/dk/nangate45/lef/NangateOpenCellLibrary.lef
+[06/01 12:49:20    275s] <CMD> set defHierChar /
+[06/01 12:49:20    275s] Set Default Input Pin Transition as 0.1 ps.
+[06/01 12:49:20    275s] <CMD> set delaycal_input_transition_delay 0.1ps
+[06/01 12:49:20    275s] <CMD> set fpIsMaxIoHeight 0
+[06/01 12:49:20    275s] <CMD> set init_gnd_net gnd
+[06/01 12:49:20    275s] <CMD> set init_mmmc_file Default.view
+[06/01 12:49:20    275s] <CMD> set init_oa_search_lib {}
+[06/01 12:49:20    275s] <CMD> set init_pwr_net vdd
+[06/01 12:49:20    275s] <CMD> set init_verilog sum.v
+[06/01 12:49:20    275s] <CMD> set init_lef_file /eda/dk/nangate45/lef/NangateOpenCellLibrary.lef
+[06/01 12:49:21    276s] <CMD> init_design
+[06/01 12:49:21    276s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:49:21    276s] % Begin Load MMMC data ... (date=06/01 12:49:21, mem=660.5M)
+[06/01 12:49:21    276s] Extraction setup Started 
+[06/01 12:49:21    276s] Extraction setup Started 
+[06/01 12:49:21    276s] Extraction setup Started 
+[06/01 12:49:22    276s] <CMD> init_design
+[06/01 12:49:22    276s] report_message: '-start_cmd/-end_cmd' can not be nested. Interior calls do nothing. Ignore.
+[06/01 12:49:22    276s] % Begin Load MMMC data ... (date=06/01 12:49:22, mem=660.5M)
+[06/01 12:49:22    276s] Extraction setup Started 
+[06/01 12:49:22    276s] Extraction setup Started 
+[06/01 12:49:22    276s] Extraction setup Started 
+[06/01 12:49:28    277s] 
+--------------------------------------------------------------------------------
+Exiting Innovus on Thu Jun  1 12:49:28 2023
+  Total CPU time:     0:04:38
+  Total real time:    0:17:50
+  Peak memory (main): 685.89MB
+
+[06/01 12:49:28    277s] 
+[06/01 12:49:28    277s] *** Memory Usage v#2 (Current mem = 844.629M, initial mem = 272.285M) ***
+[06/01 12:49:28    277s] 
+[06/01 12:49:28    277s] *** Summary of all messages that are not suppressed in this session:
+[06/01 12:49:28    277s] Severity  ID               Count  Summary                                  
+[06/01 12:49:28    277s] ERROR     IMPSYT-16095         2  %s                                       
+[06/01 12:49:28    277s] WARNING   IMPSYT-10026         1  No LEF physical data was provided but ti...
+[06/01 12:49:28    277s] ERROR     IMPSYT-6000          2  No Object Selected.                      
+[06/01 12:49:28    277s] ERROR     IMPVL-902            2  Failed to read netlist %s. See previous ...
+[06/01 12:49:28    277s] ERROR     IMPVL-209            3  In Verilog file '%s', check line %d near...
+[06/01 12:49:28    277s] ERROR     TCLCMD-989          86  cannot open SDC file '%s' for mode '%s'  
+[06/01 12:49:28    277s] *** Message Summary: 1 warning(s), 63 error(s)
+[06/01 12:49:28    277s] 
+[06/01 12:49:28    277s] --- Ending "Innovus" (totcpu=0:04:38, real=0:17:48, mem=844.6M) ---

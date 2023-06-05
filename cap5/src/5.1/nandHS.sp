@@ -36,12 +36,13 @@ v_vdd vdd 0 DC alim
 .measure tran fnand TRIG v(out) VAL='alim*0.9' FALL=1
 +TARG v(out) VAL='alim*0.1' FALL=1
 
-*    Measuring delay
+*    Measuring rising delay
 .measure tran nanddelayHL TRIG V(inB) VAL='alim*0.5' RISE=1 
 + TARG V(out) VAL='alim*0.5' FALL=1
 
-** ADD THE instruction for the fall delay!!!
-
+*    Measuring falling delay
+.measure tran nanddelayLH TRIG V(inB) VAL='alim*0.5' FALL=1
++ TARG V(out) VAL='alim*0.5' RISE=1
 
 **********************************************************
 * defining the simulation step and duration  
