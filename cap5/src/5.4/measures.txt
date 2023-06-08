@@ -1,4 +1,4 @@
-1
+0.5f
   RNAND          6.7604E-11
   FNAND          6.8830E-11
   NANDDELAYHL    2.0851E-11
@@ -9,7 +9,7 @@
   MAXIVDDF      -4.7680E-05
   MAXILOADF     -1.2504E-06
   MAXILOADR      1.1429E-06
-2
+50.0f
   RNAND          3.6391E-10
   FNAND          2.9652E-10
   NANDDELAYHL    1.8016E-10
