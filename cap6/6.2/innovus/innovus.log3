@@ -1,0 +1,460 @@
+
+Cadence Innovus(TM) Implementation System.
+Copyright 2020 Cadence Design Systems, Inc. All rights reserved worldwide.
+
+Version:	v20.11-s130_1, built Wed Aug 5 15:53:11 PDT 2020
+Options:	
+Date:		Thu Jun 15 19:21:22 2023
+Host:		localhost.localdomain (x86_64 w/Linux 3.10.0-957.5.1.el7.x86_64) (1core*12cpus*Intel Core i7 9xx (Nehalem Class Core i7) 4096KB)
+OS:		CentOS Linux release 7.6.1810 (Core) 
+
+License:
+		invs	Innovus Implementation System	20.1	checkout succeeded
+		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+Change the soft stacksize limit to 0.2%RAM (128 mbytes). Set global soft_stack_size_limit to change the value.
+
+**INFO:  MMMC transition support version v31-84 
+
+<CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+<CMD> suppressMessage ENCEXT-2799
+<CMD> win
+<CMD> encMessage warning 0
+Suppress "**WARN ..." messages.
+<CMD> encMessage debug 0
+<CMD> encMessage info 0
+high standard low
+Loading view definition file from /home/ms23.52/MS/cap6/6.2/innovus/P4_ADDER_routed.dat/viewDefinition.tcl
+**ERROR: (TECHLIB-1346):	The attribute 'index_1' defined in group 'ecsm_waveform' on line 393863 is not monotonically increasing for values '0.000041' to '0.000037'. This may lead to undesirable analysis results. The attribute will be ignored. (File /eda/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**ERROR: (TECHLIB-1256):	The ecsm_waveform group 1 is being ignored due to errors in this group. This group will be excluded for any further library checks. Refer to the previous messages issued for ecsm_waveform group 1 to find the details of the issues in this group. (File /eda/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib, Line 393862)
+**ERROR: (TECHLIB-420):	Number of ecsm_waveforms in the 'rise_transition' table on pin ZN of cell OAI222_X2 does not match the number of transition table axis points specified in the template 'Timing_7_7'. Ignoring waveform data. (File /eda/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib, Line 393848)
+**ERROR: (TECHLIB-1346):	The attribute 'index_1' defined in group 'ecsm_waveform' on line 395723 is not monotonically increasing for values '0.000041' to '0.000037'. This may lead to undesirable analysis results. The attribute will be ignored. (File /eda/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**ERROR: (TECHLIB-1256):	The ecsm_waveform group 1 is being ignored due to errors in this group. This group will be excluded for any further library checks. Refer to the previous messages issued for ecsm_waveform group 1 to find the details of the issues in this group. (File /eda/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib, Line 395722)
+**ERROR: (TECHLIB-420):	Number of ecsm_waveforms in the 'rise_transition' table on pin ZN of cell OAI222_X2 does not match the number of transition table axis points specified in the template 'Timing_7_7'. Ignoring waveform data. (File /eda/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib, Line 395708)
+*** End library_loading (cpu=0.04min, real=0.05min, mem=10.0M, fe_cpu=0.80min, fe_real=1.45min, fe_mem=830.6M) ***
+*** Netlist is unique.
+Loading preference file /home/ms23.52/MS/cap6/6.2/innovus/P4_ADDER_routed.dat/gui.pref.tcl ...
+**WARN: (IMPTCM-77):	Option "-drouteStartIteration" for command setNanoRouteMode is obsolete and will be removed in a future release. The obsolete option still works in this release but to avoid this warning and to ensure compatibility with future releases, remove the obsolete option from your script.
+Loading place ...
+'set_default_switching_activity' finished successfully.
+std-typ lt-bc ht-wc
+**WARN: (IMPESI-3505):	setDelayCalMode -eng_copyNetPropToNewNet true (default=false) will be obsoleted along with its sgs2set equivalent.  This parameter will continue to be supported in the current release, but will be removed in the next major release of the software.
+**WARN: (IMPCTE-107):	The following globals have been obsoleted since version 20.11-s130_1. They will be removed in the next release. 
+timing_enable_default_delay_arc
+<CMD> gui_select -rect {-4.46750 35.96150 -6.76100 27.68900}
+ standard 
+<CMD> reset_parasitics
+Performing RC Extraction ...
+<CMD> extractRC
+Extraction called for design 'P4_ADDER' of instances=1475 and nets=615 using extraction engine 'postRoute' at effort level 'low' .
+**WARN: (IMPEXT-3530):	The process node is not set. Use the command setDesignMode -process <process node> prior to extraction for maximum accuracy and optimal automatic threshold setting.
+Type 'man IMPEXT-3530' for more detail.
+PostRoute (effortLevel low) RC Extraction called for design P4_ADDER.
+RC Extraction called in multi-corner(1) mode.
+Process corner(s) are loaded.
+ Corner: standard
+extractDetailRC Option : -outfile /tmp/innovus_temp_26200_localhost.localdomain_ms23.52_3bnexc/P4_ADDER_26200_JH5i3C.rcdb.d  -extended
+RC Mode: PostRoute -effortLevel low [Extended CapTable, RC Table Resistances]
+      RC Corner Indexes            0   
+Capacitance Scaling Factor   : 1.00000 
+Coupling Cap. Scaling Factor : 1.00000 
+Resistance Scaling Factor    : 1.00000 
+Clock Cap. Scaling Factor    : 1.00000 
+Clock Res. Scaling Factor    : 1.00000 
+Shrink Factor                : 1.00000
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1161.4M)
+Extracted 10.0521% (CPU Time= 0:00:00.1  MEM= 1211.4M)
+Extracted 20.0429% (CPU Time= 0:00:00.1  MEM= 1211.4M)
+Extracted 30.0337% (CPU Time= 0:00:00.1  MEM= 1211.4M)
+Extracted 40.0552% (CPU Time= 0:00:00.1  MEM= 1211.4M)
+Extracted 50.046% (CPU Time= 0:00:00.1  MEM= 1211.4M)
+Extracted 60.0368% (CPU Time= 0:00:00.1  MEM= 1211.4M)
+Extracted 70.0582% (CPU Time= 0:00:00.1  MEM= 1211.4M)
+Extracted 80.049% (CPU Time= 0:00:00.1  MEM= 1211.4M)
+Extracted 90.0398% (CPU Time= 0:00:00.1  MEM= 1211.4M)
+Extracted 100% (CPU Time= 0:00:00.1  MEM= 1211.4M)
+Number of Extracted Resistors     : 5437
+Number of Extracted Ground Cap.   : 5948
+Number of Extracted Coupling Cap. : 5876
+Filtering XCap in 'relativeOnly' mode using values relative_c_threshold=0.03 and total_c_threshold=5fF.
+ Corner: standard
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1195.4M)
+PostRoute (effortLevel low) RC Extraction DONE (CPU Time: 0:00:00.9  Real Time: 0:00:02.0  MEM: 1199.363M)
+<CMD> rcOut -setload P4_ADDER.setload -rc_corner standard
+
+Usage: rcOut [-help] [-excludeIlm] [-noRes] {{{-spef <string>} [-excNetFile <string> | -net <string> | -netName <string>] } } [-view <string> | -rc_corner <string>] [-cUnit {pF fF}]
+
+**ERROR: (IMPTCM-48):	"-setload" is not a legal option for command "rcOut". Either the current option or an option prior to it is not specified correctly.
+
+**ERROR: (IMPSYT-6963):	<CMD> rcOut -setres P4_ADDER.setres -rc_corner standard
+
+Usage: rcOut [-help] [-excludeIlm] [-noRes] {{{-spef <string>} [-excNetFile <string> | -net <string> | -netName <string>] } } [-view <string> | -rc_corner <string>] [-cUnit {pF fF}]
+
+**ERROR: (IMPTCM-48):	"-setres" is not a legal option for command "rcOut". Either the current option or an option prior to it is not specified correctly.
+
+**ERROR: (IMPSYT-6965):	<CMD> rcOut -spf P4_ADDER.spf -rc_corner standard
+
+Usage: rcOut [-help] [-excludeIlm] [-noRes] {{{-spef <string>} [-excNetFile <string> | -net <string> | -netName <string>] } } [-view <string> | -rc_corner <string>] [-cUnit {pF fF}]
+
+**ERROR: (IMPTCM-48):	"-spf" is not a legal option for command "rcOut". Either the current option or an option prior to it is not specified correctly.
+
+**ERROR: (IMPSYT-6967):	<CMD> selectObject Module sum_gen
+<CMD> deselectAll
+<CMD> redirect -quiet {set honorDomain [getAnalysisMode -honorClockDomains]} > /dev/null
+<CMD> timeDesign -postRoute -pathReports -drvReports -slackReports -numPaths 50 -prefix P4_ADDER_postRoute -outDir timingReports
+ Reset EOS DB
+Ignoring AAE DB Resetting ...
+Extraction called for design 'P4_ADDER' of instances=1475 and nets=615 using extraction engine 'postRoute' at effort level 'low' .
+**WARN: (IMPEXT-3530):	The process node is not set. Use the command setDesignMode -process <process node> prior to extraction for maximum accuracy and optimal automatic threshold setting.
+Type 'man IMPEXT-3530' for more detail.
+PostRoute (effortLevel low) RC Extraction called for design P4_ADDER.
+RC Extraction called in multi-corner(1) mode.
+Process corner(s) are loaded.
+ Corner: standard
+extractDetailRC Option : -outfile /tmp/innovus_temp_26200_localhost.localdomain_ms23.52_3bnexc/P4_ADDER_26200_JH5i3C.rcdb.d -maxResLength 200  -extended
+RC Mode: PostRoute -effortLevel low [Extended CapTable, RC Table Resistances]
+      RC Corner Indexes            0   
+Capacitance Scaling Factor   : 1.00000 
+Coupling Cap. Scaling Factor : 1.00000 
+Resistance Scaling Factor    : 1.00000 
+Clock Cap. Scaling Factor    : 1.00000 
+Clock Res. Scaling Factor    : 1.00000 
+Shrink Factor                : 1.00000
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1173.4M)
+Extracted 10.0521% (CPU Time= 0:00:00.1  MEM= 1213.4M)
+Extracted 20.0429% (CPU Time= 0:00:00.1  MEM= 1213.4M)
+Extracted 30.0337% (CPU Time= 0:00:00.1  MEM= 1213.4M)
+Extracted 40.0552% (CPU Time= 0:00:00.1  MEM= 1213.4M)
+Extracted 50.046% (CPU Time= 0:00:00.1  MEM= 1213.4M)
+Extracted 60.0368% (CPU Time= 0:00:00.2  MEM= 1213.4M)
+Extracted 70.0582% (CPU Time= 0:00:00.2  MEM= 1213.4M)
+Extracted 80.049% (CPU Time= 0:00:00.2  MEM= 1213.4M)
+Extracted 90.0398% (CPU Time= 0:00:00.2  MEM= 1213.4M)
+Extracted 100% (CPU Time= 0:00:00.2  MEM= 1213.4M)
+Number of Extracted Resistors     : 5437
+Number of Extracted Ground Cap.   : 5948
+Number of Extracted Coupling Cap. : 5876
+Filtering XCap in 'relativeOnly' mode using values relative_c_threshold=0.03 and total_c_threshold=5fF.
+ Corner: standard
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1197.4M)
+PostRoute (effortLevel low) RC Extraction DONE (CPU Time: 0:00:01.1  Real Time: 0:00:02.0  MEM: 1201.363M)
+Starting delay calculation for Setup views
+Starting SI iteration 1 using Infinite Timing Windows
+#################################################################################
+# Design Stage: PostRoute
+# Design Name: P4_ADDER
+# Design Mode: 90nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: SPEF/RCDB 
+# Signoff Settings: SI On 
+#################################################################################
+AAE_INFO: 1 threads acquired from CTE.
+Start delay calculation (fullDC) (1 T). (MEM=1201.36)
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+Total number of fetched objects 595
+AAE_INFO-618: Total number of nets in the design is 615,  94.8 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1217.57 CPU=0:00:00.5 REAL=0:00:00.0)
+End delay calculation (fullDC). (MEM=1190.5 CPU=0:00:00.9 REAL=0:00:01.0)
+Loading CTE timing window with TwFlowType 0...(CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1190.5M)
+Add other clocks and setupCteToAAEClockMapping during iter 1
+Loading CTE timing window is completed (CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1190.5M)
+Starting SI iteration 2
+Start delay calculation (fullDC) (1 T). (MEM=1103.4)
+Glitch Analysis: View default -- Total Number of Nets Skipped = 0. 
+Glitch Analysis: View default -- Total Number of Nets Analyzed = 595. 
+Total number of fetched objects 595
+AAE_INFO-618: Total number of nets in the design is 615,  1.3 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1143.57 CPU=0:00:00.0 REAL=0:00:00.0)
+End delay calculation (fullDC). (MEM=1143.57 CPU=0:00:00.0 REAL=0:00:00.0)
+*** Done Building Timing Graph (cpu=0:00:01.4 real=0:00:01.0 totSessionCpu=0:01:34 mem=1143.6M)
+
+------------------------------------------------------------
+          timeDesign Summary                             
+------------------------------------------------------------
+
+Setup views included:
+ default 
+
++--------------------+---------+---------+
+|     Setup mode     |   all   | default |
++--------------------+---------+---------+
+|           WNS (ns):|  0.007  |  0.007  |
+|           TNS (ns):|  0.000  |  0.000  |
+|    Violating Paths:|    0    |    0    |
+|          All Paths:|   33    |   33    |
++--------------------+---------+---------+
+
++----------------+-------------------------------+------------------+
+|                |              Real             |       Total      |
+|    DRVs        +------------------+------------+------------------|
+|                |  Nr nets(terms)  | Worst Vio  |  Nr nets(terms)  |
++----------------+------------------+------------+------------------+
+|   max_cap      |      0 (0)       |   0.000    |      0 (0)       |
+|   max_tran     |      0 (0)       |   0.000    |      0 (0)       |
+|   max_fanout   |      0 (0)       |     0      |      0 (0)       |
+|   max_length   |      0 (0)       |     0      |      0 (0)       |
++----------------+------------------+------------+------------------+
+
+Density: 57.177%
+       (100.000% with Fillers)
+Total number of glitch violations: 0
+------------------------------------------------------------
+Reported timing to dir timingReports
+Total CPU time: 3.04 sec
+Total Real time: 7.0 sec
+Total Memory Usage: 1139.613281 Mbytes
+Reset AAE Options
+<CMD> redirect -quiet {set honorDomain [getAnalysisMode -honorClockDomains]} > /dev/null
+<CMD> timeDesign -postRoute -hold -pathReports -slackReports -numPaths 50 -prefix P4_ADDER_postRoute -outDir timingReports
+ Reset EOS DB
+Ignoring AAE DB Resetting ...
+Extraction called for design 'P4_ADDER' of instances=1475 and nets=615 using extraction engine 'postRoute' at effort level 'low' .
+**WARN: (IMPEXT-3530):	The process node is not set. Use the command setDesignMode -process <process node> prior to extraction for maximum accuracy and optimal automatic threshold setting.
+Type 'man IMPEXT-3530' for more detail.
+PostRoute (effortLevel low) RC Extraction called for design P4_ADDER.
+RC Extraction called in multi-corner(1) mode.
+Process corner(s) are loaded.
+ Corner: standard
+extractDetailRC Option : -outfile /tmp/innovus_temp_26200_localhost.localdomain_ms23.52_3bnexc/P4_ADDER_26200_JH5i3C.rcdb.d -maxResLength 200  -extended
+RC Mode: PostRoute -effortLevel low [Extended CapTable, RC Table Resistances]
+      RC Corner Indexes            0   
+Capacitance Scaling Factor   : 1.00000 
+Coupling Cap. Scaling Factor : 1.00000 
+Resistance Scaling Factor    : 1.00000 
+Clock Cap. Scaling Factor    : 1.00000 
+Clock Res. Scaling Factor    : 1.00000 
+Shrink Factor                : 1.00000
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1138.1M)
+Extracted 10.0521% (CPU Time= 0:00:00.1  MEM= 1197.1M)
+Extracted 20.0429% (CPU Time= 0:00:00.1  MEM= 1197.1M)
+Extracted 30.0337% (CPU Time= 0:00:00.1  MEM= 1197.1M)
+Extracted 40.0552% (CPU Time= 0:00:00.1  MEM= 1197.1M)
+Extracted 50.046% (CPU Time= 0:00:00.1  MEM= 1197.1M)
+Extracted 60.0368% (CPU Time= 0:00:00.2  MEM= 1197.1M)
+Extracted 70.0582% (CPU Time= 0:00:00.2  MEM= 1197.1M)
+Extracted 80.049% (CPU Time= 0:00:00.2  MEM= 1197.1M)
+Extracted 90.0398% (CPU Time= 0:00:00.2  MEM= 1197.1M)
+Extracted 100% (CPU Time= 0:00:00.2  MEM= 1197.1M)
+Number of Extracted Resistors     : 5437
+Number of Extracted Ground Cap.   : 5948
+Number of Extracted Coupling Cap. : 5876
+Filtering XCap in 'relativeOnly' mode using values relative_c_threshold=0.03 and total_c_threshold=5fF.
+ Corner: standard
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1165.1M)
+PostRoute (effortLevel low) RC Extraction DONE (CPU Time: 0:00:01.1  Real Time: 0:00:02.0  MEM: 1169.066M)
+Starting delay calculation for Hold views
+Starting SI iteration 1 using Infinite Timing Windows
+#################################################################################
+# Design Stage: PostRoute
+# Design Name: P4_ADDER
+# Design Mode: 90nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: SPEF/RCDB 
+# Signoff Settings: SI On 
+#################################################################################
+AAE_INFO: 1 threads acquired from CTE.
+Start delay calculation (fullDC) (1 T). (MEM=1128.05)
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+Total number of fetched objects 595
+AAE_INFO-618: Total number of nets in the design is 615,  94.8 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1156.36 CPU=0:00:00.4 REAL=0:00:01.0)
+End delay calculation (fullDC). (MEM=1156.36 CPU=0:00:00.6 REAL=0:00:01.0)
+Loading CTE timing window with TwFlowType 0...(CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1156.4M)
+Add other clocks and setupCteToAAEClockMapping during iter 1
+Loading CTE timing window is completed (CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1156.4M)
+Starting SI iteration 2
+Start delay calculation (fullDC) (1 T). (MEM=1112.27)
+Glitch Analysis: View default -- Total Number of Nets Skipped = 0. 
+Glitch Analysis: View default -- Total Number of Nets Analyzed = 595. 
+Total number of fetched objects 595
+AAE_INFO-618: Total number of nets in the design is 615,  0.0 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1152.44 CPU=0:00:00.0 REAL=0:00:00.0)
+End delay calculation (fullDC). (MEM=1152.44 CPU=0:00:00.0 REAL=0:00:00.0)
+*** Done Building Timing Graph (cpu=0:00:00.9 real=0:00:01.0 totSessionCpu=0:01:47 mem=1152.4M)
+
+------------------------------------------------------------
+          timeDesign Summary                             
+------------------------------------------------------------
+
+Hold views included:
+ default 
+
++--------------------+---------+---------+
+|     Hold mode      |   all   | default |
++--------------------+---------+---------+
+|           WNS (ns):|  0.000  |  0.000  |
+|           TNS (ns):|  0.000  |  0.000  |
+|    Violating Paths:|    0    |    0    |
+|          All Paths:|    0    |    0    |
++--------------------+---------+---------+
+
+Density: 57.177%
+       (100.000% with Fillers)
+------------------------------------------------------------
+Reported timing to dir timingReports
+Total CPU time: 2.25 sec
+Total Real time: 3.0 sec
+Total Memory Usage: 1102.917969 Mbytes
+Reset AAE Options
+ standard 
+<CMD> reset_parasitics
+Performing RC Extraction ...
+<CMD> extractRC
+Extraction called for design 'P4_ADDER' of instances=1475 and nets=615 using extraction engine 'postRoute' at effort level 'low' .
+**WARN: (IMPEXT-3530):	The process node is not set. Use the command setDesignMode -process <process node> prior to extraction for maximum accuracy and optimal automatic threshold setting.
+Type 'man IMPEXT-3530' for more detail.
+PostRoute (effortLevel low) RC Extraction called for design P4_ADDER.
+RC Extraction called in multi-corner(1) mode.
+Process corner(s) are loaded.
+ Corner: standard
+extractDetailRC Option : -outfile /tmp/innovus_temp_26200_localhost.localdomain_ms23.52_3bnexc/P4_ADDER_26200_o0F8jM.rcdb.d -maxResLength 200  -extended
+RC Mode: PostRoute -effortLevel low [Extended CapTable, RC Table Resistances]
+      RC Corner Indexes            0   
+Capacitance Scaling Factor   : 1.00000 
+Coupling Cap. Scaling Factor : 1.00000 
+Resistance Scaling Factor    : 1.00000 
+Clock Cap. Scaling Factor    : 1.00000 
+Clock Res. Scaling Factor    : 1.00000 
+Shrink Factor                : 1.00000
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1109.2M)
+Extracted 10.0521% (CPU Time= 0:00:00.1  MEM= 1173.2M)
+Extracted 20.0429% (CPU Time= 0:00:00.1  MEM= 1173.2M)
+Extracted 30.0337% (CPU Time= 0:00:00.1  MEM= 1173.2M)
+Extracted 40.0552% (CPU Time= 0:00:00.1  MEM= 1173.2M)
+Extracted 50.046% (CPU Time= 0:00:00.1  MEM= 1173.2M)
+Extracted 60.0368% (CPU Time= 0:00:00.1  MEM= 1173.2M)
+Extracted 70.0582% (CPU Time= 0:00:00.1  MEM= 1173.2M)
+Extracted 80.049% (CPU Time= 0:00:00.1  MEM= 1173.2M)
+Extracted 90.0398% (CPU Time= 0:00:00.1  MEM= 1173.2M)
+Extracted 100% (CPU Time= 0:00:00.2  MEM= 1173.2M)
+Number of Extracted Resistors     : 5437
+Number of Extracted Ground Cap.   : 5948
+Number of Extracted Coupling Cap. : 5876
+Filtering XCap in 'relativeOnly' mode using values relative_c_threshold=0.03 and total_c_threshold=5fF.
+ Corner: standard
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1157.2M)
+PostRoute (effortLevel low) RC Extraction DONE (CPU Time: 0:00:01.0  Real Time: 0:00:02.0  MEM: 1161.230M)
+<CMD> rcOut -setload P4_ADDER.setload -rc_corner standard
+
+Usage: rcOut [-help] [-excludeIlm] [-noRes] {{{-spef <string>} [-excNetFile <string> | -net <string> | -netName <string>] } } [-view <string> | -rc_corner <string>] [-cUnit {pF fF}]
+
+**ERROR: (IMPTCM-48):	"-setload" is not a legal option for command "rcOut". Either the current option or an option prior to it is not specified correctly.
+
+**ERROR: (IMPSYT-6963):	<CMD> rcOut -setres P4_ADDER.setres -rc_corner standard
+
+Usage: rcOut [-help] [-excludeIlm] [-noRes] {{{-spef <string>} [-excNetFile <string> | -net <string> | -netName <string>] } } [-view <string> | -rc_corner <string>] [-cUnit {pF fF}]
+
+**ERROR: (IMPTCM-48):	"-setres" is not a legal option for command "rcOut". Either the current option or an option prior to it is not specified correctly.
+
+**ERROR: (IMPSYT-6965):	<CMD> rcOut -spf P4_ADDER.spf -rc_corner standard
+
+Usage: rcOut [-help] [-excludeIlm] [-noRes] {{{-spef <string>} [-excNetFile <string> | -net <string> | -netName <string>] } } [-view <string> | -rc_corner <string>] [-cUnit {pF fF}]
+
+**ERROR: (IMPTCM-48):	"-spf" is not a legal option for command "rcOut". Either the current option or an option prior to it is not specified correctly.
+
+**ERROR: (IMPSYT-6967):	 standard 
+<CMD> verifyConnectivity -type all -error 1000 -warning 50
+VERIFY_CONNECTIVITY use new engine.
+
+******** Start: VERIFY CONNECTIVITY ********
+Start Time: Thu Jun 15 19:30:02 2023
+
+Design Name: P4_ADDER
+Database Units: 2000
+Design Boundary: (0.0000, 0.0000) (42.7500, 40.8800)
+Error Limit = 1000; Warning Limit = 50
+Check all nets
+**WARN: (IMPVFC-97):	IO pin A[31] of net A[31] has not been assigned. Please make sure it is assigned and rerun verifyConnectivity.
+**WARN: (IMPVFC-97):	IO pin A[30] of net A[30] has not been assigned. Please make sure it is assigned and rerun verifyConnectivity.
+**WARN: (IMPVFC-97):	IO pin A[29] of net A[29] has not been assigned. Please make sure it is assigned and rerun verifyConnectivity.
+**WARN: (IMPVFC-97):	IO pin A[28] of net A[28] has not been assigned. Please make sure it is assigned and rerun verifyConnectivity.
+**WARN: (IMPVFC-97):	IO pin A[27] of net A[27] has not been assigned. Please make sure it is assigned and rerun verifyConnectivity.
+**WARN: (IMPVFC-97):	IO pin A[26] of net A[26] has not been assigned. Please make sure it is assigned and rerun verifyConnectivity.
+**WARN: (IMPVFC-97):	IO pin A[25] of net A[25] has not been assigned. Please make sure it is assigned and rerun verifyConnectivity.
+**WARN: (IMPVFC-97):	IO pin A[24] of net A[24] has not been assigned. Please make sure it is assigned and rerun verifyConnectivity.
+**WARN: (IMPVFC-97):	IO pin A[23] of net A[23] has not been assigned. Please make sure it is assigned and rerun verifyConnectivity.
+**WARN: (IMPVFC-97):	IO pin A[22] of net A[22] has not been assigned. Please make sure it is assigned and rerun verifyConnectivity.
+**WARN: (IMPVFC-97):	IO pin A[21] of net A[21] has not been assigned. Please make sure it is assigned and rerun verifyConnectivity.
+**WARN: (IMPVFC-97):	IO pin A[20] of net A[20] has not been assigned. Please make sure it is assigned and rerun verifyConnectivity.
+**WARN: (IMPVFC-97):	IO pin A[19] of net A[19] has not been assigned. Please make sure it is assigned and rerun verifyConnectivity.
+**WARN: (IMPVFC-97):	IO pin A[18] of net A[18] has not been assigned. Please make sure it is assigned and rerun verifyConnectivity.
+**WARN: (IMPVFC-97):	IO pin A[17] of net A[17] has not been assigned. Please make sure it is assigned and rerun verifyConnectivity.
+**WARN: (IMPVFC-97):	IO pin A[16] of net A[16] has not been assigned. Please make sure it is assigned and rerun verifyConnectivity.
+**WARN: (IMPVFC-97):	IO pin A[15] of net A[15] has not been assigned. Please make sure it is assigned and rerun verifyConnectivity.
+**WARN: (IMPVFC-97):	IO pin A[14] of net A[14] has not been assigned. Please make sure it is assigned and rerun verifyConnectivity.
+**WARN: (IMPVFC-97):	IO pin A[13] of net A[13] has not been assigned. Please make sure it is assigned and rerun verifyConnectivity.
+**WARN: (IMPVFC-97):	IO pin A[12] of net A[12] has not been assigned. Please make sure it is assigned and rerun verifyConnectivity.
+**WARN: (EMS-27):	Message (IMPVFC-97) has exceeded the current message display limit of 20.
+To increase the message display limit, refer to the product command reference manual.
+
+Begin Summary 
+  Found no problems or warnings.
+End Summary
+
+End Time: Thu Jun 15 19:30:02 2023
+Time Elapsed: 0:00:00.0
+
+******** End: VERIFY CONNECTIVITY ********
+  Verification Complete : 0 Viols.  0 Wrngs.
+  (CPU Time: 0:00:00.0  MEM: 0.000M)
+
+<CMD> reportGateCount -level 5 -limit 100 -outfile P4_ADDER.gateCount
+Gate area 0.7980 um^2
+[0] P4_ADDER Gates=717 Cells=530 Area=572.2 um^2
+[1] carry_net Gates=229 Cells=175 Area=182.7 um^2
+[1] sum_gen Gates=488 Cells=355 Area=389.4 um^2
+<CMD> saveNetlist P4_ADDER.v
+Writing Netlist "P4_ADDER.v" ...
+<CMD> all_hold_analysis_views 
+<CMD> all_setup_analysis_views 
+<CMD> write_sdf  -ideal_clock_network P4_ADDER.sdf
+**WARN: (SDF-808):	The software is currently operating in a high performance mode which optimizes the handling of multiple timing arcs between input and output pin pairs. With the current settings, the SDF file generated will contain the same delay information for all of these arcs. To have the SDF recalculated with explicit pin pair data, you should use the option '-recompute_delay_calc'. This setting is recommended for generating SDF for functional  simulation applications.
+Starting SI iteration 1 using Infinite Timing Windows
+#################################################################################
+# Design Stage: PostRoute
+# Design Name: P4_ADDER
+# Design Mode: 90nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: SPEF/RCDB 
+# Signoff Settings: SI On 
+#################################################################################
+AAE_INFO: 1 threads acquired from CTE.
+Start delay calculation (fullDC) (1 T). (MEM=1159.23)
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+Total number of fetched objects 595
+AAE_INFO-618: Total number of nets in the design is 615,  94.8 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1173.58 CPU=0:00:00.6 REAL=0:00:01.0)
+End delay calculation (fullDC). (MEM=1173.58 CPU=0:00:00.7 REAL=0:00:01.0)
+Loading CTE timing window with TwFlowType 0...(CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1173.6M)
+Add other clocks and setupCteToAAEClockMapping during iter 1
+Loading CTE timing window is completed (CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1173.6M)
+Starting SI iteration 2
+Start delay calculation (fullDC) (1 T). (MEM=1119.58)
+Glitch Analysis: View default -- Total Number of Nets Skipped = 0. 
+Glitch Analysis: View default -- Total Number of Nets Analyzed = 595. 
+Total number of fetched objects 595
+AAE_INFO-618: Total number of nets in the design is 615,  1.3 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1157.74 CPU=0:00:00.0 REAL=0:00:00.0)
+End delay calculation (fullDC). (MEM=1157.74 CPU=0:00:00.1 REAL=0:00:00.0)
+
+--------------------------------------------------------------------------------
+Exiting Innovus on Thu Jun 15 19:32:55 2023
+  Total CPU time:     0:03:19
+  Total real time:    0:11:34
+  Peak memory (main): 936.63MB
+
+
+*** Memory Usage v#2 (Current mem = 1149.527M, initial mem = 280.285M) ***
+*** Message Summary: 74 warning(s), 24 error(s)
+
+--- Ending "Innovus" (totcpu=0:03:07, real=0:11:33, mem=1149.5M) ---

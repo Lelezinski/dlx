@@ -1,0 +1,2872 @@
+  Run on localhost.localdomain (Linux 3.10.0-957.5.1.el7.x86_64)
+
+-----------| System Information |---------------
+
+*** User  : ms23.52
+*** OS    : CentOS Linux release 7.6.1810 (Core)  [VCO = aol]
+*** CPU   :
+    Intel Core i7 9xx (Nehalem Class Core i7)
+    Number of physical processors     : 12
+    Hyper-Threading Technology        : N/A
+    Number of cpu cores               : N/A
+    Number of logical processors      : N/A
+*** Freq  : 1994.996MHz
+*** Cache : 4096 KB
+*** MEM   : 65975116 kB
+*** Date  : Thu Jun  1 10:05:17 2023
+
+*** Eldo VERSION : ELDO 2020.4 (64 bits) Thu Oct 15 15:59:13 GMT 2020
+
+/eda/mentor/2020-21/RHELx86/AMSV_2020.4/amsv/aol/bin/eldo_64.exe -i nandHScharTran.sp
+
+
+***>  1-Jun-2023 10:05:17 - STARTING PARSING PHASE ...
+
+***** PRE-PROCESSING ...
+1******* 1-Jun-23 *******  ELDO 2020.4 (64 bits)  (v20.4_0.1)  *******10:05:17******
+
+0* Characterizing a simple nand with load variation
+
+0****     INPUT LISTING                                               
+
+0***********************************************************************
+    2  
+    3  * including MOS model 
+    4  .LIB  $ST_HSPICE_LIB/include_CMOS013.lib  CMOS013lib
+    5  
+    6  * including a small set of gates containing parasitics informations
+    7  ** INCLUDING LIBRARY /home/repository/ms/cap5/lib/include_CMOS013.lib LIBTYPE=CMOS013lib
+    6  .PARAM MOSHS_DEV = 0
+    7  .PARAM MOSLL_DEV = 0
+    8  
+    9  
+   10  
+   11  
+   12  .LIB  ./mos_bsim3_LL.lib  mosll_TT
+   13  ** INCLUDING LIBRARY /home/repository/ms/cap5/lib/mos_bsim3_LL.lib LIBTYPE=mosll_TT
+   31  
+   32  .PARAM NSIGMA_NMOSLL_DCJB  =  0
+   33  .PARAM NSIGMA_NMOSLL_DCJGATE  =  0
+   34  .PARAM NSIGMA_NMOSLL_DCJSW  =  0
+   35  .PARAM NSIGMA_NMOSLL_DJSDBR  =  0
+   36  .PARAM NSIGMA_NMOSLL_DJSDGR  =  0
+   37  .PARAM NSIGMA_NMOSLL_DJSDSR  =  0
+   38  .PARAM NSIGMA_NMOSLL_DJSGBR  =  0
+   39  .PARAM NSIGMA_NMOSLL_DJSGGR  =  0
+   40  .PARAM NSIGMA_NMOSLL_DJSGSR  =  0
+   41  .PARAM NSIGMA_NMOSLL_DMU  =  0
+   42  .PARAM NSIGMA_NMOSLL_DRDSW  =  0
+   43  .PARAM NSIGMA_NMOSLL_DVARMAXRDSW  =  0
+   44  .PARAM NSIGMA_NMOSLL_DVARMAXU0  =  0
+   45  .PARAM NSIGMA_NMOSLL_RBVDL  =  0
+   46  .PARAM NSIGMA_NMOSLL_RBVDR  =  0
+   47  .PARAM NSIGMA_NMOSLL_RBVGL  =  0
+   48  .PARAM NSIGMA_NMOSLL_RBVGR  =  0
+   49  .PARAM NSIGMA_NMOSLL_RBVSL  =  0
+   50  .PARAM NSIGMA_NMOSLL_RBVSR  =  0
+   51  .PARAM NSIGMA_NMOSLL_VARMAXVTH00  =  0
+   52  .PARAM NSIGMA_NMOSLL_VTH0  =  0
+   53  
+   54  .PARAM NSIGMA_PMOSLL_DCJB  =  0
+   55  .PARAM NSIGMA_PMOSLL_DCJGATE  =  0
+   56  .PARAM NSIGMA_PMOSLL_DCJSW  =  0
+   57  .PARAM NSIGMA_PMOSLL_DJSDBR  =  0
+   58  .PARAM NSIGMA_PMOSLL_DJSDGR  =  0
+   59  .PARAM NSIGMA_PMOSLL_DJSDSR  =  0
+   60  .PARAM NSIGMA_PMOSLL_DJSGBR  =  0
+   61  .PARAM NSIGMA_PMOSLL_DJSGGR  =  0
+   62  .PARAM NSIGMA_PMOSLL_DJSGSR  =  0
+   63  .PARAM NSIGMA_PMOSLL_DMU  =  0
+   64  .PARAM NSIGMA_PMOSLL_DRDSW  =  0
+   65  .PARAM NSIGMA_PMOSLL_DVARMAXRDSW  =  0
+   66  .PARAM NSIGMA_PMOSLL_DVARMAXU0  =  0
+   67  .PARAM NSIGMA_PMOSLL_RBVDL  =  0
+   68  .PARAM NSIGMA_PMOSLL_RBVDR  =  0
+   69  .PARAM NSIGMA_PMOSLL_RBVGL  =  0
+   70  .PARAM NSIGMA_PMOSLL_RBVGR  =  0
+   71  .PARAM NSIGMA_PMOSLL_RBVSL  =  0
+   72  .PARAM NSIGMA_PMOSLL_RBVSR  =  0
+   73  .PARAM NSIGMA_PMOSLL_VARMAXVTH00  =  0
+   74  .PARAM NSIGMA_PMOSLL_VTH0  =  0
+   75  
+   76  
+   77  
+   78  .LIB  mos_bsim3_LL.lib  mosll_PARAM
+   79  ** INCLUDING LIBRARY /home/repository/ms/cap5/lib/mos_bsim3_LL.lib LIBTYPE=mosll_PARAM
+  525  
+  526  
+  527  *----------------------------------------------
+  528  *                   nmosll 
+  529  *----------------------------------------------
+  530  .PARAM NMOSLL_VTH0 = {0.241+0.5*0.015*NSIGMA_NMOSLL_VTH0}
+  531  .PARAM NMOSLL_DMU = {0.0+0.5*5E-2*NSIGMA_NMOSLL_DMU}
+  532  .PARAM NMOSLL_DRDSW = {0.0+0.5*5E-2*NSIGMA_NMOSLL_DRDSW}
+  533  .PARAM NMOSLL_DCJB = {0.0+0.5*10E-2*NSIGMA_NMOSLL_DCJB}
+  534  .PARAM NMOSLL_DCJGATE = {0.0+0.5*20E-2*NSIGMA_NMOSLL_DCJGATE}
+  535  .PARAM NMOSLL_DCJSW = {0.0+0.5*20E-2*NSIGMA_NMOSLL_DCJSW}
+  536  .PARAM NMOSLL_DJSDBR = {0.0+0.5*1*NSIGMA_NMOSLL_DJSDBR}
+  537  .PARAM NMOSLL_DJSDGR = {0.0+0.5*1*NSIGMA_NMOSLL_DJSDGR}
+  538  .PARAM NMOSLL_DJSDSR = {0.0+0.5*1*NSIGMA_NMOSLL_DJSDSR}
+  539  .PARAM NMOSLL_DJSGBR = {0.0+0.5*1*NSIGMA_NMOSLL_DJSGBR}
+  540  .PARAM NMOSLL_DJSGGR = {0.0+0.5*1*NSIGMA_NMOSLL_DJSGGR}
+  541  .PARAM NMOSLL_DJSGSR = {0.0+0.5*1*NSIGMA_NMOSLL_DJSGSR}
+  542  .PARAM NMOSLL_VARMAXVTH00 = {0.0+0.5*0.0*NSIGMA_NMOSLL_VARMAXVTH00}
+  543  .PARAM NMOSLL_DVARMAXU0 = {0.0+0.5*0.33*NSIGMA_NMOSLL_DVARMAXU0}
+  544  .PARAM NMOSLL_DVARMAXRDSW = {0.0+0.5*0.0*NSIGMA_NMOSLL_DVARMAXRDSW}
+  545  .PARAM NMOSLL_RBVDR = {1364+0.5*409.2*NSIGMA_NMOSLL_RBVDR}
+  546  .PARAM NMOSLL_RBVDL = {5544+0.5*1663.2*NSIGMA_NMOSLL_RBVDL}
+  547  .PARAM NMOSLL_RBVSR = {1364+0.5*409.2*NSIGMA_NMOSLL_RBVSR}
+  548  .PARAM NMOSLL_RBVSL = {5544+0.5*1663.2*NSIGMA_NMOSLL_RBVSL}
+  549  .PARAM NMOSLL_RBVGR = {3304+0.5*991.2*NSIGMA_NMOSLL_RBVGR}
+  550  .PARAM NMOSLL_RBVGL = {2576+0.5*772.8*NSIGMA_NMOSLL_RBVGL}
+  551  
+  552  
+  553  *----------------------------------------------
+  554  *                   pmosll 
+  555  *----------------------------------------------
+  556  .PARAM PMOSLL_VTH0 = {-0.343+0.5*0.015*NSIGMA_PMOSLL_VTH0}
+  557  .PARAM PMOSLL_DMU = {0.0+0.5*5E-2*NSIGMA_PMOSLL_DMU}
+  558  .PARAM PMOSLL_DRDSW = {0.0+0.5*5E-2*NSIGMA_PMOSLL_DRDSW}
+  559  .PARAM PMOSLL_DCJB = {0.0+0.5*10E-2*NSIGMA_PMOSLL_DCJB}
+  560  .PARAM PMOSLL_DCJGATE = {0.0+0.5*20E-2*NSIGMA_PMOSLL_DCJGATE}
+  561  .PARAM PMOSLL_DCJSW = {0.0+0.5*20E-2*NSIGMA_PMOSLL_DCJSW}
+  562  .PARAM PMOSLL_DJSDBR = {0.0+0.5*1*NSIGMA_PMOSLL_DJSDBR}
+  563  .PARAM PMOSLL_DJSDGR = {0.0+0.5*1*NSIGMA_PMOSLL_DJSDGR}
+  564  .PARAM PMOSLL_DJSDSR = {0.0+0.5*1*NSIGMA_PMOSLL_DJSDSR}
+  565  .PARAM PMOSLL_DJSGBR = {0.0+0.5*1*NSIGMA_PMOSLL_DJSGBR}
+  566  .PARAM PMOSLL_DJSGGR = {0.0+0.5*1*NSIGMA_PMOSLL_DJSGGR}
+  567  .PARAM PMOSLL_DJSGSR = {0.0+0.5*1*NSIGMA_PMOSLL_DJSGSR}
+  568  .PARAM PMOSLL_VARMAXVTH00 = {0.0+0.5*0.0*NSIGMA_PMOSLL_VARMAXVTH00}
+  569  .PARAM PMOSLL_DVARMAXU0 = {0.0+0.5*0.33*NSIGMA_PMOSLL_DVARMAXU0}
+  570  .PARAM PMOSLL_DVARMAXRDSW = {0.0+0.5*0.0*NSIGMA_PMOSLL_DVARMAXRDSW}
+  571  .PARAM PMOSLL_RBVDR = {216+0.5*64.8*NSIGMA_PMOSLL_RBVDR}
+  572  .PARAM PMOSLL_RBVDL = {2916+0.5*874.8*NSIGMA_PMOSLL_RBVDL}
+  573  .PARAM PMOSLL_RBVSR = {216+0.5*64.8*NSIGMA_PMOSLL_RBVSR}
+  574  .PARAM PMOSLL_RBVSL = {2916+0.5*874.8*NSIGMA_PMOSLL_RBVSL}
+  575  .PARAM PMOSLL_RBVGR = {864+0.5*259.2*NSIGMA_PMOSLL_RBVGR}
+  576  .PARAM PMOSLL_RBVGL = {1360+0.5*408*NSIGMA_PMOSLL_RBVGL}
+  577  
+  578  
+   79  ** END OF LIBRARY /home/repository/ms/cap5/lib/mos_bsim3_LL.lib LIBTYPE=mosll_PARAM
+   79  .LIB  mos_bsim3_LL.lib  mosll_CORREL
+   80  ** INCLUDING LIBRARY /home/repository/ms/cap5/lib/mos_bsim3_LL.lib LIBTYPE=mosll_CORREL
+  640  
+  641  *----------------------------------------------
+  642  *                   nmosll 
+  643  *----------------------------------------------
+  644  .PARAM NMOSLL_XL = POLY_CDVAR+5E-9
+  645  .PARAM NMOSLL_XW = ACTIVE_CDVAR
+  646  .PARAM NMOSLL_TOX = GO1_LL_TOXN
+  647  .PARAM NMOSLL_DCFRING = GO1_DCFRING+9.5E-11
+  648  .PARAM NMOSLL_NLX = 1.37E-8
+  649  .PARAM NMOSLL_PRWB = -0.23
+  650  .PARAM NMOSLL_RSHG = NPOLY_RSH
+  651  .PARAM NMOSLL_RCONPO = NPOLY_RSC
+  652  
+  653  *----------------------------------------------
+  654  *                   pmosll 
+  655  *----------------------------------------------
+  656  .PARAM PMOSLL_XL = POLY_CDVAR+5E-9
+  657  .PARAM PMOSLL_XW = ACTIVE_CDVAR
+  658  .PARAM PMOSLL_TOX = GO1_LL_TOXP
+  659  .PARAM PMOSLL_DCFRING = GO1_DCFRING+9.5E-11
+  660  .PARAM PMOSLL_NLX = 3.0899E-08
+  661  .PARAM PMOSLL_PRWB = -0.78722
+  662  .PARAM PMOSLL_RSHG = PPOLY_RSH
+  663  .PARAM PMOSLL_RCONPO = PPOLY_RSC
+  664  
+  665  
+   80  ** END OF LIBRARY /home/repository/ms/cap5/lib/mos_bsim3_LL.lib LIBTYPE=mosll_CORREL
+   80  .LIB  mos_bsim3_LL.lib  mosll_MODEL
+   81   
+   82  ** INCLUDING LIBRARY /home/repository/ms/cap5/lib/mos_bsim3_LL.lib LIBTYPE=mosll_MODEL
+  668  
+  669  *----------------------------------------------------------------------
+  670  * Family nmosll Model ENLLGP_BS3JU bsim3 typ mismatch
+  671  * Maturity : Silicon_verified
+  672  *----------------------------------------------------------------------
+  673  .SUBCKT ENLLGP_BS3JU D G S B
+  674  +       PARAM: W=0.15E-6 L=0.13E-6 NFING=1 NCRSD=1 MISMATCH=1 SRCEFIRST=1
+  675  +       WFING={W/NFING+NMOSLL_XW}
+  676  +       FD={SRCEFIRST*(NFING-2*TRUNC(NFING/2))+(1-SRCEFIRST)*(2*TRUNC(1+NFING/2)-NFING)}
+  677  +       FS={2-FD}
+  678  +       AD={WFING*((NFING-FD)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-NMOSLL_XL)/2+FD*(1.5E-07+NMOSLL_XW/2))}
+  679  +       AS={WFING*((NFING-FS)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-NMOSLL_XL)/2+FS*(1.5E-07+NMOSLL_XW/2))}
+  680  +       PD={(NFING-FD)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-NMOSLL_XL)/2+FD*(WFING+2*1.5E-07+NMOSLL_XW)}
+  681  +       PS={(NFING-FS)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-NMOSLL_XL)/2+FS*(WFING+2*1.5E-07+NMOSLL_XW)}
+  682  +       PO2ACT=-1
+  683  +       NUMBER=1 NRD=0 NRS=0
+  684  +       NGCON=1
+  685  
+  686  
+  687  *
+  688  * invariant parameters:
+  689  *----------------------
+  690  .PARAM CONW    = 0.16E-6
+  691  .PARAM CONS    = 0.18E-6
+  692  .PARAM COEACT  = 0.07E-6
+  693  .PARAM CONPO   = 0.11E-6
+  694  
+  695  .PARAM U0_TYP  = 274.93
+  696  .PARAM U0S     = 207.82
+  697  .PARAM LINT    = 2.1939E-08
+  698  .PARAM LMIN    = 0.13E-6
+  699  .PARAM DWU0    = -0.060406
+  700  .PARAM WINT    = -9.9707E-10
+  701  
+  702  
+  703  *  
+  704  .PARAM  CJBR   = 0.00085803
+  705  .PARAM  CJGR   = 2.921E-10
+  706  .PARAM  CJSR   = 6.7342E-11
+  707  .PARAM  JSDBR  = 1.3181E-07
+  708  .PARAM  JSDGR  = 0
+  709  .PARAM  JSDSR  = 2.2436E-14
+  710  .PARAM  JSGBR  = 9E-06
+  711  .PARAM  JSGGR  = 4.1751E-11
+  712  .PARAM  JSGSR  = 3.1654E-11
+  713   
+  714  
+  715  *
+  716  * variant parameters:
+  717  *--------------------
+  718  .PARAM XL      = NMOSLL_XL
+  719  .PARAM XW      = NMOSLL_XW
+  720  .PARAM TOX     = NMOSLL_TOX
+  721  .PARAM VTH     = NMOSLL_VTH0
+  722  .PARAM NLX     = NMOSLL_NLX
+  723  .PARAM DRDSW   = NMOSLL_DRDSW
+  724  .PARAM DMU     = NMOSLL_DMU
+  725  
+  726  
+  727  .PARAM DCJB    = NMOSLL_DCJB
+  728  .PARAM DCJGATE = NMOSLL_DCJGATE
+  729  .PARAM DCJSW   = NMOSLL_DCJSW
+  730  .PARAM DJSDBR  = NMOSLL_DJSDBR
+  731  .PARAM DJSDGR  = NMOSLL_DJSDGR
+  732  .PARAM DJSDSR  = NMOSLL_DJSDSR
+  733  .PARAM DJSGBR  = NMOSLL_DJSGBR
+  734  .PARAM DJSGGR  = NMOSLL_DJSGGR
+  735  .PARAM DJSGSR  = NMOSLL_DJSGSR
+  736  .PARAM PRWB    = NMOSLL_PRWB
+  737  
+  738  .PARAM DCFRING = NMOSLL_DCFRING
+  739  * effective length and width:
+  740  *----------------------------
+  741  .PARAM WE      = {(W/NFING+XW-2*WINT)}
+  742  .PARAM LE      = {L+XL-2.0*LINT}
+  743  * Equations for mismatch deviations:
+  744  *-----------------------------------
+  745  .PARAM DVTH0_ALPHA = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),4.49E-9,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),5.34E-9,VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.24E-6),3.44E-9,3.76E-9)))
+  746  .PARAM DVTH0_BETA  = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),0.0,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),0.0,VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.24E-6),0.0,0.0)))
+  747  .PARAM DVTH0_FUDGE  = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.25,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.25,VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.24E-6),1.25,1.25)))
+  748  .PARAM DVTH0_SIG = {((DVTH0_ALPHA/SQRT(W*L))+DVTH0_BETA)*DVTH0_FUDGE/SQRT(2.0*NUMBER)}
+  749  .PARAM DVTH0_DEV = 0.0 DEV/GAUSS = {DVTH0_SIG*MOSLL_DEV*MISMATCH}
+  750  .PARAM DBETA_ALPHA = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.16E-8,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.52E-8,VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.24E-6),0.94E-8,1.03E-8)))
+  751  .PARAM DBETA_BETA  = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),0.0,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),0.0,VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.24E-6),0.0,0.0)))
+  752  .PARAM DBETA_FUDGE  = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.25,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.25,VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.24E-6),1.25,1.25)))
+  753  .PARAM DBETA_SIG = {((DBETA_ALPHA/SQRT(W*L))+DBETA_BETA)*DBETA_FUDGE/SQRT(2.0*NUMBER)}
+  754  .PARAM DBETA_DEV = 0.0 DEV/GAUSS = {DBETA_SIG*MOSLL_DEV*MISMATCH}
+  755  
+  756  * Mobility model improvement:
+  757  *----------------------------
+  758  .PARAM EPSILON2 = 1E-18
+  759  .PARAM LLIMIT = {2.80388E-07-XL} 
+  760  .PARAM WLIMIT = {2.79770586E-06-XW} 
+  761  
+  762  .PARAM DWU = DWU0
+  763  
+  764  .PARAM MOBILITY = {2.0/((1.0/U0_TYP+1.0/U0S)+(LLIMIT+XL
+  765  + -2.0*LINT-SQRT((LLIMIT-L)*(LLIMIT-L)+EPSILON2))*(1.0/U0S-1.0/U0_TYP)/LE)
+  766  + *(W/NFING-2.0*((WINT-XW/2.0)*(1.0+2.0*(DWU))-(DWU)*WLIMIT
+  767  + +(DWU)*0.5*(WLIMIT-W/NFING)+0.5*(DWU)*SQRT((WLIMIT-W/NFING)*(WLIMIT-W/NFING)+EPSILON2)))/WE}
+  768  .PARAM U0 = {MOBILITY*(1.0+DBETA_DEV)*(1+DMU)} 
+  769  * Equations for Threshold voltage vth0 and body factor K1:
+  770  *---------------------------------------------------------
+  771  .PARAM  EG0   =  {1.16-(7.02E-4*((273.15+27)^2)/(27+1381))}
+  772  .PARAM  NI    =  {1.45E10*(((273.15+27)/300.15)^1.5)*EXP(21.5565981-EG0/(1.725E-4*(273.15+27)))}
+  773  .PARAM  PHIS  =  {1.725E-4*(273.15+27)*LOG(1.08E+18/NI)}
+  774  .PARAM  K2    =  {0*(TOX/2.49E-09)}
+  775  
+  776  .PARAM  K1    =  {0.42986-(0.2406-VTH)/SQRT(PHIS)}
+  777  .PARAM  VTH0  =  {VTH+DVTH0_DEV} 
+  778  
+  779  .PARAM  NCH   =  {1.08E+18*(2.49E-09*2.49E-09)/(TOX*TOX)*(K1*K1)/(0.42986*0.42986)}
+  780  
+  781  * Equations for access resistance:
+  782  *---------------------------------
+  783  
+  784  .PARAM  RDSW  =  {131.73*(1+DRDSW)}
+  785  
+  786  
+  787  .PARAM VTH0EFF          = VTH0
+  788  .PARAM U0EFF            = U0
+  789  
+  790  .PARAM RDSWEFF          = RDSW
+  791  
+  792  * Equations for fringing capacitance:
+  793  *------------------------------------
+  794  .PARAM  CF    =  DCFRING
+  795  * Equations for overlap capacitance:
+  796  *-----------------------------------
+  797  .PARAM  CGSL  =  {1.0057E-10*(2.49E-09/TOX)}
+  798  .PARAM  CGDL  =  {1.0057E-10*(2.49E-09/TOX)}
+  799  
+  800  * Equations for VT:
+  801  *-----------------
+  802  
+  803  .PARAM  W0    =  {2.6738E-08+(0-XW)}
+  804  
+  805  
+  806  .PARAM T0 = {0.51203*LE/1.30E-8}
+  807  .PARAM T1 = {EXP(T0)}
+  808  .PARAM VTH_SCE = VALIF((T0<34.0),(0.43)*T1/(((T1-1.0)*(T1-1.0))+(2.0*T1*1.7139E-15)),(0.43)/5.8346E14) 
+  809  .PARAM N_SUBVT = { 1.0 + ((0.40523+((0.045954)/LE*1.0E-6))*5.0E-3*2.49E-09/3.4531E-11)}
+  810  .PARAM VTH_RSCE = {-N_SUBVT*0.02586*LOG(LE/(LE+8.0944E-06))}
+  811  .PARAM TMP2 = {2.49E-09*0.9/(WE+W0)}
+  812  .PARAM K3 = {((-6.0878*TMP2)*(2.49E-09/TOX) + VTH_RSCE - VTH_SCE)/TMP2}
+  813  .PARAM DVT0 = 0.0
+  814  
+  815  
+  816  .PARAM  K3B   =  {1.0709*(2.49E-09/TOX)}
+  817  .PARAM  LK3   =  {0.2*((LMIN+XL-(2*LINT))*2.49E-09/(LMIN+-1.5E-08-(2*LINT))/TOX)}
+  818  
+  819  
+  820  .PARAM LKETAEXP = {VALIF((1.0E-6/LE-1.0/0.98023)/0.0054637 > 34, 34, (1.0E-6/LE-1.0/0.98023)/0.0054637)}
+  821  .PARAM LKETA    = {0.025/(1.0+EXP(LKETAEXP))} 
+  822  
+  823  
+  824  
+  825  
+  826  M1 D G S B NCH W={W/NFING} L=L AS={AS/NFING} AD={AD/NFING} PS={PS/NFING} PD={PD/NFING}
+  827  +          M={NUMBER*NFING} NRD={NRD*NFING} NRS={NRS*NFING}
+  828  
+  829  
+  830  
+  831  .MODEL NCH NMOS
+  832  + LEVEL=53
+  833  + VERSION=3.2           NQSMOD=0              XW=XW                 
+  834  + XL=XL                 WMIN=1.5E-07          WMAX=1                
+  835  + LMIN=1.3E-07          LMAX=1E-05            MOBMOD=2              
+  836  + CAPMOD=3              NOIMOD=2              BINUNIT=1             
+  837  + JS=0                  JSW=0                 LINT=2.1939E-08       
+  838  + LL=0                  LLN=1                 LW=0                  
+  839  + LWN=1                 LWL=0                 WINT=-9.9707E-10      
+  840  + WL=0                  WLN=1                 WW=0                  
+  841  + WWN=1                 WWL=0                 TNOM=27               
+  842  + TOX=TOX               CJ=0                  MJ=0.33               
+  843  + CJSW=0                MJSW=0.5              CJSWG=0               
+  844  + MJSWG=0.5             CGSO=3.0713E-10       CGDO=3.0713E-10       
+  845  + CGBO=1E-14            XPART=0               DWG=0                 
+  846  + DWB=0                 NCH=NCH               NGATE=2.3702E+20      
+  847  + XJ=1E-07              U0=U0EFF              VTH0=VTH0EFF          
+  848  + K1=K1                 K2=K2                 LK2=-0.0040345        
+  849  + K3=K3                 LK3=LK3               K3B=K3B               
+  850  + W0=W0                 NLX=NLX               DVT0=DVT0             
+  851  + DVT1=0.51203          DVT2=0                DVT0W=0               
+  852  + DVT1W=5E+06           DVT2W=0               UA=-5.842E-10         
+  853  + UB=1.8214E-18         UC=-1.7437E-10        DELTA=0.018114        
+  854  + RDSW=RDSWEFF          PRWG=0                PRWB=PRWB             
+  855  + WR=1                  VSAT=110000           A0=2.4111             
+  856  + KETA=-0.0066061       LKETA=LKETA           AGS=0.76127           
+  857  + A1=0                  A2=0.91307            B0=0                  
+  858  + B1=0                  ALPHA0=0              BETA0=11.306          
+  859  + LBETA0=-0.159         VOFF=-0.09345         LVOFF=-0.0046832      
+  860  + NFACTOR=0.40523       LNFACTOR=0.045954     CDSC=0                
+  861  + CDSCB=-0.00012548     CDSCD=-0.0010321      CIT=0                 
+  862  + ETA0=0.40549          ETAB=-0.44131         DSUB=1.2509           
+  863  + DROUT=0.2             PCLM=1.6093           LPCLM=-0.051879       
+  864  + PDIBLC1=0.01559       PDIBLC2=0.013746      PDIBLCB=0.4           
+  865  + PSCBE1=1E+15          PSCBE2=1E-18          PVAG=0.38394          
+  866  + UTE=-1.738            AT=30000              UA1=3.46E-10          
+  867  + UB1=-1.69E-18         UC1=4.5772E-12        KT1=-0.2226           
+  868  + KT1L=1.75E-09         KT2=-0.025513         PRT=0                 
+  869  + CGSL=CGSL             CGDL=CGDL             CKAPPA=7.5715         
+  870  + CF=CF                 CLC=1E-07             CLE=0.6               
+  871  + DLC=3.38E-08          NOFF=1.8691           VOFFCV=-0.040497      
+  872  + ALPHA1=0.025257       ACDE=0.5              MOIN=5                
+  873  + LLC=0                 LWC=0                 LWLC=0                
+  874  + WLC=0                 WWC=0                 WWLC=0                
+  875  + ELM=5                 EF=1                  EM=5E+09              
+  876  + NOIA=5E+20            NOIB=200000           NOIC=0
+  877  *  
+  878  * -- JUNCAP Electrical Parameters for S/D regions  (Simulator specific)
+  879  + VR=0                  CJBR={CJBR*(1+DCJB)}  CJSR={CJSR*(1+DCJSW)} 
+  880  + CJGR={CJGR*(1+DCJGATE)}  JSDBR={JSDBR*10^DJSDBR} 
+  881  + JSDSR={JSDSR*10^DJSDSR} JSDGR={JSDGR*10^DJSDGR} 
+  882  + JSGBR={JSGBR*10^DJSGBR} JSGSR={JSGSR*10^DJSGSR} 
+  883  + JSGGR={JSGGR*10^DJSGGR}  VDBR=0.52286          VDSR=0.42697          
+  884  + VDGR=1                PB=0.20582            PS=0.44445            
+  885  + PG=0.6358              NBJ=0.97              NSJ=0.93              
+  886  + NGJ=1
+  887  + 
+  888  + TRDIO9=27             DIOLEV=9              DCAPLEV=0             
+  889  + RLEV=1                ALEV=3
+  890   
+  891  
+  892  * + 
+  893  .ENDS ENLLGP_BS3JU
+  894  
+  895  
+  896  *----------------------------------------------------------------------
+  897  * Family nmosll Model ENLLGP_BS3JULEAK bsim3 typ mismatch
+  898  * Maturity : Silicon_verified
+  899  *----------------------------------------------------------------------
+  900  .SUBCKT ENLLGP_BS3JULEAK D G S B
+  901  +       PARAM: W=0.15E-6 L=0.13E-6 NFING=1 NCRSD=1 MISMATCH=1 SRCEFIRST=1
+  902  +       WFING={W/NFING+NMOSLL_XW}
+  903  +       FD={SRCEFIRST*(NFING-2*TRUNC(NFING/2))+(1-SRCEFIRST)*(2*TRUNC(1+NFING/2)-NFING)}
+  904  +       FS={2-FD}
+  905  +       AD={WFING*((NFING-FD)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-NMOSLL_XL)/2+FD*(1.5E-07+NMOSLL_XW/2))}
+  906  +       AS={WFING*((NFING-FS)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-NMOSLL_XL)/2+FS*(1.5E-07+NMOSLL_XW/2))}
+  907  +       PD={(NFING-FD)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-NMOSLL_XL)/2+FD*(WFING+2*1.5E-07+NMOSLL_XW)}
+  908  +       PS={(NFING-FS)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-NMOSLL_XL)/2+FS*(WFING+2*1.5E-07+NMOSLL_XW)}
+  909  +       PO2ACT=-1
+  910  +       NUMBER=1 NRD=0 NRS=0
+  911  +       NGCON=1
+  912  
+  913  
+  914  *
+  915  * invariant parameters:
+  916  *----------------------
+  917  .param conw    = 0.16e-6
+ 1151  .ENDS ENLLGP_BS3JULEAK
+ 1152  
+ 1153  
+ 1154  *----------------------------------------------------------------------
+ 1155  * Family nmosll Model ENLLGP_BS3JURG bsim3 typ mismatch
+ 1156  * Maturity : Silicon_verified
+ 1157  *----------------------------------------------------------------------
+ 1158  .SUBCKT ENLLGP_BS3JURG D G S B
+ 1159  +       PARAM: W=0.15E-6 L=0.13E-6 NFING=1 NCRSD=1 MISMATCH=1 SRCEFIRST=1
+ 1160  +       WFING={W/NFING+NMOSLL_XW}
+ 1161  +       FD={SRCEFIRST*(NFING-2*TRUNC(NFING/2))+(1-SRCEFIRST)*(2*TRUNC(1+NFING/2)-NFING)}
+ 1162  +       FS={2-FD}
+ 1163  +       AD={WFING*((NFING-FD)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-NMOSLL_XL)/2+FD*(1.5E-07+NMOSLL_XW/2))}
+ 1164  +       AS={WFING*((NFING-FS)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-NMOSLL_XL)/2+FS*(1.5E-07+NMOSLL_XW/2))}
+ 1165  +       PD={(NFING-FD)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-NMOSLL_XL)/2+FD*(WFING+2*1.5E-07+NMOSLL_XW)}
+ 1166  +       PS={(NFING-FS)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-NMOSLL_XL)/2+FS*(WFING+2*1.5E-07+NMOSLL_XW)}
+ 1167  +       PO2ACT=-1
+ 1168  +       NUMBER=1 NRD=0 NRS=0
+ 1169  +       NGCON=1
+ 1170  
+ 1171  
+ 1172  *
+ 1173  * invariant parameters:
+ 1174  *----------------------
+ 1175  .param conw    = 0.16e-6
+ 1392  .ENDS ENLLGP_BS3JURG
+ 1393  
+ 1394  
+ 1395  *----------------------------------------------------------------------
+ 1396  * Family nmosll Model ENLLGP_BS3NQSJU bsim3 typ mismatch
+ 1397  * Maturity : Silicon_verified
+ 1398  *----------------------------------------------------------------------
+ 1399  .SUBCKT ENLLGP_BS3NQSJU D G S B
+ 1400  +       PARAM: W=0.15E-6 L=0.13E-6 NFING=1 NCRSD=1 MISMATCH=1 SRCEFIRST=1
+ 1401  +       WFING={W/NFING+NMOSLL_XW}
+ 1402  +       FD={SRCEFIRST*(NFING-2*TRUNC(NFING/2))+(1-SRCEFIRST)*(2*TRUNC(1+NFING/2)-NFING)}
+ 1403  +       FS={2-FD}
+ 1404  +       AD={WFING*((NFING-FD)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-NMOSLL_XL)/2+FD*(1.5E-07+NMOSLL_XW/2))}
+ 1405  +       AS={WFING*((NFING-FS)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-NMOSLL_XL)/2+FS*(1.5E-07+NMOSLL_XW/2))}
+ 1406  +       PD={(NFING-FD)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-NMOSLL_XL)/2+FD*(WFING+2*1.5E-07+NMOSLL_XW)}
+ 1407  +       PS={(NFING-FS)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-NMOSLL_XL)/2+FS*(WFING+2*1.5E-07+NMOSLL_XW)}
+ 1408  +       PO2ACT=-1
+ 1409  +       NUMBER=1 NRD=0 NRS=0
+ 1410  +       NGCON=1
+ 1411  
+ 1412  
+ 1413  *
+ 1414  * invariant parameters:
+ 1415  *----------------------
+ 1416  .param conw    = 0.16e-6
+ 1619  .ENDS ENLLGP_BS3NQSJU
+ 1620  
+ 1621  
+ 1622  *----------------------------------------------------------------------
+ 1623  * Family nmosll Model ENLLGP_BS3NQSJURG bsim3 typ mismatch
+ 1624  * Maturity : Silicon_verified
+ 1625  *----------------------------------------------------------------------
+ 1626  .SUBCKT ENLLGP_BS3NQSJURG D G S B
+ 1627  +       PARAM: W=0.15E-6 L=0.13E-6 NFING=1 NCRSD=1 MISMATCH=1 SRCEFIRST=1
+ 1628  +       WFING={W/NFING+NMOSLL_XW}
+ 1629  +       FD={SRCEFIRST*(NFING-2*TRUNC(NFING/2))+(1-SRCEFIRST)*(2*TRUNC(1+NFING/2)-NFING)}
+ 1630  +       FS={2-FD}
+ 1631  +       AD={WFING*((NFING-FD)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-NMOSLL_XL)/2+FD*(1.5E-07+NMOSLL_XW/2))}
+ 1632  +       AS={WFING*((NFING-FS)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-NMOSLL_XL)/2+FS*(1.5E-07+NMOSLL_XW/2))}
+ 1633  +       PD={(NFING-FD)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-NMOSLL_XL)/2+FD*(WFING+2*1.5E-07+NMOSLL_XW)}
+ 1634  +       PS={(NFING-FS)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-NMOSLL_XL)/2+FS*(WFING+2*1.5E-07+NMOSLL_XW)}
+ 1635  +       PO2ACT=-1
+ 1636  +       NUMBER=1 NRD=0 NRS=0
+ 1637  +       NGCON=1
+ 1638  
+ 1639  
+ 1640  *
+ 1641  * invariant parameters:
+ 1642  *----------------------
+ 1643  .param conw    = 0.16e-6
+ 1860  .ENDS ENLLGP_BS3NQSJURG
+ 1861  
+ 1862  
+ 1863  *----------------------------------------------------------------------
+ 1864  * Family pmosll Model EPLLGP_BS3JU bsim3 typ mismatch
+ 1865  * Maturity : Silicon_verified
+ 1866  *----------------------------------------------------------------------
+ 1867  .SUBCKT EPLLGP_BS3JU D G S B
+ 1868  +       PARAM: W=0.15E-6 L=0.13E-6 NFING=1 NCRSD=1 MISMATCH=1 SRCEFIRST=1
+ 1869  +       WFING={W/NFING+PMOSLL_XW}
+ 1870  +       FD={SRCEFIRST*(NFING-2*TRUNC(NFING/2))+(1-SRCEFIRST)*(2*TRUNC(1+NFING/2)-NFING)}
+ 1871  +       FS={2-FD}
+ 1872  +       AD={WFING*((NFING-FD)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-PMOSLL_XL)/2+FD*(1.5E-07+PMOSLL_XW/2))}
+ 1873  +       AS={WFING*((NFING-FS)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-PMOSLL_XL)/2+FS*(1.5E-07+PMOSLL_XW/2))}
+ 1874  +       PD={(NFING-FD)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-PMOSLL_XL)/2+FD*(WFING+2*1.5E-07+PMOSLL_XW)}
+ 1875  +       PS={(NFING-FS)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-PMOSLL_XL)/2+FS*(WFING+2*1.5E-07+PMOSLL_XW)}
+ 1876  +       PO2ACT=-1
+ 1877  +       NUMBER=1 NRD=0 NRS=0
+ 1878  +       NGCON=1
+ 1879  
+ 1880  
+ 1881  *
+ 1882  * invariant parameters:
+ 1883  *----------------------
+ 1884  .PARAM CONW    = 0.16E-6
+ 1885  .PARAM CONS    = 0.18E-6
+ 1886  .PARAM COEACT  = 0.07E-6
+ 1887  .PARAM CONPO   = 0.11E-6
+ 1888  
+ 1889  .PARAM U0_TYP  = 61.453
+ 1890  .PARAM U0S     = 61.453
+ 1891  .PARAM LINT    = 1.7425E-08
+ 1892  .PARAM LMIN    = 0.13E-6
+ 1893  .PARAM DWU0    = -0.032279
+ 1894  .PARAM WINT    = -1.8412E-09
+ 1895  
+ 1896  
+ 1897  *  
+ 1898  .PARAM  CJBR   = 0.00090721
+ 1899  .PARAM  CJGR   = 2.9337E-10
+ 1900  .PARAM  CJSR   = 3.9129E-11
+ 1901  .PARAM  JSDBR  = 8.5932E-08
+ 1902  .PARAM  JSDGR  = 0
+ 1903  .PARAM  JSDSR  = 5.2166E-15
+ 1904  .PARAM  JSGBR  = 1.6294E-06
+ 1905  .PARAM  JSGGR  = 2.8654E-11
+ 1906  .PARAM  JSGSR  = 3.2153E-11
+ 1907   
+ 1908  
+ 1909  *
+ 1910  * variant parameters:
+ 1911  *--------------------
+ 1912  .PARAM XL      = PMOSLL_XL
+ 1913  .PARAM XW      = PMOSLL_XW
+ 1914  .PARAM TOX     = PMOSLL_TOX
+ 1915  .PARAM VTH     = PMOSLL_VTH0
+ 1916  .PARAM NLX     = PMOSLL_NLX
+ 1917  .PARAM DRDSW   = PMOSLL_DRDSW
+ 1918  .PARAM DMU     = PMOSLL_DMU
+ 1919  
+ 1920  
+ 1921  .PARAM DCJB    = PMOSLL_DCJB
+ 1922  .PARAM DCJGATE = PMOSLL_DCJGATE
+ 1923  .PARAM DCJSW   = PMOSLL_DCJSW
+ 1924  .PARAM DJSDBR  = PMOSLL_DJSDBR
+ 1925  .PARAM DJSDGR  = PMOSLL_DJSDGR
+ 1926  .PARAM DJSDSR  = PMOSLL_DJSDSR
+ 1927  .PARAM DJSGBR  = PMOSLL_DJSGBR
+ 1928  .PARAM DJSGGR  = PMOSLL_DJSGGR
+ 1929  .PARAM DJSGSR  = PMOSLL_DJSGSR
+ 1930  .PARAM PRWB    = PMOSLL_PRWB
+ 1931  
+ 1932  .PARAM DCFRING = PMOSLL_DCFRING
+ 1933  * effective length and width:
+ 1934  *----------------------------
+ 1935  .PARAM WE      = {(W/NFING+XW-2*WINT)}
+ 1936  .PARAM LE      = {L+XL-2.0*LINT}
+ 1937  * Equations for mismatch deviations:
+ 1938  *-----------------------------------
+ 1939  .PARAM DVTH0_ALPHA = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),3.59E-9,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),4.53E-9,VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.24E-6),2.67E-9,2.84E-9)))
+ 1940  .PARAM DVTH0_BETA  = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),0.0,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),0.0,VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.24E-6),0.0,0.0)))
+ 1941  .PARAM DVTH0_FUDGE  = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.25,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.25,VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.24E-6),1.25,1.25)))
+ 1942  .PARAM DVTH0_SIG = {((DVTH0_ALPHA/SQRT(W*L))+DVTH0_BETA)*DVTH0_FUDGE/SQRT(2.0*NUMBER)}
+ 1943  .PARAM DVTH0_DEV = 0.0 DEV/GAUSS = {DVTH0_SIG*MOSLL_DEV*MISMATCH}
+ 1944  .PARAM DBETA_ALPHA = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.22E-8,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.51E-8,VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.24E-6),1.07E-8,1.20E-8)))
+ 1945  .PARAM DBETA_BETA  = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),0.0,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),0.0,VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.24E-6),0.0,0.0)))
+ 1946  .PARAM DBETA_FUDGE  = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.25,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.25,VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.24E-6),1.25,1.25)))
+ 1947  .PARAM DBETA_SIG = {((DBETA_ALPHA/SQRT(W*L))+DBETA_BETA)*DBETA_FUDGE/SQRT(2.0*NUMBER)}
+ 1948  .PARAM DBETA_DEV = 0.0 DEV/GAUSS = {DBETA_SIG*MOSLL_DEV*MISMATCH}
+ 1949  
+ 1950  * Mobility model improvement:
+ 1951  *----------------------------
+ 1952  .PARAM EPSILON2 = 1E-18
+ 1953  .PARAM LLIMIT = {1000000.0-XL} 
+ 1954  .PARAM WLIMIT = {1.8857176E-06-XW} 
+ 1955  
+ 1956  .PARAM DWU = {DWU0+(-2)*0.5E6*(ABS(LE-1.28E-07)-(LE-1.28E-07))} 
+ 1957  
+ 1958  .PARAM MOBILITY = {2.0/((1.0/U0_TYP+1.0/U0S)+(LLIMIT+XL
+ 1959  + -2.0*LINT-SQRT((LLIMIT-L)*(LLIMIT-L)+EPSILON2))*(1.0/U0S-1.0/U0_TYP)/LE)
+ 1960  + *(W/NFING-2.0*((WINT-XW/2.0)*(1.0+2.0*(DWU))-(DWU)*WLIMIT
+ 1961  + +(DWU)*0.5*(WLIMIT-W/NFING)+0.5*(DWU)*SQRT((WLIMIT-W/NFING)*(WLIMIT-W/NFING)+EPSILON2)))/WE}
+ 1962  .PARAM U0 = {MOBILITY*(1.0+DBETA_DEV)*(1+DMU)} 
+ 1963  * Equations for Threshold voltage vth0 and body factor K1:
+ 1964  *---------------------------------------------------------
+ 1965  .PARAM  EG0   =  {1.16-(7.02E-4*((273.15+27)^2)/(27+1381))}
+ 1966  .PARAM  NI    =  {1.45E10*(((273.15+27)/300.15)^1.5)*EXP(21.5565981-EG0/(1.725E-4*(273.15+27)))}
+ 1967  .PARAM  PHIS  =  {1.725E-4*(273.15+27)*LOG(1.5598E+18/NI)}
+ 1968  .PARAM  K2    =  {0*(TOX/2.35E-09)}
+ 1969  
+ 1970  .PARAM  K1    =  {0.48935+(-0.343-VTH)/SQRT(PHIS)}
+ 1971  .PARAM  VTH0  =  {VTH-DVTH0_DEV} 
+ 1972  
+ 1973  .PARAM  NCH   =  {1.5598E+18*(2.35E-09*2.35E-09)/(TOX*TOX)*(K1*K1)/(0.48935*0.48935)}
+ 1974  
+ 1975  * Equations for access resistance:
+ 1976  *---------------------------------
+ 1977  
+ 1978  .PARAM  RDSW  =  {314.96*(1+DRDSW)}
+ 1979  
+ 1980  
+ 1981  .PARAM VTH0EFF          = VTH0
+ 1982  .PARAM U0EFF            = U0
+ 1983  
+ 1984  .PARAM RDSWEFF          = RDSW
+ 1985  
+ 1986  * Equations for fringing capacitance:
+ 1987  *------------------------------------
+ 1988  .PARAM  CF    =  DCFRING
+ 1989  * Equations for overlap capacitance:
+ 1990  *-----------------------------------
+ 1991  .PARAM  CGSL  =  {2.4766E-10*(2.35E-09/TOX)}
+ 1992  .PARAM  CGDL  =  {2.4766E-10*(2.35E-09/TOX)}
+ 1993  
+ 1994  * Equations for VT:
+ 1995  *-----------------
+ 1996  
+ 1997  .PARAM  W0    =  {3.2451E-05+(0-XW)}
+ 1998  
+ 1999  
+ 2000  .PARAM K3 = {-206.51*(2.35E-09/TOX)}
+ 2001  .PARAM DVT0 = 1.15
+ 2002  
+ 2003  
+ 2004  .PARAM  K3B   =  {884.66*(2.35E-09/TOX)}
+ 2005  .PARAM  LK3   =  {0*((LMIN+XL-(2*LINT))*2.35E-09/(LMIN+-1.5E-08-(2*LINT))/TOX)}
+ 2006  
+ 2007  
+ 2008  .PARAM LKETAEXP = {VALIF((1.0E-6/LE-1.0/0.10665)/0.00034353 > 34, 34, (1.0E-6/LE-1.0/0.10665)/0.00034353)}
+ 2009  .PARAM LKETA    = {-0.019385/(1.0+EXP(LKETAEXP))} 
+ 2010  
+ 2011  
+ 2012  
+ 2013  
+ 2014  M1 D G S B PCH W={W/NFING} L=L AS={AS/NFING} AD={AD/NFING} PS={PS/NFING} PD={PD/NFING}
+ 2015  +          M={NUMBER*NFING} NRD={NRD*NFING} NRS={NRS*NFING}
+ 2016  
+ 2017  
+ 2018  
+ 2019  .MODEL PCH PMOS
+ 2020  + LEVEL=53
+ 2021  + VERSION=3.2           NQSMOD=0              XW=XW                 
+ 2022  + XL=XL                 WMIN=1.5E-07          WMAX=1                
+ 2023  + LMIN=1.3E-07          LMAX=1E-05            MOBMOD=1              
+ 2024  + CAPMOD=3              NOIMOD=2              BINUNIT=1             
+ 2025  + JS=0                  JSW=0                 LINT=1.7425E-08       
+ 2026  + LL=0                  LLN=1                 LW=0                  
+ 2027  + LWN=1                 LWL=0                 WINT=-1.8412E-09      
+ 2028  + WL=0                  WLN=1                 WW=0                  
+ 2029  + WWN=1                 WWL=0                 TNOM=27               
+ 2030  + TOX=TOX               CJ=0                  MJ=0.33               
+ 2031  + CJSW=0                MJSW=0.5              CJSWG=0               
+ 2032  + MJSWG=0.5             CGSO=7.8103E-11       CGDO=7.8103E-11       
+ 2033  + CGBO=1E-12            XPART=0               DWG=-1.5E-08          
+ 2034  + DWB=-1E-08            NCH=NCH               NGATE=1.5E+20         
+ 2035  + XJ=1E-07              U0=U0EFF              VTH0=VTH0EFF          
+ 2036  + K1=K1                 K2=K2                 K3=K3                 
+ 2037  + LK3=LK3               K3B=K3B               W0=W0                 
+ 2038  + NLX=NLX               DVT0=DVT0             DVT1=0.48598          
+ 2039  + DVT2=0.056403         DVT0W=0               DVT1W=5.3E+06         
+ 2040  + DVT2W=-0.032          UA=-6.7041E-10        UB=1.6607E-18         
+ 2041  + UC=-1.2397E-10        DELTA=0.0089901       RDSW=RDSWEFF          
+ 2042  + LRDSW=0               WRDSW=0               PRWG=0                
+ 2043  + PRWB=PRWB             WR=1                  VSAT=208650           
+ 2044  + A0=1.5276             KETA=-0.047           LKETA=LKETA           
+ 2045  + AGS=0.90831           LAGS=0.25             A1=0.088264           
+ 2046  + A2=0.10032            B0=1.4584E-06         B1=8.9633E-06         
+ 2047  + ALPHA0=0              BETA0=30              VOFF=-0.10095         
+ 2048  + LVOFF=-0.0022237      NFACTOR=0.48931       CDSC=0.0033969        
+ 2049  + CDSCB=-1.9882E-06     CDSCD=0               CIT=0                 
+ 2050  + ETA0=0.07143          ETAB=-0.048492        DSUB=0.56             
+ 2051  + DROUT=0.56            PCLM=1.6877           PDIBLC1=1E-07         
+ 2052  + PDIBLC2=0.001         LPDIBLC2=0.0017301    PDIBLCB=0             
+ 2053  + PSCBE1=1E+15          PSCBE2=1E-18          PVAG=0                
+ 2054  + UTE=-1.166            AT=86000              UA1=-2.28E-10         
+ 2055  + UB1=0                 UC1=2.5E-10           KT1=-0.217            
+ 2056  + KT1L=0                KT2=-0.052            PRT=51.846            
+ 2057  + CGSL=CGSL             CGDL=CGDL             CKAPPA=1.9153         
+ 2058  + CF=CF                 CLC=1E-07             CLE=0.6               
+ 2059  + DLC=2.65E-08          NOFF=2.1501           VOFFCV=-0.049345      
+ 2060  + ALPHA1=0              ACDE=0.5              MOIN=5                
+ 2061  + LLC=0                 LWC=0                 LWLC=0                
+ 2062  + WLC=0                 WWC=0                 WWLC=0                
+ 2063  + ELM=5                 EF=1                  EM=501000             
+ 2064  + NOIA=7.05E+18         NOIB=700000           NOIC=0
+ 2065  *  
+ 2066  * -- JUNCAP Electrical Parameters for S/D regions  (Simulator specific)
+ 2067  + VR=0                  CJBR={CJBR*(1+DCJB)}  CJSR={CJSR*(1+DCJSW)} 
+ 2068  + CJGR={CJGR*(1+DCJGATE)}  JSDBR={JSDBR*10^DJSDBR} 
+ 2069  + JSDSR={JSDSR*10^DJSDSR} JSDGR={JSDGR*10^DJSDGR} 
+ 2070  + JSGBR={JSGBR*10^DJSGBR} JSGSR={JSGSR*10^DJSGSR} 
+ 2071  + JSGGR={JSGGR*10^DJSGGR}  VDBR=0.62226          VDSR=1.2279           
+ 2072  + VDGR=1.5037           PB=0.28121            PS=0.15               
+ 2073  + PG=0.87916             NBJ=0.97              NSJ=0.93              
+ 2074  + NGJ=1
+ 2075  + 
+ 2076  + TRDIO9=27             DIOLEV=9              DCAPLEV=0             
+ 2077  + RLEV=1                ALEV=3
+ 2078   
+ 2079  
+ 2080  * + 
+ 2081  .ENDS EPLLGP_BS3JU
+ 2082  
+ 2083  
+ 2084  *----------------------------------------------------------------------
+ 2085  * Family pmosll Model EPLLGP_BS3JULEAK bsim3 typ mismatch
+ 2086  * Maturity : Silicon_verified
+ 2087  *----------------------------------------------------------------------
+ 2088  .SUBCKT EPLLGP_BS3JULEAK D G S B
+ 2089  +       PARAM: W=0.15E-6 L=0.13E-6 NFING=1 NCRSD=1 MISMATCH=1 SRCEFIRST=1
+ 2090  +       WFING={W/NFING+PMOSLL_XW}
+ 2091  +       FD={SRCEFIRST*(NFING-2*TRUNC(NFING/2))+(1-SRCEFIRST)*(2*TRUNC(1+NFING/2)-NFING)}
+ 2092  +       FS={2-FD}
+ 2093  +       AD={WFING*((NFING-FD)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-PMOSLL_XL)/2+FD*(1.5E-07+PMOSLL_XW/2))}
+ 2094  +       AS={WFING*((NFING-FS)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-PMOSLL_XL)/2+FS*(1.5E-07+PMOSLL_XW/2))}
+ 2095  +       PD={(NFING-FD)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-PMOSLL_XL)/2+FD*(WFING+2*1.5E-07+PMOSLL_XW)}
+ 2096  +       PS={(NFING-FS)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-PMOSLL_XL)/2+FS*(WFING+2*1.5E-07+PMOSLL_XW)}
+ 2097  +       PO2ACT=-1
+ 2098  +       NUMBER=1 NRD=0 NRS=0
+ 2099  +       NGCON=1
+ 2100  
+ 2101  
+ 2102  *
+ 2103  * invariant parameters:
+ 2104  *----------------------
+ 2105  .param conw    = 0.16e-6
+ 2333  .ENDS EPLLGP_BS3JULEAK
+ 2334  
+ 2335  
+ 2336  *----------------------------------------------------------------------
+ 2337  * Family pmosll Model EPLLGP_BS3JURG bsim3 typ mismatch
+ 2338  * Maturity : Silicon_verified
+ 2339  *----------------------------------------------------------------------
+ 2340  .SUBCKT EPLLGP_BS3JURG D G S B
+ 2341  +       PARAM: W=0.15E-6 L=0.13E-6 NFING=1 NCRSD=1 MISMATCH=1 SRCEFIRST=1
+ 2342  +       WFING={W/NFING+PMOSLL_XW}
+ 2343  +       FD={SRCEFIRST*(NFING-2*TRUNC(NFING/2))+(1-SRCEFIRST)*(2*TRUNC(1+NFING/2)-NFING)}
+ 2344  +       FS={2-FD}
+ 2345  +       AD={WFING*((NFING-FD)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-PMOSLL_XL)/2+FD*(1.5E-07+PMOSLL_XW/2))}
+ 2346  +       AS={WFING*((NFING-FS)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-PMOSLL_XL)/2+FS*(1.5E-07+PMOSLL_XW/2))}
+ 2347  +       PD={(NFING-FD)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-PMOSLL_XL)/2+FD*(WFING+2*1.5E-07+PMOSLL_XW)}
+ 2348  +       PS={(NFING-FS)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-PMOSLL_XL)/2+FS*(WFING+2*1.5E-07+PMOSLL_XW)}
+ 2349  +       PO2ACT=-1
+ 2350  +       NUMBER=1 NRD=0 NRS=0
+ 2351  +       NGCON=1
+ 2352  
+ 2353  
+ 2354  *
+ 2355  * invariant parameters:
+ 2356  *----------------------
+ 2357  .param conw    = 0.16e-6
+ 2568  .ENDS EPLLGP_BS3JURG
+ 2569  
+ 2570  
+ 2571  *----------------------------------------------------------------------
+ 2572  * Family pmosll Model EPLLGP_BS3NQSJU bsim3 typ mismatch
+ 2573  * Maturity : Silicon_verified
+ 2574  *----------------------------------------------------------------------
+ 2575  .SUBCKT EPLLGP_BS3NQSJU D G S B
+ 2576  +       PARAM: W=0.15E-6 L=0.13E-6 NFING=1 NCRSD=1 MISMATCH=1 SRCEFIRST=1
+ 2577  +       WFING={W/NFING+PMOSLL_XW}
+ 2578  +       FD={SRCEFIRST*(NFING-2*TRUNC(NFING/2))+(1-SRCEFIRST)*(2*TRUNC(1+NFING/2)-NFING)}
+ 2579  +       FS={2-FD}
+ 2580  +       AD={WFING*((NFING-FD)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-PMOSLL_XL)/2+FD*(1.5E-07+PMOSLL_XW/2))}
+ 2581  +       AS={WFING*((NFING-FS)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-PMOSLL_XL)/2+FS*(1.5E-07+PMOSLL_XW/2))}
+ 2582  +       PD={(NFING-FD)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-PMOSLL_XL)/2+FD*(WFING+2*1.5E-07+PMOSLL_XW)}
+ 2583  +       PS={(NFING-FS)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-PMOSLL_XL)/2+FS*(WFING+2*1.5E-07+PMOSLL_XW)}
+ 2584  +       PO2ACT=-1
+ 2585  +       NUMBER=1 NRD=0 NRS=0
+ 2586  +       NGCON=1
+ 2587  
+ 2588  
+ 2589  *
+ 2590  * invariant parameters:
+ 2591  *----------------------
+ 2592  .param conw    = 0.16e-6
+ 2789  .ENDS EPLLGP_BS3NQSJU
+ 2790  
+ 2791  
+ 2792  *----------------------------------------------------------------------
+ 2793  * Family pmosll Model EPLLGP_BS3NQSJURG bsim3 typ mismatch
+ 2794  * Maturity : Silicon_verified
+ 2795  *----------------------------------------------------------------------
+ 2796  .SUBCKT EPLLGP_BS3NQSJURG D G S B
+ 2797  +       PARAM: W=0.15E-6 L=0.13E-6 NFING=1 NCRSD=1 MISMATCH=1 SRCEFIRST=1
+ 2798  +       WFING={W/NFING+PMOSLL_XW}
+ 2799  +       FD={SRCEFIRST*(NFING-2*TRUNC(NFING/2))+(1-SRCEFIRST)*(2*TRUNC(1+NFING/2)-NFING)}
+ 2800  +       FS={2-FD}
+ 2801  +       AD={WFING*((NFING-FD)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-PMOSLL_XL)/2+FD*(1.5E-07+PMOSLL_XW/2))}
+ 2802  +       AS={WFING*((NFING-FS)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-PMOSLL_XL)/2+FS*(1.5E-07+PMOSLL_XW/2))}
+ 2803  +       PD={(NFING-FD)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-PMOSLL_XL)/2+FD*(WFING+2*1.5E-07+PMOSLL_XW)}
+ 2804  +       PS={(NFING-FS)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-PMOSLL_XL)/2+FS*(WFING+2*1.5E-07+PMOSLL_XW)}
+ 2805  +       PO2ACT=-1
+ 2806  +       NUMBER=1 NRD=0 NRS=0
+ 2807  +       NGCON=1
+ 2808  
+ 2809  
+ 2810  *
+ 2811  * invariant parameters:
+ 2812  *----------------------
+ 2813  .param conw    = 0.16e-6
+ 3024  .ENDS EPLLGP_BS3NQSJURG
+ 3025  
+   82  ** END OF LIBRARY /home/repository/ms/cap5/lib/mos_bsim3_LL.lib LIBTYPE=mosll_MODEL
+   13  ** END OF LIBRARY /home/repository/ms/cap5/lib/mos_bsim3_LL.lib LIBTYPE=mosll_TT
+   13  .LIB  ./mos_bsim3_HS.lib  moshs_TT
+   14  ** INCLUDING LIBRARY /home/repository/ms/cap5/lib/mos_bsim3_HS.lib LIBTYPE=moshs_TT
+   31  
+   32  .PARAM NSIGMA_NMOSHS_DCJB  =  0
+   33  .PARAM NSIGMA_NMOSHS_DCJGATE  =  0
+   34  .PARAM NSIGMA_NMOSHS_DCJSW  =  0
+   35  .PARAM NSIGMA_NMOSHS_DJSDBR  =  0
+   36  .PARAM NSIGMA_NMOSHS_DJSDGR  =  0
+   37  .PARAM NSIGMA_NMOSHS_DJSDSR  =  0
+   38  .PARAM NSIGMA_NMOSHS_DJSGBR  =  0
+   39  .PARAM NSIGMA_NMOSHS_DJSGGR  =  0
+   40  .PARAM NSIGMA_NMOSHS_DJSGSR  =  0
+   41  .PARAM NSIGMA_NMOSHS_DMU  =  0
+   42  .PARAM NSIGMA_NMOSHS_DRDSW  =  0
+   43  .PARAM NSIGMA_NMOSHS_DVARMAXRDSW  =  0
+   44  .PARAM NSIGMA_NMOSHS_DVARMAXU0  =  0
+   45  .PARAM NSIGMA_NMOSHS_NLX  =  0
+   46  .PARAM NSIGMA_NMOSHS_RBVDL  =  0
+   47  .PARAM NSIGMA_NMOSHS_RBVDR  =  0
+   48  .PARAM NSIGMA_NMOSHS_RBVGL  =  0
+   49  .PARAM NSIGMA_NMOSHS_RBVGR  =  0
+   50  .PARAM NSIGMA_NMOSHS_RBVSL  =  0
+   51  .PARAM NSIGMA_NMOSHS_RBVSR  =  0
+   52  .PARAM NSIGMA_NMOSHS_VARMAXVTH00  =  0
+   53  .PARAM NSIGMA_NMOSHS_VTH0  =  0
+   54  
+   55  .PARAM NSIGMA_PMOSHS_DCJB  =  0
+   56  .PARAM NSIGMA_PMOSHS_DCJGATE  =  0
+   57  .PARAM NSIGMA_PMOSHS_DCJSW  =  0
+   58  .PARAM NSIGMA_PMOSHS_DJSDBR  =  0
+   59  .PARAM NSIGMA_PMOSHS_DJSDGR  =  0
+   60  .PARAM NSIGMA_PMOSHS_DJSDSR  =  0
+   61  .PARAM NSIGMA_PMOSHS_DJSGBR  =  0
+   62  .PARAM NSIGMA_PMOSHS_DJSGGR  =  0
+   63  .PARAM NSIGMA_PMOSHS_DJSGSR  =  0
+   64  .PARAM NSIGMA_PMOSHS_DMU  =  0
+   65  .PARAM NSIGMA_PMOSHS_DRDSW  =  0
+   66  .PARAM NSIGMA_PMOSHS_DVARMAXRDSW  =  0
+   67  .PARAM NSIGMA_PMOSHS_DVARMAXU0  =  0
+   68  .PARAM NSIGMA_PMOSHS_NLX  =  0
+   69  .PARAM NSIGMA_PMOSHS_PRWB  =  0
+   70  .PARAM NSIGMA_PMOSHS_RBVDL  =  0
+   71  .PARAM NSIGMA_PMOSHS_RBVDR  =  0
+   72  .PARAM NSIGMA_PMOSHS_RBVGL  =  0
+   73  .PARAM NSIGMA_PMOSHS_RBVGR  =  0
+   74  .PARAM NSIGMA_PMOSHS_RBVSL  =  0
+   75  .PARAM NSIGMA_PMOSHS_RBVSR  =  0
+   76  .PARAM NSIGMA_PMOSHS_VARMAXVTH00  =  0
+   77  .PARAM NSIGMA_PMOSHS_VTH0  =  0
+   78  
+   79  
+   80  
+   81  .LIB  mos_bsim3_HS.lib  moshs_PARAM
+   82  ** INCLUDING LIBRARY /home/repository/ms/cap5/lib/mos_bsim3_HS.lib LIBTYPE=moshs_PARAM
+  552  
+  553  
+  554  *----------------------------------------------
+  555  *                   nmoshs 
+  556  *----------------------------------------------
+  557  .PARAM NMOSHS_VTH0 = {0.227+0.5*0.015*NSIGMA_NMOSHS_VTH0}
+  558  .PARAM NMOSHS_NLX = {8.5E-8+0.5*8.5E-9*NSIGMA_NMOSHS_NLX}
+  559  .PARAM NMOSHS_DMU = {0.0+0.5*5E-2*NSIGMA_NMOSHS_DMU}
+  560  .PARAM NMOSHS_DRDSW = {0.0+0.5*5E-2*NSIGMA_NMOSHS_DRDSW}
+  561  .PARAM NMOSHS_DCJB = {0.0+0.5*10E-2*NSIGMA_NMOSHS_DCJB}
+  562  .PARAM NMOSHS_DCJGATE = {0.0+0.5*20E-2*NSIGMA_NMOSHS_DCJGATE}
+  563  .PARAM NMOSHS_DCJSW = {0.0+0.5*20E-2*NSIGMA_NMOSHS_DCJSW}
+  564  .PARAM NMOSHS_DJSDBR = {0.0+0.5*1*NSIGMA_NMOSHS_DJSDBR}
+  565  .PARAM NMOSHS_DJSDGR = {0.0+0.5*1*NSIGMA_NMOSHS_DJSDGR}
+  566  .PARAM NMOSHS_DJSDSR = {0.0+0.5*1*NSIGMA_NMOSHS_DJSDSR}
+  567  .PARAM NMOSHS_DJSGBR = {0.0+0.5*1*NSIGMA_NMOSHS_DJSGBR}
+  568  .PARAM NMOSHS_DJSGGR = {0.0+0.5*1*NSIGMA_NMOSHS_DJSGGR}
+  569  .PARAM NMOSHS_DJSGSR = {0.0+0.5*1*NSIGMA_NMOSHS_DJSGSR}
+  570  .PARAM NMOSHS_VARMAXVTH00 = {0.0+0.5*0.0*NSIGMA_NMOSHS_VARMAXVTH00}
+  571  .PARAM NMOSHS_DVARMAXU0 = {0.0+0.5*0.33*NSIGMA_NMOSHS_DVARMAXU0}
+  572  .PARAM NMOSHS_DVARMAXRDSW = {0.0+0.5*0.0*NSIGMA_NMOSHS_DVARMAXRDSW}
+  573  .PARAM NMOSHS_RBVDR = {1364+0.5*409.2*NSIGMA_NMOSHS_RBVDR}
+  574  .PARAM NMOSHS_RBVDL = {5544+0.5*1663.2*NSIGMA_NMOSHS_RBVDL}
+  575  .PARAM NMOSHS_RBVSR = {1364+0.5*409.2*NSIGMA_NMOSHS_RBVSR}
+  576  .PARAM NMOSHS_RBVSL = {5544+0.5*1663.2*NSIGMA_NMOSHS_RBVSL}
+  577  .PARAM NMOSHS_RBVGR = {3304+0.5*991.2*NSIGMA_NMOSHS_RBVGR}
+  578  .PARAM NMOSHS_RBVGL = {2576+0.5*772.8*NSIGMA_NMOSHS_RBVGL}
+  579  
+  580  
+  581  *----------------------------------------------
+  582  *                   pmoshs 
+  583  *----------------------------------------------
+  584  .PARAM PMOSHS_VTH0 = {-0.20825+0.5*0.015*NSIGMA_PMOSHS_VTH0}
+  585  .PARAM PMOSHS_NLX = {8.5014E-8+0.5*8.5014E-9*NSIGMA_PMOSHS_NLX}
+  586  .PARAM PMOSHS_DMU = {0.0+0.5*5E-2*NSIGMA_PMOSHS_DMU}
+  587  .PARAM PMOSHS_DRDSW = {0.0+0.5*5E-2*NSIGMA_PMOSHS_DRDSW}
+  588  .PARAM PMOSHS_DCJB = {0.0+0.5*10E-2*NSIGMA_PMOSHS_DCJB}
+  589  .PARAM PMOSHS_DCJGATE = {0.0+0.5*20E-2*NSIGMA_PMOSHS_DCJGATE}
+  590  .PARAM PMOSHS_DCJSW = {0.0+0.5*20E-2*NSIGMA_PMOSHS_DCJSW}
+  591  .PARAM PMOSHS_DJSDBR = {0.0+0.5*1*NSIGMA_PMOSHS_DJSDBR}
+  592  .PARAM PMOSHS_DJSDGR = {0.0+0.5*1*NSIGMA_PMOSHS_DJSDGR}
+  593  .PARAM PMOSHS_DJSDSR = {0.0+0.5*1*NSIGMA_PMOSHS_DJSDSR}
+  594  .PARAM PMOSHS_DJSGBR = {0.0+0.5*1*NSIGMA_PMOSHS_DJSGBR}
+  595  .PARAM PMOSHS_DJSGGR = {0.0+0.5*1*NSIGMA_PMOSHS_DJSGGR}
+  596  .PARAM PMOSHS_DJSGSR = {0.0+0.5*1*NSIGMA_PMOSHS_DJSGSR}
+  597  .PARAM PMOSHS_VARMAXVTH00 = {0.0+0.5*0.0*NSIGMA_PMOSHS_VARMAXVTH00}
+  598  .PARAM PMOSHS_DVARMAXU0 = {0.0+0.5*0.33*NSIGMA_PMOSHS_DVARMAXU0}
+  599  .PARAM PMOSHS_DVARMAXRDSW = {0.0+0.5*0.0*NSIGMA_PMOSHS_DVARMAXRDSW}
+  600  .PARAM PMOSHS_PRWB = {-0.8+0.5*0.133*NSIGMA_PMOSHS_PRWB}
+  601  .PARAM PMOSHS_RBVDR = {216+0.5*64.8*NSIGMA_PMOSHS_RBVDR}
+  602  .PARAM PMOSHS_RBVDL = {2916+0.5*874.8*NSIGMA_PMOSHS_RBVDL}
+  603  .PARAM PMOSHS_RBVSR = {216+0.5*64.8*NSIGMA_PMOSHS_RBVSR}
+  604  .PARAM PMOSHS_RBVSL = {2916+0.5*874.8*NSIGMA_PMOSHS_RBVSL}
+  605  .PARAM PMOSHS_RBVGR = {864+0.5*259.2*NSIGMA_PMOSHS_RBVGR}
+  606  .PARAM PMOSHS_RBVGL = {1360+0.5*408*NSIGMA_PMOSHS_RBVGL}
+  607  
+  608  
+   82  ** END OF LIBRARY /home/repository/ms/cap5/lib/mos_bsim3_HS.lib LIBTYPE=moshs_PARAM
+   82  .LIB  mos_bsim3_HS.lib  moshs_CORREL
+   83  ** INCLUDING LIBRARY /home/repository/ms/cap5/lib/mos_bsim3_HS.lib LIBTYPE=moshs_CORREL
+  673  
+  674  *----------------------------------------------
+  675  *                   nmoshs 
+  676  *----------------------------------------------
+  677  .PARAM NMOSHS_XL = POLY_CDVAR
+  678  .PARAM NMOSHS_XW = ACTIVE_CDVAR+3E-8
+  679  .PARAM NMOSHS_TOX = GO1_TOXN
+  680  .PARAM NMOSHS_DCFRING = GO1_DCFRING
+  681  .PARAM NMOSHS_PRWB = -0.12
+  682  .PARAM NMOSHS_RSHG = NPOLY_RSH
+  683  .PARAM NMOSHS_RCONPO = NPOLY_RSC
+  684  
+  685  *----------------------------------------------
+  686  *                   pmoshs 
+  687  *----------------------------------------------
+  688  .PARAM PMOSHS_XL = POLY_CDVAR
+  689  .PARAM PMOSHS_XW = ACTIVE_CDVAR
+  690  .PARAM PMOSHS_TOX = GO1_TOXP
+  691  .PARAM PMOSHS_DCFRING = GO1_DCFRING
+  692  .PARAM PMOSHS_RSHG = PPOLY_RSH
+  693  .PARAM PMOSHS_RCONPO = PPOLY_RSC
+  694  
+  695  
+   83  ** END OF LIBRARY /home/repository/ms/cap5/lib/mos_bsim3_HS.lib LIBTYPE=moshs_CORREL
+   83  .LIB  mos_bsim3_HS.lib  moshs_MODEL
+   84   
+   85  ** INCLUDING LIBRARY /home/repository/ms/cap5/lib/mos_bsim3_HS.lib LIBTYPE=moshs_MODEL
+  698  
+  699  *----------------------------------------------------------------------
+  700  * Family nmoshs Model ENHSGP_BS3JU bsim3 typ mismatch
+  701  * Maturity : tentative
+  702  *----------------------------------------------------------------------
+  703  .SUBCKT ENHSGP_BS3JU D G S B
+  704  +       PARAM: W=0.15E-6 L=0.13E-6 NFING=1 NCRSD=1 MISMATCH=1 SRCEFIRST=1
+  705  +       WFING={W/NFING+NMOSHS_XW}
+  706  +       FD={SRCEFIRST*(NFING-2*TRUNC(NFING/2))+(1-SRCEFIRST)*(2*TRUNC(1+NFING/2)-NFING)}
+  707  +       FS={2-FD}
+  708  +       AD={WFING*((NFING-FD)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-NMOSHS_XL)/2+FD*(1.5E-07+NMOSHS_XW/2))}
+  709  +       AS={WFING*((NFING-FS)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-NMOSHS_XL)/2+FS*(1.5E-07+NMOSHS_XW/2))}
+  710  +       PD={(NFING-FD)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-NMOSHS_XL)/2+FD*(WFING+2*1.5E-07+NMOSHS_XW)}
+  711  +       PS={(NFING-FS)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-NMOSHS_XL)/2+FS*(WFING+2*1.5E-07+NMOSHS_XW)}
+  712  +       PO2ACT=-1
+  713  +       NUMBER=1 NRD=0 NRS=0
+  714  +       NGCON=1
+  715  
+  716  
+  717  *
+  718  * invariant parameters:
+  719  *----------------------
+  720  .PARAM CONW    = 0.16E-6
+  721  .PARAM CONS    = 0.18E-6
+  722  .PARAM COEACT  = 0.07E-6
+  723  .PARAM CONPO   = 0.11E-6
+  724  
+  725  .PARAM U0_TYP  = 297.991
+  726  .PARAM U0S     = 239.72
+  727  .PARAM LINT    = 1.46404E-08
+  728  .PARAM LMIN    = 0.13E-6
+  729  .PARAM DWU0    = -0.0721
+  730  .PARAM WINT    = 2.23E-08
+  731  
+  732  
+  733  *  
+  734  .PARAM  CJBR   = 0.00085803
+  735  .PARAM  CJGR   = 2.921E-10
+  736  .PARAM  CJSR   = 6.7342E-11
+  737  .PARAM  JSDBR  = 1.3181E-07
+  738  .PARAM  JSDGR  = 0
+  739  .PARAM  JSDSR  = 2.2436E-14
+  740  .PARAM  JSGBR  = 9E-06
+  741  .PARAM  JSGGR  = 4.1751E-11
+  742  .PARAM  JSGSR  = 3.1654E-11
+  743   
+  744  
+  745  *
+  746  * variant parameters:
+  747  *--------------------
+  748  .PARAM XL      = NMOSHS_XL
+  749  .PARAM XW      = NMOSHS_XW
+  750  .PARAM TOX     = NMOSHS_TOX
+  751  .PARAM VTH     = NMOSHS_VTH0
+  752  .PARAM NLX     = NMOSHS_NLX
+  753  .PARAM DRDSW   = NMOSHS_DRDSW
+  754  .PARAM DMU     = NMOSHS_DMU
+  755  
+  756  
+  757  .PARAM DCJB    = NMOSHS_DCJB
+  758  .PARAM DCJGATE = NMOSHS_DCJGATE
+  759  .PARAM DCJSW   = NMOSHS_DCJSW
+  760  .PARAM DJSDBR  = NMOSHS_DJSDBR
+  761  .PARAM DJSDGR  = NMOSHS_DJSDGR
+  762  .PARAM DJSDSR  = NMOSHS_DJSDSR
+  763  .PARAM DJSGBR  = NMOSHS_DJSGBR
+  764  .PARAM DJSGGR  = NMOSHS_DJSGGR
+  765  .PARAM DJSGSR  = NMOSHS_DJSGSR
+  766  .PARAM PRWB    = NMOSHS_PRWB
+  767  
+  768  .PARAM DCFRING = NMOSHS_DCFRING
+  769  * effective length and width:
+  770  *----------------------------
+  771  .PARAM WE      = {(W/NFING+XW-2*WINT)}
+  772  .PARAM LE      = {L+XL-2.0*LINT}
+  773  * Equations for mismatch deviations:
+  774  *-----------------------------------
+  775  .PARAM DVTH0_ALPHA = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),4.50E-9,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),5.00E-9,4.50E-9))
+  776  .PARAM DVTH0_BETA  = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),0.0,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),0.0,0.0))
+  777  .PARAM DVTH0_FUDGE  = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.0,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.0,1.00))
+  778  .PARAM DVTH0_SIG = {((DVTH0_ALPHA/SQRT(W*L))+DVTH0_BETA)*DVTH0_FUDGE/SQRT(2.0*NUMBER)}
+  779  .PARAM DVTH0_DEV = 0.0 DEV/GAUSS = {DVTH0_SIG*MOSHS_DEV*MISMATCH}
+  780  .PARAM DBETA_ALPHA = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.32E-8,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.32E-8,1.32E-8))
+  781  .PARAM DBETA_BETA  = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),0.0,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),0.0,0.0))
+  782  .PARAM DBETA_FUDGE  = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.33,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.33,1.33))
+  783  .PARAM DBETA_SIG = {((DBETA_ALPHA/SQRT(W*L))+DBETA_BETA)*DBETA_FUDGE/SQRT(2.0*NUMBER)}
+  784  .PARAM DBETA_DEV = 0.0 DEV/GAUSS = {DBETA_SIG*MOSHS_DEV*MISMATCH}
+  785  
+  786  * Mobility model improvement:
+  787  *----------------------------
+  788  .PARAM EPSILON2 = 1E-18
+  789  .PARAM LLIMIT = {1.2241808E-06-XL} 
+  790  .PARAM WLIMIT = {1E-06-XW} 
+  791  
+  792  .PARAM DWU = DWU0
+  793  
+  794  .PARAM MOBILITY = {2.0/((1.0/U0_TYP+1.0/U0S)+(LLIMIT+XL
+  795  + -2.0*LINT-SQRT((LLIMIT-L)*(LLIMIT-L)+EPSILON2))*(1.0/U0S-1.0/U0_TYP)/LE)
+  796  + *(W/NFING-2.0*((WINT-XW/2.0)*(1.0+2.0*(DWU))-(DWU)*WLIMIT
+  797  + +(DWU)*0.5*(WLIMIT-W/NFING)+0.5*(DWU)*SQRT((WLIMIT-W/NFING)*(WLIMIT-W/NFING)+EPSILON2)))/WE}
+  798  .PARAM U0 = {MOBILITY*(1.0+DBETA_DEV)*(1+DMU)} 
+  799  * Equations for Threshold voltage vth0 and body factor K1:
+  800  *---------------------------------------------------------
+  801  .PARAM  EG0   =  {1.16-(7.02E-4*((273.15+27)^2)/(27+1381))}
+  802  .PARAM  NI    =  {1.45E10*(((273.15+27)/300.15)^1.5)*EXP(21.5565981-EG0/(1.725E-4*(273.15+27)))}
+  803  .PARAM  PHIS  =  {1.725E-4*(273.15+27)*LOG(6.94459E+17/NI)}
+  804  .PARAM  K2    =  {0*(TOX/2.35E-09)}
+  805  
+  806  .PARAM  K1    =  {0.326605-(0.227-VTH)/SQRT(PHIS)}
+  807  .PARAM  VTH0  =  {VTH+DVTH0_DEV} 
+  808  
+  809  .PARAM  NCH   =  {6.94459E+17*(2.35E-09*2.35E-09)/(TOX*TOX)*(K1*K1)/(0.326605*0.326605)}
+  810  
+  811  * Equations for access resistance:
+  812  *---------------------------------
+  813  
+  814  .PARAM  RDSW  =  {145*(1+DRDSW)}
+  815  
+  816  
+  817  .PARAM VTH0EFF          = VTH0
+  818  .PARAM U0EFF            = U0
+  819  
+  820  .PARAM RDSWEFF          = RDSW
+  821  
+  822  * Equations for fringing capacitance:
+  823  *------------------------------------
+  824  .PARAM  CF    =  DCFRING
+  825  * Equations for overlap capacitance:
+  826  *-----------------------------------
+  827  .PARAM  CGSL  =  {5.07E-10*(2.35E-09/TOX)}
+  828  .PARAM  CGDL  =  {5.07E-10*(2.35E-09/TOX)}
+  829  
+  830  * Equations for VT:
+  831  *-----------------
+  832  
+  833  .PARAM  W0    =  {-1.29442E-08+(3E-08-XW)}
+  834  
+  835  
+  836  .PARAM K3 = {-6.715*(2.35E-09/TOX)}
+  837  .PARAM DVT0 = 2.13851
+  838  
+  839  
+  840  .PARAM  K3B   =  {1.9818951*(2.35E-09/TOX)}
+  841  .PARAM  LK3   =  {0.495*((LMIN+XL-(2*LINT))*2.35E-09/(LMIN+-2E-08-(2*LINT))/TOX)}
+  842  
+  843  
+  844  .PARAM LKETAEXP = {VALIF((1.0E-6/LE-1.0/0.2)/0.9161597 > 34, 34, (1.0E-6/LE-1.0/0.2)/0.9161597)}
+  845  .PARAM LKETA    = {-0.0394231/(1.0+EXP(LKETAEXP))} 
+  846  
+  847  
+  848  
+  849  
+  850  M1 D G S B NHS W={W/NFING} L=L AS={AS/NFING} AD={AD/NFING} PS={PS/NFING} PD={PD/NFING}
+  851  +          M={NUMBER*NFING} NRD={NRD*NFING} NRS={NRS*NFING}
+  852  
+  853  
+  854  
+  855  .MODEL NHS NMOS
+  856  + LEVEL=53
+  857  + VERSION=3.2           NQSMOD=0              XW=XW                 
+  858  + XL=XL                 WMIN=1.5E-07          WMAX=1                
+  859  + LMIN=1.3E-07          LMAX=4E-07            MOBMOD=2              
+  860  + CAPMOD=3              NOIMOD=2              BINUNIT=1             
+  861  + JS=0                  JSW=0                 LINT=1.46404E-08      
+  862  + LL=0                  LLN=1                 LW=0                  
+  863  + LWN=1                 LWL=0                 WINT=2.23E-08         
+  864  + WL=0                  WLN=1                 WW=0                  
+  865  + WWN=1                 WWL=0                 TNOM=27               
+  866  + TOX=TOX               CJ=0                  MJ=0.33               
+  867  + CJSW=0                MJSW=0.5              CJSWG=0               
+  868  + MJSWG=0.5             CGSO=0                CGDO=0                
+  869  + CGBO=1E-12            XPART=0               DWG=-9E-09            
+  870  + DWB=0                 NCH=NCH               NGATE=3E+20           
+  871  + XJ=1E-07              U0=U0EFF              VTH0=VTH0EFF          
+  872  + K1=K1                 K2=K2                 K3=K3                 
+  873  + LK3=LK3               K3B=K3B               W0=W0                 
+  874  + NLX=NLX               PNLX=0                DVT0=DVT0             
+  875  + DVT1=0.887934         DVT2=-0.018588        DVT0W=0.25            
+  876  + DVT1W=1.45541E+06     DVT2W=-0.000282805    UA=-6.26635E-10       
+  877  + UB=1.64683E-18        UC=-1.66223E-10       DELTA=0.00374596      
+  878  + RDSW=RDSWEFF          PRWG=0                PRWB=PRWB             
+  879  + WR=1                  VSAT=95356.1          A0=1.65               
+  880  + LA0=-0.122025         KETA=-0.0120587       LKETA=LKETA           
+  881  + AGS=0.646592          A1=0                  A2=1                  
+  882  + B0=0                  B1=0                  ALPHA0=0              
+  883  + BETA0=12.0493         LBETA0=-0.220056      VOFF=-0.098851        
+  884  + LVOFF=-0.0028         NFACTOR=0.94337       CDSC=0.0188           
+  885  + CDSCB=0               CDSCD=0               CIT=0                 
+  886  + ETA0=0.018865         ETAB=-0.00360131      DSUB=0.128834         
+  887  + DROUT=1.1             PCLM=0.67609          PDIBLC1=0.00444391    
+  888  + PDIBLC2=0.00238149    PDIBLCB=0             PSCBE1=8E+08          
+  889  + PSCBE2=1E-05          PVAG=0.00710791       UTE=-1.64             
+  890  + AT=43500              UA1=8.37223E-10       UB1=-2.00845E-18      
+  891  + UC1=1.34214E-10       KT1=-0.235            KT1L=9.10674E-10      
+  892  + KT2=-0.035027         PRT=-50               CGSL=CGSL             
+  893  + CGDL=CGDL             CKAPPA=4.78743        CF=CF                 
+  894  + CLC=1E-07             CLE=0.6               DLC=2.07E-08          
+  895  + DWC=2.23E-08          NOFF=2.1              VOFFCV=-0.09          
+  896  + ALPHA1=0.111727       ACDE=0.6              MOIN=6                
+  897  + LLC=0                 LWC=0                 LWLC=0                
+  898  + WLC=0                 WWC=0                 WWLC=0                
+  899  + ELM=5                 EF=1                  EM=5E+09              
+  900  + NOIA=5E+20            NOIB=200000           NOIC=0
+  901  *  
+  902  * -- JUNCAP Electrical Parameters for S/D regions  (Simulator specific)
+  903  + VR=0                  CJBR={CJBR*(1+DCJB)}  CJSR={CJSR*(1+DCJSW)} 
+  904  + CJGR={CJGR*(1+DCJGATE)}  JSDBR={JSDBR*10^DJSDBR} 
+  905  + JSDSR={JSDSR*10^DJSDSR} JSDGR={JSDGR*10^DJSDGR} 
+  906  + JSGBR={JSGBR*10^DJSGBR} JSGSR={JSGSR*10^DJSGSR} 
+  907  + JSGGR={JSGGR*10^DJSGGR}  VDBR=0.52286          VDSR=0.42697          
+  908  + VDGR=1                PB=0.20582            PS=0.44445            
+  909  + PG=0.6358              NBJ=0.97              NSJ=0.93              
+  910  + NGJ=1
+  911  + 
+  912  + TRDIO9=27             DIOLEV=9              DCAPLEV=0             
+  913  + RLEV=1                ALEV=3
+  914   
+  915  
+  916  * + 
+  917  .ENDS ENHSGP_BS3JU
+  918  
+  919  
+  920  *----------------------------------------------------------------------
+  921  * Family nmoshs Model ENHSGP_BS3JULEAK bsim3 typ mismatch
+  922  * Maturity : tentative
+  923  *----------------------------------------------------------------------
+  924  .SUBCKT ENHSGP_BS3JULEAK D G S B
+  925  +       PARAM: W=0.15E-6 L=0.13E-6 NFING=1 NCRSD=1 MISMATCH=1 SRCEFIRST=1
+  926  +       WFING={W/NFING+NMOSHS_XW}
+  927  +       FD={SRCEFIRST*(NFING-2*TRUNC(NFING/2))+(1-SRCEFIRST)*(2*TRUNC(1+NFING/2)-NFING)}
+  928  +       FS={2-FD}
+  929  +       AD={WFING*((NFING-FD)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-NMOSHS_XL)/2+FD*(1.5E-07+NMOSHS_XW/2))}
+  930  +       AS={WFING*((NFING-FS)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-NMOSHS_XL)/2+FS*(1.5E-07+NMOSHS_XW/2))}
+  931  +       PD={(NFING-FD)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-NMOSHS_XL)/2+FD*(WFING+2*1.5E-07+NMOSHS_XW)}
+  932  +       PS={(NFING-FS)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-NMOSHS_XL)/2+FS*(WFING+2*1.5E-07+NMOSHS_XW)}
+  933  +       PO2ACT=-1
+  934  +       NUMBER=1 NRD=0 NRS=0
+  935  +       NGCON=1
+  936  
+  937  
+  938  *
+  939  * invariant parameters:
+  940  *----------------------
+  941  .param conw    = 0.16e-6
+ 1169  .ENDS ENHSGP_BS3JULEAK
+ 1170  
+ 1171  
+ 1172  *----------------------------------------------------------------------
+ 1173  * Family nmoshs Model ENHSGP_BS3JURG bsim3 typ mismatch
+ 1174  * Maturity : tentative
+ 1175  *----------------------------------------------------------------------
+ 1176  .SUBCKT ENHSGP_BS3JURG D G S B
+ 1177  +       PARAM: W=0.15E-6 L=0.13E-6 NFING=1 NCRSD=1 MISMATCH=1 SRCEFIRST=1
+ 1178  +       WFING={W/NFING+NMOSHS_XW}
+ 1179  +       FD={SRCEFIRST*(NFING-2*TRUNC(NFING/2))+(1-SRCEFIRST)*(2*TRUNC(1+NFING/2)-NFING)}
+ 1180  +       FS={2-FD}
+ 1181  +       AD={WFING*((NFING-FD)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-NMOSHS_XL)/2+FD*(1.5E-07+NMOSHS_XW/2))}
+ 1182  +       AS={WFING*((NFING-FS)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-NMOSHS_XL)/2+FS*(1.5E-07+NMOSHS_XW/2))}
+ 1183  +       PD={(NFING-FD)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-NMOSHS_XL)/2+FD*(WFING+2*1.5E-07+NMOSHS_XW)}
+ 1184  +       PS={(NFING-FS)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-NMOSHS_XL)/2+FS*(WFING+2*1.5E-07+NMOSHS_XW)}
+ 1185  +       PO2ACT=-1
+ 1186  +       NUMBER=1 NRD=0 NRS=0
+ 1187  +       NGCON=1
+ 1188  
+ 1189  
+ 1190  *
+ 1191  * invariant parameters:
+ 1192  *----------------------
+ 1193  .param conw    = 0.16e-6
+ 1404  .ENDS ENHSGP_BS3JURG
+ 1405  
+ 1406  
+ 1407  *----------------------------------------------------------------------
+ 1408  * Family nmoshs Model ENHSGP_BS3NQSJU bsim3 typ mismatch
+ 1409  * Maturity : tentative
+ 1410  *----------------------------------------------------------------------
+ 1411  .SUBCKT ENHSGP_BS3NQSJU D G S B
+ 1412  +       PARAM: W=0.15E-6 L=0.13E-6 NFING=1 NCRSD=1 MISMATCH=1 SRCEFIRST=1
+ 1413  +       WFING={W/NFING+NMOSHS_XW}
+ 1414  +       FD={SRCEFIRST*(NFING-2*TRUNC(NFING/2))+(1-SRCEFIRST)*(2*TRUNC(1+NFING/2)-NFING)}
+ 1415  +       FS={2-FD}
+ 1416  +       AD={WFING*((NFING-FD)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-NMOSHS_XL)/2+FD*(1.5E-07+NMOSHS_XW/2))}
+ 1417  +       AS={WFING*((NFING-FS)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-NMOSHS_XL)/2+FS*(1.5E-07+NMOSHS_XW/2))}
+ 1418  +       PD={(NFING-FD)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-NMOSHS_XL)/2+FD*(WFING+2*1.5E-07+NMOSHS_XW)}
+ 1419  +       PS={(NFING-FS)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-NMOSHS_XL)/2+FS*(WFING+2*1.5E-07+NMOSHS_XW)}
+ 1420  +       PO2ACT=-1
+ 1421  +       NUMBER=1 NRD=0 NRS=0
+ 1422  +       NGCON=1
+ 1423  
+ 1424  
+ 1425  *
+ 1426  * invariant parameters:
+ 1427  *----------------------
+ 1428  .param conw    = 0.16e-6
+ 1625  .ENDS ENHSGP_BS3NQSJU
+ 1626  
+ 1627  
+ 1628  *----------------------------------------------------------------------
+ 1629  * Family nmoshs Model ENHSGP_BS3NQSJURG bsim3 typ mismatch
+ 1630  * Maturity : tentative
+ 1631  *----------------------------------------------------------------------
+ 1632  .SUBCKT ENHSGP_BS3NQSJURG D G S B
+ 1633  +       PARAM: W=0.15E-6 L=0.13E-6 NFING=1 NCRSD=1 MISMATCH=1 SRCEFIRST=1
+ 1634  +       WFING={W/NFING+NMOSHS_XW}
+ 1635  +       FD={SRCEFIRST*(NFING-2*TRUNC(NFING/2))+(1-SRCEFIRST)*(2*TRUNC(1+NFING/2)-NFING)}
+ 1636  +       FS={2-FD}
+ 1637  +       AD={WFING*((NFING-FD)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-NMOSHS_XL)/2+FD*(1.5E-07+NMOSHS_XW/2))}
+ 1638  +       AS={WFING*((NFING-FS)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-NMOSHS_XL)/2+FS*(1.5E-07+NMOSHS_XW/2))}
+ 1639  +       PD={(NFING-FD)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-NMOSHS_XL)/2+FD*(WFING+2*1.5E-07+NMOSHS_XW)}
+ 1640  +       PS={(NFING-FS)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-NMOSHS_XL)/2+FS*(WFING+2*1.5E-07+NMOSHS_XW)}
+ 1641  +       PO2ACT=-1
+ 1642  +       NUMBER=1 NRD=0 NRS=0
+ 1643  +       NGCON=1
+ 1644  
+ 1645  
+ 1646  *
+ 1647  * invariant parameters:
+ 1648  *----------------------
+ 1649  .param conw    = 0.16e-6
+ 1860  .ENDS ENHSGP_BS3NQSJURG
+ 1861  
+ 1862  
+ 1863  *----------------------------------------------------------------------
+ 1864  * Family pmoshs Model EPHSGP_BS3JU bsim3 typ mismatch
+ 1865  * Maturity : tentative
+ 1866  *----------------------------------------------------------------------
+ 1867  .SUBCKT EPHSGP_BS3JU D G S B
+ 1868  +       PARAM: W=0.15E-6 L=0.13E-6 NFING=1 NCRSD=1 MISMATCH=1 SRCEFIRST=1
+ 1869  +       WFING={W/NFING+PMOSHS_XW}
+ 1870  +       FD={SRCEFIRST*(NFING-2*TRUNC(NFING/2))+(1-SRCEFIRST)*(2*TRUNC(1+NFING/2)-NFING)}
+ 1871  +       FS={2-FD}
+ 1872  +       AD={WFING*((NFING-FD)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-PMOSHS_XL)/2+FD*(1.5E-07+PMOSHS_XW/2))}
+ 1873  +       AS={WFING*((NFING-FS)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-PMOSHS_XL)/2+FS*(1.5E-07+PMOSHS_XW/2))}
+ 1874  +       PD={(NFING-FD)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-PMOSHS_XL)/2+FD*(WFING+2*1.5E-07+PMOSHS_XW)}
+ 1875  +       PS={(NFING-FS)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-PMOSHS_XL)/2+FS*(WFING+2*1.5E-07+PMOSHS_XW)}
+ 1876  +       PO2ACT=-1
+ 1877  +       NUMBER=1 NRD=0 NRS=0
+ 1878  +       NGCON=1
+ 1879  
+ 1880  
+ 1881  *
+ 1882  * invariant parameters:
+ 1883  *----------------------
+ 1884  .PARAM CONW    = 0.16E-6
+ 1885  .PARAM CONS    = 0.18E-6
+ 1886  .PARAM COEACT  = 0.07E-6
+ 1887  .PARAM CONPO   = 0.11E-6
+ 1888  
+ 1889  .PARAM U0_TYP  = 51.9139
+ 1890  .PARAM U0S     = 60.2573
+ 1891  .PARAM LINT    = 1.5899E-08
+ 1892  .PARAM LMIN    = 0.13E-6
+ 1893  .PARAM DWU0    = 0.16445
+ 1894  .PARAM WINT    = 1.8455E-08
+ 1895  
+ 1896  
+ 1897  *  
+ 1898  .PARAM  CJBR   = 0.00090721
+ 1899  .PARAM  CJGR   = 2.9337E-10
+ 1900  .PARAM  CJSR   = 3.9129E-11
+ 1901  .PARAM  JSDBR  = 8.5932E-08
+ 1902  .PARAM  JSDGR  = 0
+ 1903  .PARAM  JSDSR  = 5.2166E-15
+ 1904  .PARAM  JSGBR  = 1.6294E-06
+ 1905  .PARAM  JSGGR  = 2.8654E-11
+ 1906  .PARAM  JSGSR  = 3.2153E-11
+ 1907   
+ 1908  
+ 1909  *
+ 1910  * variant parameters:
+ 1911  *--------------------
+ 1912  .PARAM XL      = PMOSHS_XL
+ 1913  .PARAM XW      = PMOSHS_XW
+ 1914  .PARAM TOX     = PMOSHS_TOX
+ 1915  .PARAM VTH     = PMOSHS_VTH0
+ 1916  .PARAM NLX     = PMOSHS_NLX
+ 1917  .PARAM DRDSW   = PMOSHS_DRDSW
+ 1918  .PARAM DMU     = PMOSHS_DMU
+ 1919  
+ 1920  
+ 1921  .PARAM DCJB    = PMOSHS_DCJB
+ 1922  .PARAM DCJGATE = PMOSHS_DCJGATE
+ 1923  .PARAM DCJSW   = PMOSHS_DCJSW
+ 1924  .PARAM DJSDBR  = PMOSHS_DJSDBR
+ 1925  .PARAM DJSDGR  = PMOSHS_DJSDGR
+ 1926  .PARAM DJSDSR  = PMOSHS_DJSDSR
+ 1927  .PARAM DJSGBR  = PMOSHS_DJSGBR
+ 1928  .PARAM DJSGGR  = PMOSHS_DJSGGR
+ 1929  .PARAM DJSGSR  = PMOSHS_DJSGSR
+ 1930  .PARAM PRWB    = PMOSHS_PRWB
+ 1931  
+ 1932  .PARAM DCFRING = PMOSHS_DCFRING
+ 1933  * effective length and width:
+ 1934  *----------------------------
+ 1935  .PARAM WE      = {(W/NFING+XW-2*WINT)}
+ 1936  .PARAM LE      = {L+XL-2.0*LINT}
+ 1937  * Equations for mismatch deviations:
+ 1938  *-----------------------------------
+ 1939  .PARAM DVTH0_ALPHA = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),4.50E-9,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),5.50E-9,4.50E-9))
+ 1940  .PARAM DVTH0_BETA  = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),0.0,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),0.0,0.0))
+ 1941  .PARAM DVTH0_FUDGE  = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.0,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.0,1.00))
+ 1942  .PARAM DVTH0_SIG = {((DVTH0_ALPHA/SQRT(W*L))+DVTH0_BETA)*DVTH0_FUDGE/SQRT(2.0*NUMBER)}
+ 1943  .PARAM DVTH0_DEV = 0.0 DEV/GAUSS = {DVTH0_SIG*MOSHS_DEV*MISMATCH}
+ 1944  .PARAM DBETA_ALPHA = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.22E-8,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.22E-8,1.22E-8))
+ 1945  .PARAM DBETA_BETA  = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),0.0,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),0.0,0.0))
+ 1946  .PARAM DBETA_FUDGE  = VALIF((W>0.0)&&(W<0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.09,VALIF((W>0.6E-6)&&(L>0.0)&&(L<0.24E-6),1.09,1.09))
+ 1947  .PARAM DBETA_SIG = {((DBETA_ALPHA/SQRT(W*L))+DBETA_BETA)*DBETA_FUDGE/SQRT(2.0*NUMBER)}
+ 1948  .PARAM DBETA_DEV = 0.0 DEV/GAUSS = {DBETA_SIG*MOSHS_DEV*MISMATCH}
+ 1949  
+ 1950  * Mobility model improvement:
+ 1951  *----------------------------
+ 1952  .PARAM EPSILON2 = 1E-18
+ 1953  .PARAM LLIMIT = {1.545798E-06-XL} 
+ 1954  .PARAM WLIMIT = {1.8744E-07-XW} 
+ 1955  
+ 1956  .PARAM DWU = DWU0
+ 1957  
+ 1958  .PARAM MOBILITY = {2.0/((1.0/U0_TYP+1.0/U0S)+(LLIMIT+XL
+ 1959  + -2.0*LINT-SQRT((LLIMIT-L)*(LLIMIT-L)+EPSILON2))*(1.0/U0S-1.0/U0_TYP)/LE)
+ 1960  + *(W/NFING-2.0*((WINT-XW/2.0)*(1.0+2.0*(DWU))-(DWU)*WLIMIT
+ 1961  + +(DWU)*0.5*(WLIMIT-W/NFING)+0.5*(DWU)*SQRT((WLIMIT-W/NFING)*(WLIMIT-W/NFING)+EPSILON2)))/WE}
+ 1962  .PARAM U0 = {MOBILITY*(1.0+DBETA_DEV)*(1+DMU)} 
+ 1963  * Equations for Threshold voltage vth0 and body factor K1:
+ 1964  *---------------------------------------------------------
+ 1965  .PARAM  EG0   =  {1.16-(7.02E-4*((273.15+27)^2)/(27+1381))}
+ 1966  .PARAM  NI    =  {1.45E10*(((273.15+27)/300.15)^1.5)*EXP(21.5565981-EG0/(1.725E-4*(273.15+27)))}
+ 1967  .PARAM  PHIS  =  {1.725E-4*(273.15+27)*LOG(6.10062E+17/NI)}
+ 1968  .PARAM  K2    =  {0*(TOX/2.35E-09)}
+ 1969  
+ 1970  .PARAM  K1    =  {0.338987+(-0.20825-VTH)/SQRT(PHIS)}
+ 1971  .PARAM  VTH0  =  {VTH-DVTH0_DEV} 
+ 1972  
+ 1973  .PARAM  NCH   =  {6.10062E+17*(2.35E-09*2.35E-09)/(TOX*TOX)*(K1*K1)/(0.338987*0.338987)}
+ 1974  
+ 1975  * Equations for access resistance:
+ 1976  *---------------------------------
+ 1977  
+ 1978  .PARAM  RDSW  =  {415.14*(1+DRDSW)}
+ 1979  
+ 1980  
+ 1981  .PARAM VTH0EFF          = VTH0
+ 1982  .PARAM U0EFF            = U0
+ 1983  
+ 1984  .PARAM RDSWEFF          = RDSW
+ 1985  
+ 1986  * Equations for fringing capacitance:
+ 1987  *------------------------------------
+ 1988  .PARAM  CF    =  DCFRING
+ 1989  * Equations for overlap capacitance:
+ 1990  *-----------------------------------
+ 1991  .PARAM  CGSL  =  {3.655E-10*(2.35E-09/TOX)}
+ 1992  .PARAM  CGDL  =  {3.655E-10*(2.35E-09/TOX)}
+ 1993  
+ 1994  * Equations for VT:
+ 1995  *-----------------
+ 1996  
+ 1997  .PARAM  W0    =  {4.9889E-08+(0-XW)}
+ 1998  
+ 1999  
+ 2000  .PARAM K3 = {-1.7947*(2.35E-09/TOX)}
+ 2001  .PARAM DVT0 = 2.3286
+ 2002  
+ 2003  
+ 2004  .PARAM  K3B   =  {3.9083*(2.35E-09/TOX)}
+ 2005  .PARAM  LK3   =  {0*((LMIN+XL-(2*LINT))*2.35E-09/(LMIN+-2E-08-(2*LINT))/TOX)}
+ 2006  
+ 2007  
+ 2008  .PARAM LKETA  = 0
+ 2009  
+ 2010  
+ 2011  
+ 2012  
+ 2013  M1 D G S B PHS W={W/NFING} L=L AS={AS/NFING} AD={AD/NFING} PS={PS/NFING} PD={PD/NFING}
+ 2014  +          M={NUMBER*NFING} NRD={NRD*NFING} NRS={NRS*NFING}
+ 2015  
+ 2016  
+ 2017  
+ 2018  .MODEL PHS PMOS
+ 2019  + LEVEL=53
+ 2020  + VERSION=3.2           NQSMOD=0              XW=XW                 
+ 2021  + XL=XL                 WMIN=1.5E-07          WMAX=1                
+ 2022  + LMIN=1.3E-07          LMAX=4E-07            MOBMOD=1              
+ 2023  + CAPMOD=3              NOIMOD=2              BINUNIT=1             
+ 2024  + JS=0                  JSW=0                 LINT=1.5899E-08       
+ 2025  + LL=0                  LLN=1                 LW=0                  
+ 2026  + LWN=1                 LWL=0                 WINT=1.8455E-08       
+ 2027  + WL=0                  WLN=1                 WW=0                  
+ 2028  + WWN=1                 WWL=0                 TNOM=27               
+ 2029  + TOX=TOX               CJ=0                  MJ=0.33               
+ 2030  + CJSW=0                MJSW=0.5              CJSWG=0               
+ 2031  + MJSWG=0.5             CGSO=0                CGDO=0                
+ 2032  + CGBO=1E-12            XPART=0               DWG=-2.0144E-08       
+ 2033  + NCH=NCH               NGATE=1.9872E+20      XJ=1E-07              
+ 2034  + U0=U0EFF              VTH0=VTH0EFF          K1=K1                 
+ 2035  + PK1=0                 K2=K2                 K3=K3                 
+ 2036  + LK3=LK3               K3B=K3B               W0=W0                 
+ 2037  + NLX=NLX               DVT0=DVT0             DVT1=0.52738          
+ 2038  + DVT2=0.049868         DVT0W=-0.1509         DVT1W=36665           
+ 2039  + DVT2W=0.44367         UA=-8.2003E-10        PUA=1.5E-11           
+ 2040  + UB=1.6707E-18         UC=-1.3227E-10        DELTA=0.023487        
+ 2041  + LDELTA=0              RDSW=RDSWEFF          LRDSW=0               
+ 2042  + PRDSW=0               PRWG=0                PRWB=PRWB             
+ 2043  + WR=1                  VSAT=156136           A0=1.6925             
+ 2044  + LA0=0                 KETA=-0.066788        LKETA=LKETA           
+ 2045  + AGS=1.1642            A1=6.3403             A2=0.01               
+ 2046  + B0=0                  PB0=0                 B1=0                  
+ 2047  + ALPHA0=4.7564E-16     LALPHA0=0             BETA0=16.59           
+ 2048  + LBETA0=-0.28619       VOFF=-0.101317        LVOFF=-0.00174674     
+ 2049  + NFACTOR=0.85819       LNFACTOR=0            CDSC=0.00754104       
+ 2050  + CDSCB=0               CDSCD=0.0016          CIT=0                 
+ 2051  + ETA0=0.010404         ETAB=-0.00274117      DSUB=0.145242         
+ 2052  + DROUT=0.61951         PCLM=0.50185          PDIBLC1=0.0066144     
+ 2053  + PDIBLC2=0.00136003    PDIBLCB=0             PSCBE1=8E+08          
+ 2054  + PSCBE2=1E-05          PVAG=0.3416           UTE=-0.9              
+ 2055  + AT=160000             UA1=1.0855E-09        UB1=-1.5182E-18       
+ 2056  + UC1=8.403E-11         KT1=-0.23305          KT1L=-2.2241E-09      
+ 2057  + KT2=-0.038112         PRT=0.14224           CGSL=CGSL             
+ 2058  + CGDL=CGDL             CKAPPA=3.02           CF=CF                 
+ 2059  + CLC=1E-07             CLE=0.6               DLC=1.5899E-08        
+ 2060  + DWC=1.846E-08         NOFF=1.9653           VOFFCV=-0.0060629     
+ 2061  + ALPHA1=0.023884       ACDE=0.401            MOIN=5.005            
+ 2062  + LLC=0                 LWC=0                 LWLC=0                
+ 2063  + WLC=0                 WWC=0                 WWLC=0                
+ 2064  + ELM=5                 EF=1                  EM=501000             
+ 2065  + NOIA=7.05E+18         NOIB=700000           NOIC=0
+ 2066  *  
+ 2067  * -- JUNCAP Electrical Parameters for S/D regions  (Simulator specific)
+ 2068  + VR=0                  CJBR={CJBR*(1+DCJB)}  CJSR={CJSR*(1+DCJSW)} 
+ 2069  + CJGR={CJGR*(1+DCJGATE)}  JSDBR={JSDBR*10^DJSDBR} 
+ 2070  + JSDSR={JSDSR*10^DJSDSR} JSDGR={JSDGR*10^DJSDGR} 
+ 2071  + JSGBR={JSGBR*10^DJSGBR} JSGSR={JSGSR*10^DJSGSR} 
+ 2072  + JSGGR={JSGGR*10^DJSGGR}  VDBR=0.62226          VDSR=1.2279           
+ 2073  + VDGR=1.5037           PB=0.28121            PS=0.15               
+ 2074  + PG=0.87916             NBJ=0.97              NSJ=0.93              
+ 2075  + NGJ=1
+ 2076  + 
+ 2077  + TRDIO9=27             DIOLEV=9              DCAPLEV=0             
+ 2078  + RLEV=1                ALEV=3
+ 2079   
+ 2080  
+ 2081  * + 
+ 2082  .ENDS EPHSGP_BS3JU
+ 2083  
+ 2084  
+ 2085  *----------------------------------------------------------------------
+ 2086  * Family pmoshs Model EPHSGP_BS3JULEAK bsim3 typ mismatch
+ 2087  * Maturity : tentative
+ 2088  *----------------------------------------------------------------------
+ 2089  .SUBCKT EPHSGP_BS3JULEAK D G S B
+ 2090  +       PARAM: W=0.15E-6 L=0.13E-6 NFING=1 NCRSD=1 MISMATCH=1 SRCEFIRST=1
+ 2091  +       WFING={W/NFING+PMOSHS_XW}
+ 2092  +       FD={SRCEFIRST*(NFING-2*TRUNC(NFING/2))+(1-SRCEFIRST)*(2*TRUNC(1+NFING/2)-NFING)}
+ 2093  +       FS={2-FD}
+ 2094  +       AD={WFING*((NFING-FD)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-PMOSHS_XL)/2+FD*(1.5E-07+PMOSHS_XW/2))}
+ 2095  +       AS={WFING*((NFING-FS)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-PMOSHS_XL)/2+FS*(1.5E-07+PMOSHS_XW/2))}
+ 2096  +       PD={(NFING-FD)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-PMOSHS_XL)/2+FD*(WFING+2*1.5E-07+PMOSHS_XW)}
+ 2097  +       PS={(NFING-FS)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-PMOSHS_XL)/2+FS*(WFING+2*1.5E-07+PMOSHS_XW)}
+ 2098  +       PO2ACT=-1
+ 2099  +       NUMBER=1 NRD=0 NRS=0
+ 2100  +       NGCON=1
+ 2101  
+ 2102  
+ 2103  *
+ 2104  * invariant parameters:
+ 2105  *----------------------
+ 2106  .param conw    = 0.16e-6
+ 2335  .ENDS EPHSGP_BS3JULEAK
+ 2336  
+ 2337  
+ 2338  *----------------------------------------------------------------------
+ 2339  * Family pmoshs Model EPHSGP_BS3JURG bsim3 typ mismatch
+ 2340  * Maturity : tentative
+ 2341  *----------------------------------------------------------------------
+ 2342  .SUBCKT EPHSGP_BS3JURG D G S B
+ 2343  +       PARAM: W=0.15E-6 L=0.13E-6 NFING=1 NCRSD=1 MISMATCH=1 SRCEFIRST=1
+ 2344  +       WFING={W/NFING+PMOSHS_XW}
+ 2345  +       FD={SRCEFIRST*(NFING-2*TRUNC(NFING/2))+(1-SRCEFIRST)*(2*TRUNC(1+NFING/2)-NFING)}
+ 2346  +       FS={2-FD}
+ 2347  +       AD={WFING*((NFING-FD)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-PMOSHS_XL)/2+FD*(1.5E-07+PMOSHS_XW/2))}
+ 2348  +       AS={WFING*((NFING-FS)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-PMOSHS_XL)/2+FS*(1.5E-07+PMOSHS_XW/2))}
+ 2349  +       PD={(NFING-FD)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-PMOSHS_XL)/2+FD*(WFING+2*1.5E-07+PMOSHS_XW)}
+ 2350  +       PS={(NFING-FS)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-PMOSHS_XL)/2+FS*(WFING+2*1.5E-07+PMOSHS_XW)}
+ 2351  +       PO2ACT=-1
+ 2352  +       NUMBER=1 NRD=0 NRS=0
+ 2353  +       NGCON=1
+ 2354  
+ 2355  
+ 2356  *
+ 2357  * invariant parameters:
+ 2358  *----------------------
+ 2359  .param conw    = 0.16e-6
+ 2571  .ENDS EPHSGP_BS3JURG
+ 2572  
+ 2573  
+ 2574  *----------------------------------------------------------------------
+ 2575  * Family pmoshs Model EPHSGP_BS3NQSJU bsim3 typ mismatch
+ 2576  * Maturity : tentative
+ 2577  *----------------------------------------------------------------------
+ 2578  .SUBCKT EPHSGP_BS3NQSJU D G S B
+ 2579  +       PARAM: W=0.15E-6 L=0.13E-6 NFING=1 NCRSD=1 MISMATCH=1 SRCEFIRST=1
+ 2580  +       WFING={W/NFING+PMOSHS_XW}
+ 2581  +       FD={SRCEFIRST*(NFING-2*TRUNC(NFING/2))+(1-SRCEFIRST)*(2*TRUNC(1+NFING/2)-NFING)}
+ 2582  +       FS={2-FD}
+ 2583  +       AD={WFING*((NFING-FD)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-PMOSHS_XL)/2+FD*(1.5E-07+PMOSHS_XW/2))}
+ 2584  +       AS={WFING*((NFING-FS)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-PMOSHS_XL)/2+FS*(1.5E-07+PMOSHS_XW/2))}
+ 2585  +       PD={(NFING-FD)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-PMOSHS_XL)/2+FD*(WFING+2*1.5E-07+PMOSHS_XW)}
+ 2586  +       PS={(NFING-FS)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-PMOSHS_XL)/2+FS*(WFING+2*1.5E-07+PMOSHS_XW)}
+ 2587  +       PO2ACT=-1
+ 2588  +       NUMBER=1 NRD=0 NRS=0
+ 2589  +       NGCON=1
+ 2590  
+ 2591  
+ 2592  *
+ 2593  * invariant parameters:
+ 2594  *----------------------
+ 2595  .param conw    = 0.16e-6
+ 2793  .ENDS EPHSGP_BS3NQSJU
+ 2794  
+ 2795  
+ 2796  *----------------------------------------------------------------------
+ 2797  * Family pmoshs Model EPHSGP_BS3NQSJURG bsim3 typ mismatch
+ 2798  * Maturity : tentative
+ 2799  *----------------------------------------------------------------------
+ 2800  .SUBCKT EPHSGP_BS3NQSJURG D G S B
+ 2801  +       PARAM: W=0.15E-6 L=0.13E-6 NFING=1 NCRSD=1 MISMATCH=1 SRCEFIRST=1
+ 2802  +       WFING={W/NFING+PMOSHS_XW}
+ 2803  +       FD={SRCEFIRST*(NFING-2*TRUNC(NFING/2))+(1-SRCEFIRST)*(2*TRUNC(1+NFING/2)-NFING)}
+ 2804  +       FS={2-FD}
+ 2805  +       AD={WFING*((NFING-FD)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-PMOSHS_XL)/2+FD*(1.5E-07+PMOSHS_XW/2))}
+ 2806  +       AS={WFING*((NFING-FS)*(NCRSD-1)*(0.16E-6+0.18E-6)/4+NFING*(3.8E-07-PMOSHS_XL)/2+FS*(1.5E-07+PMOSHS_XW/2))}
+ 2807  +       PD={(NFING-FD)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-PMOSHS_XL)/2+FD*(WFING+2*1.5E-07+PMOSHS_XW)}
+ 2808  +       PS={(NFING-FS)/2*(NCRSD-1)*(0.16E-6+0.18E-6)+NFING*2*(3.8E-07-PMOSHS_XL)/2+FS*(WFING+2*1.5E-07+PMOSHS_XW)}
+ 2809  +       PO2ACT=-1
+ 2810  +       NUMBER=1 NRD=0 NRS=0
+ 2811  +       NGCON=1
+ 2812  
+ 2813  
+ 2814  *
+ 2815  * invariant parameters:
+ 2816  *----------------------
+ 2817  .param conw    = 0.16e-6
+ 3029  .ENDS EPHSGP_BS3NQSJURG
+ 3030  
+   85  ** END OF LIBRARY /home/repository/ms/cap5/lib/mos_bsim3_HS.lib LIBTYPE=moshs_MODEL
+   14  ** END OF LIBRARY /home/repository/ms/cap5/lib/mos_bsim3_HS.lib LIBTYPE=moshs_TT
+   14  .LIB  ./common_poly.lib  PRO_TT
+   15  ** INCLUDING LIBRARY /home/repository/ms/cap5/lib/common_poly.lib LIBTYPE=PRO_TT
+   18  
+   19  .PARAM NSIGMA_GO2_2V5_POLY_CDVAR  =  0
+   20  .PARAM NSIGMA_GO2_3V3_POLY_CDVAR  =  0
+   21  .PARAM NSIGMA_NPOLY_RSC  =  0
+   22  .PARAM NSIGMA_NPOLY_RSH  =  0
+   23  .PARAM NSIGMA_POLY_CDVAR  =  0
+   24  .PARAM NSIGMA_PPOLY_RSC  =  0
+   25  .PARAM NSIGMA_PPOLY_RSH  =  0
+   26  
+   27  
+   28  .LIB  common_poly.lib  PRO_PARAM
+   29  ** INCLUDING LIBRARY /home/repository/ms/cap5/lib/common_poly.lib LIBTYPE=PRO_PARAM
+  144  
+  145  
+  146  *----------------------------------------------
+  147  *                   common_poly 
+  148  *----------------------------------------------
+  149  .PARAM POLY_CDVAR = {-20E-9+0.5*8.0E-9*NSIGMA_POLY_CDVAR}
+  150  .PARAM GO2_3V3_POLY_CDVAR = {-15E-9+0.5*1.8E-8*NSIGMA_GO2_3V3_POLY_CDVAR}
+  151  .PARAM GO2_2V5_POLY_CDVAR = {-4E-8+0.5*1.8E-8*NSIGMA_GO2_2V5_POLY_CDVAR}
+  152  .PARAM NPOLY_RSH = {10+0.5*4*NSIGMA_NPOLY_RSH}
+  153  .PARAM PPOLY_RSH = {10+0.5*4*NSIGMA_PPOLY_RSH}
+  154  .PARAM NPOLY_RSC = {15+0.5*15*NSIGMA_NPOLY_RSC}
+  155  .PARAM PPOLY_RSC = {15+0.5*15*NSIGMA_PPOLY_RSC}
+  156  
+  157  
+   29  ** END OF LIBRARY /home/repository/ms/cap5/lib/common_poly.lib LIBTYPE=PRO_PARAM
+   29  .LIB  common_poly.lib  PRO_CORREL
+   30  ** INCLUDING LIBRARY /home/repository/ms/cap5/lib/common_poly.lib LIBTYPE=PRO_CORREL
+  176  
+  177  *----------------------------------------------
+  178  *                   common_poly 
+  179  *----------------------------------------------
+  180  
+  181  
+   30  ** END OF LIBRARY /home/repository/ms/cap5/lib/common_poly.lib LIBTYPE=PRO_CORREL
+   15  ** END OF LIBRARY /home/repository/ms/cap5/lib/common_poly.lib LIBTYPE=PRO_TT
+   15  .LIB  ./common_active.lib  PRO_TT
+   16  ** INCLUDING LIBRARY /home/repository/ms/cap5/lib/common_active.lib LIBTYPE=PRO_TT
+   18  
+   19  .PARAM NSIGMA_ACTIVE_CDVAR  =  0
+   20  .PARAM NSIGMA_GO2_2V5_ACTI_CDVAR  =  0
+   21  .PARAM NSIGMA_GO2_3V3_ACTI_CDVAR  =  0
+   22  
+   23  
+   24  .LIB  common_active.lib  PRO_PARAM
+   25  ** INCLUDING LIBRARY /home/repository/ms/cap5/lib/common_active.lib LIBTYPE=PRO_PARAM
+  108  
+  109  
+  110  *----------------------------------------------
+  111  *                   common_active 
+  112  *----------------------------------------------
+  113  .PARAM ACTIVE_CDVAR = {0.0+0.5*20.00E-9*NSIGMA_ACTIVE_CDVAR}
+  114  .PARAM GO2_3V3_ACTI_CDVAR = {0+0.5*3.6E-8*NSIGMA_GO2_3V3_ACTI_CDVAR}
+  115  .PARAM GO2_2V5_ACTI_CDVAR = {0+0.5*3.6E-8*NSIGMA_GO2_2V5_ACTI_CDVAR}
+  116  
+  117  
+   25  ** END OF LIBRARY /home/repository/ms/cap5/lib/common_active.lib LIBTYPE=PRO_PARAM
+   25  .LIB  common_active.lib  PRO_CORREL
+   26  ** INCLUDING LIBRARY /home/repository/ms/cap5/lib/common_active.lib LIBTYPE=PRO_CORREL
+  132  
+  133  *----------------------------------------------
+  134  *                   common_active 
+  135  *----------------------------------------------
+  136  
+  137  
+   26  ** END OF LIBRARY /home/repository/ms/cap5/lib/common_active.lib LIBTYPE=PRO_CORREL
+   16  ** END OF LIBRARY /home/repository/ms/cap5/lib/common_active.lib LIBTYPE=PRO_TT
+   16  .LIB  ./common_go1.lib  PRO_TT
+   17  ** INCLUDING LIBRARY /home/repository/ms/cap5/lib/common_go1.lib LIBTYPE=PRO_TT
+   18  
+   19  .PARAM NSIGMA_GO1_DCFRING  =  0
+   20  .PARAM NSIGMA_GO1_DTOXN  =  0
+   21  .PARAM NSIGMA_GO1_LL_DTOXN  =  0
+   22  
+   23  
+   24  .LIB  common_go1.lib  PRO_PARAM
+   25  ** INCLUDING LIBRARY /home/repository/ms/cap5/lib/common_go1.lib LIBTYPE=PRO_PARAM
+  108  
+  109  
+  110  *----------------------------------------------
+  111  *                   common_go1 
+  112  *----------------------------------------------
+  113  .PARAM GO1_DTOXN = {0.0E-10+0.5*0.50E-10*NSIGMA_GO1_DTOXN}
+  114  .PARAM GO1_LL_DTOXN = {0.0E-10+0.5*0.66E-10*NSIGMA_GO1_LL_DTOXN}
+  115  .PARAM GO1_DCFRING = {0.0+0.5*0.3E-10*NSIGMA_GO1_DCFRING}
+  116  
+  117  
+   25  ** END OF LIBRARY /home/repository/ms/cap5/lib/common_go1.lib LIBTYPE=PRO_PARAM
+   25  .LIB  common_go1.lib  PRO_CORREL
+   26  ** INCLUDING LIBRARY /home/repository/ms/cap5/lib/common_go1.lib LIBTYPE=PRO_CORREL
+  132  
+  133  *----------------------------------------------
+  134  *                   common_go1 
+  135  *----------------------------------------------
+  136  .PARAM GO1_LL_TOXN = {24.9E-10+GO1_LL_DTOXN}
+  137  .PARAM GO1_LL_TOXP = {23.5E-10+GO1_LL_DTOXN}
+  138  .PARAM GO1_TOXN = {23.5E-10+GO1_DTOXN}
+  139  .PARAM GO1_TOXP = {23.5E-10+GO1_DTOXN}
+  140  
+  141  
+   26  ** END OF LIBRARY /home/repository/ms/cap5/lib/common_go1.lib LIBTYPE=PRO_CORREL
+   17  ** END OF LIBRARY /home/repository/ms/cap5/lib/common_go1.lib LIBTYPE=PRO_TT
+   17  .LIB  ./common_go2.lib  PRO_TT
+   18  ** INCLUDING LIBRARY /home/repository/ms/cap5/lib/common_go2.lib LIBTYPE=PRO_TT
+   18  
+   19  .PARAM NSIGMA_GO2_2V5_DTOXN  =  0
+   20  .PARAM NSIGMA_GO2_3V3_DTOXN  =  0
+   21  
+   22  
+   23  .LIB  common_go2.lib  PRO_PARAM
+   24  ** INCLUDING LIBRARY /home/repository/ms/cap5/lib/common_go2.lib LIBTYPE=PRO_PARAM
+   63  
+   64  
+   65  *----------------------------------------------
+   66  *                   common_go2 
+   67  *----------------------------------------------
+   68  .PARAM GO2_3V3_DTOXN = {0.0E-10+0.5*2.25E-10*NSIGMA_GO2_3V3_DTOXN}
+   69  .PARAM GO2_2V5_DTOXN = {0.0E-10+0.5*2.25E-10*NSIGMA_GO2_2V5_DTOXN}
+   70  
+   71  
+   24  ** END OF LIBRARY /home/repository/ms/cap5/lib/common_go2.lib LIBTYPE=PRO_PARAM
+   24  .LIB  common_go2.lib  PRO_CORREL
+   25  ** INCLUDING LIBRARY /home/repository/ms/cap5/lib/common_go2.lib LIBTYPE=PRO_CORREL
+   85  
+   86  *----------------------------------------------
+   87  *                   common_go2 
+   88  *----------------------------------------------
+   89  
+   90  
+   25  ** END OF LIBRARY /home/repository/ms/cap5/lib/common_go2.lib LIBTYPE=PRO_CORREL
+   18  ** END OF LIBRARY /home/repository/ms/cap5/lib/common_go2.lib LIBTYPE=PRO_TT
+   18  .LIB  ./diode.lib  diode_typ
+   19  ** INCLUDING LIBRARY /home/repository/ms/cap5/lib/diode.lib LIBTYPE=diode_typ
+    4  
+    5  *----------------------------------------------------------------------
+    6  *                             DIODE
+    7  *----------------------------------------------------------------------
+    8  * TEMPLATE   : diode_eldoN.t,v 2.0 2002/04/03 14:51:37
+    9  * PARAMETERS : diode.dds,v 1.21 2002/06/14 12:54:03
+   10  * TRANSLATOR : ddspp.tcl,v 1.47 2001/09/11 08:03:16
+   11  * Translated by re11 on June 14, 2002
+   12  * ----------------------------------------------------------------------
+   13  * (C) Copyright STMicroelectronics (2002)
+   14  *     Unauthorized Reproduction and Communication Strictly Prohibited.
+   15  * ----------------------------------------------------------------------
+   16  *----------------------------------------------------------------------
+   17  
+   18  
+   19  *----------------------------------------------------------------------
+   20  * Family diode Model DNPPS juncap typ
+   21  * Maturity : Silicon_verified
+   22  *----------------------------------------------------------------------
+   23  .MODEL DNPPSD
+   24  + D IS=1.3181E-07         ISW=2.2436E-14        N=0.97                
+   25  + ISRH=9E-06             CJO=0.00085803        CSO=6.7342E-11        
+   26  + VJ=0.52286             M=0.20582             MS=0.44445            
+   27  + TMEAS=27
+   28  
+Warning 902: In file "/home/repository/ms/cap5/lib/diode.lib" line 25:
++   In model: "DNPPSD". Parameter: "ISRH" ignored.
+Warning 902: In file "/home/repository/ms/cap5/lib/diode.lib" line 25:
++   In model: "DNPPSD". Parameter: "CSO" ignored.
+Warning 902: In file "/home/repository/ms/cap5/lib/diode.lib" line 26:
++   In model: "DNPPSD". Parameter: "MS" ignored.
+   29  .MODEL DNPPSJU
+   30  + D LEVEL=8 DIOLEV=9 TR=27                 TNOM=27               
+   31  + VR=0                  CJBR=0.00085803       CJSR=6.7342E-11       
+   32  + CJGR=2.921E-10         JSDBR=1.3181E-07      JSDSR=2.2436E-14      
+   33  + JSDGR=0               JSGBR=9E-06           JSGSR=3.1654E-11      
+   34  + JSGGR=4.1751E-11       VDBR=0.52286          VDSR=0.42697          
+   35  + VDGR=1                PB=0.20582            PS=0.44445            
+   36  + PG=0.6358              NBJ=0.97              NSJ=0.93              
+   37  + NGJ=1
+   38  
+   39  * next model is for alias
+   40  .MODEL DNPPS
+   41  + D LEVEL=8 DIOLEV=9 TR=27                 TNOM=27               
+   42  + VR=0                  CJBR=0.00085803       CJSR=6.7342E-11       
+   43  + CJGR=2.921E-10         JSDBR=1.3181E-07      JSDSR=2.2436E-14      
+   44  + JSDGR=0               JSGBR=9E-06           JSGSR=3.1654E-11      
+   45  + JSGGR=4.1751E-11       VDBR=0.52286          VDSR=0.42697          
+   46  + VDGR=1                PB=0.20582            PS=0.44445            
+   47  + PG=0.6358              NBJ=0.97              NSJ=0.93              
+   48  + NGJ=1
+   49  
+   50  *----------------------------------------------------------------------
+   51  * Family diode Model DPPNW juncap typ
+   52  * Maturity : Silicon_verified
+   53  *----------------------------------------------------------------------
+   54  .MODEL DPPNWD
+   55  + D IS=8.5932E-08         ISW=5.2166E-15        N=0.97                
+   56  + ISRH=1.6294E-06        CJO=0.00090721        CSO=3.9129E-11        
+   57  + VJ=0.62226             M=0.28121             MS=0.15               
+   58  + TMEAS=27
+   59  
+Warning 902: In file "/home/repository/ms/cap5/lib/diode.lib" line 56:
++   In model: "DPPNWD". Parameter: "ISRH" ignored.
+Warning 902: In file "/home/repository/ms/cap5/lib/diode.lib" line 56:
++   In model: "DPPNWD". Parameter: "CSO" ignored.
+Warning 902: In file "/home/repository/ms/cap5/lib/diode.lib" line 57:
++   In model: "DPPNWD". Parameter: "MS" ignored.
+   60  .MODEL DPPNWJU
+   61  + D LEVEL=8 DIOLEV=9 TR=27                 TNOM=27               
+   62  + VR=0                  CJBR=0.00090721       CJSR=3.9129E-11       
+   63  + CJGR=2.9337E-10        JSDBR=8.5932E-08      JSDSR=5.2166E-15      
+   64  + JSDGR=0               JSGBR=1.6294E-06      JSGSR=3.2153E-11      
+   65  + JSGGR=2.8654E-11       VDBR=0.62226          VDSR=1.2279           
+   66  + VDGR=1.5037           PB=0.28121            PS=0.15               
+   67  + PG=0.87916             NBJ=0.97              NSJ=0.93              
+   68  + NGJ=1
+   69  
+   70  * next model is for alias
+   71  .MODEL DPPNW
+   72  + D LEVEL=8 DIOLEV=9 TR=27                 TNOM=27               
+   73  + VR=0                  CJBR=0.00090721       CJSR=3.9129E-11       
+   74  + CJGR=2.9337E-10        JSDBR=8.5932E-08      JSDSR=5.2166E-15      
+   75  + JSDGR=0               JSGBR=1.6294E-06      JSGSR=3.2153E-11      
+   76  + JSGGR=2.8654E-11       VDBR=0.62226          VDSR=1.2279           
+   77  + VDGR=1.5037           PB=0.28121            PS=0.15               
+   78  + PG=0.87916             NBJ=0.97              NSJ=0.93              
+   79  + NGJ=1
+   80  
+   81  *----------------------------------------------------------------------
+   82  * Family diode Model DNWPS juncap typ
+   83  * Maturity : Silicon_verified
+   84  *----------------------------------------------------------------------
+   85  .MODEL DNWPSD
+   86  + D IS=1.0352E-06         ISW=4.9346E-13        N=1                   
+   87  + ISRH=3.3413E-06        CJO=0.00010137        CSO=5.7286E-10        
+   88  + VJ=0.5238              M=0.40069             MS=0.30596            
+   89  + TMEAS=27
+   90  
+Warning 902: In file "/home/repository/ms/cap5/lib/diode.lib" line 87:
++   In model: "DNWPSD". Parameter: "ISRH" ignored.
+Warning 902: In file "/home/repository/ms/cap5/lib/diode.lib" line 87:
++   In model: "DNWPSD". Parameter: "CSO" ignored.
+Warning 902: In file "/home/repository/ms/cap5/lib/diode.lib" line 88:
++   In model: "DNWPSD". Parameter: "MS" ignored.
+   91  .MODEL DNWPSJU
+   92  + D LEVEL=8 DIOLEV=9 TR=27                 TNOM=27               
+   93  + VR=0                  CJBR=0.00010137       CJSR=5.7286E-10       
+   94  + CJGR=0                 JSDBR=1.0352E-06      JSDSR=4.9346E-13      
+   95  + JSDGR=0               JSGBR=3.3413E-06      JSGSR=1.4244E-11      
+   96  + JSGGR=0                VDBR=0.5238           VDSR=0.6392           
+   97  + VDGR=0.6              PB=0.40069            PS=0.30596            
+   98  + PG=0.33                NBJ=1                 NSJ=1                 
+   99  + NGJ=1
+  100  
+  101  * next model is for alias
+  102  .MODEL DNWPS
+  103  + D LEVEL=8 DIOLEV=9 TR=27                 TNOM=27               
+  104  + VR=0                  CJBR=0.00010137       CJSR=5.7286E-10       
+  105  + CJGR=0                 JSDBR=1.0352E-06      JSDSR=4.9346E-13      
+  106  + JSDGR=0               JSGBR=3.3413E-06      JSGSR=1.4244E-11      
+  107  + JSGGR=0                VDBR=0.5238           VDSR=0.6392           
+  108  + VDGR=0.6              PB=0.40069            PS=0.30596            
+  109  + PG=0.33                NBJ=1                 NSJ=1                 
+  110  + NGJ=1
+  111  
+  112  *----------------------------------------------------------------------
+  113  * Family diode Model DPWNISO juncap typ
+  114  * Maturity : Silicon_verified
+  115  *----------------------------------------------------------------------
+  116  .MODEL DPWNISOD
+  117  + D IS=1.0938E-06         ISW=7.9288E-13        N=1                   
+  118  + ISRH=1.8916E-06        CJO=0.00069281        CSO=4.2583E-10        
+  119  + VJ=0.68223             M=0.31703             MS=0.22789            
+  120  + TMEAS=27
+  121  
+Warning 902: In file "/home/repository/ms/cap5/lib/diode.lib" line 118:
++   In model: "DPWNISOD". Parameter: "ISRH" ignored.
+Warning 902: In file "/home/repository/ms/cap5/lib/diode.lib" line 118:
++   In model: "DPWNISOD". Parameter: "CSO" ignored.
+Warning 902: In file "/home/repository/ms/cap5/lib/diode.lib" line 119:
++   In model: "DPWNISOD". Parameter: "MS" ignored.
+  122  .MODEL DPWNISOJU
+  123  + D LEVEL=8 DIOLEV=9 TR=27                 TNOM=27               
+  124  + VR=0                  CJBR=0.00069281       CJSR=4.2583E-10       
+  125  + CJGR=0                 JSDBR=1.0938E-06      JSDSR=7.9288E-13      
+  126  + JSDGR=0               JSGBR=1.8916E-06      JSGSR=1.781E-11       
+  127  + JSGGR=0                VDBR=0.68223          VDSR=0.63628          
+  128  + VDGR=0.6              PB=0.31703            PS=0.22789            
+  129  + PG=0.33                NBJ=1                 NSJ=1                 
+  130  + NGJ=1
+  131  
+  132  * next model is for alias
+  133  .MODEL DPWNISO
+  134  + D LEVEL=8 DIOLEV=9 TR=27                 TNOM=27               
+  135  + VR=0                  CJBR=0.00069281       CJSR=4.2583E-10       
+  136  + CJGR=0                 JSDBR=1.0938E-06      JSDSR=7.9288E-13      
+  137  + JSDGR=0               JSGBR=1.8916E-06      JSGSR=1.781E-11       
+  138  + JSGGR=0                VDBR=0.68223          VDSR=0.63628          
+  139  + VDGR=0.6              PB=0.31703            PS=0.22789            
+  140  + PG=0.33                NBJ=1                 NSJ=1                 
+  141  + NGJ=1
+  142  
+  143  *----------------------------------------------------------------------
+  144  * Family diode Model DNPPS3V3 juncap typ
+  145  * Maturity : Silicon_verified
+  146  *----------------------------------------------------------------------
+  147  .MODEL DNPPS3V3D
+  148  + D IS=1.1009E-07         ISW=2.2436E-14        N=0.97                
+  149  + ISRH=5.2833E-06        CJO=0.0010561         CSO=4.1602E-11        
+  150  + VJ=0.70603             M=0.34066             MS=0.16108            
+  151  + TMEAS=27
+  152  
+Warning 902: In file "/home/repository/ms/cap5/lib/diode.lib" line 149:
++   In model: "DNPPS3V3D". Parameter: "ISRH" ignored.
+Warning 902: In file "/home/repository/ms/cap5/lib/diode.lib" line 149:
++   In model: "DNPPS3V3D". Parameter: "CSO" ignored.
+Warning 902: In file "/home/repository/ms/cap5/lib/diode.lib" line 150:
++   In model: "DNPPS3V3D". Parameter: "MS" ignored.
+  153  .MODEL DNPPS3V3JU
+  154  + D LEVEL=8 DIOLEV=9 TR=27                 TNOM=27               
+  155  + VR=0                  CJBR=0.0010561        CJSR=4.1602E-11       
+  156  + CJGR=2.0426E-10        JSDBR=1.1009E-07      JSDSR=2.2436E-14      
+  157  + JSDGR=0               JSGBR=5.2833E-06      JSGSR=4.1654E-11      
+  158  + JSGGR=0                VDBR=0.70603          VDSR=7.8797           
+  159  + VDGR=0.84974          PB=0.34066            PS=0.16108            
+  160  + PG=0.54338             NBJ=0.97              NSJ=0.93              
+  161  + NGJ=1
+  162  
+  163  * next model is for alias
+  164  .MODEL DNPPS3V3
+  165  + D LEVEL=8 DIOLEV=9 TR=27                 TNOM=27               
+  166  + VR=0                  CJBR=0.0010561        CJSR=4.1602E-11       
+  167  + CJGR=2.0426E-10        JSDBR=1.1009E-07      JSDSR=2.2436E-14      
+  168  + JSDGR=0               JSGBR=5.2833E-06      JSGSR=4.1654E-11      
+  169  + JSGGR=0                VDBR=0.70603          VDSR=7.8797           
+  170  + VDGR=0.84974          PB=0.34066            PS=0.16108            
+  171  + PG=0.54338             NBJ=0.97              NSJ=0.93              
+  172  + NGJ=1
+  173  
+  174  *----------------------------------------------------------------------
+  175  * Family diode Model DPPNW3V3 juncap typ
+  176  * Maturity : Silicon_verified
+  177  *----------------------------------------------------------------------
+  178  .MODEL DPPNW3V3D
+  179  + D IS=6.7438E-08         ISW=1E-15             N=0.97                
+  180  + ISRH=1.9906E-06        CJO=0.001071          CSO=5.636E-11         
+  181  + VJ=0.68686             M=0.32122             MS=0.15               
+  182  + TMEAS=27
+  183  
+Warning 902: In file "/home/repository/ms/cap5/lib/diode.lib" line 180:
++   In model: "DPPNW3V3D". Parameter: "ISRH" ignored.
+Warning 902: In file "/home/repository/ms/cap5/lib/diode.lib" line 180:
++   In model: "DPPNW3V3D". Parameter: "CSO" ignored.
+Warning 902: In file "/home/repository/ms/cap5/lib/diode.lib" line 181:
++   In model: "DPPNW3V3D". Parameter: "MS" ignored.
+  184  .MODEL DPPNW3V3JU
+  185  + D LEVEL=8 DIOLEV=9 TR=27                 TNOM=27               
+  186  + VR=0                  CJBR=0.001071         CJSR=5.636E-11        
+  187  + CJGR=1.6943E-10        JSDBR=6.7438E-08      JSDSR=1E-15           
+  188  + JSDGR=1E-16           JSGBR=1.9906E-06      JSGSR=5.1247E-11      
+  189  + JSGGR=2.9388E-11       VDBR=0.68686          VDSR=0.58744          
+  190  + VDGR=0.99942          PB=0.32122            PS=0.15               
+  191  + PG=0.49201             NBJ=0.97              NSJ=0.93              
+  192  + NGJ=1
+  193  
+  194  * next model is for alias
+  195  .MODEL DPPNW3V3
+  196  + D LEVEL=8 DIOLEV=9 TR=27                 TNOM=27               
+  197  + VR=0                  CJBR=0.001071         CJSR=5.636E-11        
+  198  + CJGR=1.6943E-10        JSDBR=6.7438E-08      JSDSR=1E-15           
+  199  + JSDGR=1E-16           JSGBR=1.9906E-06      JSGSR=5.1247E-11      
+  200  + JSGGR=2.9388E-11       VDBR=0.68686          VDSR=0.58744          
+  201  + VDGR=0.99942          PB=0.32122            PS=0.15               
+  202  + PG=0.49201             NBJ=0.97              NSJ=0.93              
+  203  + NGJ=1
+  204  
+  205  
+   19  ** END OF LIBRARY /home/repository/ms/cap5/lib/diode.lib LIBTYPE=diode_typ
+    7  ** END OF LIBRARY /home/repository/ms/cap5/lib/diode.lib LIBTYPE=CMOS013lib
+    7  ** including /home/repository/ms/cap5/lib/CMOS013.spi
+    1  .SUBCKT ND2HS A B Z GND VDD
+    2  *** Version 5.500
+    3  *** Create time, Fri Jul 13 23:38:12 2001
+    4  *** spice backannotate
+    5  XMN0 NET15 A GND GND ENHSGP_BS3JU W=0.640U L=0.130U 
+    6  +  AD=0.061P AS=0.305P PD=0.190U PS=2.870U 
+    7  XMN1 Z B NET15 GND ENHSGP_BS3JU W=0.640U L=0.130U 
+    8  +  AD=0.218P AS=0.061P PD=1.320U PS=0.190U 
+    9  XMP0 Z A VDD VDD EPHSGP_BS3JU W=0.770U L=0.130U 
+   10  +  AD=0.192P AS=0.471P PD=1.130U PS=4.130U 
+   11  XMP1 Z B VDD VDD EPHSGP_BS3JU W=0.770U L=0.130U 
+   12  +  AS=0.471P AD=0.192P PS=4.130U PD=1.130U 
+   13  C1 VDD GND 0.142FF
+   14  C2 GND GND 0.897FF
+   15  C4 Z GND 0.108FF
+   16  C5 A GND 0.129FF
+   17  C6 B GND 0.132FF
+   18  C1-2 VDD GND 0.132FF
+   19  C1-4 VDD Z 0.018FF
+   20  C1-5 VDD A 0.002FF
+   21  C1-6 VDD B 0.002FF
+   22  C2-4 GND Z 0.178FF
+   23  C2-5 GND A 0.067FF
+   24  C2-6 GND B 0.063FF
+   25  C4-5 Z A 0.099FF
+   26  C4-6 Z B 0.132FF
+   27  C5-6 A B 0.131FF
+   28  *
+   29  *
+   30  *
+   31  .ENDS ND2HS
+   32  
+   33  .SUBCKT ND2HSX8 A B Z GND VDD
+   34  *** Version 5.500
+   35  *** Create time, Fri Jul 13 23:39:37 2001
+   36  *** spice backannotate
+   37  XMN7 NET132 A GND GND ENHSGP_BS3JU W=1.280U L=0.130U 
+   82  .ENDS ND2HSX8
+   83  
+   84  .SUBCKT ND2LL A B Z GND VDD
+   85  *** Version 5.500
+   86  *** Create time, Fri Jul 13 23:38:12 2001
+   87  *** spice backannotate
+   88  XMN0 NET15 A GND GND ENLLGP_BS3JU W=0.640U L=0.130U 
+  114  .ENDS ND2LL
+  115  
+  116  .SUBCKT ND2LLX8 A B Z GND VDD
+  117  *** Version 5.500
+  118  *** Create time, Fri Jul 13 23:39:37 2001
+  119  *** spice backannotate
+  120  XMN7 NET132 A GND GND ENLLGP_BS3JU W=1.280U L=0.130U 
+  165  .ENDS ND2LLX8
+  166  
+  167  
+  168  .SUBCKT IVHS A Z GND VDD
+  169  *** Version 5.500
+  170  *** Create time, Fri Jul 13 23:05:54 2001
+  171  *** spice backannotate
+  172  XMN0 Z A GND GND ENHSGP_BS3JU W=0.585U L=0.130U 
+  188  .ENDS IVHS
+  189  
+  190  .SUBCKT IVHSX8 A Z GND VDD
+  191  *** Version 5.500
+  192  *** Create time, Fri Jul 13 23:08:32 2001
+  193  *** spice backannotate
+  194  XMN3 Z A GND GND ENHSGP_BS3JU W=1.170U L=0.130U 
+  223  .ENDS IVHSX8
+  224  
+  225  .SUBCKT IVHSA A Z GND VDD
+  226  *** Version 5.500
+  227  *** Create time, Fri Jul 13 23:05:54 2001
+  228  *** spice backannotate
+  229  XMN0 Z A GND GND ENHSGP_BS3JU W=2.585U L=0.130U 
+  245  .ENDS IVHSA
+  246  
+  247  
+  248  .SUBCKT IVLL A Z GND VDD
+  249  *** Version 5.500
+  250  *** Create time, Fri Jul 13 23:05:54 2001
+  251  *** spice backannotate
+  252  XMN0 Z A GND GND ENLLGP_BS3JU W=0.585U L=0.130U 
+  268  .ENDS IVLL
+  269  
+  270  
+  271  
+  272  .SUBCKT NR2HS A B Z GND VDD
+  273  *** Version 5.500
+  274  *** Create time, Fri Jul 13 23:54:55 2001
+  275  *** spice backannotate
+  276  XMN0 Z A GND GND ENHSGP_BS3JU W=0.340U L=0.130U 
+  301  .ENDS NR2HS
+  302  
+  303  .SUBCKT NR2LL A B Z GND VDD
+  304  *** Version 5.500
+  305  *** Create time, Fri Jul 13 23:54:55 2001
+  306  *** spice backannotate
+  307  XMN0 Z A GND GND ENLLGP_BS3JU W=0.340U L=0.130U 
+  332  .ENDS NR2LL
+  333  
+  334  
+  335  
+  336  .SUBCKT FA1HS A B CI CO Z GND VDD
+  337  *** Version 5.500
+  338  *** Create time, Fri Jul 13 22:39:06 2001
+  339  *** spice backannotate
+  340  XMN5 CO NET168 GND GND ENHSGP_BS3JU W=0.585U L=0.130U 
+  448  .ENDS FA1HS
+  449  	
+  450  
+  451  .SUBCKT FD1QLL CP D Q GND VDD
+  452  *** Version 5.500
+  453  *** Create time, Fri Jul 13 22:41:02 2001
+  454  *** spice backannotate
+  455  XMN2 NET0176 D GND GND ENLLGP_BS3JU W=0.240U L=0.130U 
+  580  .ENDS FD1QLL
+    7  
+    8   
+    9  *****************************************************
+   10  
+   11  * the nand  subcircuit is already described in the file CMOS013.spi
+   12  * included above. the name of the subcircuit is ND2HS
+   13  * and its template is: .subckt ND2HS A B Z gnd vdd
+   14  
+   15  
+   16  * instance of the nand: can be the same as for mynand
+   17  * only the reference to the template name must be changed 
+   18  XNAND INA INB OUTBIS GND_INT VDD_INT ND2HS
+   19  CLOAD OUT 0 LOAD
+   20  
+   21  * dummy 0 voltage generator used for measuring current
+   22  vdummy_c outbis out dc 0
+   23  vdummy_gnd gnd_int 0 dc 0
+   24  vdummy_vdd vdd_int vdd dc 0
+   25  
+   26  .PLOT I(VDUMMY_C) 
+   27  .PLOT I(VDUMMY_GND)
+   28  .PLOT I(VDUMMY_VDD)
+   29  *****************************************************
+   30  * defining inputs
+   31  vina inA 0 dc 1.2
+   32  vinb inB 0 pwl 0 0 1n 0 '1n+t_tran/0.8' 1.2 2n 1.2 '2n+t_tran/0.8' 0 
+   33  v_vdd vdd 0 DC alim
+   34  .PARAM ALIM=1.2
+   35  
+   36  * average values for load and rise/fall times
+   37  .PARAM T_TRAN=0.2608N 
+   38  .PARAM LOAD=0.028F
+   39  
+   40  
+   41  *********************************************************
+   42  * defining load variations
+   43  .DATA vectorload
+   44  + t_tran
+   45  + 0.0048n
+   46  + 0.1088n
+   47  + 0.2608n
+   48  + 0.5248n
+   49  + 0.8000n
+   50  .ENDDATA
+   51  
+   52  **********************************************************
+   53  *    Measuring rising and rising times
+   54  .MEASure tran rnand TRIG v(out) VAL='alim*0.1' RISE=1
+   55  +TARG v(out) VAL='alim*0.9' RISE=1
+   56  .MEASure tran fnand TRIG v(out) VAL='alim*0.9' FALL=1
+   57  +TARG v(out) VAL='alim*0.1' FALL=1
+   58  
+   59  *    Measuring rising delay
+   60  .MEASure tran nanddelayHL TRIG V(inB) VAL='alim*0.5' RISE=1 
+   61  + TARG V(out) VAL='alim*0.5' FALL=1
+   62  
+   63  *    Measuring falling delay
+   64  .MEASure tran nanddelayLH TRIG V(inB) VAL='alim*0.5' FALL=1
+   65  + TARG V(out) VAL='alim*0.5' RISE=1
+   66  
+   67  
+   68  * Measuring peak current
+   69  .MEASure tran maxIgndF MAX I(vdummy_gnd) FROM=1n TO 2ns 
+   70  .MEASure tran maxIvddR MIN I(vdummy_vdd) FROM=2n TO 3ns 
+   71  .MEASure tran maxIgndR MAX I(vdummy_gnd) FROM=2n TO 3ns 
+   72  .MEASure tran maxIvddF MIN I(vdummy_vdd) FROM=1n TO 2ns 
+   73  .MEASure tran maxIloadF MIN I(vdummy_c) FROM=1n TO 2ns 
+   74  .MEASure tran maxIloadR MAX I(vdummy_c) FROM=2n TO 3ns 
+   75  
+   76  
+   77  **********************************************************
+   78  * defining the simulation step and duration  
+   79  .tran 1p 3n sweep data=vectorload
+   80  
+   81  * instruction necessary for creating output data
+   82  * to be processed by a waveform viewer 
+   83  .OPTION post
+   84  
+   85  .OPTION LIMPROBE = 200000
+   86  .OPTION EPS=1.0e-9 NOMOD NOTRC SIMUDIV=4 BE ABSTOL=1e-15
+   87  
+
+End of file 
+
+
+***** 0  error(s). 
+***** 18  warning(s). 
+
+
+***>  1-Jun-2023 10:05:17 - PARSING completed: WALL CLOCK ELAPSED TIME 0s <***
+
+
+***>  1-Jun-2023 10:05:17 - STARTING ELABORATION PHASE ...
+Warning 252: In file "/home/repository/ms/cap5/lib/CMOS013.spi" line 14:
++   OBJECT "XNAND.C2": Self-connected object not created.
+
+----------------| Design Summary |-----------------
+25 elements
+8 nodes 
+6 sources
+
+Detail about objects and nodes found in the design:
+Number of nodes                     8
+Number of resistors                 0
+Number of capacitors                15
+Number of inductors                 0
+Number of voltage sources           6
+Number of current sources           0
+Number of dependent sources         0
+Number of diodes                    0
+Number of BJT                       0
+Number of JFET                      0
+Number of MOS                       4
+Number of SWITCHES                  0
+Number of transmission lines        0
+Total number of elements            25
+Repartition per level of MOS
+  BSIM3V3 4
+---------------------------------------------------
+Warning 382: COMMAND .OPTION EPS Value set to 1.000000E-09
++   This setting gives higher accuracy than default tuning,
++   but simulation time may increase.
+
+***** 0  error(s). 
+***** 20  warning(s). 
+
+
+------------| Elaboration Information |------------
+***> Memory:
+Peak memory usage (MB): 42
+Virtual memory usage (MB): 424
+
+***> Inputs:
+5 input signals
+---------------------------------------------------
+Note 108: Acquiring license Analog Simulator Kernel (eldokernel)
+
+
+0************************************************************************************************************************
+
+
+run number 1 out of 5
+   value of parameter T_TRAN is 4.800000E-12
+1************************************************************************************************************************
+
+*** DATE:  1-Jun-2023 10:05:17
+*** TITLE: * Characterizing a simple nand with load variation
+
+TEMPERATURE : 27.000000 degrees C
+
+
+
+
+1*************** 1-Jun-2023 ***********************  ELDO 2020.4 (64 bits)  (v20.4_0.1)  ***********************10:05:17*****************
+
+0* Characterizing a simple nand with load variation
+0****                 OPTION SUMMARY                                         TEMPERATURE =   27.000 DEG C
+
+0*************************************************************************************************************************
+
+
+
+
+
+*** DC Control Options : 
+
+GMIN           = 1.00e-12 NMAXSIZE       = 100000   ITL1           = 100      
+GRAMP          = 0        NETSIZE        = 100      VMINDC         = UNDEF    
+VMAXDC         = UNDEF    
+
+*** Initial Accuracy Control Options (May be adjusted during simulation): 
+
+ITOL           = 1.00e-06 EPS            = 1.00e-09 VNTOL          = 1.00e-09 
+RELTOL         = 1.00e-06 RELERR         = 5.00e-02 PIVREL         = 1.00e-03 
+PIVTOL         = 1.00e-16 ABSTOL         = 1.00e-15 FLXTOL         = 1.00e-11 
+MAXORD         = 1.00e+00 
+
+*** Time-step Control Options : 
+
+ZOOMTIME       = 1.00e+00 STEP           = 0.00e+00 STARTSMP       = 0.00e+00 
+FREQSMP        = 0.00e+00 COURESOL       = 0.00e+00 TRTOL          = 7.00e+00 
+HMIN           = 1.00e-12 ITL3           = 3        ITL4           = 13       
+FT             = 1.25e-01 DCLOG          = 1.00e+00 LVLTIM         = 2        
+LVLCNV         = 2        DVDT           = -1       RELVAR         = 1.50e-01 
+ABSVAR         = 2.00e-01 SAMPLE         = 0.00e+00 HMAX           = UNDEF    
+
+
+*** MosFet default Options : 
+
+SCALE          = 1.00e+00 SCALM          = 1.00e+00 SCALEBSIM      = 1.00e+00 
+DEFAD          = UNDEF    DEFAS          = UNDEF    DEFPD          = UNDEF    
+DEFPS          = UNDEF    DEFW           = 1.00e-04 DEFL           = 1.00e-04 
+DEFNRD         = UNDEF    DEFNRS         = UNDEF    XA             = 6.00e-06 
+LIMRMOS        = UNDEF    SHRINK         = 1.00e+00 
+
+*** General Information Options : 
+
+TUNING         = UNDEF    
+CPTIME         = UNDEF    STAT           = 0        TIMEDIV        = 0        
+SIMUDIV        = 4        SAVETIME       = 0        MAXTRAN        = 1000     
+MAXNODES       = 10000    MAXV           = 1.00e+13 LIMPROBE       = 200000   
+FLICKER_NOISE  = 0        THERMAL_NOISE  = 0        TNOM           = 2.70e+01 
+TMAX           = UNDEF    
+SPICDC         = 0        SPIOUT         = 0        NEWTON         = 1        
+OSR            = 0        TRAP           = 0        GEAR           = 0        
+BE             = 1        PROBEOP        = 0        NOLAT          = 0        
+NWLAT          = 0        ANALOG         = 0        BBDEBUG        = 0        
+NOSIZECHK      = 0        QTRUNC         = 0        UNBOUND        = 0        
+LCAPOP         = 0        NOAEX          = 0        AEX            = 0        
+AEX            = 0        STVER          = 0        MOTOROLA       = 0        
+AMS            = 0        ASPEC          = 0        INPUT          = 0        
+NOINIT         = 0        PSF            = 0        NOBIN          = 0        
+NOCOU          = 1        WL             = 0        NODE           = 0        
+LIST           = 0        SPI3BIN        = 0        SPI3ASC        = 0        
+NOMOD          = 1        NOBIN          = 0        NOCOU          = 1        
+RMOS           = 0        NWRMOS         = 1        NONWRMOS       = 0        
+USEDEFAP       = 0        NOASCII        = 0        ASCII          = 1        
+MIXED          = 0        SWITCH         = 0        USERSWITCH     = 0        
+TIMING         = 0        MODWL          = 1        ULOGIC         = 0        
+
+
+
+
+***>  1-Jun-2023 10:05:17 - ELABORATION completed: WALL CLOCK ELAPSED TIME 0s <***
+
+
+***>  1-Jun-2023 10:05:17 - STARTING SIMULATION PHASE ...
+
+***>  1-Jun-2023 10:05:17 - DC FOR TRAN completed: TOTAL WALL CLOCK ELAPSED TIME 0s <***
+
+
+
+
+
+1*************** 1-Jun-2023 ***********************  ELDO 2020.4 (64 bits)  (v20.4_0.1)  ***********************10:05:17*****************
+
+0* Characterizing a simple nand with load variation
+0****                 INITIAL TRANSIENT SOLUTION                           TEMPERATURE =   27.000 DEG C
+
+0*************************************************************************************************************************
+
+
+  NODE         VOLTAGE      NODE         VOLTAGE      NODE         VOLTAGE    
+GND_INT      0.0         INA          1.2000E+00  INB          0.0         
+OUT          1.2000E+00  OUTBIS       1.2000E+00  VDD          1.2000E+00  
+VDD_INT      1.2000E+00  XNAND.NET15  4.0840E-06  
+
+
+   VOLTAGE SOURCE CURRENT
+
+NAME      CURRENT      VOLTAGE      POWER        
+VDUMMY_C   0.0          0.0          0.0         
+VDUMMY_GND   5.6590E-09   0.0          0.0         
+VDUMMY_VDD  -5.6590E-09   0.0          0.0         
+VINA       0.0          1.2000E+00   0.0         
+VINB       0.0          0.0          0.0         
+V_VDD     -5.6590E-09   1.2000E+00  -6.7908E-09  
+
+   TOTAL POWER DISSIPATION:  6.7908E-09 WATTS
+
+
+
+
+
+Eldo NEWTON: VNTOL=1.000000e-09 RELTOL=1.000000e-06
+
+................................................
+Simulation progress                : 25% (t = 1.0000 N)
+Thread CPU time                    :  0h  0mn  0s  10   ( 0h  0mn  0s  10)
+CPU Usage                          : 100%               (100%)
+................................................
+Simulation progress                : 50% (t = 1.6508 N)
+Thread CPU time                    :  0h  0mn  0s  20   ( 0h  0mn  0s  30)
+CPU Usage                          : 100%               (100%)
+................................................
+Simulation progress                : 75% (t = 2.2691 N)
+Thread CPU time                    :  0h  0mn  0s  20   ( 0h  0mn  0s  50)
+CPU Usage                          : 100%               (100%)
+................................................
+Simulation progress                : 100% (t = 3.0000 N)
+Thread CPU time                    :  0h  0mn  0s   0   ( 0h  0mn  0s  50)
+CPU Usage                          :   0%               (100%)
+
+***>  1-Jun-2023 10:05:19 - TRAN completed: TOTAL WALL CLOCK ELAPSED TIME 0s <***
+
+
+
+1*************** 1-Jun-2023 ***********************  ELDO 2020.4 (64 bits)  (v20.4_0.1)  ***********************10:05:17*****************
+
+0* Characterizing a simple nand with load variation
+0****                 EXTRACT INFORMATION                                    
+0****   PARAM T_TRAN =  4.8000E-12
+0****   TEMPERATURE =  2.7000E+01 Celsius
+
+0*************************************************************************************************************************
+
+
+
+  RNAND        =  1.6917E-11   targ=  2.0261E-09     trig=  2.0091E-09
+  FNAND        =  1.4226E-11   targ=  1.0229E-09     trig=  1.0087E-09
+  NANDDELAYHL  =  1.0486E-11   targ=  1.0135E-09     trig=  1.0030E-09
+  NANDDELAYLH  =  1.1520E-11   targ=  2.0145E-09     trig=  2.0030E-09
+  MAXIGNDF     =  3.1829E-04     at=  1.0055E-09  from=  1.0000E-09     to=  2.0000E-09
+  MAXIVDDR     = -3.4358E-04     at=  2.0055E-09  from=  2.0000E-09     to=  3.0000E-09
+  MAXIGNDR     =  6.3267E-05     at=  2.0105E-09  from=  2.0000E-09     to=  3.0000E-09
+  MAXIVDDF     = -8.8918E-05     at=  1.0075E-09  from=  1.0000E-09     to=  2.0000E-09
+  MAXILOADF    = -2.8519E-06     at=  1.0115E-09  from=  1.0000E-09     to=  2.0000E-09
+  MAXILOADR    =  2.7433E-06     at=  2.0075E-09  from=  2.0000E-09     to=  3.0000E-09
+
+
+
+0************************************************************************************************************************
+
+
+run number 2 out of 5
+   value of parameter T_TRAN is 1.088000E-10
+1************************************************************************************************************************
+
+*** DATE:  1-Jun-2023 10:05:19
+*** TITLE: * Characterizing a simple nand with load variation
+
+TEMPERATURE : 27.000000 degrees C
+
+
+***>  1-Jun-2023 10:05:19 - DC FOR TRAN completed: TOTAL WALL CLOCK ELAPSED TIME 0s <***
+
+
+
+
+
+1*************** 1-Jun-2023 ***********************  ELDO 2020.4 (64 bits)  (v20.4_0.1)  ***********************10:05:19*****************
+
+0* Characterizing a simple nand with load variation
+0****                 INITIAL TRANSIENT SOLUTION                           TEMPERATURE =   27.000 DEG C
+
+0*************************************************************************************************************************
+
+
+  NODE         VOLTAGE      NODE         VOLTAGE      NODE         VOLTAGE    
+GND_INT      0.0         INA          1.2000E+00  INB          0.0         
+OUT          1.2000E+00  OUTBIS       1.2000E+00  VDD          1.2000E+00  
+VDD_INT      1.2000E+00  XNAND.NET15  4.0840E-06  
+
+
+   VOLTAGE SOURCE CURRENT
+
+NAME      CURRENT      VOLTAGE      POWER        
+VDUMMY_C   0.0          0.0          0.0         
+VDUMMY_GND   5.6590E-09   0.0          0.0         
+VDUMMY_VDD  -5.6590E-09   0.0          0.0         
+VINA       0.0          1.2000E+00   0.0         
+VINB       0.0          0.0          0.0         
+V_VDD     -5.6590E-09   1.2000E+00  -6.7908E-09  
+
+   TOTAL POWER DISSIPATION:  6.7908E-09 WATTS
+
+
+
+
+
+Eldo NEWTON: VNTOL=1.000000e-09 RELTOL=1.000000e-06
+
+................................................
+Simulation progress                : 25% (t = 1.0000 N)
+Thread CPU time                    :  0h  0mn  0s   0   ( 0h  0mn  0s   0)
+CPU Usage                          :   0%               (  0%)
+................................................
+Simulation progress                : 50% (t = 1.6126 N)
+Thread CPU time                    :  0h  0mn  0s  40   ( 0h  0mn  0s  40)
+CPU Usage                          :  95%               ( 90%)
+................................................
+Simulation progress                : 75% (t = 2.2758 N)
+Thread CPU time                    :  0h  0mn  0s  50   ( 0h  0mn  0s  90)
+CPU Usage                          : 100%               (100%)
+................................................
+Simulation progress                : 100% (t = 3.0000 N)
+Thread CPU time                    :  0h  0mn  0s   0   ( 0h  0mn  0s  90)
+CPU Usage                          :   0%               (100%)
+
+***>  1-Jun-2023 10:05:19 - TRAN completed: TOTAL WALL CLOCK ELAPSED TIME 0s <***
+
+
+
+1*************** 1-Jun-2023 ***********************  ELDO 2020.4 (64 bits)  (v20.4_0.1)  ***********************10:05:19*****************
+
+0* Characterizing a simple nand with load variation
+0****                 EXTRACT INFORMATION                                    
+0****   PARAM T_TRAN =  1.0880E-10
+0****   TEMPERATURE =  2.7000E+01 Celsius
+
+0*************************************************************************************************************************
+
+
+
+  RNAND        =  3.8548E-11   targ=  2.1116E-09     trig=  2.0731E-09
+  FNAND        =  3.6956E-11   targ=  1.1014E-09     trig=  1.0645E-09
+  NANDDELAYHL  =  1.8417E-11   targ=  1.0864E-09     trig=  1.0680E-09
+  NANDDELAYLH  =  2.5686E-11   targ=  2.0937E-09     trig=  2.0680E-09
+  MAXIGNDF     =  9.6350E-05     at=  1.0904E-09  from=  1.0000E-09     to=  2.0000E-09
+  MAXIVDDR     = -8.5379E-05     at=  2.0938E-09  from=  2.0000E-09     to=  3.0000E-09
+  MAXIGNDR     =  3.7061E-05     at=  2.0788E-09  from=  2.0000E-09     to=  3.0000E-09
+  MAXIVDDF     = -4.1051E-05     at=  1.0774E-09  from=  1.0000E-09     to=  2.0000E-09
+  MAXILOADF    = -1.1520E-06     at=  1.0914E-09  from=  1.0000E-09     to=  2.0000E-09
+  MAXILOADR    =  1.0233E-06     at=  2.0968E-09  from=  2.0000E-09     to=  3.0000E-09
+
+
+
+0************************************************************************************************************************
+
+
+run number 3 out of 5
+   value of parameter T_TRAN is 2.608000E-10
+1************************************************************************************************************************
+
+*** DATE:  1-Jun-2023 10:05:19
+*** TITLE: * Characterizing a simple nand with load variation
+
+TEMPERATURE : 27.000000 degrees C
+
+
+***>  1-Jun-2023 10:05:19 - DC FOR TRAN completed: TOTAL WALL CLOCK ELAPSED TIME 0s <***
+
+
+
+
+
+1*************** 1-Jun-2023 ***********************  ELDO 2020.4 (64 bits)  (v20.4_0.1)  ***********************10:05:19*****************
+
+0* Characterizing a simple nand with load variation
+0****                 INITIAL TRANSIENT SOLUTION                           TEMPERATURE =   27.000 DEG C
+
+0*************************************************************************************************************************
+
+
+  NODE         VOLTAGE      NODE         VOLTAGE      NODE         VOLTAGE    
+GND_INT      0.0         INA          1.2000E+00  INB          0.0         
+OUT          1.2000E+00  OUTBIS       1.2000E+00  VDD          1.2000E+00  
+VDD_INT      1.2000E+00  XNAND.NET15  4.0840E-06  
+
+
+   VOLTAGE SOURCE CURRENT
+
+NAME      CURRENT      VOLTAGE      POWER        
+VDUMMY_C   0.0          0.0          0.0         
+VDUMMY_GND   5.6590E-09   0.0          0.0         
+VDUMMY_VDD  -5.6590E-09   0.0          0.0         
+VINA       0.0          1.2000E+00   0.0         
+VINB       0.0          0.0          0.0         
+V_VDD     -5.6590E-09   1.2000E+00  -6.7908E-09  
+
+   TOTAL POWER DISSIPATION:  6.7908E-09 WATTS
+
+
+
+
+
+Eldo NEWTON: VNTOL=1.000000e-09 RELTOL=1.000000e-06
+
+................................................
+Simulation progress                : 25% (t = 1.0000 N)
+Thread CPU time                    :  0h  0mn  0s   0   ( 0h  0mn  0s   0)
+CPU Usage                          :   0%               (  0%)
+................................................
+Simulation progress                : 50% (t = 1.5126 N)
+Thread CPU time                    :  0h  0mn  0s  50   ( 0h  0mn  0s  50)
+CPU Usage                          :  87%               ( 84%)
+................................................
+Simulation progress                : 75% (t = 2.2511 N)
+Thread CPU time                    :  0h  0mn  0s  50   ( 0h  0mn  0s 100)
+CPU Usage                          : 100%               ( 98%)
+................................................
+Simulation progress                : 100% (t = 3.0000 N)
+Thread CPU time                    :  0h  0mn  0s  10   ( 0h  0mn  0s 110)
+CPU Usage                          : 100%               (100%)
+
+***>  1-Jun-2023 10:05:19 - TRAN completed: TOTAL WALL CLOCK ELAPSED TIME 0s <***
+
+
+
+1*************** 1-Jun-2023 ***********************  ELDO 2020.4 (64 bits)  (v20.4_0.1)  ***********************10:05:19*****************
+
+0* Characterizing a simple nand with load variation
+0****                 EXTRACT INFORMATION                                    
+0****   PARAM T_TRAN =  2.6080E-10
+0****   TEMPERATURE =  2.7000E+01 Celsius
+
+0*************************************************************************************************************************
+
+
+
+  RNAND        =  6.7428E-11   targ=  2.2285E-09     trig=  2.1611E-09
+  FNAND        =  6.8692E-11   targ=  1.2072E-09     trig=  1.1385E-09
+  NANDDELAYHL  =  2.0691E-11   targ=  1.1837E-09     trig=  1.1630E-09
+  NANDDELAYLH  =  3.8121E-11   targ=  2.2011E-09     trig=  2.1630E-09
+  MAXIGNDF     =  7.6801E-05     at=  1.1908E-09  from=  1.0000E-09     to=  2.0000E-09
+  MAXIVDDR     = -7.0220E-05     at=  2.2002E-09  from=  2.0000E-09     to=  3.0000E-09
+  MAXIGNDR     =  4.5783E-05     at=  2.1792E-09  from=  2.0000E-09     to=  3.0000E-09
+  MAXIVDDF     = -4.7793E-05     at=  1.1718E-09  from=  1.0000E-09     to=  2.0000E-09
+  MAXILOADF    = -7.0294E-07     at=  1.1938E-09  from=  1.0000E-09     to=  2.0000E-09
+  MAXILOADR    =  6.4228E-07     at=  2.2076E-09  from=  2.0000E-09     to=  3.0000E-09
+
+
+
+0************************************************************************************************************************
+
+
+run number 4 out of 5
+   value of parameter T_TRAN is 5.248000E-10
+1************************************************************************************************************************
+
+*** DATE:  1-Jun-2023 10:05:19
+*** TITLE: * Characterizing a simple nand with load variation
+
+TEMPERATURE : 27.000000 degrees C
+
+
+***>  1-Jun-2023 10:05:19 - DC FOR TRAN completed: TOTAL WALL CLOCK ELAPSED TIME 0s <***
+
+
+
+
+
+1*************** 1-Jun-2023 ***********************  ELDO 2020.4 (64 bits)  (v20.4_0.1)  ***********************10:05:19*****************
+
+0* Characterizing a simple nand with load variation
+0****                 INITIAL TRANSIENT SOLUTION                           TEMPERATURE =   27.000 DEG C
+
+0*************************************************************************************************************************
+
+
+  NODE         VOLTAGE      NODE         VOLTAGE      NODE         VOLTAGE    
+GND_INT      0.0         INA          1.2000E+00  INB          0.0         
+OUT          1.2000E+00  OUTBIS       1.2000E+00  VDD          1.2000E+00  
+VDD_INT      1.2000E+00  XNAND.NET15  4.0840E-06  
+
+
+   VOLTAGE SOURCE CURRENT
+
+NAME      CURRENT      VOLTAGE      POWER        
+VDUMMY_C   0.0          0.0          0.0         
+VDUMMY_GND   5.6590E-09   0.0          0.0         
+VDUMMY_VDD  -5.6590E-09   0.0          0.0         
+VINA       0.0          1.2000E+00   0.0         
+VINB       0.0          0.0          0.0         
+V_VDD     -5.6590E-09   1.2000E+00  -6.7908E-09  
+
+   TOTAL POWER DISSIPATION:  6.7908E-09 WATTS
+
+
+
+
+
+Eldo NEWTON: VNTOL=1.000000e-09 RELTOL=1.000000e-06
+
+................................................
+Simulation progress                : 25% (t = 1.0000 N)
+Thread CPU time                    :  0h  0mn  0s  10   ( 0h  0mn  0s  10)
+CPU Usage                          : 100%               (100%)
+................................................
+Simulation progress                : 50% (t = 1.5073 N)
+Thread CPU time                    :  0h  0mn  0s  60   ( 0h  0mn  0s  70)
+CPU Usage                          :  96%               (100%)
+................................................
+Simulation progress                : 75% (t = 2.2508 N)
+Thread CPU time                    :  0h  0mn  0s  10   ( 0h  0mn  0s  80)
+CPU Usage                          :  66%               (100%)
+................................................
+Simulation progress                : 100% (t = 3.0000 N)
+Thread CPU time                    :  0h  0mn  0s  60   ( 0h  0mn  0s 140)
+CPU Usage                          : 100%               (100%)
+
+***>  1-Jun-2023 10:05:19 - TRAN completed: TOTAL WALL CLOCK ELAPSED TIME 0s <***
+
+
+
+1*************** 1-Jun-2023 ***********************  ELDO 2020.4 (64 bits)  (v20.4_0.1)  ***********************10:05:19*****************
+
+0* Characterizing a simple nand with load variation
+0****                 EXTRACT INFORMATION                                    
+0****   PARAM T_TRAN =  5.2480E-10
+0****   TEMPERATURE =  2.7000E+01 Celsius
+
+0*************************************************************************************************************************
+
+
+
+  RNAND        =  1.1468E-10   targ=  2.4276E-09     trig=  2.3129E-09
+  FNAND        =  1.1909E-10   targ=  1.3848E-09     trig=  1.2657E-09
+  NANDDELAYHL  =  1.9663E-11   targ=  1.3477E-09     trig=  1.3280E-09
+  NANDDELAYLH  =  5.4303E-11   targ=  2.3823E-09     trig=  2.3280E-09
+  MAXIGNDF     =  6.8438E-05     at=  1.3576E-09  from=  1.0000E-09     to=  2.0000E-09
+  MAXIVDDR     = -6.4305E-05     at=  2.3798E-09  from=  2.0000E-09     to=  3.0000E-09
+  MAXIGNDR     =  4.9651E-05     at=  2.3507E-09  from=  2.0000E-09     to=  3.0000E-09
+  MAXIVDDF     = -5.0970E-05     at=  1.3325E-09  from=  1.0000E-09     to=  2.0000E-09
+  MAXILOADF    = -4.5344E-07     at=  1.3651E-09  from=  1.0000E-09     to=  2.0000E-09
+  MAXILOADR    =  4.2027E-07     at=  2.3914E-09  from=  2.0000E-09     to=  3.0000E-09
+
+
+
+0************************************************************************************************************************
+
+
+run number 5 out of 5
+   value of parameter T_TRAN is 8.000000E-10
+1************************************************************************************************************************
+
+*** DATE:  1-Jun-2023 10:05:19
+*** TITLE: * Characterizing a simple nand with load variation
+
+TEMPERATURE : 27.000000 degrees C
+
+
+***>  1-Jun-2023 10:05:19 - DC FOR TRAN completed: TOTAL WALL CLOCK ELAPSED TIME 0s <***
+
+
+
+
+
+1*************** 1-Jun-2023 ***********************  ELDO 2020.4 (64 bits)  (v20.4_0.1)  ***********************10:05:19*****************
+
+0* Characterizing a simple nand with load variation
+0****                 INITIAL TRANSIENT SOLUTION                           TEMPERATURE =   27.000 DEG C
+
+0*************************************************************************************************************************
+
+
+  NODE         VOLTAGE      NODE         VOLTAGE      NODE         VOLTAGE    
+GND_INT      0.0         INA          1.2000E+00  INB          0.0         
+OUT          1.2000E+00  OUTBIS       1.2000E+00  VDD          1.2000E+00  
+VDD_INT      1.2000E+00  XNAND.NET15  4.0840E-06  
+
+
+   VOLTAGE SOURCE CURRENT
+
+NAME      CURRENT      VOLTAGE      POWER        
+VDUMMY_C   0.0          0.0          0.0         
+VDUMMY_GND   5.6590E-09   0.0          0.0         
+VDUMMY_VDD  -5.6590E-09   0.0          0.0         
+VINA       0.0          1.2000E+00   0.0         
+VINB       0.0          0.0          0.0         
+V_VDD     -5.6590E-09   1.2000E+00  -6.7908E-09  
+
+   TOTAL POWER DISSIPATION:  6.7908E-09 WATTS
+
+
+
+
+
+Eldo NEWTON: VNTOL=1.000000e-09 RELTOL=1.000000e-06
+
+................................................
+Simulation progress                : 25% (t = 1.0000 N)
+Thread CPU time                    :  0h  0mn  0s   0   ( 0h  0mn  0s   0)
+CPU Usage                          :   0%               (  0%)
+................................................
+Simulation progress                : 50% (t = 1.5001 N)
+Thread CPU time                    :  0h  0mn  0s  40   ( 0h  0mn  0s  40)
+CPU Usage                          : 100%               (100%)
+................................................
+Simulation progress                : 75% (t = 2.2540 N)
+Thread CPU time                    :  0h  0mn  0s  30   ( 0h  0mn  0s  70)
+CPU Usage                          :  83%               ( 95%)
+................................................
+Simulation progress                : 100% (t = 3.0000 N)
+Thread CPU time                    :  0h  0mn  0s  60   ( 0h  0mn  0s 130)
+CPU Usage                          : 100%               (100%)
+
+***>  1-Jun-2023 10:05:19 - TRAN completed: TOTAL WALL CLOCK ELAPSED TIME 0s <***
+
+
+
+1*************** 1-Jun-2023 ***********************  ELDO 2020.4 (64 bits)  (v20.4_0.1)  ***********************10:05:19*****************
+
+0* Characterizing a simple nand with load variation
+0****                 EXTRACT INFORMATION                                    
+0****   PARAM T_TRAN =  8.0000E-10
+0****   TEMPERATURE =  2.7000E+01 Celsius
+
+0*************************************************************************************************************************
+
+
+
+  RNAND        =  1.6459E-10   targ=  2.6355E-09     trig=  2.4709E-09
+  FNAND        =  1.6926E-10   targ=  1.5672E-09     trig=  1.3979E-09
+  NANDDELAYHL  =  1.6097E-11   targ=  1.5161E-09     trig=  1.5000E-09
+  NANDDELAYLH  =  6.8295E-11   targ=  2.5683E-09     trig=  2.5000E-09
+  MAXIGNDF     =  6.5153E-05     at=  1.5286E-09  from=  1.0000E-09     to=  2.0000E-09
+  MAXIVDDR     = -6.2087E-05     at=  2.5643E-09  from=  2.0000E-09     to=  3.0000E-09
+  MAXIGNDR     =  5.1208E-05     at=  2.5300E-09  from=  2.0000E-09     to=  3.0000E-09
+  MAXIVDDF     = -5.2292E-05     at=  1.5001E-09  from=  1.0000E-09     to=  2.0000E-09
+  MAXILOADF    = -3.4199E-07     at=  1.5379E-09  from=  1.0000E-09     to=  2.0000E-09
+  MAXILOADR    =  3.1900E-07     at=  2.5792E-09  from=  2.0000E-09     to=  3.0000E-09
+
+1*************** 1-Jun-2023 ***********************  ELDO 2020.4 (64 bits)  (v20.4_0.1)  ***********************10:05:19*****************
+
+0* Characterizing a simple nand with load variation
+0****                 ACCOUNTING INFORMATION                                 TEMPERATURE =   27.000 DEG C
+
+0*************************************************************************************************************************
+
+
+
+
+
+
+-----------| Simulated Design Summary |------------
+
+Detail about objects and nodes simulated:
+Number of nodes                     8
+Number of intrinsic nodes           0
+Number of input signals             5
+Number of resistors                 0
+Number of floating capacitors       10
+Number of grounded capacitors       5
+Number of inductors                 0
+Number of voltage sources           6
+Number of current sources           0
+Number of dependent sources         0
+Number of diodes                    0
+Number of BJT                       0
+Number of JFET                      0
+Number of MOS                       4
+Number of SWITCHES                  0
+Number of transmission lines        0
+Total number of elements simulated  25
+Repartition per level of MOS
+  BSIM3V3 4
+Number of equations                 4
+Number of non-zero terms            10
+Percent Zeros                       37.5
+Number of Newton iterations         1080
+Average number of Newton iterations 2.992
+Number of accepted time steps       361
+Number of rejected time steps       63
+      due to LTE                    63
+      due to Newton                 0
+Evaluation of active devices        4583
+Virtual memory size (MB)            423
+Peak memory size (MB)      46
+---------------------------------------------------
+***>MESSAGE SUMMARY: 20 warnings
+
+***>  1-Jun-2023 10:05:19 - GLOBAL CPU TIME 0s 800ms <***
+
+
+***>  1-Jun-2023 10:05:19 - GLOBAL WALL CLOCK ELAPSED TIME 2s <***
+
+
+  Job started at  1-Jun-2023 10:05:17
+  Job end at      1-Jun-2023 10:05:19
+
+  Run on localhost.localdomain (Linux 3.10.0-957.5.1.el7.x86_64)
+
+-----------------------------------------
+Maximum number of license(s) consumed:
+   1 Analog Simulator Kernel (eldokernel)
+
+Time spent acquiring licenses: 0.125 s (avg: 0.062 s, max: 0.077 s at Thu Jun  1 10:05:17 2023)
+Time spent releasing licenses: 0.010 s (avg: 0.005 s, max: 0.007 s at Thu Jun  1 10:05:19 2023)
+-----------------------------------------
+
+Simulation Finished.

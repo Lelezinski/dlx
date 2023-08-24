@@ -1,0 +1,14 @@
+analyze -library WORK -format vhdl { constants.vhd fa.vhd rca.vhd be_block.vhd b_mux.vhd boothmul.vhd }
+elaborate BOOTHMUL -architecture MIXED -library WORK
+set_wire_load_model -name 5K_hvratio_1_4
+
+# Forces a combinational max delay of 10 ns from each of the inputs
+#  to each of the output in case combinational paths are present 
+set_max_delay 10 -from [all_inputs] -to [all_outputs]
+compile -map_effort high
+
+# Reports
+report_power > mul_timeopt_pw.rpt
+report_timing > mul_timeopt_t.rpt
+write -hierarchy -f verilog -output mul.v
+write_sdc MUL.sdc
