@@ -1,1 +1,0 @@
-/home/ms23.52/MS/cap6/6.3/MUL.sdc

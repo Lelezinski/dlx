@@ -1,0 +1,1 @@
+/home/ms23.52/MS/cap6/6.2/innovus/ADD.sdc
