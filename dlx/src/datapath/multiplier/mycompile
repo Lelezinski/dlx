@@ -1,0 +1,14 @@
+#!/bin/bash
+
+e=0
+
+vcom constants.vhd && (echo  -e "Success... \n") || exit 1
+vcom fa.vhd && (echo  -e "Success... \n") || exit 1
+vcom rca.vhd && (echo  -e "Success... \n") || exit 1
+vcom b_mux.vhd && (echo  -e "Success... \n") || exit 1
+vcom be_block.vhd && (echo  -e "Success... \n") || exit 1
+vcom boothmul.vhd && (echo  -e "Success... \n") || exit 1
+vcom tb_multiplier.vhd && (echo  -e "Success... \n") || exit 1
+
+echo Done.
+echo $e errors.
