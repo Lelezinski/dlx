@@ -3,7 +3,7 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 -- use IEEE.std_logic_unsigned.all;
 -- use IEEE.std_logic_arith.all;
-use WORK.constants.all;
+use WORK.myTypes.all;
 use WORK.alu_type.all;
 use IEEE.math_real.all; -- for ceil and log2 functions
 

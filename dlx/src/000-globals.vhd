@@ -4,6 +4,32 @@ use ieee.std_logic_1164.all;
 package myTypes is
 
     ---- CONSTANTS -----
+    constant numBit : integer := 16;
+
+    -- Mux
+    constant IVDELAY : time := 0 ns; --0.1 ns;
+    constant NDDELAY : time := 0 ns; -- 0.2 ns;
+    constant NDDELAYRISE : time := 0 ns; -- 0.6 ns;
+    constant NDDELAYFALL : time := 0 ns; -- 0.4 ns;
+    constant NRDELAY : time := 0 ns; -- 0.2 ns;
+    constant DRCAS : time := 0 ns; -- 1
+    constant DRCAC : time := 0 ns; -- 2
+    constant TP_MUX : time := 0 ns;
+
+    -- Adder
+    constant CARRY_SELECT_NBIT : integer := 4; -- how many bits generate a carry
+    constant SUM_GENERATOR_NBLOCKS : integer := numBit/CARRY_SELECT_NBIT; -- numBit / CARRY_SELECT_NBIT
+
+    -- Multiplier
+   constant NUMBIT_MUL : integer := 32;
+
+    -- Register File
+    constant REG_WORD_LEN : integer := 8;
+    constant REG_NUM : integer := 8;
+    -- WRF
+    constant NUM_GLOBAL_REGISTERS : integer := 1; -- M
+    constant NUM_LIO_REGISTERS : integer := 3; -- N (LOCAL/INPUT/OUTPUT REGS)
+    constant NUM_WINDOWS : integer := 4; -- F
 
     -- TestBench
     constant C_TB_STAGES : integer := 3; -- Number of Clock Cycles between two instructions

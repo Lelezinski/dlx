@@ -1,7 +1,7 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
-use work.constants.all;
+use WORK.myTypes.all;
 
 entity TB_P4_ADDER is
 end TB_P4_ADDER;

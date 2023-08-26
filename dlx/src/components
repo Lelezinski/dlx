@@ -1,9 +1,9 @@
-./datapath/mux/constants.vhd 
+./000-globals.vhd
+
 ./datapath/mux/iv.vhd
 ./datapath/mux/nd2.vhd
 ./datapath/mux/mux21_generic.vhd
 
-./datapath/adder/constants.vhd 
 ./datapath/adder/fa.vhd 
 ./datapath/adder/rca.vhd 
 ./datapath/adder/carry_select.vhd 
@@ -15,7 +15,6 @@
 ./datapath/adder/p4_adder.vhd 
 ./datapath/adder/tb_p4_adder.vhd 
 
-./datapath/multiplier/constants.vhd
 ./datapath/multiplier/fa.vhd
 ./datapath/multiplier/rca.vhd
 ./datapath/multiplier/b_mux.vhd
@@ -23,18 +22,15 @@
 ./datapath/multiplier/boothmul.vhd
 ./datapath/multiplier/tb_multiplier.vhd
 
-./datapath/regfile/constants.vhd
 ./datapath/regfile/registerfile.vhd
 ./datapath/regfile/tb_registerfile.vhd
 
 ./datapath/shifter/01-generic_shifter.vhd
 
-./datapath/simpleALU/constants.vhd
 ./datapath/simpleALU/alu_type.vhd
 ./datapath/simpleALU/alu.vhd
 ./datapath/simpleALU/tb_alu.vhd
 
-./000-globals.vhd
 ./a.b-DataPath.vhd
 ./a.c-IRAM.vhd
 ./a-DLX.vhd
@@ -42,4 +38,3 @@
 ./CU_FSM.vhd
 ./CU_HW.vhd
 ./CU_UP.vhd
-./

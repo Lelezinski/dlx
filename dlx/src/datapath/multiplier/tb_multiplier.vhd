@@ -1,7 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_signed.all;
-use WORK.constants.all;
+use WORK.myTypes.all;
 
 entity MULTIPLIER_tb is
 end MULTIPLIER_tb;

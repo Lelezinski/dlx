@@ -1,6 +1,6 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
-use WORK.constants.all; -- libreria WORK user-defined
+use WORK.myTypes.all; -- libreria WORK user-defined
 
 entity MUX21_GENERIC is
 	Generic (NBIT: integer:= numBit;
