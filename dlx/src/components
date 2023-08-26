@@ -15,8 +15,6 @@
 ./datapath/adder/p4_adder.vhd 
 ./datapath/adder/tb_p4_adder.vhd 
 
-./datapath/multiplier/fa.vhd
-./datapath/multiplier/rca.vhd
 ./datapath/multiplier/b_mux.vhd
 ./datapath/multiplier/be_block.vhd
 ./datapath/multiplier/boothmul.vhd
