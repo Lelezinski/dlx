@@ -2,40 +2,35 @@
 
 SIM_DIR='./sim'
 SRC_DIR='./src'
+SIM_FILE_LIST='./components'
 
-# Compilation
-# echo $(pwd)
-# basedir=$(dirname $0)
-# cd $basedir
-# echo $(pwd)
-#
-echo "Starting Compilation."
-echo "Moving into simulation directory"
+echo "[INFO] Starting Compilation."
+echo "[INFO] Moving into simulation directory"
 
+rm -rf sim 
 if [ ! -d "$SIM_DIR" ]; then
-    echo "$SIM_DIR does not exist yet."
-    echo "Creating it."
+    echo "[INFO] $SIM_DIR does not exist yet."
+    echo "[INFO] Creating it."
     mkdir -p "$SIM_DIR"
-    echo "Copying sources from $SRC_DIR"
+    echo "[INFO] Copying sources from $SRC_DIR"
     cp -r $SRC_DIR/* $SIM_DIR/
 else
-    echo "$SIM_DIR found."
+    echo "[INFO] $SIM_DIR found."
 fi
 
-echo "Sourcing design compiler bins"
-source /eda/scripts/init_design_vision
+cd "$SIM_DIR"
+echo "[INFO] (SETMENTOR)"
+INSTALL_DIR=/eda/mentor/2020-21/RHELx86/QUESTA-CORE-PRIME_2020.4/questasim/linux_x86_64
+export PATH=$INSTALL_DIR:$PATH
+export LM_LICENSE_FILE=${LM_LICENSE_FILE}:1717@led-x3850-3.polito.it
+source /eda/mentor/2020-21/scripts/QUESTA-CORE-PRIME_2020.4_RHELx86.sh
 
-echo "Creating work library"
+echo "[INFO] Creating work library"
+vdel -all > /dev/null 2>&1
 vlib work
 
-# source set-mentor
-# # create work directory
-# vdel -all
-# vlib work
-
-# ## VHDL file list
-# FILE_LIST='./sim/components'
-# vcom -F $(FILE_LIST)
+# VHDL file list
+vcom -F "$SIM_FILE_LIST"
 
 # Simulation
 # Synthesis
