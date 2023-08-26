@@ -8,32 +8,32 @@ use WORK.myTypes.all;
 entity register_file is
     generic (
         WORD_LEN : integer := REG_WORD_LEN;
-        R_NUM : integer := REG_NUM);
+        R_NUM    : integer := REG_NUM);
     port (
-        CLK : in std_logic;
+        CLK     : in  std_logic;
         -- Control
-        RESET : in std_logic;
-        ENABLE : in std_logic;
-        RD1 : in std_logic;
-        RD2 : in std_logic;
-        WR : in std_logic;
+        RESET   : in  std_logic;
+        ENABLE  : in  std_logic;
+        RD1     : in  std_logic;
+        RD2     : in  std_logic;
+        WR      : in  std_logic;
         -- Address Lines
-        ADD_WR : in std_logic_vector(integer(ceil(log2(real(R_NUM)))) - 1 downto 0);
-        ADD_RD1 : in std_logic_vector(integer(ceil(log2(real(R_NUM)))) - 1 downto 0);
-        ADD_RD2 : in std_logic_vector(integer(ceil(log2(real(R_NUM)))) - 1 downto 0);
+        ADD_WR  : in  std_logic_vector(integer(ceil(log2(real(R_NUM)))) - 1 downto 0);
+        ADD_RD1 : in  std_logic_vector(integer(ceil(log2(real(R_NUM)))) - 1 downto 0);
+        ADD_RD2 : in  std_logic_vector(integer(ceil(log2(real(R_NUM)))) - 1 downto 0);
         -- Data Lines
-        DATAIN : in std_logic_vector((WORD_LEN - 1) downto 0);
-        OUT1 : out std_logic_vector((WORD_LEN - 1) downto 0);
-        OUT2 : out std_logic_vector((WORD_LEN - 1) downto 0));
+        DATAIN  : in  std_logic_vector((WORD_LEN - 1) downto 0);
+        OUT1    : out std_logic_vector((WORD_LEN - 1) downto 0);
+        OUT2    : out std_logic_vector((WORD_LEN - 1) downto 0));
 end register_file;
 
 architecture A of register_file is
-    subtype REG_ADDR is natural range 0 to (R_NUM - 1); -- using natural type
+    subtype REG_ADDR is natural range 0 to (R_NUM - 1);  -- using natural type
     type REG_ARRAY is array(REG_ADDR) of std_logic_vector((WORD_LEN - 1) downto 0);
     signal REGISTERS, NEXT_REGISTERS : REG_ARRAY;
 
 begin
-    
+
     syncProc : process (clk)
     begin
         if rising_edge(clk) then

@@ -1,40 +1,40 @@
-LIBRARY ieee;
-USE ieee.std_logic_1164.ALL;
-USE ieee.numeric_std.ALL;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 use WORK.myTypes.all;
 
-ENTITY SUM_GENERATOR IS
-	GENERIC (
-		NBIT_PER_BLOCK : INTEGER := CARRY_SELECT_NBIT;
-		NBLOCKS : INTEGER := SUM_GENERATOR_NBLOCKS);
-	PORT (
-		A : IN STD_LOGIC_VECTOR(NBIT_PER_BLOCK * NBLOCKS - 1 DOWNTO 0);
-		B : IN STD_LOGIC_VECTOR(NBIT_PER_BLOCK * NBLOCKS - 1 DOWNTO 0);
-		Ci : IN STD_LOGIC_VECTOR(NBLOCKS - 1 DOWNTO 0);
-		S : OUT STD_LOGIC_VECTOR(NBIT_PER_BLOCK * NBLOCKS - 1 DOWNTO 0));
-END SUM_GENERATOR;
+entity SUM_GENERATOR is
+    generic (
+        NBIT_PER_BLOCK : integer := CARRY_SELECT_NBIT;
+        NBLOCKS        : integer := SUM_GENERATOR_NBLOCKS);
+    port (
+        A  : in  std_logic_vector(NBIT_PER_BLOCK * NBLOCKS - 1 downto 0);
+        B  : in  std_logic_vector(NBIT_PER_BLOCK * NBLOCKS - 1 downto 0);
+        Ci : in  std_logic_vector(NBLOCKS - 1 downto 0);
+        S  : out std_logic_vector(NBIT_PER_BLOCK * NBLOCKS - 1 downto 0));
+end SUM_GENERATOR;
 
-ARCHITECTURE STRUCTURAL OF SUM_GENERATOR IS
+architecture STRUCTURAL of SUM_GENERATOR is
 
-	-- Carry Select Block component
-	COMPONENT CARRY_SELECT IS
-		GENERIC (
-			NBIT : INTEGER := CARRY_SELECT_NBIT);
-		PORT (
-			ci : IN STD_LOGIC; -- mux selection signal
-			A, B : IN STD_LOGIC_VECTOR(NBIT - 1 DOWNTO 0);
-			sum : OUT STD_LOGIC_VECTOR(NBIT - 1 DOWNTO 0));
-	END COMPONENT;
+    -- Carry Select Block component
+    component CARRY_SELECT is
+        generic (
+            NBIT : integer := CARRY_SELECT_NBIT);
+        port (
+            ci   : in  std_logic;       -- mux selection signal
+            A, B : in  std_logic_vector(NBIT - 1 downto 0);
+            sum  : out std_logic_vector(NBIT - 1 downto 0));
+    end component;
 
-BEGIN
+begin
 
-	gen: FOR i IN 0 TO NBLOCKS - 1 GENERATE
-	cs : CARRY_SELECT
-		GENERIC MAP(NBIT => NBIT_PER_BLOCK)
-            PORT MAP(A => A(((i+1)*(NBIT_PER_BLOCK)-1) DOWNTO i*NBIT_PER_BLOCK),
-                     B => B(((i+1)*(NBIT_PER_BLOCK)-1) DOWNTO i*NBIT_PER_BLOCK),
-                     Ci => Ci(i),
-                     sum => S(((i+1)*(NBIT_PER_BLOCK)-1) DOWNTO i*NBIT_PER_BLOCK));
-	END GENERATE;
+    gen : for i in 0 to NBLOCKS - 1 generate
+        cs : CARRY_SELECT
+            generic map(NBIT => NBIT_PER_BLOCK)
+            port map(A   => A(((i+1)*(NBIT_PER_BLOCK)-1) downto i*NBIT_PER_BLOCK),
+                     B   => B(((i+1)*(NBIT_PER_BLOCK)-1) downto i*NBIT_PER_BLOCK),
+                     Ci  => Ci(i),
+                     sum => S(((i+1)*(NBIT_PER_BLOCK)-1) downto i*NBIT_PER_BLOCK));
+    end generate;
 
-END STRUCTURAL;
+end STRUCTURAL;
