@@ -29,6 +29,14 @@
 ./datapath/simpleALU/alu.vhd
 ./datapath/simpleALU/tb_alu.vhd
 
+./memories/ro/rocache_pkg.vhd
+./memories/ro/rocache.vhd
+./memories/ro/romem.vhd
+
+./memories/rw/rwcache_pkg.vhd
+./memories/rw/rwcache.vhd
+./memories/rw/rwmem.vhd
+
 ./a.b-DataPath.vhd
 ./a.c-IRAM.vhd
 ./a-DLX.vhd
