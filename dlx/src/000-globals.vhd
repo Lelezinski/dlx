@@ -24,7 +24,7 @@ package myTypes is
     constant NUMBIT_MUL : integer := 32;
 
     -- Register File
-    constant REG_WORD_LEN         : integer := 8;
+    constant REG_WORD_LEN         : integer := 32;
     constant REG_NUM              : integer := 8;
     -- WRF
     constant NUM_GLOBAL_REGISTERS : integer := 1;  -- M

@@ -5,7 +5,12 @@ use IEEE.math_real."ceil";
 use IEEE.math_real."log2";
 use WORK.myTypes.all;
 
-entity register_file is
+
+--------------------------------------------------------------------
+-- Entity Declaration
+--------------------------------------------------------------------
+
+entity REGISTER_FILE is
     generic (
         WORD_LEN : integer := REG_WORD_LEN;
         R_NUM    : integer := REG_NUM);
@@ -25,12 +30,21 @@ entity register_file is
         DATAIN  : in  std_logic_vector((WORD_LEN - 1) downto 0);
         OUT1    : out std_logic_vector((WORD_LEN - 1) downto 0);
         OUT2    : out std_logic_vector((WORD_LEN - 1) downto 0));
-end register_file;
+end REGISTER_FILE;
 
-architecture A of register_file is
+architecture BEHAVIOURAL of REGISTER_FILE is
+
+----------------------------------------------------------------
+-- Signals Declaration
+----------------------------------------------------------------
+
     subtype REG_ADDR is natural range 0 to (R_NUM - 1);  -- using natural type
     type REG_ARRAY is array(REG_ADDR) of std_logic_vector((WORD_LEN - 1) downto 0);
     signal REGISTERS, NEXT_REGISTERS : REG_ARRAY;
+    
+----------------------------------------------------------------
+-- Processes
+----------------------------------------------------------------
 
 begin
 
@@ -67,9 +81,13 @@ begin
             NEXT_REGISTERS <= REGISTERS;
         end if;
     end process write;
-end A;
+end BEHAVIOURAL;
 
-configuration CFG_RF_BEH of register_file is
-    for A
+----------------------------------------------------------------
+-- Configurations
+----------------------------------------------------------------
+
+configuration CFG_RF_BEH of REGISTER_FILE is
+    for BEHAVIOURAL
     end for;
 end configuration;

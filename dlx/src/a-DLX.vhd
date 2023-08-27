@@ -8,6 +8,10 @@ use work.RWCACHE_PKG.all;
 use work.ALU_TYPE.all;
 
 
+--------------------------------------------------------------------
+-- Entity Declaration
+--------------------------------------------------------------------
+
 entity DLX is
   generic (
     IR_SIZE : integer := 32;            -- Instruction Register Size
@@ -98,6 +102,9 @@ architecture dlx_rtl of DLX is
 
   end component;
 
+  -- TODO: Datapath
+
+  -- TODO: IRAM/DRAM
 
   ----------------------------------------------------------------
   -- Signals Declaration
