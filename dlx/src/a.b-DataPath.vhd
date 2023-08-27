@@ -10,6 +10,11 @@ use work.ALU_TYPE.all;
 --------------------------------------------------------------------
 
 entity DATAPATH is
+    generic (
+        -- FIXME: use constants
+        IR_SIZE : integer := 32;        -- Instruction Register Size
+        PC_SIZE : integer := 32         -- Program Counter Size
+        );
     port (
         CLK : in std_logic;                 -- Clock
         RST : in std_logic;                 -- Reset:Active-High
@@ -17,7 +22,7 @@ entity DATAPATH is
     );
 end entity DATAPATH;
 
-architecture BEHAVIOURAL of DATAPATH is
+architecture RTL of DATAPATH is
 
 --------------------------------------------------------------------
 -- Components Declaration
@@ -45,6 +50,38 @@ architecture BEHAVIOURAL of DATAPATH is
             OUT2    : out std_logic_vector((WORD_LEN - 1) downto 0));
     end component;
 
+    component MUX21_GENERIC is
+        generic (
+            NBIT      : integer;
+            DELAY_MUX : time);
+        port (
+            A   : in  std_logic_vector(NBIT-1 downto 0);
+            B   : in  std_logic_vector(NBIT-1 downto 0);
+            SEL : in  std_logic;
+            Y   : out std_logic_vector(NBIT-1 downto 0));
+    end component MUX21_GENERIC;
+
+    component BOOTHMUL is
+        generic (
+            NBIT : integer);
+        port (
+            A : in  std_logic_vector(NBIT - 1 downto 0);
+            B : in  std_logic_vector(NBIT - 1 downto 0);
+            P : out std_logic_vector(2 * NBIT - 1 downto 0));
+    end component BOOTHMUL;
+
+    component P4_ADDER is
+        generic (
+            NBIT : integer);
+        port (
+            A   : in  std_logic_vector(NBIT - 1 downto 0);
+            B   : in  std_logic_vector(NBIT - 1 downto 0);
+            Cin : in  std_logic;
+            S   : out std_logic_vector(NBIT - 1 downto 0);
+
+            Cout : out std_logic);
+    end component P4_ADDER;
+
 -- TODO: altri componenti
 
 ----------------------------------------------------------------
@@ -66,13 +103,13 @@ architecture BEHAVIOURAL of DATAPATH is
     
 begin
     
-end architecture BEHAVIOURAL;
+end architecture RTL;
 
 ----------------------------------------------------------------
 -- Processes
 ----------------------------------------------------------------
 
 configuration CFG_DP_BEH of DATAPATH is
-    for BEHAVIOURAL
+    for RTL
     end for;
 end configuration;
