@@ -16,10 +16,10 @@ entity DATAPATH is
         PC_SIZE : integer := 32         -- Program Counter Size
         );
     port (
-        CLK : in std_logic;                 -- Clock
-        RST : in std_logic;                 -- Reset:Active-High
-        -- TODO: CW da CU, IRAM/DRAM 
-    );
+        CLK : in std_logic;             -- Clock
+        RST : in std_logic;             -- Reset:Active-High
+     -- TODO: CW da CU, IRAM/DRAM
+        );
 end entity DATAPATH;
 
 architecture RTL of DATAPATH is
@@ -27,7 +27,7 @@ architecture RTL of DATAPATH is
 --------------------------------------------------------------------
 -- Components Declaration
 --------------------------------------------------------------------
-    
+
     component REGISTER_FILE is
         generic (
             WORD_LEN : integer := REG_WORD_LEN;
@@ -91,18 +91,63 @@ architecture RTL of DATAPATH is
 -- FIXME: fix sizes
 
     -- [IF] STAGE
-    signal IR : std_logic_vector(IR_SIZE - 1 downto 0);
-    signal PC : std_logic_vector(PC_SIZE - 1 downto 0);
+    signal IR  : std_logic_vector(IR_SIZE - 1 downto 0);
+    signal PC  : std_logic_vector(PC_SIZE - 1 downto 0);
     signal NPC : std_logic_vector(PC_SIZE - 1 downto 0);
     --TODO: altri segnali
 
-    
+    -- Instruction Register (IR) and Program Counter (PC) declaration
+    signal IR : std_logic_vector(IR_SIZE - 1 downto 0);
+    signal PC : std_logic_vector(PC_SIZE - 1 downto 0);
+
+    -- Instruction Ram Bus signals
+    signal IRam_DOut : std_logic_vector(IR_SIZE - 1 downto 0);
+
+    -- Datapath Bus signals
+    signal PC_BUS : std_logic_vector(PC_SIZE -1 downto 0);
+
+begin
+
+    -- This is the input to program counter: currently zero
+    -- so no uptade of PC happens
+    -- TO BE REMOVED AS SOON AS THE DATAPATH IS INSERTED!!!!!
+    -- a proper connection must be made here if more than one
+    -- instruction must be executed
+    PC_BUS <= (others => '0');
+
 ----------------------------------------------------------------
 -- Processes
 ----------------------------------------------------------------
-    
-begin
-    
+
+    -- purpose: Instruction Register Process
+    -- type   : sequential
+    -- inputs : Clk, Rst, IRam_DOut, IR_LATCH_EN_i
+    -- outputs: IR_IN_i
+    IR_P : process (CLK, Rst)
+    begin  -- process IR_P
+        if Rst = '0' then                   -- asynchronous reset (active low)
+            IR <= (others => '0');
+        elsif CLK'event and CLK = '1' then  -- rising clock edge
+            if (IR_LATCH_EN_i = '1') then
+                IR <= IRam_DOut;
+            end if;
+        end if;
+    end process IR_P;
+
+    -- purpose: Program Counter Process
+    -- type   : sequential
+    -- inputs : Clk, Rst, PC_BUS
+    -- outputs: IRam_Addr
+    PC_P : process (CLK, Rst)
+    begin  -- process PC_P
+        if Rst = '0' then                   -- asynchronous reset (active low)
+            PC <= (others => '0');
+        elsif CLK'event and CLK = '1' then  -- rising clock edge
+            if (PC_LATCH_EN_i = '1') then
+                PC <= PC_BUS;
+            end if;
+        end if;
+    end process PC_P;
 end architecture RTL;
 
 ----------------------------------------------------------------

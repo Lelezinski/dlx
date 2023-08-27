@@ -110,16 +110,6 @@ architecture dlx_rtl of DLX is
   -- Signals Declaration
   ----------------------------------------------------------------
 
-  -- Instruction Register (IR) and Program Counter (PC) declaration
-  signal IR : std_logic_vector(IR_SIZE - 1 downto 0);
-  signal PC : std_logic_vector(PC_SIZE - 1 downto 0);
-
-  -- Instruction Ram Bus signals
-  signal IRam_DOut : std_logic_vector(IR_SIZE - 1 downto 0);
-
-  -- Datapath Bus signals
-  signal PC_BUS : std_logic_vector(PC_SIZE -1 downto 0);
-
   -- Control Unit Bus signals
   signal IR_LATCH_EN_i     : std_logic;
   signal NPC_LATCH_EN_i    : std_logic;
@@ -144,46 +134,7 @@ architecture dlx_rtl of DLX is
 
 begin  -- DLX
 
-  -- This is the input to program counter: currently zero
-  -- so no uptade of PC happens
-  -- TO BE REMOVED AS SOON AS THE DATAPATH IS INSERTED!!!!!
-  -- a proper connection must be made here if more than one
-  -- instruction must be executed
-  PC_BUS <= (others => '0');
-
-
-  -- purpose: Instruction Register Process
-  -- type   : sequential
-  -- inputs : Clk, Rst, IRam_DOut, IR_LATCH_EN_i
-  -- outputs: IR_IN_i
-  IR_P : process (Clk, Rst)
-  begin  -- process IR_P
-    if Rst = '0' then                   -- asynchronous reset (active low)
-      IR <= (others => '0');
-    elsif Clk'event and Clk = '1' then  -- rising clock edge
-      if (IR_LATCH_EN_i = '1') then
-        IR <= IRam_DOut;
-      end if;
-    end if;
-  end process IR_P;
-
-  -- COMPLETE WITH CACHE TO CONNECT IRAM and DRAM in the testbench...
-
-
-  -- purpose: Program Counter Process
-  -- type   : sequential
-  -- inputs : Clk, Rst, PC_BUS
-  -- outputs: IRam_Addr
-  PC_P : process (Clk, Rst)
-  begin  -- process PC_P
-    if Rst = '0' then                   -- asynchronous reset (active low)
-      PC <= (others => '0');
-    elsif Clk'event and Clk = '1' then  -- rising clock edge
-      if (PC_LATCH_EN_i = '1') then
-        PC <= PC_BUS;
-      end if;
-    end if;
-  end process PC_P;
+  -- TODO COMPLETE WITH CACHE TO CONNECT IRAM and DRAM in the testbench...
 
   -- Control Unit Instantiation
   CU_I : dlx_cu
@@ -208,9 +159,6 @@ begin  -- DLX
       WB_MUX_SEL      => WB_MUX_SEL_i,
       RF_WE           => RF_WE_i);
 
-  -- IMPLEMENTS DATAPATH
-
-
-
+  -- TODO ADD DATAPATH
 
 end dlx_rtl;
