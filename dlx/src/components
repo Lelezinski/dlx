@@ -40,6 +40,4 @@
 ./a.b-DataPath.vhd
 ./a.c-IRAM.vhd
 ./a-DLX.vhd
-./CU_FSM.vhd
-./CU_HW.vhd
-./CU_UP.vhd
+./a.a-CU.vhd
