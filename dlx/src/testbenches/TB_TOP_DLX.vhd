@@ -5,6 +5,8 @@ use ieee.std_logic_arith.all;
 use work.ROCACHE_PKG.all;
 use work.RWCACHE_PKG.all;
 
+use work.myTypes.all;
+
 entity DLX_TestBench is
 end DLX_TestBench;
 
@@ -27,23 +29,22 @@ architecture tb of DLX_TestBench is
     end component;
 
     component RWMEM is
-        generic(
-            FILE_PATH      : string;          -- RAM output data file
-            FILE_PATH_INIT : string;          -- RAM initialization data file
-            WORD_SIZE      : natural := 32;   -- Number of bits per word
-            ENTRIES        : natural := 128;  -- Number of lines in the ROM
-            DATA_DELAY     : natural := 2     -- Delay ( in # of clock cycles )
-            );
+        generic (
+            FILE_PATH      : string;
+            FILE_PATH_INIT : string;
+            DATA_SIZE      : natural;
+            INSTR_SIZE     : natural;
+            RAM_DEPTH      : natural;
+            DATA_DELAY     : natural);
         port (
             CLK          : in    std_logic;
             RST          : in    std_logic;
-            ADDRESS      : in    std_logic_vector(WORD_SIZE - 1 downto 0);
+            ADDR         : in    std_logic_vector(Instr_size - 1 downto 0);
             ENABLE       : in    std_logic;
             READNOTWRITE : in    std_logic;
             DATA_READY   : out   std_logic;
-            INOUT_DATA   : inout std_logic_vector(2*WORD_SIZE-1 downto 0)
-            );
-    end component;
+            INOUT_DATA   : inout std_logic_vector(Data_size-1 downto 0));
+    end component RWMEM;
 
     component DLX is
         port (
@@ -80,17 +81,27 @@ architecture tb of DLX_TestBench is
 begin
     -- IRAM
     IRAM : ROMEM
-        generic map ("/home/gandalf/Desktop/dlx/rocache/hex.txt")
+        generic map (RO_HEX)
         port map (CLK, RST, IRAM_ADDRESS, IRAM_ENABLE, IRAM_READY, IRAM_DATA);
 
     -- DRAM
     DRAM : RWMEM
-        generic map ("/home/gandalf/Desktop/dlx/rwcache/hex_init.txt", "/home/gandalf/Desktop/dlx/rwcache/hex.txt")
+        generic map (
+            FILE_PATH      => RW_HEX,
+            FILE_PATH_INIT => RW_HEX_INIT,
+            DATA_SIZE      => 64,
+            INSTR_SIZE     => 32,
+            RAM_DEPTH      => 128,
+            DATA_DELAY     => 2)
         port map (CLK, RST, DRAM_ADDRESS, DRAM_ENABLE, DRAM_READNOTWRITE, DRAM_READY, DRAM_DATA);
 
     -- DLX
-    My_DLX_GIANLUCA : DLX
-        port map (CLK, RST, IRAM_ADDRESS, IRAM_ENABLE, IRAM_READY, IRAM_DATA, DRAM_ADDRESS, DRAM_ENABLE, DRAM_READNOTWRITE, DRAM_READY, DRAM_DATA);
+    -- My_DLX_GIANLUCA : DLX
+        -- port map (CLK, RST, IRAM_ADDRESS, IRAM_ENABLE, IRAM_READY, IRAM_DATA, DRAM_ADDRESS, DRAM_ENABLE, DRAM_READNOTWRITE, DRAM_READY, DRAM_DATA);
+    DLX_1: entity work.DLX
+        port map (
+            CLK => CLK,
+            RST => RST);
 
     Clk <= not Clk  after 10 ns;
     Rst <= '1', '0' after 5 ns;

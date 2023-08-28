@@ -8,12 +8,12 @@ use std.textio.all;
 
 entity RWMEM is
     generic(
-        file_path      : string;
-        file_path_init : string;
-        Data_size      : natural := 64;
-        Instr_size     : natural := 32;
+        FILE_PATH      : string;
+        FILE_PATH_INIT : string;
+        DATA_SIZE      : natural := 64;
+        INSTR_SIZE     : natural := 32;
         RAM_DEPTH      : natural := 128;
-        data_delay     : natural := 2
+        DATA_DELAY     : natural := 2
         );
     port (
         CLK          : in    std_logic;

@@ -80,5 +80,9 @@ package myTypes is
     constant ITYPE_L_MEM1 : std_logic_vector(C_OP_CODE_SIZE - 1 downto 0) := "001101";  -- L_MEM1 RA,RB,INP1
     constant ITYPE_L_MEM2 : std_logic_vector(C_OP_CODE_SIZE - 1 downto 0) := "001110";  -- L_MEM2 RA,RB,INP2
 
+    -- Only for simulation purpose
+    constant RO_HEX: string := "/home/gandalf/Desktop/dlx/rocache/hex.txt";
+    constant RW_HEX_INIT : string := "/home/gandalf/Desktop/dlx/rwcache/hex_init.txt";
+    constant RW_HEX: string := "/home/gandalf/Desktop/dlx/rwcache/hex.txt";
 
 end myTypes;
