@@ -141,28 +141,45 @@ architecture RTL of DATAPATH is
 
     -- Datapath Bus signals
     signal PC_BUS : unsigned(PC_SIZE - 1 downto 0);
-begin
 
-    -- This is the input to program counter: currently zero
-    -- so no uptade of PC happens
-    -- TO BE REMOVED AS SOON AS THE DATAPATH IS INSERTED!!!!!
-    -- a proper connection must be made here if more than one
-    -- instruction must be executed
-    -- PC_BUS <= (others => '0');
+begin
 
 ----------------------------------------------------------------
 -- Processes
 ----------------------------------------------------------------
+
+    REGISTER_UPDATE_P : process (CLK, RST)
+    begin
+        if RST = '0' then
+            IR <= (others => '0');
+            PC <= (others => '0');
+            NPC <= (others => '0');
+            ...
+
+        elsif rising_edge(CLK) then
+            if (IR_LATCH_EN = '1') then
+                IR <= IRAM_DOUT;
+            end if;
+            if (PC_LATCH_EN = '1') then
+                PC <= PC_BUS;
+            end if;
+            if (NPC_LATCH_EN = '1') then
+                NPC <= ...;
+            end if;
+            ...
+            
+    end process REGISTER_UPDATE_P;
+
 
     -- purpose: Instruction Register Process
     -- type   : sequential
     -- inputs : Clk, Rst
     -- outputs: IR
     IR_P : process (CLK, RST)
-    begin  -- process IR_P
+    begin
         if RST = '0' then  -- asynchronous reset (active low)
             IR <= (others => '0');
-        elsif CLK'event and CLK = '1' then  -- rising clock edge
+        elsif rising_edge(CLK) then
             if (IR_LATCH_EN = '1') then
                 IR <= IRAM_DOUT;
             end if;
@@ -174,7 +191,7 @@ begin
     -- inputs : Clk, Rst, PC_BUS
     -- outputs: IRam_Addr
     PC_P : process (CLK, RST)
-    begin  -- process PC_P
+    begin
         if Rst = '0' then                   -- asynchronous reset (active low)
             PC <= (others => '0');
         elsif CLK'event and CLK = '1' then  -- rising clock edge
@@ -189,7 +206,7 @@ begin
     -- inputs : Clk, Rst, PC_BUS
     -- outputs: IRam_Addr
     NPC_P : process (CLK, Rst)
-    begin  -- process PC_P
+    begin
         if Rst = '0' then                   -- asynchronous reset (active low)
             PC <= (others => '0');
         elsif CLK'event and CLK = '1' then  -- rising clock edge
@@ -198,8 +215,14 @@ begin
             end if;
         end if;
     end process NPC_P;
+
+
+
 end architecture RTL;
 
+----------------------------------------------------------------
+-- Configurations
+----------------------------------------------------------------
 
 configuration CFG_DP_BEH of DATAPATH is
     for RTL
