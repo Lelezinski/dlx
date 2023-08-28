@@ -15,7 +15,7 @@ entity DLX is
     port (
         -- Inputs
         CLK : in std_logic; -- Clock
-        RST : in std_logic; -- Reset:Active-High
+        RST : in std_logic  -- Reset:Active-High
     );
 end DLX;
 
@@ -84,7 +84,7 @@ architecture RTL of DLX is
         );
         port (
             CLK : in std_logic; -- Clock
-            RST : in std_logic; -- Reset:Active-High
+            RST : in std_logic  -- Reset:Active-High
             -- TODO: CW da CU, IRAM/DRAM
         );
     end component;
@@ -118,13 +118,13 @@ begin
 
     -- TODO:
     -- Control Unit Instantiation
-    CU_i : CU
+    -- CU_i : CU
 
     -- Datapath Instantiation
-    DATAPATH_i : DATAPATH
+    -- DATAPATH_i : DATAPATH
 
     -- IRAM Instantiation
-    IRAM_i : DATAPATH
+    -- IRAM_i : DATAPATH
 
 end RTL;
 
