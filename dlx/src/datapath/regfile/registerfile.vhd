@@ -12,9 +12,9 @@ use WORK.myTypes.all;
 
 entity REGISTER_FILE is
     generic (
-        WORD_LEN : integer := REG_WORD_LEN;
-        R_NUM    : integer := REG_NUM
-        ADDR_LEN : integer := REG_ADDR_LEN
+        WORD_LEN : integer := RF_WORD_LEN;
+        R_NUM    : integer := RF_REG_NUM;
+        ADDR_LEN : integer := RF_ADDR_LEN
     );
     port (
         CLK     : in  std_logic;
