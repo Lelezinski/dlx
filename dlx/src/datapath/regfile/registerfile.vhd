@@ -13,7 +13,9 @@ use WORK.myTypes.all;
 entity REGISTER_FILE is
     generic (
         WORD_LEN : integer := REG_WORD_LEN;
-        R_NUM    : integer := REG_NUM);
+        R_NUM    : integer := REG_NUM
+        ADDR_LEN : integer := REG_ADDR_LEN
+    );
     port (
         CLK     : in  std_logic;
         -- Control
@@ -23,13 +25,14 @@ entity REGISTER_FILE is
         RD2     : in  std_logic;
         WR      : in  std_logic;
         -- Address Lines
-        ADD_WR  : in  std_logic_vector(integer(ceil(log2(real(R_NUM)))) - 1 downto 0);
-        ADD_RD1 : in  std_logic_vector(integer(ceil(log2(real(R_NUM)))) - 1 downto 0);
-        ADD_RD2 : in  std_logic_vector(integer(ceil(log2(real(R_NUM)))) - 1 downto 0);
+        ADD_WR  : in  std_logic_vector(REG_ADDR_LEN - 1 downto 0);
+        ADD_RD1 : in  std_logic_vector(REG_ADDR_LEN - 1 downto 0);
+        ADD_RD2 : in  std_logic_vector(REG_ADDR_LEN - 1 downto 0);
         -- Data Lines
         DATAIN  : in  std_logic_vector((WORD_LEN - 1) downto 0);
         OUT1    : out std_logic_vector((WORD_LEN - 1) downto 0);
-        OUT2    : out std_logic_vector((WORD_LEN - 1) downto 0));
+        OUT2    : out std_logic_vector((WORD_LEN - 1) downto 0)
+    );
 end REGISTER_FILE;
 
 architecture BEHAVIOURAL of REGISTER_FILE is

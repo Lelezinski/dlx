@@ -10,14 +10,13 @@ use ieee.std_logic_textio.all;
 -- file name is "test.asm.mem"
 entity IRAM is
   generic (
-    RAM_DEPTH : integer := 48;
-    I_SIZE    : integer := 32);
+    RAM_DEPTH : integer := IRAM_DEPTH;
+    I_SIZE    : integer := IR_SIZE);
   port (
     Rst  : in  std_logic;
     Addr : in  std_logic_vector(I_SIZE - 1 downto 0);
     Dout : out std_logic_vector(I_SIZE - 1 downto 0)
     );
-
 end IRAM;
 
 architecture IRam_Bhe of IRAM is

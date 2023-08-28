@@ -5,6 +5,7 @@ package myTypes is
 
     ---- CONSTANTS -----
     constant numBit : integer := 16;
+    constant IR_SIZE : integer := 32;
 
     -- Mux
     constant IVDELAY     : time := 0 ns;  --0.1 ns;
@@ -26,6 +27,7 @@ package myTypes is
     -- Register File
     constant REG_WORD_LEN         : integer := 32;
     constant REG_NUM              : integer := 8;
+    constant REG_ADDR_LEN         : integer := ceil(log2(real(R_NUM)));
     -- WRF
     constant NUM_GLOBAL_REGISTERS : integer := 1;  -- M
     constant NUM_LIO_REGISTERS    : integer := 3;  -- N (LOCAL/INPUT/OUTPUT REGS)
@@ -34,10 +36,13 @@ package myTypes is
     -- TestBench
     constant C_TB_STAGES : integer := 3;  -- Number of Clock Cycles between two instructions
 
+    -- IRAM
+    constant IRAM_DEPTH : integer := 48;
+
     -- Control Unit Input Sizes
     constant C_OP_CODE_SIZE : integer := 6;   -- OPCODE field size
     constant C_FUNC_SIZE    : integer := 11;  -- FUNC field size
-    constant C_IR_SIZE      : integer := 32;  -- Instruction Register Size
+    constant C_IR_SIZE      : integer := IR_SIZE;  -- Instruction Register Size
     constant C_CW_SIZE      : integer := 13;  -- Control Word Size
 
     -- Number of Available Instructions
