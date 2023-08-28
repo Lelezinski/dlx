@@ -7,10 +7,10 @@ use work.RWCACHE_PKG.all;
 
 use work.myTypes.all;
 
-entity DLX_TestBench is
-end DLX_TestBench;
+entity DLX_tb is
+end DLX_tb;
 
-architecture tb of DLX_TestBench is
+architecture tb of DLX_tb is
     component ROMEM is
         generic (
             FILE_PATH  : string;          -- ROM data file
