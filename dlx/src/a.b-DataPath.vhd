@@ -146,6 +146,7 @@ architecture RTL of DATAPATH is
 
     -- [EX] STAGE
     signal ALU_OUT : std_logic_vector(DATA_SIZE - 1 downto 0);
+    signal NPC_EX  : unsigned(PC_SIZE - 1 downto 0);
 
     -- [MEM] STAGE
     signal LMD : std_logic_vector(DATA_SIZE - 1 downto 0);
@@ -164,9 +165,6 @@ architecture RTL of DATAPATH is
     INS_R3      <= IR(INS_R3_L downto INS_R3_R);
     INS_IMM     <= IR(INS_IMM_L downto INS_IMM_R);
     INS_FUNC    <= IR(INS_FUNC_L downto INS_FUNC_R);
-
-    -- Pipeline Updates
-    NPC_ID <= NPC_IF;
 
 begin
 
@@ -223,8 +221,8 @@ begin
         end if;
     end process PC_P;
 
-    -- NPC
-    NPC_P : process (CLK, RST)
+    -- NPC_IF
+    NPC_IF_P : process (CLK, RST)
     begin
         if RST = '0' then
             NPC_IF <= (others => '0');
@@ -233,7 +231,7 @@ begin
                 NPC_IF <= PC + 4; -- TODO: generalizzare?
             end if;
         end if;
-    end process NPC_P;
+    end process NPC_IF_P;
 
     -- IR
     IR_P : process (CLK, RST)
@@ -285,9 +283,34 @@ begin
         end if;
     end process IMM_P;
 
-    -- TODO:
+    -- NPC_ID
+    NPC_ID_P : process (CLK, RST)
+    begin
+        if RST = '0' then
+            NPC_ID <= (others => '0');
+        elsif rising_edge(CLK) then
+            if (NPC_LATCH_EN = '1') then
+                NPC_ID <= NPC_IF;
+            end if;
+        end if;
+    end process NPC_ID_P;
 
+    
     -- [EX] STAGE
+    
+    -- NPC_EX
+    NPC_EX_P : process (CLK, RST)
+    begin
+        if RST = '0' then
+            NPC_EX <= (others => '0');
+        elsif rising_edge(CLK) then
+            if (NPC_LATCH_EN = '1') then
+                NPC_EX <= NPC_ID;
+            end if;
+        end if;
+    end process NPC_EX_P;
+    
+    -- TODO:
     -- [ME] STAGE
     -- [WB] STAGE
 
