@@ -60,8 +60,9 @@ architecture RTL of DATAPATH is
 
     component IRAM is
         generic (
-            RAM_DEPTH : integer := IRAM_DEPTH;
-            I_SIZE    : integer := IR_SIZE);
+            RAM_DEPTH : integer
+            I_SIZE    : integer
+        );
         port (
             Rst  : in std_logic;
             Addr : in std_logic_vector(I_SIZE - 1 downto 0);
@@ -69,27 +70,11 @@ architecture RTL of DATAPATH is
         );
     end component;
 
-    component REG is
-        generic (
-            DATA_WIDTH : integer                                     := REG_WORD_LEN
-            RST_VALUE  : std_logic_vector((DATA_WIDTH - 1) downto 0) := (others => '0')
-        );
-        port (
-            CLK : in std_logic;
-            -- Control
-            RST    : in std_logic; -- Active-Low
-            ENABLE : in std_logic;
-            -- Data Lines
-            DATA_IN  : in std_logic_vector((DATA_WIDTH - 1) downto 0);
-            DATA_OUT : out std_logic_vector((DATA_WIDTH - 1) downto 0)
-        );
-    end component;
-
     component REGISTER_FILE is
         generic (
-            WORD_LEN : integer := REG_WORD_LEN;
-            R_NUM    : integer := REG_NUM
-            ADDR_LEN : integer := REG_ADDR_LEN
+            WORD_LEN : integer;
+            R_NUM    : integer;
+            ADDR_LEN : integer
         );
         port (
             CLK : in std_logic;
@@ -100,26 +85,15 @@ architecture RTL of DATAPATH is
             RD2    : in std_logic;
             WR     : in std_logic;
             -- Address Lines
-            ADD_WR  : in std_logic_vector(REG_ADDR_LEN - 1 downto 0);
-            ADD_RD1 : in std_logic_vector(REG_ADDR_LEN - 1 downto 0);
-            ADD_RD2 : in std_logic_vector(REG_ADDR_LEN - 1 downto 0);
+            ADD_WR  : in std_logic_vector(ADDR_LEN - 1 downto 0);
+            ADD_RD1 : in std_logic_vector(ADDR_LEN - 1 downto 0);
+            ADD_RD2 : in std_logic_vector(ADDR_LEN - 1 downto 0);
             -- Data Lines
             DATAIN : in std_logic_vector((WORD_LEN - 1) downto 0);
             OUT1   : out std_logic_vector((WORD_LEN - 1) downto 0);
             OUT2   : out std_logic_vector((WORD_LEN - 1) downto 0)
         );
     end component;
-
-    component MUX21_GENERIC is
-        generic (
-            NBIT      : integer;
-            DELAY_MUX : time);
-        port (
-            A   : in std_logic_vector(NBIT - 1 downto 0);
-            B   : in std_logic_vector(NBIT - 1 downto 0);
-            SEL : in std_logic;
-            Y   : out std_logic_vector(NBIT - 1 downto 0));
-    end component MUX21_GENERIC;
 
     component BOOTHMUL is
         generic (
@@ -142,7 +116,7 @@ architecture RTL of DATAPATH is
             Cout : out std_logic);
     end component P4_ADDER;
 
-    -- TODO: altri componenti
+    -- TODO: DRAM
 
     ----------------------------------------------------------------
     -- Signals Declaration
@@ -160,7 +134,7 @@ architecture RTL of DATAPATH is
     signal IR       : std_logic_vector(INS_SIZE - 1 downto 0);
     signal IRAM_OUT : std_logic_vector(INS_SIZE - 1 downto 0);
     signal PC       : unsigned(PC_SIZE - 1 downto 0);
-    signal NPC      : unsigned(PC_SIZE - 1 downto 0);
+    signal NPC_IF   : unsigned(PC_SIZE - 1 downto 0);
 
     -- [ID] STAGE
     signal RF_OUT_1 : std_logic_vector(DATA_SIZE - 1 downto 0);
@@ -168,6 +142,7 @@ architecture RTL of DATAPATH is
     signal A        : std_logic_vector(DATA_SIZE - 1 downto 0);
     signal B        : std_logic_vector(DATA_SIZE - 1 downto 0);
     signal IMM      : std_logic_vector(DATA_SIZE - 1 downto 0);
+    signal NPC_ID   : unsigned(PC_SIZE - 1 downto 0);
 
     -- [EX] STAGE
     signal ALU_OUT : std_logic_vector(DATA_SIZE - 1 downto 0);
@@ -189,6 +164,9 @@ architecture RTL of DATAPATH is
     INS_R3      <= IR(INS_R3_L downto INS_R3_R);
     INS_IMM     <= IR(INS_IMM_L downto INS_IMM_R);
     INS_FUNC    <= IR(INS_FUNC_L downto INS_FUNC_R);
+
+    -- Pipeline Updates
+    NPC_ID <= NPC_IF;
 
 begin
 
@@ -249,10 +227,10 @@ begin
     NPC_P : process (CLK, RST)
     begin
         if RST = '0' then
-            NPC <= (others => '0');
+            NPC_IF <= (others => '0');
         elsif rising_edge(CLK) then
             if (NPC_LATCH_EN = '1') then
-                NPC <= PC + 4; -- TODO: generalizzare?
+                NPC_IF <= PC + 4; -- TODO: generalizzare?
             end if;
         end if;
     end process NPC_P;
