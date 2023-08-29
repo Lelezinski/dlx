@@ -25,9 +25,9 @@ entity REGISTER_FILE is
         RD2     : in  std_logic;
         WR      : in  std_logic;
         -- Address Lines
-        ADD_WR  : in  std_logic_vector(REG_ADDR_LEN - 1 downto 0);
-        ADD_RD1 : in  std_logic_vector(REG_ADDR_LEN - 1 downto 0);
-        ADD_RD2 : in  std_logic_vector(REG_ADDR_LEN - 1 downto 0);
+        ADD_WR  : in  std_logic_vector(RF_ADDR_LEN - 1 downto 0);
+        ADD_RD1 : in  std_logic_vector(RF_ADDR_LEN - 1 downto 0);
+        ADD_RD2 : in  std_logic_vector(RF_ADDR_LEN - 1 downto 0);
         -- Data Lines
         DATAIN  : in  std_logic_vector((WORD_LEN - 1) downto 0);
         OUT1    : out std_logic_vector((WORD_LEN - 1) downto 0);
