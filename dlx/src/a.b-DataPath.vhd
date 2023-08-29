@@ -12,10 +12,11 @@ use work.ALU_TYPE.all;
 entity DATAPATH is
     -- TODO: fix generic e port
     generic (
-        DATA_SIZE : integer := numBit;   -- Data Size
-        INS_SIZE  : integer := INS_SIZE  -- Instructions Size
-        CW_SIZE   : integer := C_CW_SIZE -- ALU OP Size
-        PC_SIZE   : integer := PC_SIZE   -- PC Size
+        DATA_SIZE : integer := numBit;     -- Data Size
+        INS_SIZE  : integer := INS_SIZE;   -- Instructions Size
+        CW_SIZE   : integer := C_CW_SIZE;  -- ALU OP Size
+        PC_SIZE   : integer := PC_SIZE;    -- PC Size
+        IR_SIZE   : integer := IRAM_DEPTH  -- instruction register size
     );
     port (
         CLK : in std_logic; -- Clock
@@ -60,7 +61,7 @@ architecture RTL of DATAPATH is
 
     component IRAM is
         generic (
-            RAM_DEPTH : integer
+            RAM_DEPTH : integer;
             I_SIZE    : integer
         );
         port (
@@ -158,6 +159,7 @@ architecture RTL of DATAPATH is
     -- Signals Assignment
     ----------------------------------------------------------------
 
+begin
     -- IR Split
     INS_OP_CODE <= IR(INS_OP_CODE_L downto INS_OP_CODE_R);
     INS_R1      <= IR(INS_R1_L downto INS_R1_R);
@@ -165,8 +167,6 @@ architecture RTL of DATAPATH is
     INS_R3      <= IR(INS_R3_L downto INS_R3_R);
     INS_IMM     <= IR(INS_IMM_L downto INS_IMM_R);
     INS_FUNC    <= IR(INS_FUNC_L downto INS_FUNC_R);
-
-begin
 
     ----------------------------------------------------------------
     -- Component Instantiation
@@ -179,14 +179,15 @@ begin
     )
     port map(
         Rst  => RST,
-        Addr => PC,
+        Addr => std_logic_vector(PC),
         Dout => IRAM_OUT
     );
 
     RF_i : REGISTER_FILE
     generic map(
-        WORD_LEN => REG_WORD_LEN,
-        R_NUM    => REG_NUM
+        WORD_LEN => RF_WORD_LEN,
+        R_NUM    => R_NUM,
+        ADDR_LEN => RF_ADDR_LEN
     )
     port map(
         CLK    => CLK,
@@ -278,7 +279,7 @@ begin
             IMM <= (others => '0');
         elsif rising_edge(CLK) then
             if (IMM_EN = '1') then
-                IMM <= resize(INS_IMM, IMM'length);
+                IMM <= std_logic_vector(resize(unsigned(INS_IMM), IMM'length));
             end if;
         end if;
     end process IMM_P;
