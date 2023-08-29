@@ -38,6 +38,7 @@ entity DATAPATH is
         IRAM_DOUT : in std_logic_vector(INS_SIZE - 1 downto 0); -- Instruction coming from the instructions register
 
         -- EXU stage
+        COND_EN        : in std_logic;                                  -- COND register latch enable
         ALU_OUT_REG_EN : in std_logic;                                  -- ALU_OUT register latch enable
         ALU_OP         : in std_logic_vector(ALU_OP_SIZE - 1 downto 0); -- Alu operation selection signal
         MUXA_SEL       : in std_logic;                                  -- MuxA selection signal
@@ -119,6 +120,8 @@ architecture RTL of DATAPATH is
 
     -- TODO: ALU
 
+    -- TODO: LL_ALU
+
     -- TODO: DRAM
 
     ----------------------------------------------------------------
@@ -154,6 +157,7 @@ architecture RTL of DATAPATH is
     signal LL_ALU_OUT  : std_logic_vector(DATA_SIZE - 1 downto 0);
     signal MUXC_OUT    : std_logic_vector(DATA_SIZE - 1 downto 0); -- TODO: rename?
     signal ALU_OUT_REG : std_logic_vector(DATA_SIZE - 1 downto 0);
+    signal COND        : std_logic;
     signal NPC_EX      : unsigned(PC_SIZE - 1 downto 0);
 
     -- [MEM] STAGE
@@ -316,17 +320,21 @@ begin
 
     -- [EX] STAGE
 
-    -- NPC_EX
-    NPC_EX_P : process (CLK, RST)
+    -- COND
+    COND_P : process (CLK, RST)
     begin
         if RST = '0' then
-            NPC_EX <= (others => '0');
+            COND <= '0';
         elsif rising_edge(CLK) then
-            if (NPC_LATCH_EN = '1') then
-                NPC_EX <= NPC_ID;
+            if (COND_EN = '1') then
+                if unsigned(A) = 0 then
+                    COND <= '1';
+                else
+                    COND <= '0';
+                end if;
             end if;
         end if;
-    end process NPC_EX_P;
+    end process COND_P;
 
     -- ALU_OUT_REG
     ALU_OUT_REG_P : process (CLK, RST)
@@ -339,6 +347,18 @@ begin
             end if;
         end if;
     end process ALU_OUT_REG_P;
+
+    -- NPC_EX
+    NPC_EX_P : process (CLK, RST)
+    begin
+        if RST = '0' then
+            NPC_EX <= (others => '0');
+        elsif rising_edge(CLK) then
+            if (NPC_LATCH_EN = '1') then
+                NPC_EX <= NPC_ID;
+            end if;
+        end if;
+    end process NPC_EX_P;
 
     -- TODO:
     -- [ME] STAGE
