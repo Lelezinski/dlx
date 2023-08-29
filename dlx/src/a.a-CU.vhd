@@ -75,9 +75,9 @@ begin
     cw_s <= to_cw(cw_mem(to_integer(unsigned(OPCODE))));
 
     -- -- Assign the control signals to the outputs
-    cw <= (cw1.fetch_cw, cw2.decode_cw, cw3.execute_cw, cw4.memory_cw, cw5.wb_cw);
-    cw.execute_cw.ALU1 <= ALU_OPCODE2(1);
-    cw.execute_cw.ALU2 <= ALU_OPCODE2(0);
+    cw <= (cw1.fetch, cw2.decode, cw3.execute, cw4.memory, cw5.wb);
+    cw.execute.ALU1 <= ALU_OPCODE2(1);
+    cw.execute.ALU2 <= ALU_OPCODE2(0);
 
 ----------------------------------------------------------------
 -- Processes
@@ -111,7 +111,7 @@ begin
     ALU_OPCODE_P : process (OPCODE, FUNC_OP, cw_s)
     begin
         -- default assignment for all the instructions that are not RTYPE
-        ALU_OPCODE <= cw_s.execute_cw.ALU1 & cw_s.execute_cw.ALU2;
+        ALU_OPCODE <= cw_s.execute.ALU1 & cw_s.execute.ALU2;
 
         -- Because all RTYPE instructions index the same element in cw_mem, we
         -- use the FUNC field to select correctly their ALU_OPCODE.

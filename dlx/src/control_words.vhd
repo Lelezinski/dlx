@@ -46,11 +46,11 @@ package control_words is
     end record wb_cw_t;
 
     type cw_t is record
-        fetch_cw   : fetch_cw_t;
-        decode_cw  : decode_cw_t;
-        execute_cw : execute_cw_t;
-        memory_cw  : memory_cw_t;
-        wb_cw      : wb_cw_t;
+        fetch   : fetch_cw_t;
+        decode  : decode_cw_t;
+        execute : execute_cw_t;
+        memory  : memory_cw_t;
+        wb      : wb_cw_t;
     end record cw_t;
 
     type cw_from_mem is record
@@ -62,13 +62,13 @@ package control_words is
     -- Control word signal definition
     -----------------------------------------------------------------------------
     signal init_cw : cw_t := (
-        fetch_cw              => (
+        fetch              => (
             PC_LATCH_EN       => '0',
             IR_LATCH_EN       => '0',
             NPC_LATCH_EN      => '0',
             IRAM_EN           => '0'
             ),
-        decode_cw             => (
+        decode             => (
             A_EN              => '0',
             B_EN              => '0',
             IMM_EN            => '0',
@@ -78,7 +78,7 @@ package control_words is
             RF_RD2            => '0',
             RF_WR             => '0'
             ),
-        execute_cw            => (
+        execute            => (
             ALU_OUT_EN        => '0',
             ALU1              => '0',
             ALU2              => '0',
@@ -86,13 +86,13 @@ package control_words is
             MUXB_SEL          => '0',
             MUXC_SEL          => '0'
             ),
-        memory_cw             => (
+        memory             => (
             LMD_EN            => '0',
             MUXD_SEL          => '0',
             DRAM_ENABLE       => '0',
             DRAM_READNOTWRITE => '0'
             ),
-        wb_cw                 => (
+        wb                 => (
             MUXE_SEL          => '0')
         );
 
@@ -107,12 +107,12 @@ package body control_words is
     pure function to_cw(arg : std_logic_vector) return cw_t is
     begin
         return (
-            fetch_cw              => (
+            fetch              => (
                 PC_LATCH_EN       => arg(0),
                 IR_LATCH_EN       => arg(1),
                 NPC_LATCH_EN      => arg(2),
                 IRAM_EN           => arg(3)),
-            decode_cw             => (
+            decode             => (
                 A_EN              => arg(4),
                 B_EN              => arg(5),
                 IMM_EN            => arg(6),
@@ -121,19 +121,19 @@ package body control_words is
                 RF_RD1            => arg(9),
                 RF_RD2            => arg(10),
                 RF_WR             => arg(11)),
-            execute_cw            => (
+            execute            => (
                 ALU_OUT_EN        => arg(12),
                 ALU1              => arg(13),
                 ALU2              => arg(14),
                 MUXA_SEL          => arg(15),
                 MUXB_SEL          => arg(16),
                 MUXC_SEL          => arg(17)),
-            memory_cw             => (
+            memory             => (
                 LMD_EN            => arg(18),
                 MUXD_SEL          => arg(19),
                 DRAM_ENABLE       => arg(20),
                 DRAM_READNOTWRITE => arg(21)),
-            wb_cw                 => (
+            wb                 => (
                 MUXE_SEL          => arg(22))
             );
     end function;
