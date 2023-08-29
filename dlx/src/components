@@ -37,6 +37,8 @@
 ./memories/rw/rwcache.vhd
 ./memories/rw/rwmem.vhd
 
+./control_words.vhd # TODO: spostare?
+
 ./a.b-DataPath.vhd
 ./a.c-IRAM.vhd
 ./a-DLX.vhd

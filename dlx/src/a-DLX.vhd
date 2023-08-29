@@ -1,11 +1,12 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 use work.myTypes.all;
-
 use work.ROCACHE_PKG.all;
 use work.RWCACHE_PKG.all;
-use work.ALU_TYPE.all;
+use work.alu_type.all;
+use work.control_words.all;
 
 --------------------------------------------------------------------
 -- Entity Declaration
@@ -43,36 +44,20 @@ architecture RTL of DLX is
     component CU is
         generic (
             -- FIXME: use constants
-            MICROCODE_MEM_SIZE : integer := 17; -- Microcode Memory Size
-            FUNC_SIZE          : integer := 11; -- Func Field Size for R-Type Ops
-            OP_CODE_SIZE       : integer := 6;  -- Op Code Size
+            MICROCODE_MEM_SIZE        : integer := 15;  -- Microcode Memory Size
+            FUNC_SIZE                 : integer := 11;  -- Func Field Size for R-Type Ops
+            OP_CODE_SIZE              : integer := 6;   -- Op Code Size
             -- ALU_OPC_SIZE           :   integer := 6;  -- ALU Op Code Word Size
-            CW_SIZE                   : integer := 13; -- Control Word Size
-            FIRST_STAGE_SIGNALS_SIZE  : integer := 3;
-            SECOND_STAGE_SIGNALS_SIZE : integer := 5;
-            THIRD_STAGE_SIGNALS_SIZE  : integer := 5);
+            CW_SIZE                   : integer := 23);  -- Control Word Size
         port (
-            -- FIRST PIPE STAGE OUTPUTS
-            EN1 : out std_logic; -- enables the register file and the pipeline registers
-            RF1 : out std_logic; -- enables the read port 1 of the register file
-            RF2 : out std_logic; -- enables the read port 2 of the register file
-            WF1 : out std_logic; -- enables the write port of the register file
-            -- SECOND PIPE STAGE OUTPUTS
-            EN2  : out std_logic; -- enables the pipe registers
-            S1   : out std_logic; -- input selection of the first multiplexer
-            S2   : out std_logic; -- input selection of the second multiplexer
-            ALU1 : out std_logic; -- alu control bit
-            ALU2 : out std_logic; -- alu control bit
-            -- THIRD PIPE STAGE OUTPUTS
-            EN3 : out std_logic; -- enables the memory and the pipeline registers
-            RM  : out std_logic; -- enables the read-out of the memory
-            WM  : out std_logic; -- enables the write-in of the memory
-            S3  : out std_logic; -- input selection of the multiplexer
-            -- INPUTS
-            OPCODE : in std_logic_vector(OP_CODE_SIZE - 1 downto 0);
-            FUNC   : in std_logic_vector(FUNC_SIZE - 1 downto 0);
-            CLK    : in std_logic;
-            RST    : in std_logic); -- Active Low
+            cw    : out cw_t;  -- control word for datapath and memories
+            in_cw : in  cw_from_mem; -- input signals coming from datapath and memories
+    
+            -- Inputs
+            OPCODE : in  std_logic_vector(OP_CODE_SIZE - 1 downto 0);
+            FUNC   : in  std_logic_vector(FUNC_SIZE - 1 downto 0);
+            CLK    : in  std_logic;
+            RST    : in  std_logic);          -- Active Low
     end component;
 
     -- Datapath

@@ -8,10 +8,10 @@ package control_words is
     -- Pipeline control signals type definitions
     -----------------------------------------------------------------------------
     type fetch_cw_t is record
-        PC_LATCH_EN  : std_logic;       -- Progam counter latch enable
-        IR_LATCH_EN  : std_logic;       -- Instruction Register Latch Enable
-        NPC_LATCH_EN : std_logic;       -- Next Program counter latch enable
-        IRAM_EN      : std_logic;       -- instruction ram enable signal
+        PC_EN   : std_logic;            -- Progam counter latch enable
+        IR_EN   : std_logic;            -- Instruction Register Latch Enable
+        NPC_EN  : std_logic;            -- Next Program counter latch enable
+        IRAM_EN : std_logic;            -- instruction ram enable signal
     end record fetch_cw_t;
 
     type decode_cw_t is record
@@ -63,9 +63,9 @@ package control_words is
     -----------------------------------------------------------------------------
     signal init_cw : cw_t := (
         fetch              => (
-            PC_LATCH_EN       => '0',
-            IR_LATCH_EN       => '0',
-            NPC_LATCH_EN      => '0',
+            PC_EN       => '0',
+            IR_EN       => '0',
+            NPC_EN      => '0',
             IRAM_EN           => '0'
             ),
         decode             => (
@@ -108,9 +108,9 @@ package body control_words is
     begin
         return (
             fetch              => (
-                PC_LATCH_EN       => arg(0),
-                IR_LATCH_EN       => arg(1),
-                NPC_LATCH_EN      => arg(2),
+                PC_EN       => arg(0),
+                IR_EN       => arg(1),
+                NPC_EN      => arg(2),
                 IRAM_EN           => arg(3)),
             decode             => (
                 A_EN              => arg(4),
