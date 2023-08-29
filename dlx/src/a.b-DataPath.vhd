@@ -128,7 +128,7 @@ architecture RTL of DATAPATH is
     -- Signals Declaration
     ----------------------------------------------------------------
 
-    -- Instructions Fields
+    ---------------------------- Instructions Fields
     signal INS_OP_CODE : std_logic_vector(INS_OP_CODE_SIZE - 1 downto 0);
     signal INS_R1      : std_logic_vector(INS_R1_SIZE - 1 downto 0);
     signal INS_R2      : std_logic_vector(INS_R2_SIZE - 1 downto 0);
@@ -136,13 +136,13 @@ architecture RTL of DATAPATH is
     signal INS_IMM     : std_logic_vector(INS_IMM_SIZE - 1 downto 0);
     signal INS_FUNC    : std_logic_vector(INS_FUNC_SIZE - 1 downto 0);
 
-    -- [IF] STAGE
+    ---------------------------- [IF] STAGE
     signal IR       : std_logic_vector(INS_SIZE - 1 downto 0);
     signal IRAM_OUT : std_logic_vector(INS_SIZE - 1 downto 0);
     signal PC       : unsigned(PC_SIZE - 1 downto 0);
-    signal NPC_IF   : unsigned(PC_SIZE - 1 downto 0);
+    signal NPC      : unsigned(PC_SIZE - 1 downto 0);
 
-    -- [ID] STAGE
+    ---------------------------- [ID] STAGE
     signal RF_OUT_1 : std_logic_vector(DATA_SIZE - 1 downto 0);
     signal RF_OUT_2 : std_logic_vector(DATA_SIZE - 1 downto 0);
     signal A        : std_logic_vector(DATA_SIZE - 1 downto 0);
@@ -150,21 +150,25 @@ architecture RTL of DATAPATH is
     signal IMM      : std_logic_vector(DATA_SIZE - 1 downto 0);
     signal NPC_ID   : unsigned(PC_SIZE - 1 downto 0);
 
-    -- [EX] STAGE
+    ---------------------------- [EX] STAGE
     signal ALU_IN_1    : std_logic_vector(DATA_SIZE - 1 downto 0);
     signal ALU_IN_2    : std_logic_vector(DATA_SIZE - 1 downto 0);
     signal ALU_OUT     : std_logic_vector(DATA_SIZE - 1 downto 0);
     signal LL_ALU_OUT  : std_logic_vector(DATA_SIZE - 1 downto 0);
-    signal MUXC_OUT    : std_logic_vector(DATA_SIZE - 1 downto 0); -- TODO: rename?
+    signal MUXC_OUT    : std_logic_vector(DATA_SIZE - 1 downto 0);
     signal ALU_OUT_REG : std_logic_vector(DATA_SIZE - 1 downto 0);
     signal COND        : std_logic;
+    signal B_EX        : std_logic_vector(DATA_SIZE - 1 downto 0);
     signal NPC_EX      : unsigned(PC_SIZE - 1 downto 0);
 
-    -- [MEM] STAGE
-    signal LMD : std_logic_vector(DATA_SIZE - 1 downto 0);
+    ---------------------------- [ME] STAGE
+    signal MUXD_OUT       : unsigned(PC_SIZE - 1 downto 0);
+    signal DRAM_OUT       : std_logic_vector(DATA_SIZE - 1 downto 0);
+    signal LMD            : std_logic_vector(DATA_SIZE - 1 downto 0);
+    signal ALU_OUT_REG_ME : std_logic_vector(DATA_SIZE - 1 downto 0);
 
-    -- Datapath Bus signals
-    signal PC_BUS : unsigned(PC_SIZE - 1 downto 0);
+    ---------------------------- [WB] STAGE
+    signal MUXE_OUT : std_logic_vector(DATA_SIZE - 1 downto 0);
 
 begin
 
@@ -172,7 +176,7 @@ begin
     -- Signals Assignment
     ----------------------------------------------------------------
 
-    -- IR Split
+    ---------------------------- IR Split
     INS_OP_CODE <= IR(INS_OP_CODE_L downto INS_OP_CODE_R);
     INS_R1      <= IR(INS_R1_L downto INS_R1_R);
     INS_R2      <= IR(INS_R2_L downto INS_R2_R);
@@ -180,15 +184,26 @@ begin
     INS_IMM     <= IR(INS_IMM_L downto INS_IMM_R);
     INS_FUNC    <= IR(INS_FUNC_L downto INS_FUNC_R);
 
-    -- MUXes
+    ---------------------------- MUXes
+    -- MUXA
     ALU_IN_1 <= std_logic_vector(NPC_ID) when MUXA_SEL = '0' else
         A;
+
+    -- MUXB
     ALU_IN_2 <= B when MUXB_SEL = '0' else
         IMM;
+
+    -- MUXC
     MUXC_OUT <= ALU_OUT when MUXC_SEL = '0' else
         LL_ALU_OUT;
 
-    -- TODO: MUXes
+    -- MUXD
+    MUXD_OUT <= NPC_EX when MUXD_SEL = '0' else
+        unsigned(ALU_OUT_REG); -- TODO: match size
+
+    -- MUXE
+    MUXE_OUT <= LMD when MUXE_SEL = '0' else
+        ALU_OUT_REG_ME;
 
     ----------------------------------------------------------------
     -- Component Instantiation
@@ -226,12 +241,13 @@ begin
         OUT2   => RF_OUT_2
     );
 
+    -- TODO: others
+
     ----------------------------------------------------------------
     -- Processes
     ----------------------------------------------------------------
 
-    -- [IF] STAGE
-
+    ---------------------------- [IF] STAGE
     -- PC
     PC_P : process (CLK, RST)
     begin
@@ -239,22 +255,22 @@ begin
             PC <= (others => '0');
         elsif rising_edge(CLK) then
             if (PC_LATCH_EN = '1') then
-                PC <= PC_BUS;
+                PC <= MUXD_OUT;
             end if;
         end if;
     end process PC_P;
 
-    -- NPC_IF
-    NPC_IF_P : process (CLK, RST)
+    -- NPC
+    NPC_P : process (CLK, RST)
     begin
         if RST = '0' then
-            NPC_IF <= (others => '0');
+            NPC <= (others => '0');
         elsif rising_edge(CLK) then
             if (NPC_LATCH_EN = '1') then
-                NPC_IF <= PC + 4; -- TODO: generalizzare?
+                NPC <= PC + 4; -- TODO: generalizzare?
             end if;
         end if;
-    end process NPC_IF_P;
+    end process NPC_P;
 
     -- IR
     IR_P : process (CLK, RST)
@@ -268,8 +284,7 @@ begin
         end if;
     end process IR_P;
 
-    -- [ID] STAGE
-
+    ---------------------------- [ID] STAGE
     -- A
     A_P : process (CLK, RST)
     begin
@@ -313,13 +328,12 @@ begin
             NPC_ID <= (others => '0');
         elsif rising_edge(CLK) then
             if (NPC_LATCH_EN = '1') then
-                NPC_ID <= NPC_IF;
+                NPC_ID <= NPC;
             end if;
         end if;
     end process NPC_ID_P;
 
-    -- [EX] STAGE
-
+    ---------------------------- [EX] STAGE
     -- COND
     COND_P : process (CLK, RST)
     begin
@@ -348,6 +362,18 @@ begin
         end if;
     end process ALU_OUT_REG_P;
 
+    -- B_EX
+    B_EX_P : process (CLK, RST)
+    begin
+        if RST = '0' then
+            B_EX <= (others => '0');
+        elsif rising_edge(CLK) then
+            if (B_EN = '1') then
+                B_EX <= B;
+            end if;
+        end if;
+    end process B_EX_P;
+
     -- NPC_EX
     NPC_EX_P : process (CLK, RST)
     begin
@@ -360,9 +386,45 @@ begin
         end if;
     end process NPC_EX_P;
 
-    -- TODO:
-    -- [ME] STAGE
-    -- [WB] STAGE
+    ---------------------------- [ME] STAGE
+    -- LMD
+    LMD_P : process (CLK, RST)
+    begin
+        if RST = '0' then
+            LMD <= (others => '0');
+        elsif rising_edge(CLK) then
+            if (LMD_EN = '1') then
+                LMD <= DRAM_OUT;
+            end if;
+        end if;
+    end process LMD_P;
+
+    -- MUXD_OUT
+    MUXD_OUT_P : process (CLK, RST)
+    begin
+        if RST = '0' then
+            NPC_EX <= (others => '0');
+        elsif rising_edge(CLK) then
+            if (NPC_LATCH_EN = '1') then
+                NPC_EX <= NPC_ID;
+            end if;
+        end if;
+    end process MUXD_OUT_P;
+
+    -- ALU_OUT_REG_ME
+    ALU_OUT_REG_ME_P : process (CLK, RST)
+    begin
+        if RST = '0' then
+            ALU_OUT_REG_ME <= (others => '0');
+        elsif rising_edge(CLK) then
+            if (ALU_OUT_REG_EN = '1') then
+                ALU_OUT_REG_ME <= ALU_OUT_REG;
+            end if;
+        end if;
+    end process ALU_OUT_REG_ME_P;
+
+    ---------------------------- [WB] STAGE
+    -- TODO: controllare timing per il WB al RF
 
 end architecture RTL;
 
