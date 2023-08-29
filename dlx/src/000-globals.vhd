@@ -88,6 +88,7 @@ package myTypes is
 
     -- R-Type instruction -> FUNC field
     type func_t is (RTYPE_ADD, RTYPE_SUB, RTYPE_AND, RTYPE_OR, NOP);
+    subtype opcode_t is std_logic_vector(C_OP_CODE_SIZE - 1 downto 0);
 
     -- constant RTYPE_ADD : std_logic_vector(C_FUNC_SIZE - 1 downto 0) := "00000000000"; -- ADD RS1,RS2,RD
     -- constant RTYPE_SUB : std_logic_vector(C_FUNC_SIZE - 1 downto 0) := "00000000001"; -- SUB RS1,RS2,RD
@@ -96,23 +97,27 @@ package myTypes is
     -- constant NOP       : std_logic_vector(C_FUNC_SIZE - 1 downto 0) := "11111111111"; -- NOP
 
     -- R-Type instruction -> OPCODE field
-    constant RTYPE : std_logic_vector(C_OP_CODE_SIZE - 1 downto 0) := "000000"; -- for ADD, SUB, AND, OR register-to-register operation
+    constant RTYPE : opcode_t := "000000"; -- for ADD, SUB, AND, OR register-to-register operation
 
     -- I-Type instruction -> OPCODE field
-    constant ITYPE_ADDI1  : std_logic_vector(C_OP_CODE_SIZE - 1 downto 0) := "000001"; -- ADDI1 RS1,RD,INP1
-    constant ITYPE_SUBI1  : std_logic_vector(C_OP_CODE_SIZE - 1 downto 0) := "000010"; -- SUBI1 RA,RB,INP1
-    constant ITYPE_ANDI1  : std_logic_vector(C_OP_CODE_SIZE - 1 downto 0) := "000011"; -- ANDI1 RA,RB,INP1
-    constant ITYPE_ORI1   : std_logic_vector(C_OP_CODE_SIZE - 1 downto 0) := "000100"; -- ORI1 RA,RB,INP1
-    constant ITYPE_ADDI2  : std_logic_vector(C_OP_CODE_SIZE - 1 downto 0) := "000101"; -- ADDI2 RA,RB,INP2
-    constant ITYPE_SUBI2  : std_logic_vector(C_OP_CODE_SIZE - 1 downto 0) := "000110"; -- SUBI2 RA,RB,INP2
-    constant ITYPE_ANDI2  : std_logic_vector(C_OP_CODE_SIZE - 1 downto 0) := "000111"; -- ANDI2 RA,RB,INP2
-    constant ITYPE_ORI2   : std_logic_vector(C_OP_CODE_SIZE - 1 downto 0) := "001000"; -- ORI2 RA,RB,INP2
-    constant ITYPE_MOV    : std_logic_vector(C_OP_CODE_SIZE - 1 downto 0) := "001001"; -- MOV RA,RB
-    constant ITYPE_S_REG1 : std_logic_vector(C_OP_CODE_SIZE - 1 downto 0) := "001010"; -- S_REG1 RB,INP1
-    constant ITYPE_S_REG2 : std_logic_vector(C_OP_CODE_SIZE - 1 downto 0) := "001011"; -- S_REG2 RB,INP2
-    constant ITYPE_S_MEM  : std_logic_vector(C_OP_CODE_SIZE - 1 downto 0) := "001100"; -- S_MEM RA,RB,INP2
-    constant ITYPE_L_MEM1 : std_logic_vector(C_OP_CODE_SIZE - 1 downto 0) := "001101"; -- L_MEM1 RA,RB,INP1
-    constant ITYPE_L_MEM2 : std_logic_vector(C_OP_CODE_SIZE - 1 downto 0) := "001110"; -- L_MEM2 RA,RB,INP2
+    constant ITYPE_ADDI : opcode_t := "000001";  -- ADDI  RS1,RD,INP1
+    constant ITYPE_SUBI : opcode_t := "000010";  -- SUBI  RA,RB,INP1
+    constant ITYPE_ANDI : opcode_t := "000011";  -- ANDI  RA,RB,INP1
+    constant ITYPE_ORI1 : opcode_t := "000100";  -- ORI  RA,RB,INP1
+    constant ITYPE_XORI : opcode_t := "000101";  -- XORI  RA,RB,INP2
+    constant ITYPE_SGEI : opcode_t := "000110";  -- SGEI RA,RB,INP2
+    constant ITYPE_SLEI : opcode_t := "000111";  -- SLEI RA,RB,INP2
+    constant ITYPE_SLLI : opcode_t := "001000";  -- SLLI RA,RB,INP2
+    constant ITYPE_SNEI : opcode_t := "001001";  -- SNEI RA,RB
+    constant ITYPE_SRLI : opcode_t := "001010";  -- SRLI RB,INP1
+    constant ITYPE_BEQ  : opcode_t := "001011";  -- BEQ RB,INP2
+    constant ITYPE_BNEQ : opcode_t := "001100";  -- BNEQ RA,RB,INP2
+    constant ITYPE_LW   : opcode_t := "001101";  -- LW RA,RB,INP1
+    constant ITYPE_SW   : opcode_t := "001110";  -- SW RA,RB,INP2
+
+    -- J-Type instruction -> OPCODE field
+    constant JTYPE_J   : opcode_t := "001111";  -- J TARGET
+    constant JTYPE_JAL : opcode_t := "010000";  -- J TARGET
 
     -- Only for simulation purpose
     constant RO_HEX      : string := "./memories/ro/hex.txt";
