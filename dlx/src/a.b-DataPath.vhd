@@ -12,11 +12,11 @@ use work.ALU_TYPE.all;
 entity DATAPATH is
     -- TODO: fix generic e port
     generic (
-        DATA_SIZE : integer := numBit;     -- Data Size
-        INS_SIZE  : integer := INS_SIZE;   -- Instructions Size
-        CW_SIZE   : integer := C_CW_SIZE;  -- ALU OP Size
-        PC_SIZE   : integer := PC_SIZE;    -- PC Size
-        IR_SIZE   : integer := IRAM_DEPTH  -- instruction register size
+        DATA_SIZE : integer := numBit;    -- Data Size
+        INS_SIZE  : integer := INS_SIZE;  -- Instructions Size
+        CW_SIZE   : integer := C_CW_SIZE; -- ALU OP Size
+        PC_SIZE   : integer := PC_SIZE;   -- PC Size
+        IR_SIZE   : integer := IRAM_DEPTH -- instruction register size
     );
     port (
         CLK : in std_logic; -- Clock
@@ -38,11 +38,11 @@ entity DATAPATH is
         IRAM_DOUT : in std_logic_vector(INS_SIZE - 1 downto 0); -- Instruction coming from the instructions register
 
         -- EXU stage
-        ALU_OUT_EN : in std_logic;                                  -- ALU_OUT register latch enable
-        ALU_OP     : in std_logic_vector(ALU_OP_SIZE - 1 downto 0); -- Alu operation selection signal
-        MUXA_SEL   : in std_logic;                                  -- MuxA selection signal
-        MUXB_SEL   : in std_logic;                                  -- MuxB selection signal
-        MUXC_SEL   : in std_logic;                                  -- MuxC selection signal
+        ALU_OUT_REG_EN : in std_logic;                                  -- ALU_OUT register latch enable
+        ALU_OP         : in std_logic_vector(ALU_OP_SIZE - 1 downto 0); -- Alu operation selection signal
+        MUXA_SEL       : in std_logic;                                  -- MuxA selection signal
+        MUXB_SEL       : in std_logic;                                  -- MuxB selection signal
+        MUXC_SEL       : in std_logic;                                  -- MuxC selection signal
 
         -- MEM stage
         LMD_EN   : in std_logic; -- Loaded memory data latch enable
@@ -117,6 +117,8 @@ architecture RTL of DATAPATH is
             Cout : out std_logic);
     end component P4_ADDER;
 
+    -- TODO: ALU
+
     -- TODO: DRAM
 
     ----------------------------------------------------------------
@@ -146,8 +148,13 @@ architecture RTL of DATAPATH is
     signal NPC_ID   : unsigned(PC_SIZE - 1 downto 0);
 
     -- [EX] STAGE
-    signal ALU_OUT : std_logic_vector(DATA_SIZE - 1 downto 0);
-    signal NPC_EX  : unsigned(PC_SIZE - 1 downto 0);
+    signal ALU_IN_1    : std_logic_vector(DATA_SIZE - 1 downto 0);
+    signal ALU_IN_2    : std_logic_vector(DATA_SIZE - 1 downto 0);
+    signal ALU_OUT     : std_logic_vector(DATA_SIZE - 1 downto 0);
+    signal LL_ALU_OUT  : std_logic_vector(DATA_SIZE - 1 downto 0);
+    signal MUXC_OUT    : std_logic_vector(DATA_SIZE - 1 downto 0); -- TODO: rename?
+    signal ALU_OUT_REG : std_logic_vector(DATA_SIZE - 1 downto 0);
+    signal NPC_EX      : unsigned(PC_SIZE - 1 downto 0);
 
     -- [MEM] STAGE
     signal LMD : std_logic_vector(DATA_SIZE - 1 downto 0);
@@ -155,11 +162,12 @@ architecture RTL of DATAPATH is
     -- Datapath Bus signals
     signal PC_BUS : unsigned(PC_SIZE - 1 downto 0);
 
+begin
+
     ----------------------------------------------------------------
     -- Signals Assignment
     ----------------------------------------------------------------
 
-begin
     -- IR Split
     INS_OP_CODE <= IR(INS_OP_CODE_L downto INS_OP_CODE_R);
     INS_R1      <= IR(INS_R1_L downto INS_R1_R);
@@ -167,6 +175,16 @@ begin
     INS_R3      <= IR(INS_R3_L downto INS_R3_R);
     INS_IMM     <= IR(INS_IMM_L downto INS_IMM_R);
     INS_FUNC    <= IR(INS_FUNC_L downto INS_FUNC_R);
+
+    -- MUXes
+    ALU_IN_1 <= std_logic_vector(NPC_ID) when MUXA_SEL = '0' else
+        A;
+    ALU_IN_2 <= B when MUXB_SEL = '0' else
+        IMM;
+    MUXC_OUT <= ALU_OUT when MUXC_SEL = '0' else
+        LL_ALU_OUT;
+
+    -- TODO: MUXes
 
     ----------------------------------------------------------------
     -- Component Instantiation
@@ -296,9 +314,8 @@ begin
         end if;
     end process NPC_ID_P;
 
-    
     -- [EX] STAGE
-    
+
     -- NPC_EX
     NPC_EX_P : process (CLK, RST)
     begin
@@ -310,7 +327,19 @@ begin
             end if;
         end if;
     end process NPC_EX_P;
-    
+
+    -- ALU_OUT_REG
+    ALU_OUT_REG_P : process (CLK, RST)
+    begin
+        if RST = '0' then
+            ALU_OUT_REG <= (others => '0');
+        elsif rising_edge(CLK) then
+            if (ALU_OUT_REG_EN = '1') then
+                ALU_OUT_REG <= MUXC_OUT;
+            end if;
+        end if;
+    end process ALU_OUT_REG_P;
+
     -- TODO:
     -- [ME] STAGE
     -- [WB] STAGE
