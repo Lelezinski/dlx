@@ -1,5 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use IEEE.math_real.ceil;
+use IEEE.math_real.log2;
 
 package myTypes is
 
@@ -49,9 +51,10 @@ package myTypes is
     constant NUMBIT_MUL : integer := 32;
 
     -- Register File
+    constant R_NUM       : integer := 16;
     constant RF_WORD_LEN : integer := 32;
     constant RF_REG_NUM  : integer := 8;
-    constant RF_ADDR_LEN : integer := ceil(log2(real(R_NUM)));
+    constant RF_ADDR_LEN : integer := integer(ceil(log2(real(R_NUM))));
     -- WRF
     -- constant NUM_GLOBAL_REGISTERS : integer := 1;  -- M
     -- constant NUM_LIO_REGISTERS    : integer := 3;  -- N (LOCAL/INPUT/OUTPUT REGS)
@@ -62,7 +65,7 @@ package myTypes is
 
     -- IRAM
     constant IRAM_DEPTH : integer := 48;
-    constant PC_SIZE    : integer := ceil(log2(real(IRAM_DEPTH)));
+    constant PC_SIZE    : integer := integer(ceil(log2(real(IRAM_DEPTH))));
 
     -- Control Unit Input Sizes
     constant C_OP_CODE_SIZE : integer := 6;        -- OPCODE field size
