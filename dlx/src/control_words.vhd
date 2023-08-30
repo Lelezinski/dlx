@@ -18,6 +18,7 @@ package control_words is
         A_EN      : std_logic;          -- A operad register latch enable
         B_EN      : std_logic;          -- B operad register latch enable
         IMM_EN    : std_logic;          -- IMM operad register latch enable
+        NPC_ID_EN : std_logic;          -- Next Program counter [EX] latch enable
         RF_RESET  : std_logic;          -- register file reset signal
         RF_ENABLE : std_logic;          -- register file enable signal
         RF_RD1    : std_logic;          -- register file read port one signal
@@ -26,17 +27,21 @@ package control_words is
     end record decode_cw_t;
 
     type execute_cw_t is record
-        ALU_OUT_EN : std_logic;         -- ALU_OUT register latch enable
-        ALU1       : std_logic;         -- alu control bit 0
-        ALU2       : std_logic;         -- alu control bit 1
-        MUXA_SEL   : std_logic;         -- MuxA selection signal
-        MUXB_SEL   : std_logic;         -- MuxB selection signal
-        MUXC_SEL   : std_logic;         -- MuxC selection signal
+        ALU_OUT_REG_EN : std_logic;     -- ALU_OUT register latch enable
+        COND_EN        : std_logic;     -- Branch Condition latch enable
+        ALU1           : std_logic;     -- alu control bit 0
+        ALU2           : std_logic;     -- alu control bit 1
+        B_EX_EN        : std_logic;     -- B operad register [EX] latch enable
+        NPC_EX_EN      : std_logic;     -- Next Program counter [EX] latch enable
+        MUXA_SEL       : std_logic;     -- MuxA selection signal
+        MUXB_SEL       : std_logic;     -- MuxB selection signal
+        MUXC_SEL       : std_logic;     -- MuxC selection signal
     end record execute_cw_t;
 
     type memory_cw_t is record
         LMD_EN            : std_logic;  -- Loaded memory data latch enable
         MUXD_SEL          : std_logic;  -- MuxD selection signal
+        ALU_OUT_REG_ME_EN : std_logic;  -- ALU_OUT register [ME] latch enable
         DRAM_ENABLE       : std_logic;  -- data memory enable signal
         DRAM_READNOTWRITE : std_logic;  -- data memory r/w signal
     end record memory_cw_t;
@@ -62,39 +67,45 @@ package control_words is
     -- Control word signal definition
     -----------------------------------------------------------------------------
     signal init_cw : cw_t := (
-        fetch              => (
+        fetch => (
             PC_EN       => '0',
             IR_EN       => '0',
             NPC_EN      => '0',
-            IRAM_EN           => '0'
-            ),
-        decode             => (
-            A_EN              => '0',
-            B_EN              => '0',
-            IMM_EN            => '0',
-            RF_RESET          => '0',
-            RF_ENABLE         => '0',
-            RF_RD1            => '0',
-            RF_RD2            => '0',
-            RF_WR             => '0'
-            ),
-        execute            => (
-            ALU_OUT_EN        => '0',
-            ALU1              => '0',
-            ALU2              => '0',
-            MUXA_SEL          => '0',
-            MUXB_SEL          => '0',
-            MUXC_SEL          => '0'
-            ),
-        memory             => (
+            IRAM_EN     => '0'
+        ),
+        decode => (
+            A_EN        => '0',
+            B_EN        => '0',
+            IMM_EN      => '0',
+            NPC_ID_EN   => '0',
+            RF_RESET    => '0',
+            RF_ENABLE   => '0',
+            RF_RD1      => '0',
+            RF_RD2      => '0',
+            RF_WR       => '0'
+        ),
+        execute => (
+            ALU_OUT_REG_EN => '0',
+            COND_EN        => '0',
+            ALU1           => '0',
+            ALU2           => '0',
+            B_EX_EN        => '0',
+            NPC_EX_EN      => '0',
+            MUXA_SEL       => '0',
+            MUXB_SEL       => '0',
+            MUXC_SEL       => '0'
+        ),
+        memory => (
             LMD_EN            => '0',
             MUXD_SEL          => '0',
+            ALU_OUT_REG_ME_EN => '0',
             DRAM_ENABLE       => '0',
             DRAM_READNOTWRITE => '0'
-            ),
-        wb                 => (
-            MUXE_SEL          => '0')
-        );
+        ),
+        wb => (
+            MUXE_SEL          => '0'
+        )
+    );
 
     -----------------------------------------------------------------------------
     -- Function to cast a std_logic_vector into a cw_t
@@ -107,34 +118,44 @@ package body control_words is
     pure function to_cw(arg : std_logic_vector) return cw_t is
     begin
         return (
-            fetch           => (
-                PC_EN             => arg(22),
-                IR_EN             => arg(21),
-                NPC_EN            => arg(20),
-                IRAM_EN           => arg(19)),
-            decode          => (
-                A_EN              => arg(18),
-                B_EN              => arg(17),
-                IMM_EN            => arg(16),
-                RF_RESET          => arg(15),
-                RF_ENABLE         => arg(14),
-                RF_RD1            => arg(13),
-                RF_RD2            => arg(12),
-                RF_WR             => arg(11)),
-            execute         => (
-                ALU_OUT_EN        => arg(10),
-                ALU1              => arg(9),
-                ALU2              => arg(8),
-                MUXA_SEL          => arg(7),
-                MUXB_SEL          => arg(6),
-                MUXC_SEL          => arg(5)),
-            memory          => (
-                LMD_EN            => arg(4),
-                MUXD_SEL          => arg(3),
+            fetch => (
+                PC_EN       => arg(27),
+                IR_EN       => arg(26),
+                NPC_EN      => arg(25),
+                IRAM_EN     => arg(24)
+            ),
+            decode => (
+                A_EN        => arg(23),
+                B_EN        => arg(22),
+                IMM_EN      => arg(21),
+                NPC_ID_EN   => arg(20),
+                RF_RESET    => arg(19),
+                RF_ENABLE   => arg(18),
+                RF_RD1      => arg(17),
+                RF_RD2      => arg(16),
+                RF_WR       => arg(15)
+            ),
+            execute => (
+                ALU_OUT_REG_EN => arg(14),
+                COND_EN     => arg(13),
+                ALU1        => arg(12),
+                ALU2        => arg(11),
+                B_EX_EN     => arg(10),
+                NPC_EX_EN   => arg(9),
+                MUXA_SEL    => arg(8),
+                MUXB_SEL    => arg(7),
+                MUXC_SEL    => arg(6)
+            ),
+            memory => (
+                LMD_EN            => arg(5),
+                MUXD_SEL          => arg(4),
+                ALU_OUT_REG_ME_EN => arg(3),
                 DRAM_ENABLE       => arg(2),
-                DRAM_READNOTWRITE => arg(1)),
-            wb              => (
-                MUXE_SEL          => arg(0))
-            );
+                DRAM_READNOTWRITE => arg(1)
+            ),
+            wb => (
+                MUXE_SEL          => arg(0)
+            )
+        );
     end function;
 end control_words;
