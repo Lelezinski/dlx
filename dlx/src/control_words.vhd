@@ -107,34 +107,34 @@ package body control_words is
     pure function to_cw(arg : std_logic_vector) return cw_t is
     begin
         return (
-            fetch              => (
-                PC_EN       => arg(0),
-                IR_EN       => arg(1),
-                NPC_EN      => arg(2),
-                IRAM_EN           => arg(3)),
-            decode             => (
-                A_EN              => arg(4),
-                B_EN              => arg(5),
-                IMM_EN            => arg(6),
-                RF_RESET          => arg(7),
-                RF_ENABLE         => arg(8),
-                RF_RD1            => arg(9),
-                RF_RD2            => arg(10),
+            fetch           => (
+                PC_EN             => arg(22),
+                IR_EN             => arg(21),
+                NPC_EN            => arg(20),
+                IRAM_EN           => arg(19)),
+            decode          => (
+                A_EN              => arg(18),
+                B_EN              => arg(17),
+                IMM_EN            => arg(16),
+                RF_RESET          => arg(15),
+                RF_ENABLE         => arg(14),
+                RF_RD1            => arg(13),
+                RF_RD2            => arg(12),
                 RF_WR             => arg(11)),
-            execute            => (
-                ALU_OUT_EN        => arg(12),
-                ALU1              => arg(13),
-                ALU2              => arg(14),
-                MUXA_SEL          => arg(15),
-                MUXB_SEL          => arg(16),
-                MUXC_SEL          => arg(17)),
-            memory             => (
-                LMD_EN            => arg(18),
-                MUXD_SEL          => arg(19),
-                DRAM_ENABLE       => arg(20),
-                DRAM_READNOTWRITE => arg(21)),
-            wb                 => (
-                MUXE_SEL          => arg(22))
+            execute         => (
+                ALU_OUT_EN        => arg(10),
+                ALU1              => arg(9),
+                ALU2              => arg(8),
+                MUXA_SEL          => arg(7),
+                MUXB_SEL          => arg(6),
+                MUXC_SEL          => arg(5)),
+            memory          => (
+                LMD_EN            => arg(4),
+                MUXD_SEL          => arg(3),
+                DRAM_ENABLE       => arg(2),
+                DRAM_READNOTWRITE => arg(1)),
+            wb              => (
+                MUXE_SEL          => arg(0))
             );
     end function;
 end control_words;
