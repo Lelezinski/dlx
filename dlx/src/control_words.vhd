@@ -32,8 +32,7 @@ package control_words is
     type execute_cw_t is record
         ALU_OUT_REG_EN : std_logic;     -- ALU_OUT register latch enable
         COND_EN        : std_logic;     -- Branch Condition latch enable
-        ALU1           : std_logic;     -- alu control bit 0
-        ALU2           : std_logic;     -- alu control bit 1
+        ALU_OP         : alu_op_t;
         B_EX_EN        : std_logic;     -- B operad register [EX] latch enable
         NPC_EX_EN      : std_logic;     -- Next Program counter [EX] latch enable
         MUXA_SEL       : std_logic;     -- MuxA selection signal
@@ -76,24 +75,28 @@ package control_words is
             NPC_EN      => '0',
             IRAM_EN           => '0'
             ),
-        decode             => (
-            A_EN              => '0',
-            B_EN              => '0',
-            IMM_EN            => '0',
-            RF_RESET          => '0',
-            RF_ENABLE         => '0',
-            RF_RD1            => '0',
-            RF_RD2            => '0',
-            RF_WR             => '0'
-            ),
-        execute            => (
-            ALU_OUT_EN        => '0',
-            ALU_OP            => alu_add,
-            MUXA_SEL          => '0',
-            MUXB_SEL          => '0',
-            MUXC_SEL          => '0'
-            ),
-        memory             => (
+        decode => (
+            A_EN        => '0',
+            B_EN        => '0',
+            IMM_EN      => '0',
+            NPC_ID_EN   => '0',
+            RF_RESET    => '0',
+            RF_ENABLE   => '0',
+            RF_RD1      => '0',
+            RF_RD2      => '0',
+            RF_WR       => '0'
+        ),
+        execute => (
+            ALU_OUT_REG_EN => '0',
+            COND_EN        => '0',
+            ALU_OP         =>  alu_add,
+            B_EX_EN        => '0',
+            NPC_EX_EN      => '0',
+            MUXA_SEL       => '0',
+            MUXB_SEL       => '0',
+            MUXC_SEL       => '0'
+        ),
+        memory => (
             LMD_EN            => '0',
             MUXD_SEL          => '0',
             ALU_OUT_REG_ME_EN => '0',
