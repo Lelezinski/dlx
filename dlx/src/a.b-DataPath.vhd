@@ -3,54 +3,25 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
 use work.myTypes.all;
-use work.ALU_TYPE.all;
+use work.control_words.all;
 
 --------------------------------------------------------------------
 -- Entity Declaration
 --------------------------------------------------------------------
 
 entity DATAPATH is
-    -- TODO: fix generic e port
     generic (
         DATA_SIZE : integer := numBit;    -- Data Size
         INS_SIZE  : integer := INS_SIZE;  -- Instructions Size
-        CW_SIZE   : integer := C_CW_SIZE; -- ALU OP Size
+        CW_SIZE   : integer := C_CW_SIZE; -- CW Size
         PC_SIZE   : integer := PC_SIZE;   -- PC Size
         IR_SIZE   : integer := IRAM_DEPTH -- instruction register size
     );
     port (
-        CLK : in std_logic; -- Clock
-        RST : in std_logic; -- Reset:Active-High
-
-        -- Instruction Register
-        IR_IN : in std_logic_vector(INS_SIZE - 1 downto 0);
-
-        -- IF stage
-        PC_LATCH_EN  : in std_logic; -- Progam counter latch enable
-        IR_LATCH_EN  : in std_logic; -- Instruction Register Latch Enable
-        NPC_LATCH_EN : in std_logic; -- Next Program counter latch enable
-        PC_out       : out std_logic_vector(INS_SIZE - 1 downto 0);
-
-        -- ID stage
-        A_EN      : in std_logic;                               -- A operad register latch enable
-        B_EN      : in std_logic;                               -- B operad register latch enable
-        IMM_EN    : in std_logic;                               -- IMM operad register latch enable
-        IRAM_DOUT : in std_logic_vector(INS_SIZE - 1 downto 0); -- Instruction coming from the instructions register
-
-        -- EXU stage
-        COND_EN        : in std_logic;                                  -- COND register latch enable
-        ALU_OUT_REG_EN : in std_logic;                                  -- ALU_OUT register latch enable
-        ALU_OP         : in std_logic_vector(ALU_OP_SIZE - 1 downto 0); -- Alu operation selection signal
-        MUXA_SEL       : in std_logic;                                  -- MuxA selection signal
-        MUXB_SEL       : in std_logic;                                  -- MuxB selection signal
-        MUXC_SEL       : in std_logic;                                  -- MuxC selection signal
-
-        -- MEM stage
-        LMD_EN   : in std_logic; -- Loaded memory data latch enable
-        MUXD_SEL : in std_logic; -- MuxD selection signal
-
-        -- WB stage
-        MUXE_SEL : in std_logic -- MuxE selection signal
+        CLK    : in std_logic;   -- Clock
+        RST    : in std_logic;   -- Active Low Reset
+        CW     : in cw_t;        -- Control Word
+        OUT_CW : out cw_from_mem -- Output Signals to CU
     );
 end entity DATAPATH;
 
@@ -186,23 +157,23 @@ begin
 
     ---------------------------- MUXes
     -- MUXA
-    ALU_IN_1 <= std_logic_vector(NPC_ID) when MUXA_SEL = '0' else
+    ALU_IN_1 <= std_logic_vector(NPC_ID) when CW.execute.MUXA_SEL = '0' else
         A;
 
     -- MUXB
-    ALU_IN_2 <= B when MUXB_SEL = '0' else
+    ALU_IN_2 <= B when CW.execute.MUXB_SEL = '0' else
         IMM;
 
     -- MUXC
-    MUXC_OUT <= ALU_OUT when MUXC_SEL = '0' else
+    MUXC_OUT <= ALU_OUT when CW.execute.MUXC_SEL = '0' else
         LL_ALU_OUT;
 
     -- MUXD
-    MUXD_OUT <= NPC_EX when MUXD_SEL = '0' else
+    MUXD_OUT <= NPC_EX when CW.memory.MUXD_SEL = '0' else
         unsigned(ALU_OUT_REG); -- TODO: match size
 
     -- MUXE
-    MUXE_OUT <= LMD when MUXE_SEL = '0' else
+    MUXE_OUT <= LMD when CW.wb.MUXE_SEL = '0' else
         ALU_OUT_REG_ME;
 
     ----------------------------------------------------------------
@@ -229,10 +200,10 @@ begin
     port map(
         CLK    => CLK,
         RESET  => RST,
-        ENABLE => '1',              -- FIXME: change with signal coming from CU
-        RD1    => '1',              -- FIXME: change with signal coming from CU
-        RD2    => '1',              -- FIXME: change with signal coming from CU
-        WR     => '1',              -- FIXME: change with signal coming from CU
+        ENABLE => CW.decode.RF_ENABLE,
+        RD1    => CW.decode.RF_RD1,
+        RD2    => CW.decode.RF_RD2,
+        WR     => CW.decode.RF_WR,
         ADD_WR => (others => '0'),  -- FIXME: change with address coming from IR
         ADD_RD1 => (others => '0'), -- FIXME: change with address coming from IR
         ADD_RD2 => (others => '0'), -- FIXME: change with address coming from IR
@@ -254,7 +225,7 @@ begin
         if RST = '0' then
             PC <= (others => '0');
         elsif rising_edge(CLK) then
-            if (PC_LATCH_EN = '1') then
+            if (CW.fetch.PC_EN = '1') then
                 PC <= MUXD_OUT;
             end if;
         end if;
@@ -266,7 +237,7 @@ begin
         if RST = '0' then
             NPC <= (others => '0');
         elsif rising_edge(CLK) then
-            if (NPC_LATCH_EN = '1') then
+            if (CW.fetch.NPC_EN = '1') then
                 NPC <= PC + 4; -- TODO: generalizzare?
             end if;
         end if;
@@ -278,8 +249,8 @@ begin
         if RST = '0' then
             IR <= (others => '0');
         elsif rising_edge(CLK) then
-            if (IR_LATCH_EN = '1') then
-                IR <= IRam_DOut;
+            if (CW.fetch.IR_EN = '1') then
+                IR <= IRAM_OUT;
             end if;
         end if;
     end process IR_P;
@@ -291,7 +262,7 @@ begin
         if RST = '0' then
             A <= (others => '0');
         elsif rising_edge(CLK) then
-            if (A_EN = '1') then
+            if (CW.decode.A_EN = '1') then
                 A <= RF_OUT_1;
             end if;
         end if;
@@ -303,7 +274,7 @@ begin
         if RST = '0' then
             B <= (others => '0');
         elsif rising_edge(CLK) then
-            if (B_EN = '1') then
+            if (CW.decode.B_EN = '1') then
                 B <= RF_OUT_2;
             end if;
         end if;
@@ -315,7 +286,7 @@ begin
         if RST = '0' then
             IMM <= (others => '0');
         elsif rising_edge(CLK) then
-            if (IMM_EN = '1') then
+            if (CW.decode.IMM_EN = '1') then
                 IMM <= std_logic_vector(resize(unsigned(INS_IMM), IMM'length));
             end if;
         end if;
@@ -327,7 +298,7 @@ begin
         if RST = '0' then
             NPC_ID <= (others => '0');
         elsif rising_edge(CLK) then
-            if (NPC_LATCH_EN = '1') then
+            if (CW.decode.NPC_ID_EN = '1') then
                 NPC_ID <= NPC;
             end if;
         end if;
@@ -340,7 +311,7 @@ begin
         if RST = '0' then
             COND <= '0';
         elsif rising_edge(CLK) then
-            if (COND_EN = '1') then
+            if (CW.execute.COND_EN = '1') then
                 if unsigned(A) = 0 then
                     COND <= '1';
                 else
@@ -356,7 +327,7 @@ begin
         if RST = '0' then
             ALU_OUT_REG <= (others => '0');
         elsif rising_edge(CLK) then
-            if (ALU_OUT_REG_EN = '1') then
+            if (CW.execute.ALU_OUT_REG_EN = '1') then
                 ALU_OUT_REG <= MUXC_OUT;
             end if;
         end if;
@@ -368,7 +339,7 @@ begin
         if RST = '0' then
             B_EX <= (others => '0');
         elsif rising_edge(CLK) then
-            if (B_EN = '1') then
+            if (CW.execute.B_EX_EN = '1') then
                 B_EX <= B;
             end if;
         end if;
@@ -380,7 +351,7 @@ begin
         if RST = '0' then
             NPC_EX <= (others => '0');
         elsif rising_edge(CLK) then
-            if (NPC_LATCH_EN = '1') then
+            if (CW.execute.NPC_EX_EN = '1') then
                 NPC_EX <= NPC_ID;
             end if;
         end if;
@@ -393,23 +364,11 @@ begin
         if RST = '0' then
             LMD <= (others => '0');
         elsif rising_edge(CLK) then
-            if (LMD_EN = '1') then
+            if (CW.memory.LMD_EN = '1') then
                 LMD <= DRAM_OUT;
             end if;
         end if;
     end process LMD_P;
-
-    -- MUXD_OUT
-    MUXD_OUT_P : process (CLK, RST)
-    begin
-        if RST = '0' then
-            NPC_EX <= (others => '0');
-        elsif rising_edge(CLK) then
-            if (NPC_LATCH_EN = '1') then
-                NPC_EX <= NPC_ID;
-            end if;
-        end if;
-    end process MUXD_OUT_P;
 
     -- ALU_OUT_REG_ME
     ALU_OUT_REG_ME_P : process (CLK, RST)
@@ -417,7 +376,7 @@ begin
         if RST = '0' then
             ALU_OUT_REG_ME <= (others => '0');
         elsif rising_edge(CLK) then
-            if (ALU_OUT_REG_EN = '1') then
+            if (CW.memory.ALU_OUT_REG_ME_EN = '1') then
                 ALU_OUT_REG_ME <= ALU_OUT_REG;
             end if;
         end if;
