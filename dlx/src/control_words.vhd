@@ -136,7 +136,7 @@ package body control_words is
             execute => (
                 ALU_OUT_REG_EN => arg(14),
                 COND_EN     => arg(13),
-                ALU_OP            => alu_op_t'val(to_integer(unsigned(std_logic_vector'(arg(9)&arg(8))))),
+                ALU_OP            => alu_op_t'val(to_integer(unsigned(std_logic_vector'(arg(12)&arg(11))))),
                 B_EX_EN     => arg(10),
                 NPC_EX_EN   => arg(9),
                 MUXA_SEL    => arg(8),
