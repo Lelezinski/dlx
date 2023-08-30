@@ -2,6 +2,9 @@ library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 
+use work.alu_type.all;
+use work.myTypes.all;
+
 package control_words is
 
     -----------------------------------------------------------------------------
@@ -27,8 +30,7 @@ package control_words is
 
     type execute_cw_t is record
         ALU_OUT_EN : std_logic;         -- ALU_OUT register latch enable
-        ALU1       : std_logic;         -- alu control bit 0
-        ALU2       : std_logic;         -- alu control bit 1
+        ALU_OP     : alu_op_t;            -- ALU control bits
         MUXA_SEL   : std_logic;         -- MuxA selection signal
         MUXB_SEL   : std_logic;         -- MuxB selection signal
         MUXC_SEL   : std_logic;         -- MuxC selection signal
@@ -80,8 +82,7 @@ package control_words is
             ),
         execute            => (
             ALU_OUT_EN        => '0',
-            ALU1              => '0',
-            ALU2              => '0',
+            ALU_OP            => alu_add,
             MUXA_SEL          => '0',
             MUXB_SEL          => '0',
             MUXC_SEL          => '0'
@@ -123,8 +124,7 @@ package body control_words is
                 RF_WR             => arg(11)),
             execute         => (
                 ALU_OUT_EN        => arg(10),
-                ALU1              => arg(9),
-                ALU2              => arg(8),
+                ALU_OP            => alu_op_t'val(to_integer(unsigned(std_logic_vector'(arg(9)&arg(8))))),
                 MUXA_SEL          => arg(7),
                 MUXB_SEL          => arg(6),
                 MUXC_SEL          => arg(5)),

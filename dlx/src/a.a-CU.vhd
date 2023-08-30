@@ -23,8 +23,8 @@ entity CU is
         in_cw : in  cw_from_mem; -- input signals coming from datapath and memories
 
         -- Inputs
-        OPCODE : in  std_logic_vector(OP_CODE_SIZE - 1 downto 0);
-        FUNC   : in  std_logic_vector(FUNC_SIZE - 1 downto 0);
+        OPCODE : in  opcode_t;
+        FUNC   : in  func_t;
         CLK    : in  std_logic;
         RST    : in  std_logic);          -- Active Low
 end CU;
@@ -57,7 +57,7 @@ architecture RTL of CU is
     signal cw_s, cw1, cw2, cw3, cw4, cw5 : cw_t;
 
     -- These signals are needed to avoid conflicts on the cw registers.
-    signal ALU_OPCODE, ALU_OPCODE1, ALU_OPCODE2 : std_logic_vector(1 downto 0) := "00";
+    signal ALU_OPCODE, ALU_OPCODE1, ALU_OPCODE2 : alu_op_t;
 
     -- one
     signal FUNC_OP : func_t;
@@ -68,7 +68,7 @@ begin
 ----------------------------------------------------------------
 
     -- Convert the func field into enum type func_t
-    FUNC_OP <= func_t'val(to_integer(unsigned(FUNC)));
+    FUNC_OP <= FUNC;
 
     -- OPCODE is used as index of cw_mem.
     -- get the complete control word of the current instruction
@@ -76,8 +76,7 @@ begin
 
     -- -- Assign the control signals to the outputs
     cw <= (cw1.fetch, cw2.decode, cw3.execute, cw4.memory, cw5.wb);
-    cw.execute.ALU1 <= ALU_OPCODE2(1);
-    cw.execute.ALU2 <= ALU_OPCODE2(0);
+    cw.execute.ALU_OP <= ALU_OPCODE2;
 
 ----------------------------------------------------------------
 -- Processes
@@ -111,23 +110,37 @@ begin
     ALU_OPCODE_P : process (OPCODE, FUNC_OP, cw_s)
     begin
         -- default assignment for all the instructions that are not RTYPE
-        ALU_OPCODE <= cw_s.execute.ALU1 & cw_s.execute.ALU2;
+        ALU_OPCODE <= cw_s.execute.ALU_OP;
 
         -- Because all RTYPE instructions index the same element in cw_mem, we
         -- use the FUNC field to select correctly their ALU_OPCODE.
         -- Updating directly CW(6) and CW(5) would gerenare a conflict
         if (OPCODE = RTYPE) then
             case FUNC_OP is
-                when RTYPE_ADD =>
-                    ALU_OPCODE <= "00";
-                when RTYPE_SUB =>
-                    ALU_OPCODE <= "01";
-                when RTYPE_AND =>
-                    ALU_OPCODE <= "10";
-                when RTYPE_OR =>
-                    ALU_OPCODE <= "11";
-                when others =>
-                    ALU_OPCODE <= "00";
+                when func_add =>
+                    ALU_OPCODE <= alu_add;
+                when func_sub =>
+                    ALU_OPCODE <= alu_sub;
+                when func_and =>
+                    ALU_OPCODE <= alu_and;
+                when func_or =>
+                    ALU_OPCODE <= alu_or;
+                when func_xor =>
+                    ALU_OPCODE <= alu_xor;
+                when func_sll =>
+                    ALU_OPCODE <= alu_sll;
+                when func_srl =>
+                    ALU_OPCODE <= alu_srl;
+                when func_sge =>
+                    ALU_OPCODE <= alu_sge;
+                when func_sle =>
+                    ALU_OPCODE <= alu_sle;
+                when func_sne =>
+                    ALU_OPCODE <= alu_sne;
+                when func_mul =>
+                    ALU_OPCODE <= alu_mul;
+                when others   =>
+                    ALU_OPCODE <= alu_add;
             end case;
         end if;
     end process ALU_OPCODE_P;
