@@ -19,17 +19,17 @@ entity DATAPATH is
         IR_SIZE   : integer := IRAM_DEPTH -- instruction register size
     );
     port (
-        CLK    : in std_logic;   -- Clock
-        RST    : in std_logic;   -- Active Low Reset
-        CW     : in cw_t;        -- Control Word
-        DRAM_IN      : in  data_t;
+        CLK          : in std_logic; -- Clock
+        RST          : in std_logic; -- Active Low Reset
+        CW           : in cw_t;      -- Control Word
+        DRAM_IN      : in data_t;
         DRAM_OUT     : in data_t;
-        OUT_CW : out cw_from_mem; -- Output Signals to CU
-        OPCODE : out opcode_t;
-        FUNC   : out func_t;
-        IRAM_DATA    : in  data_t;
+        OUT_CW       : out cw_from_mem; -- Output Signals to CU
+        OPCODE       : out opcode_t;
+        FUNC         : out func_t;
+        IRAM_DATA    : in data_t;
         IRAM_ADDRESS : out std_logic_vector(IRAM_ADDR_SIZE - 1 downto 0);
-        DRAM_ADDRESS : out std_logic_vector(INS_SIZE-1 downto 0));
+        DRAM_ADDRESS : out std_logic_vector(INS_SIZE - 1 downto 0));
 end entity DATAPATH;
 
 architecture RTL of DATAPATH is
@@ -93,9 +93,9 @@ architecture RTL of DATAPATH is
     signal INS_FUNC    : std_logic_vector(INS_FUNC_SIZE - 1 downto 0);
 
     ---------------------------- [IF] STAGE
-    signal IR       : std_logic_vector(INS_SIZE - 1 downto 0);
-    signal PC       : pc_t;
-    signal NPC      : pc_t;
+    signal IR  : std_logic_vector(INS_SIZE - 1 downto 0);
+    signal PC  : pc_t;
+    signal NPC : pc_t;
 
     ---------------------------- [ID] STAGE
     signal RF_OUT_1 : data_t;
@@ -190,12 +190,14 @@ begin
 
     ALU_1_i : entity work.ALU
         generic map(
-            N => numBit)
+            N => numBit
+        )
         port map(
             FUNC   => CW.execute.ALU_OP,
-            DATA1  => RF_OUT_1,
-            DATA2  => RF_OUT_2,
-            OUTALU => ALU_OUT);
+            DATA1  => ALU_IN_1,
+            DATA2  => ALU_IN_2,
+            OUTALU => ALU_OUT
+        );
 
     -- TODO: others
 
