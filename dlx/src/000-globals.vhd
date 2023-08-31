@@ -10,6 +10,7 @@ package myTypes is
 
     -- Data
     constant numBit : integer := 32;
+    subtype data_t is std_logic_vector(numBit - 1 downto 0);
 
     -- Instructions Size
     constant INS_SIZE         : integer := 32;
@@ -132,4 +133,14 @@ package myTypes is
     constant RW_HEX_INIT : string := "./memories/rw/hex_init.txt";
     constant RW_HEX      : string := "./memories/rw/hex.txt";
 
+    ---- Process declarations ----
+    pure function to_data(arg : pc_t) return data_t;
+
 end myTypes;
+
+package body myTypes is
+    pure function to_data(arg: pc_t) return data_t is
+    begin
+        return data_t(resize(unsigned(arg), numBit));
+    end function to_data;
+end package body myTypes;
