@@ -19,10 +19,11 @@ entity RWMEM is
         CLK          : in    std_logic;
         RST          : in    std_logic;
         ADDR         : in    std_logic_vector(Instr_size - 1 downto 0);
+        DATA_IN      : in    std_logic_vector(Data_size-1 downto 0);
         ENABLE       : in    std_logic;
         READNOTWRITE : in    std_logic;
         DATA_READY   : out   std_logic;
-        INOUT_DATA   : inout std_logic_vector(Data_size-1 downto 0)
+        DATA_OUT     : out   std_logic_vector(Data_size-1 downto 0)
         );
 end RWMEM;
 
@@ -87,8 +88,8 @@ begin  -- beh
                 if (counter = data_delay) then
                     counter <= 0;
                     if (READNOTWRITE = '0') then
-                        DRAM_Mem(to_integer(unsigned(ADDR))+1) <= INOUT_DATA(Instr_size - 1 downto 0);
-                        DRAM_Mem(to_integer(unsigned(ADDR)))   <= INOUT_DATA(Data_size - 1 downto Instr_size);
+                        DRAM_Mem(to_integer(unsigned(ADDR))+1) <= DATA_IN(Instr_size - 1 downto 0);
+                        DRAM_Mem(to_integer(unsigned(ADDR)))   <= DATA_IN(Data_size - 1 downto Instr_size);
                         mem_ready                              <= '1';
                     else
                         tmp_data       <= DRAM_mem(to_integer(unsigned(ADDR))+1) & DRAM_mem(to_integer(unsigned(ADDR)));
@@ -105,7 +106,7 @@ begin  -- beh
     end process;
 
     rewrite_contenent(DRAM_mem, file_path);     -- refresh the file
-    INOUT_DATA <= tmp_data when int_data_ready = '1' else (others => 'Z');  -- to cache
+    DATA_OUT <= tmp_data when int_data_ready = '1' else (others => 'Z');  -- to cache
     data_ready <= int_data_ready or mem_ready;  --delay add
 
 end beh;
