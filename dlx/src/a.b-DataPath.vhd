@@ -94,7 +94,6 @@ architecture RTL of DATAPATH is
 
     ---------------------------- [IF] STAGE
     signal IR       : std_logic_vector(INS_SIZE - 1 downto 0);
-    signal IRAM_OUT : std_logic_vector(INS_SIZE - 1 downto 0);
     signal PC       : pc_t;
     signal NPC      : pc_t;
 
@@ -236,7 +235,7 @@ begin
             IR <= (others => '0');
         elsif falling_edge(CLK) then
             if (CW.fetch.IR_EN = '1') then
-                IR <= IRAM_OUT;
+                IR <= IRAM_DATA;
             end if;
         end if;
     end process IR_P;
