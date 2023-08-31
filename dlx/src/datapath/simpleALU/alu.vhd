@@ -60,17 +60,50 @@ begin
             when ALU_SRL => -- Shift Right Logical: A >> B
                 OUTALU <= std_logic_vector(unsigned(DATA1) srl to_integer(unsigned(DATA2(log2_numBit downto 0))));
 
-            when ALU_SGE =>
-                null; -- TODO: implement functions;
+            when ALU_SEQ => -- Set Equal: A = B ? 1 : 0
+                if (DATA1 = DATA2) then
+                    OUTALU <= (others => '1');
+                else
+                    OUTALU <= (others => '0');
+                end if;
 
-            when ALU_SLE =>
-                null; -- TODO: implement functions;
+            when ALU_SNE => -- Set Not Equal: A != B ? 1 : 0
+                if (DATA1 /= DATA2) then
+                    OUTALU <= (others => '1');
+                else
+                    OUTALU <= (others => '0');
+                end if;
 
-            when ALU_SNE =>
-                null; -- TODO: implement functions;
+            when ALU_SGE => -- Set Greater Than or Equal: A >= B ? 1 : 0
+                if (DATA1 >= DATA2) then
+                    OUTALU <= (others => '1');
+                else
+                    OUTALU <= (others => '0');
+                end if;
+
+            when ALU_SGT => -- Set Greater Than: A > B ? 1 : 0
+                if (DATA1 > DATA2) then
+                    OUTALU <= (others => '1');
+                else
+                    OUTALU <= (others => '0');
+                end if;
+
+            when ALU_SLE => -- Set Less Than or Equal: A <= B ? 1 : 0
+                if (DATA1 <= DATA2) then
+                    OUTALU    <= (others => '1');
+                else
+                    OUTALU <= (others => '0');
+                end if;
+
+            when ALU_SLT => -- Set Less Than: A < B ? 1 : 0
+                if (DATA1 < DATA2) then
+                    OUTALU <= (others => '1');
+                else
+                    OUTALU <= (others => '0');
+                end if;
 
             when others =>
-                null;
+                OUTALU <= DATA1;
 
         end case;
     end process P_ALU;

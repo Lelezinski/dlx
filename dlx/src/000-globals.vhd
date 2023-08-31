@@ -89,6 +89,8 @@ package myTypes is
 
     ---- INSTRUCTIONS -----
 
+    -- TODO: add missing ones: SEQ, SGT, SLT
+
     -- R-Type instruction -> FUNC field
     subtype func_t is std_logic_vector(C_FUNC_SIZE - 1 downto 0); -- (RTYPE_ADD, RTYPE_SUB, RTYPE_AND, RTYPE_OR, NOP);
     subtype opcode_t is std_logic_vector(C_OP_CODE_SIZE - 1 downto 0);
