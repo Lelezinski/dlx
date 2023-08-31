@@ -1,5 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 use IEEE.math_real.ceil;
 use IEEE.math_real.log2;
 
@@ -66,6 +67,7 @@ package myTypes is
     -- IRAM
     constant IRAM_DEPTH : integer := 48;
     constant PC_SIZE    : integer := integer(ceil(log2(real(IRAM_DEPTH))));
+    subtype pc_t is unsigned(PC_SIZE - 1 downto 0);
 
     -- Control Unit Input Sizes
     constant C_OP_CODE_SIZE : integer := 6;        -- OPCODE field size
