@@ -60,7 +60,7 @@ begin
             file_close(mem_fp);
 
             count <= 0;
-        elsif CLK'event and clk = '1' then
+        elsif falling_edge(clk) then
             if (ENABLE = '1') then
                 count <= count + 1;
                 if (count = data_delay) then
