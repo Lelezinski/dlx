@@ -19,9 +19,9 @@ entity DATAPATH is
         IR_SIZE   : integer := IRAM_DEPTH -- instruction register size
     );
     port (
-        CLK    : in std_logic;   -- Clock
-        RST    : in std_logic;   -- Active Low Reset
-        CW     : in cw_t;        -- Control Word
+        CLK    : in std_logic;    -- Clock
+        RST    : in std_logic;    -- Active Low Reset
+        CW     : in cw_t;         -- Control Word
         OUT_CW : out cw_from_mem; -- Output Signals to CU
         OPCODE : out opcode_t;
         FUNC   : out func_t
@@ -34,6 +34,7 @@ architecture RTL of DATAPATH is
     -- Components Declaration
     --------------------------------------------------------------------
 
+    -- IRAM TODO: move?
     component IRAM is
         generic (
             RAM_DEPTH : integer;
@@ -46,6 +47,7 @@ architecture RTL of DATAPATH is
         );
     end component;
 
+    -- Register File
     component REGISTER_FILE is
         generic (
             WORD_LEN : integer;
@@ -71,35 +73,17 @@ architecture RTL of DATAPATH is
         );
     end component;
 
-    component BOOTHMUL is
-        generic (
-            NBIT : integer);
-        port (
-            A : in std_logic_vector(NBIT - 1 downto 0);
-            B : in std_logic_vector(NBIT - 1 downto 0);
-            P : out std_logic_vector(2 * NBIT - 1 downto 0));
-    end component BOOTHMUL;
-
-    component P4_ADDER is
-        generic (
-            NBIT : integer);
-        port (
-            A   : in std_logic_vector(NBIT - 1 downto 0);
-            B   : in std_logic_vector(NBIT - 1 downto 0);
-            Cin : in std_logic;
-            S   : out std_logic_vector(NBIT - 1 downto 0);
-
-            Cout : out std_logic);
-    end component P4_ADDER;
-
-    -- TODO: ALU
+    -- ALU
     component ALU is
         generic (
-            N : integer);
+            N : integer := numBit
+        );
         port (
-            FUNC         : in  alu_op_t;
-            DATA1, DATA2 : in  std_logic_vector(N-1 downto 0);
-            OUTALU       : out std_logic_vector(N-1 downto 0));
+            FUNC   : in alu_op_t;
+            DATA1  : in std_logic_vector(N - 1 downto 0);
+            DATA2  : in std_logic_vector(N - 1 downto 0);
+            OUTALU : out std_logic_vector(N - 1 downto 0)
+        );
     end component ALU;
 
     -- TODO: LL_ALU
@@ -166,8 +150,8 @@ begin
     INS_IMM     <= IR(INS_IMM_L downto INS_IMM_R);
     INS_FUNC    <= IR(INS_FUNC_L downto INS_FUNC_R);
 
-    FUNC   <= IR(INS_FUNC_L downto INS_FUNC_R);  -- send the func field to the controller
-    OPCODE <= IR(INS_OP_CODE_L downto INS_OP_CODE_R);  -- send the opcode to the controller
+    FUNC   <= IR(INS_FUNC_L downto INS_FUNC_R);       -- send the func field to the controller
+    OPCODE <= IR(INS_OP_CODE_L downto INS_OP_CODE_R); -- send the opcode to the controller
 
     ---------------------------- MUXes
     -- MUXA
@@ -212,24 +196,24 @@ begin
         ADDR_LEN => RF_ADDR_LEN
     )
     port map(
-        CLK    => CLK,
-        RESET  => RST,
-        ENABLE => CW.decode.RF_ENABLE,
-        RD1    => CW.decode.RF_RD1,
-        RD2    => CW.decode.RF_RD2,
-        WR     => CW.decode.RF_WR,
-        ADD_WR => INS_R1,
+        CLK     => CLK,
+        RESET   => RST,
+        ENABLE  => CW.decode.RF_ENABLE,
+        RD1     => CW.decode.RF_RD1,
+        RD2     => CW.decode.RF_RD2,
+        WR      => CW.decode.RF_WR,
+        ADD_WR  => INS_R1,
         ADD_RD1 => INS_R2,
         ADD_RD2 => INS_R3,
-        DATAIN => IR,
-        OUT1   => RF_OUT_1,
-        OUT2   => RF_OUT_2
+        DATAIN  => IR,
+        OUT1    => RF_OUT_1,
+        OUT2    => RF_OUT_2
     );
 
-    ALU_1: entity work.ALU
-        generic map (
+    ALU_1_i : entity work.ALU
+        generic map(
             N => numBit)
-        port map (
+        port map(
             FUNC   => CW.execute.ALU_OP,
             DATA1  => RF_OUT_1,
             DATA2  => RF_OUT_2,
