@@ -247,7 +247,7 @@ begin
     begin
         if RST = '0' then
             PC <= (others => '0');
-        elsif rising_edge(CLK) then
+        elsif falling_edge(CLK) then
             if (CW.fetch.PC_EN = '1') then
                 PC <= MUXD_OUT;
             end if;
@@ -259,7 +259,7 @@ begin
     begin
         if RST = '0' then
             NPC <= (others => '0');
-        elsif rising_edge(CLK) then
+        elsif falling_edge(CLK) then
             if (CW.fetch.NPC_EN = '1') then
                 NPC <= PC + 4; -- TODO: generalizzare?
             end if;
@@ -271,7 +271,7 @@ begin
     begin
         if RST = '0' then
             IR <= (others => '0');
-        elsif rising_edge(CLK) then
+        elsif falling_edge(CLK) then
             if (CW.fetch.IR_EN = '1') then
                 IR <= IRAM_OUT;
             end if;
@@ -284,7 +284,7 @@ begin
     begin
         if RST = '0' then
             A <= (others => '0');
-        elsif rising_edge(CLK) then
+        elsif falling_edge(CLK) then
             if (CW.decode.A_EN = '1') then
                 A <= RF_OUT_1;
             end if;
@@ -296,7 +296,7 @@ begin
     begin
         if RST = '0' then
             B <= (others => '0');
-        elsif rising_edge(CLK) then
+        elsif falling_edge(CLK) then
             if (CW.decode.B_EN = '1') then
                 B <= RF_OUT_2;
             end if;
@@ -308,7 +308,7 @@ begin
     begin
         if RST = '0' then
             IMM <= (others => '0');
-        elsif rising_edge(CLK) then
+        elsif falling_edge(CLK) then
             if (CW.decode.IMM_EN = '1') then
                 IMM <= std_logic_vector(resize(unsigned(INS_IMM), IMM'length));
             end if;
@@ -320,7 +320,7 @@ begin
     begin
         if RST = '0' then
             NPC_ID <= (others => '0');
-        elsif rising_edge(CLK) then
+        elsif falling_edge(CLK) then
             if (CW.decode.NPC_ID_EN = '1') then
                 NPC_ID <= NPC;
             end if;
@@ -333,7 +333,7 @@ begin
     begin
         if RST = '0' then
             COND <= '0';
-        elsif rising_edge(CLK) then
+        elsif falling_edge(CLK) then
             if (CW.execute.COND_EN = '1') then
                 if unsigned(A) = 0 then
                     COND <= '1';
@@ -349,7 +349,7 @@ begin
     begin
         if RST = '0' then
             ALU_OUT_REG <= (others => '0');
-        elsif rising_edge(CLK) then
+        elsif falling_edge(CLK) then
             if (CW.execute.ALU_OUT_REG_EN = '1') then
                 ALU_OUT_REG <= MUXC_OUT;
             end if;
@@ -361,7 +361,7 @@ begin
     begin
         if RST = '0' then
             B_EX <= (others => '0');
-        elsif rising_edge(CLK) then
+        elsif falling_edge(CLK) then
             if (CW.execute.B_EX_EN = '1') then
                 B_EX <= B;
             end if;
@@ -373,7 +373,7 @@ begin
     begin
         if RST = '0' then
             NPC_EX <= (others => '0');
-        elsif rising_edge(CLK) then
+        elsif falling_edge(CLK) then
             if (CW.execute.NPC_EX_EN = '1') then
                 NPC_EX <= NPC_ID;
             end if;
@@ -386,7 +386,7 @@ begin
     begin
         if RST = '0' then
             LMD <= (others => '0');
-        elsif rising_edge(CLK) then
+        elsif falling_edge(CLK) then
             if (CW.memory.LMD_EN = '1') then
                 LMD <= DRAM_OUT;
             end if;
@@ -398,7 +398,7 @@ begin
     begin
         if RST = '0' then
             ALU_OUT_REG_ME <= (others => '0');
-        elsif rising_edge(CLK) then
+        elsif falling_edge(CLK) then
             if (CW.memory.ALU_OUT_REG_ME_EN = '1') then
                 ALU_OUT_REG_ME <= ALU_OUT_REG;
             end if;

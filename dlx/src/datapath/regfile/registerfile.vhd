@@ -53,7 +53,7 @@ begin
 
     syncProc : process (clk)
     begin
-        if rising_edge(clk) then
+        if falling_edge(clk) then
             if RESET = '1' then
                 REGISTERS <= (others => (others => '0'));
             else

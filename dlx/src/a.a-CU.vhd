@@ -93,13 +93,13 @@ begin
     -- process to pipeline control words
     CW_PIPE : process (clk, rst)
     begin  -- process clk
-        if rst = '0' then
+        if rst = '1' then
             cw1 <= init_cw;
             cw2 <= init_cw;
             cw3 <= init_cw;
             cw4 <= init_cw;
             cw5 <= init_cw;
-        elsif rising_edge(clk) then     -- rising clock edge
+        elsif falling_edge(clk) then     -- rising clock edge
             -- shift the slice of the control word to the correct control register
             cw1 <= cw_s;
             cw2 <= cw1;

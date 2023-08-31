@@ -49,7 +49,7 @@ begin
         if RST = '0' then
             reg_memory <= RST_VALUE;
 
-        elsif rising_edge(CLK) then
+        elsif falling_edge(CLK) then
             if ENABLE = '1' then
                 reg_memory <= DATA_IN;
             else
