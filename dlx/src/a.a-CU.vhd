@@ -57,7 +57,7 @@ architecture RTL of CU is
     signal cw_s, cw1, cw2, cw3, cw4, cw5 : cw_t;
 
     -- These signals are needed to avoid conflicts on the cw registers.
-    signal ALU_OPCODE, ALU_OPCODE1, ALU_OPCODE2 : alu_op_t;
+    signal ALU_OPCODE, ALU_OPCODE1, ALU_OPCODE2, ALU_OPCODE3 : alu_op_t;
 
     -- one
     signal FUNC_OP : func_t;
@@ -99,6 +99,7 @@ begin
             cw4 <= cw5;
             ALU_OPCODE1 <= ALU_OPCODE;
             ALU_OPCODE2 <= ALU_OPCODE1;
+            ALU_OPCODE3 <= ALU_OPCODE2;
         end if;
     end process CW_PIPE;
 
