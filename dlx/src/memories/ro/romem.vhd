@@ -14,15 +14,16 @@ entity ROMEM is
 
         ENTRIES    : integer := 128;
         WORD_SIZE  : integer := 32;
+        ADDR_SIZE  : integer := 5;
         data_delay : natural := 2
         );
     port (
         CLK        : in  std_logic;
         RST        : in  std_logic;
-        ADDRESS    : in  std_logic_vector(WORD_SIZE - 1 downto 0);
+        ADDRESS    : in  std_logic_vector(ADDR_SIZE - 1 downto 0);
         ENABLE     : in  std_logic;
         DATA_READY : out std_logic;
-        DATA       : out std_logic_vector(2*WORD_SIZE - 1 downto 0)
+        DATA       : out std_logic_vector(WORD_SIZE - 1 downto 0)
         );
 end ROMEM;
 
@@ -30,7 +31,7 @@ architecture Behavioral of ROMEM is
     type RAM is array (0 to ENTRIES-1) of integer;
     signal Memory : RAM;
     signal valid  : std_logic;
-    signal idout  : std_logic_vector(2*WORD_SIZE-1 downto 0);
+    signal idout  : std_logic_vector(WORD_SIZE-1 downto 0);
     signal count  : integer range 0 to (data_delay + 1);
 
 begin
@@ -66,9 +67,9 @@ begin
                     count <= 0;
                     valid <= '1';
                     idout <=
-                        conv_std_logic_vector(Memory(conv_integer(unsigned(ADDRESS))+1), WORD_SIZE) &
-                        conv_std_logic_vector(Memory(conv_integer(unsigned(ADDRESS))), WORD_SIZE
-                                              );
+                        --conv_std_logic_vector(Memory(conv_integer(unsigned(ADDRESS))+1), WORD_SIZE) &
+                        conv_std_logic_vector(Memory(conv_integer(unsigned(ADDRESS))), WORD_SIZE);
+                                              --);
                 end if;
             else
                 count <= 0;
