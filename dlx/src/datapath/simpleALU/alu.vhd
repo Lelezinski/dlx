@@ -32,7 +32,7 @@ begin
       when ALU_SLL => OUTALU <= std_logic_vector(
         unsigned(DATA1) sll to_integer(unsigned(DATA2(log2_numBit downto 0)))
         );
-      when ALU_SRL => std_logic_vector(
+      when ALU_SRL => OUTALU <= std_logic_vector(
         unsigned(DATA1) srl to_integer(unsigned(DATA2(log2_numBit downto 0)))
         );                              -- logical shift right
       when ALU_SGE => null; -- TODO implement functions;
