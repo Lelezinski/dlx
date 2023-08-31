@@ -77,7 +77,7 @@ package myTypes is
     constant C_OP_CODE_SIZE : integer := 6;        -- OPCODE field size
     constant C_FUNC_SIZE    : integer := 11;        -- FUNC field size
     constant C_IR_SIZE      : integer := INS_SIZE; -- Instruction Register Size
-    constant C_CW_SIZE      : integer := 28;       -- Control Word Size
+    constant C_CW_SIZE      : integer := 29;       -- Control Word Size
     constant ALU_OP_SIZE    : integer := 2;
 
     -- Number of Available Instructions
@@ -137,6 +137,10 @@ package myTypes is
     constant RO_HEX      : string := "./memories/ro/hex.txt";
     constant RW_HEX_INIT : string := "./memories/rw/hex_init.txt";
     constant RW_HEX      : string := "./memories/rw/hex.txt";
+    -- LORENZO
+    -- constant RO_HEX      : string := "C:\Users\ruoto\OneDrive\UNI\08 MS Microelectronic Systems\Progetto\ms\dlx\src\memories\ro\hex.txt";
+    -- constant RW_HEX_INIT : string := "C:\Users\ruoto\OneDrive\UNI\08 MS Microelectronic Systems\Progetto\ms\dlx\src\memories\rw\hex_init.txt";
+    -- constant RW_HEX      : string := "C:\Users\ruoto\OneDrive\UNI\08 MS Microelectronic Systems\Progetto\ms\dlx\src\memories\rw\hex.txt";
 
     ---- Process declarations ----
     pure function to_data(arg : pc_t) return data_t;
