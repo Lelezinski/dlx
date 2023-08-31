@@ -218,9 +218,9 @@ begin
         RD1    => CW.decode.RF_RD1,
         RD2    => CW.decode.RF_RD2,
         WR     => CW.decode.RF_WR,
-        ADD_WR => (others => '0'),  -- FIXME: change with address coming from IR
-        ADD_RD1 => (others => '0'), -- FIXME: change with address coming from IR
-        ADD_RD2 => (others => '0'), -- FIXME: change with address coming from IR
+        ADD_WR => INS_R1,
+        ADD_RD1 => INS_R2,
+        ADD_RD2 => INS_R3,
         DATAIN => IR,
         OUT1   => RF_OUT_1,
         OUT2   => RF_OUT_2
