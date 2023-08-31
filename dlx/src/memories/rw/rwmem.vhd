@@ -10,7 +10,7 @@ entity RWMEM is
     generic(
         FILE_PATH      : string;
         FILE_PATH_INIT : string;
-        DATA_SIZE      : natural := 64;
+        DATA_SIZE      : natural := 32;
         INSTR_SIZE     : natural := 32;
         RAM_DEPTH      : natural := 128;
         DATA_DELAY     : natural := 2
