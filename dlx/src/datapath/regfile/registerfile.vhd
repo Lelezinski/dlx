@@ -3,8 +3,8 @@ use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
 use IEEE.math_real."ceil";
 use IEEE.math_real."log2";
-use WORK.myTypes.all;
 
+use WORK.myTypes.all;
 
 --------------------------------------------------------------------
 -- Entity Declaration
@@ -17,46 +17,47 @@ entity REGISTER_FILE is
         ADDR_LEN : integer := RF_ADDR_LEN
     );
     port (
-        CLK     : in  std_logic;
+        CLK : in std_logic;
         -- Control
-        RESET   : in  std_logic;
-        ENABLE  : in  std_logic;
-        RD1     : in  std_logic;
-        RD2     : in  std_logic;
-        WR      : in  std_logic;
+        RESET  : in std_logic;
+        ENABLE : in std_logic;
+        RD1    : in std_logic;
+        RD2    : in std_logic;
+        WR     : in std_logic;
         -- Address Lines
-        ADD_WR  : in  std_logic_vector(RF_ADDR_LEN - 1 downto 0);
-        ADD_RD1 : in  std_logic_vector(RF_ADDR_LEN - 1 downto 0);
-        ADD_RD2 : in  std_logic_vector(RF_ADDR_LEN - 1 downto 0);
+        ADD_WR  : in std_logic_vector(RF_ADDR_LEN - 1 downto 0);
+        ADD_RD1 : in std_logic_vector(RF_ADDR_LEN - 1 downto 0);
+        ADD_RD2 : in std_logic_vector(RF_ADDR_LEN - 1 downto 0);
         -- Data Lines
-        DATAIN  : in  std_logic_vector((WORD_LEN - 1) downto 0);
-        OUT1    : out std_logic_vector((WORD_LEN - 1) downto 0);
-        OUT2    : out std_logic_vector((WORD_LEN - 1) downto 0)
+        DATAIN : in std_logic_vector((WORD_LEN - 1) downto 0);
+        OUT1   : out std_logic_vector((WORD_LEN - 1) downto 0);
+        OUT2   : out std_logic_vector((WORD_LEN - 1) downto 0)
     );
 end REGISTER_FILE;
 
 architecture BEHAVIOURAL of REGISTER_FILE is
 
-----------------------------------------------------------------
--- Signals Declaration
-----------------------------------------------------------------
+    ----------------------------------------------------------------
+    -- Signals Declaration
+    ----------------------------------------------------------------
 
-    subtype REG_ADDR is natural range 0 to (R_NUM - 1);  -- using natural type
+    subtype REG_ADDR is natural range 0 to (R_NUM - 1); -- using natural type
     type REG_ARRAY is array(REG_ADDR) of std_logic_vector((WORD_LEN - 1) downto 0);
     signal REGISTERS, NEXT_REGISTERS : REG_ARRAY;
-    
-----------------------------------------------------------------
--- Processes
-----------------------------------------------------------------
+
+    ----------------------------------------------------------------
+    -- Processes
+    ----------------------------------------------------------------
 
 begin
 
-    syncProc : process (clk)
+    syncProc : process (CLK, RESET)
     begin
-        if falling_edge(clk) then
-            if RESET = '1' then
-                REGISTERS <= (others => (others => '0'));
-            else
+        if RESET = '1' then
+            REGISTERS <= (others => (others => '0'));
+            NEXT_REGISTERS <= (others => (others => '0'));
+        elsif falling_edge(clk) then
+            if ENABLE = '1' then
                 REGISTERS <= NEXT_REGISTERS;
             end if;
         end if;
