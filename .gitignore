@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+*.vhdr
+dlx/sim/*
+
 # Distribution / packaging
 .Python
 build/

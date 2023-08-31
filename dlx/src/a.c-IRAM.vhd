@@ -5,7 +5,6 @@ use std.textio.all;
 use ieee.std_logic_textio.all;
 
 use work.myTypes.all;
-
 --------------------------------------------------------------------
 -- Entity Declaration
 --------------------------------------------------------------------
@@ -13,7 +12,7 @@ use work.myTypes.all;
 entity IRAM is
     generic (
         RAM_DEPTH : integer := IRAM_DEPTH;
-        I_SIZE    : integer := IR_SIZE
+        I_SIZE    : integer := 32
     );
     port (
         Rst  : in std_logic;

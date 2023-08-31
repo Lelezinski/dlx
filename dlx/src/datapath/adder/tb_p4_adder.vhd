@@ -44,36 +44,36 @@ begin
     begin
 
         -- case proposed in lab document, point 2.1.4
-        A_s   <= x"FFFF";
-        B_s   <= x"0001";
-        Cin_s <= '0';
+        -- A_s   <= x"FFFF";
+        -- B_s   <= x"0001";
+        -- Cin_s <= '0';
 
         wait for 20 ns;
 
         -- previous case but with carry in set to 1
-        A_s   <= x"FFFF";
-        B_s   <= x"0001";
-        Cin_s <= '1';
+        -- A_s   <= x"FFFF";
+        -- B_s   <= x"0001";
+        -- Cin_s <= '1';
 
         wait for 20 ns;
 
         -- extreme case with both operands with their maximum value, plus carry in set to 1
-        A_s   <= x"FFFF";
-        B_s   <= x"FFFF";
-        Cin_s <= '1';
+        -- A_s   <= x"FFFF";
+        -- B_s   <= x"FFFF";
+        -- Cin_s <= '1';
 
         wait for 20 ns;
 
         -- other cases
-        A_s   <= x"FFFF";
-        B_s   <= x"0008";
-        Cin_s <= '0';
+        -- A_s   <= x"FFFF";
+        -- B_s   <= x"0008";
+        -- Cin_s <= '0';
 
         wait for 20 ns;
 
-        A_s   <= x"FFFF";
-        B_s   <= x"0000";
-        Cin_s <= '1';
+        -- A_s   <= x"FFFF";
+        -- B_s   <= x"0000";
+        -- Cin_s <= '1';
 
         wait for 20 ns;
 

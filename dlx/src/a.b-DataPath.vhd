@@ -19,13 +19,17 @@ entity DATAPATH is
         IR_SIZE   : integer := IRAM_DEPTH -- instruction register size
     );
     port (
-        CLK    : in std_logic;    -- Clock
-        RST    : in std_logic;    -- Active Low Reset
-        CW     : in cw_t;         -- Control Word
+        CLK    : in std_logic;   -- Clock
+        RST    : in std_logic;   -- Active Low Reset
+        CW     : in cw_t;        -- Control Word
+        DRAM_IN      : in  data_t;
+        DRAM_OUT     : in data_t;
         OUT_CW : out cw_from_mem; -- Output Signals to CU
         OPCODE : out opcode_t;
-        FUNC   : out func_t
-    );
+        FUNC   : out func_t;
+        IRAM_DATA    : in  data_t;
+        IRAM_ADDRESS : out std_logic_vector(IRAM_ADDR_SIZE - 1 downto 0);
+        DRAM_ADDRESS : out std_logic_vector(INS_SIZE-1 downto 0));
 end entity DATAPATH;
 
 architecture RTL of DATAPATH is
@@ -34,20 +38,6 @@ architecture RTL of DATAPATH is
     -- Components Declaration
     --------------------------------------------------------------------
 
-    -- IRAM TODO: move?
-    component IRAM is
-        generic (
-            RAM_DEPTH : integer;
-            I_SIZE    : integer
-        );
-        port (
-            Rst  : in std_logic;
-            Addr : in std_logic_vector(I_SIZE - 1 downto 0);
-            Dout : out std_logic_vector(I_SIZE - 1 downto 0)
-        );
-    end component;
-
-    -- Register File
     component REGISTER_FILE is
         generic (
             WORD_LEN : integer;
@@ -129,7 +119,6 @@ architecture RTL of DATAPATH is
 
     ---------------------------- [ME] STAGE
     signal MUXD_OUT       : pc_t;
-    signal DRAM_OUT       : data_t;
     signal LMD            : data_t;
     signal ALU_OUT_REG_ME : data_t;
 
@@ -174,20 +163,10 @@ begin
     MUXE_OUT <= LMD when CW.wb.MUXE_SEL = '0' else
         ALU_OUT_REG_ME;
 
+    IRAM_ADDRESS <= std_logic_vector(resize(unsigned(PC), IRAM_ADDR_SIZE));
     ----------------------------------------------------------------
     -- Component Instantiation
     ----------------------------------------------------------------
-
-    IRAM_i : IRAM
-    generic map(
-        RAM_DEPTH => IRAM_DEPTH,
-        I_SIZE    => IR_SIZE
-    )
-    port map(
-        Rst  => RST,
-        Addr => std_logic_vector(PC),
-        Dout => IRAM_OUT
-    );
 
     RF_i : REGISTER_FILE
     generic map(

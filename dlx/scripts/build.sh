@@ -22,10 +22,10 @@ fi
 cd "$SIM_DIR"
 echo "$TESTBENCH_FILE" >> "$SIM_FILE_LIST"
 echo "[INFO] (SETMENTOR)"
-INSTALL_DIR=/eda/mentor/2020-21/RHELx86/QUESTA-CORE-PRIME_2020.4/questasim/linux_x86_64
+INSTALL_DIR=/opt/intelFPGA/20.1/modelsim_ase/bin/
 export PATH=$INSTALL_DIR:$PATH
-export LM_LICENSE_FILE=${LM_LICENSE_FILE}:1717@led-x3850-3.polito.it
-source /eda/mentor/2020-21/scripts/QUESTA-CORE-PRIME_2020.4_RHELx86.sh
+# export LM_LICENSE_FILE=${LM_LICENSE_FILE}:1717@led-x3850-3.polito.it
+# source /eda/mentor/2020-21/scripts/QUESTA-CORE-PRIME_2020.4_RHELx86.sh
 
 echo "[INFO] Creating work library"
 vdel -all > /dev/null 2>&1

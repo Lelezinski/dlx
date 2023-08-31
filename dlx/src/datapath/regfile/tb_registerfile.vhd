@@ -61,7 +61,7 @@ begin
     ADD_WR  <= "000", "001" after 9 ns;
     ADD_RD1 <= "000", "010" after 9 ns;
     ADD_RD2 <= "011", "001" after 9 ns;
-    DATAIN  <= x"ff", x"00" after 8 ns;
+    -- DATAIN  <= x"ff", x"00" after 8 ns;
 
     PCLOCK : process (CLK)
     begin

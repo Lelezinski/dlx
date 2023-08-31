@@ -26,7 +26,14 @@ entity CU is
         OPCODE : in  opcode_t;
         FUNC   : in  func_t;
         CLK    : in  std_logic;
-        RST    : in  std_logic);          -- Active Low
+        RST    : in  std_logic;          -- Active Low
+        IRAM_READY        : in std_logic;
+        DRAM_READY        : in std_logic;
+
+        IRAM_ENABLE        : out std_logic;
+        DRAM_ENABLE        : out std_logic;
+        DRAM_READNOTWRITE : out std_logic
+        );
 end CU;
 
 architecture RTL of CU is
@@ -38,23 +45,56 @@ architecture RTL of CU is
     type mem_array is array (integer range 0 to MICROCODE_MEM_SIZE - 1) of std_logic_vector(CW_SIZE - 1 downto 0);
     signal cw_mem : mem_array := (
         -- TODO define the actual control words
-        "11111000100010000000000",
-        "01110000100010000000000",
-        "01110001100010000000000",
-        "01110010100010000000000",
-        "01110011100010000000000",
-        "10111100100010000000000",
-        "10111101100010000000000",
-        "10111110100010000000000",
-        "10111111100010000000000",
-        "10111100100010000000000",
-        "00000000000000000000000",                -- TODO
-        "00000000000000000000000",                -- TODO
-        "11011100101100000000000",
-        "01110000110100000000000",
-        "10111100110100000000000");
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110111111001000000000001", -- RTYPE
+        "1111110011010000000000000000");
 
     signal cw_s, cw1, cw2, cw3, cw4, cw5 : cw_t;
+    signal cw1_s, cw4_s: cw_t;
+    signal ir_en_s, lmd_en_s: std_logic;
 
     -- These signals are needed to avoid conflicts on the cw registers.
     signal ALU_OPCODE, ALU_OPCODE1, ALU_OPCODE2, ALU_OPCODE3 : alu_op_t;
@@ -86,6 +126,9 @@ begin
                 cw3.execute.MUXC_SEL
                 ),
            cw4.memory, cw5.wb);
+
+    -- ir_en_s <= IRAM_READY;
+    ir_en_s <= '1';
 ----------------------------------------------------------------
 -- Processes
 ----------------------------------------------------------------
@@ -153,6 +196,43 @@ begin
             end case;
         end if;
     end process ALU_OPCODE_P;
+
+    -- STALLS_P : process()
+    -- begin
+    --     if IRAM_READY = '0' then -- stalling fetch stage
+    --         PC_EN <= '0';
+    --         NPC_EN <= '0';
+    --         IR_EN <= '0';
+
+    --     elsif DRAM_READY = '0' then --stalling f-d-e stages
+    --         PC_EN <= '0';
+    --         NPC_EN <= '0';
+    --         IR_EN <= '0';
+
+    --         RF_ENABLE <= '0';
+    --         A_EN <= '0';
+    --         B_EN <= '0';
+    --         IMM_EN <= '0';
+    --     end if:
+    --     end pro
+
+    -- CW1_P : process(cw1_s, ir_en_s)
+    -- begin
+    --     cw1_s <= ((cw1.fetch.PC_EN, ir_en_s, cw1.fetch.NPC_EN, cw1.fetch.IRAM_EN),
+    --             cw1.decode,
+    --             cw1.execute,
+    --             cw1.memory,
+    --             cw1.wb);
+    -- end process;
+
+    -- CW4_P : process(cw4, lmd_en_s)
+    -- begin
+    --     cw4_s <= (cw4.fetch,
+    --               cw4.decode,
+    --               cw4.execute,
+    --               (lmd_en_s, cw4.memory.ALU_OUT_REG_ME_EN, cw4.memory.DRAM_ENABLE, cw4.memory.DRAM_READNOTWRITE),
+    --               cw4.wb);
+    -- end process;
 end RTL;
 
 ----------------------------------------------------------------

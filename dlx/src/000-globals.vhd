@@ -11,9 +11,11 @@ package myTypes is
     -- Data
     constant numBit : integer := 32;
     subtype data_t is std_logic_vector(numBit - 1 downto 0);
+    subtype double_data_t is std_logic_vector(2*numBit - 1 downto 0);
 
     -- Instructions Size
     constant INS_SIZE         : integer := 32;
+    subtype ins_t is std_logic_vector(INS_SIZE - 1 downto 0);
     constant INS_OP_CODE_SIZE : integer := 6;  -- OPCODE field size
     constant INS_R1_SIZE      : integer := 5;  -- R1 field size
     constant INS_R2_SIZE      : integer := 5;  -- R2 field size
