@@ -67,6 +67,8 @@ begin
     begin
         if ENABLE = '1' and RD1 = '1' then
             OUT1 <= REGISTERS(to_integer(unsigned(ADD_RD1)));
+        else
+            OUT1 <= (others => 'Z');
         end if;
     end process read1;
 
@@ -74,6 +76,8 @@ begin
     begin
         if ENABLE = '1' and RD2 = '1' then
             OUT2 <= REGISTERS(to_integer(unsigned(ADD_RD2)));
+        else
+            OUT2 <= (others => 'Z');
         end if;
     end process read2;
 
