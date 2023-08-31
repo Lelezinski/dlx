@@ -52,8 +52,8 @@ package myTypes is
     -- Multiplier
     constant NUMBIT_MUL : integer := 32;
 
-    -- Register File
-    constant R_NUM       : integer := 16;
+    -- Register Fil
+    constant R_NUM       : integer := 32;
     constant RF_WORD_LEN : integer := 32;
     constant RF_REG_NUM  : integer := 8;
     constant RF_ADDR_LEN : integer := integer(ceil(log2(real(R_NUM))));
