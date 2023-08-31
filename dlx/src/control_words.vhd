@@ -70,10 +70,10 @@ package control_words is
     -----------------------------------------------------------------------------
     signal init_cw : cw_t := (
         fetch => (
-            PC_EN       => '0',
-            IR_EN       => '0',
-            NPC_EN      => '0',
-            IRAM_EN           => '0'
+            PC_EN       => '1',
+            IR_EN       => '1',
+            NPC_EN      => '1',
+            IRAM_EN     => '1'
             ),
         decode => (
             A_EN        => '0',
