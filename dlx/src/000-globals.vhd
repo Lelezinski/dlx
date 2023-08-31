@@ -72,9 +72,9 @@ package myTypes is
 
     -- Control Unit Input Sizes
     constant C_OP_CODE_SIZE : integer := 6;        -- OPCODE field size
-    constant C_FUNC_SIZE    : integer := 6;        -- FUNC field size
+    constant C_FUNC_SIZE    : integer := 11;        -- FUNC field size
     constant C_IR_SIZE      : integer := INS_SIZE; -- Instruction Register Size
-    constant C_CW_SIZE      : integer := 27;       -- Control Word Size
+    constant C_CW_SIZE      : integer := 28;       -- Control Word Size
     constant ALU_OP_SIZE    : integer := 2;
 
     -- Number of Available Instructions
@@ -93,17 +93,17 @@ package myTypes is
     subtype func_t is std_logic_vector(C_FUNC_SIZE - 1 downto 0); -- (RTYPE_ADD, RTYPE_SUB, RTYPE_AND, RTYPE_OR, NOP);
     subtype opcode_t is std_logic_vector(C_OP_CODE_SIZE - 1 downto 0);
 
-    constant FUNC_ADD : func_t := "000001";
-    constant FUNC_SUB : func_t := "000010";
-    constant FUNC_AND : func_t := "000011";
-    constant FUNC_OR  : func_t := "000100";
-    constant FUNC_XOR : func_t := "000101";
-    constant FUNC_SLL : func_t := "000110";
-    constant FUNC_SRL : func_t := "000111";
-    constant FUNC_SGE : func_t := "001000";
-    constant FUNC_SLE : func_t := "001001";
-    constant FUNC_SNE : func_t := "001010";
-    constant FUNC_MUL : func_t := "001011";
+    constant FUNC_ADD : func_t := "00000000001";
+    constant FUNC_SUB : func_t := "00000000010";
+    constant FUNC_AND : func_t := "00000000011";
+    constant FUNC_OR  : func_t := "00000000100";
+    constant FUNC_XOR : func_t := "00000000101";
+    constant FUNC_SLL : func_t := "00000000110";
+    constant FUNC_SRL : func_t := "00000000111";
+    constant FUNC_SGE : func_t := "00000001000";
+    constant FUNC_SLE : func_t := "00000001001";
+    constant FUNC_SNE : func_t := "00000001010";
+    constant FUNC_MUL : func_t := "00000001011";
 
     -- R-Type instruction -> OPCODE field
     constant RTYPE : opcode_t := "000000"; -- for ADD, SUB, AND, OR register-to-register operation
