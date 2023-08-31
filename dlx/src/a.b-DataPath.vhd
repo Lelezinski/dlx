@@ -112,36 +112,36 @@ architecture RTL of DATAPATH is
     ---------------------------- [IF] STAGE
     signal IR       : std_logic_vector(INS_SIZE - 1 downto 0);
     signal IRAM_OUT : std_logic_vector(INS_SIZE - 1 downto 0);
-    signal PC       : unsigned(PC_SIZE - 1 downto 0);
-    signal NPC      : unsigned(PC_SIZE - 1 downto 0);
+    signal PC       : pc_t;
+    signal NPC      : pc_t;
 
     ---------------------------- [ID] STAGE
-    signal RF_OUT_1 : std_logic_vector(DATA_SIZE - 1 downto 0);
-    signal RF_OUT_2 : std_logic_vector(DATA_SIZE - 1 downto 0);
-    signal A        : std_logic_vector(DATA_SIZE - 1 downto 0);
-    signal B        : std_logic_vector(DATA_SIZE - 1 downto 0);
-    signal IMM      : std_logic_vector(DATA_SIZE - 1 downto 0);
-    signal NPC_ID   : unsigned(PC_SIZE - 1 downto 0);
+    signal RF_OUT_1 : data_t;
+    signal RF_OUT_2 : data_t;
+    signal A        : data_t;
+    signal B        : data_t;
+    signal IMM      : data_t;
+    signal NPC_ID   : pc_t;
 
     ---------------------------- [EX] STAGE
-    signal ALU_IN_1    : std_logic_vector(DATA_SIZE - 1 downto 0);
-    signal ALU_IN_2    : std_logic_vector(DATA_SIZE - 1 downto 0);
-    signal ALU_OUT     : std_logic_vector(DATA_SIZE - 1 downto 0);
-    signal LL_ALU_OUT  : std_logic_vector(DATA_SIZE - 1 downto 0);
-    signal MUXC_OUT    : std_logic_vector(DATA_SIZE - 1 downto 0);
-    signal ALU_OUT_REG : std_logic_vector(DATA_SIZE - 1 downto 0);
+    signal ALU_IN_1    : data_t;
+    signal ALU_IN_2    : data_t;
+    signal ALU_OUT     : data_t;
+    signal LL_ALU_OUT  : data_t;
+    signal MUXC_OUT    : data_t;
+    signal ALU_OUT_REG : data_t;
     signal COND        : std_logic;
-    signal B_EX        : std_logic_vector(DATA_SIZE - 1 downto 0);
-    signal NPC_EX      : unsigned(PC_SIZE - 1 downto 0);
+    signal B_EX        : data_t;
+    signal NPC_EX      : pc_t;
 
     ---------------------------- [ME] STAGE
-    signal MUXD_OUT       : unsigned(PC_SIZE - 1 downto 0);
-    signal DRAM_OUT       : std_logic_vector(DATA_SIZE - 1 downto 0);
-    signal LMD            : std_logic_vector(DATA_SIZE - 1 downto 0);
-    signal ALU_OUT_REG_ME : std_logic_vector(DATA_SIZE - 1 downto 0);
+    signal MUXD_OUT       : pc_t;
+    signal DRAM_OUT       : data_t;
+    signal LMD            : data_t;
+    signal ALU_OUT_REG_ME : data_t;
 
     ---------------------------- [WB] STAGE
-    signal MUXE_OUT : std_logic_vector(DATA_SIZE - 1 downto 0);
+    signal MUXE_OUT : data_t;
 
 begin
 
