@@ -4,6 +4,7 @@ use IEEE.numeric_std.all;
 
 use work.myTypes.all;
 use work.control_words.all;
+use work.alu_type.all;
 
 --------------------------------------------------------------------
 -- Entity Declaration
@@ -162,7 +163,7 @@ begin
 
     ---------------------------- MUXes
     -- MUXA
-    ALU_IN_1 <= std_logic_vector(NPC_ID) when CW.execute.MUXA_SEL = '0' else
+    ALU_IN_1 <= to_data(NPC_ID) when CW.execute.MUXA_SEL = '0' else
         A;
 
     -- MUXB
@@ -175,7 +176,7 @@ begin
 
     -- MUXD
     MUXD_OUT <= NPC_EX when CW.memory.MUXD_SEL = '0' else
-        unsigned(ALU_OUT_REG); -- TODO: match size
+        pc_t(ALU_OUT_REG(PC_SIZE - 1 downto 0));
 
     -- MUXE
     MUXE_OUT <= LMD when CW.wb.MUXE_SEL = '0' else
