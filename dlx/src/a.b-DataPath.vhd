@@ -93,6 +93,14 @@ architecture RTL of DATAPATH is
     end component P4_ADDER;
 
     -- TODO: ALU
+    component ALU is
+        generic (
+            N : integer);
+        port (
+            FUNC         : in  alu_op_t;
+            DATA1, DATA2 : in  std_logic_vector(N-1 downto 0);
+            OUTALU       : out std_logic_vector(N-1 downto 0));
+    end component ALU;
 
     -- TODO: LL_ALU
 
@@ -217,6 +225,15 @@ begin
         OUT1   => RF_OUT_1,
         OUT2   => RF_OUT_2
     );
+
+    ALU_1: entity work.ALU
+        generic map (
+            N => numBit)
+        port map (
+            FUNC   => CW.execute.ALU_OP,
+            DATA1  => RF_OUT_1,
+            DATA2  => RF_OUT_2,
+            OUTALU => ALU_OUT);
 
     -- TODO: others
 
