@@ -208,7 +208,7 @@ begin
     -- PC
     PC_P : process (CLK, RST)
     begin
-        if RST = '0' then
+        if RST = '1' then
             PC <= (others => '0');
         elsif falling_edge(CLK) then
             if (CW.fetch.PC_EN = '1') then
@@ -220,7 +220,7 @@ begin
     -- NPC
     NPC_P : process (CLK, RST)
     begin
-        if RST = '0' then
+        if RST = '1' then
             NPC <= (others => '0');
         elsif falling_edge(CLK) then
             if (CW.fetch.NPC_EN = '1') then
@@ -232,7 +232,7 @@ begin
     -- IR
     IR_P : process (CLK, RST)
     begin
-        if RST = '0' then
+        if RST = '1' then
             IR <= (others => '0');
         elsif falling_edge(CLK) then
             if (CW.fetch.IR_EN = '1') then
@@ -245,7 +245,7 @@ begin
     -- A
     A_P : process (CLK, RST)
     begin
-        if RST = '0' then
+        if RST = '1' then
             A <= (others => '0');
         elsif falling_edge(CLK) then
             if (CW.decode.A_EN = '1') then
@@ -257,7 +257,7 @@ begin
     -- B
     B_P : process (CLK, RST)
     begin
-        if RST = '0' then
+        if RST = '1' then
             B <= (others => '0');
         elsif falling_edge(CLK) then
             if (CW.decode.B_EN = '1') then
@@ -269,7 +269,7 @@ begin
     -- IMM
     IMM_P : process (CLK, RST)
     begin
-        if RST = '0' then
+        if RST = '1' then
             IMM <= (others => '0');
         elsif falling_edge(CLK) then
             if (CW.decode.IMM_EN = '1') then
@@ -281,7 +281,7 @@ begin
     -- NPC_ID
     NPC_ID_P : process (CLK, RST)
     begin
-        if RST = '0' then
+        if RST = '1' then
             NPC_ID <= (others => '0');
         elsif falling_edge(CLK) then
             if (CW.decode.NPC_ID_EN = '1') then
@@ -294,7 +294,7 @@ begin
     -- COND
     COND_P : process (CLK, RST)
     begin
-        if RST = '0' then
+        if RST = '1' then
             COND <= '0';
         elsif falling_edge(CLK) then
             if (CW.execute.COND_EN = '1') then
@@ -310,7 +310,7 @@ begin
     -- ALU_OUT_REG
     ALU_OUT_REG_P : process (CLK, RST)
     begin
-        if RST = '0' then
+        if RST = '1' then
             ALU_OUT_REG <= (others => '0');
         elsif falling_edge(CLK) then
             if (CW.execute.ALU_OUT_REG_EN = '1') then
@@ -322,7 +322,7 @@ begin
     -- B_EX
     B_EX_P : process (CLK, RST)
     begin
-        if RST = '0' then
+        if RST = '1' then
             B_EX <= (others => '0');
         elsif falling_edge(CLK) then
             if (CW.execute.B_EX_EN = '1') then
@@ -334,7 +334,7 @@ begin
     -- NPC_EX
     NPC_EX_P : process (CLK, RST)
     begin
-        if RST = '0' then
+        if RST = '1' then
             NPC_EX <= (others => '0');
         elsif falling_edge(CLK) then
             if (CW.execute.NPC_EX_EN = '1') then
@@ -347,7 +347,7 @@ begin
     -- LMD
     LMD_P : process (CLK, RST)
     begin
-        if RST = '0' then
+        if RST = '1' then
             LMD <= (others => '0');
         elsif falling_edge(CLK) then
             if (CW.memory.LMD_EN = '1') then
@@ -359,7 +359,7 @@ begin
     -- ALU_OUT_REG_ME
     ALU_OUT_REG_ME_P : process (CLK, RST)
     begin
-        if RST = '0' then
+        if RST = '1' then
             ALU_OUT_REG_ME <= (others => '0');
         elsif falling_edge(CLK) then
             if (CW.memory.ALU_OUT_REG_ME_EN = '1') then
