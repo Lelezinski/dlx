@@ -13,88 +13,89 @@ use work.control_words.all;
 entity CU is
     generic (
         -- FIXME: use constants
-        MICROCODE_MEM_SIZE        : integer := 15;  -- Microcode Memory Size
-        FUNC_SIZE                 : integer := 11;  -- Func Field Size for R-Type Ops
-        OP_CODE_SIZE              : integer := 6;   -- Op Code Size
+        MICROCODE_MEM_SIZE : integer := 15; -- Microcode Memory Size
+        FUNC_SIZE          : integer := 11; -- Func Field Size for R-Type Ops
+        OP_CODE_SIZE       : integer := 6;  -- Op Code Size
         -- ALU_OPC_SIZE           :   integer := 6;  -- ALU Op Code Word Size
-        CW_SIZE                   : integer := 23);  -- Control Word Size
+        CW_SIZE : integer := 23); -- Control Word Size
     port (
-        cw    : out cw_t;  -- control word for datapath and memories
-        in_cw : in  cw_from_mem; -- input signals coming from datapath and memories
+        cw    : out cw_t;       -- control word for datapath and memories
+        in_cw : in cw_from_mem; -- input signals coming from datapath and memories
 
         -- Inputs
-        OPCODE : in  opcode_t;
-        FUNC   : in  func_t;
-        CLK    : in  std_logic;
-        RST    : in  std_logic;          -- Active Low
-        IRAM_READY        : in std_logic;
-        DRAM_READY        : in std_logic;
+        OPCODE     : in opcode_t;
+        FUNC       : in func_t;
+        CLK        : in std_logic;
+        RST        : in std_logic; -- Active High
+        IRAM_READY : in std_logic;
+        DRAM_READY : in std_logic;
 
-        IRAM_ENABLE        : out std_logic;
-        DRAM_ENABLE        : out std_logic;
+        IRAM_ENABLE       : out std_logic;
+        DRAM_ENABLE       : out std_logic;
         DRAM_READNOTWRITE : out std_logic
-        );
+    );
 end CU;
 
 architecture RTL of CU is
 
-----------------------------------------------------------------
--- Signals Declaration
-----------------------------------------------------------------
+    ----------------------------------------------------------------
+    -- Signals Declaration
+    ----------------------------------------------------------------
 
     type mem_array is array (integer range 0 to MICROCODE_MEM_SIZE - 1) of std_logic_vector(CW_SIZE - 1 downto 0);
     signal cw_mem : mem_array := (
         -- TODO define the actual control words
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110111111001000000000001", -- RTYPE
-        "1111110011010000000000000000");
+        "11111101011100000011000001001", -- ADD FIXME: MUXA should be 1 (debug)
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111101011010000011000001001", -- RTYPE
+        "11111100110100000000000000000"
+    );
 
     signal cw_s, cw1, cw2, cw3, cw4, cw5 : cw_t;
-    signal cw1_s, cw4_s: cw_t;
-    signal ir_en_s, lmd_en_s: std_logic;
+    signal cw1_s, cw4_s                  : cw_t;
+    signal ir_en_s, lmd_en_s             : std_logic;
 
     -- These signals are needed to avoid conflicts on the cw registers.
     signal ALU_OPCODE, ALU_OPCODE1, ALU_OPCODE2, ALU_OPCODE3 : alu_op_t;
@@ -103,9 +104,9 @@ architecture RTL of CU is
     signal FUNC_OP : func_t;
 begin
 
-----------------------------------------------------------------
--- Signals Assignment
-----------------------------------------------------------------
+    ----------------------------------------------------------------
+    -- Signals Assignment
+    ----------------------------------------------------------------
 
     -- Convert the func field into enum type func_t
     FUNC_OP <= FUNC;
@@ -116,38 +117,41 @@ begin
 
     -- -- Assign the control signals to the outputs
     cw <= (cw1.fetch, cw2.decode, (
-                cw3.execute.ALU_OUT_REG_EN,
-                cw3.execute.COND_EN,
-                ALU_OPCODE3,
-                cw3.execute.B_EX_EN,
-                cw3.execute.NPC_EX_EN,
-                cw3.execute.MUXA_SEL,
-                cw3.execute.MUXB_SEL,
-                cw3.execute.MUXC_SEL
-                ),
-           cw4.memory, cw5.wb);
+        cw3.execute.ALU_OUT_REG_EN,
+        cw3.execute.COND_EN,
+        ALU_OPCODE3,
+        cw3.execute.B_EX_EN,
+        cw3.execute.NPC_EX_EN,
+        cw3.execute.MUXA_SEL,
+        cw3.execute.MUXB_SEL,
+        cw3.execute.MUXC_SEL
+        ),
+        cw4.memory, cw5.wb
+        );
 
     -- ir_en_s <= IRAM_READY;
     ir_en_s <= '1';
-----------------------------------------------------------------
--- Processes
-----------------------------------------------------------------
+
+    ----------------------------------------------------------------
+    -- Processes
+    ----------------------------------------------------------------
 
     -- process to pipeline control words
     CW_PIPE : process (clk, rst)
-    begin  -- process clk
+    begin -- process clk
         if rst = '1' then
             cw1 <= init_cw;
             cw2 <= init_cw;
             cw3 <= init_cw;
             cw4 <= init_cw;
             cw5 <= init_cw;
-        elsif falling_edge(clk) then     -- rising clock edge
+        elsif falling_edge(clk) then
             -- shift the slice of the control word to the correct control register
-            cw1 <= cw_s;
-            cw2 <= cw1;
-            cw3 <= cw2;
-            cw4 <= cw5;
+            cw1         <= cw_s;
+            cw2         <= cw1;
+            cw3         <= cw2;
+            cw4         <= cw3;
+            cw5         <= cw4;
             ALU_OPCODE1 <= ALU_OPCODE;
             ALU_OPCODE2 <= ALU_OPCODE1;
             ALU_OPCODE3 <= ALU_OPCODE2;
@@ -191,7 +195,7 @@ begin
                     ALU_OPCODE <= alu_sne;
                 when func_mul =>
                     ALU_OPCODE <= alu_mul;
-                when others   =>
+                when others =>
                     ALU_OPCODE <= alu_add;
             end case;
         end if;
