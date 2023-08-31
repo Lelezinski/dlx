@@ -75,9 +75,17 @@ begin
     cw_s <= to_cw(cw_mem(to_integer(unsigned(OPCODE))));
 
     -- -- Assign the control signals to the outputs
-    cw <= (cw1.fetch, cw2.decode, cw3.execute, cw4.memory, cw5.wb);
-    cw.execute.ALU_OP <= ALU_OPCODE2;
-
+    cw <= (cw1.fetch, cw2.decode, (
+                cw3.execute.ALU_OUT_REG_EN,
+                cw3.execute.COND_EN,
+                ALU_OPCODE3,
+                cw3.execute.B_EX_EN,
+                cw3.execute.NPC_EX_EN,
+                cw3.execute.MUXA_SEL,
+                cw3.execute.MUXB_SEL,
+                cw3.execute.MUXC_SEL
+                ),
+           cw4.memory, cw5.wb);
 ----------------------------------------------------------------
 -- Processes
 ----------------------------------------------------------------
