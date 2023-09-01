@@ -76,14 +76,14 @@ package control_words is
         IRAM_EN => '1'
         ),
         decode    => (
-        A_EN      => '0',
-        B_EN      => '0',
-        IMM_EN    => '0',
-        NPC_ID_EN => '0',
+        A_EN      => '1',
+        B_EN      => '1',
+        IMM_EN    => '1',
+        NPC_ID_EN => '1',
         RF_RESET  => '0',
         RF_ENABLE => '1',
-        RF_RD1    => '0',
-        RF_RD2    => '0',
+        RF_RD1    => '1',
+        RF_RD2    => '1',
         RF_WR     => '0'
         ),
         execute        => (
