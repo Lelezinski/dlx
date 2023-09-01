@@ -86,9 +86,9 @@ architecture RTL of DATAPATH is
 
     ---------------------------- Instructions Fields
     signal INS_OP_CODE : std_logic_vector(INS_OP_CODE_SIZE - 1 downto 0);
-    signal INS_R1      : std_logic_vector(INS_R1_SIZE - 1 downto 0);
-    signal INS_R2      : std_logic_vector(INS_R2_SIZE - 1 downto 0);
-    signal INS_R3      : std_logic_vector(INS_R3_SIZE - 1 downto 0);
+    signal INS_RS1     : std_logic_vector(INS_R1_SIZE - 1 downto 0);
+    signal INS_RS2     : std_logic_vector(INS_R2_SIZE - 1 downto 0);
+    signal INS_RD      : std_logic_vector(INS_R3_SIZE - 1 downto 0);
     signal INS_IMM     : std_logic_vector(INS_IMM_SIZE - 1 downto 0);
     signal INS_FUNC    : std_logic_vector(INS_FUNC_SIZE - 1 downto 0);
 
@@ -132,9 +132,9 @@ begin
 
     ---------------------------- IR Split
     INS_OP_CODE <= IR(INS_OP_CODE_L downto INS_OP_CODE_R);
-    INS_R1      <= IR(INS_R1_L downto INS_R1_R);
-    INS_R2      <= IR(INS_R2_L downto INS_R2_R);
-    INS_R3      <= IR(INS_R3_L downto INS_R3_R);
+    INS_RS1     <= IR(INS_R1_L downto INS_R1_R);
+    INS_RS2     <= IR(INS_R2_L downto INS_R2_R);
+    INS_RD      <= IR(INS_R2_L downto INS_R2_R) when IR(INS_OP_CODE_L downto INS_OP_CODE_R) /= "000000" else IR(INS_R3_L downto INS_R3_R);
     INS_IMM     <= IR(INS_IMM_L downto INS_IMM_R);
     INS_FUNC    <= IR(INS_FUNC_L downto INS_FUNC_R);
 
@@ -180,9 +180,9 @@ begin
         RD1     => CW.decode.RF_RD1,
         RD2     => CW.decode.RF_RD2,
         WR      => CW.decode.RF_WR,
-        ADD_WR  => INS_R1,
-        ADD_RD1 => INS_R2,
-        ADD_RD2 => INS_R3,
+        ADD_WR  => INS_RD,
+        ADD_RD1 => INS_RS1,
+        ADD_RD2 => INS_RS2,
         DATAIN  => IR,
         OUT1    => RF_OUT_1,
         OUT2    => RF_OUT_2
