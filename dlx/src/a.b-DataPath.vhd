@@ -183,11 +183,11 @@ begin
         ENABLE  => CW.decode.RF_ENABLE,
         RD1     => CW.decode.RF_RD1,
         RD2     => CW.decode.RF_RD2,
-        WR      => CW.decode.RF_WR,
-        ADD_WR  => INS_RD,
+        WR      => CW.wb.RF_WR,
+        ADD_WR  => RD_MEM,
         ADD_RD1 => INS_RS1,
         ADD_RD2 => INS_RS2,
-        DATAIN  => IR,
+        DATAIN  => ALU_OUT_REG_ME,
         OUT1    => RF_OUT_1,
         OUT2    => RF_OUT_2
     );
