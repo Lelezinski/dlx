@@ -155,7 +155,7 @@ begin
         LL_ALU_OUT;
 
     -- MUXD
-    MUXD_OUT <= NPC_EX when CW.memory.MUXD_SEL = '0' else
+    MUXD_OUT <= NPC when CW.memory.MUXD_SEL = '0' else
         pc_t(ALU_OUT_REG(PC_SIZE - 1 downto 0));
 
     -- MUXE
