@@ -104,6 +104,8 @@ architecture RTL of DATAPATH is
     signal B        : data_t;
     signal IMM      : data_t;
     signal NPC_ID   : pc_t;
+    signal RD_ID    : std_logic_vector(INS_R2_SIZE - 1 downto 0);
+    signal RS_ID    : std_logic_vector(INS_R2_SIZE - 1 downto 0);
 
     ---------------------------- [EX] STAGE
     signal ALU_IN_1    : data_t;
@@ -115,15 +117,16 @@ architecture RTL of DATAPATH is
     signal COND        : std_logic;
     signal B_EX        : data_t;
     signal NPC_EX      : pc_t;
+    signal RD_EX       : std_logic_vector(INS_R3_SIZE - 1 downto 0);
 
     ---------------------------- [ME] STAGE
     signal MUXD_OUT       : pc_t;
     signal LMD            : data_t;
     signal ALU_OUT_REG_ME : data_t;
+    signal RD_MEM         : std_logic_vector(INS_R2_SIZE - 1 downto 0);
 
     ---------------------------- [WB] STAGE
     signal MUXE_OUT : data_t;
-
 begin
 
     ----------------------------------------------------------------
@@ -134,7 +137,8 @@ begin
     INS_OP_CODE <= IR(INS_OP_CODE_L downto INS_OP_CODE_R);
     INS_RS1     <= IR(INS_R1_L downto INS_R1_R);
     INS_RS2     <= IR(INS_R2_L downto INS_R2_R);
-    INS_RD      <= IR(INS_R2_L downto INS_R2_R) when IR(INS_OP_CODE_L downto INS_OP_CODE_R) /= "000000" else IR(INS_R3_L downto INS_R3_R);
+    -- INS_RD      <= IR(INS_R2_L downto INS_R2_R) when IR(INS_OP_CODE_L downto INS_OP_CODE_R) /= "000000" else IR(INS_R3_L downto INS_R3_R);
+    INS_RD      <= IR(INS_R3_L downto INS_R3_R);
     INS_IMM     <= IR(INS_IMM_L downto INS_IMM_R);
     INS_FUNC    <= IR(INS_FUNC_L downto INS_FUNC_R);
 
@@ -291,6 +295,17 @@ begin
         end if;
     end process NPC_ID_P;
 
+    RD_RS_ID_P: process(CLK, RST)
+    begin
+        if RST = '1' then
+            RD_ID <= (others => '0');
+            RS_ID <= (others => '0');
+        elsif falling_edge(CLK) then
+            RD_ID <= INS_RD;
+            RS_ID <= INS_RS2;
+        end if;
+    end process RD_RS_ID_P;
+
     ---------------------------- [EX] STAGE
     -- COND
     COND_P : process (CLK, RST)
@@ -344,6 +359,19 @@ begin
         end if;
     end process NPC_EX_P;
 
+    RD_EX_P: process(CLK, RST)
+    begin
+        if RST = '1' then
+            RD_EX <= (others => '0');
+        elsif falling_edge(CLK) then
+            if CW.execute.REG_DST = '0' then
+                RD_EX <= RD_ID;
+            else
+                RD_EX <= RS_ID;
+            end if;
+        end if;
+    end process RD_EX_P;
+
     ---------------------------- [ME] STAGE
     -- LMD
     LMD_P : process (CLK, RST)
@@ -368,6 +396,15 @@ begin
             end if;
         end if;
     end process ALU_OUT_REG_ME_P;
+
+    RD_MEM_P: process(CLK, RST)
+    begin
+        if RST = '1' then
+            RD_MEM <= (others => '0');
+        elsif falling_edge(CLK) then
+            RD_MEM <= RD_EX;
+        end if;
+    end process RD_MEM_P;
 
     ---------------------------- [WB] STAGE
     -- TODO: controllare timing per il WB al RF
