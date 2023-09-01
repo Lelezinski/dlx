@@ -26,7 +26,6 @@ package control_words is
         RF_ENABLE : std_logic; -- register file enable signal
         RF_RD1    : std_logic; -- register file read port one signal
         RF_RD2    : std_logic; -- register file read port two signal
-        RF_WR     : std_logic; -- register file write port signal
     end record decode_cw_t;
 
     type execute_cw_t is record
@@ -38,6 +37,7 @@ package control_words is
         MUXA_SEL       : std_logic; -- MuxA selection signal
         MUXB_SEL       : std_logic; -- MuxB selection signal
         MUXC_SEL       : std_logic; -- MuxC selection signal
+        REG_DST        : std_logic; -- selects between RD and RS
     end record execute_cw_t;
 
     type memory_cw_t is record
@@ -49,6 +49,7 @@ package control_words is
     end record memory_cw_t;
 
     type wb_cw_t is record
+        RF_WR     : std_logic; -- register file write port signal
         MUXE_SEL : std_logic; -- MuxE selection signal
     end record wb_cw_t;
 
@@ -83,8 +84,7 @@ package control_words is
         RF_RESET  => '0',
         RF_ENABLE => '1',
         RF_RD1    => '1',
-        RF_RD2    => '1',
-        RF_WR     => '0'
+        RF_RD2    => '1'
         ),
         execute        => (
         ALU_OUT_REG_EN => '0',
@@ -94,7 +94,8 @@ package control_words is
         NPC_EX_EN      => '0',
         MUXA_SEL       => '0',
         MUXB_SEL       => '0',
-        MUXC_SEL       => '0'
+        MUXC_SEL       => '0',
+        REG_DST        => '0'
         ),
         memory            => (
         LMD_EN            => '0',
@@ -104,6 +105,7 @@ package control_words is
         DRAM_READNOTWRITE => '0'
         ),
         wb       => (
+        RF_WR     => '0',
         MUXE_SEL => '0'
         )
     );
@@ -121,40 +123,41 @@ package body control_words is
 begin
     return (
     fetch   => (
-    PC_EN   => arg(28),
-    IR_EN   => arg(27),
-    NPC_EN  => arg(26),
-    IRAM_EN => arg(25)
+    PC_EN   => arg(29),
+    IR_EN   => arg(28),
+    NPC_EN  => arg(27),
+    IRAM_EN => arg(26)
     ),
     decode    => (
-    A_EN      => arg(24),
-    B_EN      => arg(23),
-    IMM_EN    => arg(22),
-    NPC_ID_EN => arg(21),
-    RF_RESET  => arg(20),
-    RF_ENABLE => arg(19),
-    RF_RD1    => arg(18),
-    RF_RD2    => arg(17),
-    RF_WR     => arg(16)
+    A_EN      => arg(25),
+    B_EN      => arg(24),
+    IMM_EN    => arg(23),
+    NPC_ID_EN => arg(22),
+    RF_RESET  => arg(21),
+    RF_ENABLE => arg(20),
+    RF_RD1    => arg(19),
+    RF_RD2    => arg(18)
     ),
     execute        => (
-    ALU_OUT_REG_EN => arg(15),
-    COND_EN        => arg(14),
-    ALU_OP         => alu_op_t'val(to_integer(unsigned(std_logic_vector'(arg(13) & arg(12) & arg(11))))),
-    B_EX_EN        => arg(10),
-    NPC_EX_EN      => arg(9),
-    MUXA_SEL       => arg(8),
-    MUXB_SEL       => arg(7),
-    MUXC_SEL       => arg(6)
+    ALU_OUT_REG_EN => arg(17),
+    COND_EN        => arg(16),
+    ALU_OP         => alu_op_t'val(to_integer(unsigned(std_logic_vector'(arg(15) & arg(14) & arg(13))))),
+    B_EX_EN        => arg(12),
+    NPC_EX_EN      => arg(11),
+    MUXA_SEL       => arg(10),
+    MUXB_SEL       => arg(9),
+    MUXC_SEL       => arg(8),
+    REG_DST        => arg(7)
     ),
     memory            => (
-    LMD_EN            => arg(5),
-    MUXD_SEL          => arg(4),
-    ALU_OUT_REG_ME_EN => arg(3),
-    DRAM_ENABLE       => arg(2),
-    DRAM_READNOTWRITE => arg(1)
+    LMD_EN            => arg(6),
+    MUXD_SEL          => arg(5),
+    ALU_OUT_REG_ME_EN => arg(4),
+    DRAM_ENABLE       => arg(3),
+    DRAM_READNOTWRITE => arg(2)
     ),
     wb       => (
+    RF_WR     => arg(1),
     MUXE_SEL => arg(0)
     )
     );

@@ -77,7 +77,7 @@ package myTypes is
     constant C_OP_CODE_SIZE : integer := 6;        -- OPCODE field size
     constant C_FUNC_SIZE    : integer := 11;        -- FUNC field size
     constant C_IR_SIZE      : integer := INS_SIZE; -- Instruction Register Size
-    constant C_CW_SIZE      : integer := 29;       -- Control Word Size
+    constant C_CW_SIZE      : integer := 30;       -- Control Word Size
     constant ALU_OP_SIZE    : integer := 2;
 
     -- Number of Available Instructions
