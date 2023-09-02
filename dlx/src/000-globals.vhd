@@ -98,7 +98,7 @@ package myTypes is
     subtype func_t is std_logic_vector(C_FUNC_SIZE - 1 downto 0); -- (RTYPE_ADD, RTYPE_SUB, RTYPE_AND, RTYPE_OR, NOP);
     subtype opcode_t is std_logic_vector(C_OP_CODE_SIZE - 1 downto 0);
 
-    constant FUNC_ADD : func_t := "00000000001";
+    constant FUNC_ADD : func_t := "00000010000";
     constant FUNC_SUB : func_t := "00000000010";
     constant FUNC_AND : func_t := "00000000011";
     constant FUNC_OR  : func_t := "00000000100";
