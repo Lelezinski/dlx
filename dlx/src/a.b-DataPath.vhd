@@ -229,7 +229,7 @@ begin
             NPC <= (others => '0');
         elsif falling_edge(CLK) then
             if (CW.fetch.NPC_EN = '1') then
-                NPC <= PC + 4; -- TODO: generalizzare?
+                NPC <= PC + 1; -- TODO: generalizzare?
             end if;
         end if;
     end process NPC_P;
