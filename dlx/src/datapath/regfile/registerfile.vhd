@@ -55,7 +55,6 @@ begin
     begin
         if RESET = '1' then
             REGISTERS <= (others => (others => '0'));
-            NEXT_REGISTERS <= (others => (others => '0'));
         elsif falling_edge(clk) then
             if ENABLE = '1' then
                 REGISTERS <= NEXT_REGISTERS;
@@ -81,12 +80,12 @@ begin
         end if;
     end process read2;
 
-    write : process (WR, ADD_WR, REGISTERS, DATAIN, ENABLE)
+    write : process (RESET, WR, ADD_WR, DATAIN, ENABLE)
     begin
         if ENABLE = '1' and WR = '1' then
             NEXT_REGISTERS(to_integer(unsigned(ADD_WR))) <= DATAIN;
-        else
-            NEXT_REGISTERS <= REGISTERS;
+        elsif RESET = '1' then
+            NEXT_REGISTERS <= (others => (others => '0'));
         end if;
     end process write;
 end BEHAVIOURAL;
