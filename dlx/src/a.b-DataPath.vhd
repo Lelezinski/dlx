@@ -159,7 +159,7 @@ begin
         LL_ALU_OUT;
 
     -- MUXD
-    MUXD_OUT <= (PC + 4) when CW.memory.MUXD_SEL = '0' else
+    MUXD_OUT <= (PC + 1) when CW.memory.MUXD_SEL = '0' else
         pc_t(ALU_OUT_REG(PC_SIZE - 1 downto 0));
 
     -- MUXE
