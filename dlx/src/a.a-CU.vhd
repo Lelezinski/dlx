@@ -62,18 +62,30 @@ begin
 
     -- OPCODE is used as index of cw_mem.
     -- get the complete control word of the current instruction
-    CW_S_UP: process (OPCODE)
+    CW_S_UP : process (OPCODE)
     begin
         case OPCODE is
+            -- TODO: add
             when ITYPE_ADDI =>
                 cw_s <= ADDI_CW;
+            when ITYPE_SUBI =>
+                cw_s <= SUBI_CW;
+            when ITYPE_ANDI =>
+                cw_s <= ANDI_CW;
+            when ITYPE_ORI =>
+                cw_s <= ORI_CW;
+            when ITYPE_XORI =>
+                cw_s <= XORI_CW;
             when others => -- RTYPE
                 cw_s <= RTYPE_CW;
         end case;
     end process;
 
     -- -- Assign the control signals to the outputs
-    cw <= (cw1.fetch, cw1.decode, (
+    cw <= (
+        cw1.fetch,
+        cw1.decode, 
+        (
         cw1.execute.ALU_OUT_REG_EN,
         cw1.execute.COND_EN,
         ALU_OPCODE3,
@@ -84,7 +96,8 @@ begin
         cw1.execute.MUXC_SEL,
         cw1.execute.REG_DST
         ),
-        cw2.memory, cw3.wb
+        cw2.memory,
+        cw3.wb
         );
 
     -- ir_en_s <= IRAM_READY;
@@ -130,6 +143,7 @@ begin
         -- use the FUNC field to select correctly their ALU_OPCODE.
         -- Updating directly CW(6) and CW(5) would gerenare a conflict
         if (OPCODE = RTYPE) then
+            -- TODO: add
             case FUNC_OP is
                 when func_add =>
                     ALU_OPCODE <= alu_add;
