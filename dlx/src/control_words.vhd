@@ -120,7 +120,7 @@ package control_words is
         decode_cw,
         execute               => (
             ALU_OUT_REG_EN    => '1',
-            COND_EN           => '0',
+            COND_EN           => '1',
             ALU_OP            => alu_sub,
             B_EX_EN           => '1',
             NPC_EX_EN         => '1',
@@ -142,13 +142,13 @@ package control_words is
             )
         );
 
-    -- ADDI
+    -- ANDI
     constant ANDI_CW : cw_t := (
         fetch_cw,
         decode_cw,
         execute               => (
             ALU_OUT_REG_EN    => '1',
-            COND_EN           => '0',
+            COND_EN           => '1',
             ALU_OP            => alu_and,
             B_EX_EN           => '1',
             NPC_EX_EN         => '1',
@@ -176,7 +176,7 @@ package control_words is
         decode_cw,
         execute               => (
             ALU_OUT_REG_EN    => '1',
-            COND_EN           => '0',
+            COND_EN           => '1',
             ALU_OP            => alu_or,
             B_EX_EN           => '1',
             NPC_EX_EN         => '1',
@@ -205,7 +205,7 @@ package control_words is
         decode_cw,
         execute               => (
             ALU_OUT_REG_EN    => '1',
-            COND_EN           => '0',
+            COND_EN           => '1',
             ALU_OP            => alu_xor,
             B_EX_EN           => '1',
             NPC_EX_EN         => '1',
