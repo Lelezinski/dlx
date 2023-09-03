@@ -69,6 +69,75 @@ package control_words is
     -----------------------------------------------------------------------------
     -- Control word signal definition
     -----------------------------------------------------------------------------
+    constant fetch_cw : fetch_cw_t := (
+        PC_EN   => '1',
+        IR_EN   => '1',
+        NPC_EN  => '1',
+        IRAM_EN => '1');
+    constant decode_cw : decode_cw_t := (
+        A_EN      => '1',
+        B_EN      => '1',
+        IMM_EN    => '1',
+        NPC_ID_EN => '1',
+        RF_RESET  => '0',
+        RF_ENABLE => '1',
+        RF_RD1    => '1',
+        RF_RD2    => '1');
+
+    constant ADDI_CW : cw_t := (
+        fetch_cw,
+        decode_cw,
+        execute               => (
+            ALU_OUT_REG_EN    => '1',
+            COND_EN           => '1',
+            ALU_OP            => alu_add,
+            B_EX_EN           => '1',
+            NPC_EX_EN         => '1',
+            MUXA_SEL          => '1',
+            MUXB_SEL          => '1',
+            MUXC_SEL          => '0',
+            REG_DST           => '1'
+            ),
+        memory                => (
+            LMD_EN            => '0',
+            MUXD_SEL          => '0',
+            ALU_OUT_REG_ME_EN => '1',
+            DRAM_ENABLE       => '0',
+            DRAM_READNOTWRITE => '0'
+            ),
+        wb                    => (
+            RF_WR             => '1',
+            MUXE_SEL          => '1'
+            )
+        );
+
+    constant RTYPE_CW : cw_t := (
+        fetch_cw,
+        decode_cw,
+        execute               => (
+            ALU_OUT_REG_EN    => '1',
+            COND_EN           => '0',
+            ALU_OP            => alu_add,
+            B_EX_EN           => '1',
+            NPC_EX_EN         => '1',
+            MUXA_SEL          => '1',
+            MUXB_SEL          => '0',
+            MUXC_SEL          => '0',
+            REG_DST           => '0'
+            ),
+        memory                => (
+            LMD_EN            => '0',
+            MUXD_SEL          => '0',
+            ALU_OUT_REG_ME_EN => '1',
+            DRAM_ENABLE       => '0',
+            DRAM_READNOTWRITE => '0'
+            ),
+        wb                    => (
+            RF_WR             => '1',
+            MUXE_SEL          => '1'
+            )
+        );
+
     signal init_cw : cw_t := (
         fetch   => (
         PC_EN   => '1',
