@@ -47,7 +47,8 @@ architecture RTL of CU is
     signal ir_en_s, lmd_en_s             : std_logic;
 
     -- These signals are needed to avoid conflicts on the cw registers.
-    signal ALU_OPCODE, ALU_OPCODE1, ALU_OPCODE2, ALU_OPCODE3 : alu_op_t;
+    signal ALU_OPCODE         : alu_op_t;
+    signal ALU_OPCODE_UPDATED : alu_op_t; -- OPCODE updated after ID stage
 
     -- one
     signal FUNC_OP : func_t;
@@ -64,8 +65,8 @@ begin
     -- get the complete control word of the current instruction
     CW_S_UP : process (OPCODE)
     begin
+        -- TODO: add remaining
         case OPCODE is
-            -- TODO: add remaining
 
             when ITYPE_ADDI => -- ITYPE
                 cw_s <= ADDI_CW;
@@ -93,7 +94,7 @@ begin
         (
         cw1.execute.ALU_OUT_REG_EN,
         cw1.execute.COND_EN,
-        ALU_OPCODE3,
+        ALU_OPCODE_UPDATED,
         cw1.execute.B_EX_EN,
         cw1.execute.NPC_EX_EN,
         cw1.execute.MUXA_SEL,
@@ -123,14 +124,13 @@ begin
             cw5 <= init_cw;
         elsif falling_edge(clk) then
             -- shift the slice of the control word to the correct control register
-            cw1         <= cw_s;
-            cw2         <= cw1;
-            cw3         <= cw2;
-            cw4         <= cw3;
-            cw5         <= cw4;
-            ALU_OPCODE1 <= ALU_OPCODE;
-            ALU_OPCODE2 <= ALU_OPCODE1;
-            ALU_OPCODE3 <= ALU_OPCODE2;
+            cw1 <= cw_s;
+            cw2 <= cw1;
+            cw3 <= cw2;
+            cw4 <= cw3;
+            cw5 <= cw4;
+            -- update the OPCODE during ID stage
+            ALU_OPCODE_UPDATED <= ALU_OPCODE;
         end if;
     end process CW_PIPE;
 
