@@ -3,7 +3,9 @@ package alu_type is
     -- ALU OP Type
     type alu_op_t is (
         ALU_ADD,
+        ALU_ADDu,
         ALU_SUB,
+        ALU_SUBu,
         ALU_MUL,
         ALU_AND,
         ALU_OR,
@@ -15,7 +17,11 @@ package alu_type is
         ALU_SGE,
         ALU_SGT,
         ALU_SLE,
-        ALU_SLT
+        ALU_SLT,
+        ALU_SGEu,
+        ALU_SGTu,
+        ALU_SLEu,
+        ALU_SLTu
     );
 
 end alu_type;

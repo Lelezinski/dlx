@@ -37,13 +37,19 @@ begin
         case FUNC is
 
             when ALU_ADD => -- Sum: A + B
+                OUTALU <= std_logic_vector(signed(DATA1) + signed(DATA2));
+
+            when ALU_ADDu => -- Sum (Unsigned): A + B
                 OUTALU <= std_logic_vector(unsigned(DATA1) + unsigned(DATA2));
 
             when ALU_SUB => -- Sub: A - B
+                OUTALU <= std_logic_vector(signed(DATA1) - signed(DATA2));
+
+            when ALU_SUBu => -- Sub (Unsigned): A - B
                 OUTALU <= std_logic_vector(unsigned(DATA1) - unsigned(DATA2));
 
-            when ALU_MUL => -- Mul: A * B (TODO: most significant half truncated)
-                OUTALU <= std_logic_vector(unsigned(DATA1(N/2 - 1 downto 0)) * unsigned(DATA2(N/2 - 1 downto 0)));
+            when ALU_MUL => -- Mul: A * B (TODO: most significant half truncated, use booth)
+                OUTALU <= std_logic_vector(signed(DATA1(N/2 - 1 downto 0)) * signed(DATA2(N/2 - 1 downto 0)));
 
             when ALU_AND => -- AND: A and B
                 OUTALU <= DATA1 and DATA2;
@@ -55,10 +61,10 @@ begin
                 OUTALU <= DATA1 xor DATA2;
 
             when ALU_SLL => -- Shift Left Logical: A << B 
-                OUTALU <= std_logic_vector(unsigned(DATA1) sll to_integer(unsigned(DATA2(log2_numBit downto 0))));
+                OUTALU <= std_logic_vector(signed(DATA1) sll to_integer(unsigned(DATA2(log2_numBit downto 0))));
 
             when ALU_SRL => -- Shift Right Logical: A >> B
-                OUTALU <= std_logic_vector(unsigned(DATA1) srl to_integer(unsigned(DATA2(log2_numBit downto 0))));
+                OUTALU <= std_logic_vector(signed(DATA1) srl to_integer(unsigned(DATA2(log2_numBit downto 0))));
 
             when ALU_SEQ => -- Set Equal: A = B ? 1 : 0
                 if (DATA1 = DATA2) then
@@ -75,28 +81,56 @@ begin
                 end if;
 
             when ALU_SGE => -- Set Greater Than or Equal: A >= B ? 1 : 0
-                if (DATA1 >= DATA2) then
+                if (signed(DATA1) >= signed(DATA2)) then
                     OUTALU <= (0 => '1', others => '0');
                 else
                     OUTALU <= (others => '0');
                 end if;
 
             when ALU_SGT => -- Set Greater Than: A > B ? 1 : 0
-                if (DATA1 > DATA2) then
+                if (signed(DATA1) > signed(DATA2)) then
                     OUTALU <= (0 => '1', others => '0');
                 else
                     OUTALU <= (others => '0');
                 end if;
 
             when ALU_SLE => -- Set Less Than or Equal: A <= B ? 1 : 0
-                if (DATA1 <= DATA2) then
+                if (signed(DATA1) <= signed(DATA2)) then
                     OUTALU <= (0 => '1', others => '0');
                 else
                     OUTALU <= (others => '0');
                 end if;
 
             when ALU_SLT => -- Set Less Than: A < B ? 1 : 0
-                if (DATA1 < DATA2) then
+                if (signed(DATA1) < signed(DATA2)) then
+                    OUTALU <= (0 => '1', others => '0');
+                else
+                    OUTALU <= (others => '0');
+                end if;
+
+            when ALU_SGEu => -- Set Greater Than or Equal (Unsigned): A >= B ? 1 : 0
+                if (unsigned(DATA1) >= unsigned(DATA2)) then
+                    OUTALU <= (0 => '1', others => '0');
+                else
+                    OUTALU <= (others => '0');
+                end if;
+
+            when ALU_SGTu => -- Set Greater Than (Unsigned): A > B ? 1 : 0
+                if (unsigned(DATA1) > unsigned(DATA2)) then
+                    OUTALU <= (0 => '1', others => '0');
+                else
+                    OUTALU <= (others => '0');
+                end if;
+
+            when ALU_SLEu => -- Set Less Than or Equal (Unsigned): A <= B ? 1 : 0
+                if (unsigned(DATA1) <= unsigned(DATA2)) then
+                    OUTALU <= (0 => '1', others => '0');
+                else
+                    OUTALU <= (others => '0');
+                end if;
+
+            when ALU_SLTu => -- Set Less Than (Unsigned): A < B ? 1 : 0
+                if (unsigned(DATA1) < unsigned(DATA2)) then
                     OUTALU <= (0 => '1', others => '0');
                 else
                     OUTALU <= (others => '0');
