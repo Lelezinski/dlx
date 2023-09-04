@@ -62,42 +62,42 @@ begin
 
             when ALU_SEQ => -- Set Equal: A = B ? 1 : 0
                 if (DATA1 = DATA2) then
-                    OUTALU <= (others => '1');
+                    OUTALU <= (0 => '1', others => '0');
                 else
                     OUTALU <= (others => '0');
                 end if;
 
             when ALU_SNE => -- Set Not Equal: A != B ? 1 : 0
                 if (DATA1 /= DATA2) then
-                    OUTALU <= (others => '1');
+                    OUTALU <= (0 => '1', others => '0');
                 else
                     OUTALU <= (others => '0');
                 end if;
 
             when ALU_SGE => -- Set Greater Than or Equal: A >= B ? 1 : 0
                 if (DATA1 >= DATA2) then
-                    OUTALU <= (others => '1');
+                    OUTALU <= (0 => '1', others => '0');
                 else
                     OUTALU <= (others => '0');
                 end if;
 
             when ALU_SGT => -- Set Greater Than: A > B ? 1 : 0
                 if (DATA1 > DATA2) then
-                    OUTALU <= (others => '1');
+                    OUTALU <= (0 => '1', others => '0');
                 else
                     OUTALU <= (others => '0');
                 end if;
 
             when ALU_SLE => -- Set Less Than or Equal: A <= B ? 1 : 0
                 if (DATA1 <= DATA2) then
-                    OUTALU    <= (others => '1');
+                    OUTALU <= (0 => '1', others => '0');
                 else
                     OUTALU <= (others => '0');
                 end if;
 
             when ALU_SLT => -- Set Less Than: A < B ? 1 : 0
                 if (DATA1 < DATA2) then
-                    OUTALU <= (others => '1');
+                    OUTALU <= (0 => '1', others => '0');
                 else
                     OUTALU <= (others => '0');
                 end if;
