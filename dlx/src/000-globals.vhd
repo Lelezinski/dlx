@@ -95,47 +95,52 @@ package myTypes is
     -- TODO: add missing ones: SEQ, SGT, SLT
 
     -- R-Type instruction -> FUNC field
-    subtype func_t is std_logic_vector(C_FUNC_SIZE - 1 downto 0); -- (RTYPE_ADD, RTYPE_SUB, RTYPE_AND, RTYPE_OR, NOP);
+    subtype func_t is std_logic_vector(C_FUNC_SIZE - 1 downto 0);
     subtype opcode_t is std_logic_vector(C_OP_CODE_SIZE - 1 downto 0);
 
-    constant FUNC_ADD : func_t := "00000010000";
-    constant FUNC_SUB : func_t := "00000000010";
-    constant FUNC_AND : func_t := "00000000011";
-    constant FUNC_OR  : func_t := "00000000100";
-    constant FUNC_XOR : func_t := "00000000101";
-    constant FUNC_SLL : func_t := "00000000110";
-    constant FUNC_SRL : func_t := "00000000111";
-    constant FUNC_SGE : func_t := "00000001000";
-    constant FUNC_SLE : func_t := "00000001001";
-    constant FUNC_SNE : func_t := "00000001010";
-    constant FUNC_MUL : func_t := "00000001011";
+    constant FUNC_ADD : func_t := "00001000000";
+    constant FUNC_SUB : func_t := "00001010000";
+    constant FUNC_AND : func_t := "00001100000";
+    constant FUNC_OR  : func_t := "00001101000";
+    constant FUNC_XOR : func_t := "00001110000";
+    constant FUNC_SLL : func_t := "00000000100";
+    constant FUNC_SRL : func_t := "00000000110";
+    constant FUNC_SEQ : func_t := "00001010000";
+    constant FUNC_SNE : func_t := "00001010001";
+    constant FUNC_SLT : func_t := "00001010010";
+    constant FUNC_SGT : func_t := "00001010011";
+    constant FUNC_SLE : func_t := "00001010100";
+    constant FUNC_SGE : func_t := "00001010101";
+    constant FUNC_MUL : func_t := "00000000010";
 
     -- R-Type instruction -> OPCODE field
-    constant RTYPE : opcode_t := "000000"; -- for ADD, SUB, AND, OR register-to-register operation
+    constant RTYPE : opcode_t := "000000";
 
     -- I-Type instruction -> OPCODE field
-    constant ITYPE_ADDI : opcode_t := "001000";  -- ADDI  RS1,RD,INP1
-    constant ITYPE_SUBI : opcode_t := "001010";  -- SUBI  RA,RB,INP1
-    constant ITYPE_ANDI : opcode_t := "001100";  -- ANDI  RA,RB,INP1
-    constant ITYPE_ORI  : opcode_t := "001101";  -- ORI  RA,RB,INP1
-    constant ITYPE_XORI : opcode_t := "001110";  -- XORI  RA,RB,INP2
-    -- TODO: fix from the pearl file
-    constant ITYPE_SGEI : opcode_t := "000110";  -- SGEI RA,RB,INP2
-    constant ITYPE_SLEI : opcode_t := "000111";  -- SLEI RA,RB,INP2
-    constant ITYPE_SLLI : opcode_t := "001000";  -- SLLI RA,RB,INP2
-    constant ITYPE_SNEI : opcode_t := "001001";  -- SNEI RA,RB
-    constant ITYPE_SRLI : opcode_t := "001010";  -- SRLI RB,INP1
-    constant ITYPE_BEQ  : opcode_t := "001011";  -- BEQ RB,INP2
-    constant ITYPE_BNEQ : opcode_t := "001100";  -- BNEQ RA,RB,INP2
-    constant ITYPE_LW   : opcode_t := "001101";  -- LW RA,RB,INP1
-    constant ITYPE_SW   : opcode_t := "001110";  -- SW RA,RB,INP2
+    constant ITYPE_ADDI : opcode_t := "000010";
+    constant ITYPE_SUBI : opcode_t := "000010";
+    constant ITYPE_ANDI : opcode_t := "000011";
+    constant ITYPE_ORI  : opcode_t := "000011";
+    constant ITYPE_XORI : opcode_t := "000011";
+    constant ITYPE_SLLI : opcode_t := "000101";
+    constant ITYPE_SRLI : opcode_t := "000101";
+    constant ITYPE_SEQI : opcode_t := "000110";
+    constant ITYPE_SNEI : opcode_t := "000110";
+    constant ITYPE_SLTI : opcode_t := "000110";
+    constant ITYPE_SGTI : opcode_t := "000110";
+    constant ITYPE_SLEI : opcode_t := "000111";
+    constant ITYPE_SGEI : opcode_t := "000111";
+    constant ITYPE_BEQ  : opcode_t := "000001";
+    constant ITYPE_BNEQ : opcode_t := "000001";
+    constant ITYPE_LW   : opcode_t := "100011";
+    constant ITYPE_SW   : opcode_t := "101011";
 
     -- J-Type instruction -> OPCODE field
-    constant JTYPE_J   : opcode_t := "001111";  -- J TARGET
-    constant JTYPE_JAL : opcode_t := "010000";  -- J TARGET
+    constant JTYPE_J    : opcode_t := "000010";
+    constant JTYPE_JAL  : opcode_t := "000011";
 
     -- N-Type instruction -> OPCODE field
-    constant NTYPE_NOP : opcode_t := "010101";  -- NOP
+    constant NTYPE_NOP  : opcode_t := "001010";
 
     -- Only for simulation purpose
     constant RO_HEX      : string := "./memories/ro/hex.txt";
