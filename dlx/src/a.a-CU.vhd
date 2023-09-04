@@ -148,12 +148,15 @@ begin
         -- use the FUNC field to select correctly their ALU_OPCODE.
         -- Updating directly CW(6) and CW(5) would gerenare a conflict
         if (OPCODE = RTYPE) then
-            -- TODO: add
             case FUNC_OP is
                 when func_add =>
                     ALU_OPCODE <= alu_add;
+                when FUNC_ADDu =>
+                    ALU_OPCODE <= ALU_ADDu;
                 when func_sub =>
                     ALU_OPCODE <= alu_sub;
+                when FUNC_SUBu =>
+                    ALU_OPCODE <= ALU_SUBu;
                 when func_and =>
                     ALU_OPCODE <= alu_and;
                 when func_or =>
@@ -164,12 +167,28 @@ begin
                     ALU_OPCODE <= alu_sll;
                 when func_srl =>
                     ALU_OPCODE <= alu_srl;
-                when func_sge =>
-                    ALU_OPCODE <= alu_sge;
-                when func_sle =>
-                    ALU_OPCODE <= alu_sle;
+
+                when func_seq =>
+                    ALU_OPCODE <= alu_seq;
                 when func_sne =>
                     ALU_OPCODE <= alu_sne;
+                when func_sge =>
+                    ALU_OPCODE <= alu_sge;
+                when func_sgt =>
+                    ALU_OPCODE <= alu_sgt;
+                when func_sle =>
+                    ALU_OPCODE <= alu_sle;
+                when func_slt =>
+                    ALU_OPCODE <= alu_slt;
+                when func_sgeu =>
+                    ALU_OPCODE <= alu_sgeu;
+                when func_sgtu =>
+                    ALU_OPCODE <= alu_sgtu;
+                when func_sleu =>
+                    ALU_OPCODE <= alu_sleu;
+                when func_sltu =>
+                    ALU_OPCODE <= alu_sltu;
+
                 when func_mul =>
                     ALU_OPCODE <= alu_mul;
                 when others =>
