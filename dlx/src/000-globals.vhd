@@ -114,11 +114,12 @@ package myTypes is
     constant RTYPE : opcode_t := "000000"; -- for ADD, SUB, AND, OR register-to-register operation
 
     -- I-Type instruction -> OPCODE field
-    constant ITYPE_ADDI : opcode_t := "000001";  -- ADDI  RS1,RD,INP1
-    constant ITYPE_SUBI : opcode_t := "000010";  -- SUBI  RA,RB,INP1
-    constant ITYPE_ANDI : opcode_t := "000011";  -- ANDI  RA,RB,INP1
-    constant ITYPE_ORI  : opcode_t := "000100";  -- ORI  RA,RB,INP1
-    constant ITYPE_XORI : opcode_t := "000101";  -- XORI  RA,RB,INP2
+    constant ITYPE_ADDI : opcode_t := "001000";  -- ADDI  RS1,RD,INP1
+    constant ITYPE_SUBI : opcode_t := "001010";  -- SUBI  RA,RB,INP1
+    constant ITYPE_ANDI : opcode_t := "001100";  -- ANDI  RA,RB,INP1
+    constant ITYPE_ORI  : opcode_t := "001101";  -- ORI  RA,RB,INP1
+    constant ITYPE_XORI : opcode_t := "001110";  -- XORI  RA,RB,INP2
+    -- TODO: fix from the pearl file
     constant ITYPE_SGEI : opcode_t := "000110";  -- SGEI RA,RB,INP2
     constant ITYPE_SLEI : opcode_t := "000111";  -- SLEI RA,RB,INP2
     constant ITYPE_SLLI : opcode_t := "001000";  -- SLLI RA,RB,INP2
@@ -132,6 +133,9 @@ package myTypes is
     -- J-Type instruction -> OPCODE field
     constant JTYPE_J   : opcode_t := "001111";  -- J TARGET
     constant JTYPE_JAL : opcode_t := "010000";  -- J TARGET
+
+    -- N-Type instruction -> OPCODE field
+    constant NTYPE_NOP : opcode_t := "010101";  -- NOP
 
     -- Only for simulation purpose
     constant RO_HEX      : string := "./memories/ro/hex.txt";

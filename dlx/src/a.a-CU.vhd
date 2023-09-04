@@ -65,8 +65,9 @@ begin
     CW_S_UP : process (OPCODE)
     begin
         case OPCODE is
-            -- TODO: add
-            when ITYPE_ADDI =>
+            -- TODO: add remaining
+
+            when ITYPE_ADDI => -- ITYPE
                 cw_s <= ADDI_CW;
             when ITYPE_SUBI =>
                 cw_s <= SUBI_CW;
@@ -76,6 +77,10 @@ begin
                 cw_s <= ORI_CW;
             when ITYPE_XORI =>
                 cw_s <= XORI_CW;
+
+            when NTYPE_NOP => -- NTYPE
+                cw_s <= NOP_CW;
+
             when others => -- RTYPE
                 cw_s <= RTYPE_CW;
         end case;
@@ -84,7 +89,7 @@ begin
     -- -- Assign the control signals to the outputs
     cw <= (
         cw1.fetch,
-        cw1.decode, 
+        cw1.decode,
         (
         cw1.execute.ALU_OUT_REG_EN,
         cw1.execute.COND_EN,
