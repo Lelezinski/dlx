@@ -49,7 +49,7 @@ package control_words is
     end record memory_cw_t;
 
     type wb_cw_t is record
-        RF_WR     : std_logic; -- register file write port signal
+        RF_WR    : std_logic; -- register file write port signal
         MUXE_SEL : std_logic; -- MuxE selection signal
     end record wb_cw_t;
 
@@ -86,202 +86,262 @@ package control_words is
         RF_RD1    => '1',
         RF_RD2    => '1');
 
+    ---------------------------- I TYPE
+
     -- ADDI
     constant ADDI_CW : cw_t := (
         fetch_cw,
         decode_cw,
-        execute               => (
-            ALU_OUT_REG_EN    => '1',
-            COND_EN           => '1',
-            ALU_OP            => alu_add,
-            B_EX_EN           => '1',
-            NPC_EX_EN         => '1',
-            MUXA_SEL          => '1',
-            MUXB_SEL          => '1',
-            MUXC_SEL          => '0',
-            REG_DST           => '1'
-            ),
-        memory                => (
-            LMD_EN            => '0',
-            MUXD_SEL          => '0',
-            ALU_OUT_REG_ME_EN => '1',
-            DRAM_ENABLE       => '0',
-            DRAM_READNOTWRITE => '1'
-            ),
-        wb                    => (
-            RF_WR             => '1',
-            MUXE_SEL          => '1'
-            )
-        );
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '1',
+        ALU_OP         => alu_add,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUXA_SEL       => '1',
+        MUXB_SEL       => '1',
+        MUXC_SEL       => '0',
+        REG_DST        => '1'
+        ),
+        memory            => (
+        LMD_EN            => '0',
+        MUXD_SEL          => '0',
+        ALU_OUT_REG_ME_EN => '1',
+        DRAM_ENABLE       => '0',
+        DRAM_READNOTWRITE => '1'
+        ),
+        wb       => (
+        RF_WR    => '1',
+        MUXE_SEL => '1'
+        )
+    );
+
+    -- ADDUI
+    constant ADDUI_CW : cw_t := (
+        fetch_cw,
+        decode_cw,
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '1',
+        ALU_OP         => ALU_ADDu,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUXA_SEL       => '1',
+        MUXB_SEL       => '1',
+        MUXC_SEL       => '0',
+        REG_DST        => '1'
+        ),
+        memory            => (
+        LMD_EN            => '0',
+        MUXD_SEL          => '0',
+        ALU_OUT_REG_ME_EN => '1',
+        DRAM_ENABLE       => '0',
+        DRAM_READNOTWRITE => '1'
+        ),
+        wb       => (
+        RF_WR    => '1',
+        MUXE_SEL => '1'
+        )
+    );
 
     -- SUBI
     constant SUBI_CW : cw_t := (
         fetch_cw,
         decode_cw,
-        execute               => (
-            ALU_OUT_REG_EN    => '1',
-            COND_EN           => '1',
-            ALU_OP            => alu_sub,
-            B_EX_EN           => '1',
-            NPC_EX_EN         => '1',
-            MUXA_SEL          => '1',
-            MUXB_SEL          => '1',
-            MUXC_SEL          => '0',
-            REG_DST           => '1'
-            ),
-        memory                => (
-            LMD_EN            => '0',
-            MUXD_SEL          => '0',
-            ALU_OUT_REG_ME_EN => '1',
-            DRAM_ENABLE       => '0',
-            DRAM_READNOTWRITE => '0'
-            ),
-        wb                    => (
-            RF_WR             => '1',
-            MUXE_SEL          => '1'
-            )
-        );
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '1',
+        ALU_OP         => alu_sub,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUXA_SEL       => '1',
+        MUXB_SEL       => '1',
+        MUXC_SEL       => '0',
+        REG_DST        => '1'
+        ),
+        memory            => (
+        LMD_EN            => '0',
+        MUXD_SEL          => '0',
+        ALU_OUT_REG_ME_EN => '1',
+        DRAM_ENABLE       => '0',
+        DRAM_READNOTWRITE => '0'
+        ),
+        wb       => (
+        RF_WR    => '1',
+        MUXE_SEL => '1'
+        )
+    );
+
+    -- SUBUI
+    constant SUBUI_CW : cw_t := (
+        fetch_cw,
+        decode_cw,
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '1',
+        ALU_OP         => ALU_SUBu,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUXA_SEL       => '1',
+        MUXB_SEL       => '1',
+        MUXC_SEL       => '0',
+        REG_DST        => '1'
+        ),
+        memory            => (
+        LMD_EN            => '0',
+        MUXD_SEL          => '0',
+        ALU_OUT_REG_ME_EN => '1',
+        DRAM_ENABLE       => '0',
+        DRAM_READNOTWRITE => '0'
+        ),
+        wb       => (
+        RF_WR    => '1',
+        MUXE_SEL => '1'
+        )
+    );
 
     -- ANDI
     constant ANDI_CW : cw_t := (
         fetch_cw,
         decode_cw,
-        execute               => (
-            ALU_OUT_REG_EN    => '1',
-            COND_EN           => '1',
-            ALU_OP            => alu_and,
-            B_EX_EN           => '1',
-            NPC_EX_EN         => '1',
-            MUXA_SEL          => '1',
-            MUXB_SEL          => '1',
-            MUXC_SEL          => '0',
-            REG_DST           => '1'
-            ),
-        memory                => (
-            LMD_EN            => '0',
-            MUXD_SEL          => '0',
-            ALU_OUT_REG_ME_EN => '1',
-            DRAM_ENABLE       => '0',
-            DRAM_READNOTWRITE => '0'
-            ),
-        wb                    => (
-            RF_WR             => '1',
-            MUXE_SEL          => '1'
-            )
-        );
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '1',
+        ALU_OP         => alu_and,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUXA_SEL       => '1',
+        MUXB_SEL       => '1',
+        MUXC_SEL       => '0',
+        REG_DST        => '1'
+        ),
+        memory            => (
+        LMD_EN            => '0',
+        MUXD_SEL          => '0',
+        ALU_OUT_REG_ME_EN => '1',
+        DRAM_ENABLE       => '0',
+        DRAM_READNOTWRITE => '0'
+        ),
+        wb       => (
+        RF_WR    => '1',
+        MUXE_SEL => '1'
+        )
+    );
 
     -- ORI
     constant ORI_CW : cw_t := (
         fetch_cw,
         decode_cw,
-        execute               => (
-            ALU_OUT_REG_EN    => '1',
-            COND_EN           => '1',
-            ALU_OP            => alu_or,
-            B_EX_EN           => '1',
-            NPC_EX_EN         => '1',
-            MUXA_SEL          => '1',
-            MUXB_SEL          => '1',
-            MUXC_SEL          => '0',
-            REG_DST           => '1'
-            ),
-        memory                => (
-            LMD_EN            => '0',
-            MUXD_SEL          => '0',
-            ALU_OUT_REG_ME_EN => '1',
-            DRAM_ENABLE       => '0',
-            DRAM_READNOTWRITE => '0'
-            ),
-        wb                    => (
-            RF_WR             => '1',
-            MUXE_SEL          => '1'
-            )
-        );
-
-
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '1',
+        ALU_OP         => alu_or,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUXA_SEL       => '1',
+        MUXB_SEL       => '1',
+        MUXC_SEL       => '0',
+        REG_DST        => '1'
+        ),
+        memory            => (
+        LMD_EN            => '0',
+        MUXD_SEL          => '0',
+        ALU_OUT_REG_ME_EN => '1',
+        DRAM_ENABLE       => '0',
+        DRAM_READNOTWRITE => '0'
+        ),
+        wb       => (
+        RF_WR    => '1',
+        MUXE_SEL => '1'
+        )
+    );
     -- XORI
     constant XORI_CW : cw_t := (
         fetch_cw,
         decode_cw,
-        execute               => (
-            ALU_OUT_REG_EN    => '1',
-            COND_EN           => '1',
-            ALU_OP            => alu_xor,
-            B_EX_EN           => '1',
-            NPC_EX_EN         => '1',
-            MUXA_SEL          => '1',
-            MUXB_SEL          => '1',
-            MUXC_SEL          => '0',
-            REG_DST           => '1'
-            ),
-        memory                => (
-            LMD_EN            => '0',
-            MUXD_SEL          => '0',
-            ALU_OUT_REG_ME_EN => '1',
-            DRAM_ENABLE       => '0',
-            DRAM_READNOTWRITE => '0'
-            ),
-        wb                    => (
-            RF_WR             => '1',
-            MUXE_SEL          => '1'
-            )
-        );
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '1',
+        ALU_OP         => alu_xor,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUXA_SEL       => '1',
+        MUXB_SEL       => '1',
+        MUXC_SEL       => '0',
+        REG_DST        => '1'
+        ),
+        memory            => (
+        LMD_EN            => '0',
+        MUXD_SEL          => '0',
+        ALU_OUT_REG_ME_EN => '1',
+        DRAM_ENABLE       => '0',
+        DRAM_READNOTWRITE => '0'
+        ),
+        wb       => (
+        RF_WR    => '1',
+        MUXE_SEL => '1'
+        )
+    );
+
+    ---------------------------- N TYPE 
 
     -- NOP
     constant NOP_CW : cw_t := (
         fetch_cw,
         decode_cw,
-        execute               => (
-            ALU_OUT_REG_EN    => '1',
-            COND_EN           => '1',
-            ALU_OP            => alu_add,
-            B_EX_EN           => '1',
-            NPC_EX_EN         => '1',
-            MUXA_SEL          => '1',
-            MUXB_SEL          => '1',
-            MUXC_SEL          => '0',
-            REG_DST           => '1'
-            ),
-        memory                => (
-            LMD_EN            => '0',
-            MUXD_SEL          => '0',
-            ALU_OUT_REG_ME_EN => '1',
-            DRAM_ENABLE       => '0',
-            DRAM_READNOTWRITE => '0'
-            ),
-        wb                    => (
-            RF_WR             => '0',
-            MUXE_SEL          => '1'
-            )
-        );
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '1',
+        ALU_OP         => alu_add,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUXA_SEL       => '1',
+        MUXB_SEL       => '1',
+        MUXC_SEL       => '0',
+        REG_DST        => '1'
+        ),
+        memory            => (
+        LMD_EN            => '0',
+        MUXD_SEL          => '0',
+        ALU_OUT_REG_ME_EN => '1',
+        DRAM_ENABLE       => '0',
+        DRAM_READNOTWRITE => '0'
+        ),
+        wb       => (
+        RF_WR    => '0',
+        MUXE_SEL => '1'
+        )
+    );
+
+    ---------------------------- R TYPE 
 
     -- R TYPE
     constant RTYPE_CW : cw_t := (
         fetch_cw,
         decode_cw,
-        execute               => (
-            ALU_OUT_REG_EN    => '1',
-            COND_EN           => '0',
-            ALU_OP            => alu_add,
-            B_EX_EN           => '1',
-            NPC_EX_EN         => '1',
-            MUXA_SEL          => '1',
-            MUXB_SEL          => '0',
-            MUXC_SEL          => '0',
-            REG_DST           => '0'
-            ),
-        memory                => (
-            LMD_EN            => '0',
-            MUXD_SEL          => '0',
-            ALU_OUT_REG_ME_EN => '1',
-            DRAM_ENABLE       => '0',
-            DRAM_READNOTWRITE => '0'
-            ),
-        wb                    => (
-            RF_WR             => '1',
-            MUXE_SEL          => '1'
-            )
-        );
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '0',
+        ALU_OP         => alu_add,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUXA_SEL       => '1',
+        MUXB_SEL       => '0',
+        MUXC_SEL       => '0',
+        REG_DST        => '0'
+        ),
+        memory            => (
+        LMD_EN            => '0',
+        MUXD_SEL          => '0',
+        ALU_OUT_REG_ME_EN => '1',
+        DRAM_ENABLE       => '0',
+        DRAM_READNOTWRITE => '0'
+        ),
+        wb       => (
+        RF_WR    => '1',
+        MUXE_SEL => '1'
+        )
+    );
 
     -- Reset Init
     signal init_cw : cw_t := (
@@ -320,7 +380,7 @@ package control_words is
         DRAM_READNOTWRITE => '0'
         ),
         wb       => (
-        RF_WR     => '0',
+        RF_WR    => '0',
         MUXE_SEL => '0'
         )
     );
@@ -372,7 +432,7 @@ begin
     DRAM_READNOTWRITE => arg(2)
     ),
     wb       => (
-    RF_WR     => arg(1),
+    RF_WR    => arg(1),
     MUXE_SEL => arg(0)
     )
     );
