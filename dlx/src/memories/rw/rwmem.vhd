@@ -79,17 +79,18 @@ begin  -- beh
             end loop;
 
             file_close(mem_fp);
+            DRAM_mem <= (others => (others => '0'));
 
             int_data_ready <= '0';
             mem_ready      <= '0';
-        elsif CLK'event and CLK = '1' then  -- rising clock edge
-            if(ENABLE = '1') then
+        elsif rising_edge(CLK) then  -- rising clock edge
+            if (ENABLE = '1') then
                 counter <= counter + 1;
                 if (counter = data_delay) then
                     counter <= 0;
                     if (READNOTWRITE = '0') then
-                        DRAM_Mem(to_integer(unsigned(ADDR))+1) <= DATA_IN(Instr_size - 1 downto 0);
-                        DRAM_Mem(to_integer(unsigned(ADDR)))   <= DATA_IN(Data_size - 1 downto Instr_size);
+                        DRAM_Mem(to_integer(unsigned(ADDR))) <= DATA_IN;
+                        -- DRAM_Mem(to_integer(unsigned(ADDR)))   <= DATA_IN(Data_size - 1 downto Instr_size);
                         mem_ready                              <= '1';
                     else
                         tmp_data       <= DRAM_mem(to_integer(unsigned(ADDR)));
