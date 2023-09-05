@@ -255,6 +255,34 @@ package control_words is
         MUXE_SEL => '1'
         )
     );
+
+    constant SW_CW : cw_t := (
+        fetch_cw,
+        decode_cw,
+        execute               => (
+            ALU_OUT_REG_EN    => '1',
+            COND_EN           => '1',
+            ALU_OP            => alu_add,
+            B_EX_EN           => '1',
+            NPC_EX_EN         => '1',
+            MUXA_SEL          => '1',
+            MUXB_SEL          => '1',
+            MUXC_SEL          => '0',
+            REG_DST           => '1'
+            ),
+        memory                => (
+            LMD_EN            => '0',
+            MUXD_SEL          => '0',
+            ALU_OUT_REG_ME_EN => '1',
+            DRAM_ENABLE       => '1',
+            DRAM_READNOTWRITE => '0'
+            ),
+        wb                    => (
+            RF_WR             => '0',
+            MUXE_SEL          => '1'
+            )
+        );
+
     -- XORI
     constant XORI_CW : cw_t := (
         fetch_cw,

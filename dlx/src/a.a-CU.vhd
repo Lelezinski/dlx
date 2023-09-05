@@ -81,7 +81,8 @@ begin
 
             when NTYPE_NOP => -- NTYPE
                 cw_s <= NOP_CW;
-
+            when ITYPE_SW =>
+                cw_s <= SW_CW;
             when others => -- RTYPE
                 cw_s <= RTYPE_CW;
         end case;
@@ -109,6 +110,9 @@ begin
     -- ir_en_s <= IRAM_READY;
     ir_en_s <= '1';
 
+    IRAM_ENABLE       <= '1';
+    DRAM_ENABLE       <= cw2.memory.DRAM_ENABLE;
+    DRAM_READNOTWRITE <= cw2.memory.DRAM_READNOTWRITE;
     ----------------------------------------------------------------
     -- Processes
     ----------------------------------------------------------------
