@@ -43,7 +43,7 @@ architecture BEHAVIOURAL of REGISTER_FILE is
 
     subtype REG_ADDR is natural range 0 to (R_NUM - 1); -- using natural type
     type REG_ARRAY is array(REG_ADDR) of std_logic_vector((WORD_LEN - 1) downto 0);
-    signal REGISTERS, NEXT_REGISTERS : REG_ARRAY;
+    signal REGISTERS : REG_ARRAY;
 
     ----------------------------------------------------------------
     -- Processes
@@ -56,8 +56,8 @@ begin
         if RESET = '1' then
             REGISTERS <= (others => (others => '0'));
         elsif falling_edge(clk) then
-            if ENABLE = '1' then
-                REGISTERS <= NEXT_REGISTERS;
+            if ENABLE = '1' and WR = '1' then
+                REGISTERS(to_integer(unsigned(ADD_WR))) <= DATAIN;
             end if;
         end if;
     end process syncProc;
@@ -80,14 +80,6 @@ begin
         end if;
     end process read2;
 
-    write : process (RESET, WR, ADD_WR, DATAIN, ENABLE)
-    begin
-        if ENABLE = '1' and WR = '1' then
-            NEXT_REGISTERS(to_integer(unsigned(ADD_WR))) <= DATAIN;
-        elsif RESET = '1' then
-            NEXT_REGISTERS <= (others => (others => '0'));
-        end if;
-    end process write;
 end BEHAVIOURAL;
 
 ----------------------------------------------------------------
