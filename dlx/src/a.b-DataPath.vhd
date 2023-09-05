@@ -241,7 +241,7 @@ begin
     IR_P : process (CLK, RST)
     begin
         if RST = '1' then
-            IR <= (others => '0');
+            IR <= "01010100000000000000000000000000"; -- reset in a nop
         elsif falling_edge(CLK) then
             if (CW.fetch.IR_EN = '1') then
                 IR <= IRAM_DATA;
