@@ -20,7 +20,7 @@ entity DLX is
 
         IRAM_READY        : in std_logic;
         IRAM_DATA         : in data_t;
-        DRAM_IN           : in data_t;
+        DRAM_IN           : out data_t;
         DRAM_OUT          : in data_t;
         DRAM_READY        : in std_logic;
 
@@ -28,8 +28,7 @@ entity DLX is
         IRAM_ADDRESS      : out std_logic_vector(IRAM_ADDR_SIZE - 1 downto 0);
         DRAM_ENABLE       : out std_logic;
         DRAM_READNOTWRITE : out std_logic;
-        DRAM_ADDRESS      : out std_logic_vector(INS_SIZE-1 downto 0)
-    );
+        DRAM_ADDRESS      : out data_t);
 end DLX;
 
 architecture RTL of DLX is
@@ -89,7 +88,7 @@ architecture RTL of DLX is
             DRAM_IN           : in data_t;
             IRAM_DATA         : in data_t;
             IRAM_ADDRESS      : out std_logic_vector(INS_SIZE - 1 downto 0);
-            DRAM_ADDRESS      : out std_logic_vector(INS_SIZE-1 downto 0);
+            DRAM_ADDRESS      : out data_t;
             DRAM_OUT          : in data_t);
     end component DATAPATH;
 

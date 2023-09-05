@@ -54,14 +54,14 @@ architecture tb of DLX_tb is
             RST               : in  std_logic;
             IRAM_READY        : in  std_logic;
             IRAM_DATA         : in  std_logic_vector(numBit-1 downto 0);
-            DRAM_IN           : in  data_t;
+            DRAM_IN           : out data_t;
             DRAM_OUT          : in  data_t;
             DRAM_READY        : in  std_logic;
             IRAM_ENABLE        : out std_logic;
             IRAM_ADDRESS      : out std_logic_vector(INS_SIZE - 1 downto 0);
             DRAM_ENABLE        : out std_logic;
             DRAM_READNOTWRITE : out std_logic;
-            DRAM_ADDRESS      : out std_logic_vector(INS_SIZE-1 downto 0));
+            DRAM_ADDRESS      : out data_t);
     end component DLX;
 
     signal CLK               : std_logic := '0';  -- Clock
@@ -76,7 +76,6 @@ architecture tb of DLX_tb is
     signal DRAM_ENABLE       : std_logic;
     signal DRAM_READNOTWRITE : std_logic;
     signal DRAM_ADDRESS      : std_logic_vector(INS_SIZE-1 downto 0);
-    signal DATA_IN, DATA_OUT : data_t;
 
 begin
     -- IRAM
@@ -96,8 +95,8 @@ begin
             DATA_SIZE      => 32,
             INSTR_SIZE     => 32,
             RAM_DEPTH      => 128,
-            DATA_DELAY     => 2)
-        port map (CLK, RST, DRAM_ADDRESS, DATA_IN, DRAM_ENABLE, DRAM_READNOTWRITE, DRAM_READY, DATA_OUT);
+            DATA_DELAY     => 0)
+        port map (CLK, RST, DRAM_ADDRESS, DRAM_IN, DRAM_ENABLE, DRAM_READNOTWRITE, DRAM_READY, DRAM_OUT);
 
     -- DLX
     -- My_DLX_GIANLUCA : DLX

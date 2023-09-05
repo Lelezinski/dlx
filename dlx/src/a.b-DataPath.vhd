@@ -22,14 +22,15 @@ entity DATAPATH is
         CLK          : in std_logic; -- Clock
         RST          : in std_logic; -- Active Low Reset
         CW           : in cw_t;      -- Control Word
-        DRAM_IN      : in data_t;
+        DRAM_IN      : out data_t;
         DRAM_OUT     : in data_t;
         OUT_CW       : out cw_from_mem; -- Output Signals to CU
         OPCODE       : out opcode_t;
         FUNC         : out func_t;
         IRAM_DATA    : in data_t;
         IRAM_ADDRESS : out std_logic_vector(IRAM_ADDR_SIZE - 1 downto 0);
-        DRAM_ADDRESS : out std_logic_vector(INS_SIZE - 1 downto 0));
+        DRAM_ADDRESS : out data_t
+    );
 end entity DATAPATH;
 
 architecture RTL of DATAPATH is
@@ -167,6 +168,8 @@ begin
         ALU_OUT_REG_ME;
 
     IRAM_ADDRESS <= std_logic_vector(resize(unsigned(PC), IRAM_ADDR_SIZE));
+    DRAM_ADDRESS <= std_logic_vector(ALU_OUT_REG);
+    DRAM_IN <= std_logic_vector(B_EX);
     ----------------------------------------------------------------
     -- Component Instantiation
     ----------------------------------------------------------------
