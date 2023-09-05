@@ -190,7 +190,7 @@ begin
         ADD_WR  => RD_MEM,
         ADD_RD1 => INS_RS1,
         ADD_RD2 => INS_RS2,
-        DATAIN  => ALU_OUT_REG_ME,
+        DATAIN  => MUXE_OUT,
         OUT1    => RF_OUT_1,
         OUT2    => RF_OUT_2
     );

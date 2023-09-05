@@ -83,6 +83,8 @@ begin
                 cw_s <= NOP_CW;
             when ITYPE_SW =>
                 cw_s <= SW_CW;
+            when ITYPE_LW =>
+                cw_s <= LW_CW;
             when others => -- RTYPE
                 cw_s <= RTYPE_CW;
         end case;
