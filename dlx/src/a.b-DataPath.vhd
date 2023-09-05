@@ -92,6 +92,7 @@ architecture RTL of DATAPATH is
     signal INS_RD      : std_logic_vector(INS_R3_SIZE - 1 downto 0);
     signal INS_IMM     : std_logic_vector(INS_IMM_SIZE - 1 downto 0);
     signal INS_FUNC    : std_logic_vector(INS_FUNC_SIZE - 1 downto 0);
+    signal INS_J_IMM   : std_logic_vector(25 downto 0) -- TODO change to constant
 
     ---------------------------- [IF] STAGE
     signal IR  : std_logic_vector(INS_SIZE - 1 downto 0);
@@ -107,6 +108,7 @@ architecture RTL of DATAPATH is
     signal NPC_ID   : pc_t;
     signal RD_ID    : std_logic_vector(INS_R2_SIZE - 1 downto 0);
     signal RS_ID    : std_logic_vector(INS_R2_SIZE - 1 downto 0);
+    signal MUXF_OUT : data_t;
 
     ---------------------------- [EX] STAGE
     signal ALU_IN_1    : data_t;
@@ -142,6 +144,7 @@ begin
     INS_RD      <= IR(INS_R3_L downto INS_R3_R);
     INS_IMM     <= IR(INS_IMM_L downto INS_IMM_R);
     INS_FUNC    <= IR(INS_FUNC_L downto INS_FUNC_R);
+    INS_J_IMM   <= IR(26 downto 0)  -- TODO change to constant
 
     FUNC   <= IR(INS_FUNC_L downto INS_FUNC_R);       -- send the func field to the controller
     OPCODE <= IR(INS_OP_CODE_L downto INS_OP_CODE_R); -- send the opcode to the controller
@@ -166,6 +169,14 @@ begin
     -- MUXE
     MUXE_OUT <= LMD when CW.wb.MUXE_SEL = '0' else
         ALU_OUT_REG_ME;
+
+    -- MUXF
+    -- TODO ask if resize should be signed or unsigned
+    MUXF_OUT <= std_logic_vector(resize(unsigned(INS_IMM), IMM'length))                 -- I-type 16 bits immediate  
+                    when CW.memory.MUXF_SEL = '0' else
+                std_logic_vector(resize(unsigned(INS_J_IMM), INS_J_IMM'length)) sll 2   -- J-type 26 bits shifted immediate (j)
+                    when CW.memory.MUXF_SEL = '1' else
+                std_logic_vector(resize(unsigned(INS_J_IMM), INS_J_IMM'length));        -- J-type 26 bits not shifted immediate (jal)
 
     IRAM_ADDRESS <= std_logic_vector(resize(unsigned(PC), IRAM_ADDR_SIZE));
     DRAM_ADDRESS <= std_logic_vector(ALU_OUT_REG);
@@ -281,7 +292,7 @@ begin
             IMM <= (others => '0');
         elsif falling_edge(CLK) then
             if (CW.decode.IMM_EN = '1') then
-                IMM <= std_logic_vector(resize(unsigned(INS_IMM), IMM'length));
+                IMM <= MUXF_OUT;
             end if;
         end if;
     end process IMM_P;
