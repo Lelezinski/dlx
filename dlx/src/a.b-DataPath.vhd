@@ -92,7 +92,7 @@ architecture RTL of DATAPATH is
     signal INS_RD      : std_logic_vector(INS_R3_SIZE - 1 downto 0);
     signal INS_IMM     : std_logic_vector(INS_IMM_SIZE - 1 downto 0);
     signal INS_FUNC    : std_logic_vector(INS_FUNC_SIZE - 1 downto 0);
-    signal INS_J_IMM   : std_logic_vector(25 downto 0) -- TODO change to constant
+    signal INS_J_IMM   : std_logic_vector(25 downto 0); -- TODO change to constant
 
     ---------------------------- [IF] STAGE
     signal IR  : std_logic_vector(INS_SIZE - 1 downto 0);
