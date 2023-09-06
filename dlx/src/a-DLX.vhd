@@ -3,8 +3,6 @@ use IEEE.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 use work.myTypes.all;
-use work.ROCACHE_PKG.all;
-use work.RWCACHE_PKG.all;
 use work.alu_type.all;
 use work.control_words.all;
 
@@ -126,7 +124,7 @@ begin
 
     DATAPATH_1: entity work.DATAPATH
         generic map (
-            DATA_SIZE => DATA_SIZE,
+            DATA_SIZE => numBit,
             INS_SIZE  => INS_SIZE,
             CW_SIZE   => C_CW_SIZE,
 
