@@ -144,7 +144,7 @@ begin
     INS_RD      <= IR(INS_R3_L downto INS_R3_R);
     INS_IMM     <= IR(INS_IMM_L downto INS_IMM_R);
     INS_FUNC    <= IR(INS_FUNC_L downto INS_FUNC_R);
-    INS_J_IMM   <= IR(26 downto 0)  -- TODO change to constant
+    INS_J_IMM   <= IR(26 downto 0); -- TODO change to constant
 
     FUNC   <= IR(INS_FUNC_L downto INS_FUNC_R);       -- send the func field to the controller
     OPCODE <= IR(INS_OP_CODE_L downto INS_OP_CODE_R); -- send the opcode to the controller
