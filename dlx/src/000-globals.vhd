@@ -120,33 +120,39 @@ package myTypes is
     constant FUNC_SGEu : func_t := "00000111101";
 
     -- R-Type instruction -> OPCODE field
-    constant RTYPE : opcode_t := "000000"; -- for register-to-register operation
+    constant RTYPE : opcode_t := "000000";
 
     -- I-Type instruction -> OPCODE field
-    constant ITYPE_ADDI : opcode_t := "001000"; -- ADDI  RS1,RD,IMM
-    constant ITYPE_SUBI : opcode_t := "001010"; -- SUBI  RA,RB,IMM
-    constant ITYPE_ANDI : opcode_t := "001100"; -- ANDI  RA,RB,IMM
-    constant ITYPE_ORI  : opcode_t := "001101"; -- ORI   RA,RB,IMM
-    constant ITYPE_XORI : opcode_t := "001110"; -- XORI  RA,RB,IMM
-    constant ITYPE_SLLI : opcode_t := "010100"; -- SLLI RA,RB,IMM
-    constant ITYPE_SRLI : opcode_t := "010110"; -- SRLI RB,IMM
-    constant ITYPE_SEQI : opcode_t := "011000";
-    constant ITYPE_SNEI : opcode_t := "011001";
-    constant ITYPE_SLTI : opcode_t := "011010";
-    constant ITYPE_SGTI : opcode_t := "011011";
-    constant ITYPE_SLEI : opcode_t := "011100";
-    constant ITYPE_SGEI : opcode_t := "011101";
-    constant ITYPE_BEQ  : opcode_t := "000100";
-    constant ITYPE_BNEQ : opcode_t := "000101";
-    constant ITYPE_LW   : opcode_t := "100011"; -- LW RA,RB,IMM
-    constant ITYPE_SW   : opcode_t := "101011"; -- SW RA,RB,IMM
+    constant ITYPE_ADDI  : opcode_t := "001000";
+    constant ITYPE_SUBI  : opcode_t := "001010";
+    constant ITYPE_ADDUI : opcode_t := "001001";
+    constant ITYPE_SUBUI : opcode_t := "001011";
+    constant ITYPE_ANDI  : opcode_t := "001100";
+    constant ITYPE_ORI   : opcode_t := "001101";
+    constant ITYPE_XORI  : opcode_t := "001110";
+    constant ITYPE_SLLI  : opcode_t := "010100";
+    constant ITYPE_SRLI  : opcode_t := "010110";
+    constant ITYPE_SEQI  : opcode_t := "011000";
+    constant ITYPE_SNEI  : opcode_t := "011001";
+    constant ITYPE_SLTI  : opcode_t := "011010";
+    constant ITYPE_SGTI  : opcode_t := "011011";
+    constant ITYPE_SLEI  : opcode_t := "011100";
+    constant ITYPE_SGEI  : opcode_t := "011101";
+    constant ITYPE_SLTUI : opcode_t := "111010";
+    constant ITYPE_SGTUI : opcode_t := "111011";
+    constant ITYPE_SLEUI : opcode_t := "111100";
+    constant ITYPE_SGEUI : opcode_t := "111101";
+    constant ITYPE_BEQ   : opcode_t := "000100";
+    constant ITYPE_BNEQ  : opcode_t := "000101";
+    constant ITYPE_LW    : opcode_t := "100011";
+    constant ITYPE_SW    : opcode_t := "101011";
 
     -- J-Type instruction -> OPCODE field
-    constant JTYPE_J   : opcode_t := "000010"; -- J TARGET
-    constant JTYPE_JAL : opcode_t := "000011"; -- J TARGET
+    constant JTYPE_J   : opcode_t := "000010";
+    constant JTYPE_JAL : opcode_t := "000011";
 
     -- N-Type instruction -> OPCODE field
-    constant NTYPE_NOP : opcode_t := "010101"; -- NOP
+    constant NTYPE_NOP : opcode_t := "010101";
 
     -- Only for simulation purpose
     constant RO_HEX      : string := "./memories/ro/hex.txt";
