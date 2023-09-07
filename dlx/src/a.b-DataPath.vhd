@@ -79,8 +79,6 @@ architecture RTL of DATAPATH is
 
     -- TODO: LL_ALU
 
-    -- TODO: DRAM
-
     ----------------------------------------------------------------
     -- Signals Declaration
     ----------------------------------------------------------------
@@ -92,7 +90,7 @@ architecture RTL of DATAPATH is
     signal INS_RD      : std_logic_vector(INS_R3_SIZE - 1 downto 0);
     signal INS_IMM     : std_logic_vector(INS_IMM_SIZE - 1 downto 0);
     signal INS_FUNC    : std_logic_vector(INS_FUNC_SIZE - 1 downto 0);
-    signal INS_J_IMM   : std_logic_vector(25 downto 0); -- TODO change to constant
+    signal INS_J_IMM   : std_logic_vector(26 downto 0); -- TODO change to constant
 
     ---------------------------- [IF] STAGE
     signal IR  : std_logic_vector(INS_SIZE - 1 downto 0);
@@ -171,16 +169,19 @@ begin
         ALU_OUT_REG_ME;
 
     -- MUXF
-    -- TODO ask if resize should be signed or unsigned
-    MUXF_OUT <= std_logic_vector(resize(unsigned(INS_IMM), IMM'length))                 -- I-type 16 bits immediate  
-                    when CW.memory.MUXF_SEL = '0' else
-                std_logic_vector(resize(unsigned(INS_J_IMM), INS_J_IMM'length)) sll 2   -- J-type 26 bits shifted immediate (j)
-                    when CW.memory.MUXF_SEL = '1' else
-                std_logic_vector(resize(unsigned(INS_J_IMM), INS_J_IMM'length));        -- J-type 26 bits not shifted immediate (jal)
+    -- TODO: ask if resize should be signed or unsigned
+    -- FIXME: commentato temporaneamente per fare compilare sowwy
+    -- MUXF_OUT <= std_logic_vector(resize(unsigned(INS_IMM), IMM'length))                 -- I-type 16 bits immediate  
+    --                 when CW.memory.MUXF_SEL = '0' else
+    --             std_logic_vector(resize(unsigned(INS_J_IMM), INS_J_IMM'length)) sll 2   -- J-type 26 bits shifted immediate (j)
+    --                 when CW.memory.MUXF_SEL = '1' else
+    --             std_logic_vector(resize(unsigned(INS_J_IMM), INS_J_IMM'length));        -- J-type 26 bits not shifted immediate (jal)
 
+    ---------------------------- IRAM & DRAM
     IRAM_ADDRESS <= std_logic_vector(resize(unsigned(PC), IRAM_ADDR_SIZE));
     DRAM_ADDRESS <= std_logic_vector(ALU_OUT_REG);
-    DRAM_IN <= std_logic_vector(B_EX);
+    DRAM_IN      <= std_logic_vector(B_EX);
+
     ----------------------------------------------------------------
     -- Component Instantiation
     ----------------------------------------------------------------
@@ -217,7 +218,7 @@ begin
             OUTALU => ALU_OUT
         );
 
-    -- TODO: others
+    -- TODO: LL_ALU
 
     ----------------------------------------------------------------
     -- Processes
@@ -252,7 +253,7 @@ begin
     IR_P : process (CLK, RST)
     begin
         if RST = '1' then
-            IR <= "01010100000000000000000000000000"; -- reset in a nop
+            IR <= "01010100000000000000000000000000"; -- reset in a NOP
         elsif falling_edge(CLK) then
             if (CW.fetch.IR_EN = '1') then
                 IR <= IRAM_DATA;
@@ -309,7 +310,8 @@ begin
         end if;
     end process NPC_ID_P;
 
-    RD_RS_ID_P: process(CLK, RST)
+    -- RD&RS_ID
+    RD_RS_ID_P : process(CLK, RST)
     begin
         if RST = '1' then
             RD_ID <= (others => '0');
@@ -373,7 +375,8 @@ begin
         end if;
     end process NPC_EX_P;
 
-    RD_EX_P: process(CLK, RST)
+    -- RD_EX
+    RD_EX_P : process(CLK, RST)
     begin
         if RST = '1' then
             RD_EX <= (others => '0');
@@ -411,7 +414,8 @@ begin
         end if;
     end process ALU_OUT_REG_ME_P;
 
-    RD_MEM_P: process(CLK, RST)
+    -- RD_MEM
+    RD_MEM_P : process(CLK, RST)
     begin
         if RST = '1' then
             RD_MEM <= (others => '0');
@@ -419,9 +423,6 @@ begin
             RD_MEM <= RD_EX;
         end if;
     end process RD_MEM_P;
-
-    ---------------------------- [WB] STAGE
-    -- TODO: controllare timing per il WB al RF
 
 end architecture RTL;
 

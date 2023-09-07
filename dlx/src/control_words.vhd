@@ -340,6 +340,343 @@ package control_words is
         )
     );
 
+    -- SLLI
+    constant SLLI_CW : cw_t := (
+        fetch_cw,
+        decode_cw,
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '1',
+        ALU_OP         => alu_sll,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUXA_SEL       => '1',
+        MUXB_SEL       => '1',
+        MUXC_SEL       => '0',
+        REG_DST        => '1'
+        ),
+        memory            => (
+        LMD_EN            => '0',
+        MUXD_SEL          => '0',
+        ALU_OUT_REG_ME_EN => '1',
+        DRAM_ENABLE       => '0',
+        DRAM_READNOTWRITE => '1'
+        ),
+        wb       => (
+        RF_WR    => '1',
+        MUXE_SEL => '1'
+        )
+    );
+
+    -- SRLI
+    constant SRLI_CW : cw_t := (
+        fetch_cw,
+        decode_cw,
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '1',
+        ALU_OP         => alu_srl,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUXA_SEL       => '1',
+        MUXB_SEL       => '1',
+        MUXC_SEL       => '0',
+        REG_DST        => '1'
+        ),
+        memory            => (
+        LMD_EN            => '0',
+        MUXD_SEL          => '0',
+        ALU_OUT_REG_ME_EN => '1',
+        DRAM_ENABLE       => '0',
+        DRAM_READNOTWRITE => '1'
+        ),
+        wb       => (
+        RF_WR    => '1',
+        MUXE_SEL => '1'
+        )
+    );
+
+    -- SEQI
+    constant SEQI_CW : cw_t := (
+        fetch_cw,
+        decode_cw,
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '1',
+        ALU_OP         => alu_seq,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUXA_SEL       => '1',
+        MUXB_SEL       => '1',
+        MUXC_SEL       => '0',
+        REG_DST        => '1'
+        ),
+        memory            => (
+        LMD_EN            => '0',
+        MUXD_SEL          => '0',
+        ALU_OUT_REG_ME_EN => '1',
+        DRAM_ENABLE       => '0',
+        DRAM_READNOTWRITE => '1'
+        ),
+        wb       => (
+        RF_WR    => '1',
+        MUXE_SEL => '1'
+        )
+    );
+
+    -- SNEI
+    constant SNEI_CW : cw_t := (
+        fetch_cw,
+        decode_cw,
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '1',
+        ALU_OP         => alu_sne,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUXA_SEL       => '1',
+        MUXB_SEL       => '1',
+        MUXC_SEL       => '0',
+        REG_DST        => '1'
+        ),
+        memory            => (
+        LMD_EN            => '0',
+        MUXD_SEL          => '0',
+        ALU_OUT_REG_ME_EN => '1',
+        DRAM_ENABLE       => '0',
+        DRAM_READNOTWRITE => '1'
+        ),
+        wb       => (
+        RF_WR    => '1',
+        MUXE_SEL => '1'
+        )
+    );
+
+    -- SLTI
+    constant SLTI_CW : cw_t := (
+        fetch_cw,
+        decode_cw,
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '1',
+        ALU_OP         => alu_slt,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUXA_SEL       => '1',
+        MUXB_SEL       => '1',
+        MUXC_SEL       => '0',
+        REG_DST        => '1'
+        ),
+        memory            => (
+        LMD_EN            => '0',
+        MUXD_SEL          => '0',
+        ALU_OUT_REG_ME_EN => '1',
+        DRAM_ENABLE       => '0',
+        DRAM_READNOTWRITE => '1'
+        ),
+        wb       => (
+        RF_WR    => '1',
+        MUXE_SEL => '1'
+        )
+    );
+
+    -- SGTI
+    constant SGTI_CW : cw_t := (
+        fetch_cw,
+        decode_cw,
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '1',
+        ALU_OP         => alu_sgt,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUXA_SEL       => '1',
+        MUXB_SEL       => '1',
+        MUXC_SEL       => '0',
+        REG_DST        => '1'
+        ),
+        memory            => (
+        LMD_EN            => '0',
+        MUXD_SEL          => '0',
+        ALU_OUT_REG_ME_EN => '1',
+        DRAM_ENABLE       => '0',
+        DRAM_READNOTWRITE => '1'
+        ),
+        wb       => (
+        RF_WR    => '1',
+        MUXE_SEL => '1'
+        )
+    );
+
+    -- SLEI
+    constant SLEI_CW : cw_t := (
+        fetch_cw,
+        decode_cw,
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '1',
+        ALU_OP         => alu_sle,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUXA_SEL       => '1',
+        MUXB_SEL       => '1',
+        MUXC_SEL       => '0',
+        REG_DST        => '1'
+        ),
+        memory            => (
+        LMD_EN            => '0',
+        MUXD_SEL          => '0',
+        ALU_OUT_REG_ME_EN => '1',
+        DRAM_ENABLE       => '0',
+        DRAM_READNOTWRITE => '1'
+        ),
+        wb       => (
+        RF_WR    => '1',
+        MUXE_SEL => '1'
+        )
+    );
+
+    -- SGEI
+    constant SGEI_CW : cw_t := (
+        fetch_cw,
+        decode_cw,
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '1',
+        ALU_OP         => alu_sge,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUXA_SEL       => '1',
+        MUXB_SEL       => '1',
+        MUXC_SEL       => '0',
+        REG_DST        => '1'
+        ),
+        memory            => (
+        LMD_EN            => '0',
+        MUXD_SEL          => '0',
+        ALU_OUT_REG_ME_EN => '1',
+        DRAM_ENABLE       => '0',
+        DRAM_READNOTWRITE => '1'
+        ),
+        wb       => (
+        RF_WR    => '1',
+        MUXE_SEL => '1'
+        )
+    );
+
+    -- SLTUI
+    constant SLTUI_CW : cw_t := (
+        fetch_cw,
+        decode_cw,
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '1',
+        ALU_OP         => alu_sltu,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUXA_SEL       => '1',
+        MUXB_SEL       => '1',
+        MUXC_SEL       => '0',
+        REG_DST        => '1'
+        ),
+        memory            => (
+        LMD_EN            => '0',
+        MUXD_SEL          => '0',
+        ALU_OUT_REG_ME_EN => '1',
+        DRAM_ENABLE       => '0',
+        DRAM_READNOTWRITE => '1'
+        ),
+        wb       => (
+        RF_WR    => '1',
+        MUXE_SEL => '1'
+        )
+    );
+
+    -- SGTUI
+    constant SGTUI_CW : cw_t := (
+        fetch_cw,
+        decode_cw,
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '1',
+        ALU_OP         => alu_sgtu,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUXA_SEL       => '1',
+        MUXB_SEL       => '1',
+        MUXC_SEL       => '0',
+        REG_DST        => '1'
+        ),
+        memory            => (
+        LMD_EN            => '0',
+        MUXD_SEL          => '0',
+        ALU_OUT_REG_ME_EN => '1',
+        DRAM_ENABLE       => '0',
+        DRAM_READNOTWRITE => '1'
+        ),
+        wb       => (
+        RF_WR    => '1',
+        MUXE_SEL => '1'
+        )
+    );
+
+    -- SLEUI
+    constant SLEUI_CW : cw_t := (
+        fetch_cw,
+        decode_cw,
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '1',
+        ALU_OP         => alu_sleu,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUXA_SEL       => '1',
+        MUXB_SEL       => '1',
+        MUXC_SEL       => '0',
+        REG_DST        => '1'
+        ),
+        memory            => (
+        LMD_EN            => '0',
+        MUXD_SEL          => '0',
+        ALU_OUT_REG_ME_EN => '1',
+        DRAM_ENABLE       => '0',
+        DRAM_READNOTWRITE => '1'
+        ),
+        wb       => (
+        RF_WR    => '1',
+        MUXE_SEL => '1'
+        )
+    );
+
+    -- SGEUI
+    constant SGEUI_CW : cw_t := (
+        fetch_cw,
+        decode_cw,
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '1',
+        ALU_OP         => alu_sgeu,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUXA_SEL       => '1',
+        MUXB_SEL       => '1',
+        MUXC_SEL       => '0',
+        REG_DST        => '1'
+        ),
+        memory            => (
+        LMD_EN            => '0',
+        MUXD_SEL          => '0',
+        ALU_OUT_REG_ME_EN => '1',
+        DRAM_ENABLE       => '0',
+        DRAM_READNOTWRITE => '1'
+        ),
+        wb       => (
+        RF_WR    => '1',
+        MUXE_SEL => '1'
+        )
+    );
+
+
     ---------------------------- N TYPE 
 
     -- NOP

@@ -72,12 +72,40 @@ begin
                 cw_s <= ADDI_CW;
             when ITYPE_SUBI =>
                 cw_s <= SUBI_CW;
+            when ITYPE_ADDUI =>
+                cw_s <= ADDUI_CW;
+            when ITYPE_SUBUI =>
+                cw_s <= SUBUI_CW;
             when ITYPE_ANDI =>
                 cw_s <= ANDI_CW;
             when ITYPE_ORI =>
                 cw_s <= ORI_CW;
             when ITYPE_XORI =>
                 cw_s <= XORI_CW;
+            when ITYPE_SLLI =>
+                cw_s <= SLLI_CW;
+            when ITYPE_SRLI =>
+                cw_s <= SRLI_CW;
+            when ITYPE_SEQI =>
+                cw_s <= SEQI_CW;
+            when ITYPE_SNEI =>
+                cw_s <= SNEI_CW;
+            when ITYPE_SLTI =>
+                cw_s <= SLTI_CW;
+            when ITYPE_SGTI =>
+                cw_s <= SGTI_CW;
+            when ITYPE_SLEI =>
+                cw_s <= SLEI_CW;
+            when ITYPE_SGEI =>
+                cw_s <= SGEI_CW;
+            when ITYPE_SLTUI =>
+                cw_s <= SLTUI_CW;
+            when ITYPE_SGTUI =>
+                cw_s <= SGTUI_CW;
+            when ITYPE_SLEUI =>
+                cw_s <= SLEUI_CW;
+            when ITYPE_SGEUI =>
+                cw_s <= SGEUI_CW;
 
             when NTYPE_NOP => -- NTYPE
                 cw_s <= NOP_CW;
@@ -85,6 +113,7 @@ begin
                 cw_s <= SW_CW;
             when ITYPE_LW =>
                 cw_s <= LW_CW;
+
             when others => -- RTYPE
                 cw_s <= RTYPE_CW;
         end case;
