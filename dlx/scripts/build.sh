@@ -2,21 +2,24 @@
 
 SIM_DIR='./sim'
 SRC_DIR='./src'
+SYN_DIR='./syn'
 SIM_FILE_LIST='./components'
 TESTBENCH_FILE='./testbenches/DLX_tb.vhd'
 
 echo "[INFO] Starting Compilation."
 echo "[INFO] Moving into simulation directory"
 
-rm -rf sim 
+# rm -rf sim
 if [ ! -d "$SIM_DIR" ]; then
     echo "[INFO] $SIM_DIR does not exist yet."
     echo "[INFO] Creating it."
     mkdir -p "$SIM_DIR"
     echo "[INFO] Copying sources from $SRC_DIR"
+    # TODO add simulation specific files to components
     cp -r $SRC_DIR/* $SIM_DIR/
 else
     echo "[INFO] $SIM_DIR found."
+    cp -r --update $SRC_DIR/* $SIM_DIR/
 fi
 
 cd "$SIM_DIR"
@@ -28,8 +31,8 @@ export PATH=$INSTALL_DIR:$PATH
 # source /eda/mentor/2020-21/scripts/QUESTA-CORE-PRIME_2020.4_RHELx86.sh
 
 echo "[INFO] Creating work library"
-vdel -all > /dev/null 2>&1
-vlib work
+# vdel -all > /dev/null 2>&1
+# vlib work
 
 # VHDL file list
 vcom -F "$SIM_FILE_LIST"
@@ -39,5 +42,25 @@ if [ $? -ne 0 ]; then
 fi
 
 # Simulation
-vsim -t 10ps work.DLX_tb -voptargs=+acc
+# vsim -t 10ps work.DLX_tb -voptargs=+acc
+
 # Synthesis
+# if [ ! -d "$SYM_DIR" ]; then
+#     echo "[INFO] $SIM_DIR does not exist yet."
+#     echo "[INFO] Creating it."
+#     mkdir -p "$SYM_DIR"
+#     echo "[INFO] Copying sources from $SRC_DIR"
+#     cp -r $SRC_DIR/* $SYN_DIR/
+# else
+#     echo "[INFO] $SYM_DIR found."
+#     cp -r --update $SRC_DIR/* $SYM_DIR/
+# fi
+
+# ENTITY="DLX"
+# ARCHITECTURE="RTL"
+# # source files
+# source /eda/scripts/init_design_vision
+# dc_shell-t -no_gui -x "\
+#     analyze -format vhdl {$(cat components | sed 's/#.*//g' | tr '\n' ' ')};\
+#     elaborate $ENTITY -architecture $ARCHITECTURE -library WORK;
+#     exit"
