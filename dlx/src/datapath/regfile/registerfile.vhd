@@ -55,7 +55,7 @@ begin
     begin
         if RESET = '1' then
             REGISTERS <= (others => (others => '0'));
-        elsif falling_edge(clk) then
+        elsif rising_edge(clk) then
             if ENABLE = '1' and WR = '1' then
                 REGISTERS(to_integer(unsigned(ADD_WR))) <= DATAIN;
             end if;
