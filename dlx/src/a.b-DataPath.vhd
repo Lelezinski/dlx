@@ -171,11 +171,12 @@ begin
     -- MUXF
     -- TODO: ask if resize should be signed or unsigned
     -- FIXME: commentato temporaneamente per fare compilare sowwy
-    -- MUXF_OUT <= std_logic_vector(resize(unsigned(INS_IMM), IMM'length))                 -- I-type 16 bits immediate  
-    --                 when CW.memory.MUXF_SEL = '0' else
-    --             std_logic_vector(resize(unsigned(INS_J_IMM), INS_J_IMM'length)) sll 2   -- J-type 26 bits shifted immediate (j)
-    --                 when CW.memory.MUXF_SEL = '1' else
-    --             std_logic_vector(resize(unsigned(INS_J_IMM), INS_J_IMM'length));        -- J-type 26 bits not shifted immediate (jal)
+    MUXF_OUT <= std_logic_vector(resize(unsigned(INS_IMM), IMM'length));                 -- I-type 16 bits immediate
+                --    when 1 = 1 else
+                -- std_logic_vector(resize(unsigned(INS_J_IMM), INS_J_IMM'length)) sll 2   -- J-type 26 bits shifted immediate (j)
+                --     when CW.memory.MUXF_SEL = '1' else
+                -- std_logic_vector(resize(unsigned(INS_J_IMM), INS_J_IMM'length));        -- J-type 26 bits not shifted immediate (jal)
+
 
     ---------------------------- IRAM & DRAM
     IRAM_ADDRESS <= std_logic_vector(resize(unsigned(PC), IRAM_ADDR_SIZE));
