@@ -130,7 +130,7 @@ architecture RTL of DATAPATH is
 
     ---------------------------- [WB] STAGE
     signal MUXE_OUT : data_t;
-    
+
 begin
 
     ----------------------------------------------------------------
@@ -151,14 +151,14 @@ begin
 
     ---------------------------- Sign Extend
     -- MUX_SIGNED: based on the signed type (0: unsigned, 1: signed)
-    INS_IMM_EXT <= to_data(std_logic_vector(resize(unsigned(INS_IMM), INS_J_IMM'length))) when CW.execute.MUX_SIGNED = '0' else
+    INS_IMM_EXT <= to_data(std_logic_vector(resize(unsigned(INS_IMM), INS_J_IMM'length))) when CW.decode.MUX_SIGNED = '0' else
         to_data(std_logic_vector(resize(signed(INS_IMM), INS_J_IMM'length)));
 
-    INS_J_IMM_EXT <= to_data(std_logic_vector(resize(unsigned(INS_J_IMM), INS_J_IMM'length))) when CW.execute.MUX_SIGNED = '0' else
+    INS_J_IMM_EXT <= to_data(std_logic_vector(resize(unsigned(INS_J_IMM), INS_J_IMM'length))) when CW.decode.MUX_SIGNED = '0' else
         to_data(std_logic_vector(resize(signed(INS_J_IMM), INS_J_IMM'length)));
 
     -- MUX_J: based on the instruction type (0: I, 1: J)
-    MUX_J_OUT <= INS_IMM_EXT when CW.execute.MUX_J = '0' else
+    MUX_J_OUT <= INS_IMM_EXT when CW.decode.MUX_J = '0' else
         INS_J_IMM_EXT;
 
     ---------------------------- MUXes
