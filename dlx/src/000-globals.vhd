@@ -68,7 +68,7 @@ package myTypes is
     constant C_TB_STAGES : integer := 3; -- Number of Clock Cycles between two instructions
 
     -- IRAM
-    constant IRAM_DEPTH     : integer := 48;
+    constant IRAM_DEPTH     : integer := 128;
     constant PC_SIZE        : integer := integer(ceil(log2(real(IRAM_DEPTH))));
     constant IRAM_ADDR_SIZE : integer := PC_SIZE;
     subtype pc_t is unsigned(PC_SIZE - 1 downto 0);
