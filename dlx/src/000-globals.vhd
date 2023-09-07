@@ -21,6 +21,7 @@ package myTypes is
     constant INS_R2_SIZE      : integer := 5;  -- R2 field size
     constant INS_R3_SIZE      : integer := 5;  -- R3 field size
     constant INS_IMM_SIZE     : integer := 16; -- IMM field size
+    constant INS_J_IMM_SIZE   : integer := 26; -- IMM field size for J-TYPEs
     constant INS_FUNC_SIZE    : integer := 11; -- FUNC field size
 
     -- Instrucions Left and Right bit
@@ -34,6 +35,8 @@ package myTypes is
     constant INS_R3_R      : integer := 11;
     constant INS_IMM_L     : integer := 15;
     constant INS_IMM_R     : integer := 0;
+    constant INS_J_IMM_L   : integer := 25;
+    constant INS_J_IMM_R   : integer := 0;
     constant INS_FUNC_L    : integer := 10;
     constant INS_FUNC_R    : integer := 0;
 
@@ -91,13 +94,10 @@ package myTypes is
     constant C_UCODE_MEM_SIZE : integer := (C_RELOC_MEM_SIZE * 3 + 1);   -- Microcode Memory Size
 
     ---- INSTRUCTIONS -----
-
-    -- TODO: add missing ones
-
-    -- R-Type instruction -> FUNC field
     subtype func_t is std_logic_vector(C_FUNC_SIZE - 1 downto 0);
     subtype opcode_t is std_logic_vector(C_OP_CODE_SIZE - 1 downto 0);
 
+    -- R-Type instruction -> FUNC field
     constant FUNC_ADD  : func_t := "00000100000";
     constant FUNC_ADDu : func_t := "00000100001";
     constant FUNC_SUB  : func_t := "00000100010";

@@ -84,13 +84,15 @@ architecture RTL of DATAPATH is
     ----------------------------------------------------------------
 
     ---------------------------- Instructions Fields
-    signal INS_OP_CODE : std_logic_vector(INS_OP_CODE_SIZE - 1 downto 0);
-    signal INS_RS1     : std_logic_vector(INS_R1_SIZE - 1 downto 0);
-    signal INS_RS2     : std_logic_vector(INS_R2_SIZE - 1 downto 0);
-    signal INS_RD      : std_logic_vector(INS_R3_SIZE - 1 downto 0);
-    signal INS_IMM     : std_logic_vector(INS_IMM_SIZE - 1 downto 0);
-    signal INS_FUNC    : std_logic_vector(INS_FUNC_SIZE - 1 downto 0);
-    signal INS_J_IMM   : std_logic_vector(26 downto 0); -- TODO change to constant
+    signal INS_OP_CODE   : std_logic_vector(INS_OP_CODE_SIZE - 1 downto 0);
+    signal INS_RS1       : std_logic_vector(INS_R1_SIZE - 1 downto 0);
+    signal INS_RS2       : std_logic_vector(INS_R2_SIZE - 1 downto 0);
+    signal INS_RD        : std_logic_vector(INS_R3_SIZE - 1 downto 0);
+    signal INS_IMM       : std_logic_vector(INS_IMM_SIZE - 1 downto 0);
+    signal INS_J_IMM     : std_logic_vector(INS_J_IMM_SIZE - 1 downto 0);
+    signal INS_FUNC      : std_logic_vector(INS_FUNC_SIZE - 1 downto 0);
+    signal INS_IMM_EXT   : std_logic_vector(data_t);
+    signal INS_J_IMM_EXT : std_logic_vector(data_t);
 
     ---------------------------- [IF] STAGE
     signal IR  : std_logic_vector(INS_SIZE - 1 downto 0);
@@ -128,6 +130,7 @@ architecture RTL of DATAPATH is
 
     ---------------------------- [WB] STAGE
     signal MUXE_OUT : data_t;
+    
 begin
 
     ----------------------------------------------------------------
@@ -138,14 +141,25 @@ begin
     INS_OP_CODE <= IR(INS_OP_CODE_L downto INS_OP_CODE_R);
     INS_RS1     <= IR(INS_R1_L downto INS_R1_R);
     INS_RS2     <= IR(INS_R2_L downto INS_R2_R);
-    -- INS_RD      <= IR(INS_R2_L downto INS_R2_R) when IR(INS_OP_CODE_L downto INS_OP_CODE_R) /= "000000" else IR(INS_R3_L downto INS_R3_R);
     INS_RD      <= IR(INS_R3_L downto INS_R3_R);
     INS_IMM     <= IR(INS_IMM_L downto INS_IMM_R);
     INS_FUNC    <= IR(INS_FUNC_L downto INS_FUNC_R);
-    INS_J_IMM   <= IR(26 downto 0); -- TODO change to constant
+    INS_J_IMM   <= IR(INS_J_IMM_L downto INS_J_IMM_R);
 
     FUNC   <= IR(INS_FUNC_L downto INS_FUNC_R);       -- send the func field to the controller
     OPCODE <= IR(INS_OP_CODE_L downto INS_OP_CODE_R); -- send the opcode to the controller
+
+    ---------------------------- Sign Extend
+    -- MUX_SIGNED: based on the signed type (0: unsigned, 1: signed)
+    INS_IMM_EXT <= to_data(std_logic_vector(resize(unsigned(INS_IMM), INS_J_IMM'length))) when CW.execute.MUX_SIGNED = '0' else
+        to_data(std_logic_vector(resize(signed(INS_IMM), INS_J_IMM'length)));
+
+    INS_J_IMM_EXT <= to_data(std_logic_vector(resize(unsigned(INS_J_IMM), INS_J_IMM'length))) when CW.execute.MUX_SIGNED = '0' else
+        to_data(std_logic_vector(resize(signed(INS_J_IMM), INS_J_IMM'length)));
+
+    -- MUX_J: based on the instruction type (0: I, 1: J)
+    MUX_J_OUT <= INS_IMM_EXT when CW.execute.MUX_J = '0' else
+        INS_J_IMM_EXT;
 
     ---------------------------- MUXes
     -- MUXA
@@ -167,16 +181,6 @@ begin
     -- MUXE
     MUXE_OUT <= LMD when CW.wb.MUXE_SEL = '0' else
         ALU_OUT_REG_ME;
-
-    -- MUXF
-    -- TODO: ask if resize should be signed or unsigned
-    -- FIXME: commentato temporaneamente per fare compilare sowwy
-    MUXF_OUT <= std_logic_vector(resize(unsigned(INS_IMM), IMM'length));                 -- I-type 16 bits immediate
-                --    when 1 = 1 else
-                -- std_logic_vector(resize(unsigned(INS_J_IMM), INS_J_IMM'length)) sll 2   -- J-type 26 bits shifted immediate (j)
-                --     when CW.memory.MUXF_SEL = '1' else
-                -- std_logic_vector(resize(unsigned(INS_J_IMM), INS_J_IMM'length));        -- J-type 26 bits not shifted immediate (jal)
-
 
     ---------------------------- IRAM & DRAM
     IRAM_ADDRESS <= std_logic_vector(resize(unsigned(PC), IRAM_ADDR_SIZE));
@@ -294,7 +298,7 @@ begin
             IMM <= (others => '0');
         elsif falling_edge(CLK) then
             if (CW.decode.IMM_EN = '1') then
-                IMM <= MUXF_OUT;
+                IMM <= MUX_J_OUT;
             end if;
         end if;
     end process IMM_P;
@@ -312,7 +316,7 @@ begin
     end process NPC_ID_P;
 
     -- RD&RS_ID
-    RD_RS_ID_P : process(CLK, RST)
+    RD_RS_ID_P : process (CLK, RST)
     begin
         if RST = '1' then
             RD_ID <= (others => '0');
@@ -377,7 +381,7 @@ begin
     end process NPC_EX_P;
 
     -- RD_EX
-    RD_EX_P : process(CLK, RST)
+    RD_EX_P : process (CLK, RST)
     begin
         if RST = '1' then
             RD_EX <= (others => '0');
@@ -416,7 +420,7 @@ begin
     end process ALU_OUT_REG_ME_P;
 
     -- RD_MEM
-    RD_MEM_P : process(CLK, RST)
+    RD_MEM_P : process (CLK, RST)
     begin
         if RST = '1' then
             RD_MEM <= (others => '0');
