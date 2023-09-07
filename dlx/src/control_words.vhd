@@ -95,7 +95,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -134,7 +134,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '0',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -173,7 +173,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -212,7 +212,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '0',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -251,7 +251,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -290,7 +290,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -329,7 +329,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -368,7 +368,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -407,7 +407,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -446,7 +446,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -485,7 +485,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -524,7 +524,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -563,7 +563,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -602,7 +602,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -641,7 +641,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -680,7 +680,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -719,7 +719,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -758,7 +758,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '0',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -797,7 +797,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '0',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -836,7 +836,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '0',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -875,7 +875,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '0',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -915,7 +915,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -956,7 +956,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -995,7 +995,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0',
+        MUX_J      => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '0',
@@ -1024,53 +1024,53 @@ package control_words is
     -----------------------------------------------------------------------------
     -- Function to cast a std_logic_vector into a cw_t
     -----------------------------------------------------------------------------
-    pure function to_cw(arg : std_logic_vector) return cw_t;
+    --pure function to_cw(arg : std_logic_vector) return cw_t;
 
 end package control_words;
 
 -- FIXME: da fixare/rimuovere?
-package body control_words is
-    pure function to_cw(arg : std_logic_vector) return cw_t is
-begin
-    return (
-    fetch   => (
-    PC_EN   => arg(29),
-    IR_EN   => arg(28),
-    NPC_EN  => arg(27),
-    IRAM_EN => arg(26)
-    ),
-    decode    => (
-    A_EN      => arg(25),
-    B_EN      => arg(24),
-    IMM_EN    => arg(23),
-    NPC_ID_EN => arg(22),
-    RF_RESET  => arg(21),
-    RF_ENABLE => arg(20),
-    RF_RD1    => arg(19),
-    RF_RD2    => arg(18)
-    ),
-    execute        => (
-    ALU_OUT_REG_EN => arg(17),
-    COND_EN        => arg(16),
-    ALU_OP         => alu_op_t'val(to_integer(unsigned(std_logic_vector'(arg(15) & arg(14) & arg(13))))),
-    B_EX_EN        => arg(12),
-    NPC_EX_EN      => arg(11),
-    MUXA_SEL       => arg(10),
-    MUXB_SEL       => arg(9),
-    MUXC_SEL       => arg(8),
-    REG_DST        => arg(7)
-    ),
-    memory            => (
-    LMD_EN            => arg(6),
-    MUXD_SEL          => arg(5),
-    ALU_OUT_REG_ME_EN => arg(4),
-    DRAM_ENABLE       => arg(3),
-    DRAM_READNOTWRITE => arg(2)
-    ),
-    wb       => (
-    RF_WR    => arg(1),
-    MUXE_SEL => arg(0)
-    )
-    );
-end function;
-end control_words;
+-- package body control_words is
+--     pure function to_cw(arg : std_logic_vector) return cw_t is
+-- begin
+--     return (
+--     fetch   => (
+--     PC_EN   => arg(29),
+--     IR_EN   => arg(28),
+--     NPC_EN  => arg(27),
+--     IRAM_EN => arg(26)
+--     ),
+--     decode    => (
+--     A_EN      => arg(25),
+--     B_EN      => arg(24),
+--     IMM_EN    => arg(23),
+--     NPC_ID_EN => arg(22),
+--     RF_RESET  => arg(21),
+--     RF_ENABLE => arg(20),
+--     RF_RD1    => arg(19),
+--     RF_RD2    => arg(18)
+--     ),
+--     execute        => (
+--     ALU_OUT_REG_EN => arg(17),
+--     COND_EN        => arg(16),
+--     ALU_OP         => alu_op_t'val(to_integer(unsigned(std_logic_vector'(arg(15) & arg(14) & arg(13))))),
+--     B_EX_EN        => arg(12),
+--     NPC_EX_EN      => arg(11),
+--     MUXA_SEL       => arg(10),
+--     MUXB_SEL       => arg(9),
+--     MUXC_SEL       => arg(8),
+--     REG_DST        => arg(7)
+--     ),
+--     memory            => (
+--     LMD_EN            => arg(6),
+--     MUXD_SEL          => arg(5),
+--     ALU_OUT_REG_ME_EN => arg(4),
+--     DRAM_ENABLE       => arg(3),
+--     DRAM_READNOTWRITE => arg(2)
+--     ),
+--     wb       => (
+--     RF_WR    => arg(1),
+--     MUXE_SEL => arg(0)
+--     )
+--     );
+-- end function;
+-- end control_words;

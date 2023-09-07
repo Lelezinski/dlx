@@ -91,8 +91,8 @@ architecture RTL of DATAPATH is
     signal INS_IMM       : std_logic_vector(INS_IMM_SIZE - 1 downto 0);
     signal INS_J_IMM     : std_logic_vector(INS_J_IMM_SIZE - 1 downto 0);
     signal INS_FUNC      : std_logic_vector(INS_FUNC_SIZE - 1 downto 0);
-    signal INS_IMM_EXT   : std_logic_vector(data_t);
-    signal INS_J_IMM_EXT : std_logic_vector(data_t);
+    signal INS_IMM_EXT   : data_t;
+    signal INS_J_IMM_EXT : data_t;
 
     ---------------------------- [IF] STAGE
     signal IR  : std_logic_vector(INS_SIZE - 1 downto 0);
@@ -100,15 +100,15 @@ architecture RTL of DATAPATH is
     signal NPC : pc_t;
 
     ---------------------------- [ID] STAGE
-    signal RF_OUT_1 : data_t;
-    signal RF_OUT_2 : data_t;
-    signal A        : data_t;
-    signal B        : data_t;
-    signal IMM      : data_t;
-    signal NPC_ID   : pc_t;
-    signal RD_ID    : std_logic_vector(INS_R2_SIZE - 1 downto 0);
-    signal RS_ID    : std_logic_vector(INS_R2_SIZE - 1 downto 0);
-    signal MUXF_OUT : data_t;
+    signal RF_OUT_1  : data_t;
+    signal RF_OUT_2  : data_t;
+    signal A         : data_t;
+    signal B         : data_t;
+    signal IMM       : data_t;
+    signal NPC_ID    : pc_t;
+    signal RD_ID     : std_logic_vector(INS_R2_SIZE - 1 downto 0);
+    signal RS_ID     : std_logic_vector(INS_R2_SIZE - 1 downto 0);
+    signal MUX_J_OUT : data_t;
 
     ---------------------------- [EX] STAGE
     signal ALU_IN_1    : data_t;
@@ -151,11 +151,11 @@ begin
 
     ---------------------------- Sign Extend
     -- MUX_SIGNED: based on the signed type (0: unsigned, 1: signed)
-    INS_IMM_EXT <= to_data(std_logic_vector(resize(unsigned(INS_IMM), INS_J_IMM'length))) when CW.decode.MUX_SIGNED = '0' else
-        to_data(std_logic_vector(resize(signed(INS_IMM), INS_J_IMM'length)));
+    INS_IMM_EXT <= to_data(resize(unsigned(INS_IMM), IMM'length)) when CW.decode.MUX_SIGNED = '0' else
+        to_data(unsigned(resize(signed(INS_IMM), IMM'length)));
 
-    INS_J_IMM_EXT <= to_data(std_logic_vector(resize(unsigned(INS_J_IMM), INS_J_IMM'length))) when CW.decode.MUX_SIGNED = '0' else
-        to_data(std_logic_vector(resize(signed(INS_J_IMM), INS_J_IMM'length)));
+    INS_J_IMM_EXT <= to_data(resize(unsigned(INS_J_IMM), IMM'length)) when CW.decode.MUX_SIGNED = '0' else
+        to_data(unsigned(resize(signed(INS_J_IMM), IMM'length)));
 
     -- MUX_J: based on the instruction type (0: I, 1: J)
     MUX_J_OUT <= INS_IMM_EXT when CW.decode.MUX_J = '0' else
