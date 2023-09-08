@@ -1,7 +1,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
-use work.ROCACHE_PKG.all;
-use work.RWCACHE_PKG.all;
+--use work.ROCACHE_PKG.all;
+--use work.RWCACHE_PKG.all;
 
 use work.myTypes.all;
 
@@ -97,8 +97,6 @@ begin
         port map (CLK, RST, DRAM_ADDRESS, DRAM_IN, DRAM_ENABLE, DRAM_READNOTWRITE, DRAM_READY, DRAM_OUT);
 
     -- DLX
-    -- My_DLX_GIANLUCA : DLX
-        -- port map (CLK, RST, IRAM_ADDRESS, IRAM_ENABLE, IRAM_READY, IRAM_DATA, DRAM_ADDRESS, DRAM_ENABLE, DRAM_READNOTWRITE, DRAM_READY, DRAM_DATA);
     DLX_1: entity work.DLX
         port map (
             CLK               => CLK,
@@ -113,6 +111,7 @@ begin
             DRAM_ENABLE       => DRAM_ENABLE,
             DRAM_READNOTWRITE => DRAM_READNOTWRITE,
             DRAM_ADDRESS      => DRAM_ADDRESS);
+            
     Clk <= not Clk  after 10 ns;
     Rst <= '1', '0' after 5 ns;
 
