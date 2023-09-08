@@ -191,7 +191,7 @@ package control_words is
         MUXD_SEL          => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
-        DRAM_READNOTWRITE => '0'
+        DRAM_READNOTWRITE => '1'
         ),
         wb       => (
         RF_WR    => '1',
@@ -230,7 +230,7 @@ package control_words is
         MUXD_SEL          => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
-        DRAM_READNOTWRITE => '0'
+        DRAM_READNOTWRITE => '1'
         ),
         wb       => (
         RF_WR    => '1',
@@ -269,7 +269,7 @@ package control_words is
         MUXD_SEL          => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
-        DRAM_READNOTWRITE => '0'
+        DRAM_READNOTWRITE => '1'
         ),
         wb       => (
         RF_WR    => '1',
@@ -308,7 +308,7 @@ package control_words is
         MUXD_SEL          => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
-        DRAM_READNOTWRITE => '0'
+        DRAM_READNOTWRITE => '1'
         ),
         wb       => (
         RF_WR    => '1',
@@ -425,7 +425,7 @@ package control_words is
         MUXD_SEL          => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
-        DRAM_READNOTWRITE => '0'
+        DRAM_READNOTWRITE => '1'
         ),
         wb       => (
         RF_WR    => '1',
@@ -933,7 +933,7 @@ package control_words is
         MUXD_SEL          => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
-        DRAM_READNOTWRITE => '0'
+        DRAM_READNOTWRITE => '1'
         ),
         wb       => (
         RF_WR    => '0',
@@ -974,7 +974,7 @@ package control_words is
         MUXD_SEL          => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
-        DRAM_READNOTWRITE => '0'
+        DRAM_READNOTWRITE => '1'
         ),
         wb       => (
         RF_WR    => '1',
@@ -1013,7 +1013,7 @@ package control_words is
         MUXD_SEL          => '0',
         ALU_OUT_REG_ME_EN => '0',
         DRAM_ENABLE       => '0',
-        DRAM_READNOTWRITE => '0'
+        DRAM_READNOTWRITE => '1'
         ),
         wb       => (
         RF_WR    => '0',
