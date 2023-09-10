@@ -27,7 +27,7 @@ package control_words is
         RF_RD1     : std_logic; -- register file read port one signal
         RF_RD2     : std_logic; -- register file read port two signal
         MUX_SIGNED : std_logic; -- MUX_SIGNED selection signal
-        MUX_J      : std_logic; -- MUX_J selection signal
+        MUX_J_SEL  : std_logic; -- MUX_J_SEL selection signal
     end record decode_cw_t;
 
     type execute_cw_t is record
@@ -36,23 +36,23 @@ package control_words is
         ALU_OP         : alu_op_t;
         B_EX_EN        : std_logic; -- B operad register [EX] latch enable
         NPC_EX_EN      : std_logic; -- Next Program counter [EX] latch enable
-        MUXA_SEL       : std_logic; -- MuxA selection signal
-        MUXB_SEL       : std_logic; -- MuxB selection signal
-        MUXC_SEL       : std_logic; -- MuxC selection signal
-        REG_DST        : std_logic; -- selects between RD and RS
+        MUX_A_SEL      : std_logic; -- MUX_A selection signal
+        MUX_B_SEL      : std_logic; -- MUX_B selection signal
+        MUX_LL_SEL     : std_logic; -- MUX_LL selection signal
+        MUX_R_SEL      : std_logic; -- selects between RD and RS
     end record execute_cw_t;
 
     type memory_cw_t is record
         LMD_EN            : std_logic; -- Loaded memory data latch enable
-        MUXD_SEL          : std_logic; -- MuxD selection signal
+        MUX_COND_SEL      : std_logic; -- MUX_COND selection signal
         ALU_OUT_REG_ME_EN : std_logic; -- ALU_OUT register [ME] latch enable
         DRAM_ENABLE       : std_logic; -- data memory enable signal
         DRAM_READNOTWRITE : std_logic; -- data memory r/w signal
     end record memory_cw_t;
 
     type wb_cw_t is record
-        RF_WR    : std_logic; -- register file write port signal
-        MUXE_SEL : std_logic; -- MuxE selection signal
+        RF_WR       : std_logic; -- register file write port signal
+        MUX_LMD_SEL : std_logic; -- MUX_LMD selection signal
     end record wb_cw_t;
 
     type cw_t is record
@@ -95,7 +95,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -103,21 +103,21 @@ package control_words is
         ALU_OP         => alu_add,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '1',
-        MUXC_SEL       => '0',
-        REG_DST        => '1'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '1'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '1',
-        MUXE_SEL => '1'
+        wb          => (
+        RF_WR       => '1',
+        MUX_LMD_SEL => '1'
         )
     );
 
@@ -134,7 +134,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '0',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -142,21 +142,21 @@ package control_words is
         ALU_OP         => ALU_ADDu,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '1',
-        MUXC_SEL       => '0',
-        REG_DST        => '1'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '1'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '1',
-        MUXE_SEL => '1'
+        wb          => (
+        RF_WR       => '1',
+        MUX_LMD_SEL => '1'
         )
     );
 
@@ -173,7 +173,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -181,21 +181,21 @@ package control_words is
         ALU_OP         => alu_sub,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '1',
-        MUXC_SEL       => '0',
-        REG_DST        => '1'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '1'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '1',
-        MUXE_SEL => '1'
+        wb          => (
+        RF_WR       => '1',
+        MUX_LMD_SEL => '1'
         )
     );
 
@@ -212,7 +212,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '0',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -220,21 +220,21 @@ package control_words is
         ALU_OP         => ALU_SUBu,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '1',
-        MUXC_SEL       => '0',
-        REG_DST        => '1'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '1'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '1',
-        MUXE_SEL => '1'
+        wb          => (
+        RF_WR       => '1',
+        MUX_LMD_SEL => '1'
         )
     );
 
@@ -251,7 +251,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -259,21 +259,21 @@ package control_words is
         ALU_OP         => alu_and,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '1',
-        MUXC_SEL       => '0',
-        REG_DST        => '1'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '1'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '1',
-        MUXE_SEL => '1'
+        wb          => (
+        RF_WR       => '1',
+        MUX_LMD_SEL => '1'
         )
     );
 
@@ -290,7 +290,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -298,21 +298,21 @@ package control_words is
         ALU_OP         => alu_or,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '1',
-        MUXC_SEL       => '0',
-        REG_DST        => '1'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '1'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '1',
-        MUXE_SEL => '1'
+        wb          => (
+        RF_WR       => '1',
+        MUX_LMD_SEL => '1'
         )
     );
 
@@ -329,7 +329,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -337,21 +337,21 @@ package control_words is
         ALU_OP         => alu_add,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '1',
-        MUXC_SEL       => '0',
-        REG_DST        => '1'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '1'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '1',
         DRAM_READNOTWRITE => '0'
         ),
-        wb       => (
-        RF_WR    => '0',
-        MUXE_SEL => '1'
+        wb          => (
+        RF_WR       => '0',
+        MUX_LMD_SEL => '1'
         )
     );
 
@@ -368,7 +368,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -376,21 +376,21 @@ package control_words is
         ALU_OP         => alu_add,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '1',
-        MUXC_SEL       => '0',
-        REG_DST        => '1'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '1'
         ),
         memory            => (
         LMD_EN            => '1',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '1',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '1',
-        MUXE_SEL => '0'
+        wb          => (
+        RF_WR       => '1',
+        MUX_LMD_SEL => '0'
         )
     );
 
@@ -407,7 +407,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -415,21 +415,21 @@ package control_words is
         ALU_OP         => alu_xor,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '1',
-        MUXC_SEL       => '0',
-        REG_DST        => '1'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '1'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '1',
-        MUXE_SEL => '1'
+        wb          => (
+        RF_WR       => '1',
+        MUX_LMD_SEL => '1'
         )
     );
 
@@ -446,7 +446,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -454,21 +454,21 @@ package control_words is
         ALU_OP         => alu_sll,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '1',
-        MUXC_SEL       => '0',
-        REG_DST        => '1'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '1'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '1',
-        MUXE_SEL => '1'
+        wb          => (
+        RF_WR       => '1',
+        MUX_LMD_SEL => '1'
         )
     );
 
@@ -485,7 +485,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -493,21 +493,21 @@ package control_words is
         ALU_OP         => alu_srl,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '1',
-        MUXC_SEL       => '0',
-        REG_DST        => '1'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '1'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '1',
-        MUXE_SEL => '1'
+        wb          => (
+        RF_WR       => '1',
+        MUX_LMD_SEL => '1'
         )
     );
 
@@ -524,7 +524,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -532,21 +532,21 @@ package control_words is
         ALU_OP         => alu_seq,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '1',
-        MUXC_SEL       => '0',
-        REG_DST        => '1'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '1'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '1',
-        MUXE_SEL => '1'
+        wb          => (
+        RF_WR       => '1',
+        MUX_LMD_SEL => '1'
         )
     );
 
@@ -563,7 +563,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -571,21 +571,21 @@ package control_words is
         ALU_OP         => alu_sne,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '1',
-        MUXC_SEL       => '0',
-        REG_DST        => '1'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '1'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '1',
-        MUXE_SEL => '1'
+        wb          => (
+        RF_WR       => '1',
+        MUX_LMD_SEL => '1'
         )
     );
 
@@ -602,7 +602,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -610,21 +610,21 @@ package control_words is
         ALU_OP         => alu_slt,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '1',
-        MUXC_SEL       => '0',
-        REG_DST        => '1'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '1'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '1',
-        MUXE_SEL => '1'
+        wb          => (
+        RF_WR       => '1',
+        MUX_LMD_SEL => '1'
         )
     );
 
@@ -641,7 +641,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -649,21 +649,21 @@ package control_words is
         ALU_OP         => alu_sgt,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '1',
-        MUXC_SEL       => '0',
-        REG_DST        => '1'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '1'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '1',
-        MUXE_SEL => '1'
+        wb          => (
+        RF_WR       => '1',
+        MUX_LMD_SEL => '1'
         )
     );
 
@@ -680,7 +680,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -688,21 +688,21 @@ package control_words is
         ALU_OP         => alu_sle,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '1',
-        MUXC_SEL       => '0',
-        REG_DST        => '1'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '1'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '1',
-        MUXE_SEL => '1'
+        wb          => (
+        RF_WR       => '1',
+        MUX_LMD_SEL => '1'
         )
     );
 
@@ -719,7 +719,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -727,21 +727,21 @@ package control_words is
         ALU_OP         => alu_sge,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '1',
-        MUXC_SEL       => '0',
-        REG_DST        => '1'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '1'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '1',
-        MUXE_SEL => '1'
+        wb          => (
+        RF_WR       => '1',
+        MUX_LMD_SEL => '1'
         )
     );
 
@@ -758,7 +758,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '0',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -766,21 +766,21 @@ package control_words is
         ALU_OP         => alu_sltu,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '1',
-        MUXC_SEL       => '0',
-        REG_DST        => '1'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '1'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '1',
-        MUXE_SEL => '1'
+        wb          => (
+        RF_WR       => '1',
+        MUX_LMD_SEL => '1'
         )
     );
 
@@ -797,7 +797,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '0',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -805,21 +805,21 @@ package control_words is
         ALU_OP         => alu_sgtu,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '1',
-        MUXC_SEL       => '0',
-        REG_DST        => '1'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '1'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '1',
-        MUXE_SEL => '1'
+        wb          => (
+        RF_WR       => '1',
+        MUX_LMD_SEL => '1'
         )
     );
 
@@ -836,7 +836,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '0',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -844,21 +844,21 @@ package control_words is
         ALU_OP         => alu_sleu,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '1',
-        MUXC_SEL       => '0',
-        REG_DST        => '1'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '1'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '1',
-        MUXE_SEL => '1'
+        wb          => (
+        RF_WR       => '1',
+        MUX_LMD_SEL => '1'
         )
     );
 
@@ -875,7 +875,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '0',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -883,21 +883,21 @@ package control_words is
         ALU_OP         => alu_sgeu,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '1',
-        MUXC_SEL       => '0',
-        REG_DST        => '1'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '1'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '1',
-        MUXE_SEL => '1'
+        wb          => (
+        RF_WR       => '1',
+        MUX_LMD_SEL => '1'
         )
     );
     ---------------------------- N TYPE 
@@ -915,7 +915,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -923,21 +923,21 @@ package control_words is
         ALU_OP         => alu_add,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '1',
-        MUXC_SEL       => '0',
-        REG_DST        => '1'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '1'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '0',
-        MUXE_SEL => '1'
+        wb          => (
+        RF_WR       => '0',
+        MUX_LMD_SEL => '1'
         )
     );
 
@@ -956,7 +956,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '1',
@@ -964,21 +964,21 @@ package control_words is
         ALU_OP         => alu_add,
         B_EX_EN        => '1',
         NPC_EX_EN      => '1',
-        MUXA_SEL       => '1',
-        MUXB_SEL       => '0',
-        MUXC_SEL       => '0',
-        REG_DST        => '0'
+        MUX_A_SEL      => '1',
+        MUX_B_SEL      => '0',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '1',
-        MUXE_SEL => '1'
+        wb          => (
+        RF_WR       => '1',
+        MUX_LMD_SEL => '1'
         )
     );
 
@@ -995,7 +995,7 @@ package control_words is
         RF_RD1     => '1',
         RF_RD2     => '1',
         MUX_SIGNED => '1',
-        MUX_J      => '0'
+        MUX_J_SEL  => '0'
         ),
         execute        => (
         ALU_OUT_REG_EN => '0',
@@ -1003,21 +1003,21 @@ package control_words is
         ALU_OP         => alu_add,
         B_EX_EN        => '0',
         NPC_EX_EN      => '0',
-        MUXA_SEL       => '0',
-        MUXB_SEL       => '0',
-        MUXC_SEL       => '0',
-        REG_DST        => '0'
+        MUX_A_SEL      => '0',
+        MUX_B_SEL      => '0',
+        MUX_LL_SEL     => '0',
+        MUX_R_SEL      => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUXD_SEL          => '0',
+        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '0',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
-        wb       => (
-        RF_WR    => '0',
-        MUXE_SEL => '0'
+        wb          => (
+        RF_WR       => '0',
+        MUX_LMD_SEL => '0'
         )
     );
 
@@ -1055,21 +1055,21 @@ end package control_words;
 --     ALU_OP         => alu_op_t'val(to_integer(unsigned(std_logic_vector'(arg(15) & arg(14) & arg(13))))),
 --     B_EX_EN        => arg(12),
 --     NPC_EX_EN      => arg(11),
---     MUXA_SEL       => arg(10),
---     MUXB_SEL       => arg(9),
---     MUXC_SEL       => arg(8),
---     REG_DST        => arg(7)
+--     MUX_A_SEL       => arg(10),
+--     MUX_B_SEL       => arg(9),
+--     MUX_LL_SEL       => arg(8),
+--     MUX_R_SEL        => arg(7)
 --     ),
 --     memory            => (
 --     LMD_EN            => arg(6),
---     MUXD_SEL          => arg(5),
+--     MUX_COND_SEL          => arg(5),
 --     ALU_OUT_REG_ME_EN => arg(4),
 --     DRAM_ENABLE       => arg(3),
 --     DRAM_READNOTWRITE => arg(2)
 --     ),
 --     wb       => (
 --     RF_WR    => arg(1),
---     MUXE_SEL => arg(0)
+--     MUX_LMD_SEL => arg(0)
 --     )
 --     );
 -- end function;

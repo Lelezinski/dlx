@@ -108,14 +108,14 @@ architecture RTL of DATAPATH is
     signal NPC_ID    : pc_t;
     signal RD_ID     : std_logic_vector(INS_R1_SIZE - 1 downto 0);
     signal MUX_J_OUT : data_t;
-    signal MUX_D_OUT : std_logic_vector(INS_R1_SIZE - 1 downto 0);
+    signal MUX_R_OUT : std_logic_vector(INS_R1_SIZE - 1 downto 0);
 
     ---------------------------- [EX] STAGE
     signal ALU_IN_1    : data_t;
     signal ALU_IN_2    : data_t;
     signal ALU_OUT     : data_t;
     signal LL_ALU_OUT  : data_t;
-    signal MUXC_OUT    : data_t;
+    signal MUX_LL_OUT  : data_t;
     signal ALU_OUT_REG : data_t;
     signal COND        : std_logic;
     signal B_EX        : data_t;
@@ -123,13 +123,13 @@ architecture RTL of DATAPATH is
     signal RD_EX       : std_logic_vector(INS_R1_SIZE - 1 downto 0);
 
     ---------------------------- [ME] STAGE
-    signal MUXD_OUT       : pc_t;
+    signal MUX_COND_OUT   : pc_t;
     signal LMD            : data_t;
     signal ALU_OUT_REG_ME : data_t;
     signal RD_MEM         : std_logic_vector(INS_R1_SIZE - 1 downto 0);
 
     ---------------------------- [WB] STAGE
-    signal MUXE_OUT : data_t;
+    signal MUX_LMD_OUT : data_t;
 
 begin
 
@@ -158,32 +158,32 @@ begin
         to_data(unsigned(resize(signed(INS_J_IMM), IMM'length)));
 
     -- MUX_J: based on the instruction type (0: I, 1: J)
-    MUX_J_OUT <= INS_IMM_EXT when CW.decode.MUX_J = '0' else
+    MUX_J_OUT <= INS_IMM_EXT when CW.decode.MUX_J_SEL = '0' else
         INS_J_IMM_EXT;
 
-    ---------------------------- MUXes
-    -- MUX_D
-    MUX_D_OUT <= INS_RD when CW.execute.REG_DST = '0' else
+    ---------------------------- MUX_LMDs
+    -- MUX_R: based on the instruction type (0: I, 1: R)
+    MUX_R_OUT <= INS_RD when CW.execute.MUX_R_SEL = '0' else
         INS_RS2;
 
-    -- MUXA
-    ALU_IN_1 <= to_data(NPC_ID) when CW.execute.MUXA_SEL = '0' else
+    -- MUX_A: ALU input 1 (0: NPC, 1: A)
+    ALU_IN_1 <= to_data(NPC_ID) when CW.execute.MUX_A_SEL = '0' else
         A;
 
-    -- MUXB
-    ALU_IN_2 <= B when CW.execute.MUXB_SEL = '0' else
+    -- MUX_B: ALU input 2 (0: B, 1: IMM)
+    ALU_IN_2 <= B when CW.execute.MUX_B_SEL = '0' else
         IMM;
 
-    -- MUXC
-    MUXC_OUT <= ALU_OUT when CW.execute.MUXC_SEL = '0' else
+    -- MUX_LL: based on the ALU used (0: ALU, 1: LL_ALU)
+    MUX_LL_OUT <= ALU_OUT when CW.execute.MUX_LL_SEL = '0' else
         LL_ALU_OUT;
 
-    -- MUXD
-    MUXD_OUT <= (PC + 1) when CW.memory.MUXD_SEL = '0' else
+    -- MUX_COND: based on whether or not a jump needs to be performed (0: NPC, 1: J ADDR)
+    MUX_COND_OUT <= (PC + 1) when CW.memory.MUX_COND_SEL = '0' else
         pc_t(ALU_OUT_REG(PC_SIZE - 1 downto 0));
 
-    -- MUXE
-    MUXE_OUT <= LMD when CW.wb.MUXE_SEL = '0' else
+    -- MUX_LMD: RF data write input (0: LMD, 1: ALU_OUT)
+    MUX_LMD_OUT <= LMD when CW.wb.MUX_LMD_SEL = '0' else
         ALU_OUT_REG_ME;
 
     ---------------------------- IRAM & DRAM
@@ -211,7 +211,7 @@ begin
         ADD_WR  => RD_MEM,
         ADD_RD1 => INS_RS1,
         ADD_RD2 => INS_RS2,
-        DATAIN  => MUXE_OUT,
+        DATAIN  => MUX_LMD_OUT,
         OUT1    => RF_OUT_1,
         OUT2    => RF_OUT_2
     );
@@ -241,7 +241,7 @@ begin
             PC <= (others => '0');
         elsif falling_edge(CLK) then
             if (CW.fetch.PC_EN = '1') then
-                PC <= MUXD_OUT;
+                PC <= MUX_COND_OUT;
             end if;
         end if;
     end process PC_P;
@@ -325,7 +325,7 @@ begin
         if RST = '1' then
             RD_ID <= (others => '0');
         elsif falling_edge(CLK) then
-            RD_ID <= MUX_D_OUT;
+            RD_ID <= MUX_R_OUT;
         end if;
     end process RD_ID_P;
 
@@ -353,7 +353,7 @@ begin
             ALU_OUT_REG <= (others => '0');
         elsif falling_edge(CLK) then
             if (CW.execute.ALU_OUT_REG_EN = '1') then
-                ALU_OUT_REG <= MUXC_OUT;
+                ALU_OUT_REG <= MUX_LL_OUT;
             end if;
         end if;
     end process ALU_OUT_REG_P;
