@@ -106,9 +106,9 @@ architecture RTL of DATAPATH is
     signal B         : data_t;
     signal IMM       : data_t;
     signal NPC_ID    : pc_t;
-    signal RD_ID     : std_logic_vector(INS_R2_SIZE - 1 downto 0);
-    signal RS_ID     : std_logic_vector(INS_R2_SIZE - 1 downto 0);
+    signal RD_ID     : std_logic_vector(INS_R1_SIZE - 1 downto 0);
     signal MUX_J_OUT : data_t;
+    signal MUX_D_OUT : std_logic_vector(INS_R1_SIZE - 1 downto 0);
 
     ---------------------------- [EX] STAGE
     signal ALU_IN_1    : data_t;
@@ -120,13 +120,13 @@ architecture RTL of DATAPATH is
     signal COND        : std_logic;
     signal B_EX        : data_t;
     signal NPC_EX      : pc_t;
-    signal RD_EX       : std_logic_vector(INS_R3_SIZE - 1 downto 0);
+    signal RD_EX       : std_logic_vector(INS_R1_SIZE - 1 downto 0);
 
     ---------------------------- [ME] STAGE
     signal MUXD_OUT       : pc_t;
     signal LMD            : data_t;
     signal ALU_OUT_REG_ME : data_t;
-    signal RD_MEM         : std_logic_vector(INS_R2_SIZE - 1 downto 0);
+    signal RD_MEM         : std_logic_vector(INS_R1_SIZE - 1 downto 0);
 
     ---------------------------- [WB] STAGE
     signal MUXE_OUT : data_t;
@@ -162,6 +162,10 @@ begin
         INS_J_IMM_EXT;
 
     ---------------------------- MUXes
+    -- MUX_D
+    MUX_D_OUT <= INS_RD when CW.execute.REG_DST = '0' else
+        INS_RS2;
+
     -- MUXA
     ALU_IN_1 <= to_data(NPC_ID) when CW.execute.MUXA_SEL = '0' else
         A;
@@ -249,7 +253,7 @@ begin
             NPC <= (others => '0');
         elsif falling_edge(CLK) then
             if (CW.fetch.NPC_EN = '1') then
-                NPC <= PC + 1; -- TODO: generalizzare?
+                NPC <= PC + 1; -- TODO: revert a +4?
             end if;
         end if;
     end process NPC_P;
@@ -315,17 +319,15 @@ begin
         end if;
     end process NPC_ID_P;
 
-    -- RD&RS_ID
-    RD_RS_ID_P : process (CLK, RST)
+    -- RD_ID
+    RD_ID_P : process (CLK, RST)
     begin
         if RST = '1' then
             RD_ID <= (others => '0');
-            RS_ID <= (others => '0');
         elsif falling_edge(CLK) then
-            RD_ID <= INS_RD;
-            RS_ID <= INS_RS2;
+            RD_ID <= MUX_D_OUT;
         end if;
-    end process RD_RS_ID_P;
+    end process RD_ID_P;
 
     ---------------------------- [EX] STAGE
     -- COND
@@ -386,11 +388,7 @@ begin
         if RST = '1' then
             RD_EX <= (others => '0');
         elsif falling_edge(CLK) then
-            if CW.execute.REG_DST = '0' then
-                RD_EX <= RD_ID;
-            else
-                RD_EX <= RS_ID;
-            end if;
+            RD_EX <= RD_ID;
         end if;
     end process RD_EX_P;
 
