@@ -114,6 +114,11 @@ begin
             when ITYPE_LW =>
                 cw_s <= LW_CW;
 
+            when JTYPE_J => -- JTYPE
+                cw_s <= J_CW;
+            --when JTYPE_JAL =>
+            --    cw_s <= JAL_CW;
+
             when others => -- RTYPE
                 cw_s <= RTYPE_CW;
         end case;

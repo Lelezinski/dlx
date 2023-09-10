@@ -157,8 +157,8 @@ begin
     INS_IMM_EXT <= to_data(resize(unsigned(INS_IMM), IMM'length)) when CW.decode.MUX_SIGNED = '0' else
         to_data(unsigned(resize(signed(INS_IMM), IMM'length)));
 
-    INS_J_IMM_EXT <= to_data(resize(unsigned(INS_J_IMM), IMM'length)) when CW.decode.MUX_SIGNED = '0' else
-        to_data(unsigned(resize(signed(INS_J_IMM), IMM'length)));
+    INS_J_IMM_EXT <= to_data(shift_right(unsigned(resize(signed(INS_J_IMM), IMM'length)), 2));
+    --INS_J_IMM_EXT <= to_data(unsigned(resize(signed(INS_J_IMM), IMM'length)));
 
     -- MUX_J: based on the instruction type (0: I, 1: J)
     MUX_J_OUT <= INS_IMM_EXT when CW.decode.MUX_J_SEL = '0' else
