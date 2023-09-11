@@ -16,20 +16,21 @@ entity CU is
         MICROCODE_MEM_SIZE : integer := 15; -- Microcode Memory Size
         FUNC_SIZE          : integer := 11; -- Func Field Size for R-Type Ops
         OP_CODE_SIZE       : integer := 6;  -- Op Code Size
-        -- ALU_OPC_SIZE           :   integer := 6;  -- ALU Op Code Word Size
-        CW_SIZE : integer := 23); -- Control Word Size
+        CW_SIZE            : integer := 23  -- Control Word Size
+    );
     port (
-        cw    : out cw_t;       -- control word for datapath and memories
-        in_cw : in cw_from_mem; -- input signals coming from datapath and memories
-
+        CLK : in std_logic;
+        RST : in std_logic; -- Active High
+        -- Control
+        CW   : out cw_t;           -- control word for datapath and memories
+        SECW : out stage_enable_t; -- stage enable control word
         -- Inputs
-        OPCODE     : in opcode_t;
-        FUNC       : in func_t;
-        CLK        : in std_logic;
-        RST        : in std_logic; -- Active High
-        IRAM_READY : in std_logic;
-        DRAM_READY : in std_logic;
-
+        IN_CW  : in cw_from_mem; -- input signals coming from datapath and memories
+        OPCODE : in opcode_t;
+        FUNC   : in func_t;
+        -- RAM
+        IRAM_READY        : in std_logic;
+        DRAM_READY        : in std_logic;
         IRAM_ENABLE       : out std_logic;
         DRAM_ENABLE       : out std_logic;
         DRAM_READNOTWRITE : out std_logic
@@ -116,8 +117,8 @@ begin
 
             when JTYPE_J => -- JTYPE
                 cw_s <= J_CW;
-            --when JTYPE_JAL =>
-            --    cw_s <= JAL_CW;
+                --when JTYPE_JAL =>
+                --    cw_s <= JAL_CW;
 
             when others => -- RTYPE
                 cw_s <= RTYPE_CW;
@@ -148,6 +149,7 @@ begin
     IRAM_ENABLE       <= '1';
     DRAM_ENABLE       <= cw2.memory.DRAM_ENABLE;
     DRAM_READNOTWRITE <= cw2.memory.DRAM_READNOTWRITE;
+
     ----------------------------------------------------------------
     -- Processes
     ----------------------------------------------------------------
@@ -173,10 +175,6 @@ begin
         end if;
     end process CW_PIPE;
 
-    -- purpose: Generation of ALU OpCode
-    -- type   : combinational
-    -- inputs : IR_i
-    -- outputs: ALU_OPCODE
     -- ALU_OPCODE Generation (from FUNC for R-Type Instructions)
     ALU_OPCODE_P : process (OPCODE, FUNC_OP, cw_s)
     begin
@@ -236,24 +234,25 @@ begin
         end if;
     end process ALU_OPCODE_P;
 
-    -- STALLS_P : process()
-    -- begin
-    --     if IRAM_READY = '0' then -- stalling fetch stage
-    --         PC_EN <= '0';
-    --         NPC_EN <= '0';
-    --         IR_EN <= '0';
+    -- Stall generation process
+    -- TODO: add other stall sources
+    STALLS_P : process (DRAM_READY, IRAM_READY)
+    begin
+        -- Default assignment
+        SECW <= STALL_CLEAR;
 
-    --     elsif DRAM_READY = '0' then --stalling f-d-e stages
-    --         PC_EN <= '0';
-    --         NPC_EN <= '0';
-    --         IR_EN <= '0';
-
-    --         RF_ENABLE <= '0';
-    --         A_EN <= '0';
-    --         B_EN <= '0';
-    --         IMM_EN <= '0';
-    --     end if:
-    --     end pro
+        -- Stall sources check, in descending order to avoid conflicts
+        -- WB Stalls
+        -- ME Stalls
+        if DRAM_READY = '0' then
+            SECW <= STALL_MEMORY;
+        -- EX Stalls
+        -- ID Stalls
+        elsif IRAM_READY = '0' then
+            SECW <= STALL_DECODE;
+        -- IF Stalls
+        end if;
+    end process STALLS_P;
 
     -- CW1_P : process(cw1_s, ir_en_s)
     -- begin

@@ -72,7 +72,7 @@ package control_words is
     -- Control word signal definition
     -----------------------------------------------------------------------------
 
-    -- Constant IF and ID Fields
+    -- Default IF Field
     constant fetch_cw_def : fetch_cw_t := (
         PC_EN   => '1',
         IR_EN   => '1',
@@ -983,7 +983,7 @@ package control_words is
     );
 
     ---------------------------- J TYPE 
-    
+
     -- J
     constant J_CW : cw_t := (
         fetch_cw_def,
@@ -998,17 +998,17 @@ package control_words is
         RF_RD2     => '1',
         MUX_SIGNED => '1',
         MUX_J_SEL  => '1',
-        MUX_R_SEL   => '0'
+        MUX_R_SEL  => '0'
         ),
-        execute         => (
-        ALU_OUT_REG_EN  => '1',
-        COND_EN         => '1',
-        ALU_OP          => alu_add,
-        B_EX_EN         => '1',
-        NPC_EX_EN       => '1',
-        MUX_A_SEL       => '0',        
-        MUX_B_SEL       => '1',
-        MUX_LL_SEL      => '0'
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '1',
+        ALU_OP         => alu_add,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUX_A_SEL      => '0',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0'
         ),
         memory            => (
         LMD_EN            => '0',
@@ -1022,6 +1022,8 @@ package control_words is
         MUX_LMD_SEL => '0'
         )
     );
+
+    ---------------------------- RESET
 
     -- Reset Init
     signal init_cw : cw_t := (
@@ -1060,6 +1062,70 @@ package control_words is
         RF_WR       => '0',
         MUX_LMD_SEL => '0'
         )
+    );
+
+    -----------------------------------------------------------------------------
+    -- Stalls control
+    -----------------------------------------------------------------------------
+
+    ---------------------------- Definition
+
+    type stage_enable_t is record
+        FETCH   : std_logic;
+        DECODE  : std_logic;
+        EXECUTE : std_logic;
+        MEMORY  : std_logic;
+        WB      : std_logic;
+    end record stage_enable_t;
+
+    ---------------------------- Constants
+
+    constant STALL_CLEAR : stage_enable_t := (
+        FETCH   => '1',
+        DECODE  => '1',
+        EXECUTE => '1',
+        MEMORY  => '1',
+        WB      => '1'
+    );
+
+    constant STALL_FETCH : stage_enable_t := (
+        FETCH   => '0',
+        DECODE  => '1',
+        EXECUTE => '1',
+        MEMORY  => '1',
+        WB      => '1'
+    );
+
+    constant STALL_DECODE : stage_enable_t := (
+        FETCH   => '0',
+        DECODE  => '0',
+        EXECUTE => '1',
+        MEMORY  => '1',
+        WB      => '1'
+    );
+
+    constant STALL_EXECUTE : stage_enable_t := (
+        FETCH   => '0',
+        DECODE  => '0',
+        EXECUTE => '0',
+        MEMORY  => '1',
+        WB      => '1'
+    );
+
+    constant STALL_MEMORY : stage_enable_t := (
+        FETCH   => '0',
+        DECODE  => '0',
+        EXECUTE => '0',
+        MEMORY  => '0',
+        WB      => '1'
+    );
+
+    constant STALL_WB : stage_enable_t := (
+        FETCH   => '0',
+        DECODE  => '0',
+        EXECUTE => '0',
+        MEMORY  => '0',
+        WB      => '0'
     );
 
     -----------------------------------------------------------------------------

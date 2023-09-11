@@ -19,14 +19,15 @@ entity DATAPATH is
         IR_SIZE   : integer := IRAM_DEPTH -- instruction register size
     );
     port (
-        CLK          : in std_logic; -- Clock
-        RST          : in std_logic; -- Active Low Reset
-        CW           : in cw_t;      -- Control Word
-        DRAM_IN      : out data_t;
-        DRAM_OUT     : in data_t;
-        OUT_CW       : out cw_from_mem; -- Output Signals to CU
+        CLK          : in std_logic;      -- Clock
+        RST          : in std_logic;      -- Active Low Reset
+        CW           : in cw_t;           -- Control Word
+        SECW         : in stage_enable_t; -- Stage Enable Control Word
+        OUT_CW       : out cw_from_mem;   -- Output Signals to CU
         OPCODE       : out opcode_t;
         FUNC         : out func_t;
+        DRAM_IN      : out data_t;
+        DRAM_OUT     : in data_t;
         IRAM_DATA    : in data_t;
         IRAM_ADDRESS : out std_logic_vector(IRAM_ADDR_SIZE - 1 downto 0);
         DRAM_ADDRESS : out data_t
