@@ -113,7 +113,7 @@ package myTypes is
     constant FUNC_SGT  : func_t := "00000101011";
     constant FUNC_SLE  : func_t := "00000101100";
     constant FUNC_SGE  : func_t := "00000101101";
-    constant FUNC_MUL  : func_t := "00000000010";
+    constant FUNC_MUL  : func_t := "00000111110";
     constant FUNC_SLTu : func_t := "00000111010";
     constant FUNC_SGTu : func_t := "00000111011";
     constant FUNC_SLEu : func_t := "00000111100";

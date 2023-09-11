@@ -86,6 +86,7 @@ if ($srcfile =~ /^(.*)\.dlx$/) {
   "sgtu"  => "r,0x3b",
   "sleu"  => "r,0x3c",
   "sgeu"  => "r,0x3d",
+  "mul"   => "r,0x3e",
 # Floating-point instructions
   "addf"  => "f,0x00",
   "subf"  => "f,0x01",
