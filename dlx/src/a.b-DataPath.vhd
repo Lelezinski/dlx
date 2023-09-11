@@ -165,7 +165,7 @@ begin
 
     ---------------------------- MUX_LMDs
     -- MUX_R: based on the instruction type (0: I, 1: R)
-    MUX_R_OUT <= INS_RD when CW.execute.MUX_R_SEL = '0' else
+    MUX_R_OUT <= INS_RD when CW.decode.MUX_R_SEL = '0' else
         INS_RS2;
 
     -- MUX_A: ALU input 1 (0: NPC, 1: A)
