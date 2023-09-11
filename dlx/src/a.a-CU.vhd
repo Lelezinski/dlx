@@ -50,6 +50,7 @@ architecture RTL of CU is
     -- These signals are needed to avoid conflicts on the cw registers.
     signal ALU_OPCODE         : alu_op_t;
     signal ALU_OPCODE_UPDATED : alu_op_t; -- OPCODE updated after ID stage
+    signal ALU_OPCODE_UPDATED_2 : alu_op_t; -- OPCODE updated after ID stage
 
     -- one
     signal FUNC_OP : func_t;
@@ -125,22 +126,23 @@ begin
         end case;
     end process;
 
-    -- -- Assign the control signals to the outputs
+    -- Assign the control signals to the outputs
+    -- FIXME: timing
     cw <= (
-        cw1.fetch,
-        cw1.decode,
+        cw2.fetch,
+        cw2.decode,
         (
-        cw1.execute.ALU_OUT_REG_EN,
-        cw1.execute.COND_EN,
-        ALU_OPCODE_UPDATED,
-        cw1.execute.B_EX_EN,
-        cw1.execute.NPC_EX_EN,
-        cw1.execute.MUX_A_SEL,
-        cw1.execute.MUX_B_SEL,
-        cw1.execute.MUX_LL_SEL
+        cw2.execute.ALU_OUT_REG_EN,
+        cw2.execute.COND_EN,
+        ALU_OPCODE_UPDATED_2,
+        cw2.execute.B_EX_EN,
+        cw2.execute.NPC_EX_EN,
+        cw2.execute.MUX_A_SEL,
+        cw2.execute.MUX_B_SEL,
+        cw2.execute.MUX_LL_SEL
         ),
-        cw2.memory,
-        cw3.wb
+        cw3.memory,
+        cw4.wb
         );
 
     -- ir_en_s <= IRAM_READY;
@@ -172,6 +174,7 @@ begin
             cw5 <= cw4;
             -- update the OPCODE during ID stage
             ALU_OPCODE_UPDATED <= ALU_OPCODE;
+            ALU_OPCODE_UPDATED_2 <= ALU_OPCODE_UPDATED;
         end if;
     end process CW_PIPE;
 
