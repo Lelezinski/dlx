@@ -291,8 +291,8 @@ begin
                 SECW1 <= STALL_DECODE;
                 -- IF Stalls
             elsif OPCODE = JTYPE_J then -- Stall 2 cc for j/branches
-                SECW2 <= STALL_FETCH;
-                SECW3 <= STALL_FETCH;
+                --SECW2 <= STALL_FETCH;
+                --SECW3 <= STALL_FETCH;
             end if;
         end if;
     end process STALLS_P;
