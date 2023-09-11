@@ -40,11 +40,11 @@ package control_words is
         MUX_A_SEL      : std_logic; -- MUX_A selection signal
         MUX_B_SEL      : std_logic; -- MUX_B selection signal
         MUX_LL_SEL     : std_logic; -- MUX_LL selection signal
+        MUX_COND_SEL   : std_logic; -- MUX_COND selection signal
     end record execute_cw_t;
 
     type memory_cw_t is record
         LMD_EN            : std_logic; -- Loaded memory data latch enable
-        MUX_COND_SEL      : std_logic; -- MUX_COND selection signal
         ALU_OUT_REG_ME_EN : std_logic; -- ALU_OUT register [ME] latch enable
         DRAM_ENABLE       : std_logic; -- data memory enable signal
         DRAM_READNOTWRITE : std_logic; -- data memory r/w signal
@@ -106,11 +106,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
@@ -145,11 +145,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
@@ -184,11 +184,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
@@ -223,11 +223,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
@@ -262,11 +262,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
@@ -301,11 +301,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
@@ -340,11 +340,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '1',
         DRAM_READNOTWRITE => '0'
@@ -379,11 +379,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '1',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '1',
         DRAM_READNOTWRITE => '1'
@@ -418,11 +418,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
@@ -457,11 +457,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
@@ -496,11 +496,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
@@ -535,11 +535,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
@@ -574,11 +574,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
@@ -613,11 +613,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
@@ -652,11 +652,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
@@ -691,11 +691,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
@@ -730,11 +730,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
@@ -769,11 +769,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
@@ -808,11 +808,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
@@ -847,11 +847,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
@@ -886,11 +886,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
@@ -926,11 +926,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
@@ -967,11 +967,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '0',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
@@ -1008,11 +1008,11 @@ package control_words is
         NPC_EX_EN      => '1',
         MUX_A_SEL      => '0',
         MUX_B_SEL      => '1',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '1'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '1',
         ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
@@ -1049,11 +1049,11 @@ package control_words is
         NPC_EX_EN      => '0',
         MUX_A_SEL      => '0',
         MUX_B_SEL      => '0',
-        MUX_LL_SEL     => '0'
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '0'
         ),
         memory            => (
         LMD_EN            => '0',
-        MUX_COND_SEL      => '0',
         ALU_OUT_REG_ME_EN => '0',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
