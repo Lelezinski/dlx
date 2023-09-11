@@ -138,7 +138,8 @@ begin
         cw2.execute.NPC_EX_EN,
         cw2.execute.MUX_A_SEL,
         cw2.execute.MUX_B_SEL,
-        cw2.execute.MUX_LL_SEL
+        cw2.execute.MUX_LL_SEL,
+        cw2.execute.MUX_COND_SEL
         ),
         cw3.memory,
         cw4.wb
