@@ -35,20 +35,6 @@ architecture RTL of DLX is
     -- Components Declaration
     --------------------------------------------------------------------
 
-    -- TODO: capire se sono interne esterne o entrambe
-    -- Instruction Ram And Data Ram are in the TestBench and you must connect it using
-
-    --    IRAM_ADDRESS      : out std_logic_vector(Instr_size - 1 downto 0);
-    --    IRAM_ENABLE        : out std_logic;
-    --    IRAM_READY        : in std_logic;
-    --    IRAM_DATA         : in std_logic_vector(2*Data_size-1 downto 0);
-    --
-    --    DRAM_ADDRESS      : out std_logic_vector(Instr_size-1 downto 0);
-    --    DRAM_ENABLE        : out std_logic;
-    --    DRAM_READNOTWRITE     : out std_logic;
-    --    DRAM_READY        : in std_logic;
-    --    DRAM_DATA         : inout std_logic_vector(2*Data_size-1 downto 0)
-
     component CU is
         generic (
             MICROCODE_MEM_SIZE : integer;
