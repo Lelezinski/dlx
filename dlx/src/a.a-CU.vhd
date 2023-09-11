@@ -12,7 +12,7 @@ use work.control_words.all;
 
 entity CU is
     generic (
-        -- FIXME: use constants
+        -- TODO: use constants
         MICROCODE_MEM_SIZE : integer := 15; -- Microcode Memory Size
         FUNC_SIZE          : integer := 11; -- Func Field Size for R-Type Ops
         OP_CODE_SIZE       : integer := 6;  -- Op Code Size
@@ -43,31 +43,74 @@ architecture RTL of CU is
     -- Signals Declaration
     ----------------------------------------------------------------
 
+    signal FUNC_OP : func_t;
+
+    ---------------------------- CW Pipeline
     signal cw_s, cw1, cw2, cw3, cw4, cw5 : cw_t;
-    signal cw1_s, cw4_s                  : cw_t;
     signal ir_en_s, lmd_en_s             : std_logic;
 
     -- These signals are needed to avoid conflicts on the cw registers.
-    signal ALU_OPCODE           : alu_op_t;
-    signal ALU_OPCODE_UPDATED   : alu_op_t; -- OPCODE updated after ID stage
-    signal ALU_OPCODE_UPDATED_2 : alu_op_t;
+    signal ALU_OPCODE, ALU_OPCODE_UPDATED, ALU_OPCODE_UPDATED_2 : alu_op_t; -- OPCODE updated after ID stage
 
-    -- one
-    signal FUNC_OP : func_t;
+    ---------------------------- SECW Pipeline
+    signal SECW0, SECW1, SECW2, SECW3, SECW4, SECW5 : stage_enable_t;
+
 begin
 
     ----------------------------------------------------------------
     -- Signals Assignment
     ----------------------------------------------------------------
 
+    ---------------------------- CW Pipeline
     -- Convert the func field into enum type func_t
     FUNC_OP <= FUNC;
 
+    -- Assign the control signals to the outputs
+    CW <= (
+        cw1.fetch,
+        cw1.decode,
+        (
+        cw2.execute.ALU_OUT_REG_EN,
+        cw2.execute.COND_EN,
+        ALU_OPCODE_UPDATED_2,
+        cw2.execute.B_EX_EN,
+        cw2.execute.NPC_EX_EN,
+        cw2.execute.MUX_A_SEL,
+        cw2.execute.MUX_B_SEL,
+        cw2.execute.MUX_LL_SEL,
+        cw2.execute.MUX_COND_SEL
+        ),
+        cw3.memory,
+        cw4.wb
+        );
+
+    -- ir_en_s <= IRAM_READY;
+    ir_en_s <= '1';
+
+    ---------------------------- SECW Pipeline
+    SECW <= SECW0;
+    --(
+    --     SECW1.FETCH,
+    --     SECW2.DECODE,
+    --     SECW3.EXECUTE,
+    --     SECW4.MEMORY,
+    --     SECW5.WB
+    -- );
+
+    ---------------------------- RAM
+    IRAM_ENABLE       <= '1';
+    DRAM_ENABLE       <= cw2.memory.DRAM_ENABLE;
+    DRAM_READNOTWRITE <= cw2.memory.DRAM_READNOTWRITE;
+
+    ----------------------------------------------------------------
+    -- Processes
+    ----------------------------------------------------------------
+
+    ---------------------------- CW Pipeline
     -- OPCODE is used as index of cw_mem.
     -- get the complete control word of the current instruction
     CW_S_UP : process (OPCODE)
     begin
-        -- TODO: add remaining
         case OPCODE is
 
             when ITYPE_ADDI => -- ITYPE
@@ -125,36 +168,6 @@ begin
                 cw_s <= RTYPE_CW;
         end case;
     end process;
-
-    -- Assign the control signals to the outputs
-    cw <= (
-        cw1.fetch,
-        cw1.decode,
-        (
-        cw2.execute.ALU_OUT_REG_EN,
-        cw2.execute.COND_EN,
-        ALU_OPCODE_UPDATED_2,
-        cw2.execute.B_EX_EN,
-        cw2.execute.NPC_EX_EN,
-        cw2.execute.MUX_A_SEL,
-        cw2.execute.MUX_B_SEL,
-        cw2.execute.MUX_LL_SEL,
-        cw2.execute.MUX_COND_SEL
-        ),
-        cw3.memory,
-        cw4.wb
-        );
-
-    -- ir_en_s <= IRAM_READY;
-    ir_en_s <= '1';
-
-    IRAM_ENABLE       <= '1';
-    DRAM_ENABLE       <= cw2.memory.DRAM_ENABLE;
-    DRAM_READNOTWRITE <= cw2.memory.DRAM_READNOTWRITE;
-
-    ----------------------------------------------------------------
-    -- Processes
-    ----------------------------------------------------------------
 
     -- process to pipeline control words
     CW_PIPE : process (clk, rst)
@@ -238,30 +251,48 @@ begin
         end if;
     end process ALU_OPCODE_P;
 
+    ---------------------------- SECW Pipeline
+
     -- Stall generation process
     -- TODO: add other stall sources
     STALLS_P : process (CLK, RST)
     begin
         if RST = '1' then
-            SECW <= STALL_CLEAR;
+            SECW0 <= STALL_CLEAR;
+            SECW1 <= STALL_CLEAR;
+            SECW2 <= STALL_CLEAR;
+            SECW3 <= STALL_CLEAR;
+            SECW4 <= STALL_CLEAR;
+            SECW5 <= STALL_CLEAR;
 
         elsif falling_edge(clk) then
-            -- Default assignment
-            SECW <= STALL_CLEAR;
+            -- Pipeline Update
+            SECW0.WB      <= SECW0.MEMORY and SECW1.WB;
+            SECW0.MEMORY  <= SECW0.EXECUTE and SECW1.MEMORY;
+            SECW0.EXECUTE <= SECW0.DECODE and SECW1.EXECUTE;
+            SECW0.DECODE  <= SECW0.FETCH and SECW1.DECODE;
+            SECW0.FETCH   <= '1' and SECW1.FETCH;
+
+            SECW1 <= SECW2;
+            SECW2 <= SECW3;
+            SECW3 <= SECW4;
+            SECW4 <= SECW5;
+            SECW5 <= STALL_CLEAR;
 
             -- Stall sources check, in descending order to avoid conflicts
             -- WB Stalls
             -- ME Stalls
             -- RST is a placeholder
             if RST = '1' then -- Wait for DRAM ready
-                SECW <= STALL_MEMORY;
-            -- EX Stalls
-            -- ID Stalls
+                SECW1 <= STALL_MEMORY;
+                -- EX Stalls
+                -- ID Stalls
             elsif RST = '1' then -- Wait for IRAM ready
-                SECW <= STALL_DECODE;
-            -- IF Stalls
-            elsif RST = '1' then -- Stall 2 cc for j/branches
-                SECW <= STALL_FETCH;
+                SECW1 <= STALL_DECODE;
+                -- IF Stalls
+            elsif OPCODE = JTYPE_J then -- Stall 2 cc for j/branches
+                SECW2 <= STALL_FETCH;
+                SECW3 <= STALL_FETCH;
             end if;
         end if;
     end process STALLS_P;
