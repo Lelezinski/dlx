@@ -179,7 +179,7 @@ begin
         LL_ALU_OUT;
 
     -- MUX_COND: based on whether or not a jump needs to be performed (0: NPC, 1: J ADDR)
-    MUX_COND_OUT <= (PC + 1) when CW.memory.MUX_COND_SEL = '0' else
+    MUX_COND_OUT <= (PC + 1) when CW.execute.MUX_COND_SEL = '0' else
         pc_t(ALU_OUT(PC_SIZE - 1 downto 0));
 
     -- MUX_LMD: RF data write input (0: LMD, 1: ALU_OUT)
