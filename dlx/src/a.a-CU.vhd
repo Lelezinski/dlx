@@ -239,21 +239,29 @@ begin
 
     -- Stall generation process
     -- TODO: add other stall sources
-    STALLS_P : process (DRAM_READY, IRAM_READY)
+    STALLS_P : process (CLK, RST)
     begin
-        -- Default assignment
-        SECW <= STALL_CLEAR;
+        if RST = '1' then
+            SECW <= STALL_CLEAR;
 
-        -- Stall sources check, in descending order to avoid conflicts
-        -- WB Stalls
-        -- ME Stalls
-        if DRAM_READY = '0' then
-            SECW <= STALL_MEMORY;
+        elsif falling_edge(clk) then
+            -- Default assignment
+            SECW <= STALL_CLEAR;
+
+            -- Stall sources check, in descending order to avoid conflicts
+            -- WB Stalls
+            -- ME Stalls
+            -- RST is a placeholder
+            if RST = '1' then -- Wait for DRAM ready
+                SECW <= STALL_MEMORY;
             -- EX Stalls
             -- ID Stalls
-        elsif IRAM_READY = '0' then
-            SECW <= STALL_DECODE;
+            elsif RST = '1' then -- Wait for IRAM ready
+                SECW <= STALL_DECODE;
             -- IF Stalls
+            elsif RST = '1' then -- Stall 2 cc for j/branches
+                SECW <= STALL_FETCH;
+            end if;
         end if;
     end process STALLS_P;
 
