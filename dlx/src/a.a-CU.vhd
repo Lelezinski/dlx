@@ -48,9 +48,9 @@ architecture RTL of CU is
     signal ir_en_s, lmd_en_s             : std_logic;
 
     -- These signals are needed to avoid conflicts on the cw registers.
-    signal ALU_OPCODE         : alu_op_t;
-    signal ALU_OPCODE_UPDATED : alu_op_t; -- OPCODE updated after ID stage
-    signal ALU_OPCODE_UPDATED_2 : alu_op_t; -- OPCODE updated after ID stage
+    signal ALU_OPCODE           : alu_op_t;
+    signal ALU_OPCODE_UPDATED   : alu_op_t; -- OPCODE updated after ID stage
+    signal ALU_OPCODE_UPDATED_2 : alu_op_t;
 
     -- one
     signal FUNC_OP : func_t;
@@ -127,10 +127,9 @@ begin
     end process;
 
     -- Assign the control signals to the outputs
-    -- FIXME: timing
     cw <= (
-        cw2.fetch,
-        cw2.decode,
+        cw1.fetch,
+        cw1.decode,
         (
         cw2.execute.ALU_OUT_REG_EN,
         cw2.execute.COND_EN,
@@ -173,8 +172,9 @@ begin
             cw4 <= cw3;
             cw5 <= cw4;
             -- update the OPCODE during ID stage
-            ALU_OPCODE_UPDATED <= ALU_OPCODE;
+            ALU_OPCODE_UPDATED   <= ALU_OPCODE;
             ALU_OPCODE_UPDATED_2 <= ALU_OPCODE_UPDATED;
+
         end if;
     end process CW_PIPE;
 
@@ -249,11 +249,11 @@ begin
         -- ME Stalls
         if DRAM_READY = '0' then
             SECW <= STALL_MEMORY;
-        -- EX Stalls
-        -- ID Stalls
+            -- EX Stalls
+            -- ID Stalls
         elsif IRAM_READY = '0' then
             SECW <= STALL_DECODE;
-        -- IF Stalls
+            -- IF Stalls
         end if;
     end process STALLS_P;
 
