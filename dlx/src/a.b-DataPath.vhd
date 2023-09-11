@@ -150,8 +150,8 @@ begin
     INS_FUNC    <= IR(INS_FUNC_L downto INS_FUNC_R);
     INS_J_IMM   <= IR(INS_J_IMM_L downto INS_J_IMM_R);
 
-    FUNC   <= IR(INS_FUNC_L downto INS_FUNC_R);       -- send the func field to the controller
-    OPCODE <= IR(INS_OP_CODE_L downto INS_OP_CODE_R); -- send the opcode to the controller
+    FUNC   <= IRAM_DATA(INS_FUNC_L downto INS_FUNC_R);       -- send the func field to the controller
+    OPCODE <= IRAM_DATA(INS_OP_CODE_L downto INS_OP_CODE_R); -- send the opcode to the controller
 
     ---------------------------- Sign Extend
     -- MUX_SIGNED: based on the signed type (0: unsigned, 1: signed)
