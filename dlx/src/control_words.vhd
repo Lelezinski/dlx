@@ -988,14 +988,14 @@ package control_words is
     constant J_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '0',
-        B_EN       => '0',
-        IMM_EN     => '1',      -- only a 26 bit immediate is used
+        A_EN       => '1',
+        B_EN       => '1',
+        IMM_EN     => '1',
         NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
-        RF_RD1     => '1',      -- ??
-        RF_RD2     => '1',      -- ??
+        RF_RD1     => '1',
+        RF_RD2     => '1',
         MUX_SIGNED => '1',
         MUX_J_SEL  => '1'
         ),
@@ -1018,7 +1018,7 @@ package control_words is
         DRAM_READNOTWRITE => '0'
         ),
         wb          => (
-        RF_WR       => '1',
+        RF_WR       => '0',
         MUX_LMD_SEL => '0'
         )
     );
