@@ -128,6 +128,7 @@ architecture RTL of DATAPATH is
     signal LMD            : data_t;
     signal ALU_OUT_REG_ME : data_t;
     signal RD_MEM         : std_logic_vector(INS_R1_SIZE - 1 downto 0);
+    signal NPC_MEM        : pc_t;
 
     ---------------------------- [WB] STAGE
     signal MUX_LMD_OUT : data_t;
@@ -432,6 +433,18 @@ begin
             end if;
         end if;
     end process RD_MEM_P;
+
+    -- NPC_MEM
+    NPC_MEM_P : process (CLK, RST)
+    begin
+        if RST = '1' then
+            NPC_MEM <= (others => '0');
+        elsif falling_edge(CLK) then
+            if (SECW.MEMORY = '1') then
+                NPC_MEM <= NPC_EX;
+            end if;
+        end if;
+    end process NPC_MEM_P;
 
 end architecture RTL;
 
