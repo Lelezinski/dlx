@@ -35,6 +35,7 @@
 
 ./control_words.vhd # TODO: spostare?
 
+./forwarding_unit.vhd
 ./a.b-DataPath.vhd
 ./a.a-CU.vhd
 ./a-DLX.vhd

@@ -48,6 +48,7 @@ architecture RTL of DLX is
             -- Control
             CW   : out cw_t;
             SECW : out stage_enable_t;
+            cu_to_fu : out cu_to_fu_t;
             -- Inputs
             IN_CW  : in cw_from_mem;
             OPCODE : in opcode_t;
@@ -60,6 +61,14 @@ architecture RTL of DLX is
             DRAM_READNOTWRITE : out std_logic
         );
     end component CU;
+
+    component forwarding_unit is
+        port (
+            cu_to_fu  : in  cu_to_fu_t;
+            dp_to_fu  : in  dp_to_fu_t;
+            MUX_A_SEL : out std_logic_vector(1 downto 0);
+            MUX_B_SEL : out std_logic_vector(1 downto 0));
+    end component forwarding_unit;
 
     component DATAPATH is
         generic (
@@ -74,6 +83,9 @@ architecture RTL of DLX is
             RST          : in std_logic;
             CW           : in cw_t;
             SECW         : in stage_enable_t;
+            MUX_A_SEL    : in std_logic_vector(1 downto 0); -- signal coming from forwading unit
+            MUX_B_SEL    : in std_logic_vector(1 downto 0); -- signal coming from forwading unit
+            dp_to_fu     : out dp_to_fu_t;
             OUT_CW       : out cw_from_mem;
             OPCODE       : out opcode_t;
             FUNC         : out func_t;
@@ -94,7 +106,10 @@ architecture RTL of DLX is
     signal FUNC    : func_t;
     signal CW      : cw_t;
     signal SECW    : stage_enable_t;
-
+    signal dp_to_fu  : dp_to_fu_t;
+    signal cu_to_fu  : cu_to_fu_t;
+    signal MUX_A_SEL : std_logic_vector(1 downto 0);
+    signal MUX_B_SEL : std_logic_vector(1 downto 0);
 begin
 
     ----------------------------------------------------------------
@@ -112,6 +127,7 @@ begin
             cw                => cw,
             in_cw             => cw_from,
             SECW              => SECW,
+            cu_to_fu          => cu_to_fu,
             OPCODE            => OPCODE,
             FUNC              => FUNC,
             CLK               => CLK,
@@ -122,6 +138,13 @@ begin
             DRAM_ENABLE       => DRAM_ENABLE,
             DRAM_READNOTWRITE => DRAM_READNOTWRITE
         );
+
+    forwarding_unit_1: entity work.forwarding_unit
+        port map (
+            cu_to_fu  => cu_to_fu,
+            dp_to_fu  => dp_to_fu,
+            MUX_A_SEL => MUX_A_SEL,
+            MUX_B_SEL => MUX_B_SEL);
 
     DATAPATH_1 : entity work.DATAPATH
         generic map(
@@ -136,6 +159,9 @@ begin
             CW           => CW,
             SECW         => SECW,
             OUT_CW       => cw_from,
+            MUX_A_SEL    => MUX_A_SEL,
+            MUX_B_SEL    => MUX_B_SEL,
+            dp_to_fu     => dp_to_fu,
             OPCODE       => OPCODE,
             FUNC         => FUNC,
             DRAM_IN      => DRAM_IN,

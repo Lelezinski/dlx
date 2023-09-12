@@ -23,6 +23,10 @@ entity DATAPATH is
         RST          : in std_logic;      -- Active Low Reset
         CW           : in cw_t;           -- Control Word
         SECW         : in stage_enable_t; -- Stage Enable Control Word
+        -- forwarding unit signals
+        MUX_A_SEL    : in std_logic_vector(1 downto 0); -- signal coming from forwading unit
+        MUX_B_SEL    : in std_logic_vector(1 downto 0); -- signal coming from forwading unit
+        dp_to_fu     : out dp_to_fu_t;
         OUT_CW       : out cw_from_mem;   -- Output Signals to CU
         OPCODE       : out opcode_t;
         FUNC         : out func_t;
@@ -110,6 +114,8 @@ architecture RTL of DATAPATH is
     signal RD_ID     : std_logic_vector(INS_R1_SIZE - 1 downto 0);
     signal MUX_J_OUT : data_t;
     signal MUX_R_OUT : std_logic_vector(INS_R1_SIZE - 1 downto 0);
+    signal RS_ID     : std_logic_vector(INS_R1_SIZE - 1 downto 0);
+    signal RT_ID     : std_logic_vector(INS_R1_SIZE - 1 downto 0);
 
     ---------------------------- [EX] STAGE
     signal ALU_IN_1    : data_t;
@@ -169,12 +175,16 @@ begin
                 std_logic_vector(to_unsigned(LR_INDEX, LR_INDEX'length));
 
     -- MUX_A: ALU input 1 (0: NPC, 1: A)
-    ALU_IN_1 <= to_data(NPC_ID) when CW.execute.MUX_A_SEL = '0' else
-        A;
+    ALU_IN_1 <= to_data(NPC_ID) when MUX_A_SEL = "00" else
+                A               when MUX_A_SEL = "01" else
+                ALU_OUT_REG     when MUX_A_SEL = "10" else -- from the exe
+                ALU_OUT_REG_ME  when MUX_A_SEL = "11"; -- from mem
 
     -- MUX_B: ALU input 2 (0: B, 1: IMM)
-    ALU_IN_2 <= B when CW.execute.MUX_B_SEL = '0' else
-        IMM;
+    ALU_IN_2 <= B               when MUX_B_SEL = "00" else
+                IMM             when MUX_B_SEL = "01" else
+                ALU_OUT_REG     when MUX_B_SEL = "10" else -- from exe
+                ALU_OUT_REG_ME  when MUX_B_SEL = "11"; -- from mem
 
     -- MUX_LL: based on the ALU used (0: ALU, 1: LL_ALU)
     MUX_LL_OUT <= ALU_OUT when CW.execute.MUX_LL_SEL = '0' else
@@ -187,6 +197,14 @@ begin
     -- MUX_LMD: RF data write input (0: LMD, 1: ALU_OUT)
     MUX_LMD_OUT <= LMD when CW.wb.MUX_LMD_SEL = '0' else
         ALU_OUT_REG_ME;
+
+    ---------------------------- FORWARDING UNIT
+    dp_to_fu <= (
+        RS_ID => RS_ID,
+        RT_ID => RT_ID,
+        RD_MEM => RD_MEM,
+        RD_EX => RD_EX
+    );
 
     ---------------------------- IRAM & DRAM
     IRAM_ADDRESS <= std_logic_vector(resize(unsigned(PC), IRAM_ADDR_SIZE));
@@ -332,6 +350,28 @@ begin
             end if;
         end if;
     end process RD_ID_P;
+
+    RS_ID_P : process (CLK, RST)
+    begin
+        if RST = '1' then
+            RS_ID <= (others => '0');
+        elsif falling_edge(CLK) then
+            if (SECW.DECODE = '1') then
+                RS_ID <= INS_RS1;
+            end if;
+        end if;
+    end process RS_ID_P;
+
+    RT_ID_P : process (CLK, RST)
+    begin
+        if RST = '1' then
+            RT_ID <= (others => '0');
+        elsif falling_edge(CLK) then
+            if (SECW.DECODE = '1') then
+                RT_ID <= INS_RS2;
+            end if;
+        end if;
+    end process RT_ID_P;
 
     ---------------------------- [EX] STAGE
     -- COND

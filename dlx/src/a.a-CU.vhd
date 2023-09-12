@@ -24,6 +24,7 @@ entity CU is
         -- Control
         CW   : out cw_t;           -- control word for datapath and memories
         SECW : out stage_enable_t; -- stage enable control word
+        cu_to_fu : out cu_to_fu_t;
         -- Inputs
         IN_CW  : in cw_from_mem; -- input signals coming from datapath and memories
         OPCODE : in opcode_t;
@@ -96,6 +97,14 @@ begin
     --     SECW4.MEMORY,
     --     SECW5.WB
     -- );
+
+    ---------------------------- Forwarding unit
+    cu_to_fu <= (
+        RF_WR_EX  => cw2.wb.RF_WR,
+        RF_WR_MEM => cw3.wb.RF_WR,
+        MUX_A_CU  => cw2.execute.MUX_A_SEL,
+        MUX_B_CU  => cw2.execute.MUX_B_SEL
+   );
 
     ---------------------------- RAM
     IRAM_ENABLE       <= '1';

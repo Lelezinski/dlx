@@ -167,6 +167,19 @@ package myTypes is
     ---- Process declarations ----
     pure function to_data(arg : pc_t) return data_t;
 
+    type dp_to_fu_t is record
+        RD_EX     : std_logic_vector(INS_R1_SIZE - 1 downto 0);
+        RD_MEM    : std_logic_vector(INS_R1_SIZE - 1 downto 0);
+        RS_ID     : std_logic_vector(INS_R1_SIZE - 1 downto 0);
+        RT_ID     : std_logic_vector(INS_R1_SIZE - 1 downto 0);
+    end record;
+
+    type cu_to_fu_t is record
+        RF_WR_EX  : std_logic;
+        RF_WR_MEM : std_logic;
+        MUX_A_CU  : std_logic;
+        MUX_B_CU  : std_logic;
+    end record;
 end myTypes;
 
 package body myTypes is
