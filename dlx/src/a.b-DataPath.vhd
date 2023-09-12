@@ -163,9 +163,10 @@ begin
         INS_J_IMM_EXT;
 
     ---------------------------- MUX_LMDs
-    -- MUX_R: based on the instruction type (0: I, 1: R)
-    MUX_R_OUT <= INS_RD when CW.decode.MUX_R_SEL = '0' else
-        INS_RS2;
+    -- MUX_R: based on the instruction type or jal (0: I, 1: R, 2: jal)
+    MUX_R_OUT <= INS_RD when CW.decode.MUX_R_SEL = "00" else
+                INS_RS2 when CW.decode.MUX_R_SEL = "01" else
+                std_logic_vector(to_unsigned(LR_INDEX, LR_INDEX'length));
 
     -- MUX_A: ALU input 1 (0: NPC, 1: A)
     ALU_IN_1 <= to_data(NPC_ID) when CW.execute.MUX_A_SEL = '0' else

@@ -62,6 +62,7 @@ package myTypes is
     constant RF_WORD_LEN : integer := 32;
     constant RF_REG_NUM  : integer := 8;
     constant RF_ADDR_LEN : integer := integer(ceil(log2(real(R_NUM))));
+    constant LR_INDEX    : integer := 31; -- link register, or last register in RF
     -- WRF
     -- constant NUM_GLOBAL_REGISTERS : integer := 1;  -- M
     -- constant NUM_LIO_REGISTERS    : integer := 3;  -- N (LOCAL/INPUT/OUTPUT REGS)
