@@ -179,6 +179,7 @@ package myTypes is
         RF_WR_MEM : std_logic;
         MUX_A_CU  : std_logic;
         MUX_B_CU  : std_logic;
+        DRAM_READNOTWRITE: std_logic;
     end record;
 end myTypes;
 

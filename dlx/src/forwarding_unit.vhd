@@ -18,6 +18,7 @@ entity forwarding_unit is
     -- RS_ID     : in data_t;
     -- RT_ID     : in data_t;
 
+    MUX_FWD_LMD_SEL : out std_logic;
     MUX_A_SEL : out std_logic_vector(1 downto 0);
     MUX_B_SEL : out std_logic_vector(1 downto 0)
     );
@@ -30,6 +31,7 @@ begin
   begin
     MUX_A_SEL <= '0' & cu_to_fu.MUX_A_CU;
     MUX_B_SEL <= '0' & cu_to_fu.MUX_B_CU;
+    MUX_FWD_LMD_SEL <= '0';
 
     -- detect hazards in execute stage
     -- forwarding from the exe/mem stage
@@ -58,6 +60,13 @@ begin
               and (dp_to_fu.RD_EX /= dp_to_fu.RT_ID))) then
         MUX_B_SEL <= "11";
       end if;
+    end if;
+
+    -- detect hazard between lw and sw
+    if ((cu_to_fu.DRAM_READNOTWRITE = '0') and
+      (unsigned(dp_to_fu.RD_MEM) /= 0) and
+      (dp_to_fu.RD_EX = dp_to_fu.RD_MEM)) then
+      MUX_FWD_LMD_SEL <= '1';
     end if;
   end process;
 
