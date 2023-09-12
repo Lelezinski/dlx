@@ -108,8 +108,8 @@ begin
 
     ---------------------------- RAM
     IRAM_ENABLE       <= '1';
-    DRAM_ENABLE       <= cw2.memory.DRAM_ENABLE;
-    DRAM_READNOTWRITE <= cw2.memory.DRAM_READNOTWRITE;
+    DRAM_ENABLE       <= cw3.memory.DRAM_ENABLE;
+    DRAM_READNOTWRITE <= cw3.memory.DRAM_READNOTWRITE;
 
     ----------------------------------------------------------------
     -- Processes
