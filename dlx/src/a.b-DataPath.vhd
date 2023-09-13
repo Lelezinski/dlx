@@ -174,7 +174,7 @@ begin
     -- MUX_R: based on the instruction type or jal (0: I, 1: R, 2: jal)
     MUX_R_OUT <= INS_RD when CW.decode.MUX_R_SEL = "00" else
                 INS_RS2 when CW.decode.MUX_R_SEL = "01" else
-                std_logic_vector(to_unsigned(LR_INDEX, LR_INDEX'length));
+                std_logic_vector(to_unsigned(LR_INDEX, INS_R1_SIZE));
 
     -- MUX_A: ALU input 1 (0: NPC, 1: A)
     ALU_IN_1 <= to_data(NPC_ID) when MUX_A_SEL = "00" else
@@ -197,8 +197,9 @@ begin
         pc_t(ALU_OUT(PC_SIZE - 1 downto 0));
 
     -- MUX_LMD: RF data write input (0: LMD, 1: ALU_OUT)
-    MUX_LMD_OUT <= LMD when CW.wb.MUX_LMD_SEL = '0' else
-        ALU_OUT_REG_ME;
+    MUX_LMD_OUT <= LMD when CW.wb.MUX_LMD_SEL = "00" else
+        ALU_OUT_REG_ME when CW.wb.MUX_LMD_SEL = "01" else
+        to_data(NPC_MEM);
 
     -- MUX_MD: determines whether or not LMD register must be forwarded
     MUX_FWD_LMD_OUT <= std_logic_vector(B_EX) when MUX_FWD_LMD_SEL = '0' else

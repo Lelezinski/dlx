@@ -52,7 +52,7 @@ package control_words is
 
     type wb_cw_t is record
         RF_WR       : std_logic; -- register file write port signal
-        MUX_LMD_SEL : std_logic; -- MUX_LMD selection signal
+        MUX_LMD_SEL : std_logic_vector(1 downto 0); -- MUX_LMD selection signal
     end record wb_cw_t;
 
     type cw_t is record
@@ -117,7 +117,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '1',
-        MUX_LMD_SEL => '1'
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -156,7 +156,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '1',
-        MUX_LMD_SEL => '1'
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -195,7 +195,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '1',
-        MUX_LMD_SEL => '1'
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -234,7 +234,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '1',
-        MUX_LMD_SEL => '1'
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -273,7 +273,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '1',
-        MUX_LMD_SEL => '1'
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -312,7 +312,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '1',
-        MUX_LMD_SEL => '1'
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -351,7 +351,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '0',
-        MUX_LMD_SEL => '1'
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -390,7 +390,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '1',
-        MUX_LMD_SEL => '0'
+        MUX_LMD_SEL => "00"
         )
     );
 
@@ -429,7 +429,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '1',
-        MUX_LMD_SEL => '1'
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -468,7 +468,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '1',
-        MUX_LMD_SEL => '1'
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -507,7 +507,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '1',
-        MUX_LMD_SEL => '1'
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -546,7 +546,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '1',
-        MUX_LMD_SEL => '1'
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -585,7 +585,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '1',
-        MUX_LMD_SEL => '1'
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -624,7 +624,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '1',
-        MUX_LMD_SEL => '1'
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -663,7 +663,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '1',
-        MUX_LMD_SEL => '1'
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -702,7 +702,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '1',
-        MUX_LMD_SEL => '1'
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -741,7 +741,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '1',
-        MUX_LMD_SEL => '1'
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -780,7 +780,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '1',
-        MUX_LMD_SEL => '1'
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -819,7 +819,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '1',
-        MUX_LMD_SEL => '1'
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -858,7 +858,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '1',
-        MUX_LMD_SEL => '1'
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -897,7 +897,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '1',
-        MUX_LMD_SEL => '1'
+        MUX_LMD_SEL => "01"
         )
     );
     ---------------------------- N TYPE 
@@ -937,7 +937,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '0',
-        MUX_LMD_SEL => '1'
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -978,7 +978,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '1',
-        MUX_LMD_SEL => '1'
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -1019,7 +1019,46 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '0',
-        MUX_LMD_SEL => '0'
+        MUX_LMD_SEL => "00"
+        )
+    );
+
+    -- JAL
+    constant JAL_CW : cw_t := (
+        fetch_cw_def,
+        decode     => (
+        A_EN       => '1',
+        B_EN       => '1',
+        IMM_EN     => '1',
+        NPC_ID_EN  => '1',
+        RF_RESET   => '0',
+        RF_ENABLE  => '1',
+        RF_RD1     => '1',
+        RF_RD2     => '1',
+        MUX_SIGNED => '1',
+        MUX_J_SEL  => '1',
+        MUX_R_SEL  => "10"
+        ),
+        execute        => (
+        ALU_OUT_REG_EN => '1',
+        COND_EN        => '1',
+        ALU_OP         => alu_add,
+        B_EX_EN        => '1',
+        NPC_EX_EN      => '1',
+        MUX_A_SEL      => '0',
+        MUX_B_SEL      => '1',
+        MUX_LL_SEL     => '0',
+        MUX_COND_SEL   => '1'
+        ),
+        memory            => (
+        LMD_EN            => '0',
+        ALU_OUT_REG_ME_EN => '1',
+        DRAM_ENABLE       => '0',
+        DRAM_READNOTWRITE => '1'
+        ),
+        wb          => (
+        RF_WR       => '1',
+        MUX_LMD_SEL => "10"
         )
     );
 
@@ -1060,7 +1099,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '0',
-        MUX_LMD_SEL => '0'
+        MUX_LMD_SEL => "00"
         )
     );
 
