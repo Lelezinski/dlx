@@ -245,7 +245,7 @@ begin
     port map(
         CLK     => CLK,
         RESET   => RST,
-        ENABLE  => SECW.DECODE,
+        ENABLE  => '1',
         RD1     => CW.decode.RF_RD1,
         RD2     => CW.decode.RF_RD2,
         WR      => CW.wb.RF_WR,
@@ -281,7 +281,7 @@ begin
         if RST = '1' then
             PC <= (others => '0');
         elsif falling_edge(CLK) then
-            if (SECW.FETCH = '1') then
+            if (SECW.PREFETCH = '1') then
                 PC <= MUX_COND_OUT;
             end if;
         end if;

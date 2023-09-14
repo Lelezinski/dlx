@@ -1227,113 +1227,139 @@ package control_words is
     ---------------------------- Definition
 
     type stage_enable_t is record
-        FETCH   : std_logic;
-        DECODE  : std_logic;
-        EXECUTE : std_logic;
-        MEMORY  : std_logic;
-        WB      : std_logic;
+        PREFETCH : std_logic;
+        FETCH    : std_logic;
+        DECODE   : std_logic;
+        EXECUTE  : std_logic;
+        MEMORY   : std_logic;
+        WB       : std_logic;
     end record stage_enable_t;
 
     ---------------------------- Constants
 
     constant STALL_CLEAR : stage_enable_t := (
-        FETCH   => '1',
-        DECODE  => '1',
-        EXECUTE => '1',
-        MEMORY  => '1',
-        WB      => '1'
+        PREFETCH => '1',
+        FETCH    => '1',
+        DECODE   => '1',
+        EXECUTE  => '1',
+        MEMORY   => '1',
+        WB       => '1'
     );
 
     constant STALL_FETCH : stage_enable_t := (
-        FETCH   => '0',
-        DECODE  => '1',
-        EXECUTE => '1',
-        MEMORY  => '1',
-        WB      => '1'
+        PREFETCH => '0',
+        FETCH    => '0',
+        DECODE   => '1',
+        EXECUTE  => '1',
+        MEMORY   => '1',
+        WB       => '1'
     );
 
     constant STALL_DECODE : stage_enable_t := (
-        FETCH   => '0',
-        DECODE  => '0',
-        EXECUTE => '1',
-        MEMORY  => '1',
-        WB      => '1'
+        PREFETCH => '0',
+        FETCH    => '0',
+        DECODE   => '0',
+        EXECUTE  => '1',
+        MEMORY   => '1',
+        WB       => '1'
     );
 
     constant STALL_EXECUTE : stage_enable_t := (
-        FETCH   => '0',
-        DECODE  => '0',
-        EXECUTE => '0',
-        MEMORY  => '1',
-        WB      => '1'
+        PREFETCH => '0',
+        FETCH    => '0',
+        DECODE   => '0',
+        EXECUTE  => '0',
+        MEMORY   => '1',
+        WB       => '1'
     );
 
     constant STALL_MEMORY : stage_enable_t := (
-        FETCH   => '0',
-        DECODE  => '0',
-        EXECUTE => '0',
-        MEMORY  => '0',
-        WB      => '1'
+        PREFETCH => '0',
+        FETCH    => '0',
+        DECODE   => '0',
+        EXECUTE  => '0',
+        MEMORY   => '0',
+        WB       => '1'
     );
 
     constant STALL_WB : stage_enable_t := (
-        FETCH   => '0',
-        DECODE  => '0',
-        EXECUTE => '0',
-        MEMORY  => '0',
-        WB      => '0'
+        PREFETCH => '0',
+        FETCH    => '0',
+        DECODE   => '0',
+        EXECUTE  => '0',
+        MEMORY   => '0',
+        WB       => '0'
     );
 
     -----------------------------------------------------------------------------
-    -- Function to cast a std_logic_vector into a cw_t
+    -- Functions
     -----------------------------------------------------------------------------
     --pure function to_cw(arg : std_logic_vector) return cw_t;
 
+    -- insert_stall: insert a new stall without overriding the target SECW
+    pure function insert_stall(secw : stage_enable_t; stall_to_insert : stage_enable_t) return stage_enable_t;
+
 end package control_words;
 
--- FIXME: da fixare/rimuovere?
--- package body control_words is
---     pure function to_cw(arg : std_logic_vector) return cw_t is
--- begin
---     return (
---     fetch   => (
---     PC_EN   => arg(29),
---     IR_EN   => arg(28),
---     NPC_EN  => arg(27),
---     IRAM_EN => arg(26)
---     ),
---     decode    => (
---     A_EN      => arg(25),
---     B_EN      => arg(24),
---     IMM_EN    => arg(23),
---     NPC_ID_EN => arg(22),
---     RF_RESET  => arg(21),
---     RF_ENABLE => arg(20),
---     RF_RD1    => arg(19),
---     RF_RD2    => arg(18)
---     ),
---     execute        => (
---     ALU_OUT_REG_EN => arg(17),
---     COND_EN        => arg(16),
---     ALU_OP         => alu_op_t'val(to_integer(unsigned(std_logic_vector'(arg(15) & arg(14) & arg(13))))),
---     B_EX_EN        => arg(12),
---     NPC_EX_EN      => arg(11),
---     MUX_A_SEL       => arg(10),
---     MUX_B_SEL       => arg(9),
---     MUX_LL_SEL       => arg(8),
---     MUX_R_SEL        => arg(7)
---     ),
---     memory            => (
---     LMD_EN            => arg(6),
---     MUX_COND_SEL          => arg(5),
---     ALU_OUT_REG_ME_EN => arg(4),
---     DRAM_ENABLE       => arg(3),
---     DRAM_READNOTWRITE => arg(2)
---     ),
---     wb       => (
---     RF_WR    => arg(1),
---     MUX_LMD_SEL => arg(0)
---     )
---     );
--- end function;
--- end control_words;
+package body control_words is
+    -- FIXME: da fixare/rimuovere?
+    -- pure function to_cw(arg : std_logic_vector) return cw_t is
+    -- begin
+    --     return (
+    --     fetch   => (
+    --     PC_EN   => arg(29),
+    --     IR_EN   => arg(28),
+    --     NPC_EN  => arg(27),
+    --     IRAM_EN => arg(26)
+    --     ),
+    --     decode    => (
+    --     A_EN      => arg(25),
+    --     B_EN      => arg(24),
+    --     IMM_EN    => arg(23),
+    --     NPC_ID_EN => arg(22),
+    --     RF_RESET  => arg(21),
+    --     RF_ENABLE => arg(20),
+    --     RF_RD1    => arg(19),
+    --     RF_RD2    => arg(18)
+    --     ),
+    --     execute        => (
+    --     ALU_OUT_REG_EN => arg(17),
+    --     COND_EN        => arg(16),
+    --     ALU_OP         => alu_op_t'val(to_integer(unsigned(std_logic_vector'(arg(15) & arg(14) & arg(13))))),
+    --     B_EX_EN        => arg(12),
+    --     NPC_EX_EN      => arg(11),
+    --     MUX_A_SEL       => arg(10),
+    --     MUX_B_SEL       => arg(9),
+    --     MUX_LL_SEL       => arg(8),
+    --     MUX_R_SEL        => arg(7)
+    --     ),
+    --     memory            => (
+    --     LMD_EN            => arg(6),
+    --     MUX_COND_SEL          => arg(5),
+    --     ALU_OUT_REG_ME_EN => arg(4),
+    --     DRAM_ENABLE       => arg(3),
+    --     DRAM_READNOTWRITE => arg(2)
+    --     ),
+    --     wb       => (
+    --     RF_WR    => arg(1),
+    --     MUX_LMD_SEL => arg(0)
+    --     )
+    --     );
+    -- end function;
+
+    pure function insert_stall(secw : stage_enable_t; stall_to_insert : stage_enable_t) return stage_enable_t is
+    variable result : stage_enable_t;
+begin
+    -- Perform the AND operation for each field
+    result.PREFETCH := secw.PREFETCH and stall_to_insert.PREFETCH;
+    result.FETCH    := secw.FETCH and stall_to_insert.FETCH;
+    result.DECODE   := secw.DECODE and stall_to_insert.DECODE;
+    result.EXECUTE  := secw.EXECUTE and stall_to_insert.EXECUTE;
+    result.MEMORY   := secw.MEMORY and stall_to_insert.MEMORY;
+    result.WB       := secw.WB and stall_to_insert.WB;
+
+    -- Return the result
+    return result;
+end function insert_stall;
+
+end control_words;

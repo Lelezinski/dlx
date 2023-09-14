@@ -121,6 +121,9 @@ begin
     -- get the complete control word of the current instruction
     CW_S_UP : process (OPCODE)
     begin
+        if SECW0.FETCH = '0' then
+            cw_s <= NOP_CW;
+        else
         case OPCODE is
 
             when ITYPE_ADDI => -- ITYPE
@@ -183,6 +186,7 @@ begin
             when others => -- RTYPE
                 cw_s <= RTYPE_CW;
         end case;
+    end if;
     end process;
 
     -- process to pipeline control words
@@ -281,13 +285,14 @@ begin
             SECW4 <= STALL_CLEAR;
             SECW5 <= STALL_CLEAR;
 
-        elsif falling_edge(clk) then
+        elsif rising_edge(clk) then
             -- Pipeline Update
-            SECW0.WB      <= SECW0.MEMORY and SECW1.WB;
-            SECW0.MEMORY  <= SECW0.EXECUTE and SECW1.MEMORY;
-            SECW0.EXECUTE <= SECW0.DECODE and SECW1.EXECUTE;
-            SECW0.DECODE  <= SECW0.FETCH and SECW1.DECODE;
-            SECW0.FETCH   <= '1' and SECW1.FETCH;
+            SECW0.WB       <= SECW0.MEMORY and SECW1.WB;
+            SECW0.MEMORY   <= SECW0.EXECUTE and SECW1.MEMORY;
+            SECW0.EXECUTE  <= SECW0.DECODE and SECW1.EXECUTE;
+            SECW0.DECODE   <= SECW0.FETCH and SECW1.DECODE;
+            SECW0.FETCH    <= SECW0.PREFETCH and SECW1.FETCH;
+            SECW0.PREFETCH <= '1' and SECW1.FETCH;
 
             SECW1 <= SECW2;
             SECW2 <= SECW3;
@@ -301,15 +306,15 @@ begin
             -- RST is a placeholder
             if RST = '1' then -- Wait for DRAM ready
                 SECW1 <= STALL_MEMORY;
-                -- EX Stalls
-                -- ID Stalls
+            -- EX Stalls
+            -- ID Stalls
             elsif RST = '1' then -- Wait for IRAM ready
                 SECW1 <= STALL_DECODE;
-                -- IF Stalls
-            elsif OPCODE = JTYPE_J then -- Stall 2 cc for j/branches
-                --SECW2 <= STALL_FETCH;
-                --SECW3 <= STALL_FETCH;
+            -- IF Stalls
+            elsif OPCODE = JTYPE_J or OPCODE = ITYPE_BNEZ then -- Stall 2 cc for j/branches
+                SECW0 <= insert_stall(SECW0, STALL_FETCH);
             end if;
+
         end if;
     end process STALLS_P;
 
