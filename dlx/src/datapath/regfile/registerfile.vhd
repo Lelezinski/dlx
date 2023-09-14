@@ -57,7 +57,10 @@ begin
             REGISTERS <= (others => (others => '0'));
         elsif rising_edge(clk) then
             if ENABLE = '1' and WR = '1' then
-                REGISTERS(to_integer(unsigned(ADD_WR))) <= DATAIN;
+                -- force register 0 to keep value 0
+                if unsigned(ADD_WR) /= "0" then 
+                    REGISTERS(to_integer(unsigned(ADD_WR))) <= DATAIN;
+                end if;
             end if;
         end if;
     end process syncProc;
