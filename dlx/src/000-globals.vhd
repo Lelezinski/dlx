@@ -143,8 +143,8 @@ package myTypes is
     constant ITYPE_SGTUI : opcode_t := "111011";
     constant ITYPE_SLEUI : opcode_t := "111100";
     constant ITYPE_SGEUI : opcode_t := "111101";
-    constant ITYPE_BEQ   : opcode_t := "000100";
-    constant ITYPE_BNEQ  : opcode_t := "000101";
+    constant ITYPE_BEQZ  : opcode_t := "000100";
+    constant ITYPE_BNEZ  : opcode_t := "000101";
     constant ITYPE_LW    : opcode_t := "100011";
     constant ITYPE_SW    : opcode_t := "101011";
 

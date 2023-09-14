@@ -161,6 +161,10 @@ begin
                 cw_s <= SLEUI_CW;
             when ITYPE_SGEUI =>
                 cw_s <= SGEUI_CW;
+            when ITYPE_BEQZ  =>
+                cw_s <= BEQZ_CW;
+            when ITYPE_BNEZ  =>
+                cw_s <= BNEZ_CW;
 
             when NTYPE_NOP => -- NTYPE
                 cw_s <= NOP_CW;

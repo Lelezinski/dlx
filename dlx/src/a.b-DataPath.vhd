@@ -117,6 +117,7 @@ architecture RTL of DATAPATH is
     signal MUX_R_OUT : std_logic_vector(INS_R1_SIZE - 1 downto 0);
     signal RS_ID     : std_logic_vector(INS_R1_SIZE - 1 downto 0);
     signal RT_ID     : std_logic_vector(INS_R1_SIZE - 1 downto 0);
+    signal A_EQ_ZERO : std_logic;
 
     ---------------------------- [EX] STAGE
     signal ALU_IN_1    : data_t;
@@ -160,9 +161,11 @@ begin
     OPCODE <= IRAM_DATA(INS_OP_CODE_L downto INS_OP_CODE_R); -- send the opcode to the controller
 
     ---------------------------- Sign Extend
-    -- MUX_SIGNED: based on the signed type (0: unsigned, 1: signed)
-    INS_IMM_EXT <= to_data(resize(unsigned(INS_IMM), IMM'length)) when CW.decode.MUX_SIGNED = '0' else
-        to_data(unsigned(resize(signed(INS_IMM), IMM'length)));
+    -- MUX_SIGNED: based on the signed type and shift needed (00: unsigned, 01: signed, 10: shifted signed for branches)
+    INS_IMM_EXT <= to_data(resize(unsigned(INS_IMM), IMM'length)) when CW.decode.MUX_SIGNED = "00" else
+        to_data(unsigned(resize(signed(INS_IMM), IMM'length))) when CW.decode.MUX_SIGNED = "01" else
+        -- branches require word indexing, while compiler gives us byte addresses; same issue as J instructions
+        to_data(unsigned(shift_right((resize(signed(INS_IMM), IMM'length)), 2)));
 
     INS_J_IMM_EXT <= to_data(unsigned(shift_right((resize(signed(INS_J_IMM), IMM'length)), 2)));
 
@@ -192,9 +195,16 @@ begin
     MUX_LL_OUT <= ALU_OUT when CW.execute.MUX_LL_SEL = '0' else
         LL_ALU_OUT;
 
-    -- MUX_COND: based on whether or not a jump needs to be performed (0: NPC, 1: J ADDR)
-    MUX_COND_OUT <= (PC + 1) when CW.execute.MUX_COND_SEL = '0' else
-        pc_t(ALU_OUT(PC_SIZE - 1 downto 0));
+    -- MUX_COND: based on whether or not a jump needs to be performed (00: NPC, 01/10: B ADDR, 11: J ADDR)
+    MUX_COND_OUT <= pc_t(ALU_OUT(PC_SIZE - 1 downto 0)) when
+                    -- J-TYPE instructions
+                    ((CW.execute.MUX_COND_SEL = "11") OR 
+                    -- Branch zero and zero detected
+                    ((CW.execute.MUX_COND_SEL = "01") AND (A_EQ_ZERO = '1')) OR
+                    -- Branch not zero and zero not detected
+                    ((CW.execute.MUX_COND_SEL = "10") AND (A_EQ_ZERO = '0'))) else
+                    -- All other I/R TYPE instructions
+                    (PC + 1);
 
     -- MUX_LMD: RF data write input (0: LMD, 1: ALU_OUT)
     MUX_LMD_OUT <= LMD when CW.wb.MUX_LMD_SEL = "00" else
@@ -204,6 +214,11 @@ begin
     -- MUX_MD: determines whether or not LMD register must be forwarded
     MUX_FWD_LMD_OUT <= std_logic_vector(B_EX) when MUX_FWD_LMD_SEL = '0' else
                   MUX_LMD_OUT;
+
+    ---------------------------- BRANCH DETECTORS
+    -- A_EQ_ZERO: zero detector for A register; 1 if it's all zeroes, 0 otherwise
+    A_EQ_ZERO <= '1' when to_integer(unsigned(A)) = 0 else '0';
+
     ---------------------------- FORWARDING UNIT
     dp_to_fu <= (
         RS_ID => RS_ID,
