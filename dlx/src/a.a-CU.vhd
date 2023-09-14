@@ -177,6 +177,8 @@ begin
                 cw_s <= J_CW;
             when JTYPE_JAL =>
                 cw_s <= JAL_CW;
+            when JTYPE_JR =>
+                cw_s <= JR_CW;
 
             when others => -- RTYPE
                 cw_s <= RTYPE_CW;

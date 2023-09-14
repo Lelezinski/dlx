@@ -151,6 +151,7 @@ package myTypes is
     -- J-Type instruction -> OPCODE field
     constant JTYPE_J   : opcode_t := "000010";
     constant JTYPE_JAL : opcode_t := "000011";
+    constant JTYPE_JR  : opcode_t := "010010";
 
     -- N-Type instruction -> OPCODE field
     constant NTYPE_NOP : opcode_t := "010101";
