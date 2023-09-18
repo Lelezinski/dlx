@@ -312,7 +312,12 @@ begin
                 SECW1 <= STALL_DECODE;
             -- IF Stalls
             elsif OPCODE = JTYPE_J or OPCODE = ITYPE_BNEZ then -- Stall 2 cc for j/branches
-                SECW0 <= insert_stall(SECW0, STALL_FETCH);
+                SECW0 <= insert_stall((WB => SECW0.MEMORY and SECW1.WB,
+                                       MEMORY => SECW0.EXECUTE and SECW1.MEMORY,
+                                       EXECUTE => SECW0.DECODE and SECW1.EXECUTE,
+                                       DECODE => SECW0.FETCH and SECW1.DECODE,
+                                       FETCH => SECW0.PREFETCH and SECW1.FETCH,
+                                       PREFETCH => '1' and SECW1.FETCH), STALL_FETCH);
             end if;
 
         end if;
