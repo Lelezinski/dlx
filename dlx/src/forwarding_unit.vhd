@@ -51,13 +51,13 @@ begin
       if ((dp_to_fu.RD_MEM = dp_to_fu.RS_ID) and
           not((cu_to_fu.RF_WR_EX = '1')
               and (unsigned(dp_to_fu.RD_EX) /= 0)
-              and (dp_to_fu.RD_EX /= dp_to_fu.RS_ID))) then
+              and (dp_to_fu.RD_EX = dp_to_fu.RS_ID))) then
         MUX_A_SEL <= "11";
       end if;
       if ((dp_to_fu.RD_MEM = dp_to_fu.RT_ID) and
           not((cu_to_fu.RF_WR_EX = '1')
               and (unsigned(dp_to_fu.RD_EX) /= 0)
-              and (dp_to_fu.RD_EX /= dp_to_fu.RT_ID))) then
+              and (dp_to_fu.RD_EX = dp_to_fu.RT_ID))) then
         MUX_B_SEL <= "11";
       end if;
     end if;
