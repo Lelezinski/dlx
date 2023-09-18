@@ -49,6 +49,7 @@ architecture RTL of CU is
     ---------------------------- CW Pipeline
     signal cw_s, cw1, cw2, cw3, cw4, cw5 : cw_t;
     signal ir_en_s, lmd_en_s             : std_logic;
+    signal IS_JUMP: std_logic;
 
     -- These signals are needed to avoid conflicts on the cw registers.
     signal ALU_OPCODE, ALU_OPCODE_UPDATED, ALU_OPCODE_UPDATED_2 : alu_op_t; -- OPCODE updated after ID stage
@@ -104,7 +105,8 @@ begin
         RF_WR_EX  => cw2.wb.RF_WR,
         RF_WR_MEM => cw3.wb.RF_WR,
         MUX_A_CU  => cw2.execute.MUX_A_SEL,
-        MUX_B_CU  => cw2.execute.MUX_B_SEL
+        MUX_B_CU  => cw2.execute.MUX_B_SEL,
+        IS_JUMP_EX   => cw2.decode.MUX_J_SEL
    );
 
     ---------------------------- RAM
