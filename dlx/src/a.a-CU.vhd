@@ -55,7 +55,7 @@ architecture RTL of CU is
     signal ALU_OPCODE, ALU_OPCODE_UPDATED, ALU_OPCODE_UPDATED_2 : alu_op_t; -- OPCODE updated after ID stage
 
     ---------------------------- SECW Pipeline
-    signal SECW0, SECW1, SECW2, SECW3, SECW4, SECW5 : stage_enable_t;
+    signal SECW0, SECW0_default, SECW0_s, SECW1, SECW1_s, SECW2, SECW3, SECW4, SECW5 : stage_enable_t;
 
 begin
 
@@ -90,14 +90,14 @@ begin
     ir_en_s <= '1';
 
     ---------------------------- SECW Pipeline
-    SECW <= SECW0;
-    --(
-    --     SECW1.FETCH,
-    --     SECW2.DECODE,
-    --     SECW3.EXECUTE,
-    --     SECW4.MEMORY,
-    --     SECW5.WB
-    -- );
+    SECW <= SECW0_s;
+
+    SECW0_default <= (WB       => SECW0.MEMORY and SECW1.WB,
+                      MEMORY   => SECW0.EXECUTE and SECW1.MEMORY,
+                      EXECUTE  => SECW0.DECODE and SECW1.EXECUTE,
+                      DECODE   => SECW0.FETCH and SECW1.DECODE,
+                      FETCH    => SECW0.PREFETCH and SECW1.FETCH,
+                      PREFETCH => '1' and SECW1.PREFETCH);
 
     ---------------------------- Forwarding unit
     cu_to_fu <= (
@@ -121,9 +121,9 @@ begin
     ---------------------------- CW Pipeline
     -- OPCODE is used as index of cw_mem.
     -- get the complete control word of the current instruction
-    CW_S_UP : process (OPCODE)
+    CW_S_UP : process (OPCODE, SECW0_s)
     begin
-        if SECW0.FETCH = '0' then
+        if SECW0_s.FETCH = '0' then
             cw_s <= NOP_CW;
         else
         case OPCODE is
@@ -289,59 +289,32 @@ begin
 
         elsif rising_edge(clk) then
             -- Pipeline Update
-            SECW0.WB       <= SECW0.MEMORY and SECW1.WB;
-            SECW0.MEMORY   <= SECW0.EXECUTE and SECW1.MEMORY;
-            SECW0.EXECUTE  <= SECW0.DECODE and SECW1.EXECUTE;
-            SECW0.DECODE   <= SECW0.FETCH and SECW1.DECODE;
-            SECW0.FETCH    <= SECW0.PREFETCH and SECW1.FETCH;
-            SECW0.PREFETCH <= '1' and SECW1.FETCH;
-
-            SECW1 <= SECW2;
+            SECW0 <= SECW0_s;
+            SECW1 <= SECW1_s;
             SECW2 <= SECW3;
             SECW3 <= SECW4;
             SECW4 <= SECW5;
             SECW5 <= STALL_CLEAR;
-
-            -- Stall sources check, in descending order to avoid conflicts
-            -- WB Stalls
-            -- ME Stalls
-            -- RST is a placeholder
-            if RST = '1' then -- Wait for DRAM ready
-                SECW1 <= STALL_MEMORY;
-            -- EX Stalls
-            -- ID Stalls
-            elsif RST = '1' then -- Wait for IRAM ready
-                SECW1 <= STALL_DECODE;
-            -- IF Stalls
-            elsif OPCODE = JTYPE_J or OPCODE = ITYPE_BNEZ then -- Stall 2 cc for j/branches
-                SECW0 <= insert_stall((WB => SECW0.MEMORY and SECW1.WB,
-                                       MEMORY => SECW0.EXECUTE and SECW1.MEMORY,
-                                       EXECUTE => SECW0.DECODE and SECW1.EXECUTE,
-                                       DECODE => SECW0.FETCH and SECW1.DECODE,
-                                       FETCH => SECW0.PREFETCH and SECW1.FETCH,
-                                       PREFETCH => '1' and SECW1.FETCH), STALL_FETCH);
-            end if;
-
         end if;
     end process STALLS_P;
 
-    -- CW1_P : process(cw1_s, ir_en_s)
-    -- begin
-    --     cw1_s <= ((cw1.fetch.PC_EN, ir_en_s, cw1.fetch.NPC_EN, cw1.fetch.IRAM_EN),
-    --             cw1.decode,
-    --             cw1.execute,
-    --             cw1.memory,
-    --             cw1.wb);
-    -- end process;
+    -- Update secw0_s only if opcode has changed
+    secw_update: process(OPCODE, SECW0_default)
+    begin
+        SECW0_s <= SECW0_default;
+        SECW1_s <= SECW2;
 
-    -- CW4_P : process(cw4, lmd_en_s)
-    -- begin
-    --     cw4_s <= (cw4.fetch,
-    --               cw4.decode,
-    --               cw4.execute,
-    --               (lmd_en_s, cw4.memory.ALU_OUT_REG_ME_EN, cw4.memory.DRAM_ENABLE, cw4.memory.DRAM_READNOTWRITE),
-    --               cw4.wb);
-    -- end process;
+        if OPCODE'event then
+            case OPCODE is
+                when JTYPE_J | JTYPE_JAL =>
+                    SECW0_s <= insert_stall(SECW0_default, STALL_FETCH);
+                    SECW1_s <= STALL_FETCH;
+                when others =>
+                    SECW0_s <= SECW0_default;
+                    SECW1_s <= SECW2;
+            end case;
+        end if ;
+    end process;
 end RTL;
 
 ----------------------------------------------------------------

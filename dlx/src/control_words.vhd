@@ -1248,7 +1248,7 @@ package control_words is
 
     constant STALL_FETCH : stage_enable_t := (
         PREFETCH => '0',
-        FETCH    => '0',
+        FETCH    => '1',
         DECODE   => '1',
         EXECUTE  => '1',
         MEMORY   => '1',
