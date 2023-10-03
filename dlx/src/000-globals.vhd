@@ -181,6 +181,7 @@ package myTypes is
         MUX_A_CU  : std_logic;
         MUX_B_CU  : std_logic;
         DRAM_READNOTWRITE: std_logic;
+        DRAM_ENABLE : std_logic;
         IS_JUMP_EX   : std_logic;
     end record;
 end myTypes;

@@ -24,7 +24,8 @@ entity DATAPATH is
         CW           : in cw_t;           -- Control Word
         SECW         : in stage_enable_t; -- Stage Enable Control Word
         -- forwarding unit signals
-        MUX_FWD_LMD_SEL: in std_logic;
+        MUX_FWD_MEM_LMD_SEL: in std_logic;
+        MUX_FWD_EX_LMD_SEL: in std_logic;
         MUX_A_SEL    : in std_logic_vector(1 downto 0); -- signal coming from forwading unit
         MUX_B_SEL    : in std_logic_vector(1 downto 0); -- signal coming from forwading unit
         dp_to_fu     : out dp_to_fu_t;
@@ -137,7 +138,8 @@ architecture RTL of DATAPATH is
     signal ALU_OUT_REG_ME : data_t;
     signal RD_MEM         : std_logic_vector(INS_R1_SIZE - 1 downto 0);
     signal NPC_MEM        : pc_t;
-    signal MUX_FWD_LMD_OUT: data_t;
+    signal MUX_FWD_MEM_LMD_OUT : data_t;
+    signal MUX_FWD_EX_LMD_OUT : data_t;
 
     ---------------------------- [WB] STAGE
     signal MUX_LMD_OUT : data_t;
@@ -212,8 +214,14 @@ begin
         to_data(NPC_MEM);
 
     -- MUX_MD: determines whether or not LMD register must be forwarded
-    MUX_FWD_LMD_OUT <= std_logic_vector(B_EX) when MUX_FWD_LMD_SEL = '0' else
-                  MUX_LMD_OUT;
+    -- from wb stage to mem stage as memory data in
+    MUX_FWD_MEM_LMD_OUT <= std_logic_vector(B_EX) when MUX_FWD_MEM_LMD_SEL = '0' else
+        MUX_LMD_OUT;
+
+    -- MUX_FWD_MEM_OUT: determines whether or not LMD register must be
+    -- forwarded from wb stage to ex stage as memory data in
+    MUX_FWD_EX_LMD_OUT <= std_logic_vector(B) when MUX_FWD_EX_LMD_SEL = '0' else
+        MUX_LMD_OUT;
 
     ---------------------------- BRANCH DETECTORS
     -- A_EQ_ZERO: zero detector for A register; 1 if it's all zeroes, 0 otherwise
@@ -230,7 +238,7 @@ begin
     ---------------------------- IRAM & DRAM
     IRAM_ADDRESS <= std_logic_vector(resize(unsigned(PC), IRAM_ADDR_SIZE));
     DRAM_ADDRESS <= std_logic_vector(ALU_OUT_REG);
-    DRAM_IN      <= MUX_FWD_LMD_OUT;
+    DRAM_IN      <= MUX_FWD_MEM_LMD_OUT;
 
     ----------------------------------------------------------------
     -- Component Instantiation
@@ -430,7 +438,7 @@ begin
             B_EX <= (others => '0');
         elsif falling_edge(CLK) then
             if (SECW.EXECUTE = '1') then
-                B_EX <= B;
+                B_EX <= MUX_FWD_EX_LMD_OUT;
             end if;
         end if;
     end process B_EX_P;

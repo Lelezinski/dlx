@@ -102,6 +102,7 @@ begin
     ---------------------------- Forwarding unit
     cu_to_fu <= (
         DRAM_READNOTWRITE => cw3.memory.DRAM_READNOTWRITE,
+        DRAM_ENABLE => cw2.memory.DRAM_ENABLE,
         RF_WR_EX  => cw2.wb.RF_WR,
         RF_WR_MEM => cw3.wb.RF_WR,
         MUX_A_CU  => cw2.execute.MUX_A_SEL,
