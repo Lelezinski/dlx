@@ -171,7 +171,7 @@ begin
             MUX_A_SEL => MUX_A_SEL,
             MUX_B_SEL => MUX_B_SEL);
 
-    HAZARD_DETECTION_UNIT: entity work.HAZARD_DETECTION_UNIT
+    HAZARD_DETECTION_UNIT_1: entity work.HAZARD_DETECTION_UNIT
         port map (
             CLK      => CLK,
             RST      => RST,
