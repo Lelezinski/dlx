@@ -25,6 +25,8 @@ entity CU is
         CW   : out cw_t;           -- control word for datapath and memories
         SECW : out stage_enable_t; -- stage enable control word
         cu_to_fu : out cu_to_fu_t;
+        cu_to_hu : out cu_to_hu_t;
+        STALL: in std_logic;
         -- Inputs
         IN_CW  : in cw_from_mem; -- input signals coming from datapath and memories
         OPCODE : in opcode_t;
@@ -53,9 +55,6 @@ architecture RTL of CU is
 
     -- These signals are needed to avoid conflicts on the cw registers.
     signal ALU_OPCODE, ALU_OPCODE_UPDATED, ALU_OPCODE_UPDATED_2 : alu_op_t; -- OPCODE updated after ID stage
-
-    ---------------------------- SECW Pipeline
-    signal SECW0, SECW0_default, SECW0_s, SECW1, SECW1_s, SECW2, SECW3, SECW4, SECW5 : stage_enable_t;
 
 begin
 
@@ -89,16 +88,6 @@ begin
     -- ir_en_s <= IRAM_READY;
     ir_en_s <= '1';
 
-    ---------------------------- SECW Pipeline
-    SECW <= SECW0_s;
-
-    SECW0_default <= (WB       => SECW0.MEMORY and SECW1.WB,
-                      MEMORY   => SECW0.EXECUTE and SECW1.MEMORY,
-                      EXECUTE  => SECW0.DECODE and SECW1.EXECUTE,
-                      DECODE   => SECW0.FETCH and SECW1.DECODE,
-                      FETCH    => SECW0.PREFETCH and SECW1.FETCH,
-                      PREFETCH => '1' and SECW1.PREFETCH);
-
     ---------------------------- Forwarding unit
     cu_to_fu <= (
         DRAM_READNOTWRITE => cw3.memory.DRAM_READNOTWRITE,
@@ -109,6 +98,12 @@ begin
         MUX_B_CU  => cw2.execute.MUX_B_SEL,
         IS_JUMP_EX   => cw2.decode.MUX_J_SEL
    );
+
+    ---------------------------- Hazard detectino unit
+    cu_to_hu <= (
+        LMD_EN => cw2.memory.LMD_EN,
+        IS_JUMP => cw_s.decode.MUX_J_SEL
+    );
 
     ---------------------------- RAM
     IRAM_ENABLE       <= '1';
@@ -122,9 +117,9 @@ begin
     ---------------------------- CW Pipeline
     -- OPCODE is used as index of cw_mem.
     -- get the complete control word of the current instruction
-    CW_S_UP : process (OPCODE, SECW0_s)
+    CW_S_UP : process (OPCODE, stall)
     begin
-        if SECW0_s.FETCH = '0' then
+        if stall = '0' then
             cw_s <= NOP_CW;
         else
         case OPCODE is
@@ -273,49 +268,6 @@ begin
             end case;
         end if;
     end process ALU_OPCODE_P;
-
-    ---------------------------- SECW Pipeline
-
-    -- Stall generation process
-    -- TODO: add other stall sources
-    STALLS_P : process (CLK, RST)
-    begin
-        if RST = '1' then
-            SECW0 <= STALL_CLEAR;
-            SECW1 <= STALL_CLEAR;
-            SECW2 <= STALL_CLEAR;
-            SECW3 <= STALL_CLEAR;
-            SECW4 <= STALL_CLEAR;
-            SECW5 <= STALL_CLEAR;
-
-        elsif rising_edge(clk) then
-            -- Pipeline Update
-            SECW0 <= SECW0_s;
-            SECW1 <= SECW1_s;
-            SECW2 <= SECW3;
-            SECW3 <= SECW4;
-            SECW4 <= SECW5;
-            SECW5 <= STALL_CLEAR;
-        end if;
-    end process STALLS_P;
-
-    -- Update secw0_s only if opcode has changed
-    secw_update: process(OPCODE, SECW0_default)
-    begin
-        SECW0_s <= SECW0_default;
-        SECW1_s <= SECW2;
-
-        if OPCODE'event then
-            case OPCODE is
-                when JTYPE_J | JTYPE_JAL =>
-                    SECW0_s <= insert_stall(SECW0_default, STALL_FETCH);
-                    SECW1_s <= STALL_FETCH;
-                when others =>
-                    SECW0_s <= SECW0_default;
-                    SECW1_s <= SECW2;
-            end case;
-        end if ;
-    end process;
 end RTL;
 
 ----------------------------------------------------------------

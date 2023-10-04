@@ -77,14 +77,20 @@ architecture tb of DLX_tb is
 
 begin
     -- IRAM
-    IRAM : ROMEM
-        generic map (RO_HEX,
-        ENTRIES    => IRAM_DEPTH,
-        WORD_SIZE  => INS_SIZE,
-        ADDR_SIZE  => IRAM_ADDR_SIZE,
-        data_delay => 0)
-        port map (CLK, RST, IRAM_ADDRESS, '1', IRAM_READY, IRAM_DATA);
-
+    ROMEM_1: entity work.ROMEM
+        generic map (
+            file_path  => RO_HEX,
+            ENTRIES    => IRAM_DEPTH,
+            WORD_SIZE  => INS_SIZE,
+            ADDR_SIZE  => IRAM_ADDR_SIZE,
+            data_delay => 0)
+        port map (
+            CLK        => CLK,
+            RST        => RST,
+            ADDRESS    => IRAM_ADDRESS,
+            ENABLE     => IRAM_ENABLE,
+            DATA_READY => IRAM_READY,
+            DATA       => IRAM_DATA);
     -- DRAM
     DRAM : RWMEM
         generic map (

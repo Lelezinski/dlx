@@ -184,6 +184,18 @@ package myTypes is
         DRAM_ENABLE : std_logic;
         IS_JUMP_EX   : std_logic;
     end record;
+
+    type dp_to_hu_t is record
+        RT_ID  : std_logic_vector(INS_R1_SIZE - 1 downto 0);
+        RS_IF  : std_logic_vector(INS_R1_SIZE - 1 downto 0);
+        RT_IF  : std_logic_vector(INS_R1_SIZE - 1 downto 0);
+    end record;
+
+    type cu_to_hu_t is record
+        LMD_EN  : std_logic;
+        IS_JUMP : std_logic;
+    end record;
+
 end myTypes;
 
 package body myTypes is

@@ -49,6 +49,7 @@ architecture RTL of DLX is
             CW   : out cw_t;
             SECW : out stage_enable_t;
             cu_to_fu : out cu_to_fu_t;
+            stall : in std_logic;
             -- Inputs
             IN_CW  : in cw_from_mem;
             OPCODE : in opcode_t;
@@ -72,6 +73,16 @@ architecture RTL of DLX is
             MUX_B_SEL : out std_logic_vector(1 downto 0));
     end component forwarding_unit;
 
+    component HAZARD_DETECTION_UNIT is
+        port (
+            CLK      : in  std_logic;
+            RST      : in  std_logic;
+            dp_to_hu : in  dp_to_hu_t;
+            cu_to_hu : in  cu_to_hu_t;
+            stall    : out std_logic;
+            SECW     : out stage_enable_t);
+    end component HAZARD_DETECTION_UNIT;
+
     component DATAPATH is
         generic (
             DATA_SIZE : integer;
@@ -90,6 +101,7 @@ architecture RTL of DLX is
             MUX_FWD_MEM_LMD_SEL : in std_logic;
             MUX_FWD_EX_LMD_SEL : in std_logic;
             dp_to_fu     : out dp_to_fu_t;
+            dp_to_hu     : out dp_to_hu_t;
             OUT_CW       : out cw_from_mem;
             OPCODE       : out opcode_t;
             FUNC         : out func_t;
@@ -116,6 +128,9 @@ architecture RTL of DLX is
     signal MUX_FWD_EX_LMD_SEL : std_logic;
     signal MUX_A_SEL : std_logic_vector(1 downto 0);
     signal MUX_B_SEL : std_logic_vector(1 downto 0);
+    signal dp_to_hu : dp_to_hu_t;
+    signal cu_to_hu : cu_to_hu_t;
+    signal stall : std_logic;
 begin
 
     ----------------------------------------------------------------
@@ -132,8 +147,10 @@ begin
         port map(
             cw                => cw,
             in_cw             => cw_from,
-            SECW              => SECW,
+            SECW              => open,
             cu_to_fu          => cu_to_fu,
+            cu_to_hu          => cu_to_hu,
+            stall             => stall,
             OPCODE            => OPCODE,
             FUNC              => FUNC,
             CLK               => CLK,
@@ -154,6 +171,15 @@ begin
             MUX_A_SEL => MUX_A_SEL,
             MUX_B_SEL => MUX_B_SEL);
 
+    HAZARD_DETECTION_UNIT: entity work.HAZARD_DETECTION_UNIT
+        port map (
+            CLK      => CLK,
+            RST      => RST,
+            dp_to_hu => dp_to_hu,
+            cu_to_hu => cu_to_hu,
+            stall    => stall,
+            SECW     => SECW);
+
     DATAPATH_1 : entity work.DATAPATH
         generic map(
             DATA_SIZE => numBit,
@@ -172,6 +198,7 @@ begin
             MUX_A_SEL    => MUX_A_SEL,
             MUX_B_SEL    => MUX_B_SEL,
             dp_to_fu     => dp_to_fu,
+            dp_to_hu     => dp_to_hu,
             OPCODE       => OPCODE,
             FUNC         => FUNC,
             DRAM_IN      => DRAM_IN,

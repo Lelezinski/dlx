@@ -29,6 +29,7 @@ entity DATAPATH is
         MUX_A_SEL    : in std_logic_vector(1 downto 0); -- signal coming from forwading unit
         MUX_B_SEL    : in std_logic_vector(1 downto 0); -- signal coming from forwading unit
         dp_to_fu     : out dp_to_fu_t;
+        dp_to_hu     : out dp_to_hu_t;
         OUT_CW       : out cw_from_mem;   -- Output Signals to CU
         OPCODE       : out opcode_t;
         FUNC         : out func_t;
@@ -235,6 +236,13 @@ begin
         RD_EX => RD_EX
     );
 
+    ---------------------------- HAZARD DETECTION UNIT
+    dp_to_hu <= (
+        RT_ID => RT_ID,
+        RS_IF => INS_RS1,
+        RT_IF => INS_RS2,
+        OPCODE => IRAM_DATA(INS_OP_CODE_L downto INS_OP_CODE_R)
+    );
     ---------------------------- IRAM & DRAM
     IRAM_ADDRESS <= std_logic_vector(resize(unsigned(PC), IRAM_ADDR_SIZE));
     DRAM_ADDRESS <= std_logic_vector(ALU_OUT_REG);
