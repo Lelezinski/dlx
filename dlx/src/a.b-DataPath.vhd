@@ -240,8 +240,7 @@ begin
     dp_to_hu <= (
         RT_ID => RT_ID,
         RS_IF => INS_RS1,
-        RT_IF => INS_RS2,
-        OPCODE => IRAM_DATA(INS_OP_CODE_L downto INS_OP_CODE_R)
+        RT_IF => INS_RS2
     );
     ---------------------------- IRAM & DRAM
     IRAM_ADDRESS <= std_logic_vector(resize(unsigned(PC), IRAM_ADDR_SIZE));
