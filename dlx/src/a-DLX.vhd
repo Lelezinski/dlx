@@ -49,7 +49,7 @@ architecture RTL of DLX is
             CW   : out cw_t;
             SECW : out stage_enable_t;
             cu_to_fu : out cu_to_fu_t;
-            stall : in std_logic;
+            stall : in stage_enable_t;
             -- Inputs
             IN_CW  : in cw_from_mem;
             OPCODE : in opcode_t;
@@ -67,6 +67,7 @@ architecture RTL of DLX is
         port (
             cu_to_fu  : in  cu_to_fu_t;
             dp_to_fu  : in  dp_to_fu_t;
+            SECW      : in stage_enable_t;
             MUX_FWD_MEM_LMD_SEL : out std_logic;
             MUX_FWD_EX_LMD_SEL : out std_logic;
             MUX_A_SEL : out std_logic_vector(1 downto 0);
@@ -150,7 +151,7 @@ begin
             SECW              => open,
             cu_to_fu          => cu_to_fu,
             cu_to_hu          => cu_to_hu,
-            stall             => stall,
+            stall             => SECW,
             OPCODE            => OPCODE,
             FUNC              => FUNC,
             CLK               => CLK,

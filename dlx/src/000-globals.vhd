@@ -192,8 +192,9 @@ package myTypes is
     end record;
 
     type cu_to_hu_t is record
-        LMD_EN  : std_logic;
-        IS_JUMP : std_logic;
+        LMD_EN     : std_logic;
+        IS_JUMP_ID : std_logic;
+        IS_JUMP_EX : std_logic;
     end record;
 
 end myTypes;

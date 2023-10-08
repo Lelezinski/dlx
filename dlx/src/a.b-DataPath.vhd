@@ -320,8 +320,12 @@ begin
         if RST = '1' then
             IR <= "01010100000000000000000000000000"; -- reset in a NOP
         elsif falling_edge(CLK) then
-            if (SECW.FETCH = '1') then
+            if SECW.FLUSH_IF = '1' then
+                IR <= "01010100000000000000000000000000"; -- reset in a NOP
+            elsif (SECW.FETCH = '1') then
                 IR <= IRAM_DATA;
+            -- else
+            --     IR <= "01010100000000000000000000000000";
             end if;
         end if;
     end process IR_P;

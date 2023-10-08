@@ -953,6 +953,7 @@ package control_words is
     ---------------------------- Definition
 
     type stage_enable_t is record
+        FLUSH_IF : std_logic;
         PREFETCH : std_logic;
         FETCH    : std_logic;
         DECODE   : std_logic;
@@ -964,57 +965,13 @@ package control_words is
     ---------------------------- Constants
 
     constant STALL_CLEAR : stage_enable_t := (
+        FLUSH_IF => '0',
         PREFETCH => '1',
         FETCH    => '1',
         DECODE   => '1',
         EXECUTE  => '1',
         MEMORY   => '1',
         WB       => '1'
-    );
-
-    constant STALL_FETCH : stage_enable_t := (
-        PREFETCH => '0',
-        FETCH    => '1',
-        DECODE   => '1',
-        EXECUTE  => '1',
-        MEMORY   => '1',
-        WB       => '1'
-    );
-
-    constant STALL_DECODE : stage_enable_t := (
-        PREFETCH => '0',
-        FETCH    => '0',
-        DECODE   => '0',
-        EXECUTE  => '1',
-        MEMORY   => '1',
-        WB       => '1'
-    );
-
-    constant STALL_EXECUTE : stage_enable_t := (
-        PREFETCH => '0',
-        FETCH    => '0',
-        DECODE   => '0',
-        EXECUTE  => '0',
-        MEMORY   => '1',
-        WB       => '1'
-    );
-
-    constant STALL_MEMORY : stage_enable_t := (
-        PREFETCH => '0',
-        FETCH    => '0',
-        DECODE   => '0',
-        EXECUTE  => '0',
-        MEMORY   => '0',
-        WB       => '1'
-    );
-
-    constant STALL_WB : stage_enable_t := (
-        PREFETCH => '0',
-        FETCH    => '0',
-        DECODE   => '0',
-        EXECUTE  => '0',
-        MEMORY   => '0',
-        WB       => '0'
     );
 
     -----------------------------------------------------------------------------

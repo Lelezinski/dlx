@@ -26,7 +26,7 @@ entity CU is
         SECW : out stage_enable_t; -- stage enable control word
         cu_to_fu : out cu_to_fu_t;
         cu_to_hu : out cu_to_hu_t;
-        STALL: in std_logic;
+        STALL: in stage_enable_t;
         -- Inputs
         IN_CW  : in cw_from_mem; -- input signals coming from datapath and memories
         OPCODE : in opcode_t;
@@ -98,7 +98,8 @@ begin
     ---------------------------- Hazard detectino unit
     cu_to_hu <= (
         LMD_EN => cw2.memory.LMD_EN,
-        IS_JUMP => cw_s.decode.MUX_J_SEL
+        IS_JUMP_ID => cw1.decode.MUX_J_SEL,
+        IS_JUMP_EX => cw2.decode.MUX_J_SEL
     );
 
     ---------------------------- RAM
@@ -113,11 +114,8 @@ begin
     ---------------------------- CW Pipeline
     -- OPCODE is used as index of cw_mem.
     -- get the complete control word of the current instruction
-    CW_S_UP : process (OPCODE, stall)
+    CW_S_UP : process (OPCODE)
     begin
-        if stall = '0' then
-            cw_s <= NOP_CW;
-        else
         case OPCODE is
 
             when ITYPE_ADDI => -- ITYPE
@@ -180,7 +178,6 @@ begin
             when others => -- RTYPE
                 cw_s <= RTYPE_CW;
         end case;
-    end if;
     end process;
 
     -- process to pipeline control words
@@ -191,18 +188,25 @@ begin
             cw2 <= init_cw;
             cw3 <= init_cw;
             cw4 <= init_cw;
+            -- TODO rimuovere cw5
             cw5 <= init_cw;
         elsif falling_edge(clk) then
             -- shift the slice of the control word to the correct control register
-            cw1 <= cw_s;
-            cw2 <= cw1;
+            cw1 <= cw_s; -- decode cw
+
+            if STALL.FETCH = '0' then
+                cw2                <= NOP_CW;
+                ALU_OPCODE_UPDATED <= ALU_ADD;
+            else
+                cw2 <= cw1;  -- execute cw
+                ALU_OPCODE_UPDATED   <= ALU_OPCODE;
+            end if;
+
             cw3 <= cw2;
             cw4 <= cw3;
             cw5 <= cw4;
-            -- update the OPCODE during ID stage
-            ALU_OPCODE_UPDATED   <= ALU_OPCODE;
-            ALU_OPCODE_UPDATED_2 <= ALU_OPCODE_UPDATED;
 
+            ALU_OPCODE_UPDATED_2 <= ALU_OPCODE_UPDATED;
         end if;
     end process CW_PIPE;
 
