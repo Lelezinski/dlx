@@ -12,16 +12,10 @@ package control_words is
     -----------------------------------------------------------------------------
     type fetch_cw_t is record
         PC_EN   : std_logic; -- Progam counter latch enable
-        IR_EN   : std_logic; -- Instruction Register Latch Enable
-        NPC_EN  : std_logic; -- Next Program counter latch enable
         IRAM_EN : std_logic; -- instruction ram enable signal
     end record fetch_cw_t;
 
     type decode_cw_t is record
-        A_EN       : std_logic; -- A operad register latch enable
-        B_EN       : std_logic; -- B operad register latch enable
-        IMM_EN     : std_logic; -- IMM operad register latch enable
-        NPC_ID_EN  : std_logic; -- Next Program counter [EX] latch enable
         RF_RESET   : std_logic; -- register file reset signal
         RF_ENABLE  : std_logic; -- register file enable signal
         RF_RD1     : std_logic; -- register file read port one signal
@@ -32,11 +26,7 @@ package control_words is
     end record decode_cw_t;
 
     type execute_cw_t is record
-        ALU_OUT_REG_EN : std_logic; -- ALU_OUT register latch enable
-        COND_EN        : std_logic; -- Branch Condition latch enable
         ALU_OP         : alu_op_t;
-        B_EX_EN        : std_logic; -- B operad register [EX] latch enable
-        NPC_EX_EN      : std_logic; -- Next Program counter [EX] latch enable
         MUX_A_SEL      : std_logic; -- MUX_A selection signal
         MUX_B_SEL      : std_logic; -- MUX_B selection signal
         MUX_LL_SEL     : std_logic; -- MUX_LL selection signal
@@ -45,7 +35,6 @@ package control_words is
 
     type memory_cw_t is record
         LMD_EN            : std_logic; -- Loaded memory data latch enable
-        ALU_OUT_REG_ME_EN : std_logic; -- ALU_OUT register [ME] latch enable
         DRAM_ENABLE       : std_logic; -- data memory enable signal
         DRAM_READNOTWRITE : std_logic; -- data memory r/w signal
     end record memory_cw_t;
@@ -75,8 +64,6 @@ package control_words is
     -- Default IF Field
     constant fetch_cw_def : fetch_cw_t := (
         PC_EN   => '1',
-        IR_EN   => '1',
-        NPC_EN  => '1',
         IRAM_EN => '1'
     );
 
@@ -86,10 +73,6 @@ package control_words is
     constant ADDI_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -99,11 +82,7 @@ package control_words is
         MUX_R_SEL  => "01"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_add,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -111,7 +90,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -125,10 +103,6 @@ package control_words is
     constant ADDUI_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -138,11 +112,7 @@ package control_words is
         MUX_R_SEL  => "01"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => ALU_ADDu,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -150,7 +120,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -164,10 +133,6 @@ package control_words is
     constant SUBI_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -177,11 +142,7 @@ package control_words is
         MUX_R_SEL  => "01"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_sub,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -189,7 +150,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -203,10 +163,6 @@ package control_words is
     constant SUBUI_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -216,11 +172,7 @@ package control_words is
         MUX_R_SEL  => "01"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => ALU_SUBu,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -228,7 +180,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -242,10 +193,6 @@ package control_words is
     constant ANDI_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -255,11 +202,7 @@ package control_words is
         MUX_R_SEL  => "01"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_and,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -267,7 +210,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -281,10 +223,6 @@ package control_words is
     constant ORI_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -294,11 +232,7 @@ package control_words is
         MUX_R_SEL  => "01"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_or,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -306,7 +240,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -320,10 +253,6 @@ package control_words is
     constant SW_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -333,11 +262,7 @@ package control_words is
         MUX_R_SEL  => "01"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_add,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -345,7 +270,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '1',
         DRAM_READNOTWRITE => '0'
         ),
@@ -359,10 +283,6 @@ package control_words is
     constant LW_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -372,11 +292,7 @@ package control_words is
         MUX_R_SEL  => "01"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_add,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -384,7 +300,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '1',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '1',
         DRAM_READNOTWRITE => '1'
         ),
@@ -398,10 +313,6 @@ package control_words is
     constant XORI_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -411,11 +322,7 @@ package control_words is
         MUX_R_SEL  => "01"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_xor,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -423,7 +330,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -437,10 +343,6 @@ package control_words is
     constant SLLI_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -450,11 +352,7 @@ package control_words is
         MUX_R_SEL  => "01"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_sll,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -462,7 +360,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -476,10 +373,6 @@ package control_words is
     constant SRLI_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -489,11 +382,7 @@ package control_words is
         MUX_R_SEL  => "01"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_srl,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -501,7 +390,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -515,10 +403,6 @@ package control_words is
     constant SEQI_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -528,11 +412,7 @@ package control_words is
         MUX_R_SEL  => "01"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_seq,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -540,7 +420,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -554,10 +433,6 @@ package control_words is
     constant SNEI_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -567,11 +442,7 @@ package control_words is
         MUX_R_SEL  => "01"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_sne,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -579,7 +450,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -593,10 +463,6 @@ package control_words is
     constant SLTI_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -606,11 +472,7 @@ package control_words is
         MUX_R_SEL  => "01"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_slt,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -618,7 +480,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -632,10 +493,6 @@ package control_words is
     constant SGTI_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -645,11 +502,7 @@ package control_words is
         MUX_R_SEL  => "01"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_sgt,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -657,7 +510,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -671,10 +523,6 @@ package control_words is
     constant SLEI_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -684,11 +532,7 @@ package control_words is
         MUX_R_SEL  => "01"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_sle,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -696,7 +540,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -710,10 +553,6 @@ package control_words is
     constant SGEI_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -723,11 +562,7 @@ package control_words is
         MUX_R_SEL  => "01"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_sge,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -735,7 +570,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -749,10 +583,6 @@ package control_words is
     constant SLTUI_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -762,11 +592,7 @@ package control_words is
         MUX_R_SEL  => "01"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_sltu,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -774,7 +600,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -788,10 +613,6 @@ package control_words is
     constant SGTUI_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -801,11 +622,7 @@ package control_words is
         MUX_R_SEL  => "01"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_sgtu,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -813,7 +630,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -827,10 +643,6 @@ package control_words is
     constant SLEUI_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -840,11 +652,7 @@ package control_words is
         MUX_R_SEL  => "01"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_sleu,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -852,7 +660,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -866,10 +673,6 @@ package control_words is
     constant SGEUI_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -879,11 +682,7 @@ package control_words is
         MUX_R_SEL  => "01"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_sgeu,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -891,7 +690,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -906,10 +704,6 @@ package control_words is
     constant NOP_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -919,11 +713,7 @@ package control_words is
         MUX_R_SEL  => "01"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_add,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -931,7 +721,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -947,10 +736,6 @@ package control_words is
     constant RTYPE_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -960,11 +745,7 @@ package control_words is
         MUX_R_SEL  => "00"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '0',
         ALU_OP         => alu_add,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '0',
         MUX_LL_SEL     => '0',
@@ -972,7 +753,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -988,10 +768,6 @@ package control_words is
     constant J_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -1001,11 +777,7 @@ package control_words is
         MUX_R_SEL  => "00"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_add,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '0',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -1013,7 +785,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -1027,10 +798,6 @@ package control_words is
     constant JAL_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -1040,11 +807,7 @@ package control_words is
         MUX_R_SEL  => "10"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_add,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '0',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -1052,7 +815,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -1066,10 +828,6 @@ package control_words is
         constant JR_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -1079,11 +837,7 @@ package control_words is
         MUX_R_SEL  => "00"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '0',
         ALU_OP         => alu_add,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '0',
         MUX_LL_SEL     => '0',
@@ -1091,7 +845,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -1105,10 +858,6 @@ package control_words is
     constant BEQZ_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -1118,11 +867,7 @@ package control_words is
         MUX_R_SEL  => "10"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_add,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '0',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -1130,7 +875,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -1144,10 +888,6 @@ package control_words is
     constant BNEZ_CW : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -1157,11 +897,7 @@ package control_words is
         MUX_R_SEL  => "10"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '1',
-        COND_EN        => '1',
         ALU_OP         => alu_add,
-        B_EX_EN        => '1',
-        NPC_EX_EN      => '1',
         MUX_A_SEL      => '0',
         MUX_B_SEL      => '1',
         MUX_LL_SEL     => '0',
@@ -1169,7 +905,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '1',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),
@@ -1185,10 +920,6 @@ package control_words is
     signal init_cw : cw_t := (
         fetch_cw_def,
         decode     => (
-        A_EN       => '1',
-        B_EN       => '1',
-        IMM_EN     => '1',
-        NPC_ID_EN  => '1',
         RF_RESET   => '0',
         RF_ENABLE  => '1',
         RF_RD1     => '1',
@@ -1198,11 +929,7 @@ package control_words is
         MUX_R_SEL  => "00"
         ),
         execute        => (
-        ALU_OUT_REG_EN => '0',
-        COND_EN        => '0',
         ALU_OP         => alu_add,
-        B_EX_EN        => '0',
-        NPC_EX_EN      => '0',
         MUX_A_SEL      => '0',
         MUX_B_SEL      => '0',
         MUX_LL_SEL     => '0',
@@ -1210,7 +937,6 @@ package control_words is
         ),
         memory            => (
         LMD_EN            => '0',
-        ALU_OUT_REG_ME_EN => '0',
         DRAM_ENABLE       => '0',
         DRAM_READNOTWRITE => '1'
         ),

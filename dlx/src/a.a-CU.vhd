@@ -71,11 +71,7 @@ begin
         cw1.fetch,
         cw1.decode,
         (
-        cw2.execute.ALU_OUT_REG_EN,
-        cw2.execute.COND_EN,
         ALU_OPCODE_UPDATED_2,
-        cw2.execute.B_EX_EN,
-        cw2.execute.NPC_EX_EN,
         cw2.execute.MUX_A_SEL,
         cw2.execute.MUX_B_SEL,
         cw2.execute.MUX_LL_SEL,
