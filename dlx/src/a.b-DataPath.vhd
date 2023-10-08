@@ -186,13 +186,13 @@ begin
     ALU_IN_1 <= to_data(NPC_ID) when MUX_A_SEL = "00" else
                 A               when MUX_A_SEL = "01" else
                 ALU_OUT_REG     when MUX_A_SEL = "10" else -- from the exe
-                ALU_OUT_REG_ME  when MUX_A_SEL = "11"; -- from mem
+                MUX_LMD_OUT     when MUX_A_SEL = "11"; -- from mem
 
     -- MUX_B: ALU input 2 (0: B, 1: IMM)
     ALU_IN_2 <= B               when MUX_B_SEL = "00" else
                 IMM             when MUX_B_SEL = "01" else
                 ALU_OUT_REG     when MUX_B_SEL = "10" else -- from exe
-                ALU_OUT_REG_ME  when MUX_B_SEL = "11"; -- from mem
+                MUX_LMD_OUT     when MUX_B_SEL = "11"; -- from mem
 
     -- MUX_LL: based on the ALU used (0: ALU, 1: LL_ALU)
     MUX_LL_OUT <= ALU_OUT when CW.execute.MUX_LL_SEL = '0' else
