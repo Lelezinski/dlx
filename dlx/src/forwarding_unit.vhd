@@ -20,6 +20,7 @@ entity forwarding_unit is
 
     MUX_FWD_MEM_LMD_SEL : out std_logic;
     MUX_FWD_EX_LMD_SEL : out std_logic;
+    MUX_FWD_BZ_SEL : out std_logic_vector(1 downto 0);
     MUX_A_SEL : out std_logic_vector(1 downto 0);
     MUX_B_SEL : out std_logic_vector(1 downto 0)
     );
@@ -34,10 +35,13 @@ begin
     MUX_B_SEL <= '0' & cu_to_fu.MUX_B_CU;
     MUX_FWD_MEM_LMD_SEL <= '0';
     MUX_FWD_EX_LMD_SEL <= '0';
+    MUX_FWD_BZ_SEL <= "00";
 
     -- detect hazards in execute stage
     -- forwarding from the exe/mem stage
-    if (cu_to_fu.RF_WR_EX = '1' or cu_to_fu.DRAM_ENABLE = '1' or cu_to_fu.MUX_COND_SEL = "01")
+    if (cu_to_fu.RF_WR_EX = '1' or cu_to_fu.DRAM_ENABLE = '1')
+      and (cu_to_fu.MUX_COND_SEL /= "01" )
+      and (cu_to_fu.MUX_COND_SEL /= "10" )
       and (unsigned(dp_to_fu.RD_EX) /= 0) then
       if (dp_to_fu.RD_EX = dp_to_fu.RS_ID) then
         MUX_A_SEL <= "10";
@@ -50,7 +54,9 @@ begin
 
     -- detect hazards in memory stage
     -- forwarding from the mem/wb stage
-    if (cu_to_fu.RF_WR_MEM = '1' or cu_to_fu.DRAM_ENABLE = '1' or cu_to_fu.MUX_COND_SEL = "01")
+    if (cu_to_fu.RF_WR_MEM = '1' or cu_to_fu.DRAM_ENABLE = '1')
+      and (cu_to_fu.MUX_COND_SEL /= "01" )
+      and (cu_to_fu.MUX_COND_SEL /= "10" )
       and (unsigned(dp_to_fu.RD_MEM) /= 0)
       and (cu_to_fu.IS_JUMP_EX = '0') then
       if ((dp_to_fu.RD_MEM = dp_to_fu.RS_ID) and
@@ -66,6 +72,17 @@ begin
               and (dp_to_fu.RD_EX = dp_to_fu.RT_ID))) then
         MUX_B_SEL <= "11";
       end if;
+    end if;
+
+    if (cu_to_fu.MUX_COND_SEL = "01" or cu_to_fu.MUX_COND_SEL = "10")
+      and (unsigned(dp_to_fu.RD_EX) /= 0) and (dp_to_fu.RD_EX = dp_to_fu.RS_ID) then
+      MUX_FWD_BZ_SEL <= "10";
+    end if;
+
+    if (cu_to_fu.MUX_COND_SEL = "01" or cu_to_fu.MUX_COND_SEL = "10") and
+      (unsigned(dp_to_fu.RD_EX) /= 0) and
+      (dp_to_fu.RD_MEM = dp_to_fu.RS_ID) then
+        MUX_FWD_BZ_SEL <= "11";
     end if;
 
     -- forward loaded data if storing it is needed

@@ -26,6 +26,7 @@ entity DATAPATH is
         -- forwarding unit signals
         MUX_FWD_MEM_LMD_SEL: in std_logic;
         MUX_FWD_EX_LMD_SEL: in std_logic;
+        MUX_FWD_BZ_SEL: in std_logic_vector(1 downto 0);
         MUX_A_SEL    : in std_logic_vector(1 downto 0); -- signal coming from forwading unit
         MUX_B_SEL    : in std_logic_vector(1 downto 0); -- signal coming from forwading unit
         dp_to_fu     : out dp_to_fu_t;
@@ -132,6 +133,7 @@ architecture RTL of DATAPATH is
     signal B_EX        : data_t;
     signal NPC_EX      : pc_t;
     signal RD_EX       : std_logic_vector(INS_R1_SIZE - 1 downto 0);
+    signal MUX_FWD_BZ_OUT : data_t;
 
     ---------------------------- [ME] STAGE
     signal MUX_COND_OUT   : pc_t;
@@ -225,8 +227,11 @@ begin
         MUX_LMD_OUT;
 
     ---------------------------- BRANCH DETECTORS
+    MUX_FWD_BZ_OUT <= A when MUX_FWD_BZ_SEL = "00" else
+                      ALU_OUT_REG when MUX_FWD_BZ_SEL = "10" else  -- from the exe
+                      MUX_LMD_OUT when MUX_FWD_BZ_SEL = "11";      -- from mem
     -- A_EQ_ZERO: zero detector for A register; 1 if it's all zeroes, 0 otherwise
-    A_EQ_ZERO <= '1' when to_integer(unsigned(A)) = 0 else '0';
+    A_EQ_ZERO <= '1' when to_integer(unsigned(MUX_FWD_BZ_OUT)) = 0 else '0';
 
     ---------------------------- FORWARDING UNIT
     dp_to_fu <= (
