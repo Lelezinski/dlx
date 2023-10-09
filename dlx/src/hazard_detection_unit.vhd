@@ -35,7 +35,7 @@ begin
                 MEMORY   => '1',
                 WB       => '1'
             );
-        elsif (cu_to_hu.IS_JUMP_ID = '1' or cu_to_hu.IS_B_ID = "01") then
+        elsif (cu_to_hu.IS_JUMP_ID = '1' or cu_to_hu.IS_B_ID = "10" or cu_to_hu.IS_B_ID = "01") then
             SECW <= (
                 FLUSH_IF => '1',
                 PREFETCH => '0',
