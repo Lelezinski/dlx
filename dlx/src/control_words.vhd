@@ -864,7 +864,7 @@ package control_words is
         RF_RD2     => '1',
         MUX_SIGNED => "10",
         MUX_J_SEL  => '0',
-        MUX_R_SEL  => "10"
+        MUX_R_SEL  => "00"
         ),
         execute        => (
         ALU_OP         => alu_add,
@@ -894,7 +894,7 @@ package control_words is
         RF_RD2     => '1',
         MUX_SIGNED => "10",
         MUX_J_SEL  => '0',
-        MUX_R_SEL  => "10"
+        MUX_R_SEL  => "00"
         ),
         execute        => (
         ALU_OP         => alu_add,

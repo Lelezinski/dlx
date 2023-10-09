@@ -23,7 +23,7 @@ entity CU is
         RST : in std_logic; -- Active High
         -- Control
         CW   : out cw_t;           -- control word for datapath and memories
-        SECW : out stage_enable_t; -- stage enable control word
+        SECW : out stage_enable_t; -- stage enable control word TODO: remove
         cu_to_fu : out cu_to_fu_t;
         cu_to_hu : out cu_to_hu_t;
         STALL: in stage_enable_t;
@@ -192,13 +192,18 @@ begin
             cw5 <= init_cw;
         elsif falling_edge(clk) then
             -- shift the slice of the control word to the correct control register
-            cw1 <= cw_s; -- decode cw
+           
+            if STALL.FLUSH_IF = '1' then
+                cw1 <= NOP_CW; -- decode cw
+            else
+                cw1 <= cw_s; -- decode cw
+            end if;            
 
             if STALL.FETCH = '0' then
                 cw2                <= NOP_CW;
                 ALU_OPCODE_UPDATED <= ALU_ADD;
             else
-                cw2 <= cw1;  -- execute cw
+                cw2                  <= cw1;  -- execute cw
                 ALU_OPCODE_UPDATED   <= ALU_OPCODE;
             end if;
 

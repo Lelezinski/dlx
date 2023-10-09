@@ -12,7 +12,6 @@ entity HAZARD_DETECTION_UNIT is
         dp_to_hu : in dp_to_hu_t;
         cu_to_hu : in cu_to_hu_t;
 
-        stall : out std_logic;
         SECW  : out stage_enable_t
         );
 end entity HAZARD_DETECTION_UNIT;

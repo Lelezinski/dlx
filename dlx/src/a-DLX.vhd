@@ -80,7 +80,6 @@ architecture RTL of DLX is
             RST      : in  std_logic;
             dp_to_hu : in  dp_to_hu_t;
             cu_to_hu : in  cu_to_hu_t;
-            stall    : out std_logic;
             SECW     : out stage_enable_t);
     end component HAZARD_DETECTION_UNIT;
 
@@ -178,7 +177,6 @@ begin
             RST      => RST,
             dp_to_hu => dp_to_hu,
             cu_to_hu => cu_to_hu,
-            stall    => stall,
             SECW     => SECW);
 
     DATAPATH_1 : entity work.DATAPATH
