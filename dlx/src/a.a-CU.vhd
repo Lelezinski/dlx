@@ -92,14 +92,16 @@ begin
         RF_WR_MEM => cw4.wb.RF_WR,
         MUX_A_CU  => cw2.execute.MUX_A_SEL,
         MUX_B_CU  => cw2.execute.MUX_B_SEL,
-        IS_JUMP_EX   => cw2.decode.MUX_J_SEL
+        IS_JUMP_EX   => cw2.decode.MUX_J_SEL,
+        MUX_COND_SEL => cw2.execute.MUX_COND_SEL
    );
 
     ---------------------------- Hazard detectino unit
     cu_to_hu <= (
         LMD_EN => cw2.memory.LMD_EN,
         IS_JUMP_ID => cw1.decode.MUX_J_SEL,
-        IS_JUMP_EX => cw2.decode.MUX_J_SEL
+        IS_JUMP_EX => cw2.decode.MUX_J_SEL,
+        IS_B_ID => cw1.execute.MUX_COND_SEL
     );
 
     ---------------------------- RAM

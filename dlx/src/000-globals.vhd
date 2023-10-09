@@ -180,9 +180,10 @@ package myTypes is
         RF_WR_MEM : std_logic;
         MUX_A_CU  : std_logic;
         MUX_B_CU  : std_logic;
-        DRAM_READNOTWRITE: std_logic;
-        DRAM_ENABLE : std_logic;
-        IS_JUMP_EX   : std_logic;
+        DRAM_READNOTWRITE : std_logic;
+        DRAM_ENABLE       : std_logic;
+        IS_JUMP_EX        : std_logic;
+        MUX_COND_SEL      : std_logic_vector(1 downto 0);
     end record;
 
     type dp_to_hu_t is record
@@ -195,6 +196,7 @@ package myTypes is
         LMD_EN     : std_logic;
         IS_JUMP_ID : std_logic;
         IS_JUMP_EX : std_logic;
+        IS_B_ID : std_logic_vector(1 downto 0);
     end record;
 
 end myTypes;

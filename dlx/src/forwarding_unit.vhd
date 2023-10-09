@@ -37,7 +37,7 @@ begin
 
     -- detect hazards in execute stage
     -- forwarding from the exe/mem stage
-    if (cu_to_fu.RF_WR_EX = '1' or cu_to_fu.DRAM_ENABLE = '1')
+    if (cu_to_fu.RF_WR_EX = '1' or cu_to_fu.DRAM_ENABLE = '1' or cu_to_fu.MUX_COND_SEL = "01")
       and (unsigned(dp_to_fu.RD_EX) /= 0) then
       if (dp_to_fu.RD_EX = dp_to_fu.RS_ID) then
         MUX_A_SEL <= "10";
@@ -50,7 +50,7 @@ begin
 
     -- detect hazards in memory stage
     -- forwarding from the mem/wb stage
-    if (cu_to_fu.RF_WR_MEM = '1' or cu_to_fu.DRAM_ENABLE = '1')
+    if (cu_to_fu.RF_WR_MEM = '1' or cu_to_fu.DRAM_ENABLE = '1' or cu_to_fu.MUX_COND_SEL = "01")
       and (unsigned(dp_to_fu.RD_MEM) /= 0)
       and (cu_to_fu.IS_JUMP_EX = '0') then
       if ((dp_to_fu.RD_MEM = dp_to_fu.RS_ID) and
