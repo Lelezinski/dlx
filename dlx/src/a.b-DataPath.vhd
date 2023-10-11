@@ -131,6 +131,7 @@ architecture RTL of DATAPATH is
     signal ALU_OUT_REG : data_t;
     signal COND        : std_logic;
     signal B_EX        : data_t;
+    signal B_TAKEN     : std_logic;
     signal NPC_EX      : pc_t;
     signal RD_EX       : std_logic_vector(INS_R1_SIZE - 1 downto 0);
     signal MUX_FWD_BZ_OUT : data_t;
@@ -245,7 +246,8 @@ begin
     dp_to_hu <= (
         RT_ID => RT_ID,
         RS_IF => INS_RS1,
-        RT_IF => INS_RS2
+        RT_IF => INS_RS2,
+        B_TAKEN => B_TAKEN
     );
     ---------------------------- IRAM & DRAM
     IRAM_ADDRESS <= std_logic_vector(resize(unsigned(PC), IRAM_ADDR_SIZE));
@@ -255,6 +257,8 @@ begin
     ----------------------------------------------------------------
     -- Component Instantiation
     ----------------------------------------------------------------
+
+    B_TAKEN <= '1' when ((CW.execute.MUX_COND_SEL = "01") AND (A_EQ_ZERO = '1')) OR ((CW.execute.MUX_COND_SEL = "10") AND (A_EQ_ZERO = '0')) else '0';
 
     RF_i : REGISTER_FILE
     generic map(

@@ -22,10 +22,34 @@ begin
     ---------------------------- SECW Pipeline
     secw_update : process(cu_to_hu.IS_B_EX, cu_to_hu.IS_B_ID,
                           cu_to_hu.IS_JUMP_EX, cu_to_hu.IS_JUMP_ID,
-                          cu_to_hu.LMD_EN, dp_to_hu.RS_IF, dp_to_hu.RT_ID,
-                          dp_to_hu.RT_IF)
+                          cu_to_hu.LMD_EN, dp_to_hu.B_TAKEN, dp_to_hu.RS_IF,
+                          dp_to_hu.RT_ID, dp_to_hu.RT_IF)
     begin
-        if ((cu_to_hu.LMD_EN = '1') and
+        if (cu_to_hu.IS_B_EX = "01" or cu_to_hu.IS_B_EX = "10") then
+            if (dp_to_hu.B_TAKEN = '1') then -- assume not taken, then flush IR when it is taken
+                SECW <= (
+                    FLUSH_IF => '1',
+                    PREFETCH => '1',
+                    FETCH    => '0',
+                    DECODE   => '1',
+                    EXECUTE  => '1',
+                    MEMORY   => '1',
+                    WB       => '1'
+                    );
+            else
+                SECW <= STALL_CLEAR;
+            end if;
+        elsif (cu_to_hu.IS_JUMP_EX = '1') then
+            SECW <= (
+                FLUSH_IF => '1',
+                PREFETCH => '1',
+                FETCH    => '0',
+                DECODE   => '1',
+                EXECUTE  => '1',
+                MEMORY   => '1',
+                WB       => '1'
+            );
+        elsif ((cu_to_hu.LMD_EN = '1') and
             ((dp_to_hu.RT_ID = dp_to_hu.RS_IF) or (dp_to_hu.RT_ID = dp_to_hu.RT_IF))) then
             SECW <= (
                 FLUSH_IF => '0',
@@ -38,28 +62,8 @@ begin
             );
         elsif (cu_to_hu.IS_JUMP_ID = '1' or cu_to_hu.IS_B_ID = "10" or cu_to_hu.IS_B_ID = "01") then
             SECW <= (
-                FLUSH_IF => '1',
+                FLUSH_IF => '0',
                 PREFETCH => '0',
-                FETCH    => '1',
-                DECODE   => '1',
-                EXECUTE  => '1',
-                MEMORY   => '1',
-                WB       => '1'
-            );
-        elsif (cu_to_hu.IS_JUMP_EX = '1') then
-            SECW <= (
-                FLUSH_IF => '1',
-                PREFETCH => '1',
-                FETCH    => '0',
-                DECODE   => '1',
-                EXECUTE  => '1',
-                MEMORY   => '1',
-                WB       => '1'
-            );
-        elsif (cu_to_hu.IS_B_EX = "01" or cu_to_hu.IS_B_EX = "10") then
-            SECW <= (
-                FLUSH_IF => '1',
-                PREFETCH => '1',
                 FETCH    => '1',
                 DECODE   => '1',
                 EXECUTE  => '1',

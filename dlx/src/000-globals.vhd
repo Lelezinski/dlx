@@ -190,6 +190,7 @@ package myTypes is
         RT_ID  : std_logic_vector(INS_R1_SIZE - 1 downto 0);
         RS_IF  : std_logic_vector(INS_R1_SIZE - 1 downto 0);
         RT_IF  : std_logic_vector(INS_R1_SIZE - 1 downto 0);
+        B_TAKEN : std_logic;
     end record;
 
     type cu_to_hu_t is record
