@@ -101,7 +101,8 @@ begin
         LMD_EN => cw2.memory.LMD_EN,
         IS_JUMP_ID => cw1.decode.MUX_J_SEL,
         IS_JUMP_EX => cw2.decode.MUX_J_SEL,
-        IS_B_ID => cw1.execute.MUX_COND_SEL
+        IS_B_ID => cw1.execute.MUX_COND_SEL,
+        IS_B_EX => cw2.execute.MUX_COND_SEL
     );
 
     ---------------------------- RAM

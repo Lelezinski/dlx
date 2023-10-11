@@ -197,6 +197,7 @@ package myTypes is
         IS_JUMP_ID : std_logic;
         IS_JUMP_EX : std_logic;
         IS_B_ID : std_logic_vector(1 downto 0);
+        IS_B_EX : std_logic_vector(1 downto 0);
     end record;
 
 end myTypes;
