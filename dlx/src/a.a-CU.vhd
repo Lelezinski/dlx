@@ -68,10 +68,10 @@ begin
 
     -- Assign the control signals to the outputs
     CW <= (
-        cw1.fetch,
-        cw1.decode,
+        cw_s.fetch,
+        cw_s.decode,
         (
-        ALU_OPCODE_UPDATED_2,
+        ALU_OPCODE_UPDATED,
         cw2.execute.MUX_A_SEL,
         cw2.execute.MUX_B_SEL,
         cw2.execute.MUX_LL_SEL,
@@ -87,7 +87,7 @@ begin
     ---------------------------- Forwarding unit
     cu_to_fu <= (
         DRAM_READNOTWRITE => cw3.memory.DRAM_READNOTWRITE,
-        DRAM_ENABLE => cw2.memory.DRAM_ENABLE,
+        DRAM_ENABLE => cw3.memory.DRAM_ENABLE,
         RF_WR_EX  => cw3.wb.RF_WR,
         RF_WR_MEM => cw4.wb.RF_WR,
         MUX_A_CU  => cw2.execute.MUX_A_SEL,
@@ -99,9 +99,9 @@ begin
     ---------------------------- Hazard detectino unit
     cu_to_hu <= (
         LMD_EN => cw2.memory.LMD_EN,
-        IS_JUMP_ID => cw1.decode.MUX_J_SEL,
+        IS_JUMP_ID => cw_s.decode.MUX_J_SEL,
         IS_JUMP_EX => cw2.decode.MUX_J_SEL,
-        IS_B_ID => cw1.execute.MUX_COND_SEL,
+        IS_B_ID => cw_s.execute.MUX_COND_SEL,
         IS_B_EX => cw2.execute.MUX_COND_SEL
     );
 
@@ -117,70 +117,75 @@ begin
     ---------------------------- CW Pipeline
     -- OPCODE is used as index of cw_mem.
     -- get the complete control word of the current instruction
-    CW_S_UP : process (OPCODE)
+    CW_S_UP : process (OPCODE, STALL.FETCH)
     begin
-        case OPCODE is
+        -- if stalling
+        if STALL.FETCH = '0' then
+            cw_s <= NOP_CW;
+        else
+            case OPCODE is
 
-            when ITYPE_ADDI => -- ITYPE
-                cw_s <= ADDI_CW;
-            when ITYPE_SUBI =>
-                cw_s <= SUBI_CW;
-            when ITYPE_ADDUI =>
-                cw_s <= ADDUI_CW;
-            when ITYPE_SUBUI =>
-                cw_s <= SUBUI_CW;
-            when ITYPE_ANDI =>
-                cw_s <= ANDI_CW;
-            when ITYPE_ORI =>
-                cw_s <= ORI_CW;
-            when ITYPE_XORI =>
-                cw_s <= XORI_CW;
-            when ITYPE_SLLI =>
-                cw_s <= SLLI_CW;
-            when ITYPE_SRLI =>
-                cw_s <= SRLI_CW;
-            when ITYPE_SEQI =>
-                cw_s <= SEQI_CW;
-            when ITYPE_SNEI =>
-                cw_s <= SNEI_CW;
-            when ITYPE_SLTI =>
-                cw_s <= SLTI_CW;
-            when ITYPE_SGTI =>
-                cw_s <= SGTI_CW;
-            when ITYPE_SLEI =>
-                cw_s <= SLEI_CW;
-            when ITYPE_SGEI =>
-                cw_s <= SGEI_CW;
-            when ITYPE_SLTUI =>
-                cw_s <= SLTUI_CW;
-            when ITYPE_SGTUI =>
-                cw_s <= SGTUI_CW;
-            when ITYPE_SLEUI =>
-                cw_s <= SLEUI_CW;
-            when ITYPE_SGEUI =>
-                cw_s <= SGEUI_CW;
-            when ITYPE_BEQZ  =>
-                cw_s <= BEQZ_CW;
-            when ITYPE_BNEZ  =>
-                cw_s <= BNEZ_CW;
+                when ITYPE_ADDI => -- ITYPE
+                    cw_s <= ADDI_CW;
+                when ITYPE_SUBI =>
+                    cw_s <= SUBI_CW;
+                when ITYPE_ADDUI =>
+                    cw_s <= ADDUI_CW;
+                when ITYPE_SUBUI =>
+                    cw_s <= SUBUI_CW;
+                when ITYPE_ANDI =>
+                    cw_s <= ANDI_CW;
+                when ITYPE_ORI =>
+                    cw_s <= ORI_CW;
+                when ITYPE_XORI =>
+                    cw_s <= XORI_CW;
+                when ITYPE_SLLI =>
+                    cw_s <= SLLI_CW;
+                when ITYPE_SRLI =>
+                    cw_s <= SRLI_CW;
+                when ITYPE_SEQI =>
+                    cw_s <= SEQI_CW;
+                when ITYPE_SNEI =>
+                    cw_s <= SNEI_CW;
+                when ITYPE_SLTI =>
+                    cw_s <= SLTI_CW;
+                when ITYPE_SGTI =>
+                    cw_s <= SGTI_CW;
+                when ITYPE_SLEI =>
+                    cw_s <= SLEI_CW;
+                when ITYPE_SGEI =>
+                    cw_s <= SGEI_CW;
+                when ITYPE_SLTUI =>
+                    cw_s <= SLTUI_CW;
+                when ITYPE_SGTUI =>
+                    cw_s <= SGTUI_CW;
+                when ITYPE_SLEUI =>
+                    cw_s <= SLEUI_CW;
+                when ITYPE_SGEUI =>
+                    cw_s <= SGEUI_CW;
+                when ITYPE_BEQZ  =>
+                    cw_s <= BEQZ_CW;
+                when ITYPE_BNEZ  =>
+                    cw_s <= BNEZ_CW;
 
-            when NTYPE_NOP => -- NTYPE
-                cw_s <= NOP_CW;
-            when ITYPE_SW =>
-                cw_s <= SW_CW;
-            when ITYPE_LW =>
-                cw_s <= LW_CW;
+                when NTYPE_NOP => -- NTYPE
+                    cw_s <= NOP_CW;
+                when ITYPE_SW =>
+                    cw_s <= SW_CW;
+                when ITYPE_LW =>
+                    cw_s <= LW_CW;
 
-            when JTYPE_J => -- JTYPE
-                cw_s <= J_CW;
-            when JTYPE_JAL =>
-                cw_s <= JAL_CW;
-            when JTYPE_JR =>
-                cw_s <= JR_CW;
+                when JTYPE_J => -- JTYPE
+                    cw_s <= J_CW;
+                when JTYPE_JAL =>
+                    cw_s <= JAL_CW;
+                when JTYPE_JR =>
+                    cw_s <= JR_CW;
 
-            when others => -- RTYPE
-                cw_s <= RTYPE_CW;
-        end case;
+                when others => -- RTYPE
+                    cw_s <= RTYPE_CW;
+            end case;
+        end if;
     end process;
 
     -- process to pipeline control words
@@ -195,33 +200,34 @@ begin
             cw5 <= init_cw;
         elsif falling_edge(clk) then
             -- shift the slice of the control word to the correct control register
-           
-            if STALL.FLUSH_IF = '1' then
-                cw1 <= NOP_CW; -- decode cw
-            else
-                cw1 <= cw_s; -- decode cw
-            end if;            
-
-            if STALL.FETCH = '0' then
-                cw2                <= NOP_CW;
-                ALU_OPCODE_UPDATED <= ALU_ADD;
-            else
-                cw2                  <= cw1;  -- execute cw
+            -- update CW pipeline if not stalling
+            if STALL.DECODE = '1' then
+                cw2 <= cw_s;
                 ALU_OPCODE_UPDATED   <= ALU_OPCODE;
             end if;
+            if STALL.EXECUTE = '1' then
+                cw3 <= cw2;
+            end if;
+            if STALL.MEMORY = '1' then
+                cw4 <= cw3;
+            end if;
 
-            cw3 <= cw2;
-            cw4 <= cw3;
-            cw5 <= cw4;
-
-            ALU_OPCODE_UPDATED_2 <= ALU_OPCODE_UPDATED;
+            -- if right-most stage when stalling, insert NOP in CW
+            if STALL.MEMORY = '0' then
+                cw4 <= NOP_CW;
+            elsif STALL.EXECUTE = '0' then
+                cw3 <= NOP_CW;
+            elsif STALL.DECODE = '0' then
+                cw2 <= NOP_CW;
+                ALU_OPCODE_UPDATED <= ALU_ADD;
+            end if;
         end if;
     end process CW_PIPE;
 
     -- ALU_OPCODE Generation (from FUNC for R-Type Instructions)
     ALU_OPCODE_P : process (OPCODE, FUNC_OP, cw_s)
     begin
-        -- default assignment for all the instructions that are not RTYPE
+
         ALU_OPCODE <= cw_s.execute.ALU_OP;
 
         -- Because all RTYPE instructions index the same element in cw_mem, we
