@@ -77,9 +77,7 @@ begin
     if (cu_to_fu.MUX_COND_SEL = "01" or cu_to_fu.MUX_COND_SEL = "10")
       and (unsigned(dp_to_fu.RD_EX) /= 0) and (dp_to_fu.RD_EX = dp_to_fu.RS_ID) then
       MUX_FWD_BZ_SEL <= "10";
-    end if;
-
-    if (cu_to_fu.MUX_COND_SEL = "01" or cu_to_fu.MUX_COND_SEL = "10") and
+    elsif (cu_to_fu.MUX_COND_SEL = "01" or cu_to_fu.MUX_COND_SEL = "10") and
       (unsigned(dp_to_fu.RD_EX) /= 0) and
       (dp_to_fu.RD_MEM = dp_to_fu.RS_ID) then
         MUX_FWD_BZ_SEL <= "11";
