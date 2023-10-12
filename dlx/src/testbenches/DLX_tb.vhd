@@ -72,6 +72,8 @@ architecture tb of DLX_tb is
     signal IRAM_ENABLE       : std_logic;
     signal IRAM_ADDRESS      : std_logic_vector(IRAM_ADDR_SIZE - 1 downto 0);
     signal DRAM_ENABLE       : std_logic;
+    signal init_DRAM_ENABLE       : std_logic;
+    signal DRAM_ENABLE_s       : std_logic;
     signal DRAM_READNOTWRITE : std_logic;
     signal DRAM_ADDRESS      : std_logic_vector(INS_SIZE-1 downto 0);
 
@@ -99,7 +101,7 @@ begin
             DATA_SIZE      => 32,
             INSTR_SIZE     => 32,
             RAM_DEPTH      => 128,
-            DATA_DELAY     => 0)
+            DATA_DELAY     => 2)
         port map (CLK, RST, DRAM_ADDRESS, DRAM_IN, DRAM_ENABLE, DRAM_READNOTWRITE, DRAM_READY, DRAM_OUT);
 
     -- DLX
@@ -114,11 +116,13 @@ begin
             DRAM_READY        => DRAM_READY,
             IRAM_ENABLE       => IRAM_ENABLE,
             IRAM_ADDRESS      => IRAM_ADDRESS,
-            DRAM_ENABLE       => DRAM_ENABLE,
+            DRAM_ENABLE       => DRAM_ENABLE_s,
             DRAM_READNOTWRITE => DRAM_READNOTWRITE,
             DRAM_ADDRESS      => DRAM_ADDRESS);
             
     Clk <= not Clk  after 10 ns;
     Rst <= '1', '0' after 5 ns;
+    init_DRAM_ENABLE  <= '0', '1' after 20*3 ns; -- allow initilizing the pipeline
+    DRAM_ENABLE <= init_DRAM_ENABLE and DRAM_ENABLE_s;
 
 end tb;

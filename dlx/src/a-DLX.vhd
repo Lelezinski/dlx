@@ -55,10 +55,10 @@ architecture RTL of DLX is
             OPCODE : in opcode_t;
             FUNC   : in func_t;
             -- RAM
-            IRAM_READY        : in std_logic;
+            -- IRAM_READY        : in std_logic;
             DRAM_READY        : in std_logic;
-            IRAM_ENABLE       : out std_logic;
-            DRAM_ENABLE       : out std_logic;
+            -- IRAM_ENABLE       : out std_logic;
+            -- DRAM_ENABLE       : out std_logic;
             DRAM_READNOTWRITE : out std_logic
         );
     end component CU;
@@ -81,6 +81,8 @@ architecture RTL of DLX is
             RST      : in  std_logic;
             dp_to_hu : in  dp_to_hu_t;
             cu_to_hu : in  cu_to_hu_t;
+            IRAM_READY : in std_logic;
+            DRAM_READY : in std_logic;
             SECW     : out stage_enable_t);
     end component HAZARD_DETECTION_UNIT;
 
@@ -158,9 +160,8 @@ begin
             FUNC              => FUNC,
             CLK               => CLK,
             RST               => RST,
-            IRAM_READY        => IRAM_READY,
             IRAM_ENABLE       => IRAM_ENABLE,
-            DRAM_READY        => DRAM_READY,
+            -- DRAM_READY        => DRAM_READY,
             DRAM_ENABLE       => DRAM_ENABLE,
             DRAM_READNOTWRITE => DRAM_READNOTWRITE
         );
@@ -181,6 +182,8 @@ begin
             RST      => RST,
             dp_to_hu => dp_to_hu,
             cu_to_hu => cu_to_hu,
+            IRAM_READY   => IRAM_READY,
+            DRAM_READY   => DRAM_READY,
             SECW     => SECW);
 
     DATAPATH_1 : entity work.DATAPATH

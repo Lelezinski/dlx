@@ -60,6 +60,7 @@ begin
             file_close(mem_fp);
 
             count <= 0;
+            valid <= '0';
         elsif rising_edge(clk) then
             if (ENABLE = '1') then
                 count <= count + 1;
@@ -73,7 +74,6 @@ begin
                 end if;
             else
                 count <= 0;
-                valid <= '0';
             end if;
         end if;
     end process FILL_MEM_P;

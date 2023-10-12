@@ -32,8 +32,8 @@ entity CU is
         OPCODE : in opcode_t;
         FUNC   : in func_t;
         -- RAM
-        IRAM_READY        : in std_logic;
-        DRAM_READY        : in std_logic;
+        -- IRAM_READY        : in std_logic;
+        -- DRAM_READY        : in std_logic;
         IRAM_ENABLE       : out std_logic;
         DRAM_ENABLE       : out std_logic;
         DRAM_READNOTWRITE : out std_logic

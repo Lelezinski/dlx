@@ -99,8 +99,8 @@ begin
             file_close(mem_fp);
             DRAM_mem <= (others => (others => '0'));
 
-            int_data_ready <= '0';
-            mem_ready      <= '0';
+            int_data_ready <= '1';
+            mem_ready      <= '1';
 
         elsif rising_edge(CLK) then
             if (ENABLE = '1') then
@@ -121,7 +121,8 @@ begin
                     int_data_ready <= '0';
                 end if;
             else
-                counter <= 0;
+                tmp_data <= (others => 'Z');
+                counter  <= 0;
             end if;
         end if;
     end process;
