@@ -49,12 +49,12 @@ architecture RTL of CU is
     signal FUNC_OP : func_t;
 
     ---------------------------- CW Pipeline
-    signal cw_s, cw1, cw2, cw3, cw4, cw5 : cw_t;
-    signal ir_en_s, lmd_en_s             : std_logic;
+    signal cw_s, cw1, cw2, cw3, cw4 : cw_t;
+    signal ir_en_s, lmd_en_s        : std_logic;
     signal IS_JUMP: std_logic;
 
     -- These signals are needed to avoid conflicts on the cw registers.
-    signal ALU_OPCODE, ALU_OPCODE_UPDATED, ALU_OPCODE_UPDATED_2 : alu_op_t; -- OPCODE updated after ID stage
+    signal ALU_OPCODE, ALU_OPCODE_UPDATED : alu_op_t; -- OPCODE updated after ID stage
 
 begin
 
@@ -196,14 +196,12 @@ begin
             cw2 <= init_cw;
             cw3 <= init_cw;
             cw4 <= init_cw;
-            -- TODO rimuovere cw5
-            cw5 <= init_cw;
         elsif falling_edge(clk) then
+            ALU_OPCODE_UPDATED <= ALU_OPCODE;
             -- shift the slice of the control word to the correct control register
             -- update CW pipeline if not stalling
             if STALL.DECODE = '1' then
                 cw2 <= cw_s;
-                ALU_OPCODE_UPDATED   <= ALU_OPCODE;
             end if;
             if STALL.EXECUTE = '1' then
                 cw3 <= cw2;
@@ -219,7 +217,6 @@ begin
                 cw3 <= NOP_CW;
             elsif STALL.DECODE = '0' then
                 cw2 <= NOP_CW;
-                ALU_OPCODE_UPDATED <= ALU_ADD;
             end if;
         end if;
     end process CW_PIPE;
