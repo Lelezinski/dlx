@@ -54,7 +54,7 @@ begin
                     FLUSH_IF => '1',
                     PREFETCH => '1',
                     FETCH    => '0',
-                    DECODE   => '1',
+                    DECODE   => '0',
                     EXECUTE  => '1',
                     MEMORY   => '1',
                     WB       => '1'
@@ -86,7 +86,7 @@ begin
         elsif (cu_to_hu.IS_B_ID = "10" or cu_to_hu.IS_B_ID = "01") then
             SECW <= (
                 FLUSH_IF => '0',
-                PREFETCH => '0',
+                PREFETCH => '1',
                 FETCH    => '1',
                 DECODE   => '1',
                 EXECUTE  => '1',
