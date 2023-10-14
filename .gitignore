@@ -203,3 +203,4 @@ runs
 .ipynb_*
 *.csv
 .direnv
+*/syn/
