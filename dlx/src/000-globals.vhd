@@ -169,6 +169,7 @@ package myTypes is
     pure function to_data(arg : pc_t) return data_t;
 
     type dp_to_fu_t is record
+        RD_ID     : std_logic_vector(INS_R1_SIZE - 1 downto 0);
         RD_EX     : std_logic_vector(INS_R1_SIZE - 1 downto 0);
         RD_MEM    : std_logic_vector(INS_R1_SIZE - 1 downto 0);
         RS_ID     : std_logic_vector(INS_R1_SIZE - 1 downto 0);
@@ -181,7 +182,8 @@ package myTypes is
         MUX_A_CU  : std_logic;
         MUX_B_CU  : std_logic;
         DRAM_READNOTWRITE : std_logic;
-        DRAM_ENABLE       : std_logic;
+        DRAM_ENABLE_MEM   : std_logic;
+        DRAM_ENABLE_EX    : std_logic;
         IS_JUMP_EX        : std_logic;
         MUX_COND_SEL      : std_logic_vector(1 downto 0);
     end record;

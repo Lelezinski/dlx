@@ -236,6 +236,7 @@ begin
 
     ---------------------------- FORWARDING UNIT
     dp_to_fu <= (
+        RD_ID => RD_ID,
         RS_ID => RS_ID,
         RT_ID => RT_ID,
         RD_MEM => RD_MEM,
