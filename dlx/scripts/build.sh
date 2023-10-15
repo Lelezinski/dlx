@@ -3,7 +3,7 @@
 SIM_DIR='./sim'
 SRC_DIR='./src'
 SYN_DIR='./syn'
-SIM_FILE_LIST='./components'
+SIM_FILE_LIST='./src/components'
 TESTBENCH_FILE='./testbenches/DLX_tb.vhd'
 
 echo "[INFO] Starting Compilation."
