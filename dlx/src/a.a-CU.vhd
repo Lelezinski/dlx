@@ -32,8 +32,6 @@ entity CU is
         OPCODE : in opcode_t;
         FUNC   : in func_t;
         -- RAM
-        -- IRAM_READY        : in std_logic;
-        -- DRAM_READY        : in std_logic;
         IRAM_ENABLE       : out std_logic;
         DRAM_ENABLE       : out std_logic;
         DRAM_READNOTWRITE : out std_logic
@@ -49,8 +47,7 @@ architecture RTL of CU is
     signal FUNC_OP : func_t;
 
     ---------------------------- CW Pipeline
-    signal cw_s, cw1, cw2, cw3, cw4 : cw_t;
-    signal ir_en_s, lmd_en_s        : std_logic;
+    signal cw_s, cw2, cw3, cw4 : cw_t;
     signal IS_JUMP: std_logic;
 
     -- These signals are needed to avoid conflicts on the cw registers.
@@ -80,9 +77,6 @@ begin
         cw3.memory,
         cw4.wb
         );
-
-    -- ir_en_s <= IRAM_READY;
-    ir_en_s <= '1';
 
     ---------------------------- Forwarding unit
     cu_to_fu <= (
@@ -193,7 +187,6 @@ begin
     CW_PIPE : process (clk, rst)
     begin -- process clk
         if rst = '1' then
-            cw1 <= init_cw;
             cw2 <= init_cw;
             cw3 <= init_cw;
             cw4 <= init_cw;
