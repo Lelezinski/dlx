@@ -1,8 +1,6 @@
 library IEEE;
 use IEEE.std_logic_1164.all;
 use IEEE.numeric_std.all;
-use IEEE.math_real."ceil";
-use IEEE.math_real."log2";
 
 use WORK.myTypes.all;
 
