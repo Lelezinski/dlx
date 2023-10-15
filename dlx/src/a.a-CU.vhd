@@ -101,8 +101,8 @@ begin
     ---------------------------- Hazard detectino unit
     cu_to_hu <= (
         LMD_EN => cw2.memory.LMD_EN,
-        IS_JUMP_ID => cw_s.decode.MUX_J_SEL,
-        IS_JUMP_EX => cw2.decode.MUX_J_SEL,
+        IS_JUMP_ID => cw_s.decode.MUX_J_SEL or cw_s.execute.MUX_JR_SEL,
+        IS_JUMP_EX => cw2.decode.MUX_J_SEL or cw2.execute.MUX_JR_SEL,
         IS_B_ID => cw_s.execute.MUX_COND_SEL,
         IS_B_EX => cw2.execute.MUX_COND_SEL
     );
