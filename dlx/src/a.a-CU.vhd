@@ -68,7 +68,6 @@ begin
 
     -- Assign the control signals to the outputs
     CW <= (
-        cw_s.fetch,
         cw_s.decode,
         (
         ALU_OPCODE_UPDATED,

@@ -10,11 +10,6 @@ package control_words is
     -----------------------------------------------------------------------------
     -- Pipeline control signals type definitions
     -----------------------------------------------------------------------------
-    type fetch_cw_t is record
-        PC_EN   : std_logic; -- Progam counter latch enable
-        IRAM_EN : std_logic; -- instruction ram enable signal
-    end record fetch_cw_t;
-
     type decode_cw_t is record
         RF_RESET   : std_logic; -- register file reset signal
         RF_ENABLE  : std_logic; -- register file enable signal
@@ -46,7 +41,6 @@ package control_words is
     end record wb_cw_t;
 
     type cw_t is record
-        fetch   : fetch_cw_t;
         decode  : decode_cw_t;
         execute : execute_cw_t;
         memory  : memory_cw_t;
@@ -62,17 +56,11 @@ package control_words is
     -- Control word signal definition
     -----------------------------------------------------------------------------
 
-    -- Default IF Field
-    constant fetch_cw_def : fetch_cw_t := (
-        PC_EN   => '1',
-        IRAM_EN => '1'
-    );
 
     ---------------------------- I TYPE
 
     -- ADDI
     constant ADDI_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -103,7 +91,6 @@ package control_words is
 
     -- ADDUI
     constant ADDUI_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -134,7 +121,6 @@ package control_words is
 
     -- SUBI
     constant SUBI_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -165,7 +151,6 @@ package control_words is
 
     -- SUBUI
     constant SUBUI_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -196,7 +181,6 @@ package control_words is
 
     -- ANDI
     constant ANDI_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -227,7 +211,6 @@ package control_words is
 
     -- ORI
     constant ORI_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -258,7 +241,6 @@ package control_words is
 
     -- SW
     constant SW_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -289,7 +271,6 @@ package control_words is
 
     -- LW
     constant LW_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -320,7 +301,6 @@ package control_words is
 
     -- XORI
     constant XORI_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -351,7 +331,6 @@ package control_words is
 
     -- SLLI
     constant SLLI_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -382,7 +361,6 @@ package control_words is
 
     -- SRLI
     constant SRLI_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -413,7 +391,6 @@ package control_words is
 
     -- SEQI
     constant SEQI_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -444,7 +421,6 @@ package control_words is
 
     -- SNEI
     constant SNEI_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -475,7 +451,6 @@ package control_words is
 
     -- SLTI
     constant SLTI_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -506,7 +481,6 @@ package control_words is
 
     -- SGTI
     constant SGTI_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -537,7 +511,6 @@ package control_words is
 
     -- SLEI
     constant SLEI_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -568,7 +541,6 @@ package control_words is
 
     -- SGEI
     constant SGEI_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -599,7 +571,6 @@ package control_words is
 
     -- SLTUI
     constant SLTUI_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -630,7 +601,6 @@ package control_words is
 
     -- SGTUI
     constant SGTUI_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -661,7 +631,6 @@ package control_words is
 
     -- SLEUI
     constant SLEUI_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -692,7 +661,6 @@ package control_words is
 
     -- SGEUI
     constant SGEUI_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -724,7 +692,6 @@ package control_words is
 
     -- NOP
     constant NOP_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -757,7 +724,6 @@ package control_words is
 
     -- R TYPE
     constant RTYPE_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -790,7 +756,6 @@ package control_words is
 
     -- J
     constant J_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -821,7 +786,6 @@ package control_words is
 
     -- JAL
     constant JAL_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -852,7 +816,6 @@ package control_words is
 
     -- JR
         constant JR_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -883,7 +846,6 @@ package control_words is
 
     -- BEQZ
     constant BEQZ_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -914,7 +876,6 @@ package control_words is
 
     -- BNEZ
     constant BNEZ_CW : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
@@ -947,7 +908,6 @@ package control_words is
 
     -- Reset Init
     signal init_cw : cw_t := (
-        fetch_cw_def,
         decode     => (
         RF_RESET   => '0',
         RF_ENABLE  => '1',
