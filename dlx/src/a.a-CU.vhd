@@ -74,6 +74,7 @@ begin
         ALU_OPCODE_UPDATED,
         cw2.execute.MUX_A_SEL,
         cw2.execute.MUX_B_SEL,
+        cw2.execute.MUX_JR_SEL,
         cw2.execute.MUX_LL_SEL,
         cw2.execute.MUX_COND_SEL
         ),
