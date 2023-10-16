@@ -54,9 +54,6 @@ package myTypes is
     constant CARRY_SELECT_NBIT     : integer := 4;                        -- how many bits generate a carry
     constant SUM_GENERATOR_NBLOCKS : integer := numBit/CARRY_SELECT_NBIT; -- numBit / CARRY_SELECT_NBIT
 
-    -- Multiplier
-    constant NUMBIT_MUL : integer := 32;
-
     -- Register Fil
     constant R_NUM       : integer := 32;
     constant RF_WORD_LEN : integer := 32;
@@ -114,7 +111,6 @@ package myTypes is
     constant FUNC_SGT  : func_t := "00000101011";
     constant FUNC_SLE  : func_t := "00000101100";
     constant FUNC_SGE  : func_t := "00000101101";
-    constant FUNC_MUL  : func_t := "00000111110";
     constant FUNC_SLTu : func_t := "00000111010";
     constant FUNC_SGTu : func_t := "00000111011";
     constant FUNC_SLEu : func_t := "00000111100";

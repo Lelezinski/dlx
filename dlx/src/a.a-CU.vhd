@@ -71,7 +71,6 @@ begin
         cw2.execute.MUX_A_SEL,
         cw2.execute.MUX_B_SEL,
         cw2.execute.MUX_JR_SEL,
-        cw2.execute.MUX_LL_SEL,
         cw2.execute.MUX_COND_SEL
         ),
         cw3.memory,
@@ -266,8 +265,6 @@ begin
                 when func_sltu =>
                     ALU_OPCODE <= alu_sltu;
 
-                when func_mul =>
-                    ALU_OPCODE <= alu_mul;
                 when others =>
                     ALU_OPCODE <= alu_add;
             end case;

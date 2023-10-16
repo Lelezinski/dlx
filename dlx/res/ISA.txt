@@ -40,7 +40,6 @@
     SGT
     SLE
     SGE
-    MUL
     SLTu
     SGTu
     SLEu

@@ -25,7 +25,6 @@ package control_words is
         MUX_A_SEL      : std_logic; -- MUX_A selection signal
         MUX_B_SEL      : std_logic; -- MUX_B selection signal
         MUX_JR_SEL     : std_logic; -- MUX_JR selection signal
-        MUX_LL_SEL     : std_logic; -- MUX_LL selection signal
         MUX_COND_SEL   : std_logic_vector(1 downto 0); -- MUX_COND selection signal
     end record execute_cw_t;
 
@@ -75,7 +74,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -105,7 +103,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -135,7 +132,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -165,7 +161,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -195,7 +190,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -225,7 +219,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -255,7 +248,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -285,7 +277,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -315,7 +306,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -345,7 +335,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -375,7 +364,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -405,7 +393,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -435,7 +422,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -465,7 +451,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -495,7 +480,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -525,7 +509,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -555,7 +538,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -585,7 +567,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -615,7 +596,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -645,7 +625,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -675,7 +654,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -706,7 +684,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -738,7 +715,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '0',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -770,7 +746,6 @@ package control_words is
         MUX_A_SEL      => '0',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "11"
         ),
         memory            => (
@@ -800,7 +775,6 @@ package control_words is
         MUX_A_SEL      => '0',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "11"
         ),
         memory            => (
@@ -830,7 +804,6 @@ package control_words is
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '0',
         MUX_JR_SEL     => '1',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "11"
         ),
         memory            => (
@@ -860,7 +833,6 @@ package control_words is
         MUX_A_SEL      => '0',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "01"
         ),
         memory            => (
@@ -890,7 +862,6 @@ package control_words is
         MUX_A_SEL      => '0',
         MUX_B_SEL      => '1',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "10"
         ),
         memory            => (
@@ -922,7 +893,6 @@ package control_words is
         MUX_A_SEL      => '0',
         MUX_B_SEL      => '0',
         MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (

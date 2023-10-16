@@ -6,7 +6,6 @@ package alu_type is
         ALU_ADDu,
         ALU_SUB,
         ALU_SUBu,
-        ALU_MUL,
         ALU_AND,
         ALU_OR,
         ALU_XOR,

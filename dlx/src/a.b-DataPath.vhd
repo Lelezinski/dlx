@@ -86,8 +86,6 @@ architecture RTL of DATAPATH is
         );
     end component ALU;
 
-    -- TODO: LL_ALU
-
     ----------------------------------------------------------------
     -- Signals Declaration
     ----------------------------------------------------------------
@@ -127,8 +125,6 @@ architecture RTL of DATAPATH is
     signal ALU_IN_1    : data_t;
     signal ALU_IN_2    : data_t;
     signal ALU_OUT     : data_t;
-    signal LL_ALU_OUT  : data_t;
-    signal MUX_LL_OUT  : data_t;
     signal ALU_OUT_REG : data_t;
     signal COND        : std_logic;
     signal B_EX        : data_t;
@@ -200,10 +196,6 @@ begin
                 IMM             when MUX_B_SEL = "01" else
                 ALU_OUT_REG     when MUX_B_SEL = "10" else -- from exe
                 MUX_LMD_OUT     when MUX_B_SEL = "11"; -- from mem
-
-    -- MUX_LL: based on the ALU used (0: ALU, 1: LL_ALU)
-    MUX_LL_OUT <= ALU_OUT when CW.execute.MUX_LL_SEL = '0' else
-        LL_ALU_OUT;
 
     -- MUX_COND: based on whether or not a jump needs to be performed (00: NPC, 01/10: B ADDR, 11: J ADDR)
     MUX_COND_OUT <= pc_t(ALU_OUT(PC_SIZE - 1 downto 0)) when
@@ -297,8 +289,6 @@ begin
             OUTALU => ALU_OUT
         );
 
-    -- TODO: LL_ALU
-
     ----------------------------------------------------------------
     -- Processes
     ----------------------------------------------------------------
@@ -323,7 +313,7 @@ begin
             NPC <= (others => '0');
         elsif falling_edge(CLK) then
             if (SECW.FETCH = '1') then
-                NPC <= PC + 1; -- TODO: revert a +4?
+                NPC <= PC + 1;
             end if;
         end if;
     end process NPC_P;
@@ -451,7 +441,7 @@ begin
             ALU_OUT_REG <= (others => '0');
         elsif falling_edge(CLK) then
             if (SECW.EXECUTE = '1') then
-                ALU_OUT_REG <= MUX_LL_OUT;
+                ALU_OUT_REG <= ALU_OUT;
             end if;
         end if;
     end process ALU_OUT_REG_P;

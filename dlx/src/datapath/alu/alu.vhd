@@ -86,9 +86,6 @@ begin
                 CIN_s   <= '1';
                 OUTALU  <= ADDER_OUT;
 
-            when ALU_MUL => -- Mul: A * B (TODO: most significant half truncated, use booth)
-                OUTALU <= std_logic_vector(signed(DATA1(N/2 - 1 downto 0)) * signed(DATA2(N/2 - 1 downto 0)));
-
             when ALU_AND => -- AND: A and B
                 OUTALU <= DATA1 and DATA2;
 
