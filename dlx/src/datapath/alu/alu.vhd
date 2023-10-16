@@ -24,29 +24,67 @@ end ALU;
 
 architecture BEHAVIORAL of ALU is
 
+    --------------------------------------------------------------------
+    -- Components Declaration
+    --------------------------------------------------------------------
+
+    component P4_ADDER is
+        generic (
+            NBIT : integer);
+        port (
+            A    : in  std_logic_vector(NBIT - 1 downto 0);
+            B    : in  std_logic_vector(NBIT - 1 downto 0);
+            Cin  : in  std_logic;
+            S    : out std_logic_vector(NBIT - 1 downto 0);
+            Cout : out std_logic);
+    end component P4_ADDER;
+
+    ----------------------------------------------------------------
+    -- Constants Declaration
+    ----------------------------------------------------------------
+
     constant log2_numBit : integer := integer(ceil(log2(real(numBit))));
 
+    ----------------------------------------------------------------
+    -- Signals Declaration
+    ----------------------------------------------------------------
+
+    signal DATA1_s   : std_logic_vector(numBit - 1 downto 0);
+    signal DATA2_s   : std_logic_vector(numBit - 1 downto 0);
+    signal CIN_s     : std_logic;
+    signal ADDER_OUT : std_logic_vector(numBit - 1 downto 0);
+
 begin
+
+    P4_ADDER_1: entity work.P4_ADDER
+        generic map (
+            NBIT => numBit)
+        port map (
+            A    => DATA1_s,
+            B    => DATA2_s,
+            Cin  => CIN_s,
+            S    => ADDER_OUT,
+            Cout => open);
 
     ----------------------------------------------------------------
     -- Processes
     ----------------------------------------------------------------
 
-    P_ALU : process (FUNC, DATA1, DATA2)
+    P_ALU : process (FUNC, DATA1, DATA2, ADDER_OUT)
     begin
         case FUNC is
 
-            when ALU_ADD => -- Sum: A + B
-                OUTALU <= std_logic_vector(signed(DATA1) + signed(DATA2));
+            when ALU_ADD | ALU_ADDu => -- Sum: A + B
+                DATA1_s <= DATA1;
+                DATA2_s <= DATA2;
+                CIN_s   <= '0';
+                OUTALU  <= ADDER_OUT;
 
-            when ALU_ADDu => -- Sum (Unsigned): A + B
-                OUTALU <= std_logic_vector(unsigned(DATA1) + unsigned(DATA2));
-
-            when ALU_SUB => -- Sub: A - B
-                OUTALU <= std_logic_vector(signed(DATA1) - signed(DATA2));
-
-            when ALU_SUBu => -- Sub (Unsigned): A - B
-                OUTALU <= std_logic_vector(unsigned(DATA1) - unsigned(DATA2));
+            when ALU_SUB | ALU_SUBu => -- Sub: A - B
+                DATA1_s <= DATA1;
+                DATA2_s <= to_data(not(unsigned(DATA2)));
+                CIN_s   <= '1';
+                OUTALU  <= ADDER_OUT;
 
             when ALU_MUL => -- Mul: A * B (TODO: most significant half truncated, use booth)
                 OUTALU <= std_logic_vector(signed(DATA1(N/2 - 1 downto 0)) * signed(DATA2(N/2 - 1 downto 0)));
