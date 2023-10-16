@@ -157,13 +157,13 @@ package myTypes is
     constant NTYPE_NOP : opcode_t := "010101";
 
     -- Only for simulation purpose
-    -- constant RO_HEX      : string := "./memories/ro/hex.txt";
-    -- constant RW_HEX_INIT : string := "./memories/rw/hex_init.txt";
-    -- constant RW_HEX      : string := "./memories/rw/hex.txt";
+    constant RO_HEX      : string := "./memories/ro/hex.txt";
+    constant RW_HEX_INIT : string := "./memories/rw/hex_init.txt";
+    constant RW_HEX      : string := "./memories/rw/hex.txt";
     -- LORENZO
-    constant RO_HEX      : string := "C:\Users\ruoto\OneDrive\UNI\08 MS Microelectronic Systems\Progetto\ms\dlx\src\memories\ro\hex.txt";
-    constant RW_HEX_INIT : string := "C:\Users\ruoto\OneDrive\UNI\08 MS Microelectronic Systems\Progetto\ms\dlx\src\memories\rw\hex_init.txt";
-    constant RW_HEX      : string := "C:\Users\ruoto\OneDrive\UNI\08 MS Microelectronic Systems\Progetto\ms\dlx\src\memories\rw\hex.txt";
+    -- constant RO_HEX      : string := "C:\Users\ruoto\OneDrive\UNI\08 MS Microelectronic Systems\Progetto\ms\dlx\src\memories\ro\hex.txt";
+    -- constant RW_HEX_INIT : string := "C:\Users\ruoto\OneDrive\UNI\08 MS Microelectronic Systems\Progetto\ms\dlx\src\memories\rw\hex_init.txt";
+    -- constant RW_HEX      : string := "C:\Users\ruoto\OneDrive\UNI\08 MS Microelectronic Systems\Progetto\ms\dlx\src\memories\rw\hex.txt";
 
     ---- Process declarations ----
     pure function to_data(arg : pc_t) return data_t;
