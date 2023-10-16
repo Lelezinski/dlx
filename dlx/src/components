@@ -1,5 +1,6 @@
 # constants
 ./000-globals.vhd
+./datapath/alu/alu_type.vhd
 ./001-control_words.vhd
 
 # datapath
@@ -16,7 +17,6 @@
 ./datapath/adder/carry_generator.vhd 
 ./datapath/adder/p4_adder.vhd 
 ./datapath/regfile/registerfile.vhd
-./datapath/alu/alu_type.vhd
 ./datapath/alu/alu.vhd
 
 # memories
