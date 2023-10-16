@@ -4,6 +4,7 @@ SRC_DIR='./src'
 SYN_DIR='./syn'
 SYN_RES='./res/syn'
 SYN_TCL='./scripts/syn.tcl'
+SYN_LIBRARYNAME='.synopsys_dc.setup'
 CLK_PERIOD_DEF=1
 
 GREEN="\e[32m"  # Green text color
@@ -33,6 +34,7 @@ rsync -avm --include='*.vhd' --include='*/' --exclude='*' "$SRC_DIR/datapath/" "
 
 echo -e "${GREEN}[INFO] Copying other resources from $SYN_RES${RESET}"
 cp -ra --update $SYN_RES/* $SYN_DIR/
+cp --update $SYN_RES/$SYN_LIBRARYNAME $SYN_DIR/
 
 echo -e "${GREEN}[INFO] Setting up Design Vision${RESET}"
 source /eda/scripts/init_design_vision
