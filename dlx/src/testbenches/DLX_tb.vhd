@@ -68,11 +68,13 @@ architecture tb of DLX_tb is
     signal DRAM_READY        : std_logic;
     signal IRAM_ENABLE       : std_logic;
     signal IRAM_ADDRESS_dlx  : std_logic_vector(IRAM_ADDR_SIZE - 1 downto 0);
+    signal IRAM_ADDRESS_ram: std_logic_vector(IRAM_ADDR_SIZE - 1 downto 0);
     signal DRAM_ENABLE       : std_logic;
     signal init_DRAM_ENABLE  : std_logic;
     signal DRAM_ENABLE_s     : std_logic;
     signal DRAM_READNOTWRITE : std_logic;
     signal DRAM_ADDRESS_dlx  : std_logic_vector(INS_SIZE - 1 downto 0);
+    signal DRAM_ADDRESS_ram  : std_logic_vector(INS_SIZE - 1 downto 0);
 
 begin
     -- IRAM
