@@ -24,7 +24,6 @@ package control_words is
         ALU_OP         : alu_op_t;
         MUX_A_SEL      : std_logic; -- MUX_A selection signal
         MUX_B_SEL      : std_logic; -- MUX_B selection signal
-        MUX_JR_SEL     : std_logic; -- MUX_JR selection signal
         MUX_COND_SEL   : std_logic_vector(1 downto 0); -- MUX_COND selection signal
     end record execute_cw_t;
 
@@ -73,7 +72,6 @@ package control_words is
         ALU_OP         => alu_add,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -102,7 +100,6 @@ package control_words is
         ALU_OP         => ALU_ADDu,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -131,7 +128,6 @@ package control_words is
         ALU_OP         => alu_sub,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -160,7 +156,6 @@ package control_words is
         ALU_OP         => ALU_SUBu,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -189,7 +184,6 @@ package control_words is
         ALU_OP         => alu_and,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -218,7 +212,6 @@ package control_words is
         ALU_OP         => alu_or,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -247,7 +240,6 @@ package control_words is
         ALU_OP         => alu_add,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -276,7 +268,6 @@ package control_words is
         ALU_OP         => alu_add,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -305,7 +296,6 @@ package control_words is
         ALU_OP         => alu_xor,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -334,7 +324,6 @@ package control_words is
         ALU_OP         => alu_sll,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -363,7 +352,6 @@ package control_words is
         ALU_OP         => alu_srl,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -392,7 +380,6 @@ package control_words is
         ALU_OP         => alu_seq,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -421,7 +408,6 @@ package control_words is
         ALU_OP         => alu_sne,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -450,7 +436,6 @@ package control_words is
         ALU_OP         => alu_slt,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -479,7 +464,6 @@ package control_words is
         ALU_OP         => alu_sgt,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -508,7 +492,6 @@ package control_words is
         ALU_OP         => alu_sle,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -537,7 +520,6 @@ package control_words is
         ALU_OP         => alu_sge,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -566,7 +548,6 @@ package control_words is
         ALU_OP         => alu_sltu,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -595,7 +576,6 @@ package control_words is
         ALU_OP         => alu_sgtu,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -624,7 +604,6 @@ package control_words is
         ALU_OP         => alu_sleu,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -653,7 +632,6 @@ package control_words is
         ALU_OP         => alu_sgeu,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -683,7 +661,6 @@ package control_words is
         ALU_OP         => alu_add,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -714,7 +691,6 @@ package control_words is
         ALU_OP         => alu_add,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '0',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -745,7 +721,6 @@ package control_words is
         ALU_OP         => alu_add,
         MUX_A_SEL      => '0',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "11"
         ),
         memory            => (
@@ -774,7 +749,6 @@ package control_words is
         ALU_OP         => alu_add,
         MUX_A_SEL      => '0',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "11"
         ),
         memory            => (
@@ -803,7 +777,6 @@ package control_words is
         ALU_OP         => alu_add,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '0',
-        MUX_JR_SEL     => '1',
         MUX_COND_SEL   => "11"
         ),
         memory            => (
@@ -832,7 +805,6 @@ package control_words is
         ALU_OP         => alu_add,
         MUX_A_SEL      => '0',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "01"
         ),
         memory            => (
@@ -861,7 +833,6 @@ package control_words is
         ALU_OP         => alu_add,
         MUX_A_SEL      => '0',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "10"
         ),
         memory            => (
@@ -892,7 +863,6 @@ package control_words is
         ALU_OP         => alu_add,
         MUX_A_SEL      => '0',
         MUX_B_SEL      => '0',
-        MUX_JR_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
