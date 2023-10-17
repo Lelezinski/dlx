@@ -136,12 +136,6 @@ begin
     ----------------------------------------------------------------
 
     CU_1 : entity work.CU
-        generic map(
-            MICROCODE_MEM_SIZE => C_UCODE_MEM_SIZE,
-            FUNC_SIZE          => C_FUNC_SIZE,
-            OP_CODE_SIZE       => C_OP_CODE_SIZE,
-            CW_SIZE            => C_CW_SIZE
-        )
         port map(
             cw          => cw,
             in_cw       => cw_from,
