@@ -15,13 +15,31 @@
 % sezione sulle singole unità funzionali del datapath, presentate come blackbox e successivamente con l'implementazione interna, questo per ognuna di esse
 \section{Functional blocks}
 \subsection{Control unit}
+% TODO schema della control unit? si dovrebbe vedere come viene effettivamente sintetizzata
+% CHE CAZZO È CW_FROM_MEM DIO CANE
+The control unit is in charge of managing the datapath throughout its stages. Given an instruction from IR, it generates the corresponding control word that manages the various registers, MUXes and other control signals in the datapath. It also receives a block of \emph{STALL} signals from the HDU (Hazard Detection Unit) that instructs the CU on when to stall the pipeline in case of data hazards. % solo data hazards?
+
+
+
+% non so se questa cosa è effettivamente vera, è una LUT alla fine
+It is implemented as an hybrid between an hardwired and a microcoded CU, with two processes that simply associate every instruction with a given control word and every ALU opcode with the corresponding operation, plus a process that manages the transition between every stage taking into consideration the \emph{STALL} signals from the HDU.
+
 \subsection{Register file}
 \subsection{ALU}
 % TODO aggiungere schema a blocchi dell'ALU
 % scrivi anche come sono mussati gli ingressi
-The ALU of the DLX operates on two inputs: \emph{DATA1} and \emph{DATA2}.
-% la grandezza è configurabile ma è settata di default a 32 bits IIRC
-% gli input muxati possono essere non solo i registri di ingresso A e B ma anche forwardati da altri stage, essere un immediato etc.
+% The ALU can pick its inputs from a moltitude of sources 
+The ALU of the DLX operates on two inputs: \emph{DATA1} and \emph{DATA2}. It can obtain them from a multitude of sources, namely: 
+\begin{itemize}
+	% Gli input muxati possono essere non solo i registri di ingresso A e B ma anche forwardati da altri stage, essere un immediato etc.
+	\item from the register file, through 2 stage registers \emph{A} and \emph{B};
+	\item from the program counter, necessary for address computations in branching and jump instructions;
+	\item from the instructions themselves, immediate values via the instruction register after the appropriate transformations;
+	\item from the ALU itself, and in general from other stages' outputs through MUXes controlled by the forwarding unit.
+\end{itemize}
+% La grandezza è configurabile ma è settata di default a 32 bits IIRC
+
+
 The function to be computed on the operands is selected by a third input \emph{FUNC} that receives a code representing it and the result is sent to the output \emph{OUTALU}. A list of currently implemented functions follows. The implementation of each operation is behavioural unless specified otherwise. 
 
 % TODO fix indentations
@@ -42,6 +60,9 @@ $ \mathit{ALUOUT} = \mathit{DATA1} \cdot \mathit{DATA2} $
 
 
 Multiplication is executed on the operands fully but the result is still word size: the most significant half of the computed value is discarded.
+
+
+Initially, the multiplication operation was to be delegated to a long latency ALU, with this implementation just being a placeholder. However the group decided to focus on more difficult to implement features, leaving no time for description and testing of an LL ALU.
 
 \subsubsection{AND}
 $ \mathit{ALUOUT} = \mathit{DATA1} \wedge \mathit{DATA2} $
