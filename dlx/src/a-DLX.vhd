@@ -139,7 +139,6 @@ begin
         port map(
             cw          => cw,
             in_cw       => cw_from,
-            SECW        => open,
             cu_to_fu    => cu_to_fu,
             cu_to_hu    => cu_to_hu,
             stall       => SECW,
