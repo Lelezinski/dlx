@@ -98,4 +98,7 @@ $ \mathit{if (DATA1 \leq DATA2) \: then} \: \mathit{ALUOUT} = 1 \: \mathit{else}
 $ \mathit{if (DATA1 < DATA2) \: then} \: \mathit{ALUOUT} = 1 \: \mathit{else} \: 0 $
 
 \subsection{Hazard detection unit}
+
+
 \subsection{Forwarding unit}
+The forwarding unit takes as input a subset of the control signals sent by the CU and of the register selection codes (not the values inside the registers themselves). Given those, it detects favourable conditions for source and destination registers between stages of the pipeline and if they match it forwards operands where they are needed by changing selection signals for the appropriate MUXes and skipping the write-back stage.
