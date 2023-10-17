@@ -64,7 +64,7 @@ package myTypes is
     -- TestBench
     constant C_TB_STAGES : integer := 3; -- Number of Clock Cycles between two instructions
 
-    -- RAM
+    -- xRAM
     constant DRAM_DEPTH     : integer := 256;
     constant IRAM_DEPTH     : integer := 128;
     constant PC_SIZE        : integer := numBit;

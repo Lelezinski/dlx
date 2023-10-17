@@ -11,24 +11,16 @@ use work.control_words.all;
 --------------------------------------------------------------------
 
 entity CU is
-    generic (
-        -- TODO: use constants
-        MICROCODE_MEM_SIZE : integer := 15; -- Microcode Memory Size
-        FUNC_SIZE          : integer := 11; -- Func Field Size for R-Type Ops
-        OP_CODE_SIZE       : integer := 6;  -- Op Code Size
-        CW_SIZE            : integer := 23  -- Control Word Size
-    );
     port (
         CLK : in std_logic;
         RST : in std_logic; -- Active High
         -- Control
-        CW   : out cw_t;           -- control word for datapath and memories
-        SECW : out stage_enable_t; -- stage enable control word TODO: remove
+        CW       : out cw_t; -- control word for datapath and memories
         cu_to_fu : out cu_to_fu_t;
         cu_to_hu : out cu_to_hu_t;
-        STALL: in stage_enable_t;
+        STALL    : in stage_enable_t;
         -- Inputs
-        IN_CW  : in cw_from_mem; -- input signals coming from datapath and memories
+        IN_CW  : in cw_from_mem;
         OPCODE : in opcode_t;
         FUNC   : in func_t;
         -- RAM
@@ -48,7 +40,6 @@ architecture RTL of CU is
 
     ---------------------------- CW Pipeline
     signal cw_s, cw2, cw3, cw4 : cw_t;
-    signal IS_JUMP: std_logic;
 
     -- These signals are needed to avoid conflicts on the cw registers.
     signal ALU_OPCODE, ALU_OPCODE_UPDATED : alu_op_t; -- OPCODE updated after ID stage
@@ -80,24 +71,24 @@ begin
     ---------------------------- Forwarding unit
     cu_to_fu <= (
         DRAM_READNOTWRITE => cw3.memory.DRAM_READNOTWRITE,
-        DRAM_ENABLE_MEM => cw3.memory.DRAM_ENABLE,
-        DRAM_ENABLE_EX => cw2.memory.DRAM_ENABLE,
-        RF_WR_EX  => cw3.wb.RF_WR,
-        RF_WR_MEM => cw4.wb.RF_WR,
-        MUX_A_CU  => cw2.execute.MUX_A_SEL,
-        MUX_B_CU  => cw2.execute.MUX_B_SEL,
-        IS_JUMP_EX   => cw2.decode.MUX_J_SEL,
-        MUX_COND_SEL => cw2.execute.MUX_COND_SEL
-   );
+        DRAM_ENABLE_MEM   => cw3.memory.DRAM_ENABLE,
+        DRAM_ENABLE_EX    => cw2.memory.DRAM_ENABLE,
+        RF_WR_EX          => cw3.wb.RF_WR,
+        RF_WR_MEM         => cw4.wb.RF_WR,
+        MUX_A_CU          => cw2.execute.MUX_A_SEL,
+        MUX_B_CU          => cw2.execute.MUX_B_SEL,
+        IS_JUMP_EX        => cw2.decode.MUX_J_SEL,
+        MUX_COND_SEL      => cw2.execute.MUX_COND_SEL
+        );
 
     ---------------------------- Hazard detectino unit
     cu_to_hu <= (
-        LMD_EN => cw2.memory.LMD_EN,
+        LMD_EN     => cw2.memory.LMD_EN,
         IS_JUMP_ID => cw_s.decode.MUX_J_SEL or cw_s.execute.MUX_JR_SEL,
         IS_JUMP_EX => cw2.decode.MUX_J_SEL or cw2.execute.MUX_JR_SEL,
-        IS_B_ID => cw_s.execute.MUX_COND_SEL,
-        IS_B_EX => cw2.execute.MUX_COND_SEL
-    );
+        IS_B_ID    => cw_s.execute.MUX_COND_SEL,
+        IS_B_EX    => cw2.execute.MUX_COND_SEL
+        );
 
     ---------------------------- RAM
     IRAM_ENABLE       <= '1';
@@ -118,7 +109,6 @@ begin
             cw_s <= NOP_CW;
         else
             case OPCODE is
-
                 when ITYPE_ADDI => -- ITYPE
                     cw_s <= ADDI_CW;
                 when ITYPE_SUBI =>
@@ -157,9 +147,9 @@ begin
                     cw_s <= SLEUI_CW;
                 when ITYPE_SGEUI =>
                     cw_s <= SGEUI_CW;
-                when ITYPE_BEQZ  =>
+                when ITYPE_BEQZ =>
                     cw_s <= BEQZ_CW;
-                when ITYPE_BNEZ  =>
+                when ITYPE_BNEZ =>
                     cw_s <= BNEZ_CW;
 
                 when NTYPE_NOP => -- NTYPE
@@ -243,7 +233,6 @@ begin
                     ALU_OPCODE <= alu_sll;
                 when func_srl =>
                     ALU_OPCODE <= alu_srl;
-
                 when func_seq =>
                     ALU_OPCODE <= alu_seq;
                 when func_sne =>
@@ -264,7 +253,6 @@ begin
                     ALU_OPCODE <= alu_sleu;
                 when func_sltu =>
                     ALU_OPCODE <= alu_sltu;
-
                 when others =>
                     ALU_OPCODE <= alu_add;
             end case;
