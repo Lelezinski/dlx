@@ -67,12 +67,12 @@ architecture tb of DLX_tb is
     signal DRAM_OUT          : data_t;
     signal DRAM_READY        : std_logic;
     signal IRAM_ENABLE       : std_logic;
-    signal IRAM_ADDRESS      : std_logic_vector(IRAM_ADDR_SIZE - 1 downto 0);
+    signal IRAM_ADDRESS_dlx  : std_logic_vector(IRAM_ADDR_SIZE - 1 downto 0);
     signal DRAM_ENABLE       : std_logic;
     signal init_DRAM_ENABLE  : std_logic;
     signal DRAM_ENABLE_s     : std_logic;
     signal DRAM_READNOTWRITE : std_logic;
-    signal DRAM_ADDRESS      : std_logic_vector(INS_SIZE - 1 downto 0);
+    signal DRAM_ADDRESS_dlx  : std_logic_vector(INS_SIZE - 1 downto 0);
 
 begin
     -- IRAM
@@ -86,7 +86,7 @@ begin
         port map(
             CLK        => CLK,
             RST        => RST,
-            ADDRESS    => IRAM_ADDRESS,
+            ADDRESS    => IRAM_ADDRESS_ram,
             ENABLE     => IRAM_ENABLE,
             DATA_READY => IRAM_READY,
             DATA       => IRAM_DATA);
@@ -100,7 +100,7 @@ begin
         INSTR_SIZE     => numBit,
         RAM_DEPTH      => DRAM_DEPTH,
         DATA_DELAY     => DRAM_DELAY)
-    port map(CLK, RST, DRAM_ADDRESS, DRAM_IN, DRAM_ENABLE, DRAM_READNOTWRITE, DRAM_READY, DRAM_OUT);
+    port map(CLK, RST, DRAM_ADDRESS_ram, DRAM_IN, DRAM_ENABLE, DRAM_READNOTWRITE, DRAM_READY, DRAM_OUT);
 
     -- DLX
     DLX_1 : entity work.DLX
@@ -113,11 +113,13 @@ begin
             DRAM_OUT          => DRAM_OUT,
             DRAM_READY        => DRAM_READY,
             IRAM_ENABLE       => IRAM_ENABLE,
-            IRAM_ADDRESS      => IRAM_ADDRESS,
+            IRAM_ADDRESS      => IRAM_ADDRESS_dlx,
             DRAM_ENABLE       => DRAM_ENABLE_s,
             DRAM_READNOTWRITE => DRAM_READNOTWRITE,
-            DRAM_ADDRESS      => DRAM_ADDRESS);
+            DRAM_ADDRESS      => DRAM_ADDRESS_dlx);
 
+    IRAM_ADDRESS_ram <= shift_right(IRAM_ADDRESS_dlx, 2);  
+    DRAM_ADDRESS_ram <= shift_right(DRAM_ADDRESS_dlx, 2);  
     Clk              <= not Clk after 10 ns;
     Rst              <= '1', '0' after 5 ns;
     init_DRAM_ENABLE <= '0', '1' after 20 * 3 ns; -- allow initilizing the pipeline

@@ -164,12 +164,10 @@ begin
 
     ---------------------------- Sign Extend
     -- MUX_SIGNED: based on the signed type and shift needed (00: unsigned, 01: signed, 10: shifted signed for branches)
-    INS_IMM_EXT <= to_data(resize(unsigned(INS_IMM), IMM'length)) when CW.decode.MUX_SIGNED = "00" else
-        to_data(unsigned(resize(signed(INS_IMM), IMM'length))) when CW.decode.MUX_SIGNED = "01" else
-        -- branches require word indexing, while compiler gives us byte addresses; same issue as J instructions
-        to_data(unsigned(shift_right((resize(signed(INS_IMM), IMM'length)), 2)));
+    INS_IMM_EXT <= to_data(resize(unsigned(INS_IMM), IMM'length)) when CW.decode.MUX_SIGNED = '0' else
+        to_data(unsigned(resize(signed(INS_IMM), IMM'length))) when CW.decode.MUX_SIGNED = '1';
 
-    INS_J_IMM_EXT <= to_data(unsigned(shift_right((resize(signed(INS_J_IMM), IMM'length)), 2)));
+    INS_J_IMM_EXT <= to_data(unsigned((resize(signed(INS_J_IMM), IMM'length))));
 
     -- MUX_J: based on the instruction type (0: I, 1: J)
     MUX_J_OUT <= INS_IMM_EXT when CW.decode.MUX_J_SEL = '0' else
