@@ -121,8 +121,8 @@ begin
             DRAM_READNOTWRITE => DRAM_READNOTWRITE,
             DRAM_ADDRESS      => DRAM_ADDRESS_dlx);
 
-    IRAM_ADDRESS_ram <= shift_right(IRAM_ADDRESS_dlx, 2);  
-    DRAM_ADDRESS_ram <= shift_right(DRAM_ADDRESS_dlx, 2);  
+    IRAM_ADDRESS_ram <= std_logic_vector(shift_right(unsigned(IRAM_ADDRESS_dlx), 2));
+    DRAM_ADDRESS_ram <= std_logic_vector(shift_right(unsigned(DRAM_ADDRESS_dlx), 2));
     Clk              <= not Clk after 10 ns;
     Rst              <= '1', '0' after 5 ns;
     init_DRAM_ENABLE <= '0', '1' after 20 * 3 ns; -- allow initilizing the pipeline
