@@ -206,7 +206,7 @@ begin
                     -- Branch not zero and zero not detected
                     ((CW.execute.MUX_COND_SEL = "10") AND (A_EQ_ZERO = '0'))) else
                     -- All other I/R TYPE instructions
-                    (PC + 1);
+                    (PC + 4);
 
     -- MUX_LMD: RF data write input (0: LMD, 1: ALU_OUT)
     MUX_LMD_OUT <= LMD when CW.wb.MUX_LMD_SEL = "00" else
@@ -313,7 +313,7 @@ begin
             NPC <= (others => '0');
         elsif falling_edge(CLK) then
             if (SECW.FETCH = '1') then
-                NPC <= PC + 1;
+                NPC <= PC + 4;
             end if;
         end if;
     end process NPC_P;
