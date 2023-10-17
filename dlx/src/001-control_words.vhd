@@ -842,7 +842,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '0',
-        MUX_LMD_SEL => "10"
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -871,7 +871,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '0',
-        MUX_LMD_SEL => "10"
+        MUX_LMD_SEL => "01"
         )
     );
 
