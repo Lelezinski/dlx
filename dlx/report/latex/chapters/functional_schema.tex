@@ -25,6 +25,13 @@ The Control Unit is in charge of managing the datapath throughout its stages. Gi
 It is implemented as an hybrid between an hardwired and a microcoded CU, with two processes that simply associate every instruction with a given control word and every ALU opcode with the corresponding operation, plus a process that manages the transition between every stage taking into consideration the \emph{STALL} signals from the HDU.
 
 \subsection{Register file}
+The register file included in the DLX contains 32 registers, each of word size equal to 32 bits. Following the MIPS ISA, register $ \mathit{R0} $ has its value hardcoded to 0 and register $ \mathit{R31} $ is the \emph{Link Register} used for returning from subroutines.
+% following the MIPS isa
+
+
+It has been chosen to be a Double-read/Single-write type, as in: on every clock cycle, the register file can output the values of two registers at the time by providing addresses on ports \emph{ADD\_RD1} and \emph{ADD\_RD2} and requesting reads on ports \emph{RD1} and \emph{RD2}; a write can be made by setting an address on \emph{ADD\_WR} and a word on port \emph{DATAIN}. Requested registers output their value on ports \emph{OUT1} and \emph{OUT2}. 
+% CRISTO with the corresponding two ports for address selection and data out for reading and single port for address and data in for writing, plus 
+
 \subsection{ALU}
 % TODO aggiungere schema a blocchi dell'ALU
 % scrivi anche come sono mussati gli ingressi
