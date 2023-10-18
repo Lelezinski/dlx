@@ -1,0 +1,766 @@
+[10/18 20:25:06      0s] 
+[10/18 20:25:06      0s] Cadence Innovus(TM) Implementation System.
+[10/18 20:25:06      0s] Copyright 2020 Cadence Design Systems, Inc. All rights reserved worldwide.
+[10/18 20:25:06      0s] 
+[10/18 20:25:06      0s] Version:	v20.11-s130_1, built Wed Aug 5 15:53:11 PDT 2020
+[10/18 20:25:06      0s] Options:	
+[10/18 20:25:06      0s] Date:		Wed Oct 18 20:25:06 2023
+[10/18 20:25:06      0s] Host:		localhost.localdomain (x86_64 w/Linux 3.10.0-957.5.1.el7.x86_64) (12cores*12cpus*QEMU Virtual CPU version 2.5+ 16384KB)
+[10/18 20:25:06      0s] OS:		CentOS Linux release 7.6.1810 (Core) 
+[10/18 20:25:06      0s] 
+[10/18 20:25:06      0s] License:
+[10/18 20:25:07      0s] 		invs	Innovus Implementation System	20.1	checkout succeeded
+[10/18 20:25:07      0s] 		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+[10/18 20:26:13     39s] @(#)CDS: Innovus v20.11-s130_1 (64bit) 08/05/2020 15:53 (Linux 2.6.32-431.11.2.el6.x86_64)
+[10/18 20:26:13     39s] @(#)CDS: NanoRoute 20.11-s130_1 NR200802-2257/20_11-UB (database version 18.20.512) {superthreading v2.9}
+[10/18 20:26:13     39s] @(#)CDS: AAE 20.11-s008 (64bit) 08/05/2020 (Linux 2.6.32-431.11.2.el6.x86_64)
+[10/18 20:26:13     39s] @(#)CDS: CTE 20.11-s059_1 () Aug  2 2020 05:46:30 ( )
+[10/18 20:26:13     39s] @(#)CDS: SYNTECH 20.11-s028_1 () Aug  1 2020 06:14:27 ( )
+[10/18 20:26:13     39s] @(#)CDS: CPE v20.11-s013
+[10/18 20:26:13     39s] @(#)CDS: IQuantus/TQuantus 19.1.3-s260 (64bit) Thu May 28 10:57:28 PDT 2020 (Linux 2.6.32-431.11.2.el6.x86_64)
+[10/18 20:26:13     39s] @(#)CDS: OA 22.60-s011 Tue Jun 16 12:27:00 2020
+[10/18 20:26:13     39s] @(#)CDS: SGN 20.10-d001 (01-Jun-2020) (64 bit executable, Qt5.9.0)
+[10/18 20:26:13     39s] @(#)CDS: RCDB 11.15.0
+[10/18 20:26:13     39s] @(#)CDS: STYLUS 20.10-p011_1 (06/03/2020 04:47 PDT)
+[10/18 20:26:13     39s] Create and set the environment variable TMPDIR to /tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU.
+
+[10/18 20:26:13     39s] Change the soft stacksize limit to 0.2%RAM (64 mbytes). Set global soft_stack_size_limit to change the value.
+[10/18 20:26:19     42s] 
+[10/18 20:26:19     42s] **INFO:  MMMC transition support version v31-84 
+[10/18 20:26:19     42s] 
+[10/18 20:26:19     42s] <CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+[10/18 20:26:19     42s] <CMD> suppressMessage ENCEXT-2799
+[10/18 20:26:19     42s] <CMD> win
+[10/18 20:30:47     79s] <CMD> encMessage warning 0
+[10/18 20:30:47     79s] Suppress "**WARN ..." messages.
+[10/18 20:30:47     79s] <CMD> encMessage debug 0
+[10/18 20:30:47     79s] <CMD> encMessage info 0
+[10/18 20:30:49     80s] Loading view definition file from /home/ms23.52/MS/dlx/DLX.dat/viewDefinition.tcl
+[10/18 20:30:50     82s] **ERROR: (TECHLIB-1346):	The attribute 'index_1' defined in group 'ecsm_waveform' on line 393863 is not monotonically increasing for values '0.000041' to '0.000037'. This may lead to undesirable analysis results. The attribute will be ignored. (File /eda/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**ERROR: (TECHLIB-1256):	The ecsm_waveform group 1 is being ignored due to errors in this group. This group will be excluded for any further library checks. Refer to the previous messages issued for ecsm_waveform group 1 to find the details of the issues in this group. (File /eda/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib, Line 393862)
+**ERROR: (TECHLIB-420):	Number of ecsm_waveforms in the 'rise_transition' table on pin ZN of cell OAI222_X2 does not match the number of transition table axis points specified in the template 'Timing_7_7'. Ignoring waveform data. (File /eda/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib, Line 393848)
+**ERROR: (TECHLIB-1346):	The attribute 'index_1' defined in group 'ecsm_waveform' on line 395723 is not monotonically increasing for values '0.000041' to '0.000037'. This may lead to undesirable analysis results. The attribute will be ignored. (File /eda/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**ERROR: (TECHLIB-1256):	The ecsm_waveform group 1 is being ignored due to errors in this group. This group will be excluded for any further library checks. Refer to the previous messages issued for ecsm_waveform group 1 to find the details of the issues in this group. (File /eda/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib, Line 395722)
+**ERROR: (TECHLIB-420):	Number of ecsm_waveforms in the 'rise_transition' table on pin ZN of cell OAI222_X2 does not match the number of transition table axis points specified in the template 'Timing_7_7'. Ignoring waveform data. (File /eda/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib, Line 395708)
+*** End library_loading (cpu=0.04min, real=0.03min, mem=10.5M, fe_cpu=1.39min, fe_real=5.75min, fe_mem=837.0M) ***
+[10/18 20:30:52     83s] *** Netlist is unique.
+[10/18 20:30:53     84s] Loading preference file /home/ms23.52/MS/dlx/DLX.dat/gui.pref.tcl ...
+[10/18 20:30:53     84s] **WARN: (IMPTCM-77):	Option "-drouteStartIteration" for command setNanoRouteMode is obsolete and will be removed in a future release. The obsolete option still works in this release but to avoid this warning and to ensure compatibility with future releases, remove the obsolete option from your script.
+[10/18 20:30:57     86s] Loading place ...
+[10/18 20:31:00     87s] {RT standard 0 10 10 {4 1} {7 0} {9 0} 3}
+[10/18 20:31:02     89s] **WARN: (IMPESI-3505):	setDelayCalMode -eng_copyNetPropToNewNet true (default=false) will be obsoleted along with its sgs2set equivalent.  This parameter will continue to be supported in the current release, but will be removed in the next major release of the software.
+[10/18 20:31:02     89s] **WARN: (IMPCTE-107):	The following globals have been obsoleted since version 20.11-s130_1. They will be removed in the next release. 
+[10/18 20:31:02     89s] timing_enable_default_delay_arc
+[10/18 20:31:24     91s] <CMD> setDrawView place
+[10/18 20:35:13    125s] <CMD> reset_parasitics
+[10/18 20:35:13    125s] Performing RC Extraction ...
+[10/18 20:35:13    125s] <CMD> extractRC
+[10/18 20:35:13    125s] Extraction called for design 'DLX' of instances=21788 and nets=8606 using extraction engine 'postRoute' at effort level 'low' .
+[10/18 20:35:13    125s] **WARN: (IMPEXT-3530):	The process node is not set. Use the command setDesignMode -process <process node> prior to extraction for maximum accuracy and optimal automatic threshold setting.
+[10/18 20:35:13    125s] Type 'man IMPEXT-3530' for more detail.
+[10/18 20:35:13    125s] PostRoute (effortLevel low) RC Extraction called for design DLX.
+[10/18 20:35:13    125s] RC Extraction called in multi-corner(1) mode.
+[10/18 20:35:13    125s] Process corner(s) are loaded.
+[10/18 20:35:13    125s]  Corner: standard
+[10/18 20:35:13    125s] extractDetailRC Option : -outfile /tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d  -extended
+[10/18 20:35:13    125s] RC Mode: PostRoute -effortLevel low [Extended CapTable, RC Table Resistances]
+[10/18 20:35:13    125s]       RC Corner Indexes            0   
+[10/18 20:35:13    125s] Capacitance Scaling Factor   : 1.00000 
+[10/18 20:35:13    125s] Coupling Cap. Scaling Factor : 1.00000 
+[10/18 20:35:13    125s] Resistance Scaling Factor    : 1.00000 
+[10/18 20:35:13    125s] Clock Cap. Scaling Factor    : 1.00000 
+[10/18 20:35:13    125s] Clock Res. Scaling Factor    : 1.00000 
+[10/18 20:35:13    125s] Shrink Factor                : 1.00000
+[10/18 20:35:13    125s] LayerId::1 widthSet size::4
+[10/18 20:35:13    125s] LayerId::2 widthSet size::4
+[10/18 20:35:13    125s] LayerId::3 widthSet size::4
+[10/18 20:35:13    125s] LayerId::4 widthSet size::4
+[10/18 20:35:13    125s] LayerId::5 widthSet size::4
+[10/18 20:35:13    125s] LayerId::6 widthSet size::4
+[10/18 20:35:13    125s] LayerId::7 widthSet size::4
+[10/18 20:35:13    125s] LayerId::8 widthSet size::4
+[10/18 20:35:13    125s] LayerId::9 widthSet size::4
+[10/18 20:35:13    125s] LayerId::10 widthSet size::3
+[10/18 20:35:13    125s] Initializing multi-corner capacitance tables ... 
+[10/18 20:35:13    125s] Initializing multi-corner resistance tables ...
+[10/18 20:35:13    125s] Preroute length aware model : LLS: 2-3 ; HLS: 3-5 ; rDens: 0.304984 ; uaWl: 1.000000 ; uaWlH: 0.291546 ; aWlH: 0.000000 ; Pmax: 0.851100 ; wcR: 0.535700 ; newSi: 0.077600 ; pMod: 81 ; 
+[10/18 20:35:13    125s] Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1243.0M)
+[10/18 20:35:14    125s] Creating parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d' for storing RC.
+[10/18 20:35:14    125s] Extracted 10.0012% (CPU Time= 0:00:00.5  MEM= 1289.2M)
+[10/18 20:35:14    125s] Extracted 20.0015% (CPU Time= 0:00:00.6  MEM= 1316.2M)
+[10/18 20:35:14    125s] Extracted 30.0017% (CPU Time= 0:00:00.6  MEM= 1316.2M)
+[10/18 20:35:14    125s] Extracted 40.0011% (CPU Time= 0:00:00.9  MEM= 1318.2M)
+[10/18 20:35:14    126s] Extracted 50.0014% (CPU Time= 0:00:01.0  MEM= 1320.2M)
+[10/18 20:35:15    126s] Extracted 60.0016% (CPU Time= 0:00:01.2  MEM= 1321.2M)
+[10/18 20:35:15    126s] Extracted 70.001% (CPU Time= 0:00:01.4  MEM= 1322.2M)
+[10/18 20:35:15    126s] Extracted 80.0013% (CPU Time= 0:00:01.6  MEM= 1324.2M)
+[10/18 20:35:15    127s] Extracted 90.0015% (CPU Time= 0:00:02.0  MEM= 1325.2M)
+[10/18 20:35:16    127s] Extracted 100% (CPU Time= 0:00:02.6  MEM= 1332.2M)
+[10/18 20:35:16    127s] Number of Extracted Resistors     : 166928
+[10/18 20:35:16    127s] Number of Extracted Ground Cap.   : 175351
+[10/18 20:35:16    127s] Number of Extracted Coupling Cap. : 288940
+[10/18 20:35:16    127s] Opening parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d' for reading (mem: 1316.176M)
+[10/18 20:35:16    127s] Filtering XCap in 'relativeOnly' mode using values relative_c_threshold=0.03 and total_c_threshold=5fF.
+[10/18 20:35:16    127s]  Corner: standard
+[10/18 20:35:16    127s] Checking LVS Completed (CPU Time= 0:00:00.1  MEM= 1316.2M)
+[10/18 20:35:16    127s] Creating parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb_Filter.rcdb.d' for storing RC.
+[10/18 20:35:17    128s] Closing parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d': 8423 access done (mem: 1316.176M)
+[10/18 20:35:17    128s] Lumped Parasitic Loading Started (total cpu=0:00:00.0, real=0:00:00.0, current mem=1316.176M)
+[10/18 20:35:17    128s] Opening parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d' for reading (mem: 1316.176M)
+[10/18 20:35:17    128s] processing rcdb (/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d) for hinst (top) of cell (DLX);
+[10/18 20:35:18    129s] Closing parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d': 0 access done (mem: 1316.176M)
+[10/18 20:35:18    129s] Lumped Parasitic Loading Completed (total cpu=0:00:01.1, real=0:00:01.0, current mem=1316.176M)
+[10/18 20:35:18    129s] PostRoute (effortLevel low) RC Extraction DONE (CPU Time: 0:00:04.3  Real Time: 0:00:05.0  MEM: 1316.176M)
+[10/18 20:35:18    129s] <CMD> rcOut -setload DLX.setload -rc_corner standard
+[10/18 20:35:18    129s] 
+[10/18 20:35:18    129s] Usage: rcOut [-help] [-excludeIlm] [-noRes] {{{-spef <string>} [-excNetFile <string> | -net <string> | -netName <string>] } } [-view <string> | -rc_corner <string>] [-cUnit {pF fF}]
+[10/18 20:35:18    129s] 
+[10/18 20:35:18    129s] **ERROR: (IMPTCM-48):	"-setload" is not a legal option for command "rcOut". Either the current option or an option prior to it is not specified correctly.
+
+[10/18 20:35:18    129s] **ERROR: (IMPSYT-6963):	<CMD> rcOut -setres DLX.setres -rc_corner standard
+[10/18 20:36:01    139s] 
+[10/18 20:36:01    139s] Usage: rcOut [-help] [-excludeIlm] [-noRes] {{{-spef <string>} [-excNetFile <string> | -net <string> | -netName <string>] } } [-view <string> | -rc_corner <string>] [-cUnit {pF fF}]
+[10/18 20:36:01    139s] 
+[10/18 20:36:01    139s] **ERROR: (IMPTCM-48):	"-setres" is not a legal option for command "rcOut". Either the current option or an option prior to it is not specified correctly.
+
+[10/18 20:36:01    139s] **ERROR: (IMPSYT-6965):	<CMD> rcOut -spf DLX.spf -rc_corner standard
+[10/18 20:36:08    140s] 
+[10/18 20:36:08    140s] Usage: rcOut [-help] [-excludeIlm] [-noRes] {{{-spef <string>} [-excNetFile <string> | -net <string> | -netName <string>] } } [-view <string> | -rc_corner <string>] [-cUnit {pF fF}]
+[10/18 20:36:08    140s] 
+[10/18 20:36:08    140s] **ERROR: (IMPTCM-48):	"-spf" is not a legal option for command "rcOut". Either the current option or an option prior to it is not specified correctly.
+
+[10/18 20:36:08    140s] **ERROR: (IMPSYT-6967):	<CMD> rcOut -spef DLX.spef -rc_corner standard
+[10/18 20:36:15    140s] Opening parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d' for reading (mem: 1316.176M)
+[10/18 20:36:15    140s] RC Out has the following PVT Info:
+[10/18 20:36:15    140s]    RC:standard, Operating temperature 300 C
+[10/18 20:36:15    140s] Dumping Spef file.....
+[10/18 20:36:15    140s] Printing D_NET...
+[10/18 20:36:16    142s] RC Out from RCDB Completed (CPU Time= 0:00:02.3  MEM= 1316.2M)
+[10/18 20:36:16    142s] Closing parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d': 8423 access done (mem: 1316.176M)
+[10/18 20:38:34    160s] <CMD> redirect -quiet {set honorDomain [getAnalysisMode -honorClockDomains]} > /dev/null
+[10/18 20:38:34    160s] <CMD> timeDesign -postRoute -pathReports -slackReports -numPaths 50 -prefix DLX_postRoute -outDir timingReports
+[10/18 20:38:34    160s]  Reset EOS DB
+[10/18 20:38:34    160s] Ignoring AAE DB Resetting ...
+[10/18 20:38:34    160s] Extraction called for design 'DLX' of instances=21788 and nets=8606 using extraction engine 'postRoute' at effort level 'low' .
+[10/18 20:38:34    160s] **WARN: (IMPEXT-3530):	The process node is not set. Use the command setDesignMode -process <process node> prior to extraction for maximum accuracy and optimal automatic threshold setting.
+[10/18 20:38:34    160s] Type 'man IMPEXT-3530' for more detail.
+[10/18 20:38:34    160s] PostRoute (effortLevel low) RC Extraction called for design DLX.
+[10/18 20:38:34    160s] RC Extraction called in multi-corner(1) mode.
+[10/18 20:38:34    160s] Process corner(s) are loaded.
+[10/18 20:38:34    160s]  Corner: standard
+[10/18 20:38:34    160s] extractDetailRC Option : -outfile /tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d -maxResLength 200  -extended
+[10/18 20:38:34    160s] RC Mode: PostRoute -effortLevel low [Extended CapTable, RC Table Resistances]
+[10/18 20:38:34    160s]       RC Corner Indexes            0   
+[10/18 20:38:34    160s] Capacitance Scaling Factor   : 1.00000 
+[10/18 20:38:34    160s] Coupling Cap. Scaling Factor : 1.00000 
+[10/18 20:38:34    160s] Resistance Scaling Factor    : 1.00000 
+[10/18 20:38:34    160s] Clock Cap. Scaling Factor    : 1.00000 
+[10/18 20:38:34    160s] Clock Res. Scaling Factor    : 1.00000 
+[10/18 20:38:34    160s] Shrink Factor                : 1.00000
+[10/18 20:38:35    160s] LayerId::1 widthSet size::4
+[10/18 20:38:35    160s] LayerId::2 widthSet size::4
+[10/18 20:38:35    160s] LayerId::3 widthSet size::4
+[10/18 20:38:35    160s] LayerId::4 widthSet size::4
+[10/18 20:38:35    160s] LayerId::5 widthSet size::4
+[10/18 20:38:35    160s] LayerId::6 widthSet size::4
+[10/18 20:38:35    160s] LayerId::7 widthSet size::4
+[10/18 20:38:35    160s] LayerId::8 widthSet size::4
+[10/18 20:38:35    160s] LayerId::9 widthSet size::4
+[10/18 20:38:35    160s] LayerId::10 widthSet size::3
+[10/18 20:38:35    160s] Initializing multi-corner capacitance tables ... 
+[10/18 20:38:35    160s] Initializing multi-corner resistance tables ...
+[10/18 20:38:35    161s] Preroute length aware model : LLS: 2-3 ; HLS: 3-5 ; rDens: 0.304984 ; uaWl: 1.000000 ; uaWlH: 0.291546 ; aWlH: 0.000000 ; Pmax: 0.851100 ; wcR: 0.535700 ; newSi: 0.077600 ; pMod: 81 ; 
+[10/18 20:38:35    161s] Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1278.2M)
+[10/18 20:38:35    161s] Creating parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d' for storing RC.
+[10/18 20:38:35    161s] Extracted 10.0012% (CPU Time= 0:00:00.5  MEM= 1300.3M)
+[10/18 20:38:35    161s] Extracted 20.0015% (CPU Time= 0:00:00.7  MEM= 1324.3M)
+[10/18 20:38:35    161s] Extracted 30.0017% (CPU Time= 0:00:00.7  MEM= 1324.3M)
+[10/18 20:38:36    161s] Extracted 40.0011% (CPU Time= 0:00:00.9  MEM= 1324.3M)
+[10/18 20:38:36    161s] Extracted 50.0014% (CPU Time= 0:00:01.0  MEM= 1324.3M)
+[10/18 20:38:36    162s] Extracted 60.0016% (CPU Time= 0:00:01.2  MEM= 1324.3M)
+[10/18 20:38:36    162s] Extracted 70.001% (CPU Time= 0:00:01.3  MEM= 1325.3M)
+[10/18 20:38:36    162s] Extracted 80.0013% (CPU Time= 0:00:01.6  MEM= 1326.3M)
+[10/18 20:38:37    162s] Extracted 90.0015% (CPU Time= 0:00:01.8  MEM= 1327.3M)
+[10/18 20:38:37    163s] Extracted 100% (CPU Time= 0:00:02.4  MEM= 1334.3M)
+[10/18 20:38:37    163s] Number of Extracted Resistors     : 166928
+[10/18 20:38:37    163s] Number of Extracted Ground Cap.   : 175351
+[10/18 20:38:37    163s] Number of Extracted Coupling Cap. : 288940
+[10/18 20:38:37    163s] Opening parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d' for reading (mem: 1318.301M)
+[10/18 20:38:37    163s] Filtering XCap in 'relativeOnly' mode using values relative_c_threshold=0.03 and total_c_threshold=5fF.
+[10/18 20:38:37    163s]  Corner: standard
+[10/18 20:38:37    163s] Checking LVS Completed (CPU Time= 0:00:00.1  MEM= 1318.3M)
+[10/18 20:38:37    163s] Creating parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb_Filter.rcdb.d' for storing RC.
+[10/18 20:38:38    163s] Closing parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d': 8423 access done (mem: 1318.301M)
+[10/18 20:38:38    163s] Lumped Parasitic Loading Started (total cpu=0:00:00.0, real=0:00:00.0, current mem=1318.301M)
+[10/18 20:38:38    163s] Opening parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d' for reading (mem: 1318.301M)
+[10/18 20:38:38    163s] processing rcdb (/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d) for hinst (top) of cell (DLX);
+[10/18 20:38:40    165s] Closing parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d': 0 access done (mem: 1318.301M)
+[10/18 20:38:40    165s] Lumped Parasitic Loading Completed (total cpu=0:00:02.0, real=0:00:02.0, current mem=1318.301M)
+[10/18 20:38:40    165s] PostRoute (effortLevel low) RC Extraction DONE (CPU Time: 0:00:05.0  Real Time: 0:00:06.0  MEM: 1318.301M)
+[10/18 20:38:40    165s] Starting delay calculation for Setup views
+[10/18 20:38:40    165s] Starting SI iteration 1 using Infinite Timing Windows
+[10/18 20:38:40    165s] #################################################################################
+[10/18 20:38:40    165s] # Design Stage: PostRoute
+[10/18 20:38:40    165s] # Design Name: DLX
+[10/18 20:38:40    165s] # Design Mode: 90nm
+[10/18 20:38:40    165s] # Analysis Mode: MMMC OCV 
+[10/18 20:38:40    165s] # Parasitics Mode: SPEF/RCDB 
+[10/18 20:38:40    165s] # Signoff Settings: SI On 
+[10/18 20:38:40    165s] #################################################################################
+[10/18 20:38:41    166s] AAE_INFO: 1 threads acquired from CTE.
+[10/18 20:38:41    166s] Setting infinite Tws ...
+[10/18 20:38:41    166s] First Iteration Infinite Tw... 
+[10/18 20:38:41    166s] Calculate early delays in OCV mode...
+[10/18 20:38:41    166s] Calculate late delays in OCV mode...
+[10/18 20:38:41    166s] Topological Sorting (REAL = 0:00:00.0, MEM = 1318.3M, InitMEM = 1318.3M)
+[10/18 20:38:41    166s] Start delay calculation (fullDC) (1 T). (MEM=1318.3)
+[10/18 20:38:41    167s] LayerId::1 widthSet size::4
+[10/18 20:38:41    167s] LayerId::2 widthSet size::4
+[10/18 20:38:41    167s] LayerId::3 widthSet size::4
+[10/18 20:38:41    167s] LayerId::4 widthSet size::4
+[10/18 20:38:41    167s] LayerId::5 widthSet size::4
+[10/18 20:38:41    167s] LayerId::6 widthSet size::4
+[10/18 20:38:41    167s] LayerId::7 widthSet size::4
+[10/18 20:38:41    167s] LayerId::8 widthSet size::4
+[10/18 20:38:41    167s] LayerId::9 widthSet size::4
+[10/18 20:38:41    167s] LayerId::10 widthSet size::3
+[10/18 20:38:41    167s] Initializing multi-corner capacitance tables ... 
+[10/18 20:38:41    167s] Initializing multi-corner resistance tables ...
+[10/18 20:38:42    167s] Preroute length aware model : LLS: 2-3 ; HLS: 3-5 ; rDens: 0.304984 ; uaWl: 1.000000 ; uaWlH: 0.291546 ; aWlH: 0.000000 ; Pmax: 0.851100 ; wcR: 0.535700 ; newSi: 0.077600 ; pMod: 81 ; 
+[10/18 20:38:42    167s] Start AAE Lib Loading. (MEM=1329.91)
+[10/18 20:38:42    167s] End AAE Lib Loading. (MEM=1339.45 CPU=0:00:00.0 Real=0:00:00.0)
+[10/18 20:38:42    167s] End AAE Lib Interpolated Model. (MEM=1339.45 CPU Time=0:00:00.0, Real Time=0:00:00.0)
+[10/18 20:38:42    167s] Opening parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d' for reading (mem: 1348.988M)
+[10/18 20:38:42    167s] RC Database In Completed (CPU Time= 0:00:00.0  Real Time=0:00:00.0  MEM= 1349.0M)
+[10/18 20:38:51    176s] Total number of fetched objects 8651
+[10/18 20:38:51    176s] AAE_INFO-618: Total number of nets in the design is 8606,  100.0 percent of the nets selected for SI analysis
+[10/18 20:38:51    176s] End Timing Check Calculation. (CPU Time=0:00:00.3, Real Time=0:00:00.0)
+[10/18 20:38:51    176s] End delay calculation. (MEM=1334.51 CPU=0:00:08.5 REAL=0:00:09.0)
+[10/18 20:38:51    176s] End delay calculation (fullDC). (MEM=1307.43 CPU=0:00:09.4 REAL=0:00:10.0)
+[10/18 20:38:52    176s] *** CDM Built up (cpu=0:00:10.5  real=0:00:11.0  mem= 1307.4M) ***
+[10/18 20:38:52    177s] Loading CTE timing window with TwFlowType 0...(CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1307.4M)
+[10/18 20:38:52    177s] Add other clocks and setupCteToAAEClockMapping during iter 1
+[10/18 20:38:53    177s] Loading CTE timing window is completed (CPU = 0:00:00.4, REAL = 0:00:01.0, MEM = 1307.4M)
+[10/18 20:38:53    177s] Starting SI iteration 2
+[10/18 20:38:53    177s] Calculate early delays in OCV mode...
+[10/18 20:38:53    177s] Calculate late delays in OCV mode...
+[10/18 20:38:53    177s] Start delay calculation (fullDC) (1 T). (MEM=1240.55)
+[10/18 20:38:53    177s] End AAE Lib Interpolated Model. (MEM=1240.55 CPU Time=0:00:00.0, Real Time=0:00:00.0)
+[10/18 20:38:54    178s] Glitch Analysis: View default -- Total Number of Nets Skipped = 0. 
+[10/18 20:38:54    178s] Glitch Analysis: View default -- Total Number of Nets Analyzed = 8651. 
+[10/18 20:38:54    178s] Total number of fetched objects 8651
+[10/18 20:38:54    178s] AAE_INFO-618: Total number of nets in the design is 8606,  0.1 percent of the nets selected for SI analysis
+[10/18 20:38:54    178s] End delay calculation. (MEM=1282.71 CPU=0:00:00.3 REAL=0:00:01.0)
+[10/18 20:38:54    178s] End delay calculation (fullDC). (MEM=1282.71 CPU=0:00:00.3 REAL=0:00:01.0)
+[10/18 20:38:54    178s] *** CDM Built up (cpu=0:00:00.3  real=0:00:01.0  mem= 1282.7M) ***
+[10/18 20:38:54    178s] *** Done Building Timing Graph (cpu=0:00:13.0 real=0:00:14.0 totSessionCpu=0:02:59 mem=1282.7M)
+[10/18 20:38:54    178s] Effort level <high> specified for reg2reg path_group
+[10/18 20:38:55    179s] OPERPROF: Starting spInitSiteArr at level 1, MEM:1244.7M
+[10/18 20:38:55    179s] OPERPROF:   Starting spiInitFpSiteArr at level 2, MEM:1244.7M
+[10/18 20:38:55    179s] OPERPROF:     Starting spiCheckSiteIfFastDPInitAvailable at level 3, MEM:1244.7M
+[10/18 20:38:55    179s] OPERPROF:     Finished spiCheckSiteIfFastDPInitAvailable at level 3, CPU:0.030, REAL:0.042, MEM:1276.7M
+[10/18 20:38:55    179s] Use non-trimmed site array because memory saving is not enough.
+[10/18 20:38:55    179s] OPERPROF:     Starting RoutingBlockageFromWireViaStBox at level 3, MEM:1277.2M
+[10/18 20:38:55    179s] OPERPROF:     Finished RoutingBlockageFromWireViaStBox at level 3, CPU:0.000, REAL:0.001, MEM:1277.2M
+[10/18 20:38:55    179s] OPERPROF:   Finished spiInitFpSiteArr at level 2, CPU:0.060, REAL:0.068, MEM:1277.2M
+[10/18 20:38:55    179s] OPERPROF: Finished spInitSiteArr at level 1, CPU:0.070, REAL:0.080, MEM:1277.2M
+[10/18 20:38:55    179s] OPERPROF: Starting spSiteCleanup(true) at level 1, MEM:1277.2M
+[10/18 20:38:55    179s] OPERPROF: Finished spSiteCleanup(true) at level 1, CPU:0.000, REAL:0.000, MEM:1277.2M
+[10/18 20:38:59    182s] 
+------------------------------------------------------------
+          timeDesign Summary                             
+------------------------------------------------------------
+
+Setup views included:
+ default 
+
++--------------------+---------+---------+---------+
+|     Setup mode     |   all   | reg2reg | default |
++--------------------+---------+---------+---------+
+|           WNS (ns):|  0.049  |  0.098  |  0.049  |
+|           TNS (ns):|  0.000  |  0.000  |  0.000  |
+|    Violating Paths:|    0    |    0    |    0    |
+|          All Paths:|  2913   |  1458   |  1919   |
++--------------------+---------+---------+---------+
+
++----------------+-------------------------------+------------------+
+|                |              Real             |       Total      |
+|    DRVs        +------------------+------------+------------------|
+|                |  Nr nets(terms)  | Worst Vio  |  Nr nets(terms)  |
++----------------+------------------+------------+------------------+
+|   max_cap      |      0 (0)       |   0.000    |      1 (1)       |
+|   max_tran     |      0 (0)       |   0.000    |      2 (3)       |
+|   max_fanout   |      0 (0)       |     0      |      0 (0)       |
+|   max_length   |      0 (0)       |     0      |      0 (0)       |
++----------------+------------------+------------+------------------+
+
+Density: 57.222%
+       (100.000% with Fillers)
+Total number of glitch violations: 0
+------------------------------------------------------------
+Reported timing to dir timingReports
+[10/18 20:38:59    182s] Total CPU time: 21.77 sec
+[10/18 20:38:59    182s] Total Real time: 25.0 sec
+[10/18 20:38:59    182s] Total Memory Usage: 1278.171875 Mbytes
+[10/18 20:38:59    182s] Info: pop threads available for lower-level modules during optimization.
+[10/18 20:38:59    182s] Reset AAE Options
+[10/18 20:38:59    182s] 
+[10/18 20:38:59    182s] =============================================================================================
+[10/18 20:38:59    182s]  Final TAT Report for timeDesign
+[10/18 20:38:59    182s] =============================================================================================
+[10/18 20:38:59    182s]  Step Name                  Count        Real  (       % )      Step Total Real / CPU  Scale
+[10/18 20:38:59    182s] ---------------------------------------------------------------------------------------------
+[10/18 20:38:59    182s] [ ViewPruning            ]      1   0:00:00.0  (   0.0 % )     0:00:00.0 /  0:00:00.0   54.6
+[10/18 20:38:59    182s] [ ExtractRC              ]      1   0:00:05.9  (  24.1 % )     0:00:05.9 /  0:00:05.0    0.8
+[10/18 20:38:59    182s] [ TimingUpdate           ]      2   0:00:01.5  (   6.0 % )     0:00:14.8 /  0:00:13.9    0.9
+[10/18 20:38:59    182s] [ FullDelayCalc          ]      1   0:00:13.3  (  54.1 % )     0:00:13.3 /  0:00:12.5    0.9
+[10/18 20:38:59    182s] [ OptSummaryReport       ]      1   0:00:00.2  (   0.9 % )     0:00:04.1 /  0:00:03.2    0.8
+[10/18 20:38:59    182s] [ TimingReport           ]      1   0:00:00.0  (   0.0 % )     0:00:00.6 /  0:00:00.6    1.0
+[10/18 20:38:59    182s] [ DrvReport              ]      1   0:00:00.0  (   0.2 % )     0:00:01.4 /  0:00:00.6    0.4
+[10/18 20:38:59    182s] [ GenerateReports        ]      1   0:00:00.9  (   3.8 % )     0:00:00.9 /  0:00:00.9    1.0
+[10/18 20:38:59    182s] [ ReportLenViolation     ]      1   0:00:00.0  (   0.0 % )     0:00:00.0 /  0:00:00.0    0.0
+[10/18 20:38:59    182s] [ ReportGlitchViolation  ]      1   0:00:00.9  (   3.5 % )     0:00:00.9 /  0:00:00.1    0.1
+[10/18 20:38:59    182s] [ GenerateDrvReportData  ]      1   0:00:00.5  (   2.2 % )     0:00:00.5 /  0:00:00.5    1.0
+[10/18 20:38:59    182s] [ ReportAnalysisSummary  ]      2   0:00:00.6  (   2.4 % )     0:00:00.6 /  0:00:00.6    1.0
+[10/18 20:38:59    182s] [ MISC                   ]          0:00:00.7  (   2.8 % )     0:00:00.7 /  0:00:00.6    0.8
+[10/18 20:38:59    182s] ---------------------------------------------------------------------------------------------
+[10/18 20:38:59    182s]  timeDesign TOTAL                   0:00:24.6  ( 100.0 % )     0:00:24.6 /  0:00:21.7    0.9
+[10/18 20:38:59    182s] ---------------------------------------------------------------------------------------------
+[10/18 20:38:59    182s] 
+[10/18 20:39:59    191s] <CMD> redirect -quiet {set honorDomain [getAnalysisMode -honorClockDomains]} > /dev/null
+[10/18 20:39:59    191s] <CMD> timeDesign -postRoute -hold -pathReports -slackReports -numPaths 50 -prefix DLX_postRoute -outDir timingReports
+[10/18 20:39:59    191s]  Reset EOS DB
+[10/18 20:39:59    191s] Ignoring AAE DB Resetting ...
+[10/18 20:39:59    191s] Closing parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d': 8423 access done (mem: 1288.094M)
+[10/18 20:39:59    191s] Extraction called for design 'DLX' of instances=21788 and nets=8606 using extraction engine 'postRoute' at effort level 'low' .
+[10/18 20:39:59    191s] **WARN: (IMPEXT-3530):	The process node is not set. Use the command setDesignMode -process <process node> prior to extraction for maximum accuracy and optimal automatic threshold setting.
+[10/18 20:39:59    191s] Type 'man IMPEXT-3530' for more detail.
+[10/18 20:39:59    191s] PostRoute (effortLevel low) RC Extraction called for design DLX.
+[10/18 20:39:59    191s] RC Extraction called in multi-corner(1) mode.
+[10/18 20:39:59    191s] Process corner(s) are loaded.
+[10/18 20:39:59    191s]  Corner: standard
+[10/18 20:39:59    191s] extractDetailRC Option : -outfile /tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d -maxResLength 200  -extended
+[10/18 20:39:59    191s] RC Mode: PostRoute -effortLevel low [Extended CapTable, RC Table Resistances]
+[10/18 20:39:59    191s]       RC Corner Indexes            0   
+[10/18 20:39:59    191s] Capacitance Scaling Factor   : 1.00000 
+[10/18 20:39:59    191s] Coupling Cap. Scaling Factor : 1.00000 
+[10/18 20:39:59    191s] Resistance Scaling Factor    : 1.00000 
+[10/18 20:39:59    191s] Clock Cap. Scaling Factor    : 1.00000 
+[10/18 20:39:59    191s] Clock Res. Scaling Factor    : 1.00000 
+[10/18 20:39:59    191s] Shrink Factor                : 1.00000
+[10/18 20:39:59    191s] LayerId::1 widthSet size::4
+[10/18 20:39:59    191s] LayerId::2 widthSet size::4
+[10/18 20:39:59    191s] LayerId::3 widthSet size::4
+[10/18 20:39:59    191s] LayerId::4 widthSet size::4
+[10/18 20:39:59    191s] LayerId::5 widthSet size::4
+[10/18 20:39:59    191s] LayerId::6 widthSet size::4
+[10/18 20:39:59    191s] LayerId::7 widthSet size::4
+[10/18 20:39:59    191s] LayerId::8 widthSet size::4
+[10/18 20:39:59    191s] LayerId::9 widthSet size::4
+[10/18 20:39:59    191s] LayerId::10 widthSet size::3
+[10/18 20:39:59    191s] Initializing multi-corner capacitance tables ... 
+[10/18 20:39:59    191s] Initializing multi-corner resistance tables ...
+[10/18 20:39:59    191s] Preroute length aware model : LLS: 2-3 ; HLS: 3-5 ; rDens: 0.304984 ; uaWl: 1.000000 ; uaWlH: 0.291546 ; aWlH: 0.000000 ; Pmax: 0.851100 ; wcR: 0.535700 ; newSi: 0.077600 ; pMod: 81 ; 
+[10/18 20:39:59    191s] Checking LVS Completed (CPU Time= 0:00:00.1  MEM= 1278.1M)
+[10/18 20:39:59    191s] Creating parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d' for storing RC.
+[10/18 20:40:00    192s] Extracted 10.0012% (CPU Time= 0:00:00.5  MEM= 1316.2M)
+[10/18 20:40:00    192s] Extracted 20.0015% (CPU Time= 0:00:00.6  MEM= 1340.2M)
+[10/18 20:40:00    192s] Extracted 30.0017% (CPU Time= 0:00:00.6  MEM= 1340.2M)
+[10/18 20:40:00    192s] Extracted 40.0011% (CPU Time= 0:00:00.8  MEM= 1340.2M)
+[10/18 20:40:00    192s] Extracted 50.0014% (CPU Time= 0:00:01.0  MEM= 1340.2M)
+[10/18 20:40:00    192s] Extracted 60.0016% (CPU Time= 0:00:01.1  MEM= 1340.2M)
+[10/18 20:40:00    192s] Extracted 70.001% (CPU Time= 0:00:01.3  MEM= 1340.2M)
+[10/18 20:40:01    193s] Extracted 80.0013% (CPU Time= 0:00:01.5  MEM= 1342.2M)
+[10/18 20:40:01    193s] Extracted 90.0015% (CPU Time= 0:00:01.7  MEM= 1343.2M)
+[10/18 20:40:02    193s] Extracted 100% (CPU Time= 0:00:02.3  MEM= 1350.2M)
+[10/18 20:40:02    193s] Number of Extracted Resistors     : 166928
+[10/18 20:40:02    193s] Number of Extracted Ground Cap.   : 175351
+[10/18 20:40:02    193s] Number of Extracted Coupling Cap. : 288940
+[10/18 20:40:02    193s] Opening parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d' for reading (mem: 1318.227M)
+[10/18 20:40:02    193s] Filtering XCap in 'relativeOnly' mode using values relative_c_threshold=0.03 and total_c_threshold=5fF.
+[10/18 20:40:02    193s]  Corner: standard
+[10/18 20:40:02    193s] Checking LVS Completed (CPU Time= 0:00:00.1  MEM= 1318.2M)
+[10/18 20:40:02    194s] Creating parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb_Filter.rcdb.d' for storing RC.
+[10/18 20:40:03    194s] Closing parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d': 8423 access done (mem: 1318.227M)
+[10/18 20:40:03    194s] Lumped Parasitic Loading Started (total cpu=0:00:00.0, real=0:00:00.0, current mem=1318.227M)
+[10/18 20:40:03    194s] Opening parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d' for reading (mem: 1318.227M)
+[10/18 20:40:03    194s] processing rcdb (/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d) for hinst (top) of cell (DLX);
+[10/18 20:40:05    196s] Closing parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d': 0 access done (mem: 1318.227M)
+[10/18 20:40:05    196s] Lumped Parasitic Loading Completed (total cpu=0:00:01.8, real=0:00:02.0, current mem=1318.227M)
+[10/18 20:40:05    196s] PostRoute (effortLevel low) RC Extraction DONE (CPU Time: 0:00:04.7  Real Time: 0:00:06.0  MEM: 1318.227M)
+[10/18 20:40:05    196s] Effort level <high> specified for reg2reg path_group
+[10/18 20:40:06    197s] All LLGs are deleted
+[10/18 20:40:06    197s] OPERPROF: Starting spSiteCleanup(true) at level 1, MEM:1261.8M
+[10/18 20:40:06    197s] OPERPROF: Finished spSiteCleanup(true) at level 1, CPU:0.000, REAL:0.001, MEM:1261.8M
+[10/18 20:40:06    197s] OPERPROF: Starting spInitSiteArr at level 1, MEM:1261.8M
+[10/18 20:40:06    197s] OPERPROF:   Starting spiInitFpSiteArr at level 2, MEM:1261.8M
+[10/18 20:40:06    197s] OPERPROF:     Starting spiCheckSiteIfFastDPInitAvailable at level 3, MEM:1261.8M
+[10/18 20:40:06    197s] OPERPROF:     Finished spiCheckSiteIfFastDPInitAvailable at level 3, CPU:0.030, REAL:0.038, MEM:1261.8M
+[10/18 20:40:06    197s] Fast DP-INIT is on for default
+[10/18 20:40:06    197s] OPERPROF:   Finished spiInitFpSiteArr at level 2, CPU:0.050, REAL:0.056, MEM:1261.8M
+[10/18 20:40:06    197s] OPERPROF: Finished spInitSiteArr at level 1, CPU:0.060, REAL:0.066, MEM:1261.8M
+[10/18 20:40:06    197s] OPERPROF: Starting spSiteCleanup(true) at level 1, MEM:1261.8M
+[10/18 20:40:06    197s] OPERPROF: Finished spSiteCleanup(true) at level 1, CPU:0.000, REAL:0.000, MEM:1261.8M
+[10/18 20:40:06    197s] Starting delay calculation for Hold views
+[10/18 20:40:06    197s] Starting SI iteration 1 using Infinite Timing Windows
+[10/18 20:40:06    197s] #################################################################################
+[10/18 20:40:06    197s] # Design Stage: PostRoute
+[10/18 20:40:06    197s] # Design Name: DLX
+[10/18 20:40:06    197s] # Design Mode: 90nm
+[10/18 20:40:06    197s] # Analysis Mode: MMMC OCV 
+[10/18 20:40:06    197s] # Parasitics Mode: SPEF/RCDB 
+[10/18 20:40:06    197s] # Signoff Settings: SI On 
+[10/18 20:40:06    197s] #################################################################################
+[10/18 20:40:06    197s] AAE_INFO: 1 threads acquired from CTE.
+[10/18 20:40:06    197s] Setting infinite Tws ...
+[10/18 20:40:06    197s] First Iteration Infinite Tw... 
+[10/18 20:40:06    197s] Calculate late delays in OCV mode...
+[10/18 20:40:06    197s] Calculate early delays in OCV mode...
+[10/18 20:40:06    197s] Topological Sorting (REAL = 0:00:00.0, MEM = 1259.8M, InitMEM = 1259.8M)
+[10/18 20:40:06    197s] Start delay calculation (fullDC) (1 T). (MEM=1259.79)
+[10/18 20:40:06    197s] LayerId::1 widthSet size::4
+[10/18 20:40:06    197s] LayerId::2 widthSet size::4
+[10/18 20:40:06    197s] LayerId::3 widthSet size::4
+[10/18 20:40:06    197s] LayerId::4 widthSet size::4
+[10/18 20:40:06    197s] LayerId::5 widthSet size::4
+[10/18 20:40:06    197s] LayerId::6 widthSet size::4
+[10/18 20:40:06    197s] LayerId::7 widthSet size::4
+[10/18 20:40:06    197s] LayerId::8 widthSet size::4
+[10/18 20:40:06    197s] LayerId::9 widthSet size::4
+[10/18 20:40:06    197s] LayerId::10 widthSet size::3
+[10/18 20:40:06    197s] Initializing multi-corner capacitance tables ... 
+[10/18 20:40:06    197s] Initializing multi-corner resistance tables ...
+[10/18 20:40:06    197s] Preroute length aware model : LLS: 2-3 ; HLS: 3-5 ; rDens: 0.304984 ; uaWl: 1.000000 ; uaWlH: 0.291546 ; aWlH: 0.000000 ; Pmax: 0.851100 ; wcR: 0.535700 ; newSi: 0.077600 ; pMod: 81 ; 
+[10/18 20:40:07    198s] End AAE Lib Interpolated Model. (MEM=1271.39 CPU Time=0:00:00.0, Real Time=0:00:00.0)
+[10/18 20:40:07    198s] Opening parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d' for reading (mem: 1271.395M)
+[10/18 20:40:07    198s] RC Database In Completed (CPU Time= 0:00:00.0  Real Time=0:00:00.0  MEM= 1271.4M)
+[10/18 20:40:18    209s] Total number of fetched objects 8651
+[10/18 20:40:18    209s] AAE_INFO-618: Total number of nets in the design is 8606,  100.0 percent of the nets selected for SI analysis
+[10/18 20:40:19    209s] End Timing Check Calculation. (CPU Time=0:00:00.3, Real Time=0:00:01.0)
+[10/18 20:40:19    209s] End delay calculation. (MEM=1287.08 CPU=0:00:11.1 REAL=0:00:12.0)
+[10/18 20:40:19    209s] End delay calculation (fullDC). (MEM=1287.08 CPU=0:00:12.0 REAL=0:00:13.0)
+[10/18 20:40:19    209s] *** CDM Built up (cpu=0:00:12.1  real=0:00:13.0  mem= 1287.1M) ***
+[10/18 20:40:20    210s] Loading CTE timing window with TwFlowType 0...(CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1287.1M)
+[10/18 20:40:20    210s] Add other clocks and setupCteToAAEClockMapping during iter 1
+[10/18 20:40:20    210s] Loading CTE timing window is completed (CPU = 0:00:00.1, REAL = 0:00:00.0, MEM = 1287.1M)
+[10/18 20:40:20    210s] Starting SI iteration 2
+[10/18 20:40:20    211s] Calculate late delays in OCV mode...
+[10/18 20:40:20    211s] Calculate early delays in OCV mode...
+[10/18 20:40:20    211s] Start delay calculation (fullDC) (1 T). (MEM=1258.2)
+[10/18 20:40:20    211s] End AAE Lib Interpolated Model. (MEM=1258.2 CPU Time=0:00:00.0, Real Time=0:00:00.0)
+[10/18 20:40:20    211s] Glitch Analysis: View default -- Total Number of Nets Skipped = 0. 
+[10/18 20:40:20    211s] Glitch Analysis: View default -- Total Number of Nets Analyzed = 8651. 
+[10/18 20:40:20    211s] Total number of fetched objects 8651
+[10/18 20:40:20    211s] AAE_INFO-618: Total number of nets in the design is 8606,  0.4 percent of the nets selected for SI analysis
+[10/18 20:40:20    211s] End delay calculation. (MEM=1301.36 CPU=0:00:00.2 REAL=0:00:00.0)
+[10/18 20:40:20    211s] End delay calculation (fullDC). (MEM=1301.36 CPU=0:00:00.3 REAL=0:00:00.0)
+[10/18 20:40:20    211s] *** CDM Built up (cpu=0:00:00.3  real=0:00:00.0  mem= 1301.4M) ***
+[10/18 20:40:21    212s] *** Done Building Timing Graph (cpu=0:00:14.6 real=0:00:15.0 totSessionCpu=0:03:32 mem=1301.4M)
+[10/18 20:40:22    213s] 
+------------------------------------------------------------
+          timeDesign Summary                             
+------------------------------------------------------------
+
+Hold views included:
+ default 
+
++--------------------+---------+---------+---------+
+|     Hold mode      |   all   | reg2reg | default |
++--------------------+---------+---------+---------+
+|           WNS (ns):|  0.004  |  0.073  |  0.004  |
+|           TNS (ns):|  0.000  |  0.000  |  0.000  |
+|    Violating Paths:|    0    |    0    |    0    |
+|          All Paths:|  2913   |  1458   |  1919   |
++--------------------+---------+---------+---------+
+
+Density: 57.222%
+       (100.000% with Fillers)
+------------------------------------------------------------
+Reported timing to dir timingReports
+[10/18 20:40:23    213s] Total CPU time: 21.92 sec
+[10/18 20:40:23    213s] Total Real time: 24.0 sec
+[10/18 20:40:23    213s] Total Memory Usage: 1225.632812 Mbytes
+[10/18 20:40:23    213s] Reset AAE Options
+[10/18 20:40:23    213s] 
+[10/18 20:40:23    213s] =============================================================================================
+[10/18 20:40:23    213s]  Final TAT Report for timeDesign
+[10/18 20:40:23    213s] =============================================================================================
+[10/18 20:40:23    213s]  Step Name                  Count        Real  (       % )      Step Total Real / CPU  Scale
+[10/18 20:40:23    213s] ---------------------------------------------------------------------------------------------
+[10/18 20:40:23    213s] [ ViewPruning            ]      2   0:00:00.0  (   0.0 % )     0:00:00.0 /  0:00:00.0    0.0
+[10/18 20:40:23    213s] [ ExtractRC              ]      1   0:00:06.2  (  26.2 % )     0:00:06.2 /  0:00:04.9    0.8
+[10/18 20:40:23    213s] [ TimingUpdate           ]      1   0:00:00.7  (   3.0 % )     0:00:15.1 /  0:00:14.6    1.0
+[10/18 20:40:23    213s] [ FullDelayCalc          ]      1   0:00:14.4  (  60.4 % )     0:00:14.4 /  0:00:14.0    1.0
+[10/18 20:40:23    213s] [ OptSummaryReport       ]      1   0:00:00.2  (   0.7 % )     0:00:16.4 /  0:00:15.8    1.0
+[10/18 20:40:23    213s] [ TimingReport           ]      1   0:00:00.0  (   0.0 % )     0:00:00.5 /  0:00:00.4    0.9
+[10/18 20:40:23    213s] [ GenerateReports        ]      1   0:00:00.6  (   2.7 % )     0:00:00.6 /  0:00:00.6    1.0
+[10/18 20:40:23    213s] [ ReportAnalysisSummary  ]      2   0:00:00.5  (   2.0 % )     0:00:00.5 /  0:00:00.4    0.9
+[10/18 20:40:23    213s] [ MISC                   ]          0:00:01.2  (   5.0 % )     0:00:01.2 /  0:00:01.2    1.0
+[10/18 20:40:23    213s] ---------------------------------------------------------------------------------------------
+[10/18 20:40:23    213s]  timeDesign TOTAL                   0:00:23.8  ( 100.0 % )     0:00:23.8 /  0:00:21.9    0.9
+[10/18 20:40:23    213s] ---------------------------------------------------------------------------------------------
+[10/18 20:40:23    213s] 
+[10/18 20:42:25    233s] <CMD> redirect -quiet {set honorDomain [getAnalysisMode -honorClockDomains]} > /dev/null
+[10/18 20:42:25    233s] <CMD> timeDesign -postRoute -hold -pathReports -slackReports -numPaths 50 -prefix DLX_postRoute -outDir timingReports
+[10/18 20:42:26    233s]  Reset EOS DB
+[10/18 20:42:26    233s] Ignoring AAE DB Resetting ...
+[10/18 20:42:26    233s] Closing parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d': 8423 access done (mem: 1225.633M)
+[10/18 20:42:26    233s] Extraction called for design 'DLX' of instances=21788 and nets=8606 using extraction engine 'postRoute' at effort level 'low' .
+[10/18 20:42:26    233s] **WARN: (IMPEXT-3530):	The process node is not set. Use the command setDesignMode -process <process node> prior to extraction for maximum accuracy and optimal automatic threshold setting.
+[10/18 20:42:26    233s] Type 'man IMPEXT-3530' for more detail.
+[10/18 20:42:26    233s] PostRoute (effortLevel low) RC Extraction called for design DLX.
+[10/18 20:42:26    233s] RC Extraction called in multi-corner(1) mode.
+[10/18 20:42:26    233s] Process corner(s) are loaded.
+[10/18 20:42:26    233s]  Corner: standard
+[10/18 20:42:26    233s] extractDetailRC Option : -outfile /tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d -maxResLength 200  -extended
+[10/18 20:42:26    233s] RC Mode: PostRoute -effortLevel low [Extended CapTable, RC Table Resistances]
+[10/18 20:42:26    233s]       RC Corner Indexes            0   
+[10/18 20:42:26    233s] Capacitance Scaling Factor   : 1.00000 
+[10/18 20:42:26    233s] Coupling Cap. Scaling Factor : 1.00000 
+[10/18 20:42:26    233s] Resistance Scaling Factor    : 1.00000 
+[10/18 20:42:26    233s] Clock Cap. Scaling Factor    : 1.00000 
+[10/18 20:42:26    233s] Clock Res. Scaling Factor    : 1.00000 
+[10/18 20:42:26    233s] Shrink Factor                : 1.00000
+[10/18 20:42:26    233s] LayerId::1 widthSet size::4
+[10/18 20:42:26    233s] LayerId::2 widthSet size::4
+[10/18 20:42:26    233s] LayerId::3 widthSet size::4
+[10/18 20:42:26    233s] LayerId::4 widthSet size::4
+[10/18 20:42:26    233s] LayerId::5 widthSet size::4
+[10/18 20:42:26    233s] LayerId::6 widthSet size::4
+[10/18 20:42:26    233s] LayerId::7 widthSet size::4
+[10/18 20:42:26    233s] LayerId::8 widthSet size::4
+[10/18 20:42:26    233s] LayerId::9 widthSet size::4
+[10/18 20:42:26    233s] LayerId::10 widthSet size::3
+[10/18 20:42:26    233s] Initializing multi-corner capacitance tables ... 
+[10/18 20:42:26    233s] Initializing multi-corner resistance tables ...
+[10/18 20:42:26    233s] Preroute length aware model : LLS: 2-3 ; HLS: 3-5 ; rDens: 0.304984 ; uaWl: 1.000000 ; uaWlH: 0.291546 ; aWlH: 0.000000 ; Pmax: 0.851100 ; wcR: 0.535700 ; newSi: 0.077600 ; pMod: 81 ; 
+[10/18 20:42:26    234s] Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1231.6M)
+[10/18 20:42:26    234s] Creating parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d' for storing RC.
+[10/18 20:42:26    234s] Extracted 10.0012% (CPU Time= 0:00:00.6  MEM= 1277.8M)
+[10/18 20:42:27    234s] Extracted 20.0015% (CPU Time= 0:00:00.7  MEM= 1301.8M)
+[10/18 20:42:27    234s] Extracted 30.0017% (CPU Time= 0:00:00.8  MEM= 1301.8M)
+[10/18 20:42:27    234s] Extracted 40.0011% (CPU Time= 0:00:00.9  MEM= 1301.8M)
+[10/18 20:42:27    234s] Extracted 50.0014% (CPU Time= 0:00:01.2  MEM= 1301.8M)
+[10/18 20:42:27    235s] Extracted 60.0016% (CPU Time= 0:00:01.3  MEM= 1301.8M)
+[10/18 20:42:27    235s] Extracted 70.001% (CPU Time= 0:00:01.5  MEM= 1301.8M)
+[10/18 20:42:28    235s] Extracted 80.0013% (CPU Time= 0:00:01.8  MEM= 1301.8M)
+[10/18 20:42:28    235s] Extracted 90.0015% (CPU Time= 0:00:02.1  MEM= 1301.8M)
+[10/18 20:42:29    236s] Extracted 100% (CPU Time= 0:00:02.8  MEM= 1305.8M)
+[10/18 20:42:29    236s] Number of Extracted Resistors     : 166928
+[10/18 20:42:29    236s] Number of Extracted Ground Cap.   : 175351
+[10/18 20:42:29    236s] Number of Extracted Coupling Cap. : 288940
+[10/18 20:42:29    236s] Opening parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d' for reading (mem: 1289.773M)
+[10/18 20:42:29    236s] Filtering XCap in 'relativeOnly' mode using values relative_c_threshold=0.03 and total_c_threshold=5fF.
+[10/18 20:42:29    236s]  Corner: standard
+[10/18 20:42:29    236s] Checking LVS Completed (CPU Time= 0:00:00.1  MEM= 1289.8M)
+[10/18 20:42:29    236s] Creating parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb_Filter.rcdb.d' for storing RC.
+[10/18 20:42:30    237s] Closing parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d': 8423 access done (mem: 1289.773M)
+[10/18 20:42:30    237s] Lumped Parasitic Loading Started (total cpu=0:00:00.0, real=0:00:00.0, current mem=1289.773M)
+[10/18 20:42:30    237s] Opening parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d' for reading (mem: 1289.773M)
+[10/18 20:42:30    237s] processing rcdb (/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d) for hinst (top) of cell (DLX);
+[10/18 20:42:31    238s] Closing parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d': 0 access done (mem: 1289.773M)
+[10/18 20:42:31    238s] Lumped Parasitic Loading Completed (total cpu=0:00:01.3, real=0:00:01.0, current mem=1289.773M)
+[10/18 20:42:31    238s] PostRoute (effortLevel low) RC Extraction DONE (CPU Time: 0:00:04.8  Real Time: 0:00:05.0  MEM: 1289.773M)
+[10/18 20:42:31    238s] Effort level <high> specified for reg2reg path_group
+[10/18 20:42:32    239s] All LLGs are deleted
+[10/18 20:42:32    239s] OPERPROF: Starting spSiteCleanup(true) at level 1, MEM:1266.1M
+[10/18 20:42:32    239s] OPERPROF: Finished spSiteCleanup(true) at level 1, CPU:0.000, REAL:0.000, MEM:1266.1M
+[10/18 20:42:32    239s] OPERPROF: Starting spInitSiteArr at level 1, MEM:1266.1M
+[10/18 20:42:32    239s] OPERPROF:   Starting spiInitFpSiteArr at level 2, MEM:1266.1M
+[10/18 20:42:32    239s] OPERPROF:     Starting spiCheckSiteIfFastDPInitAvailable at level 3, MEM:1266.1M
+[10/18 20:42:33    239s] OPERPROF:     Finished spiCheckSiteIfFastDPInitAvailable at level 3, CPU:0.020, REAL:0.022, MEM:1266.1M
+[10/18 20:42:33    239s] Fast DP-INIT is on for default
+[10/18 20:42:33    239s] OPERPROF:   Finished spiInitFpSiteArr at level 2, CPU:0.040, REAL:0.038, MEM:1266.1M
+[10/18 20:42:33    239s] OPERPROF: Finished spInitSiteArr at level 1, CPU:0.050, REAL:0.047, MEM:1266.1M
+[10/18 20:42:33    239s] OPERPROF: Starting spSiteCleanup(true) at level 1, MEM:1266.1M
+[10/18 20:42:33    239s] OPERPROF: Finished spSiteCleanup(true) at level 1, CPU:0.010, REAL:0.001, MEM:1266.1M
+[10/18 20:42:33    239s] Starting delay calculation for Hold views
+[10/18 20:42:33    239s] Starting SI iteration 1 using Infinite Timing Windows
+[10/18 20:42:33    239s] #################################################################################
+[10/18 20:42:33    239s] # Design Stage: PostRoute
+[10/18 20:42:33    239s] # Design Name: DLX
+[10/18 20:42:33    239s] # Design Mode: 90nm
+[10/18 20:42:33    239s] # Analysis Mode: MMMC OCV 
+[10/18 20:42:33    239s] # Parasitics Mode: SPEF/RCDB 
+[10/18 20:42:33    239s] # Signoff Settings: SI On 
+[10/18 20:42:33    239s] #################################################################################
+[10/18 20:42:33    239s] AAE_INFO: 1 threads acquired from CTE.
+[10/18 20:42:33    239s] Setting infinite Tws ...
+[10/18 20:42:33    239s] First Iteration Infinite Tw... 
+[10/18 20:42:33    239s] Calculate late delays in OCV mode...
+[10/18 20:42:33    239s] Calculate early delays in OCV mode...
+[10/18 20:42:33    240s] Topological Sorting (REAL = 0:00:00.0, MEM = 1264.1M, InitMEM = 1264.1M)
+[10/18 20:42:33    240s] Start delay calculation (fullDC) (1 T). (MEM=1264.05)
+[10/18 20:42:33    240s] LayerId::1 widthSet size::4
+[10/18 20:42:33    240s] LayerId::2 widthSet size::4
+[10/18 20:42:33    240s] LayerId::3 widthSet size::4
+[10/18 20:42:33    240s] LayerId::4 widthSet size::4
+[10/18 20:42:33    240s] LayerId::5 widthSet size::4
+[10/18 20:42:33    240s] LayerId::6 widthSet size::4
+[10/18 20:42:33    240s] LayerId::7 widthSet size::4
+[10/18 20:42:33    240s] LayerId::8 widthSet size::4
+[10/18 20:42:33    240s] LayerId::9 widthSet size::4
+[10/18 20:42:33    240s] LayerId::10 widthSet size::3
+[10/18 20:42:33    240s] Initializing multi-corner capacitance tables ... 
+[10/18 20:42:33    240s] Initializing multi-corner resistance tables ...
+[10/18 20:42:33    240s] Preroute length aware model : LLS: 2-3 ; HLS: 3-5 ; rDens: 0.304984 ; uaWl: 1.000000 ; uaWlH: 0.291546 ; aWlH: 0.000000 ; Pmax: 0.851100 ; wcR: 0.535700 ; newSi: 0.077600 ; pMod: 81 ; 
+[10/18 20:42:33    240s] End AAE Lib Interpolated Model. (MEM=1275.66 CPU Time=0:00:00.0, Real Time=0:00:00.0)
+[10/18 20:42:33    240s] Opening parasitic data file '/tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d' for reading (mem: 1275.660M)
+[10/18 20:42:33    240s] RC Database In Completed (CPU Time= 0:00:00.0  Real Time=0:00:00.0  MEM= 1275.7M)
+[10/18 20:42:43    249s] Total number of fetched objects 8651
+[10/18 20:42:43    249s] AAE_INFO-618: Total number of nets in the design is 8606,  100.0 percent of the nets selected for SI analysis
+[10/18 20:42:43    250s] End Timing Check Calculation. (CPU Time=0:00:00.2, Real Time=0:00:00.0)
+[10/18 20:42:43    250s] End delay calculation. (MEM=1294.34 CPU=0:00:09.2 REAL=0:00:09.0)
+[10/18 20:42:43    250s] End delay calculation (fullDC). (MEM=1294.34 CPU=0:00:10.0 REAL=0:00:10.0)
+[10/18 20:42:43    250s] *** CDM Built up (cpu=0:00:10.2  real=0:00:10.0  mem= 1294.3M) ***
+[10/18 20:42:44    251s] Loading CTE timing window with TwFlowType 0...(CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1294.3M)
+[10/18 20:42:44    251s] Add other clocks and setupCteToAAEClockMapping during iter 1
+[10/18 20:42:45    251s] Loading CTE timing window is completed (CPU = 0:00:00.1, REAL = 0:00:01.0, MEM = 1294.3M)
+[10/18 20:42:45    251s] Starting SI iteration 2
+[10/18 20:42:45    251s] Calculate late delays in OCV mode...
+[10/18 20:42:45    251s] Calculate early delays in OCV mode...
+[10/18 20:42:45    251s] Start delay calculation (fullDC) (1 T). (MEM=1262.46)
+[10/18 20:42:45    251s] End AAE Lib Interpolated Model. (MEM=1262.46 CPU Time=0:00:00.0, Real Time=0:00:00.0)
+[10/18 20:42:45    252s] Glitch Analysis: View default -- Total Number of Nets Skipped = 0. 
+[10/18 20:42:45    252s] Glitch Analysis: View default -- Total Number of Nets Analyzed = 8651. 
+[10/18 20:42:45    252s] Total number of fetched objects 8651
+[10/18 20:42:45    252s] AAE_INFO-618: Total number of nets in the design is 8606,  0.4 percent of the nets selected for SI analysis
+[10/18 20:42:45    252s] End delay calculation. (MEM=1304.61 CPU=0:00:00.3 REAL=0:00:00.0)
+[10/18 20:42:45    252s] End delay calculation (fullDC). (MEM=1304.61 CPU=0:00:00.4 REAL=0:00:00.0)
+[10/18 20:42:45    252s] *** CDM Built up (cpu=0:00:00.4  real=0:00:00.0  mem= 1304.6M) ***
+[10/18 20:42:46    252s] *** Done Building Timing Graph (cpu=0:00:12.8 real=0:00:13.0 totSessionCpu=0:04:13 mem=1304.6M)
+[10/18 20:42:47    253s] 
+------------------------------------------------------------
+          timeDesign Summary                             
+------------------------------------------------------------
+
+Hold views included:
+ default 
+
++--------------------+---------+---------+---------+
+|     Hold mode      |   all   | reg2reg | default |
++--------------------+---------+---------+---------+
+|           WNS (ns):|  0.004  |  0.073  |  0.004  |
+|           TNS (ns):|  0.000  |  0.000  |  0.000  |
+|    Violating Paths:|    0    |    0    |    0    |
+|          All Paths:|  2913   |  1458   |  1919   |
++--------------------+---------+---------+---------+
+
+Density: 57.222%
+       (100.000% with Fillers)
+------------------------------------------------------------
+Reported timing to dir timingReports
+[10/18 20:42:47    253s] Total CPU time: 20.03 sec
+[10/18 20:42:47    253s] Total Real time: 22.0 sec
+[10/18 20:42:47    253s] Total Memory Usage: 1229.882812 Mbytes
+[10/18 20:42:47    253s] Reset AAE Options
+[10/18 20:42:47    253s] 
+[10/18 20:42:47    253s] =============================================================================================
+[10/18 20:42:47    253s]  Final TAT Report for timeDesign
+[10/18 20:42:47    253s] =============================================================================================
+[10/18 20:42:47    253s]  Step Name                  Count        Real  (       % )      Step Total Real / CPU  Scale
+[10/18 20:42:47    253s] ---------------------------------------------------------------------------------------------
+[10/18 20:42:47    253s] [ ViewPruning            ]      2   0:00:00.0  (   0.0 % )     0:00:00.0 /  0:00:00.0    0.0
+[10/18 20:42:47    253s] [ ExtractRC              ]      1   0:00:05.6  (  26.2 % )     0:00:05.6 /  0:00:04.9    0.9
+[10/18 20:42:47    253s] [ TimingUpdate           ]      1   0:00:00.7  (   3.2 % )     0:00:13.5 /  0:00:12.8    1.0
+[10/18 20:42:47    253s] [ FullDelayCalc          ]      1   0:00:12.8  (  59.6 % )     0:00:12.8 /  0:00:12.3    1.0
+[10/18 20:42:47    253s] [ OptSummaryReport       ]      1   0:00:00.1  (   0.6 % )     0:00:14.4 /  0:00:13.7    1.0
+[10/18 20:42:47    253s] [ TimingReport           ]      1   0:00:00.0  (   0.0 % )     0:00:00.3 /  0:00:00.3    1.0
+[10/18 20:42:47    253s] [ GenerateReports        ]      1   0:00:00.5  (   2.3 % )     0:00:00.5 /  0:00:00.5    0.9
+[10/18 20:42:47    253s] [ ReportAnalysisSummary  ]      2   0:00:00.3  (   1.4 % )     0:00:00.3 /  0:00:00.3    1.0
+[10/18 20:42:47    253s] [ MISC                   ]          0:00:01.5  (   6.8 % )     0:00:01.5 /  0:00:01.4    1.0
+[10/18 20:42:47    253s] ---------------------------------------------------------------------------------------------
+[10/18 20:42:47    253s]  timeDesign TOTAL                   0:00:21.5  ( 100.0 % )     0:00:21.5 /  0:00:20.0    0.9
+[10/18 20:42:47    253s] ---------------------------------------------------------------------------------------------
+[10/18 20:42:47    253s] 
+[10/18 20:43:46    260s] <CMD> verifyConnectivity -type all -error 1000 -warning 50
+[10/18 20:43:46    260s] VERIFY_CONNECTIVITY use new engine.
+[10/18 20:43:46    260s] 
+[10/18 20:43:46    260s] ******** Start: VERIFY CONNECTIVITY ********
+[10/18 20:43:46    260s] Start Time: Wed Oct 18 20:43:46 2023
+[10/18 20:43:46    260s] 
+[10/18 20:43:46    260s] Design Name: DLX
+[10/18 20:43:46    260s] Database Units: 2000
+[10/18 20:43:46    260s] Design Boundary: (0.0000, 0.0000) (172.5200, 171.0800)
+[10/18 20:43:46    260s] Error Limit = 1000; Warning Limit = 50
+[10/18 20:43:46    260s] Check all nets
+[10/18 20:43:47    261s] **** 20:43:47 **** Processed 5000 nets.
+[10/18 20:43:48    261s] 
+[10/18 20:43:48    261s] Begin Summary 
+[10/18 20:43:48    261s]   Found no problems or warnings.
+[10/18 20:43:48    261s] End Summary
+[10/18 20:43:48    261s] 
+[10/18 20:43:48    261s] End Time: Wed Oct 18 20:43:48 2023
+[10/18 20:43:48    261s] Time Elapsed: 0:00:02.0
+[10/18 20:43:48    261s] 
+[10/18 20:43:48    261s] ******** End: VERIFY CONNECTIVITY ********
+[10/18 20:43:48    261s]   Verification Complete : 0 Viols.  0 Wrngs.
+[10/18 20:43:48    261s]   (CPU Time: 0:00:01.1  MEM: 0.000M)
+[10/18 20:43:48    261s] 
+[10/18 20:47:02    287s] <CMD> saveNetlist DLX.v
+[10/18 20:47:02    287s] Writing Netlist "DLX.v" ...
+[10/18 20:47:14    288s] <CMD> all_hold_analysis_views 
+[10/18 20:47:14    288s] <CMD> all_setup_analysis_views 
+[10/18 20:47:29    289s] <CMD> write_sdf  -ideal_clock_network DLX.sdf
+[10/18 20:47:29    289s] **WARN: (SDF-808):	The software is currently operating in a high performance mode which optimizes the handling of multiple timing arcs between input and output pin pairs. With the current settings, the SDF file generated will contain the same delay information for all of these arcs. To have the SDF recalculated with explicit pin pair data, you should use the option '-recompute_delay_calc'. This setting is recommended for generating SDF for functional  simulation applications.
+[10/18 20:47:29    289s] Starting SI iteration 1 using Infinite Timing Windows
+[10/18 20:47:29    289s] #################################################################################
+[10/18 20:47:29    289s] # Design Stage: PostRoute
+[10/18 20:47:29    289s] # Design Name: DLX
+[10/18 20:47:29    289s] # Design Mode: 90nm
+[10/18 20:47:29    289s] # Analysis Mode: MMMC OCV 
+[10/18 20:47:29    289s] # Parasitics Mode: SPEF/RCDB 
+[10/18 20:47:29    289s] # Signoff Settings: SI On 
+[10/18 20:47:29    289s] #################################################################################
+[10/18 20:47:30    290s] AAE_INFO: 1 threads acquired from CTE.
+[10/18 20:47:30    290s] Setting infinite Tws ...
+[10/18 20:47:30    290s] First Iteration Infinite Tw... 
+[10/18 20:47:30    290s] Topological Sorting (REAL = 0:00:00.0, MEM = 1240.5M, InitMEM = 1240.5M)
+[10/18 20:47:30    290s] Start delay calculation (fullDC) (1 T). (MEM=1240.52)
+[10/18 20:47:30    290s] End AAE Lib Interpolated Model. (MEM=1248.73 CPU Time=0:00:00.0, Real Time=0:00:00.0)
+[10/18 20:47:41    299s] Total number of fetched objects 8651
+[10/18 20:47:41    299s] AAE_INFO-618: Total number of nets in the design is 8606,  100.0 percent of the nets selected for SI analysis
+[10/18 20:47:41    300s] End Timing Check Calculation. (CPU Time=0:00:00.5, Real Time=0:00:00.0)
+[10/18 20:47:41    300s] End delay calculation. (MEM=1296.43 CPU=0:00:08.7 REAL=0:00:10.0)
+[10/18 20:47:41    300s] End delay calculation (fullDC). (MEM=1296.43 CPU=0:00:09.6 REAL=0:00:11.0)
+[10/18 20:47:41    300s] *** CDM Built up (cpu=0:00:10.5  real=0:00:12.0  mem= 1296.4M) ***
+[10/18 20:47:43    301s] Loading CTE timing window with TwFlowType 0...(CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1296.4M)
+[10/18 20:47:43    301s] Add other clocks and setupCteToAAEClockMapping during iter 1
+[10/18 20:47:43    301s] Loading CTE timing window is completed (CPU = 0:00:00.2, REAL = 0:00:00.0, MEM = 1296.4M)
+[10/18 20:47:43    301s] Starting SI iteration 2
+[10/18 20:47:43    301s] Start delay calculation (fullDC) (1 T). (MEM=1255.43)
+[10/18 20:47:43    301s] End AAE Lib Interpolated Model. (MEM=1255.43 CPU Time=0:00:00.0, Real Time=0:00:00.0)
+[10/18 20:47:44    302s] Glitch Analysis: View default -- Total Number of Nets Skipped = 0. 
+[10/18 20:47:44    302s] Glitch Analysis: View default -- Total Number of Nets Analyzed = 8651. 
+[10/18 20:47:44    302s] Total number of fetched objects 8651
+[10/18 20:47:44    302s] AAE_INFO-618: Total number of nets in the design is 8606,  0.5 percent of the nets selected for SI analysis
+[10/18 20:47:44    302s] End delay calculation. (MEM=1297.59 CPU=0:00:00.4 REAL=0:00:01.0)
+[10/18 20:47:44    302s] End delay calculation (fullDC). (MEM=1297.59 CPU=0:00:00.5 REAL=0:00:01.0)
+[10/18 20:47:44    302s] *** CDM Built up (cpu=0:00:00.5  real=0:00:01.0  mem= 1297.6M) ***
+[10/18 20:53:22    352s] 
+--------------------------------------------------------------------------------
+Exiting Innovus on Wed Oct 18 20:53:22 2023
+  Total CPU time:     0:06:02
+  Total real time:    0:28:19
+  Peak memory (main): 1019.11MB
+
+[10/18 20:53:22    352s] 
+[10/18 20:53:22    352s] *** Memory Usage v#2 (Current mem = 1289.375M, initial mem = 272.285M) ***
+[10/18 20:53:22    352s] 
+[10/18 20:53:22    352s] *** Summary of all messages that are not suppressed in this session:
+[10/18 20:53:22    352s] Severity  ID               Count  Summary                                  
+[10/18 20:53:22    352s] WARNING   IMPEXT-3530          4  The process node is not set. Use the com...
+[10/18 20:53:22    352s] ERROR     IMPSYT-6967          2  %s                                       
+[10/18 20:53:22    352s] ERROR     IMPSYT-6965          2  %s                                       
+[10/18 20:53:22    352s] ERROR     IMPSYT-6963          2  %s                                       
+[10/18 20:53:22    352s] WARNING   IMPESI-3505          1  setDelayCalMode -eng_%s (default=%s) wil...
+[10/18 20:53:22    352s] WARNING   IMPCTE-107           1  The following globals have been obsolete...
+[10/18 20:53:22    352s] WARNING   IMPTCM-77            1  Option "%s" for command %s is obsolete a...
+[10/18 20:53:22    352s] ERROR     IMPTCM-48            3  "%s" is not a legal option for command "...
+[10/18 20:53:22    352s] WARNING   SDF-808              1  The software is currently operating in a...
+[10/18 20:53:22    352s] ERROR     TECHLIB-420          2  Number of ecsm_waveforms in the '%s' tab...
+[10/18 20:53:22    352s] ERROR     TECHLIB-1256         2  The %s is being ignored due to errors in...
+[10/18 20:53:22    352s] ERROR     TECHLIB-1346         2  The attribute '%s' defined in group '%s'...
+[10/18 20:53:22    352s] *** Message Summary: 8 warning(s), 15 error(s)
+[10/18 20:53:22    352s] 
+[10/18 20:53:22    352s] --- Ending "Innovus" (totcpu=0:05:53, real=0:28:16, mem=1289.4M) ---

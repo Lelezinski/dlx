@@ -2990,3 +2990,9 @@ Total number of glitch violations: 0
 [10/17 23:20:50    540s] #% End save design ... (date=10/17 23:20:50, total cpu=0:00:15.4, real=0:00:18.0, peak res=1518.1M, current mem=1518.1M)
 [10/17 23:20:50    540s] *** Message Summary: 0 warning(s), 0 error(s)
 [10/17 23:20:50    540s] 
+[10/17 23:40:17    763s] <CMD> zoomIn
+[10/17 23:40:34    765s] <CMD> zoomIn
+[10/17 23:40:41    765s] <CMD> zoomIn
+[10/17 23:40:49    766s] <CMD> zoomOut
+[10/17 23:40:54    767s] <CMD> zoomOut
+[10/17 23:40:55    767s] <CMD> zoomOut

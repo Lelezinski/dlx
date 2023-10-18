@@ -1,0 +1,479 @@
+
+Cadence Innovus(TM) Implementation System.
+Copyright 2020 Cadence Design Systems, Inc. All rights reserved worldwide.
+
+Version:	v20.11-s130_1, built Wed Aug 5 15:53:11 PDT 2020
+Options:	
+Date:		Wed Oct 18 20:25:06 2023
+Host:		localhost.localdomain (x86_64 w/Linux 3.10.0-957.5.1.el7.x86_64) (12cores*12cpus*QEMU Virtual CPU version 2.5+ 16384KB)
+OS:		CentOS Linux release 7.6.1810 (Core) 
+
+License:
+		invs	Innovus Implementation System	20.1	checkout succeeded
+		8 CPU jobs allowed with the current license(s). Use setMultiCpuUsage to set your required CPU count.
+Change the soft stacksize limit to 0.2%RAM (64 mbytes). Set global soft_stack_size_limit to change the value.
+
+**INFO:  MMMC transition support version v31-84 
+
+<CMD> set_global _enable_mmmc_by_default_flow      $CTE::mmmc_default
+<CMD> suppressMessage ENCEXT-2799
+<CMD> win
+<CMD> encMessage warning 0
+Suppress "**WARN ..." messages.
+<CMD> encMessage debug 0
+<CMD> encMessage info 0
+high standard low
+Loading view definition file from /home/ms23.52/MS/dlx/DLX.dat/viewDefinition.tcl
+**ERROR: (TECHLIB-1346):	The attribute 'index_1' defined in group 'ecsm_waveform' on line 393863 is not monotonically increasing for values '0.000041' to '0.000037'. This may lead to undesirable analysis results. The attribute will be ignored. (File /eda/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**ERROR: (TECHLIB-1256):	The ecsm_waveform group 1 is being ignored due to errors in this group. This group will be excluded for any further library checks. Refer to the previous messages issued for ecsm_waveform group 1 to find the details of the issues in this group. (File /eda/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib, Line 393862)
+**ERROR: (TECHLIB-420):	Number of ecsm_waveforms in the 'rise_transition' table on pin ZN of cell OAI222_X2 does not match the number of transition table axis points specified in the template 'Timing_7_7'. Ignoring waveform data. (File /eda/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib, Line 393848)
+**ERROR: (TECHLIB-1346):	The attribute 'index_1' defined in group 'ecsm_waveform' on line 395723 is not monotonically increasing for values '0.000041' to '0.000037'. This may lead to undesirable analysis results. The attribute will be ignored. (File /eda/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib)
+**ERROR: (TECHLIB-1256):	The ecsm_waveform group 1 is being ignored due to errors in this group. This group will be excluded for any further library checks. Refer to the previous messages issued for ecsm_waveform group 1 to find the details of the issues in this group. (File /eda/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib, Line 395722)
+**ERROR: (TECHLIB-420):	Number of ecsm_waveforms in the 'rise_transition' table on pin ZN of cell OAI222_X2 does not match the number of transition table axis points specified in the template 'Timing_7_7'. Ignoring waveform data. (File /eda/dk/nangate45/liberty/NangateOpenCellLibrary_typical_ecsm_nowlm.lib, Line 395708)
+*** End library_loading (cpu=0.04min, real=0.03min, mem=10.5M, fe_cpu=1.39min, fe_real=5.75min, fe_mem=837.0M) ***
+*** Netlist is unique.
+Loading preference file /home/ms23.52/MS/dlx/DLX.dat/gui.pref.tcl ...
+**WARN: (IMPTCM-77):	Option "-drouteStartIteration" for command setNanoRouteMode is obsolete and will be removed in a future release. The obsolete option still works in this release but to avoid this warning and to ensure compatibility with future releases, remove the obsolete option from your script.
+Loading place ...
+'set_default_switching_activity' finished successfully.
+std-typ lt-bc ht-wc
+**WARN: (IMPESI-3505):	setDelayCalMode -eng_copyNetPropToNewNet true (default=false) will be obsoleted along with its sgs2set equivalent.  This parameter will continue to be supported in the current release, but will be removed in the next major release of the software.
+**WARN: (IMPCTE-107):	The following globals have been obsoleted since version 20.11-s130_1. They will be removed in the next release. 
+timing_enable_default_delay_arc
+<CMD> setDrawView place
+worst best default
+coherent-synthesis
+/home/ms23.52/MS/dlx/DLX.dat/libs/mmmc/dlx.sdc
+std-typ lt-bc ht-wc
+libsBC libsWC libsTYP
+high standard low
+ standard 
+ standard 
+<CMD> reset_parasitics
+Performing RC Extraction ...
+<CMD> extractRC
+Extraction called for design 'DLX' of instances=21788 and nets=8606 using extraction engine 'postRoute' at effort level 'low' .
+**WARN: (IMPEXT-3530):	The process node is not set. Use the command setDesignMode -process <process node> prior to extraction for maximum accuracy and optimal automatic threshold setting.
+Type 'man IMPEXT-3530' for more detail.
+PostRoute (effortLevel low) RC Extraction called for design DLX.
+RC Extraction called in multi-corner(1) mode.
+Process corner(s) are loaded.
+ Corner: standard
+extractDetailRC Option : -outfile /tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d  -extended
+RC Mode: PostRoute -effortLevel low [Extended CapTable, RC Table Resistances]
+      RC Corner Indexes            0   
+Capacitance Scaling Factor   : 1.00000 
+Coupling Cap. Scaling Factor : 1.00000 
+Resistance Scaling Factor    : 1.00000 
+Clock Cap. Scaling Factor    : 1.00000 
+Clock Res. Scaling Factor    : 1.00000 
+Shrink Factor                : 1.00000
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1243.0M)
+Extracted 10.0012% (CPU Time= 0:00:00.5  MEM= 1289.2M)
+Extracted 20.0015% (CPU Time= 0:00:00.6  MEM= 1316.2M)
+Extracted 30.0017% (CPU Time= 0:00:00.6  MEM= 1316.2M)
+Extracted 40.0011% (CPU Time= 0:00:00.9  MEM= 1318.2M)
+Extracted 50.0014% (CPU Time= 0:00:01.0  MEM= 1320.2M)
+Extracted 60.0016% (CPU Time= 0:00:01.2  MEM= 1321.2M)
+Extracted 70.001% (CPU Time= 0:00:01.4  MEM= 1322.2M)
+Extracted 80.0013% (CPU Time= 0:00:01.6  MEM= 1324.2M)
+Extracted 90.0015% (CPU Time= 0:00:02.0  MEM= 1325.2M)
+Extracted 100% (CPU Time= 0:00:02.6  MEM= 1332.2M)
+Number of Extracted Resistors     : 166928
+Number of Extracted Ground Cap.   : 175351
+Number of Extracted Coupling Cap. : 288940
+Filtering XCap in 'relativeOnly' mode using values relative_c_threshold=0.03 and total_c_threshold=5fF.
+ Corner: standard
+Checking LVS Completed (CPU Time= 0:00:00.1  MEM= 1316.2M)
+PostRoute (effortLevel low) RC Extraction DONE (CPU Time: 0:00:04.3  Real Time: 0:00:05.0  MEM: 1316.176M)
+<CMD> rcOut -setload DLX.setload -rc_corner standard
+
+Usage: rcOut [-help] [-excludeIlm] [-noRes] {{{-spef <string>} [-excNetFile <string> | -net <string> | -netName <string>] } } [-view <string> | -rc_corner <string>] [-cUnit {pF fF}]
+
+**ERROR: (IMPTCM-48):	"-setload" is not a legal option for command "rcOut". Either the current option or an option prior to it is not specified correctly.
+
+**ERROR: (IMPSYT-6963):	<CMD> rcOut -setres DLX.setres -rc_corner standard
+
+Usage: rcOut [-help] [-excludeIlm] [-noRes] {{{-spef <string>} [-excNetFile <string> | -net <string> | -netName <string>] } } [-view <string> | -rc_corner <string>] [-cUnit {pF fF}]
+
+**ERROR: (IMPTCM-48):	"-setres" is not a legal option for command "rcOut". Either the current option or an option prior to it is not specified correctly.
+
+**ERROR: (IMPSYT-6965):	<CMD> rcOut -spf DLX.spf -rc_corner standard
+
+Usage: rcOut [-help] [-excludeIlm] [-noRes] {{{-spef <string>} [-excNetFile <string> | -net <string> | -netName <string>] } } [-view <string> | -rc_corner <string>] [-cUnit {pF fF}]
+
+**ERROR: (IMPTCM-48):	"-spf" is not a legal option for command "rcOut". Either the current option or an option prior to it is not specified correctly.
+
+**ERROR: (IMPSYT-6967):	<CMD> rcOut -spef DLX.spef -rc_corner standard
+RC Out has the following PVT Info:
+   RC:standard, Operating temperature 300 C
+Dumping Spef file.....
+Printing D_NET...
+RC Out from RCDB Completed (CPU Time= 0:00:02.3  MEM= 1316.2M)
+<CMD> redirect -quiet {set honorDomain [getAnalysisMode -honorClockDomains]} > /dev/null
+<CMD> timeDesign -postRoute -pathReports -slackReports -numPaths 50 -prefix DLX_postRoute -outDir timingReports
+ Reset EOS DB
+Ignoring AAE DB Resetting ...
+Extraction called for design 'DLX' of instances=21788 and nets=8606 using extraction engine 'postRoute' at effort level 'low' .
+**WARN: (IMPEXT-3530):	The process node is not set. Use the command setDesignMode -process <process node> prior to extraction for maximum accuracy and optimal automatic threshold setting.
+Type 'man IMPEXT-3530' for more detail.
+PostRoute (effortLevel low) RC Extraction called for design DLX.
+RC Extraction called in multi-corner(1) mode.
+Process corner(s) are loaded.
+ Corner: standard
+extractDetailRC Option : -outfile /tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d -maxResLength 200  -extended
+RC Mode: PostRoute -effortLevel low [Extended CapTable, RC Table Resistances]
+      RC Corner Indexes            0   
+Capacitance Scaling Factor   : 1.00000 
+Coupling Cap. Scaling Factor : 1.00000 
+Resistance Scaling Factor    : 1.00000 
+Clock Cap. Scaling Factor    : 1.00000 
+Clock Res. Scaling Factor    : 1.00000 
+Shrink Factor                : 1.00000
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1278.2M)
+Extracted 10.0012% (CPU Time= 0:00:00.5  MEM= 1300.3M)
+Extracted 20.0015% (CPU Time= 0:00:00.7  MEM= 1324.3M)
+Extracted 30.0017% (CPU Time= 0:00:00.7  MEM= 1324.3M)
+Extracted 40.0011% (CPU Time= 0:00:00.9  MEM= 1324.3M)
+Extracted 50.0014% (CPU Time= 0:00:01.0  MEM= 1324.3M)
+Extracted 60.0016% (CPU Time= 0:00:01.2  MEM= 1324.3M)
+Extracted 70.001% (CPU Time= 0:00:01.3  MEM= 1325.3M)
+Extracted 80.0013% (CPU Time= 0:00:01.6  MEM= 1326.3M)
+Extracted 90.0015% (CPU Time= 0:00:01.8  MEM= 1327.3M)
+Extracted 100% (CPU Time= 0:00:02.4  MEM= 1334.3M)
+Number of Extracted Resistors     : 166928
+Number of Extracted Ground Cap.   : 175351
+Number of Extracted Coupling Cap. : 288940
+Filtering XCap in 'relativeOnly' mode using values relative_c_threshold=0.03 and total_c_threshold=5fF.
+ Corner: standard
+Checking LVS Completed (CPU Time= 0:00:00.1  MEM= 1318.3M)
+PostRoute (effortLevel low) RC Extraction DONE (CPU Time: 0:00:05.0  Real Time: 0:00:06.0  MEM: 1318.301M)
+Starting delay calculation for Setup views
+Starting SI iteration 1 using Infinite Timing Windows
+#################################################################################
+# Design Stage: PostRoute
+# Design Name: DLX
+# Design Mode: 90nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: SPEF/RCDB 
+# Signoff Settings: SI On 
+#################################################################################
+AAE_INFO: 1 threads acquired from CTE.
+Start delay calculation (fullDC) (1 T). (MEM=1318.3)
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+Total number of fetched objects 8651
+AAE_INFO-618: Total number of nets in the design is 8606,  100.0 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1334.51 CPU=0:00:08.5 REAL=0:00:09.0)
+End delay calculation (fullDC). (MEM=1307.43 CPU=0:00:09.4 REAL=0:00:10.0)
+Loading CTE timing window with TwFlowType 0...(CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1307.4M)
+Add other clocks and setupCteToAAEClockMapping during iter 1
+Loading CTE timing window is completed (CPU = 0:00:00.4, REAL = 0:00:01.0, MEM = 1307.4M)
+Starting SI iteration 2
+Start delay calculation (fullDC) (1 T). (MEM=1240.55)
+Glitch Analysis: View default -- Total Number of Nets Skipped = 0. 
+Glitch Analysis: View default -- Total Number of Nets Analyzed = 8651. 
+Total number of fetched objects 8651
+AAE_INFO-618: Total number of nets in the design is 8606,  0.1 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1282.71 CPU=0:00:00.3 REAL=0:00:01.0)
+End delay calculation (fullDC). (MEM=1282.71 CPU=0:00:00.3 REAL=0:00:01.0)
+*** Done Building Timing Graph (cpu=0:00:13.0 real=0:00:14.0 totSessionCpu=0:02:59 mem=1282.7M)
+
+------------------------------------------------------------
+          timeDesign Summary                             
+------------------------------------------------------------
+
+Setup views included:
+ default 
+
++--------------------+---------+---------+---------+
+|     Setup mode     |   all   | reg2reg | default |
++--------------------+---------+---------+---------+
+|           WNS (ns):|  0.049  |  0.098  |  0.049  |
+|           TNS (ns):|  0.000  |  0.000  |  0.000  |
+|    Violating Paths:|    0    |    0    |    0    |
+|          All Paths:|  2913   |  1458   |  1919   |
++--------------------+---------+---------+---------+
+
++----------------+-------------------------------+------------------+
+|                |              Real             |       Total      |
+|    DRVs        +------------------+------------+------------------|
+|                |  Nr nets(terms)  | Worst Vio  |  Nr nets(terms)  |
++----------------+------------------+------------+------------------+
+|   max_cap      |      0 (0)       |   0.000    |      1 (1)       |
+|   max_tran     |      0 (0)       |   0.000    |      2 (3)       |
+|   max_fanout   |      0 (0)       |     0      |      0 (0)       |
+|   max_length   |      0 (0)       |     0      |      0 (0)       |
++----------------+------------------+------------+------------------+
+
+Density: 57.222%
+       (100.000% with Fillers)
+Total number of glitch violations: 0
+------------------------------------------------------------
+Reported timing to dir timingReports
+Total CPU time: 21.77 sec
+Total Real time: 25.0 sec
+Total Memory Usage: 1278.171875 Mbytes
+Reset AAE Options
+<CMD> redirect -quiet {set honorDomain [getAnalysisMode -honorClockDomains]} > /dev/null
+<CMD> timeDesign -postRoute -hold -pathReports -slackReports -numPaths 50 -prefix DLX_postRoute -outDir timingReports
+ Reset EOS DB
+Ignoring AAE DB Resetting ...
+Extraction called for design 'DLX' of instances=21788 and nets=8606 using extraction engine 'postRoute' at effort level 'low' .
+**WARN: (IMPEXT-3530):	The process node is not set. Use the command setDesignMode -process <process node> prior to extraction for maximum accuracy and optimal automatic threshold setting.
+Type 'man IMPEXT-3530' for more detail.
+PostRoute (effortLevel low) RC Extraction called for design DLX.
+RC Extraction called in multi-corner(1) mode.
+Process corner(s) are loaded.
+ Corner: standard
+extractDetailRC Option : -outfile /tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d -maxResLength 200  -extended
+RC Mode: PostRoute -effortLevel low [Extended CapTable, RC Table Resistances]
+      RC Corner Indexes            0   
+Capacitance Scaling Factor   : 1.00000 
+Coupling Cap. Scaling Factor : 1.00000 
+Resistance Scaling Factor    : 1.00000 
+Clock Cap. Scaling Factor    : 1.00000 
+Clock Res. Scaling Factor    : 1.00000 
+Shrink Factor                : 1.00000
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+Checking LVS Completed (CPU Time= 0:00:00.1  MEM= 1278.1M)
+Extracted 10.0012% (CPU Time= 0:00:00.5  MEM= 1316.2M)
+Extracted 20.0015% (CPU Time= 0:00:00.6  MEM= 1340.2M)
+Extracted 30.0017% (CPU Time= 0:00:00.6  MEM= 1340.2M)
+Extracted 40.0011% (CPU Time= 0:00:00.8  MEM= 1340.2M)
+Extracted 50.0014% (CPU Time= 0:00:01.0  MEM= 1340.2M)
+Extracted 60.0016% (CPU Time= 0:00:01.1  MEM= 1340.2M)
+Extracted 70.001% (CPU Time= 0:00:01.3  MEM= 1340.2M)
+Extracted 80.0013% (CPU Time= 0:00:01.5  MEM= 1342.2M)
+Extracted 90.0015% (CPU Time= 0:00:01.7  MEM= 1343.2M)
+Extracted 100% (CPU Time= 0:00:02.3  MEM= 1350.2M)
+Number of Extracted Resistors     : 166928
+Number of Extracted Ground Cap.   : 175351
+Number of Extracted Coupling Cap. : 288940
+Filtering XCap in 'relativeOnly' mode using values relative_c_threshold=0.03 and total_c_threshold=5fF.
+ Corner: standard
+Checking LVS Completed (CPU Time= 0:00:00.1  MEM= 1318.2M)
+PostRoute (effortLevel low) RC Extraction DONE (CPU Time: 0:00:04.7  Real Time: 0:00:06.0  MEM: 1318.227M)
+Starting delay calculation for Hold views
+Starting SI iteration 1 using Infinite Timing Windows
+#################################################################################
+# Design Stage: PostRoute
+# Design Name: DLX
+# Design Mode: 90nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: SPEF/RCDB 
+# Signoff Settings: SI On 
+#################################################################################
+AAE_INFO: 1 threads acquired from CTE.
+Start delay calculation (fullDC) (1 T). (MEM=1259.79)
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+Total number of fetched objects 8651
+AAE_INFO-618: Total number of nets in the design is 8606,  100.0 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1287.08 CPU=0:00:11.1 REAL=0:00:12.0)
+End delay calculation (fullDC). (MEM=1287.08 CPU=0:00:12.0 REAL=0:00:13.0)
+Loading CTE timing window with TwFlowType 0...(CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1287.1M)
+Add other clocks and setupCteToAAEClockMapping during iter 1
+Loading CTE timing window is completed (CPU = 0:00:00.1, REAL = 0:00:00.0, MEM = 1287.1M)
+Starting SI iteration 2
+Start delay calculation (fullDC) (1 T). (MEM=1258.2)
+Glitch Analysis: View default -- Total Number of Nets Skipped = 0. 
+Glitch Analysis: View default -- Total Number of Nets Analyzed = 8651. 
+Total number of fetched objects 8651
+AAE_INFO-618: Total number of nets in the design is 8606,  0.4 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1301.36 CPU=0:00:00.2 REAL=0:00:00.0)
+End delay calculation (fullDC). (MEM=1301.36 CPU=0:00:00.3 REAL=0:00:00.0)
+*** Done Building Timing Graph (cpu=0:00:14.6 real=0:00:15.0 totSessionCpu=0:03:32 mem=1301.4M)
+
+------------------------------------------------------------
+          timeDesign Summary                             
+------------------------------------------------------------
+
+Hold views included:
+ default 
+
++--------------------+---------+---------+---------+
+|     Hold mode      |   all   | reg2reg | default |
++--------------------+---------+---------+---------+
+|           WNS (ns):|  0.004  |  0.073  |  0.004  |
+|           TNS (ns):|  0.000  |  0.000  |  0.000  |
+|    Violating Paths:|    0    |    0    |    0    |
+|          All Paths:|  2913   |  1458   |  1919   |
++--------------------+---------+---------+---------+
+
+Density: 57.222%
+       (100.000% with Fillers)
+------------------------------------------------------------
+Reported timing to dir timingReports
+Total CPU time: 21.92 sec
+Total Real time: 24.0 sec
+Total Memory Usage: 1225.632812 Mbytes
+Reset AAE Options
+<CMD> redirect -quiet {set honorDomain [getAnalysisMode -honorClockDomains]} > /dev/null
+<CMD> timeDesign -postRoute -hold -pathReports -slackReports -numPaths 50 -prefix DLX_postRoute -outDir timingReports
+ Reset EOS DB
+Ignoring AAE DB Resetting ...
+Extraction called for design 'DLX' of instances=21788 and nets=8606 using extraction engine 'postRoute' at effort level 'low' .
+**WARN: (IMPEXT-3530):	The process node is not set. Use the command setDesignMode -process <process node> prior to extraction for maximum accuracy and optimal automatic threshold setting.
+Type 'man IMPEXT-3530' for more detail.
+PostRoute (effortLevel low) RC Extraction called for design DLX.
+RC Extraction called in multi-corner(1) mode.
+Process corner(s) are loaded.
+ Corner: standard
+extractDetailRC Option : -outfile /tmp/innovus_temp_30423_localhost.localdomain_ms23.52_HYtPSU/DLX_30423_cnn8xL.rcdb.d -maxResLength 200  -extended
+RC Mode: PostRoute -effortLevel low [Extended CapTable, RC Table Resistances]
+      RC Corner Indexes            0   
+Capacitance Scaling Factor   : 1.00000 
+Coupling Cap. Scaling Factor : 1.00000 
+Resistance Scaling Factor    : 1.00000 
+Clock Cap. Scaling Factor    : 1.00000 
+Clock Res. Scaling Factor    : 1.00000 
+Shrink Factor                : 1.00000
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+Checking LVS Completed (CPU Time= 0:00:00.0  MEM= 1231.6M)
+Extracted 10.0012% (CPU Time= 0:00:00.6  MEM= 1277.8M)
+Extracted 20.0015% (CPU Time= 0:00:00.7  MEM= 1301.8M)
+Extracted 30.0017% (CPU Time= 0:00:00.8  MEM= 1301.8M)
+Extracted 40.0011% (CPU Time= 0:00:00.9  MEM= 1301.8M)
+Extracted 50.0014% (CPU Time= 0:00:01.2  MEM= 1301.8M)
+Extracted 60.0016% (CPU Time= 0:00:01.3  MEM= 1301.8M)
+Extracted 70.001% (CPU Time= 0:00:01.5  MEM= 1301.8M)
+Extracted 80.0013% (CPU Time= 0:00:01.8  MEM= 1301.8M)
+Extracted 90.0015% (CPU Time= 0:00:02.1  MEM= 1301.8M)
+Extracted 100% (CPU Time= 0:00:02.8  MEM= 1305.8M)
+Number of Extracted Resistors     : 166928
+Number of Extracted Ground Cap.   : 175351
+Number of Extracted Coupling Cap. : 288940
+Filtering XCap in 'relativeOnly' mode using values relative_c_threshold=0.03 and total_c_threshold=5fF.
+ Corner: standard
+Checking LVS Completed (CPU Time= 0:00:00.1  MEM= 1289.8M)
+PostRoute (effortLevel low) RC Extraction DONE (CPU Time: 0:00:04.8  Real Time: 0:00:05.0  MEM: 1289.773M)
+Starting delay calculation for Hold views
+Starting SI iteration 1 using Infinite Timing Windows
+#################################################################################
+# Design Stage: PostRoute
+# Design Name: DLX
+# Design Mode: 90nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: SPEF/RCDB 
+# Signoff Settings: SI On 
+#################################################################################
+AAE_INFO: 1 threads acquired from CTE.
+Start delay calculation (fullDC) (1 T). (MEM=1264.05)
+Initializing multi-corner capacitance tables ... 
+Initializing multi-corner resistance tables ...
+Total number of fetched objects 8651
+AAE_INFO-618: Total number of nets in the design is 8606,  100.0 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1294.34 CPU=0:00:09.2 REAL=0:00:09.0)
+End delay calculation (fullDC). (MEM=1294.34 CPU=0:00:10.0 REAL=0:00:10.0)
+Loading CTE timing window with TwFlowType 0...(CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1294.3M)
+Add other clocks and setupCteToAAEClockMapping during iter 1
+Loading CTE timing window is completed (CPU = 0:00:00.1, REAL = 0:00:01.0, MEM = 1294.3M)
+Starting SI iteration 2
+Start delay calculation (fullDC) (1 T). (MEM=1262.46)
+Glitch Analysis: View default -- Total Number of Nets Skipped = 0. 
+Glitch Analysis: View default -- Total Number of Nets Analyzed = 8651. 
+Total number of fetched objects 8651
+AAE_INFO-618: Total number of nets in the design is 8606,  0.4 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1304.61 CPU=0:00:00.3 REAL=0:00:00.0)
+End delay calculation (fullDC). (MEM=1304.61 CPU=0:00:00.4 REAL=0:00:00.0)
+*** Done Building Timing Graph (cpu=0:00:12.8 real=0:00:13.0 totSessionCpu=0:04:13 mem=1304.6M)
+
+------------------------------------------------------------
+          timeDesign Summary                             
+------------------------------------------------------------
+
+Hold views included:
+ default 
+
++--------------------+---------+---------+---------+
+|     Hold mode      |   all   | reg2reg | default |
++--------------------+---------+---------+---------+
+|           WNS (ns):|  0.004  |  0.073  |  0.004  |
+|           TNS (ns):|  0.000  |  0.000  |  0.000  |
+|    Violating Paths:|    0    |    0    |    0    |
+|          All Paths:|  2913   |  1458   |  1919   |
++--------------------+---------+---------+---------+
+
+Density: 57.222%
+       (100.000% with Fillers)
+------------------------------------------------------------
+Reported timing to dir timingReports
+Total CPU time: 20.03 sec
+Total Real time: 22.0 sec
+Total Memory Usage: 1229.882812 Mbytes
+Reset AAE Options
+<CMD> verifyConnectivity -type all -error 1000 -warning 50
+VERIFY_CONNECTIVITY use new engine.
+
+******** Start: VERIFY CONNECTIVITY ********
+Start Time: Wed Oct 18 20:43:46 2023
+
+Design Name: DLX
+Database Units: 2000
+Design Boundary: (0.0000, 0.0000) (172.5200, 171.0800)
+Error Limit = 1000; Warning Limit = 50
+Check all nets
+**** 20:43:47 **** Processed 5000 nets.
+
+Begin Summary 
+  Found no problems or warnings.
+End Summary
+
+End Time: Wed Oct 18 20:43:48 2023
+Time Elapsed: 0:00:02.0
+
+******** End: VERIFY CONNECTIVITY ********
+  Verification Complete : 0 Viols.  0 Wrngs.
+  (CPU Time: 0:00:01.1  MEM: 0.000M)
+
+<CMD> saveNetlist DLX.v
+Writing Netlist "DLX.v" ...
+<CMD> all_hold_analysis_views 
+<CMD> all_setup_analysis_views 
+<CMD> write_sdf  -ideal_clock_network DLX.sdf
+**WARN: (SDF-808):	The software is currently operating in a high performance mode which optimizes the handling of multiple timing arcs between input and output pin pairs. With the current settings, the SDF file generated will contain the same delay information for all of these arcs. To have the SDF recalculated with explicit pin pair data, you should use the option '-recompute_delay_calc'. This setting is recommended for generating SDF for functional  simulation applications.
+Starting SI iteration 1 using Infinite Timing Windows
+#################################################################################
+# Design Stage: PostRoute
+# Design Name: DLX
+# Design Mode: 90nm
+# Analysis Mode: MMMC OCV 
+# Parasitics Mode: SPEF/RCDB 
+# Signoff Settings: SI On 
+#################################################################################
+AAE_INFO: 1 threads acquired from CTE.
+Start delay calculation (fullDC) (1 T). (MEM=1240.52)
+Total number of fetched objects 8651
+AAE_INFO-618: Total number of nets in the design is 8606,  100.0 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1296.43 CPU=0:00:08.7 REAL=0:00:10.0)
+End delay calculation (fullDC). (MEM=1296.43 CPU=0:00:09.6 REAL=0:00:11.0)
+Loading CTE timing window with TwFlowType 0...(CPU = 0:00:00.0, REAL = 0:00:00.0, MEM = 1296.4M)
+Add other clocks and setupCteToAAEClockMapping during iter 1
+Loading CTE timing window is completed (CPU = 0:00:00.2, REAL = 0:00:00.0, MEM = 1296.4M)
+Starting SI iteration 2
+Start delay calculation (fullDC) (1 T). (MEM=1255.43)
+Glitch Analysis: View default -- Total Number of Nets Skipped = 0. 
+Glitch Analysis: View default -- Total Number of Nets Analyzed = 8651. 
+Total number of fetched objects 8651
+AAE_INFO-618: Total number of nets in the design is 8606,  0.5 percent of the nets selected for SI analysis
+End delay calculation. (MEM=1297.59 CPU=0:00:00.4 REAL=0:00:01.0)
+End delay calculation (fullDC). (MEM=1297.59 CPU=0:00:00.5 REAL=0:00:01.0)
+
+--------------------------------------------------------------------------------
+Exiting Innovus on Wed Oct 18 20:53:22 2023
+  Total CPU time:     0:06:02
+  Total real time:    0:28:19
+  Peak memory (main): 1019.11MB
+
+
+*** Memory Usage v#2 (Current mem = 1289.375M, initial mem = 272.285M) ***
+*** Message Summary: 8 warning(s), 15 error(s)
+
+--- Ending "Innovus" (totcpu=0:05:53, real=0:28:16, mem=1289.4M) ---
