@@ -54,28 +54,26 @@ package myTypes is
     constant CARRY_SELECT_NBIT     : integer := 4;                        -- how many bits generate a carry
     constant SUM_GENERATOR_NBLOCKS : integer := numBit/CARRY_SELECT_NBIT; -- numBit / CARRY_SELECT_NBIT
 
-    -- Multiplier
-    constant NUMBIT_MUL : integer := 32;
-
-    -- Register Fil
+    -- Register File
     constant R_NUM       : integer := 32;
     constant RF_WORD_LEN : integer := 32;
     constant RF_REG_NUM  : integer := 8;
     constant RF_ADDR_LEN : integer := integer(ceil(log2(real(R_NUM))));
     constant LR_INDEX    : integer := 31; -- link register, or last register in RF
-    -- WRF
-    -- constant NUM_GLOBAL_REGISTERS : integer := 1;  -- M
-    -- constant NUM_LIO_REGISTERS    : integer := 3;  -- N (LOCAL/INPUT/OUTPUT REGS)
-    -- constant NUM_WINDOWS          : integer := 4;  -- F
 
     -- TestBench
     constant C_TB_STAGES : integer := 3; -- Number of Clock Cycles between two instructions
 
-    -- IRAM
-    constant IRAM_DEPTH     : integer := 256;
+    -- xRAM
+    constant DRAM_DEPTH     : integer := 256;
+    constant IRAM_DEPTH     : integer := 128;
     constant PC_SIZE        : integer := numBit;
     constant IRAM_ADDR_SIZE : integer := PC_SIZE;
     subtype pc_t is unsigned(PC_SIZE - 1 downto 0);
+
+    -- RAM Delays
+    constant DRAM_DELAY : integer := 0;
+    constant IRAM_DELAY : integer := 0;
 
     -- Control Unit Input Sizes
     constant C_OP_CODE_SIZE : integer := 6;        -- OPCODE field size
@@ -114,7 +112,6 @@ package myTypes is
     constant FUNC_SGT  : func_t := "00000101011";
     constant FUNC_SLE  : func_t := "00000101100";
     constant FUNC_SGE  : func_t := "00000101101";
-    constant FUNC_MUL  : func_t := "00000111110";
     constant FUNC_SLTu : func_t := "00000111010";
     constant FUNC_SGTu : func_t := "00000111011";
     constant FUNC_SLEu : func_t := "00000111100";

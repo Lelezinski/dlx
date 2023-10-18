@@ -15,7 +15,7 @@ package control_words is
         RF_ENABLE  : std_logic; -- register file enable signal
         RF_RD1     : std_logic; -- register file read port one signal
         RF_RD2     : std_logic; -- register file read port two signal
-        MUX_SIGNED : std_logic_vector(1 downto 0); -- MUX_SIGNED selection signal
+        MUX_SIGNED : std_logic; -- MUX_SIGNED selection signal
         MUX_J_SEL  : std_logic; -- MUX_J_SEL selection signal
         MUX_R_SEL  : std_logic_vector(1 downto 0); -- selects between RD, RS and LR
     end record decode_cw_t;
@@ -24,8 +24,6 @@ package control_words is
         ALU_OP         : alu_op_t;
         MUX_A_SEL      : std_logic; -- MUX_A selection signal
         MUX_B_SEL      : std_logic; -- MUX_B selection signal
-        MUX_JR_SEL     : std_logic; -- MUX_JR selection signal
-        MUX_LL_SEL     : std_logic; -- MUX_LL selection signal
         MUX_COND_SEL   : std_logic_vector(1 downto 0); -- MUX_COND selection signal
     end record execute_cw_t;
 
@@ -66,7 +64,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "01",
+        MUX_SIGNED => '1',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "01"
         ),
@@ -74,8 +72,6 @@ package control_words is
         ALU_OP         => alu_add,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -96,7 +92,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "00",
+        MUX_SIGNED => '0',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "01"
         ),
@@ -104,8 +100,6 @@ package control_words is
         ALU_OP         => ALU_ADDu,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -126,7 +120,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "01",
+        MUX_SIGNED => '1',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "01"
         ),
@@ -134,8 +128,6 @@ package control_words is
         ALU_OP         => alu_sub,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -156,7 +148,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "00",
+        MUX_SIGNED => '0',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "01"
         ),
@@ -164,8 +156,6 @@ package control_words is
         ALU_OP         => ALU_SUBu,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -186,7 +176,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "01",
+        MUX_SIGNED => '1',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "01"
         ),
@@ -194,8 +184,6 @@ package control_words is
         ALU_OP         => alu_and,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -216,7 +204,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "01",
+        MUX_SIGNED => '1',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "01"
         ),
@@ -224,8 +212,6 @@ package control_words is
         ALU_OP         => alu_or,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -246,7 +232,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "01",
+        MUX_SIGNED => '1',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "01"
         ),
@@ -254,8 +240,6 @@ package control_words is
         ALU_OP         => alu_add,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -276,7 +260,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "01",
+        MUX_SIGNED => '1',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "01"
         ),
@@ -284,8 +268,6 @@ package control_words is
         ALU_OP         => alu_add,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -306,7 +288,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "01",
+        MUX_SIGNED => '1',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "01"
         ),
@@ -314,8 +296,6 @@ package control_words is
         ALU_OP         => alu_xor,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -336,7 +316,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "01",
+        MUX_SIGNED => '1',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "01"
         ),
@@ -344,8 +324,6 @@ package control_words is
         ALU_OP         => alu_sll,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -366,7 +344,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "01",
+        MUX_SIGNED => '1',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "01"
         ),
@@ -374,8 +352,6 @@ package control_words is
         ALU_OP         => alu_srl,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -396,7 +372,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "01",
+        MUX_SIGNED => '1',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "01"
         ),
@@ -404,8 +380,6 @@ package control_words is
         ALU_OP         => alu_seq,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -426,7 +400,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "01",
+        MUX_SIGNED => '1',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "01"
         ),
@@ -434,8 +408,6 @@ package control_words is
         ALU_OP         => alu_sne,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -456,7 +428,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "01",
+        MUX_SIGNED => '1',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "01"
         ),
@@ -464,8 +436,6 @@ package control_words is
         ALU_OP         => alu_slt,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -486,7 +456,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "01",
+        MUX_SIGNED => '1',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "01"
         ),
@@ -494,8 +464,6 @@ package control_words is
         ALU_OP         => alu_sgt,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -516,7 +484,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "01",
+        MUX_SIGNED => '1',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "01"
         ),
@@ -524,8 +492,6 @@ package control_words is
         ALU_OP         => alu_sle,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -546,7 +512,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "01",
+        MUX_SIGNED => '1',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "01"
         ),
@@ -554,8 +520,6 @@ package control_words is
         ALU_OP         => alu_sge,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -576,7 +540,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "00",
+        MUX_SIGNED => '0',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "01"
         ),
@@ -584,8 +548,6 @@ package control_words is
         ALU_OP         => alu_sltu,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -606,7 +568,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "00",
+        MUX_SIGNED => '0',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "01"
         ),
@@ -614,8 +576,6 @@ package control_words is
         ALU_OP         => alu_sgtu,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -636,7 +596,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "00",
+        MUX_SIGNED => '0',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "01"
         ),
@@ -644,8 +604,6 @@ package control_words is
         ALU_OP         => alu_sleu,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -666,7 +624,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "00",
+        MUX_SIGNED => '0',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "01"
         ),
@@ -674,8 +632,6 @@ package control_words is
         ALU_OP         => alu_sgeu,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -697,7 +653,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "01",
+        MUX_SIGNED => '1',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "01"
         ),
@@ -705,8 +661,6 @@ package control_words is
         ALU_OP         => alu_add,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -729,7 +683,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "01",
+        MUX_SIGNED => '1',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "00"
         ),
@@ -737,8 +691,6 @@ package control_words is
         ALU_OP         => alu_add,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '0',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (
@@ -761,7 +713,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "01",
+        MUX_SIGNED => '1',
         MUX_J_SEL  => '1',
         MUX_R_SEL  => "00"
         ),
@@ -769,8 +721,6 @@ package control_words is
         ALU_OP         => alu_add,
         MUX_A_SEL      => '0',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "11"
         ),
         memory            => (
@@ -791,7 +741,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "01",
+        MUX_SIGNED => '1',
         MUX_J_SEL  => '1',
         MUX_R_SEL  => "10"
         ),
@@ -799,8 +749,6 @@ package control_words is
         ALU_OP         => alu_add,
         MUX_A_SEL      => '0',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "11"
         ),
         memory            => (
@@ -821,16 +769,14 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "01",
-        MUX_J_SEL  => '0',
+        MUX_SIGNED => '1',
+        MUX_J_SEL  => '1',
         MUX_R_SEL  => "00"
         ),
         execute        => (
         ALU_OP         => alu_add,
         MUX_A_SEL      => '1',
         MUX_B_SEL      => '0',
-        MUX_JR_SEL     => '1',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "11"
         ),
         memory            => (
@@ -851,7 +797,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "10",
+        MUX_SIGNED => '1',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "00"
         ),
@@ -859,8 +805,6 @@ package control_words is
         ALU_OP         => alu_add,
         MUX_A_SEL      => '0',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "01"
         ),
         memory            => (
@@ -870,7 +814,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '0',
-        MUX_LMD_SEL => "10"
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -881,7 +825,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "10",
+        MUX_SIGNED => '1',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "00"
         ),
@@ -889,8 +833,6 @@ package control_words is
         ALU_OP         => alu_add,
         MUX_A_SEL      => '0',
         MUX_B_SEL      => '1',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "10"
         ),
         memory            => (
@@ -900,7 +842,7 @@ package control_words is
         ),
         wb          => (
         RF_WR       => '0',
-        MUX_LMD_SEL => "10"
+        MUX_LMD_SEL => "01"
         )
     );
 
@@ -913,7 +855,7 @@ package control_words is
         RF_ENABLE  => '1',
         RF_RD1     => '1',
         RF_RD2     => '1',
-        MUX_SIGNED => "01",
+        MUX_SIGNED => '1',
         MUX_J_SEL  => '0',
         MUX_R_SEL  => "00"
         ),
@@ -921,8 +863,6 @@ package control_words is
         ALU_OP         => alu_add,
         MUX_A_SEL      => '0',
         MUX_B_SEL      => '0',
-        MUX_JR_SEL     => '0',
-        MUX_LL_SEL     => '0',
         MUX_COND_SEL   => "00"
         ),
         memory            => (

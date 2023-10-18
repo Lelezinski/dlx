@@ -10,3 +10,6 @@ divide:
 finish:
     add     r4, r0, r1
     nop
+	
+forever:
+	j		forever

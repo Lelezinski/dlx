@@ -86,8 +86,6 @@ architecture RTL of DATAPATH is
         );
     end component ALU;
 
-    -- TODO: LL_ALU
-
     ----------------------------------------------------------------
     -- Signals Declaration
     ----------------------------------------------------------------
@@ -123,12 +121,9 @@ architecture RTL of DATAPATH is
     signal A_EQ_ZERO : std_logic;
 
     ---------------------------- [EX] STAGE
-    signal MUX_A_OUT   : data_t;
     signal ALU_IN_1    : data_t;
     signal ALU_IN_2    : data_t;
     signal ALU_OUT     : data_t;
-    signal LL_ALU_OUT  : data_t;
-    signal MUX_LL_OUT  : data_t;
     signal ALU_OUT_REG : data_t;
     signal COND        : std_logic;
     signal B_EX        : data_t;
@@ -169,12 +164,10 @@ begin
 
     ---------------------------- Sign Extend
     -- MUX_SIGNED: based on the signed type and shift needed (00: unsigned, 01: signed, 10: shifted signed for branches)
-    INS_IMM_EXT <= to_data(resize(unsigned(INS_IMM), IMM'length)) when CW.decode.MUX_SIGNED = "00" else
-        to_data(unsigned(resize(signed(INS_IMM), IMM'length))) when CW.decode.MUX_SIGNED = "01" else
-        -- branches require word indexing, while compiler gives us byte addresses; same issue as J instructions
-        to_data(unsigned(shift_right((resize(signed(INS_IMM), IMM'length)), 2)));
+    INS_IMM_EXT <= to_data(resize(unsigned(INS_IMM), IMM'length)) when CW.decode.MUX_SIGNED = '0' else
+        to_data(unsigned(resize(signed(INS_IMM), IMM'length))) when CW.decode.MUX_SIGNED = '1';
 
-    INS_J_IMM_EXT <= to_data(unsigned(shift_right((resize(signed(INS_J_IMM), IMM'length)), 2)));
+    INS_J_IMM_EXT <= to_data(unsigned((resize(signed(INS_J_IMM), IMM'length))));
 
     -- MUX_J: based on the instruction type (0: I, 1: J)
     MUX_J_OUT <= INS_IMM_EXT when CW.decode.MUX_J_SEL = '0' else
@@ -187,23 +180,16 @@ begin
                 std_logic_vector(to_unsigned(LR_INDEX, INS_R1_SIZE));
 
     -- MUX_A: ALU input 1 (0: NPC, 1: A)
-    MUX_A_OUT <= to_data(NPC_ID) when MUX_A_SEL = "00" else
-                 A               when MUX_A_SEL = "01" else
-                 ALU_OUT_REG     when MUX_A_SEL = "10" else -- from the exe
-                 MUX_LMD_OUT     when MUX_A_SEL = "11"; -- from mem
-
-    ALU_IN_1 <= to_data(shift_right(unsigned(MUX_A_OUT), 2)) when CW.execute.MUX_JR_SEL = '1' else
-                MUX_A_OUT;
+    ALU_IN_1 <= to_data(NPC_ID) when MUX_A_SEL = "00" else
+                A               when MUX_A_SEL = "01" else
+                ALU_OUT_REG     when MUX_A_SEL = "10" else -- from the exe
+                MUX_LMD_OUT     when MUX_A_SEL = "11"; -- from mem
 
     -- MUX_B: ALU input 2 (0: B, 1: IMM)
     ALU_IN_2 <= B               when MUX_B_SEL = "00" else
                 IMM             when MUX_B_SEL = "01" else
                 ALU_OUT_REG     when MUX_B_SEL = "10" else -- from exe
                 MUX_LMD_OUT     when MUX_B_SEL = "11"; -- from mem
-
-    -- MUX_LL: based on the ALU used (0: ALU, 1: LL_ALU)
-    MUX_LL_OUT <= ALU_OUT when CW.execute.MUX_LL_SEL = '0' else
-        LL_ALU_OUT;
 
     -- MUX_COND: based on whether or not a jump needs to be performed (00: NPC, 01/10: B ADDR, 11: J ADDR)
     MUX_COND_OUT <= pc_t(ALU_OUT(PC_SIZE - 1 downto 0)) when
@@ -214,7 +200,7 @@ begin
                     -- Branch not zero and zero not detected
                     ((CW.execute.MUX_COND_SEL = "10") AND (A_EQ_ZERO = '0'))) else
                     -- All other I/R TYPE instructions
-                    (PC + 1);
+                    (PC + 4);
 
     -- MUX_LMD: RF data write input (0: LMD, 1: ALU_OUT)
     MUX_LMD_OUT <= LMD when CW.wb.MUX_LMD_SEL = "00" else
@@ -297,8 +283,6 @@ begin
             OUTALU => ALU_OUT
         );
 
-    -- TODO: LL_ALU
-
     ----------------------------------------------------------------
     -- Processes
     ----------------------------------------------------------------
@@ -323,7 +307,7 @@ begin
             NPC <= (others => '0');
         elsif falling_edge(CLK) then
             if (SECW.FETCH = '1') then
-                NPC <= PC + 1; -- TODO: revert a +4?
+                NPC <= PC + 4;
             end if;
         end if;
     end process NPC_P;
@@ -451,7 +435,7 @@ begin
             ALU_OUT_REG <= (others => '0');
         elsif falling_edge(CLK) then
             if (SECW.EXECUTE = '1') then
-                ALU_OUT_REG <= MUX_LL_OUT;
+                ALU_OUT_REG <= ALU_OUT;
             end if;
         end if;
     end process ALU_OUT_REG_P;
