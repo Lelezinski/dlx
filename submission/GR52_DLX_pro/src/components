@@ -1,0 +1,38 @@
+# constants
+./000-globals.vhd
+./datapath/alu/alu_type.vhd
+./001-control_words.vhd
+
+# datapath
+./datapath/mux/iv.vhd
+./datapath/mux/nd2.vhd
+./datapath/mux/mux21_generic.vhd
+./datapath/adder/fa.vhd 
+./datapath/adder/rca.vhd 
+./datapath/adder/carry_select.vhd 
+./datapath/adder/sum_generator.vhd 
+./datapath/adder/pg_network.vhd 
+./datapath/adder/g_block.vhd 
+./datapath/adder/pg_block.vhd 
+./datapath/adder/carry_generator.vhd 
+./datapath/adder/p4_adder.vhd 
+./datapath/regfile/registerfile.vhd
+./datapath/alu/alu.vhd
+
+# memories
+./memories/ro/rocache_pkg.vhd
+./memories/ro/rocache.vhd
+./memories/ro/romem.vhd
+./memories/rw/rwcache_pkg.vhd
+./memories/rw/rwcache.vhd
+./memories/rw/rwmem.vhd
+
+# top level
+./a.d-hazard_detection_unit.vhd
+./a.c-forwarding_unit.vhd
+./a.b-DataPath.vhd
+./a.a-CU.vhd
+./a-DLX.vhd
+
+# tb
+./testbenches/DLX_tb.vhd
