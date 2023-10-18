@@ -17,7 +17,7 @@
 \subsection{Control unit}
 % TODO schema della control unit? si dovrebbe vedere come viene effettivamente sintetizzata
 % CHE CAZZO È CW_FROM_MEM DIO CANE
-The control unit is in charge of managing the datapath throughout its stages. Given an instruction from IR, it generates the corresponding control word that manages the various registers, MUXes and other control signals in the datapath. It also receives a block of \emph{STALL} signals from the HDU (Hazard Detection Unit) that instructs the CU on when to stall the pipeline in case of data hazards. % solo data hazards?
+The Control Unit is in charge of managing the datapath throughout its stages. Given an instruction from IR, it generates the corresponding control word that manages the various registers, MUXes and other control signals in the datapath. It also receives a block of \emph{STALL} signals from the HDU (Hazard Detection Unit) that instructs the CU on when to stall the pipeline in case of data hazards. % solo data hazards?
 
 
 
@@ -98,7 +98,7 @@ $ \mathit{if (DATA1 \leq DATA2) \: then} \: \mathit{ALUOUT} = 1 \: \mathit{else}
 $ \mathit{if (DATA1 < DATA2) \: then} \: \mathit{ALUOUT} = 1 \: \mathit{else} \: 0 $
 
 \subsection{Hazard detection unit}
-
+The Hazard Detection Unit takes care of detecting data and control hazards in the pipeline and successively dispatching stage enable (or STALL, as written in the CU subsection) signals to the CU for indication on where and for how many stages to stall for. It does so by progressively checking for hazardous conditions in a process starting from IRAM and DRAM readiness, then for branches (assuming not taken), jumps and loads from memory giving precedence, in case of instructions of the same type, to instructions currently found in the execute stage. If no hazardous condition is found, a STALL\_CLEAR signal is sent out.
 
 \subsection{Forwarding unit}
-The forwarding unit takes as input a subset of the control signals sent by the CU and of the register selection codes (not the values inside the registers themselves). Given those, it detects favourable conditions for source and destination registers between stages of the pipeline and if they match it forwards operands where they are needed by changing selection signals for the appropriate MUXes and skipping the write-back stage.
+The Forwarding Unit takes as input a subset of the control signals sent by the CU and of the register selection codes (not the values inside the registers themselves). Given those, it detects favourable conditions for source and destination registers between stages of the pipeline and if they match it forwards operands where they are needed by changing selection signals for the appropriate MUXes and skipping the write-back stage.
