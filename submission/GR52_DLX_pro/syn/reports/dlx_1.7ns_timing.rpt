@@ -1,0 +1,98 @@
+Warning: Design 'DLX' has '1' unresolved references. For more detailed information, use the "link" command. (UID-341)
+Information: Updating design information... (UID-85)
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+Design : DLX
+Version: S-2021.06-SP4
+Date   : Thu Oct 19 14:55:56 2023
+****************************************
+
+Operating Conditions: typical   Library: NangateOpenCellLibrary
+Wire Load Model Mode: top
+
+  Startpoint: DATAPATH_1/RD_EX_reg[4]
+              (rising edge-triggered flip-flop clocked by CLK')
+  Endpoint: DATAPATH_1/PC_reg[31]
+            (rising edge-triggered flip-flop clocked by CLK')
+  Path Group: CLK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  DLX                5K_hvratio_1_4        NangateOpenCellLibrary
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock CLK' (rise edge)                                  0.85       0.85
+  clock network delay (ideal)                             0.00       0.85
+  DATAPATH_1/RD_EX_reg[4]/CK (DFFR_X1)                    0.00       0.85 r
+  DATAPATH_1/RD_EX_reg[4]/Q (DFFR_X1)                     0.11       0.96 r
+  DATAPATH_1/dp_to_fu[RD_EX][4] (DATAPATH_DATA_SIZE32_INS_SIZE32_CW_SIZE30_PC_SIZE32_IR_SIZE32)
+                                                          0.00       0.96 r
+  forwarding_unit_1/dp_to_fu[RD_EX][4] (forwarding_unit)
+                                                          0.00       0.96 r
+  forwarding_unit_1/U40/ZN (XNOR2_X1)                     0.07       1.03 r
+  forwarding_unit_1/U48/ZN (NAND2_X1)                     0.03       1.06 f
+  forwarding_unit_1/U46/ZN (NOR2_X1)                      0.04       1.10 r
+  forwarding_unit_1/U43/ZN (AOI21_X1)                     0.03       1.13 f
+  forwarding_unit_1/U44/ZN (AND2_X1)                      0.04       1.17 f
+  forwarding_unit_1/U66/ZN (NAND2_X1)                     0.03       1.20 r
+  forwarding_unit_1/U12/ZN (OAI21_X1)                     0.04       1.24 f
+  forwarding_unit_1/MUX_B_SEL[1] (forwarding_unit)        0.00       1.24 f
+  DATAPATH_1/MUX_B_SEL[1] (DATAPATH_DATA_SIZE32_INS_SIZE32_CW_SIZE30_PC_SIZE32_IR_SIZE32)
+                                                          0.00       1.24 f
+  DATAPATH_1/U187/ZN (INV_X1)                             0.05       1.28 r
+  DATAPATH_1/U118/ZN (OR2_X1)                             0.05       1.33 r
+  DATAPATH_1/U196/ZN (INV_X1)                             0.03       1.36 f
+  DATAPATH_1/U1097/ZN (AOI22_X1)                          0.06       1.42 r
+  DATAPATH_1/U122/ZN (NAND3_X1)                           0.05       1.47 f
+  DATAPATH_1/ALU_1_i/DATA2[4] (ALU_N32)                   0.00       1.47 f
+  DATAPATH_1/ALU_1_i/U43/Z (BUF_X1)                       0.05       1.51 f
+  DATAPATH_1/ALU_1_i/r78/B[4] (ALU_N32_DW01_cmp6_1)       0.00       1.51 f
+  DATAPATH_1/ALU_1_i/r78/U188/ZN (NOR2_X1)                0.06       1.57 r
+  DATAPATH_1/ALU_1_i/r78/U121/ZN (OR2_X1)                 0.04       1.62 r
+  DATAPATH_1/ALU_1_i/r78/U131/ZN (NAND3_X1)               0.03       1.65 f
+  DATAPATH_1/ALU_1_i/r78/U137/ZN (OAI211_X1)              0.04       1.69 r
+  DATAPATH_1/ALU_1_i/r78/U136/ZN (OAI21_X1)               0.03       1.72 f
+  DATAPATH_1/ALU_1_i/r78/U132/ZN (AOI21_X1)               0.04       1.76 r
+  DATAPATH_1/ALU_1_i/r78/U133/ZN (NOR2_X1)                0.03       1.79 f
+  DATAPATH_1/ALU_1_i/r78/U125/ZN (NOR2_X1)                0.04       1.82 r
+  DATAPATH_1/ALU_1_i/r78/U124/ZN (NAND2_X1)               0.03       1.85 f
+  DATAPATH_1/ALU_1_i/r78/U198/ZN (AOI21_X1)               0.04       1.89 r
+  DATAPATH_1/ALU_1_i/r78/U199/ZN (OAI21_X1)               0.03       1.92 f
+  DATAPATH_1/ALU_1_i/r78/U201/ZN (AOI21_X1)               0.04       1.97 r
+  DATAPATH_1/ALU_1_i/r78/U167/ZN (NAND2_X1)               0.03       2.00 f
+  DATAPATH_1/ALU_1_i/r78/U170/ZN (NAND2_X1)               0.03       2.03 r
+  DATAPATH_1/ALU_1_i/r78/U196/ZN (AOI21_X1)               0.03       2.05 f
+  DATAPATH_1/ALU_1_i/r78/U176/ZN (OAI21_X1)               0.04       2.10 r
+  DATAPATH_1/ALU_1_i/r78/U175/ZN (NAND2_X1)               0.04       2.14 f
+  DATAPATH_1/ALU_1_i/r78/U166/ZN (OR2_X1)                 0.06       2.20 f
+  DATAPATH_1/ALU_1_i/r78/NE (ALU_N32_DW01_cmp6_1)         0.00       2.20 f
+  DATAPATH_1/ALU_1_i/U24/ZN (NAND2_X1)                    0.03       2.22 r
+  DATAPATH_1/ALU_1_i/U23/ZN (AND3_X1)                     0.05       2.28 r
+  DATAPATH_1/ALU_1_i/U18/ZN (OAI22_X1)                    0.03       2.31 f
+  DATAPATH_1/ALU_1_i/U12/ZN (AOI221_X1)                   0.06       2.37 r
+  DATAPATH_1/ALU_1_i/U13/ZN (OAI22_X1)                    0.04       2.41 f
+  DATAPATH_1/ALU_1_i/OUTALU[31] (ALU_N32)                 0.00       2.41 f
+  DATAPATH_1/U85/ZN (INV_X1)                              0.04       2.45 r
+  DATAPATH_1/U71/ZN (OAI222_X1)                           0.04       2.49 f
+  DATAPATH_1/PC_reg[31]/D (DFFR_X1)                       0.01       2.50 f
+  data arrival time                                                  2.50
+
+  clock CLK' (rise edge)                                  2.55       2.55
+  clock network delay (ideal)                             0.00       2.55
+  DATAPATH_1/PC_reg[31]/CK (DFFR_X1)                      0.00       2.55 r
+  library setup time                                     -0.05       2.50
+  data required time                                                 2.50
+  --------------------------------------------------------------------------
+  data required time                                                 2.50
+  data arrival time                                                 -2.50
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.00
+
+
+1
