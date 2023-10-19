@@ -104,7 +104,7 @@ begin
                 WB       => '1'
             );
         else
-            SECW <= STALL_CLEAR;
+            SECW <= STALL_CLEAR; -- do not stall anything otherwise
         end if;
     end process;
 end architecture RTL;
