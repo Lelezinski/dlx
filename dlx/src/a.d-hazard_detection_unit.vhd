@@ -38,7 +38,7 @@ begin
                 MEMORY   => '1',
                 WB       => '1'
                 );
-        elsif (DRAM_READY = '0') then -- fetch a nop and freeze until memory, if the dram is still reading or writing
+        elsif (DRAM_READY = '0') then -- freeze the pipeline until memory, if the dram is still reading or writing
             SECW <= (
                 FLUSH_IF => '0',
                 PREFETCH => '0',
