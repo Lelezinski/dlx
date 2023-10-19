@@ -1,110 +1,106 @@
-library ieee;
-use ieee.std_logic_1164.all;
+library IEEE;
+use IEEE.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 use work.myTypes.all;
-use work.control_words.all;
 
-entity HAZARD_DETECTION_UNIT is
-    port(
-        CLK      : in std_logic;
-        RST      : in std_logic;
-        dp_to_hu : in dp_to_hu_t;
-        cu_to_hu : in cu_to_hu_t;
+entity forwarding_unit is
+  -- generic (
+  -- );
+  port (
+    -- signals coming from the cu
+    cu_to_fu : in cu_to_fu_t;
 
-        IRAM_READY : in std_logic;
-        DRAM_READY : in std_logic;
-        SECW  : out stage_enable_t
-        );
-end entity HAZARD_DETECTION_UNIT;
+    -- signals coming from the datapth
+    dp_to_fu : in dp_to_fu_t;
 
-architecture RTL of HAZARD_DETECTION_UNIT is
-    ---------------------------- SECW Pipeline
+    MUX_FWD_MEM_LMD_SEL : out std_logic;
+    MUX_FWD_EX_LMD_SEL : out std_logic;
+    MUX_FWD_BZ_SEL : out std_logic_vector(1 downto 0);
+    MUX_A_SEL : out std_logic_vector(1 downto 0);
+    MUX_B_SEL : out std_logic_vector(1 downto 0)
+    );
+end forwarding_unit;
+
+architecture RTL of forwarding_unit is
 begin
-    ---------------------------- SECW Pipeline
-    secw_update : process(DRAM_READY, IRAM_READY, cu_to_hu.IS_B_EX,
-                          cu_to_hu.IS_B_ID, cu_to_hu.IS_JUMP_EX,
-                          cu_to_hu.IS_JUMP_ID, cu_to_hu.LMD_EN,
-                          dp_to_hu.B_TAKEN, dp_to_hu.RS_IF, dp_to_hu.RT_ID,
-                          dp_to_hu.RT_IF)
-    begin
-        if (IRAM_READY = '0') then
-            SECW <= (
-                FLUSH_IF => '1',
-                PREFETCH => '0',
-                FETCH    => '1',
-                DECODE   => '1',
-                EXECUTE  => '1',
-                MEMORY   => '1',
-                WB       => '1'
-                );
-        elsif (DRAM_READY = '0') then
-            SECW <= (
-                FLUSH_IF => '0',
-                PREFETCH => '0',
-                FETCH    => '0',
-                DECODE   => '0',
-                EXECUTE  => '0',
-                MEMORY   => '0',
-                WB       => '1'
-                );
-        elsif (cu_to_hu.IS_B_EX = "01" or cu_to_hu.IS_B_EX = "10") then
-            if (dp_to_hu.B_TAKEN = '1') then -- assume not taken, then flush IR when it is taken
-                SECW <= (
-                    FLUSH_IF => '1',
-                    PREFETCH => '1',
-                    FETCH    => '0',
-                    DECODE   => '0',
-                    EXECUTE  => '1',
-                    MEMORY   => '1',
-                    WB       => '1'
-                    );
-            else
-                SECW <= STALL_CLEAR;
-            end if;
-        elsif (cu_to_hu.IS_JUMP_EX = '1') then
-            SECW <= (
-                FLUSH_IF => '1',
-                PREFETCH => '1',
-                FETCH    => '1',
-                DECODE   => '1',
-                EXECUTE  => '1',
-                MEMORY   => '1',
-                WB       => '1'
-            );
-        elsif ((cu_to_hu.LMD_EN = '1') and
-            ((dp_to_hu.RT_ID = dp_to_hu.RS_IF) or (dp_to_hu.RT_ID = dp_to_hu.RT_IF))) then
-            SECW <= (
-                FLUSH_IF => '0',
-                PREFETCH => '0',
-                FETCH    => '0',
-                DECODE   => '0',
-                EXECUTE  => '1',
-                MEMORY   => '1',
-                WB       => '1'
-            );
-        elsif (cu_to_hu.IS_B_ID = "10" or cu_to_hu.IS_B_ID = "01") then
-            SECW <= (
-                FLUSH_IF => '0',
-                PREFETCH => '1',
-                FETCH    => '1',
-                DECODE   => '1',
-                EXECUTE  => '1',
-                MEMORY   => '1',
-                WB       => '1'
-            );
-        elsif (cu_to_hu.IS_JUMP_ID = '1') then
-            SECW <= (
-                FLUSH_IF => '1',
-                PREFETCH => '0',
-                FETCH    => '1',
-                DECODE   => '1',
-                EXECUTE  => '1',
-                MEMORY   => '1',
-                WB       => '1'
-            );
-        else
-            SECW <= STALL_CLEAR;
-        end if;
-    end process;
-end architecture RTL;
+
+  forwarding : process(cu_to_fu, dp_to_fu)
+  begin
+    MUX_A_SEL <= '0' & cu_to_fu.MUX_A_CU;
+    MUX_B_SEL <= '0' & cu_to_fu.MUX_B_CU;
+    MUX_FWD_MEM_LMD_SEL <= '0';
+    MUX_FWD_EX_LMD_SEL <= '0';
+    MUX_FWD_BZ_SEL <= "00";
+
+    -- detect hazards in execute stage. Forward them from memory stage to execute stage
+    if (cu_to_fu.RF_WR_EX = '1' or cu_to_fu.DRAM_ENABLE_MEM = '1') -- forward only instructions that write the RF or lw/sw
+      and (cu_to_fu.MUX_COND_SEL /= "01" ) -- do not forward if the instruction is a bnez
+      and (cu_to_fu.MUX_COND_SEL /= "10" ) -- do not forward if the instruction is a bez
+      and (unsigned(dp_to_fu.RD_EX) /= 0) then
+
+      if (dp_to_fu.RD_EX = dp_to_fu.RS_ID) then -- forward the first operand of the alu
+        MUX_A_SEL <= "10";
+      end if;
+
+      if ((dp_to_fu.RD_EX = dp_to_fu.RT_ID) -- forward the second operand of the alu
+          and (cu_to_fu.DRAM_ENABLE_MEM = '0') -- do not forward the second operand if the instruction is a lw/sw, because they always use the immediate field
+          and (cu_to_fu.MUX_A_CU = '1' and cu_to_fu.MUX_B_CU = '0')) then -- forward the second operad only if the instruction should use the data coming from B
+        MUX_B_SEL <= "10";
+      end if;
+    end if;
+
+    -- detect hazards in execute stage. Forward them from memory stage to execute stage
+    if (cu_to_fu.RF_WR_MEM = '1' or cu_to_fu.DRAM_ENABLE_MEM = '1') -- forward only instructions that write the RF or lw/sw
+      and (cu_to_fu.MUX_COND_SEL /= "01" ) -- do not forward if the instruction is a bnez
+      and (cu_to_fu.MUX_COND_SEL /= "10" ) -- do not forward if the instruction is a bez
+      and (unsigned(dp_to_fu.RD_MEM) /= 0)
+      and (cu_to_fu.IS_JUMP_EX = '0') then -- avoid detecting false forwarding paths
+      if ((dp_to_fu.RD_MEM = dp_to_fu.RS_ID) and -- forward the first operad of the ALU
+          not((cu_to_fu.RF_WR_EX = '1' or cu_to_fu.DRAM_ENABLE_MEM = '1')
+              and (unsigned(dp_to_fu.RD_EX) /= 0)
+              and (dp_to_fu.RD_EX = dp_to_fu.RS_ID))) then -- avoid detecting false hazards
+        MUX_A_SEL <= "11";
+      end if;
+      if (((dp_to_fu.RD_MEM = dp_to_fu.RT_ID) -- forward the second operand of the alu
+          and (cu_to_fu.DRAM_ENABLE_MEM = '0')) -- do not forward the second operand if the instruction is a lw/sw, because they always use the immediate field
+          and (cu_to_fu.MUX_A_CU = '1' and cu_to_fu.MUX_B_CU = '0') -- forward the second operad only if the instruction should use the data coming from B
+          and not((cu_to_fu.RF_WR_EX = '1' or cu_to_fu.DRAM_ENABLE_MEM = '1')
+              and (unsigned(dp_to_fu.RD_EX) /= 0)
+              and (dp_to_fu.RD_EX = dp_to_fu.RT_ID))) then -- avoid detecting false hazards
+        MUX_B_SEL <= "11";
+      end if;
+    end if;
+
+    if (cu_to_fu.MUX_COND_SEL = "01" or cu_to_fu.MUX_COND_SEL = "10") -- if the istruction is a bne or a beqz
+      and (unsigned(dp_to_fu.RD_EX) /= 0) and (dp_to_fu.RD_EX = dp_to_fu.RS_ID) then -- forward data to check the branch result from memory
+      MUX_FWD_BZ_SEL <= "10";
+    elsif (cu_to_fu.MUX_COND_SEL = "01" or cu_to_fu.MUX_COND_SEL = "10") and
+      (unsigned(dp_to_fu.RD_EX) /= 0) and
+      (dp_to_fu.RD_MEM = dp_to_fu.RS_ID) then -- forward data to check the branch result from write back stage
+        MUX_FWD_BZ_SEL <= "11";
+    end if;
+
+    -- forward loaded data if storing it is needed
+    if ((cu_to_fu.DRAM_READNOTWRITE = '0') and -- it exists but it does not work
+      (unsigned(dp_to_fu.RD_MEM) /= 0) and
+      (dp_to_fu.RD_EX = dp_to_fu.RD_MEM)) then
+      MUX_FWD_MEM_LMD_SEL <= '1';
+    end if;
+
+    -- forward rd or rt (destination register)
+    if ((cu_to_fu.DRAM_ENABLE_MEM = '1') and -- if the instruction is a lw or sw
+        (unsigned(dp_to_fu.RD_MEM) /= 0) and -- if destination register is not 0
+        (dp_to_fu.RS_ID = dp_to_fu.RD_MEM)) then -- if the data to be stored is in the memory stage
+      MUX_FWD_EX_LMD_SEL  <= '1';
+    end if;
+
+    if ((cu_to_fu.DRAM_ENABLE_EX = '1') and -- if the instruction is a lw or sw
+        (unsigned(dp_to_fu.RD_MEM) /= 0) and -- if destination register is not 0
+        (dp_to_fu.RD_ID = dp_to_fu.RD_MEM)) then -- if the data to be stored is in the memory stage
+      MUX_FWD_EX_LMD_SEL  <= '1';
+    end if;
+
+  end process;
+
+end RTL;
