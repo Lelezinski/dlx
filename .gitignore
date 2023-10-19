@@ -204,3 +204,6 @@ runs
 *.csv
 .direnv
 */syn/
+
+# SUBMISSION
+!*/submission/*
