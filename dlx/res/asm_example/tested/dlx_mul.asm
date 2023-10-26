@@ -1,6 +1,6 @@
 # Initialize variables
-    addi    r1, r0, 420 # Initialize r1 with 7 (first multiplier)
-    addi    r2, r0, 69  # Initialize r2 with 5 (second multiplier)
+    addi    r1, r0, 420 # Initialize r1 (first multiplier)
+    addi    r2, r0, 69  # Initialize r2 (second multiplier)
     addi    r3, r0, 0   # Initialize r3 to store the result (initialize to 0)
 
 # Multiplication loop

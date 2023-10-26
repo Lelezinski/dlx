@@ -93,7 +93,7 @@ begin
                 MEMORY   => '1',
                 WB       => '1'
             );
-        elsif (cu_to_hu.IS_JUMP_ID = '1') then -- if a jump is decoded, put a nop in IR and do not update the PC
+        elsif (cu_to_hu.IS_JUMP_ID = '1') then -- if a jump is decoded, put a nop in IR and do not update the PC.
             SECW <= (
                 FLUSH_IF => '1',
                 PREFETCH => '0',
