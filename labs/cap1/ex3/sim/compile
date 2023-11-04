@@ -1,7 +1,0 @@
-#!/bin/bash
-
-vcom constants.vhd
-echo " "
-vcom fd.vhd
-echo " "
-vcom tb_fd.vhd

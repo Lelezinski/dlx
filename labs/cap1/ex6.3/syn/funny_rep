@@ -1,1 +1,0 @@
-sed -i 's/ after/; -- after/' *.vhd

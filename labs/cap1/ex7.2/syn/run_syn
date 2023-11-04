@@ -1,9 +1,0 @@
-design_vision -no_gui -x "\
-    analyze -library WORK -format vhdl {constants.vhd alu_type.vhd alu.vhd};\
-    elaborate ALU -architecture BEHAVIOR -library WORK;\
-    compile -exact_map;\
-    write -hierarchy -format vhdl -output $(pwd)/alu_netlist.vhdl;\
-    sh mkdir -p reports;\
-    report_area > reports/area_report;\
-    report_timing > reports/timing_report;\
-    exit"

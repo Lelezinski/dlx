@@ -1,7 +1,0 @@
-vcom constants.vhd
-echo " "
-vcom alu_type.vhd
-echo " "
-vcom alu.vhd
-echo " "
-vcom tb_alu.vhd
